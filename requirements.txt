@@ -1,0 +1,4 @@
+lxml
+polib
+tqdm
+gdown
