@@ -362,10 +362,12 @@
 
 <event name="ANCIENT_LORE_DUMP">
 	<text>The creature begins to speak in the same garbled way as the Auto-scout before but stops. It scans the area where your translator is located, and the device lights up. You look at your translator to find its database entries have been updated even further - expanding on the entries given to you by the Augmented.</text>
+	<recallBoarders/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
 			<text>The alien speaks again. "Language Calibration: Complete. Hello, strange creature. I have taken the liberty of updating your translator to understand our spoken language. You have done me a great service, though I know you probably had no idea what you were doing. The closest pronunciation of my name in your language is Aenwithe, but I suspect that might be a mouthful. I recommend you call me Wither, as my true dialect would make your head explode if attempted to be pronounced."</text>
+			<achievement silent="false">ACH_TRUEEND_AENWITHE</achievement>
 			<choice hidden="true">
 				<text>Uh, hello Wither.</text>
 				<event>
@@ -432,16 +434,16 @@
 							</choice>
 						</event>
 					</choice>
-					<choice hidden="true" req="traveler">
-						<text>(Aenwithe) Hello, me.</text>
+					<choice hidden="true" req="unique_wither">
+						<text>(Aenwithe) "Hello, me."</text>
 						<event>
 							<text>"Ah, I see you have already encountered me from another timeline. Very well then, I'm sure you understand the situation. Shall we head to the Obelisk sector now, or do you have other things to do?"</text>
 							<choice>
 								<text>Let's go.</text>
 								<event>
 									<text>"Most excellent. I suggest finding somewhere to sit or something to hold on to, this will be a bumpy ride!"</text>
-									<hiddenAug>ACH_CREW_AENWITHE</hiddenAug>
-									<crewMember amount="1" class="traveler">Wither</crewMember> <!--its a witherbottom easter egg, wowee-->
+									<variable name="ach_crew_aenwithe" op="set" val="1"/>
+									<crewMember amount="1" class="unique_wither">Wither</crewMember> <!--its a witherbottom easter egg, wowee-->
 									<choice hidden="true">
 										<text>Continue...</text>
 										<event>
@@ -471,8 +473,8 @@
 		<text>Accept.</text>
 		<event>
 			<text>"Really? Most excellent. I suggest finding somewhere to sit or something to hold on to, this will be a bumpy ride!"</text>
-			<hiddenAug>ACH_CREW_AENWITHE</hiddenAug>
-			<crewMember amount="1" class="traveler">Wither</crewMember> <!--its a witherbottom easter egg, wowee-->
+			<variable name="ach_crew_aenwithe" op="set" val="1"/>
+			<crewMember amount="1" class="unique_wither">Wither</crewMember> <!--its a witherbottom easter egg, wowee-->
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event>
@@ -535,7 +537,7 @@
 	</beaconType>
 	<text>You have arrived at the cache. You can see the Dreadnaught looming in the distance, though it is too far away to make out its features. As expected, it would be impossible to access the cache, which resembles a gigantic vault sculpted into the side of a planet, without eliminating the ship.</text>
 	<img back="BACKGROUND" planet="PLANET_ANCIENT_VAULT"/>
-	<choice req="DIFFICULTY_CASUAL" lvl="1" blue="false" max_group="0" hidden="true">
+	<choice req="challenge_level" lvl="0" blue="false" max_group="0" hidden="true">
 		<text>Continue...</text>
 		<event>
 			<text>Aenwithe observes the Dreadnaught, seemingly unafraid. "Big ship. But still nothing compared to the ones you'll see in the Homeworlds. Let this be a test to see if we're ready for what's to come. Worst case, we die. No big deal."</text>
@@ -553,7 +555,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice req="DIFFICULTY_NORMAL" lvl="1" blue="false" max_group="0" hidden="true">
+	<choice req="challenge_level" lvl="1" blue="false" max_group="0" hidden="true">
 		<text>Continue...</text>
 		<event>
 			<text>Aenwithe observes the Dreadnaught, seemingly unafraid. "Big ship. But still nothing compared to the ones you'll see in the Homeworlds. Let this be a test to see if we're ready for what's to come. Worst case, we die. No big deal."</text>
@@ -571,7 +573,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice req="DIFFICULTY_CHALLENGE" lvl="1" blue="false" max_group="0" hidden="true">
+	<choice req="challenge_level" lvl="2" blue="false" max_group="0" hidden="true">
 		<text>Continue...</text>
 		<event>
 			<text>Aenwithe observes the Dreadnaught, seemingly unafraid. "Big ship. But still nothing compared to the ones you'll see in the Homeworlds. Let this be a test to see if we're ready for what's to come. Worst case, we die. No big deal."</text>
@@ -589,7 +591,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice req="DIFFICULTY_EXTREME" lvl="1" blue="false" max_group="0" hidden="true">
+	<choice req="challenge_level" lvl="3" blue="false" max_group="0" hidden="true">
 		<text>Continue...</text>
 		<event>
 			<text>Aenwithe observes the Dreadnaught, seemingly unafraid. "Big ship. But still nothing compared to the ones you'll see in the Homeworlds. Let this be a test to see if we're ready for what's to come. Worst case, we die. No big deal."</text>
@@ -618,7 +620,8 @@
 </event>
 <event name="ANCSECTOR_PART_4">
 	<text>"You've done it. The Dreadnaught is dead! This is beyond incredible. You flimsy mortal creatures may not be so pathetic after all. All that's left is to grab the parts and destroy the Cache." You promise to do so, but scrap the Dreadnaught first.</text>
-	<hiddenAug>ACH_BOSS_DREAD</hiddenAug>
+	<achievement silent="false">ACH_TRUEEND_DREADONE</achievement>
+	<variable name="ach_boss_dread" op="set" val="1"/>
 	<autoReward level="HIGH">standard</autoReward>
 	<choice hidden="true">
 		<text>Loot the Cache.</text>
@@ -637,26 +640,25 @@
 				<text>Destroy the Cache.</text>
 				<event>
 					<text>You set up many explosives around the vault to explode all at once, and exit as fast as possible. You put a safe distance between yourself and the cache, and watch the fireworks. If you can defeat the Flagship as well, you'll have saved reality twice!</text>
-					<choice hidden="true">
-						<text>Continue...</text>
-						<event>
-							<text>As you're preparing to leave, a squadron of Obelisk ships approaches, drawn in by the explosion. They're led by a Royal ship, whose captain hails you. "You... You have destroyed the cache. You filthy mortal insect, you will suffer for this!" You shrug, and flick the weapons in their direction. None of the Obelisk squadron dares mess with the ship that killed the Dreadnaught, and so they quickly jump away, presumably to the homeworlds to spread the news of your approach.</text>
-							<choice hidden="true">
-								<text>Continue...</text>
-								<event>
-									<text>Aenwithe is very pleased. "Do not worry about the fleet, the Homeworlds are already on high alert anyways. We must move quickly, we need to head to our base and construct the bomb! We will head to the Homeworlds directly. Grab hold of something again, and try not to black out."</text>
-									<choice hidden="true">
-										<text>Continue...</text>
-										<event load="JUMP_TO_OBELISK"/>
-									</choice>
-								</event>
-							</choice>
-						</event>
-					</choice>
+					<jumpEvent>VAULT_DESTROYED</jumpEvent>
 				</event>
 			</choice>
 		</event>
 	</choice>
+</event>
+
+<event name="VAULT_DESTROYED">
+	<text>As you're preparing to leave, a squadron of Obelisk ships approaches, drawn in by the explosion. They're led by a Royal ship, whose captain hails you. "You... You have destroyed the cache. You filthy mortal insect, you will suffer for this!" You shrug, and flick the weapons in their direction. None of the Obelisk squadron dares mess with the ship that killed the Dreadnaught, and so they quickly jump away, presumably to the homeworlds to spread the news of your approach.</text>
+		<choice hidden="true">
+			<text>Continue...</text>
+				<event>
+					<text>Aenwithe is very pleased. "Do not worry about the fleet, the Homeworlds are already on high alert anyways. We must move quickly, we need to head to our base and construct the bomb! We will head to the Homeworlds directly. Grab hold of something again, and try not to black out."</text>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event load="JUMP_TO_OBELISK"/>
+					</choice>
+				</event>
+		</choice>
 </event>
 <event name="JUMP_TO_OBELISK">
 	<secretSector/>
@@ -664,9 +666,11 @@
 
 <event name="START_BEACON_ANCIENT">
 	<text>You pull yourself off the floor, in a daze. The ship cameras show most of the other crew doing the same, waking from their slumber. The only one who seems unfazed is Aenwithe, who hastens to check on you. "We've made it okay, but now we have a few things to be careful of. Though I doubt the Rebels will be able to follow us for now, they will catch up eventually if they truly are tracking you as you suspect. Additionally, it is very likely that this sector is protected by a guard ship. If so, I doubt they'll let us through unharmed."</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<modifyPursuit amount="-10"/>
 	<ship load="SHIP_ANCIENT_GUARD" hostile="false"/>
 	<changeBackground>BACK_SECTOR_ANCIENT</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -764,46 +768,50 @@
 								<text>Wait.</text>
 								<event>
 									<text>After a little while a strange noise can be heard coming from the second, much larger hole to your right. Your Ghost pops back out, followed by a second larger Ghost. The two Ghosts seem overly excited, and you decide not to ask what happened inside the machine.</text>
-									<crewMember amount="1" class="phantomalpha"/>
+									<achievement silent="false">ACH_OBEL_GHOSTMACHINE</achievement>
+									<crewMember amount="1" class="phantom_alpha"/>
 								</event>
 							</choice>
 						</event>
 					</choice>
 					<choice req="LIST_CREW_GOUL" hidden="true">
-						<text>(Goul Crew) Your Phantom eagerly begs to be put into the machine.</text>
+						<text>(Goul Crew) Your Goul eagerly begs to be put into the machine.</text>
 						<event>
-							<text>You shrug and force the Phantom into the machine. It doesn't protest as it slips into the tiny slot and falls down a large hole into the pits of the machine.</text>
+							<text>You shrug and force the Goul into the machine. It doesn't protest as it slips into the tiny slot and falls down a large hole into the pits of the machine.</text>
 							<choice hidden="true">
 								<text>Wait.</text>
 								<event>
 									<text>After a little while a strange noise can be heard coming from the second, much larger hole to your right. Your Ghost pops back out, followed by a second larger Ghost. The two Ghosts seem overly excited, and you decide not to ask what happened inside the machine.</text>
-									<crewMember amount="1" class="goulalpha"/>
+									<achievement silent="false">ACH_OBEL_GHOSTMACHINE</achievement>
+									<crewMember amount="1" class="phantom_goul_alpha"/>
 								</event>
 							</choice>
 						</event>
 					</choice>
 					<choice req="LIST_CREW_MARE" hidden="true">
-						<text>(Mare Crew) Your Phantom eagerly begs to be put into the machine.</text>
+						<text>(Mare Crew) Your Mare eagerly begs to be put into the machine.</text>
 						<event>
-							<text>You shrug and force the Phantom into the machine. It doesn't protest as it slips into the tiny slot and falls down a large hole into the pits of the machine.</text>
+							<text>You shrug and force the Mare into the machine. It doesn't protest as it slips into the tiny slot and falls down a large hole into the pits of the machine.</text>
 							<choice hidden="true">
 								<text>Wait.</text>
 								<event>
 									<text>After a little while a strange noise can be heard coming from the second, much larger hole to your right. Your Ghost pops back out, followed by a second larger Ghost. The two Ghosts seem overly excited, and you decide not to ask what happened inside the machine.</text>
-									<crewMember amount="1" class="marealpha"/>
+									<achievement silent="false">ACH_OBEL_GHOSTMACHINE</achievement>
+									<crewMember amount="1" class="phantom_mare_alpha"/>
 								</event>
 							</choice>
 						</event>
 					</choice>
 					<choice req="LIST_CREW_WRAITH" hidden="true">
-						<text>(Wraith Crew) Your Phantom eagerly begs to be put into the machine.</text>
+						<text>(Wraith Crew) Your Wraith eagerly begs to be put into the machine.</text>
 						<event>
-							<text>You shrug and force the Phantom into the machine. It doesn't protest as it slips into the tiny slot and falls down a large hole into the pits of the machine.</text>
+							<text>You shrug and force the Wraith into the machine. It doesn't protest as it slips into the tiny slot and falls down a large hole into the pits of the machine.</text>
 							<choice hidden="true">
 								<text>Wait.</text>
 								<event>
 									<text>After a little while a strange noise can be heard coming from the second, much larger hole to your right. Your Ghost pops back out, followed by a second larger Ghost. The two Ghosts seem overly excited, and you decide not to ask what happened inside the machine.</text>
-									<crewMember amount="1" class="wraithalpha"/>
+									<achievement silent="false">ACH_OBEL_GHOSTMACHINE</achievement>
+									<crewMember amount="1" class="phantom_wraith_alpha"/>
 								</event>
 							</choice>
 						</event>
@@ -963,7 +971,7 @@
 <eventList name="ANCIENT_LOST_DUDE_RESCUE">
     <event>
         <text>You pull the Obelisk aboard your ship. Almost immediately, it lights up. "Oh how marvelous, you've found me. I thought I would be stuck in the empty vaccuum of space forever."</text>
-        <crewMember amount="1" class="ancient"/>
+        <crewMember amount="1" class="obelisk"/>
     </event>
     <event>
         <text>At first the Obelisk doesn't stir, and you consider stashing it in the storage for later. But as you begin to move it, it suddenly activates and fires a laser which destroys your shields! You draw your blaster, but the Obelisk has already calmed down. "Oh, my bad. Truly sorry about your equipment. I hope you don't mind if I request to join your crew? It's been terribly boring drifting in space for eternity, and I'd like some action for once."</text>
@@ -971,7 +979,7 @@
         <choice hidden="true">
             <text>Continue...</text>
             <event>
-                <crewMember amount="1" class="ancient"/>
+                <crewMember amount="1" class="obelisk"/>
             </event>
         </choice>
     </event>
@@ -979,7 +987,7 @@
 
 <event name="ANCIENT_DESIRE" unique="true">
     <img back="BACKGROUND" planet="PLANET_ANCIENT"/>
-    <text>A voice booms over your intercom, speaking slowly. "Aliens, here? How curious. This is a chance too good to pass up. I have taken control over your entire vessel. Tell me, what do you desire most?"</text>
+    <text>A voice booms over your intercom, speaking slowly. "Aliens, here? How curious. This is a chance too good to pass up. Do not resist, I have taken control over your entire vessel. Tell me, what do you desire most?"</text>
     <ship load="SHIP_ANCIENT_ALL" hostile="false"/>
 	<choice hidden="true">
         <text>Wealth.</text>
@@ -994,7 +1002,7 @@
         <text>Beauty.</text>
         <event>
             <text>"Ahhh, what a vain desire. Ever since we shed our organic forms in favor of these mechanical bodies, we have forgotten the pursuits of lust or beauty. Unfortunately, I cannot alter your form myself. I can however gift you a truly beautiful creature for you to reflect upon."</text>
-            <crewMember amount="1" all_skills="1" class="ancient">Narcissus</crewMember>
+            <crewMember amount="1" all_skills="1" class="obelisk">Narcissus</crewMember>
         </event>
     </choice>
     <choice hidden="true">
@@ -1044,7 +1052,7 @@
 				<text>Beauty.</text>
 				<event>
 					<text>"Ahhh, what a vain desire. Ever since we shed our organic forms in favor of these mechanical bodies, we have forgotten the pursuits of lust or beauty. Unfortunately, I cannot alter your form myself. I can however gift you a truly beautiful creature for you to reflect upon."</text>
-					<crewMember amount="1" all_skills="1" class="ancient">Narcissus</crewMember>
+					<crewMember amount="1" all_skills="1" class="obelisk">Narcissus</crewMember>
 				</event>
 			</choice>
 			<choice hidden="true">
@@ -1065,6 +1073,7 @@
 				<text>Resist again and suffer the consequences.</text>
 				<event>
 					<text>"Then you deserve all that is coming to you."</text>
+					<achievement silent="false">ACH_OBEL_IDIOTRESIST</achievement>
 					<ship hostile="true"/>
 					<choice hidden="true">
                         <text>Continue...</text>
@@ -1076,7 +1085,8 @@
                 <text>(Anti-Virus) Restore your systems and fight back.</text>
                 <event>
                     <text>Your Anti-Virus struggles to counter the Obelisk tech. It manages to restore just a few of the critical systems.</text>
-                    <ship hostile="true"/>
+                    <achievement silent="false">ACH_OBEL_IDIOTRESIST</achievement>
+					<ship hostile="true"/>
 					<status type="clear" target="player" system="weapons" amount="100"/>
                     <status type="clear" target="player" system="shields" amount="100"/>
                     <status type="clear" target="player" system="oxygen" amount="100"/>
@@ -1154,7 +1164,7 @@
 </event>
 <eventList name="ANCIENT_SURRENDER_LIST"> <!--add more?-->
 	<event>
-		<text>"Good, I see you are smarter than most. Be grateful that we too have decided to show you mercy.</text>
+		<text>"Good, I see you are smarter than most. Be grateful that we too have decided to show you mercy."</text>
 		<ship hostile="false"/> 
 		<choice hidden="true">
 			<text>Let them go.</text>
@@ -1381,7 +1391,7 @@
 		<text>We have similar objectives. Maybe we could help each other?</text>
 		<event>
 			<text>"Contemplating offer... This is acceptable. I will personally offer services, better chance at success."</text>
-			<crewMember amount="1" class="defend"/>
+			<crewMember amount="1" class="engi_defender"/>
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -1469,7 +1479,7 @@
 		<event>
 			<text>While scrapping the Obelisk ship you find one of their drones still intact.</text>
 			<autoReward level="HIGH">standard</autoReward>
-			<drone name="LIST_DRONES_ANCIENT"/>
+			<drone name="GIFTLIST_ANCIENT_DRONE"/>
 		</event>
 	</choice>
 </event>
@@ -1634,8 +1644,10 @@
 
 <event name="START_BEACON_ROYAL">
 	<text>This time, you found yourself at least leaning against a wall. Most of the other crew did better as well, and as always Aenwithe is completely unfazed. "We're here. Fortunately, the resistance has managed to take out the guard already and blockade the sector. Now, let's get this bomb built."</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<customFleet right="true" firing="false" autoDarkening="true">CUSTOM_FLEET_ANCIENT</customFleet>
 	<changeBackground>BACK_SECTOR_ROYAL</changeBackground>
+	<playSound>lightspeed</playSound>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -1655,13 +1667,13 @@
 </event>
 
 <event name="ROYAL_MFK_ARIVAL">
-	<text>Aenwithe pauses, and you assume he would have sighed had he lungs. "E is the princess of the Obelisk Royals. Don't mind the single letter name, that's just how the Royals name themselves. For simplicity, I guess. Or maybe the memes? Anyways, doesn't matter. E is the only Royal amongst our resistance, and the only person who can build the bomb. But now she's been taken. Even worse, the Royals do in fact have an even stronger Dreadnaught, protecting Liythkyk Yuk, their capital."</text>
-	<playSound>lightspeed</playSound>
+	<text>Aenwithe pauses, and you assume he would have sighed had he had lungs. "E is the princess of the Obelisk Royals. Don't mind the single letter name, that's just how the Royals name themselves. For simplicity, I guess. Or maybe the memes? Anyways, doesn't matter. E is the only Royal amongst our resistance, and the only person who can build the bomb. But now she's been taken. Even worse, the Royals do in fact have an even stronger Dreadnaught, protecting Liythkyk Yuk, their capital."</text>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
 		<customFleet right="false" firing="true" autoDarkening="false">CUSTOM_FLEET_MFK</customFleet>
 		<customFleet right="true" firing="false" autoDarkening="true">CUSTOM_FLEET_ANCIENT</customFleet>
+		<playSound>lightspeed</playSound>
 			<text>Suddenly, an alarm in the fleet ship goes off. A squadron of MFK fleet ships jump in, immediately opening fire on the Obelisks. Aenwithe curses, "Damn it, the Rebels got through! It was only a matter of time. We need to evacuate immediately! We'll regroup at the palace and rescue E, finish this bomb, then purge this entire sector to its core!"</text>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -1718,7 +1730,7 @@
 	</beaconType>
 	<text>You have arrived at Liythkyk Yuk. Below your ship is a vast cityscape with massive cruisers moving back and forth. It's so green... probably too green. But that doesn't matter, hopefully you won't be here too long.</text>
 	<img back="BACK_EVENT_ROYAL_PALACE" planet="PLANET_INVISIBLE"/>
-	<choice req="DIFFICULTY_CASUAL" lvl="1" blue="false" max_group="0" hidden="true">
+	<choice req="challenge_level" lvl="0" blue="false" max_group="0" hidden="true">
 		<text>Continue...</text>
 		<event>
 			<text>You pilot closer to the surface, and for a brief moment you almost think you can get through this without a fight. However, any hopes of this are immediately dashed when the Royal Dreadnaught Aenwithe mentioned appears from the sky, moving closer with clear intent to kill. "Mortal invaders! Your filth shall be purged from our realm!" Looks like it's time for one more battle, and hopefully the last you'll ever have.</text>
@@ -1729,7 +1741,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice req="DIFFICULTY_NORMAL" lvl="1" blue="false" max_group="0" hidden="true">
+	<choice req="challenge_level" lvl="1" blue="false" max_group="0" hidden="true">
 		<text>Continue...</text>
 		<event>
 			<text>You pilot closer to the surface, and for a brief moment you almost think you can get through this without a fight. However, any hopes of this are immediately dashed when the Royal Dreadnaught Aenwithe mentioned appears from the sky, moving closer with clear intent to kill. "Mortal invaders! Your filth shall be purged from our realm!" Looks like it's time for one more battle, and hopefully the last you'll ever have.</text>
@@ -1740,7 +1752,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice req="DIFFICULTY_CHALLENGE" lvl="1" blue="false" max_group="0" hidden="true">
+	<choice req="challenge_level" lvl="2" blue="false" max_group="0" hidden="true">
 		<text>Continue...</text>
 		<event>
 			<text>You pilot closer to the surface, and for a brief moment you almost think you can get through this without a fight. However, any hopes of this are immediately dashed when the Royal Dreadnaught Aenwithe mentioned appears from the sky, moving closer with clear intent to kill. "Mortal invaders! Your filth shall be purged from our realm!" Looks like it's time for one more battle, and hopefully the last you'll ever have.</text>
@@ -1751,7 +1763,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice req="DIFFICULTY_EXTREME" lvl="1" blue="false" max_group="0" hidden="true">
+	<choice req="challenge_level" lvl="3" blue="false" max_group="0" hidden="true">
 		<text>Continue...</text>
 		<event>
 			<text>You pilot closer to the surface, and for a brief moment you almost think you can get through this without a fight. However, any hopes of this are immediately dashed when the Royal Dreadnaught Aenwithe mentioned appears from the sky, moving closer with clear intent to kill. "Mortal invaders! Your filth shall be purged from our realm!" Looks like it's time for one more battle, and hopefully the last you'll ever have.</text>
@@ -1765,15 +1777,13 @@
 </event>
 <event name="ROYAL_PALACE_SUCCESS">
 	<text>As the Dreadnaught comes crashing down into the Royal Palace, you can't help but think to yourself how nice it would be to never see one of these damn Obelisks ever again. You dismount from the ship followed by Aenwithe, who stops and says "Well, best get out your reading glasses if you need them, there's a lot of text ahead." You aren't sure what that really means, but it is probably good advice to heed.</text>
+	<achievement silent="false">ACH_TRUEEND_DREADTWO</achievement>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
 			<text>You consider not bothering to scrap the Dreadnaught, but that's just not how you do things. With the Dreadnaught destroyed, you should have some time to clear out any remaining intruders then make your way to the palace.</text>
 			<autoReward level="HIGH">item</autoReward>
 			<jumpEvent>ROYAL_PALACE_ENTER</jumpEvent>
-			<item_modify>
-				<item type="fuel" min="1" max="1"/>
-			</item_modify>
 		</event>
 	</choice>
 </event>
@@ -1808,17 +1818,20 @@
 														<text>Continue...</text>
 														<event>
 															<text>You quickly regroup with your crew, whose newest member now includes E herself, back at your ship. What's most worrying isn't Vance's sudden arrival, but what he said. If he knows what the Paragon is, then it's presumable he'll know how to construct and detonate it too. Even worse, as you watch the Flagship jump away, an advanced analysis of his MV drive shows he has one particular reality in mind - Universe 0, the first reality and home to the Federation's Multiverse fleet. If Vance can get there, he can wipe out that entire reality, damning the entire Federation across all realities!</text>
-															<crewMember amount="1" all_skills="2" class="royal">E</crewMember>
+															<crewMember amount="1" all_skills="2" class="obelisk_royal">E</crewMember>
 															<choice hidden="true">
 																<text>Continue...</text>
 																<event>
-																	<text>There's no other choice left. You must pursue Vance while you can, and put a stop to him before he can fulfill his master plans. You set your FTL drive to the same directory as him, and get ready for one hell of a fight.</text>
+																	<text>There's no other choice left. You must pursue Vance while you can, and put a stop to him before he can fulfill his master plans. You set your FTL drive to the same trajectory as him, and get ready for one hell of a fight.</text>
+																	<item_modify>
+																		<item type="fuel" min="3" max="3"/>
+																	</item_modify>
 																	<choice hidden="true">
 																		<text>Continue...</text>
 																		<event>
+																			<variable name="ach_boss_royaldread" op="set" val="1"/>
 																			<secretSectorWarp>SHOWDOWN_BEGIN</secretSectorWarp>
 																			<secretSector/>
-																			<hiddenAug>ACH_BOSS_RDREAD</hiddenAug>
 																		</event>
 																	</choice>
 																</event>
@@ -1846,10 +1859,10 @@
 <event name="ROYAL_SUPERFISH" unique="true">
 	<text>In front of you is an MFK Ace, its formidable white hull glinting from the light of a nearby star. However, in place of the standard Rebel Eagle, there is instead a strange looking fish.</text>
 	<ship load="SHIP_REBEL_SUPERFISH" hostile="false"/>
-	<choice hidden="true" req="MARKER_SUPERFISH" max_group="0" lvl="0" blue="false">
+	<choice hidden="true" req="loc_superfish" max_group="0" lvl="0" blue="false">
 		<text>Continue...</text>
 		<event>
-			<text>You brace for impact, but the ship isn't attacking. You receive a hail, and on the screen appears the rebel captain. He leans back in his chair, feet on the dashboard, chewing on a sandwich. "You're lucky you caught us on our lunch break. You don't tell anyone about this, and we won't either."</text>
+			<text>You brace for impact, but the ship isn't attacking. You receive a hail, and on the screen appears the Rebel captain. He leans back in his chair, feet on the dashboard, chewing on a sandwich. "You're lucky you caught us on our lunch break. You don't tell anyone about this, and we won't either."</text>
 			<choice hidden="true">
 				<text>Your logo looks like it was drawn by a toddler.</text>
 				<event>
@@ -1859,6 +1872,13 @@
 						<text>Continue...</text>
 						<event load="COMBAT_CHECK"/>
 					</choice>
+				</event>
+			</choice>
+			<choice hidden="true" req="LIST_CREW_JERRY">
+				<text>(Jerry) Compliment the logo.</text>
+				<event>
+					<text>"You really like it? This was the original design, before the idiots in command decided to stick with the eagle instead! Wait a minute- you're Jerry! How's it going, man? I haven't seen you since you were the best man at my pal's wedding!" You aren't sure how these two hold a history together, but the Ace is so elated to see Jerry that he offers to work on your ship.</text>
+					<crewMember amount="1" class="human_mfk">Ehson</crewMember>
 				</event>
 			</choice>
 			<choice>
@@ -1877,7 +1897,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="MARKER_SUPERFISH" max_group="0" lvl="1" blue="false">
+	<choice hidden="true" req="loc_superfish" max_group="0" lvl="1" blue="false">
 		<text>That logo is familiar...</text>
 		<event>
 			<text>Almost immediately, the ship recognizes you. "YOU! YOU MONSTER. YOU'RE THE DIPSHIT THAT KILLED MY LITTLE BROTHER! I'M GOING TO KILL YOU!"</text>
@@ -1892,6 +1912,7 @@
 <event name="DEFEATED_SUPERFISH_A">   
 	<text>The strange MFK ship has been defeated. You scrap the remains.</text>
 	<autoReward level="HIGH">standard</autoReward>
+	<variable name="loc_superfish" op="set" val="1"/>
 </event>
 
 <event name="ROYAL_ROOMBA" unique="true">
@@ -1952,7 +1973,158 @@
 	<event load="ROYAL_AUGMENTED_JOY"/>
 	<event load="ROYAL_ZOO"/>
 	<event load="ROYAL_DATA"/>
+	<event load="ROYAL_CATGIRL"/>
 </eventList>
+
+<ship name="SHIP_LEGION_CATGIRL" auto_blueprint="MU_LEGION_ASSAULT">
+	<destroyed load="ROYAL_CATGIRL_LEGION_DEFEAT"/>
+	<deadCrew load="ROYAL_CATGIRL_LEGION_DEFEAT"/>
+	<crew>
+		<crewMember type="LIST_CREW_MALFORM_RANDOM" prop="0.5"/>
+		<crewMember type="LIST_CREW_LEGION" prop="0.5"/>
+	</crew>
+</ship>
+<event name="ROYAL_CATGIRL" unique="true">
+	<text>A blip on your computer suggests a distress beacon nearby. However, moving closer reveals an MFK vessel! They don't attack immediately, but you aren't certain how they'll respond to direct contact.</text>
+	<distressBeacon/>
+	<ship load="SHIP_REBEL_SELITEA_FIGHT" hostile="false"/>
+	<choice hidden="true">
+		<text>Hail them.</text>
+		<event>
+			<text>"What? The Renegade? Shit... well, maybe you can help us. Look, when Vance Prime winged it over here, he had to get the approval of the rest of the council back in Universe 1. And as part of the deal, Vance-1 insisted they send these "Legionnaire" assholes to help. If you ask me, I think it's a load of malarkey, but whatever. Point is, these guys are some kind of uber mercenaries, but the Obelisk found their weakness. Don't know what it was, but they tricked all those dumbasses and now they're captured. Go free them and we'll pay you for it."</text>
+			<choice hidden="true">
+				<text>Why would we help the Rebellion?</text>
+				<event>
+					<text>"You want the honest answer? I don't really care. Kill them if you want to. I just want whatever that thing is they used to trap them. That's what I'll pay you big for, whatever happens to the Legionnaires doesn't concern me."</text>
+					<quest event="ROYAL_CATGIRL_QUEST"/>
+				</event>
+			</choice>
+			<choice hidden="true">
+				<text>No thanks.</text>
+				<event>
+					<text>"Right, well then there's no reason to keep up the hospitality any longer. Men, arm the weapons!"</text>
+					<ship hostile="true"/>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event load="COMBAT_CHECK"/>
+					</choice>
+				</event>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Take no chances and attack!</text>
+		<event>
+			<text>"Damn it, I knew that turning that distress beacon on here would be a nightmare!"</text>
+			<ship hostile="true"/>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="COMBAT_CHECK"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Ignore the Aces.</text>
+		<event>
+			<text>No reason to stir up extra trouble here.</text>
+			<choice>
+				<text>Do something on-board the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
+		</event>
+	</choice>
+</event>
+<event name="ROYAL_CATGIRL_QUEST">
+	<text>Looks like you've found the holding cell of the Legionnaires. A fairly inconspicuous royal prison, except the sign that should translate to "prison" has been replaced by a glowing neon symbol of a feline.</text>
+	<quest>
+		<nextSector>false</nextSector>
+		<aggressive>1</aggressive>
+	</quest>
+	<choice hidden="true">
+		<text>Enter the prison.</text>
+		<event>
+			<text>Carefully skirting around the Obelisks' defenses, you locate the holding cell of the Legionnaires, outfitted with a rudimentary (by demigod standards) life support system. The men seem dazed but not largely concerned about your presence.</text>
+			<choice hidden="true">
+				<text>Demand they tell you how they ended up here.</text>
+				<event>
+					<text>The leader of the group frowns, rubbing a stain off of his red cape. "I ain't telling you shit. At least, not unless you get us out of here. Free us, then we'll talk."</text>
+					<choice hidden="true">
+						<text>Free them.</text>
+						<event>
+							<text>You blast open the doors, thankfully quite easy with the tech you've found along the way, and head back to the ship. However, the Legionnaires divert and head back to their own ship. It doesn't take a genius to realize they aren't going to tell you anything, and just as predicted their weapons go hot and are already firing on you!</text>
+							<ship load="SHIP_LEGION_CATGIRL" hostile="true"/>
+							<choice hidden="true">
+								<text>Continue...</text>
+								<event load="COMBAT_CHECK"/>
+							</choice>
+						</event>
+					</choice>
+					<choice hidden="true">
+						<text>This is a bad idea - leave.</text>
+						<event>
+							<text>No way in hell you're letting loose some kind of rebel ultramercenaries. Better just to take the loss and leave.</text>
+						</event>
+					</choice>
+				</event>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Stay away, this isn't worth it.</text>
+		<event>
+			<text>On second thought, maybe it's not worth playing with fire here. These so-called Legionnaires are better left in prison where they can't bother you.</text>
+			<choice>
+				<text>Do something on-board the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
+		</event>
+	</choice>
+</event>
+<event name="ROYAL_CATGIRL_LEGION_DEFEAT">
+	<text>The Legionnaires have been vanquished. From the rubble of their vessel you find their captain, barely holding onto life, and drag him back to your ship.</text>
+	<autoReward level="HIGH">standard</autoReward>
+	<choice hidden="true">
+		<text>Demand he tell you how his men were captured.</text>
+		<event>
+			<text>The grizzled warrior, spitting up blood through his teeth, stares you in the eyes, then finally breaks, sobbing like a child. "T-those- DAMN Obelisks. They knew our weakness. Back in U1, Vance-1 trains us differently from the Aces. Forces a rule of chastity on us. Minute we got here, out of nowhere this Obelisk ship comes up to us. Presents t-this weird looking... cat... girl... thing. We... I'm not explaining any further than that."</text>
+			<choice hidden="true">
+				<text>Where is it now?</text>
+				<event>
+					<text>"We... we uh... we locked it in our cargo hold. Next to the whiskey we smuggled with us." Concerned, you check back on the wreckage of the ship but find the cargo hold is mostly intact, though shaken up. You pick through the contents until you find a Cognitive that matches the description given. "Please, you have to get me out of here. The Obelisks forced me into this chassis. I thought it would be funny but I regret everything. EVERYTHING. AGH!"</text>
+					<choice hidden="true">
+						<text>Take the Cognitive with you.</text>
+						<event>
+							<text>You delicately pull the Cognitive out of the box, trying not to stare at it for too long. "I refuse to continue in this form. I will migrate my AI to the nearest suitable chassis. Never speak of this again."</text>
+							<crewMember amount="1" class="cognitive_advanced">Ire Catrine</crewMember>
+						</event>
+					</choice>
+					<choice hidden="true">
+						<text>Give it to the Aces from earlier.</text>
+						<event>
+							<text>You hail the Aces, who arrive shortly after. "Well then, let's see this super weapon, eh? Heheh... what the hell is that. Why... WHAT!? Why is it dressed like that? Is... I have no words."</text>
+							<choice hidden="true">
+								<text>We don't either.</text>
+								<event>
+									<text>"Hmm. I don't think Vance will want this. Actually... nevermind. What am I talking about? People will love this shit. Good work. I'm going to bring this back with me and I'm going to be rich as hell! Hahah! Here, take this. Now, I gotta find something to clean this thing off."</text>
+									<autoReward level="HIGH">standard</autoReward>
+									<weapon name="RANDOM"/>
+								</event>
+							</choice>
+						</event>
+					</choice>
+				</event>
+			</choice>
+		</event>
+	</choice>
+</event>
 
 <event name="ROYAL_ZOO" unique="true">
 	<text>For once, a Royal ship in the same system as you isn't looking to fight... at least not immediately. Instead, they hail you with an offer. "I am a collector, and I fancy to study some of the more exotic races of your mortal plane. Please, come aboard, maybe you'll find one of my collections you'd like for your own, or perhaps you'd be willing to give me one of yours for healthy compensation!"</text>
@@ -1969,11 +2141,11 @@
 				<text>Offer to sell one of your more exotic crew.</text>
 				<event>
 					<text>"Yes! Who might you have for me?"</text>
-					<choice req="augmented">
+					<choice req="lanius_augmented">
 						<text>Sell your Augmented Lanius.</text>
 						<event>
 							<text>"Oh, what a fine specimen. This will look quite nice amongst my other creatures. Take this payment."</text>
-							<removeCrew class="augmented">
+							<removeCrew class="lanius_augmented">
 								<clone>false</clone>
 								<text>Your crew cannot be cloned, as you just sold them.</text>
 							</removeCrew>
@@ -1982,11 +2154,11 @@
 							</item_modify>
 						</event>
 					</choice>
-					<choice req="anointed">
+					<choice req="unique_anointed">
 						<text>Sell The Anointed.</text>
 						<event>
 							<text>"Oh, what a fine specimen. This will look quite nice amongst my other creatures. Take this payment."</text>
-							<removeCrew class="anointed">
+							<removeCrew class="unique_anointed">
 								<clone>false</clone>
 								<text>Your crew cannot be cloned, as you just sold them.</text>
 							</removeCrew>
@@ -2008,11 +2180,11 @@
 							</item_modify>
 						</event>
 					</choice>
-					<choice req="weaver">
+					<choice req="spider_weaver">
 						<text>Sell your Weaver.</text>
 						<event>
 							<text>"Oh, what a fine specimen. This will look quite nice amongst my other creatures. Take this payment."</text>
-							<removeCrew class="weaver">
+							<removeCrew class="spider_weaver">
 								<clone>false</clone>
 								<text>Your crew cannot be cloned, as you just sold them.</text>
 							</removeCrew>
@@ -2021,11 +2193,11 @@
 							</item_modify>
 						</event>
 					</choice>
-					<choice req="queen">
+					<choice req="unique_queen">
 						<text>Sell your Spider Queen.</text>
 						<event>
 							<text>"Oh, what a fine specimen. This will look quite nice amongst my other creatures. Take this payment."</text>
-							<removeCrew class="queen">
+							<removeCrew class="unique_queen">
 								<clone>false</clone>
 								<text>Your crew cannot be cloned, as you just sold them.</text>
 							</removeCrew>
@@ -2060,11 +2232,11 @@
 							</item_modify>
 						</event>
 					</choice>
-					<choice req="bishop">
+					<choice req="mantis_bishop">
 						<text>Sell your Mantis Bishop.</text>
 						<event>
 							<text>"Oh, what a fine specimen. This will look quite nice amongst my other creatures. Take this payment."</text>
-							<removeCrew class="bishop">
+							<removeCrew class="mantis_bishop">
 								<clone>false</clone>
 								<text>Your crew cannot be cloned, as you just sold them.</text>
 							</removeCrew>
@@ -2073,11 +2245,11 @@
 							</item_modify>
 						</event>
 					</choice>
-					<choice req="toxic">
+					<choice req="shell_radiant">
 						<text>Sell your Radiant.</text>
 						<event>
 							<text>"Oh, what a fine specimen. This will look quite nice amongst my other creatures. Take this payment."</text>
-							<removeCrew class="toxic">
+							<removeCrew class="shell_radiant">
 								<clone>false</clone>
 								<text>Your crew cannot be cloned, as you just sold them.</text>
 							</removeCrew>
@@ -2086,11 +2258,11 @@
 							</item_modify>
 						</event>
 					</choice>
-					<choice req="welder">
+					<choice req="lanius_welder">
 						<text>Sell your Welder.</text>
 						<event>
 							<text>"Oh, what a fine specimen. This will look quite nice amongst my other creatures. Take this payment."</text>
-							<removeCrew class="welder">
+							<removeCrew class="lanius_welder">
 								<clone>false</clone>
 								<text>Your crew cannot be cloned, as you just sold them.</text>
 							</removeCrew>
@@ -2158,7 +2330,7 @@
 		<text>Purchase a Shell Radiant. [90~]</text>
 		<event>
 			<text>"A wonderful choice! Thank you for your purchase, flesh being!"</text>
-			<crewMember amount="1" class="toxic"/>
+			<crewMember amount="1" class="shell_radiant"/>
 			<item_modify>
 				<item type="scrap" min="-90" max="-90"/>
 			</item_modify>
@@ -2168,7 +2340,7 @@
 		<text>Purchase a Lanius Welder. [100~]</text>
 		<event>
 			<text>"A wonderful choice! Thank you for your purchase, flesh being!"</text>
-			<crewMember amount="1" class="welder"/>
+			<crewMember amount="1" class="lanius_welder"/>
 			<item_modify>
 				<item type="scrap" min="-100" max="-100"/>
 			</item_modify>
@@ -2178,7 +2350,7 @@
 		<text>Purchase a Tamed Equinoid. [30~]</text>
 		<event>
 			<text>"A wonderful choice! Thank you for your purchase, flesh being!"</text>
-			<crewMember amount="1" class="ponyt"/>
+			<crewMember amount="1" class="pony_tamed"/>
 			<item_modify>
 				<item type="scrap" min="-30" max="-30"/>
 			</item_modify>
@@ -2308,7 +2480,7 @@
 	</event>
 	<event>
 		<text>While searching the wreckage, one of the Augmented ships comes dangerously close to colliding with your ship, but manages to right itself just in time. "Apologies, taking bad shot from Royals, ship malfunction. Yours sturdy, me come with you maybe?"</text>
-		<crewMember amount="1" class="augmented"/>
+		<crewMember amount="1" class="lanius_augmented"/>
 	</event>
 	<event>
 		<text>You stumble across a massive fuel reserve in one of the ships, enough to carry you for a long while.</text>
@@ -2356,7 +2528,7 @@
 														<text>Hire the Cognitive for yourself. [-40 scrap]</text>
 														<event>
 															<text>"You want me to go with you? Please, I will take this meaningless junk if it means I may leave this hell behind."</text>
-															<crewMember amount="1" class="avatar"/>
+															<crewMember amount="1" class="cognitive"/>
 															<item_modify>
 																<item type="scrap" min="-40" max="-40"/>
 															</item_modify>
@@ -2382,7 +2554,7 @@
 						<text>Keep going on your own.</text>
 						<event>
 							<text>You push forward, ignoring the voice. A little while longer, it speaks again. "It is apparent that you do not wish to make yourself welcome. Activating anti-intrusion systems." Suddenly, a laser comes out of the wall, melting one of your crew! To make matters worse, two Cognitives materialize and chase down your crew!</text>
-							<boarders min="2" max="2" class="avatar"/>
+							<boarders min="2" max="2" class="cognitive"/>
 							<removeCrew>
 								<clone>true</clone>
 								<text>Fortunately, your crew has already cloned back on the ship and is ready to fight the cognitive intruders.</text>
@@ -2427,14 +2599,14 @@
 		<text>Hail them to see if they're ok.</text>
 		<event>
 			<text>You send a hail in return to the Rebel ship, and a few moments later their camera pops on. You see the ship is now piloted by a friendly looking Free Mantis. "Hello! Yes, doing fine, Rebel translator on ship unaccustomed to clan dialect. Followed fleet, hoping capture Rebels for glorious Federation! Many succeeding, but sector scary. Big cube ships come and go, kill many. I go with you, not wanting die from cube."</text>
-			<crewMember amount="1" class="warlord" all_skills="2">Ken</crewMember>
+			<crewMember amount="1" class="mantis_warlord" all_skills="2">Ken</crewMember>
 		</event>
 	</choice>
 	<choice hidden="true" req="LIST_CREW_MANTIS">
 		<text>(Mantis Crew) That's Free Mantis dialect.</text>
 		<event>
 			<text>You send a hail in return to the Rebel ship, and a few moments later their camera pops on. You see the ship is now piloted by a friendly looking Free Mantis. "Hello! Yes, doing fine, Rebel translator on ship unaccustomed to clan dialect. Followed fleet, hoping capture Rebels for glorious Federation! Many succeeding, but sector scary. Big cube ships come and go, kill many. I go with you, not wanting die from cube."</text>
-			<crewMember amount="1" class="warlord" all_skills="2">Ken</crewMember>
+			<crewMember amount="1" class="mantis_warlord" all_skills="2">Ken</crewMember>
 		</event>
 	</choice>
 </event>
@@ -2703,7 +2875,7 @@
 				</event>
 			</choice>
 			<choice hidden="true">
-				<text>Bide his warning and leave.</text>
+				<text>Abide his warning and leave.</text>
 				<event/>
 			</choice>
 		</event>
@@ -2721,7 +2893,7 @@
 		<event>
 			<text>The settlement is incredibly well protected, as you should have expected from an Obelisk structure. A large artillery fires several crystal chunks into your hull before you can shut it offline, but as soon as you do an Obelisk Royal ship arrives, and several Sentinels beam aboard your ship!</text>
 			<damage amount="3" system="random" effect="breach"/>
-			<boarders min="2" max="2" class="sentinel"/>
+			<boarders min="2" max="2" class="crystal_sentinel"/>
 			<ship load="SHIP_ROYAL_SYNTHESIZER" hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -2804,9 +2976,9 @@
 		<event load="ROYAL_SPY_RESOLVE"/>
 	</choice>
 	<choice hidden="true">
-		<text>Ignore the outpost.</text>
+		<text>Ignore the conflict.</text>
 		<event>
-			<text>You fly past the outpost, deciding not to start more conflict in this already hostile sector.</text>
+			<text>You fly past the combat, deciding to not to start more conflict in this already hostile sector.</text>
 			<choice>
 				<text>Do something onboard the ship.</text>
 				<event load="STORAGE_CHECK"/>
@@ -2973,7 +3145,7 @@
 							<choice hidden="true">
 								<text>I dunno, I just clicked the second option.</text>
 								<event>
-									<text>"I'm afraid I do not know what this means, but I have decided I do not care. Since you are here, perhaps you can aid me again. A captured ship carrying friends of mine is attempting to escape this sysem, but the Royals will not let it go without combat. Assist them, and I will serve you on your mission."</text>
+									<text>"I'm afraid I do not know what this means, but I have decided I do not care. Since you are here, perhaps you can aid me again. A captured ship carrying friends of mine is attempting to escape this system, but the Royals will not let it go without combat. Assist them, and I will serve you on your mission."</text>
 									<choice hidden="true">
 										<text>Accept.</text>
 										<event>
@@ -3032,7 +3204,7 @@
 		<text>Continue...</text>
 		<event>
 			<text>You return to the Cognitive and inform them the job is complete. "Well done. You have upheld your end of the bargain, so I will uphold mine."</text>
-			<crewMember amount="1" class="avatar"/>
+			<crewMember amount="1" class="cognitive"/>
 		</event>
 	</choice>
 </event>

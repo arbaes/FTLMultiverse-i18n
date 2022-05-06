@@ -10,11 +10,11 @@
     $ repair
     
     justin8 only:
-    € breach
+    € elite
     ‰ fire
     † power
     ‡ cooldown
-    ™ piercing</text>
+    ™ upgraded</text>
     <store>STORE_STANDARD</store>
 </event>
 
@@ -40,6 +40,27 @@
 		<event>
 			<text>Alright then.</text>
 			<weapon name="BEAM_BREACH"/>
+		</event>
+	</choice>
+</event>
+
+
+<event name="STALEMATE_SURRENDER">
+	<text>You receive a sudden hail from the enemy. They claim the fight has gone on long enough, and there's no point in keeping on fighting. They offer a truce.</text>
+	<choice>
+		<text>Accept their truce.</text>
+		<event>
+			<text>The enemy hands over their excess fuel and powers off their weapons.</text>
+			<item_modify>
+				<item type="fuel" min="2" max="2"/>
+			</item_modify>
+			<ship hostile="false"/>
+		</event>
+	</choice>
+	<choice>
+		<text>Reject it.</text>
+		<event>
+			<ship hostile="true"/>
 		</event>
 	</choice>
 </event>
@@ -278,7 +299,7 @@
 				<event>
 					<text>EXTERNAL AUGMENTS
 					External augments relate directly to the aformentioned internal upgrade system, which will be covered in greater detail later on. External augments function as you would expect their vanilla counterpart to, but can be installed at empty beacons for free to be converted to internal versions. You probably won't see many of these unless you start with one, but there are a few events out there that give them.</text>
-					<drone name="EX_ION_ARMOR"/>
+					<augment name="EX_ION_ARMOR"/>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event>
@@ -386,14 +407,32 @@
 	[If this IS a public version and you are seeing this in-game, please report it to the mod creators so we can fix it]</text>
 </event>
 
-<event name="OPTION_INVALID">
-	<text>Dude, that's cheating. How are you seeing this right now?</text>
-	<item_modify>
-		<item type="fuel" min="-99999" max="-99999"/>
-		<item type="scrap" min="-99999" max="-99999"/>
-		<item type="missiles" min="-99999" max="-99999"/>
-		<item type="drones" min="-99999" max="-99999"/>
-	</item_modify>
+<event name="SPAWN_STORAGE">
+	<eventButton name="UI_STORAGE_CHECK_BUTTON">
+        <event load="STORAGE_CHECK_BUTTON"/>
+        <image border="12">statusUI/top_storage_on</image>
+		<!--<text border="3">STORAGE</text>-->
+        <location>0</location>
+        <tooltip>Open the storage menu.</tooltip>
+        <inactiveTooltip>Unavailable: You cannot do this while in danger!</inactiveTooltip>
+        <color r="255" g="255" b="255"/>
+        <activeColor r="255" g="255" b="255"/>
+        <inactiveColor r="160" g="162" b="171"/>
+        <selectedColor r="58" g="127" b="255"/>
+        <textColor r="23" g="44" b="62"/>
+        <jumpClear>false</jumpClear>
+        <noDanger>true</noDanger>
+    </eventButton>
+</event>
+
+<event name="ADDON_TRC_INFO">
+	<text>THE RENEGADE COLLECTION
+	Developed by: Kix
+	Currently Disabled.
+	
+	An equipment expansion pack meant to be used alongside Multiverse. Includes many various weapon and drone concepts considered, for one reason or another, unfitting for the base mod. While attempting to be balanced, due to the nature of the equipment in this pack as well as the fact it is not part of base Multiverse means there may be a higher variation of balance than usual. The new weapons include those that are niche, too conceptually similar to existing weapons, involve "hard-to-balance" gimmicks, or are just conceptually bizarre.
+	
+	To enable the Renegade Collection, go to the subset forums and visit the MV addon page!</text>
 </event>
 
 <event name="START_GAME">
@@ -401,10 +440,38 @@
 </event>
 
 <event name="START_BEACON_RELOAD">
-	<event/>
+	<loadEvent>START_BEACON_PRESELECT</loadEvent>
 </event>
 <event name="START_BEACON">
-	<text>You shouldn't see this.</text>
+	<text>You take a look at the distant swirls of space as the stars fly past. This is the beginning of the next chapter in your saga. What will await you next?</text>
+	<queueEvent seeded="true">THE_JUDGES_VARIABLE_CLEAR</queueEvent>
+	<deathEvent>DEATH</deathEvent>
+	<eventButton name="ADDON_TRC">
+        <event load="ADDON_TRC_INFO"/>
+        <image border="0">addons/trc</image>
+        <customLocation x="115" y="7"/>
+        <tooltip id="addon_hover_trc"/>
+        <jumpClear>false</jumpClear>
+        <noDanger>false</noDanger>
+    </eventButton>
+	<eventButton name="UI_STORAGE_CHECK_BUTTON">
+        <event load="STORAGE_CHECK_BUTTON"/>
+        <image>statusUI/top_storage</image>
+        <location>2</location>
+        <tooltip>Open the storage menu.</tooltip>
+        <inactiveTooltip>Unavailable: You cannot do this while in danger!</inactiveTooltip>
+        <jumpClear>false</jumpClear>
+        <noDanger>true</noDanger>
+    </eventButton>
+	<eventButton name="UI_TOGGLE_BUTTON">
+        <event load="COMBAT_CHECK_TOGGLE_BUTTON"/>
+        <image>statusUI/top_toggle</image>
+        <customLocation x="105" y="94"/>
+        <tooltip>Toggle a drone or weapon.</tooltip>
+        <inactiveTooltip>Unavailable!</inactiveTooltip>
+        <jumpClear>false</jumpClear>
+        <noDanger>false</noDanger>
+    </eventButton>
 	<removeNebula/>
 	<beaconType id="map_icon_start" global="false">
 		<color r="46" g="252" b="51" a="1"/>
@@ -414,19 +481,93 @@
 		<item type="fuel" min="12" max="12"/>
 		<item type="scrap" min="20" max="20"/>
 	</item_modify>
-	<choice hidden="true" req="FOR_MULTIVERSE" lvl="1" max_group="0" blue="false">
+	<choice hidden="true">
 		<text>Continue...</text>
-		<event load="START_BEACON_PRESELECT"/>
+		<event load="START_BEACON_CONFIGURE"/>
 	</choice>
-	<choice hidden="true" req="FOR_MULTIVERSE" lvl="0" max_group="0" blue="false">
+</event>
+<event name="START_BEACON_CONFIGURE">
+	<item_modify steal="true">
+		<item type="fuel" min="-999" max="-999"/>
+		<item type="scrap" min="-999" max="-999"/>
+	</item_modify>
+	<disableScrapScore/>
+	<loadEventList first="true" generate="true">
+		<event name="EXTREME_ALIAS" req="challenge_level" lvl="3"/>
+		<event name="CHALLENGE_ALIAS" req="challenge_level" lvl="2"/>
+		<event name="NORMAL_ALIAS" req="challenge_level" lvl="1"/>
+		<event name="CASUAL_ALIAS" req="challenge_level" lvl="0"/>
+		<!--<event name="START_BEACON_CONFIGURE_2" req="challenge_level" lvl="0" max_lvl="2"/>-->
+	</loadEventList>
+</event>
+<event name="CASUAL_ALIAS">
+	<text>Current challenge level: Casual.</text>
+	<item_modify>
+		<item type="fuel" min="25" max="25"/>
+		<item type="scrap" min="50" max="50"/>
+	</item_modify>
+	<disableScrapScore/>
+	<choice hidden="true">
 		<text>Continue...</text>
-		<event load="START_BEACON_PRESELECT"/>
+		<event>
+			<loadEvent>START_BEACON_CONFIGURE_2</loadEvent>
+		</event>
 	</choice>
+</event>
+<event name="NORMAL_ALIAS">
+	<text>Current challenge level: Normal.</text>
+	<item_modify>
+		<item type="fuel" min="12" max="12"/>
+		<item type="scrap" min="20" max="20"/>
+	</item_modify>
+	<disableScrapScore/>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event>
+			<loadEvent>START_BEACON_CONFIGURE_2</loadEvent>
+		</event>
+	</choice>
+</event>
+<event name="CHALLENGE_ALIAS">
+	<text>Current challenge level: Challenge.</text>
+	<item_modify>
+		<item type="fuel" min="10" max="10"/>
+	</item_modify>
+	<modifyPursuit amount="1"/>
+	<disableScrapScore/>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event>
+			<loadEvent>START_BEACON_CONFIGURE_2</loadEvent>
+		</event>
+	</choice>
+</event>
+<event name="EXTREME_ALIAS">
+	<text>Current challenge level: Extreme.</text>
+	<item_modify>
+		<item type="fuel" min="8" max="8"/>
+	</item_modify>
+	<modifyPursuit amount="1"/>
+	<disableScrapScore/>
+	<!--<eventAlias name="START_BEACON_PREP" jumpClear="false" once="false">START_BEACON_PREP_SKIP</eventAlias>-->
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event>
+			<loadEvent>START_BEACON_CONFIGURE_2</loadEvent>
+		</event>
+	</choice>
+</event>
+<event name="START_BEACON_CONFIGURE_2">
+	<loadEventList seeded="false" first="true" generate="true">
+		<event name="START_BEACON_PRESELECT" req="FOR_MULTIVERSE" lvl="1"/>
+		<event name="START_BEACON_COMPATIBILITY" req="FOR_MULTIVERSE" max_lvl="0"/>
+	</loadEventList>
 </event>
 <event name="START_BEACON_COMPATIBILITY">
 	<text>It appears you are playing on a ship not designed for Multiverse! Do you believe this to be incorrect? Please report it so we or the appropriate developers can correct it!
-	It is heavily recommended you do not use ships or other mods not made for Multiverse to prevent issues. However, since you are, we have added some markers needed for compatibility. This will prevent some errors, but does not garuntee you won't have issues.
+	It is heavily recommended you do not use ships or other mods not made for Multiverse to prevent issues. However, since you are, we have added some markers needed for compatibility. This will prevent some errors, but does not guarantee you won't have issues.
 	If you wish to update the ship you are playing to support MV but don't know how, feel free to ask about it on the forums or our discord, we'll be happy to help.</text>
+	<hiddenAug>SHIP_MULTIVERSE</hiddenAug>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="START_BEACON_PRESELECT"/>
@@ -434,12 +575,16 @@
 </event>
 <event name="START_BEACON_PRESELECT">
 	<text>Before your mission begins, it might be time to prepare before you arrive at the warp bay. What would you like to do?</text>
-	<choice hidden="true">
+	<choice hidden="true" req="prof_finalsector" lvl="0" max_lvl="0" blue="false">
+		<text>Challenge levels locked. Get to sector 8 to unlock them!</text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice hidden="true" req="prof_finalsector" lvl="1" blue="false">
 		<text>Configure your challenge level.</text>
 		<event load="START_DIFFICULT_MENU"/>
 	</choice>
 	<choice hidden="true">
-		<text>Download the Federation Database entries. [recommended for beginners]</text>
+		<text>Download the Federation Database entries. [HEAVILY recommended for beginners]</text>
 		<event load="GIVE_DATABASE"/>
 	</choice>
 	<choice hidden="true">
@@ -451,23 +596,17 @@
 			Dominant Faction: The Federation
 			Rebel Threat Level: Medium (Neutral Fleet)
 
-			You're about to arrive at the nearest Federation warpbay. These hangar-like structures act as beacons of sorts for traveling between Multiverses. Let's hope you're given a nice warm welcome and not greeted by a fleet of angry Rebels or Pirates, right?</text>
-			<remove name="HIDDEN DEST_CIVILIAN"/>
-			<playSound>lightspeed</playSound>
-			<choice hidden="true" req="DIFFICULTY_EXTREME" lvl="0" max_group="0" blue="false">
+			You're about to arrive at the nearest Federation warpbay. These hangar-like structures act as beacons of sorts for traveling between universes. Let's hope you're given a nice warm welcome and not greeted by a fleet of angry Rebels or Pirates, right?</text>
+			<choice hidden="true" req="pilot" lvl="1" max_group="0" blue="false">
 				<text>Exit Hyperspeed.</text>
-				<event load="START_BEACON_PREP"/>
-			</choice>
-			<choice hidden="true" req="DIFFICULTY_EXTREME" lvl="1" max_group="0" blue="false">
-				<text>Exit Hyperspeed.</text>
-				<event load="START_BEACON_PREP_SKIP"/>
+				<event load="START_BEACON_PREP_LOAD"/>
 			</choice>
 		</event>
 	</choice>
 </event>
 <!--DIFFICULTY SELECT-->
 <event name="START_DIFFICULT_MENU">
-	<text>You are about to change your challenge level, which will change the way you experience Multiverse. Clicking on an option will give you a second confirmation and more details. You can change your challenge mode as many times as you'd like before you begin, but once you've started your run you cannot change this!</text>
+	<text>You are about to change your challenge level, which will change the way you experience Multiverse. Clicking on an option will give you a second confirmation and more details. You can change your challenge mode as many times as you'd like before you begin, but once you've started your run you cannot change this! Challenge level configurations will stay across all runs until changed again.</text>
 	<item_modify steal="true">
 		<item type="fuel" min="-999" max="-999"/>
 		<item type="scrap" min="-999" max="-999"/>
@@ -477,10 +616,10 @@
 		<text>Casual.</text>
 		<event>
 			<text>[CASUAL MODE: A mode for people who just want to experience the gameplay in a relaxed way]
-			Starting scrap: 50
-			Starting fuel: 25
+			Starting scrap: 50~
+			Starting fuel: 25{
 			Decreases difficulty of the elite at the sector one exit.
-			Multiverse Traveling minibosses will never spawn, The Traveling Merchant always gives a sizable free gift, and Federation Outposts give free repairs.
+			Multiverse Renegades minibosses will never spawn, The Traveling Merchant always gives a sizable free gift, and Federation Outposts give free repairs.
 			Will reduce the difficulty of the True Ending.</text>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -489,13 +628,13 @@
 		</event>
 	</choice>
 	<choice hidden="true">
-		<text>Normal. [Recommended for your first run!]</text>
+		<text>Normal.</text>
 		<event>
 			<text>[NORMAL MODE: The standard mode, plays the way the mod was originally designed]
-			Starting scrap: 20
-			Starting fuel: 12
+			Starting scrap: 20~
+			Starting fuel: 12{
 			Decreases difficulty of the elite at the sector one exit.
-			Renegade Bosses are nerfed and take scrap as tribute, The Traveling Merchant gives a small free gift in the Drop Point and Last Stand.</text>
+			Renegade Bosses will spawn with moderate strength and take scrap as tribute, The Traveling Merchant gives a small free gift in the Drop Point and Last Stand.</text>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event load="SET_DIFFICULTY_NORMAL"/>
@@ -507,8 +646,8 @@
 		<event>
 			<text>[CHALLENGE MODE: A mode for people looking for a harder challenge, but without things getting too out of hand]
 			Starting scrap: none
-			Starting fuel: 10
-			Rebel fleet gains a 1 jump boost. Increases difficulty of the elite at the sector one exit.
+			Starting fuel: 10{
+			The Rebel fleet gains a 1 jump boost. Increases difficulty of the elite at the sector one exit.
 			Renegades Bosses are buffed and take crew as tribute, The Traveling Merchant never gives any gifts, Last Stand repair beacons will always be under attack by Elite Rebels.
 			Will increase the difficulty of the True Ending.</text>
 			<choice hidden="true">
@@ -522,8 +661,8 @@
 		<event>
 			<text>[EXTREME MODE: Bored of things being too easy? Looking to make your life hell? This might be the mode for you.]
 			Starting scrap: none
-			Starting fuel: 8
-			Rebel fleet gains a 1 jump boost. Increases difficulty of the elite at the sector one exit.
+			Starting fuel: 8{
+			The Rebel fleet gains a 1 jump boost. Increases difficulty of the elite at the sector one exit.
 			Renegade Bosses are massively buffed and don't take tribute, The Traveling Merchant gives much less scrap for resources, Last Stand repair beacons will always be under attack by MFK Aces, The Last Stand start beacon is under attack by an MFK Ace.
 			Extra preparation options at start are disabled.
 			Will massively increase the difficulty of the True Ending.</text>
@@ -558,7 +697,9 @@
 		<item type="fuel" min="25" max="25"/>
 		<item type="scrap" min="50" max="50"/>
 	</item_modify>
+	<metaVariable name="challenge_level" op="set" val="0"/>
 	<disableScrapScore/>
+	<!--<eventAlias name="START_BEACON_PREP" jumpClear="false" once="false"/>-->
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="START_BEACON_RELOAD"/>
@@ -570,7 +711,9 @@
 		<item type="fuel" min="12" max="12"/>
 		<item type="scrap" min="20" max="20"/>
 	</item_modify>
+	<metaVariable name="challenge_level" op="set" val="1"/>
 	<disableScrapScore/>
+	<!--<eventAlias name="START_BEACON_PREP" jumpClear="false" once="false"/>-->
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="START_BEACON_RELOAD"/>
@@ -581,8 +724,10 @@
 	<item_modify>
 		<item type="fuel" min="10" max="10"/>
 	</item_modify>
+	<metaVariable name="challenge_level" op="set" val="2"/>
 	<modifyPursuit amount="1"/>
 	<disableScrapScore/>
+	<!--<eventAlias name="START_BEACON_PREP" jumpClear="false" once="false"/>-->
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="START_BEACON_RELOAD"/>
@@ -593,8 +738,10 @@
 	<item_modify>
 		<item type="fuel" min="8" max="8"/>
 	</item_modify>
+	<metaVariable name="challenge_level" op="set" val="3"/>
 	<modifyPursuit amount="1"/>
 	<disableScrapScore/>
+	<!--<eventAlias name="START_BEACON_PREP" jumpClear="false" once="false">START_BEACON_PREP_SKIP</eventAlias>-->
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="START_BEACON_RELOAD"/>
@@ -615,7 +762,8 @@
 	</choice>
 </event>
 <event name="GIVE_DATABASE">
-	<text>You've downloaded the database, which will now grant you the opportunity to read about various factions, individuals, or locations. This provides no physical benefit, but will help guide you on your path to success in your journey.</text>
+	<text>You've downloaded the database, which will now grant you the opportunity to read about various factions, individuals, or locations. This provides no physical benefit, but will help guide you on your path to success in your journey. Will also provide detailed tutorials on new mechanics such as the Atlas or Internal Upgrades.</text>
+	<hiddenAug>FEDERATION_DATABASE</hiddenAug>
 	<choice hidden="true" req="pilot">
 		<text>[Federation Database] Remind yourself about your mission.</text>
 		<event>
@@ -623,7 +771,7 @@
 			<choice>
 				<text>Keep reading.</text>
 				<event>
-					<text>The Federation struggled with various other conflicts, most notably a cold war between the dangerous Coalition Alliance endorsed by the Slug Kleptocracy, Mantis Hive, Rock Theocracy, and Leech Kraterocracy. This conflict finally escalated into the invasion of Aquarian territory, resulting in heavy losses. After the Coalition's attack temporarily destabilized the Federation once again, Vance ran a covert operation from the Rebel Stronghold to attempt to salvage the heavily protected ancient ruins that the Coalition had been seeking as well.</text>
+					<text>The Federation struggled with various other conflicts, most notably a cold war between the dangerous Coalition Alliance endorsed by the Slug Kleptocracy, Mantis Hive, Rock Theocracy, and Eargen Republic. This conflict finally escalated into the invasion of Aquarian territory, resulting in heavy losses. After the Coalition's attack temporarily destabilized the Federation once again, Vance ran a covert operation from the Rebel Stronghold to attempt to salvage the heavily protected ancient ruins that the Coalition had been seeking as well.</text>
 					<choice>
 						<text>Keep reading.</text>
 						<event>
@@ -681,107 +829,119 @@
 		<event load="START_BEACON_RELOAD"/>
 	</choice>
 </event>
+<event name="START_BEACON_PREP_LOAD">
+	<backgroundObject name="HANGAR_SALUTE">
+		<layer z="0">background</layer>
+		<spawnArea x="0" y="324" w="0" h="0"/>
+		<anim>hang_salute</anim>
+	</backgroundObject>
+	<backgroundObject name="HANGAR_BOXGUY">
+		<layer z="0">background</layer>
+		<spawnArea x="770" y="122" w="0" h="0"/>
+		<anim>hang_boxguy</anim>
+	</backgroundObject>
+	<backgroundObject name="HANGAR_MANTISGRAB">
+		<layer z="0">background</layer>
+		<spawnArea x="174" y="291" w="0" h="0"/>
+		<anim>hang_mantisgrab</anim>
+	</backgroundObject>
+	<backgroundObject name="HANGAR_TYPINGGUY">
+		<layer z="0">background</layer>
+		<spawnArea x="1020" y="135" w="0" h="0"/>
+		<anim>hang_typingguy</anim>
+	</backgroundObject>
+	<backgroundObject name="HANGAR_CRYSTALREPAIR">
+		<layer z="0">background</layer>
+		<spawnArea x="960" y="123" w="0" h="0"/>
+		<anim>hang_crystalrepair</anim>
+	</backgroundObject>
+	<backgroundObject name="HANGAR_BOXGIRL">
+		<layer z="0">background</layer>
+		<spawnArea x="206" y="163" w="0" h="0"/>
+		<anim>hang_boxgirl</anim>
+	</backgroundObject>
+	<backgroundObject name="HANGAR_CLEAN">
+		<layer z="0">background</layer>
+		<spawnArea x="863" y="107" w="0" h="0"/>
+		<anim>hang_clean</anim>
+	</backgroundObject>
+	<backgroundObject name="HANGAR_DOCTOR">
+		<layer z="0">background</layer>
+		<spawnArea x="1120" y="214" w="0" h="0"/>
+		<anim>hang_doctor</anim>
+	</backgroundObject>
+	<backgroundObject name="HANGAR_POKER">
+		<layer z="0">background</layer>
+		<spawnArea x="977" y="160" w="0" h="0"/>
+		<anim>hang_poker</anim>
+	</backgroundObject>
+	<backgroundObject name="HANGAR_KERNEL">
+		<layer z="0">background</layer>
+		<spawnArea x="835" y="412" w="0" h="0"/>
+		<anim>hang_kernel</anim>
+	</backgroundObject>
+	<backgroundObject name="DETERGENT">
+		<layer z="0">background</layer>
+		<spawnArea x="207" y="163" w="0" h="0" center="true"/>
+		<anim>detergent</anim>
+		<hoverAnim>detergent_hover</hoverAnim>
+		<tooltip>A bottle of detergent.</tooltip>
+		<clickAction>
+			<event load="DETERGENT_MODE"/> <!--events_mechanics-->
+			<destroy/>
+		</clickAction>
+	</backgroundObject>
+	<loadEventList seeded="false" first="true" generate="true">
+		<event name="START_BEACON_PREP_SKIP" req="challenge_level" lvl="3"/>
+		<event name="START_BEACON_PREP" req="challenge_level" lvl="0" max_lvl="2"/>
+	</loadEventList>
+</event>
 <event name="START_BEACON_PREP">
 	<text>You slowly exit hyperspeed, transitioning to a speed safe for landing and steer closer to the hangar below. There, your ship is stocked up and prepped to head out into this foreign galaxy.</text>
 	<changeBackground>BACK_SECTOR_START</changeBackground>
+	<playSound>lightspeed</playSound>
 	<choice hidden="true">
 		<text>Continue...</text>
+		<event load="START_BEACON_PREP_OPTIONS"/>
+	</choice>
+	<choice hidden="true" req="ANY_BOON">
+		<text>The hangar operators hail you.</text>
+		<event load="START_BOON_MENU"/>
+	</choice>
+</event>
+<event name="START_BEACON_PREP_OPTIONS">
+	<text>You hurry to your ship, but realize you still have a little time before you leave. You likely have time to grab one last thing.</text>
+	<choice hidden="true" lvl="0" max_group="0" req="NO_WEAPON" blue="false">
+		<text>Grab a weapon.</text>
 		<event>
-			<text>You hurry to your ship, but realize you still have a little time before you leave. You likely have time to grab one last thing.</text>
-			<choice hidden="true" lvl="0" max_group="0" req="NO_WEAPON" blue="false">
-				<text>Grab a weapon.</text>
+			<text>Looks like there's a few options.</text>
+			<choice>
+				<text>Grab a Basic Laser.</text>
 				<event>
-					<text>Looks like there's a few options.</text>
-					<choice>
-						<text>Grab a basic laser.</text>
-						<event>
-							<text>Confident with your new arsenal, you prepare to continue on your mission.</text>
-							<weapon name="LASER_BURST_1"/>
-							<choice hidden="true">
-								<text>Continue...</text>
-								<event load="START_BEACON_EXPLAIN_LOAD"/>
-							</choice>
-						</event>
-					</choice>
-					<choice>
-						<text>Grab a simple ion.</text>
-						<event>
-							<text>Confident with your new arsenal, you prepare to continue on your mission.</text>
-							<weapon name="ION_1"/>
-							<choice hidden="true">
-								<text>Continue...</text>
-								<event load="START_BEACON_EXPLAIN_LOAD"/>
-							</choice>
-						</event>
-					</choice>
-					<choice>
-						<text>Grab a leto launcher.</text>
-						<event>
-							<text>Confident with your new arsenal, you prepare to continue on your mission.</text>
-							<weapon name="MISSILES_1"/>
-							<choice hidden="true">
-								<text>Continue...</text>
-								<event load="START_BEACON_EXPLAIN_LOAD"/>
-							</choice>
-						</event>
-					</choice>
-				</event>
-			</choice>
-			<choice hidden="true" lvl="1" max_group="0" req="NO_WEAPON" blue="false">
-				<text>You cannot grab a free weapon.</text>
-				<event>
-					<text>Bro, cheater. Also, how???????</text>
-					<item_modify>
-						<item type="fuel" min="-9999" max="-9999"/>
-						<item type="scrap" min="-9999" max="-9999"/>
-						<item type="missiles" min="-9999" max="-9999"/>
-						<item type="drones" min="-9999" max="-9999"/>
-					</item_modify>
-				</event>
-			</choice>
-			<!--<choice hidden="true" req="drones" blue="false" max_group="1">
-				<text>Grab a drone.</text>
-				<event>
-					<text>Confident with your stash of drones, you prepare to continue on your mission.</text>
-					<drone name="REPAIR"/>
-					<choice hidden="true">
-						<text>Continue...</text>
-						<event load="START_BEACON_EXPLAIN"/>
-					</choice>
-				</event>
-			</choice>-->
-			<choice hidden="true" req="pilot" lvl="1" max_group="2" blue="false">
-				<text>Find another crew member.</text>
-				<event>
-					<text>Confident with your new crew, you prepare to continue on your mission.</text>
-					<crewMember amount="1" class="human"/>
+					<text>Confident with your new arsenal, you prepare to continue on your mission.</text>
+					<weapon name="LASER_BURST_1"/>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event load="START_BEACON_EXPLAIN_LOAD"/>
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="pilot" lvl="1" max_group="3" blue="false">
-				<text>Grab some extra resources.</text>
+			<choice>
+				<text>Grab a Simple Ion.</text>
 				<event>
-					<text>With some extra resources in your storage, you prepare to continue on your mission.</text>
-					<item_modify>
-						<item type="fuel" min="2" max="2"/>
-						<item type="scrap" min="7" max="7"/>
-						<item type="missiles" min="2" max="2"/>
-						<item type="drones" min="1" max="1"/>
-					</item_modify>
+					<text>Confident with your new arsenal, you prepare to continue on your mission.</text>
+					<weapon name="ION_1"/>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event load="START_BEACON_EXPLAIN_LOAD"/>
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="pilot" lvl="1" max_group="4" blue="false">
-				<text>You're good with what you have. Get a head start on the fleet!</text>
+			<choice>
+				<text>Grab a Leto Launcher.</text>
 				<event>
-					<text>You decide not to take anything extra, and carry on.</text>
-					<modifyPursuit amount="-2"/>
+					<text>Confident with your new arsenal, you prepare to continue on your mission.</text>
+					<weapon name="MISSILES_1"/>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event load="START_BEACON_EXPLAIN_LOAD"/>
@@ -790,47 +950,219 @@
 			</choice>
 		</event>
 	</choice>
+	<choice hidden="true" lvl="1" max_group="0" req="NO_WEAPON" blue="false">
+		<text>You cannot grab a free weapon.</text>
+		<event>
+			<text>Bro, cheater. Also, how???????</text>
+			<item_modify>
+				<item type="fuel" min="-9999" max="-9999"/>
+				<item type="scrap" min="-9999" max="-9999"/>
+				<item type="missiles" min="-9999" max="-9999"/>
+				<item type="drones" min="-9999" max="-9999"/>
+			</item_modify>
+		</event>
+	</choice>
+	<!--<choice hidden="true" req="drones" blue="false" max_group="1">
+		<text>Grab a drone.</text>
+		<event>
+			<text>Confident with your stash of drones, you prepare to continue on your mission.</text>
+			<drone name="REPAIR"/>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="START_BEACON_EXPLAIN"/>
+			</choice>
+		</event>
+	</choice>-->
+	<choice hidden="true" req="pilot" lvl="1" max_group="2" blue="false">
+		<text>Find another crew member.</text>
+		<event>
+			<text>Confident with your new crew, you prepare to continue on your mission.</text>
+			<crewMember amount="1" class="human"/>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="START_BEACON_EXPLAIN_LOAD"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true" req="pilot" lvl="1" max_group="3" blue="false">
+		<text>Grab some extra resources.</text>
+		<event>
+			<text>With some extra resources in your storage, you prepare to continue on your mission.</text>
+			<item_modify>
+				<item type="fuel" min="2" max="2"/>
+				<item type="scrap" min="7" max="7"/>
+				<item type="missiles" min="2" max="2"/>
+				<item type="drones" min="1" max="1"/>
+			</item_modify>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="START_BEACON_EXPLAIN_LOAD"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true" req="pilot" lvl="1" max_group="4" blue="false">
+		<text>You're good with what you have. Get a head start on the fleet!</text>
+		<event>
+			<text>You decide not to take anything extra, and carry on.</text>
+			<modifyPursuit amount="-2"/>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="START_BEACON_EXPLAIN_LOAD"/>
+			</choice>
+		</event>
+	</choice>
 </event>
 <event name="START_BEACON_PREP_SKIP">
     <text>You slowly exit hyperspeed, transitioning to a speed safe for landing and steer closer to the hangar below. There, your ship is stocked up and prepped to head out into this foreign galaxy.</text>
 	<changeBackground>BACK_SECTOR_START</changeBackground>
+	<playSound>lightspeed</playSound>
 	<choice hidden="true">
-        <text>Continue...</text>
+       <text>Continue...</text>
        <event load="START_BEACON_EXPLAIN_LOAD"/>
     </choice>
+	<choice hidden="true" req="ANY_BOON">
+		<text>The hangar operators hail you.</text>
+		<event load="START_BOON_MENU"/>
+	</choice>
 </event>
+<!--BOON SELECT-->
+<event name="START_BOON_MENU">
+	<text>It seems a gift awaits you. From uncertain origins it's labeled, in strange penmanship, "A gift from the observers, on behalf of the last challenger to find us. We sincerely await meeting you. See you soon, perhaps?"</text>
+	<choice hidden="true">
+		<text>Accept the gift.</text>
+		<event load="BOON_SELECT"/>
+	</choice>
+	<choice hidden="true">
+		<text>Turn down the gift.</text>
+		<event>
+			<loadEvent>BOON_SELECT_CONTINUE</loadEvent>
+		</event>
+	</choice>
+</event>
+<event name="BOON_SELECT_CONTINUE">
+	<loadEventList seeded="false">
+		<event name="START_BEACON_PREP_OPTIONS" req="challenge_level" lvl="0" max_lvl="2"/>
+		<event name="START_BEACON_EXPLAIN_LOAD" req="challenge_level" lvl="3"/>
+	</loadEventList>
+</event>
+<event name="BOON_SELECT">
+	<loadEventList seeded="false">
+		<event name="BOON_SELECT_HUMAN" req="prof_z_boon_human"/>
+		<event name="BOON_SELECT_HUMAN_2" req="prof_z_boon_human_2"/>
+		<event name="BOON_SELECT_ENGI" req="prof_z_boon_engi"/>
+		<event name="BOON_SELECT_ZOLTAN" req="prof_z_boon_zoltan"/>
+		<event name="BOON_SELECT_ORCHID" req="prof_z_boon_orchid"/>
+		<event name="BOON_SELECT_MANTIS" req="prof_z_boon_mantis"/>
+		<event name="BOON_SELECT_MANTIS_2" req="prof_z_boon_mantis_2"/>
+		<event name="BOON_SELECT_ROCK" req="prof_z_boon_rock"/>
+		<event name="BOON_SELECT_ROCK_2" req="prof_z_boon_rock_2"/>
+		<event name="BOON_SELECT_CRYSTAL" req="prof_z_boon_crystal"/>
+		<event name="BOON_SELECT_SLUG" req="prof_z_boon_slug"/>
+		<event name="BOON_SELECT_SLUG_2" req="prof_z_boon_slug_2"/>
+		<event name="BOON_SELECT_SHELL" req="prof_z_boon_shell"/>
+		<event name="BOON_SELECT_LEECH" req="prof_z_boon_leech"/>
+		<event name="BOON_SELECT_GHOST" req="prof_z_boon_ghost"/>
+		<event name="BOON_SELECT_LANIUS" req="prof_z_boon_lanius"/>
+		<event name="BOON_SELECT_MORPH" req="prof_z_boon_morph"/>
+		<event name="BOON_SELECT_LIZARD" req="prof_z_boon_lizard"/>
+		<event name="BOON_SELECT_SPIDER" req="prof_z_boon_spider"/>
+		<event name="BOON_SELECT_PONY" req="prof_z_boon_horse"/>
+		<event name="BOON_SELECT_OBELISK" req="prof_z_boon_obelisk"/>
+		<event name="BOON_SELECT_SIREN" req="prof_z_boon_siren"/>
+		<event name="BOON_SELECT_UNIQUE" req="prof_z_boon_unique"/>
+		<event name="BOON_SELECT_UNIQUEMECH" req="prof_z_boon_unique_m"/>
+		<event name="BOON_SELECT_KIDS" req="prof_z_boon_kids"/>
+		
+		<event name="BOON_SELECT_WEAPONS" req="prof_e_boon_weapons"/>
+		<event name="BOON_SELECT_SHIELDS" req="prof_e_boon_shields"/>
+		<event name="BOON_SELECT_ENGINES" req="prof_e_boon_engines"/>
+		<event name="BOON_SELECT_MEDBAY" req="prof_e_boon_medbay"/>
+		<event name="BOON_SELECT_CLONEBAY" req="prof_e_boon_clonebay"/>
+		<event name="BOON_SELECT_OXYGEN" req="prof_e_boon_oxygen"/>
+		<event name="BOON_SELECT_TELEPORTER" req="prof_e_boon_teleporter"/>
+		<event name="BOON_SELECT_MIND" req="prof_e_boon_mind"/>
+		<event name="BOON_SELECT_HACKING" req="prof_e_boon_hacking"/>
+		<event name="BOON_SELECT_CLOAKING" req="prof_e_boon_cloaking"/>
+		<event name="BOON_SELECT_TEMPORAL" req="prof_e_boon_temporal"/>
+		<event name="BOON_SELECT_DRONES" req="prof_e_boon_drones"/>
+		<event name="BOON_SELECT_SENSORS" req="prof_e_boon_sensors"/>
+		<event name="BOON_SELECT_DOORS" req="prof_e_boon_doors"/>
+		<event name="BOON_SELECT_PILOT" req="prof_e_boon_pilot"/>
+		<event name="BOON_SELECT_BATTERY" req="prof_e_boon_battery"/>
+		<event name="BOON_SELECT_REACTOR" req="prof_e_boon_reactor"/>
+		
+		<event name="BOON_SELECT_STARTER" req="prof_r_boon_starter"/>
+		<event name="BOON_SELECT_KERNELELITE" req="prof_r_boon_kernel"/>
+		<event name="BOON_SELECT_CRYSTALELITE" req="prof_r_boon_crystal"/>
+		<event name="BOON_SELECT_MINELAUNCHER" req="prof_r_boon_minelauncher"/>
+		<event name="BOON_SELECT_NEWGEN" req="prof_r_boon_newgen"/>
+		<event name="BOON_SELECT_AETHER" req="prof_r_boon_obelisk"/>
+		<event name="BOON_SELECT_MERCHANTS" req="prof_r_boon_nexus"/>
+		<event name="BOON_SELECT_SPECIAL" req="prof_r_boon_special"/>
+		<event name="BOON_SELECT_TRANSPORT" req="prof_r_boon_transport"/>
+		<event name="BOON_SELECT_MATH" req="prof_r_boon_math"/>
+		<event name="BOON_SELECT_RENEGADE" req="prof_r_boon_renegade"/>
+		<event name="BOON_SELECT_CURA" req="prof_r_boon_cura"/>
+		<event name="BOON_SELECT_CLONECANNON" req="prof_r_boon_clonecannon"/>
+		<event name="BOON_SELECT_MODULAR" req="prof_r_boon_modular"/>
+		<event name="BOON_SELECT_GATLING" req="prof_r_boon_gatling"/>
+		<event name="BOON_SELECT_MERCHANTS" req="prof_r_boon_rift"/>
+	</loadEventList>
+</event>
+
 <event name="START_BEACON_EXPLAIN_LOAD">
 	<loadEventList seeded="false" default="START_BEACON_EXPLAIN">
-		<event name="START_BEACON_EXPLAIN_POWERS2" req="STAGE_2"/>
-		<event name="START_BEACON_EXPLAIN_POWERS3" req="STAGE_3"/>
+		<event name="GIVE_POWERSURGE_2" req="STAGE_2"/>
+		<event name="GIVE_POWERSURGE_3" req="STAGE_3"/>
+		<event name="GIVE_EXTRALIFE" req="EXTRA_LIFE"/>
+		<event name="GIVE_MVDRIVE" req="MULTIVERSE_DRIVE_GOOD"/>
+		<event name="GIVE_UNSTABLE" req="EMERGENCY_DRIVE"/>
+		<event name="GIVE_ATM" req="ATM_MACHINE"/>
 	</loadEventList>
+</event>
+<event name="GIVE_POWERSURGE_2">
+	<triggeredEvent event="FLAGSHIP_STAGE2_TRACKER" seeded="false" loops="999999999" jumps="1"/>
+	<loadEvent>START_BEACON_EXPLAIN</loadEvent>
+</event>
+<event name="GIVE_POWERSURGE_3">
+	<triggeredEvent event="FLAGSHIP_STAGE3_TRACKER" seeded="false" loops="999999999" jumps="1"/>
+	<loadEvent>START_BEACON_EXPLAIN</loadEvent>
+</event>
+<event name="GIVE_EXTRALIFE">
+	<triggeredEvent event="EXTRA_LIFE_HEAL" playerHull="3" clearOnJump="false"/>
+	<loadEvent>START_BEACON_EXPLAIN</loadEvent>
+</event>
+<event name="GIVE_MVDRIVE">
+	<triggeredEvent event="MV_DRIVE_EXPLODE" loops="999999999">
+	  <jumps amount="1" type="1"/>
+	</triggeredEvent>
+	<loadEvent>START_BEACON_EXPLAIN</loadEvent>
+</event>
+<event name="GIVE_UNSTABLE">
+	<triggeredEvent event="UNSTABLE_CHECKER" loops="999999999" jumps="1"/>
+	<loadEvent>START_BEACON_EXPLAIN</loadEvent>
+</event>
+<event name="GIVE_ATM">
+	<triggeredEvent name="ATM_CHECKER" event="ATM_MACHINE_WITHDRAW_CHECK" loops="999999999">
+	  <jumps amount="1" type="1"/>
+	</triggeredEvent>
+	<loadEvent>START_BEACON_EXPLAIN</loadEvent>
 </event>
 <event name="START_BEACON_EXPLAIN">
 	<text>Finally suited up and ready to go, you take a look at your beacon map. Looks like you still have a while until the fleet becomes an immediate threat, so you can spare some time to do something on the ship if you wish.</text>
-	<choice>
-		<text>Do something onboard the ship.</text>
-		<event load="STORAGE_CHECK"/>
+	<choice hidden="true" req="prof_beacon_active" blue="true">
+		<text>A strange beacon lays nearby. Do you want to activate it?</text>
+		<event>
+			<text>The beacon seems almost familiar. Unsure of what it does but curious to find out, you activate it. Perhaps this will have a greater consequence down the line...</text>
+			<variable name="loc_beacon_active" op="set" val="1"/>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event>
+					<loadEvent>STORAGE_CHECK</loadEvent>
+				</event>
+			</choice>
+		</event>
 	</choice>
-	<choice>
-		<text>Do nothing.</text>
-		<event/>
-	</choice>
-</event>
-<event name="START_BEACON_EXPLAIN_POWERS2">
-	<text>Finally suited up and ready to go, you take a look at your beacon map. Looks like you still have a while until the fleet becomes an immediate threat, so you can spare some time to do something on the ship if you wish.</text>
-	<triggeredEvent event="FLAGSHIP_STAGE2_TRACKER" seeded="false" loops="999999999" jumps="1"/>
-	<choice>
-		<text>Do something onboard the ship.</text>
-		<event load="STORAGE_CHECK"/>
-	</choice>
-	<choice>
-		<text>Do nothing.</text>
-		<event/>
-	</choice>
-</event>
-<event name="START_BEACON_EXPLAIN_POWERS3">
-	<text>Finally suited up and ready to go, you take a look at your beacon map. Looks like you still have a while until the fleet becomes an immediate threat, so you can spare some time to do something on the ship if you wish.</text>
-	<triggeredEvent event="FLAGSHIP_STAGE3_TRACKER" seeded="false" loops="999999999" jumps="1"/>
 	<choice>
 		<text>Do something onboard the ship.</text>
 		<event load="STORAGE_CHECK"/>
@@ -842,6 +1174,12 @@
 </event>
 
 <event name="FINISH_BEACON">
+    <loadEventList seeded="true" first="false" generate="true">
+		<event name="FINISH_BEACON_REAL"/>
+		<event name="FINISH_BEACON_DEBT" req="LOANS" lvl="1"/> <!--in events_standard.xml-->
+	</loadEventList>
+</event>
+<event name="FINISH_BEACON_REAL">
     <text>You've arrived at the Long-Range Beacon. When the FTL Drive is charged you can jump to the next Sector.</text>
     <choice hidden="true">
         <text>Explore.</text>
@@ -858,11 +1196,18 @@
 </event>
 
 <event name="FINISH_BEACON_NEBULA">
+    <loadEventList seeded="true" first="false">
+		<event name="FINISH_BEACON_NEBULA_REAL"/>
+		<event name="FINISH_BEACON_NEBULA_REAL"/>
+		<event name="FINISH_BEACON_DEBT" req="LOANS" lvl="1"/>
+	</loadEventList>
+</event>
+<event name="FINISH_BEACON_NEBULA_REAL">
 	<text>This Long-Range Beacon is almost hidden within a nebula. When the FTL Drive is charged you can jump to the next Sector.</text>
-	<!--<choice hidden="true">
-		<text>Explore</text>
+	<choice hidden="true">
+		<text>Explore.</text>
 		<event load="NEBULA_EXIT"/>
-	</choice>-->
+	</choice>
 	<choice hidden="true">
 		<text>Check the storage.</text>
 		<event load="STORAGE_CHECK"/>
@@ -1187,11 +1532,11 @@
 </event>
 
 <event name="AUTO_CHOICE" unique="true">
-	<text>An automated station rests nearby, with an Auto-guard protecting it. The station spots you and alerts the guard.</text>
+	<text>An automated satellite rests nearby, with an Auto-guard protecting it. The satellite spots you and alerts the guard.</text>
 	<choice>
 		<text>Destroy the guard.</text>
 		<event>
-			<text>You prepare to attack the guard, knowing the station will be helpless against you without protection.</text>
+			<text>You prepare to attack the guard, knowing the satellite will be helpless against you without protection.</text>
 			<ship load="SHIP_AUTO_GUARD_CHOICE" hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -1202,7 +1547,7 @@
 	<choice>
 		<text>Avoid the guard and destroy the station.</text>
 		<event>
-			<text>You slip past the guard ship and move to attack the station. It appears the guard is programmed to not go within a certain distance of the station and is unable to chase you.</text>
+			<text>You slip past the guard ship and move to attack the satellite. It appears the guard is programmed to not go within a certain distance of the satellite and is unable to chase you.</text>
 			<ship load="SHIP_AUTO_STATION_CHOICE" hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -1229,7 +1574,7 @@
 		<autoReward level="HIGH">standard</autoReward>
 	</event>
 	<event>
-		<text>You attempt to fire on the station, but it is better protected than expected. You cannot get through its defenses, so you move on after scrapping the guard.</text>
+		<text>You attempt to fire on the satellite, but it is better protected than expected. You cannot get through its defenses, so you move on after scrapping the guard.</text>
 		<autoReward level="MED">standard</autoReward>
 	</event>
 </eventList>
@@ -1239,7 +1584,7 @@
 </event>
 
 <event name="INFORMANT_RUNNER" unique="true">
-	<text>"Oh good heavens, that's a Federation Multiverse traveler! If we turn their location to the Rebels, we'll be rich! Wait, did I just say that on open coms?" The nearby civilian ship mutes themselves, then immediately activates their engines!</text>
+	<text>"Oh good heavens, that's a Federation Renegade! If we turn their location to the Rebels, we'll be rich! Wait, did I just say that on open coms?" The nearby civilian ship mutes themselves, then immediately activates their engines!</text>
 	<ship load="SHIP_CIVILIAN_INFORMANT" hostile="false"/>
 	<choice hidden="true">
 		<text>Attack, we can't let them escape!</text>
@@ -1256,7 +1601,7 @@
 		<text>Try to reason with them.</text>
 		<event>
 			<text>"The Federation is outdated in its philosophies! The Rebellion will offer us a glorious galaxy... nay, Multiverse free from xeno scum!"</text>
-			<choice req="engineer" hidden="true">
+			<choice req="LIST_CREW_ENGINEER" hidden="true">
 				<text>(Engineer Crew) Persuade them further.</text>
 				<event>
 					<text>Your Engineer knows what it's like to have been a Rebel, and they reveal the truths of the Rebellion's brutality and hypocrisy to the civilians. They're so taken-aback by this knowledge they even offer supplies towards your cause.</text>
@@ -1302,7 +1647,7 @@
 			<crewMember amount="1" class="human"/>
 		</event>
 	</choice>
-	<choice req="engineer" hidden="true">
+	<choice req="LIST_CREW_ENGINEER" hidden="true">
 		<text>(Engineer Crew) Pretend to be an undercover Rebel spy.</text>
 		<event>
 			<text>"Wooooow, you're a spy? That's soooo cool. I wish I was a spy. Wait, can I be one?! I'd love to help!" They eagerly come aboard, much to the discomfort of your crew. You aren't sure how long this cover story will last, but this person seems oblivious enough that maybe it'll just work out fine.</text>
@@ -1513,7 +1858,7 @@
 </eventList>
 <event name="ABANDONED_GHOST_BOARDED">
 	<text>The Ghosts follow your crew-members back on board the ship!</text>
-	<boarders min="2" max="4" class="goul"/>
+	<boarders min="2" max="4" class="phantom_goul"/>
 </event>
 
 <!--
@@ -1638,7 +1983,7 @@
 	<instantEscape/>
 </event>
 
-<event name="SLUG_ELITE_LOST" unique="true">
+<event name="SLUG_ELITE_LOST">
 	<text>The yellow ship at this beacon startles you, and you realise it's a Clairvoyant! You assume it must be lost, being so far away from a nebula.</text>
 	<ship load="SHIP_SLUG_ELITE_FIGHT" hostile="false"/>
 	<choice>
@@ -1769,7 +2114,7 @@
 		<event load="CRASH_LANDING_INSPECT"/>
 	</choice>
 	<choice hidden="true" req="sensors" lvl="3">
-		<text>(Adv Sensors) Run a thorough scan.</text>
+		<text>(Adv. Sensors) Run a thorough scan.</text>
 		<event load="CRASH_LANDING_SCAN"/>
 	</choice>
 	<choice hidden="true" req="ADV_SCANNERS">
@@ -2099,8 +2444,8 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="hacking" lvl="3">
-		<text>(Adv Hacking) Take access of the systems yourself and redirect them onto the pirate.</text>
+	<choice hidden="true" req="hacking" lvl="2">
+		<text>(Upg. Hacking) Take access of the systems yourself and redirect them onto the pirate.</text>
 		<event>
 			<text>"Tsk tsk. Well, I did warn y-... wait, why are those aiming at me?! What have you done? Crap, you've ruined everything!"</text>
 			<environment type="PDS" target="enemy"/>
@@ -2112,7 +2457,7 @@
 		</event>
 	</choice>
 	<choice hidden="true" req="mind" lvl="2">
-		<text>(Upg Mind Control) "Convince" him to keep the ASBs offline.</text>
+		<text>(Upg. Mind Control) "Convince" him to keep the ASBs offline.</text>
 		<event>
 			<text>"Mmmm, you make a good point. Tee hee!" The pirate immediately slumps over. Apparently the mind control had some very adverse effects on him. We better get out of here before he wakes up.</text>
 		</event>
@@ -2162,7 +2507,7 @@
 	</event>
 	<event>
 		<text>Inside the ship you find signs of a greater conflict. Lacerations on the Hive Mantis suggest the damage was dealt by other fellow Mantis. Your suspicions are affirmed when you find a young Free Mantis locked in the cargo-hold who had fled from the fight. He seems to be eager to join your crew.</text>
-		<crewMember amount="1" class="freemantis"/>
+		<crewMember amount="1" class="mantis_free"/>
 		<autoReward level="LOW">stuff</autoReward>
 	</event>
 </eventList>
@@ -2234,7 +2579,7 @@
 				</event>
 			</choice>
 			<choice hidden="true" req="BLUELIST_CREW_NOFIRE">
-				<text>(Fire Immune Crew) Send in your crew to rescue the workers.</text>
+				<text>(Fireproof Crew) Send in your crew to rescue the workers.</text>
 				<event>
 					<text>You might not be able to pull the ship close enough, but you can send your crew over by themselves. Your crew returns back on the shuttle with several other workers unharmed. Though you drop most off nearby, one offers to stay. Probably because it pays better than their old job, if you had to guess.</text>
 					<crewMember amount="1" repair="1"/>
@@ -2621,7 +2966,7 @@
 		<choice>
 			<text>Decline their offer.</text>
 			<event>
-				<text>You decline and end comms with the station.</text>
+				<text>You decline and end comms.</text>
 				<choice>
 					<text>Do something onboard the ship.</text>
 					<event load="STORAGE_CHECK"/>
@@ -2960,11 +3305,11 @@
 					<autoReward level="HIGH">stuff</autoReward>
 				</event>
 			</choice>
-			<choice hidden="true" req="nights">
+			<choice hidden="true" req="unique_nights">
 				<text>(Nights) "Oi, lisssten up you freakin' horssse thingsss!"</text>
 				<event>
 					<text>Nights drunkenly stumbles forwards, shouting at the horses randomly. This scares them away, but fortunately you follow them back to the location of a crash site where you find a barely alive Engi Defender and a lot of scrap. Nights might be a hungover idiot, but at least he accidentally brings you into a lot of beneficial situations.</text>
-					<crewMember amount="1" class="defend"/>
+					<crewMember amount="1" class="engi_defender"/>
 					<autoReward level="HIGH">scrap_only</autoReward>
 				</event>
 			</choice>
@@ -3708,7 +4053,7 @@
 </eventList>
 <eventList name="MADMAN_SLUG">
 	<event>
-		<text>You bring the ship closer. The Slug enters a trance-like state for 1 to 2 seconds, then quickly snaps out of it. He states, "This person is clearly unstable. It is best we leave them alone."</text>
+		<text>You bring the ship closer. The Slug enters a trance-like state for 1 to 2 seconds, then quickly snaps out of it. He states, "Thisss perssson is clearly unssstable. It isss bessst we leave them alone."</text>
 	</event>
 	<event>
 		<text>You bring the ship closer and the Slug, after a pause, says that the person is stable and with good intentions. You offer a position in your crew and it is graciously accepted.</text>
@@ -3889,9 +4234,6 @@
 	<event>
 		<text>Your nanobots succeed in keeping their ship from breaking apart while they fix it, however you take some damage while attempting to leave the asteroid field. They offer you some military supplies as thanks for saving them.</text>
 		<autoReward level="MED">weapon</autoReward>
-		<item_modify>    
-			<item type="drones" min="-1" max="-1"/>
-		</item_modify>	
 		<damage amount="2"/>
 		<damage amount="1" system="random"/>  <!--DLC-->
 		<damage amount="1" system="room" effect="fire"/>
@@ -3899,9 +4241,6 @@
 	<event>
 		<text>The nanobots keep the ship stable enough to allow them to escape the asteroid field. They message you with map coordinates, "You're that Federation ship the Rebels are after, aren't you? I can't offer much but I heard there was a Federation loyalist base nearby. Maybe they can help you?"</text>
 		<quest event="HIDDEN_FEDERATION_BASE_LIST"/>
-		<item_modify>
-			<item type="drones" min="-1" max="-1"/>
-		</item_modify>
 	</event>
 </eventList>
 <eventList name="CIVILIAN_ASTEROIDS_BEACON_LIST3">
@@ -4038,6 +4377,21 @@
 				<item_modify>
 					<item type="drones" min="-1" max="-1"/>
 				</item_modify>
+				<choice hidden="true">
+					<text>Continue...</text>
+					<event>
+						<text>Now that they're safe an engineer offers to join your crew and the rest tell you of a hidden Federation base a few jumps from here.</text>
+						<crewMember engines="1" amount="1"/> <!--DLC!-->
+						<quest event="HIDDEN_FEDERATION_BASE_LIST"/>
+						<autoReward level="MED">scrap_only</autoReward>
+					</event>
+				</choice>
+			</event>
+		</choice>
+		<choice req="LIST_CREW_MEDICAL">
+			<text>(Medical Crew) Send your crewmember to stabilize their condition.</text>
+			<event>
+				<text>You send your crewmember over to their vessel, which immediately goes to work. Once they are relieved, you send over some supplies to keep them healthy enough to get to friendly territory.</text>
 				<choice hidden="true">
 					<text>Continue...</text>
 					<event>
@@ -4218,7 +4572,7 @@
 					<autoReward level="HIGH">standard</autoReward>
 				</event>
 			</choice>
-			<choice hidden="true" req="engineer">
+			<choice hidden="true" req="LIST_CREW_ENGINEER">
 				<text>(Engineer Crew) Remotely repair its targeting system.</text>
 				<event>
 					<text>Your crew-member is able to remotely fix the glitch in the defense AI, allowing the repair crew to close in and finish the job. The station gives you its thanks along with a reward.</text>	
@@ -4341,9 +4695,9 @@
 		</event>			
 	</choice>
 	<choice hidden="true" req="FIRE_EXTINGUISHERS">
-		<text>(Extinguishers) Use your tech to surpress the fire.</text>
+		<text>(Extinguishers) Use your tech to supress the fire.</text>
 		<event>
-			<text>You quickly grab some extra extinguishers from storage and attach a hose to the surpression system, them move through the station putting out the larger fires.</text>
+			<text>You quickly grab some extra extinguishers from the storage and attach a hose to the supression system, them move through the station, putting out the larger fires.</text>
 			<choice hidden="true">
 				<text>Contact the survivors.</text>
 				<event>
@@ -4378,7 +4732,7 @@
 	<event>
 		<text>You pull up alongside the station and cut through their hull. You are able to rescue a few survivors but many more are lost. One of the survivors offers to join your crew and you offload the rest on a nearby station.</text>
 		<autoReward level="LOW">scrap_only</autoReward>
-		<crewMember amount="1" class="energy">Dr. Jones</crewMember> 
+		<crewMember amount="1" class="zoltan">Dr. Jones</crewMember> 
 	</event>
 </eventList>
 
@@ -4441,14 +4795,11 @@
 			</item_modify>
 		</event>
 	</choice>
-	<choice hidden="true" req="medic">
+	<choice hidden="true" req="LIST_CREW_MEDIC">
 		<text>(Medical Crew) Send your crew to treat the infected.</text>
 		<event>
 			<text>Knowing just how to handle this, your medic dons a mask and moves about administering a "treatment" of pure water. The crowd is thoroughly convinced that this has actually helped them, and returns back to their homes. The law enforcement thanks you.</text>
 			<autoReward level="HIGH">standard</autoReward>
-			<item_modify>
-				<item type="drones" min="-1" max="-1"/>
-			</item_modify>
 		</event>
 	</choice>
 	<choice hidden="true" req="medbay" lvl="2">
@@ -4529,7 +4880,7 @@
 	</event>
 	<event>
 		<text>As you approach the ship, your sensors flicker off for a second and you realise you have been boarded by Ghosts!</text>
-		<boarders min="2" max="4" class="wraith"/>
+		<boarders min="2" max="4" class="phantom_wraith"/>
 	</event>
 </eventList>
 
@@ -4638,7 +4989,7 @@
 	<choice>
 		<text>Engage the Rebel and rescue the space dock.</text>
 		<event>
-			<text>You lock onto the rebel and move in to engage.</text>
+			<text>You lock onto the Rebel and move in to engage.</text>
 			<ship load="SHIP_REBEL_STORE_RESCUE" hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -4788,7 +5139,7 @@
 			</event>
 		</choice>
 		<choice hidden="true" req="weapons" lvl="6"> 
-			<text>(Upg Weapons) Remain silent but power up your weapons.</text>
+			<text>(Upg. Weapons) Remain silent but power up your weapons.</text>
 			<event>
 				<text>"You make a good point. You traveled all the way out here to fulfill our request, despite what must have been... a difficult scenario to cause such a delay. Here, we'll even tip you for the inconvenience you must have gone through..."</text>
 				<item_modify>
@@ -4931,7 +5282,7 @@
 	<event>
 		<text>As you approach the signal you receive a message on a Rebel channel, "I knew we'd catch some Federation fish with this signal. Prepare to be boarded, scum!"</text>
 		<ship load="SHIP_REBEL_FIGHT" hostile="true"/>
-		<boarders min="2" max="3" class="human"/>
+		<boarders min="2" max="3" class="rebel"/>
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event load="COMBAT_CHECK"/>

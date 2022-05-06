@@ -132,14 +132,14 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text load="TEXT_START_CIVILIAN"/>
-	<img back="BACK_SECTOR_CIVILIAN" planet="NONE"/>
 	<ship load="SHIP_GUARD_CIVILIAN" hostile="false"/>
 	<changeBackground>BACK_SECTOR_CIVILIAN</changeBackground>
-	<choice hidden="true" req="MORALITY_CRIME" lvl="0" max_lvl="4" max_group="0" blue="false">
+	<playSound>lightspeed</playSound>
+	<choice hidden="true" req="rep_general" lvl="-2147483648" max_lvl="4" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_CIVILIAN"/>
 	</choice>
-	<choice hidden="true" req="MORALITY_CRIME" lvl="5" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_general" lvl="5" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_CIVILIAN_CRIMINAL"/>
 	</choice>
@@ -220,7 +220,7 @@
 			<autoReward level="LOW">stuff</autoReward>
 		</event>
 	</choice>
-	<choice req="medic" hidden="true">
+	<choice req="LIST_CREW_MEDIC" hidden="true">
 		<text>(Medic Crew) Request medical supplies.</text>
 		<event>
 			<text>Your medic calls the Militiamen and requests medical supplies, to which they respond by sending over a Medi-Cluster Bomb and some ammunition for it.</text>
@@ -228,8 +228,8 @@
 			<weapon name="BOMB_HEAL"/>
 		</event>
 	</choice>
-	<choice req="soldier" hidden="true">
-		<text>(Soldier Crew) Request military supplies.</text>
+	<choice req="LIST_CREW_MILITIA_ELITE_RANDOM_PLAYER" hidden="true">
+		<text>(Soldier/Peacekeeper crew) Request military supplies.</text>
 		<event>
 			<text>"A Federation soldier! You must be a very important vessel! I'm afraid we have little to give other than this spare Mine Launcher. I've never been a fan of the things myself, but maybe you'll find use in it."</text>
 			<autoReward level="HIGH">missiles</autoReward>
@@ -263,7 +263,7 @@
 </eventList>
 <eventList name="GUARD_CIVILIAN_DEMAND">
 	<event>
-		<text>The Militia guard refuses to give in to your demands. Instead, they raise their weapons and retaliate with their weapons.</text>
+		<text>The Militia guard refuses to give in to your demands. Instead, they raise their weapons and retaliate.</text>
 		<ship hostile="true"/>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -277,7 +277,7 @@
 </eventList>
 <eventList name="GUARD_CIVILIAN_THREATEN">
 	<event>
-		<text>The Militia guard refuses to give in to your demands. Instead, they raise their weapons and retaliate with their weapons.</text>
+		<text>The Militia guard refuses to give in to your demands. Instead, they raise their weapons and retaliate.</text>
 		<ship hostile="true"/>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -379,6 +379,7 @@
 	<ship load="SHIP_GUARD_FED" hostile="false"/>
 	<customFleet right="true" firing="true" autoDarkening="false">CUSTOM_FLEET_FED</customFleet>
 	<changeBackground>BACK_SECTOR_FEDERATION</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -535,13 +536,13 @@
 	</beaconType>
 	<text>This sector serves as the base of the Militia's operations. It contains their armouries and fleet, houses their soldiers, and is the place where training exercises are conducted. For pirates or Rebels to penetrate this militarized sector would be an incredible feat, but with your luck you wouldn't be surprised...</text>
 	<changeBackground>BACK_SECTOR_MILITIA</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_MILITIA" hostile="false"/>
-	<remove name="HIDDEN DUMMY"/>
-	<choice hidden="true" req="MORALITY_CRIME" lvl="0" max_lvl="2" max_group="0" blue="false">
+	<choice hidden="true" req="rep_general" lvl="-2147483648" max_lvl="2" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_MILITIA"/>
 	</choice>
-	<choice hidden="true" req="MORALITY_CRIME" lvl="3" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_general" lvl="3" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_MILITIA_CRIMINAL"/>
 	</choice>
@@ -621,7 +622,7 @@
 			<autoReward level="LOW">stuff</autoReward>
 		</event>
 	</choice>
-	<choice req="medic" hidden="true">
+	<choice req="LIST_CREW_MEDIC" hidden="true">
 		<text>(Medic Crew) Request medical supplies.</text>
 		<event>
 			<text>Your medic calls the Militiamen and requests medical supplies, to which they respond by sending over a Medi-Cluster Bomb and some ammunition for it.</text>
@@ -629,8 +630,8 @@
 			<weapon name="BOMB_HEAL"/>
 		</event>
 	</choice>
-	<choice req="soldier" hidden="true">
-		<text>(Soldier Crew) Request military supplies.</text>
+	<choice req="LIST_CREW_MILITIA_ELITE_RANDOM_PLAYER" hidden="true">
+		<text>(Soldier/Peacekeeper crew) Request military supplies.</text>
 		<event>
 			<text>"A Federation soldier! You must be a very important vessel! I'm afraid we have little to give other than this spare Mine Launcher. I've never been a fan of the things myself, but maybe you'll find use in it."</text>
 			<autoReward level="HIGH">missiles</autoReward>
@@ -664,7 +665,7 @@
 </eventList>
 <eventList name="GUARD_MILITIA_DEMAND">
 	<event>
-		<text>The Militia guard refuses to give in to your demands. Instead, they raise their weapons and retaliate with their weapons.</text>
+		<text>The Militia guard refuses to give in to your demands. Instead, they raise their weapons and retaliate.</text>
 		<ship hostile="true"/>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -678,7 +679,7 @@
 </eventList>
 <eventList name="GUARD_MILITIA_THREATEN">
 	<event>
-		<text>The Militia guard refuses to give in to your demands. Instead, they raise their weapons and retaliate with their weapons.</text>
+		<text>The Militia guard refuses to give in to your demands. Instead, they raise their weapons and retaliate.</text>
 		<ship hostile="true"/>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -723,8 +724,8 @@
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
 	<crew>
-		<crewMember type="soldier" prop="0.50"/>
-		<crewMember type="peace" prop="0.25"/>
+		<crewMember type="human_soldier" prop="0.50"/>
+		<crewMember type="zoltan_peacekeeper" prop="0.25"/>
 		<crewMember type="random" prop="0.25"/>
 	</crew>
 </ship>
@@ -782,13 +783,14 @@
 	</beaconType>
 	<text load="TEXT_START_ENGI"/>
 	<changeBackground>BACK_SECTOR_ENGI</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_ENGI" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
-	<choice hidden="true" req="MORALITY_ENGI" lvl="0" max_lvl="3" max_group="0" blue="false">
+	<choice hidden="true" req="rep_engi" lvl="-2147483648" max_lvl="3" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_ENGI"/>
 	</choice>
-	<choice hidden="true" req="MORALITY_ENGI" lvl="4" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_engi" lvl="4" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_ENGI_CRIMINAL"/>
 	</choice>
@@ -869,7 +871,7 @@
 			<autoReward level="LOW">droneparts</autoReward>
 		</event>
 	</choice>
-	<choice req="defend" hidden="true">
+	<choice req="engi_defender" hidden="true">
 		<text>(Engi Defender Crew) Request drones.</text>
 		<event>
 			<text>Your Defender transmits a request for drone supplies over an encrypted channel. The guard obliges and transfers a schematic.</text>
@@ -1029,7 +1031,7 @@
 	</beaconType>
 	<text load="TEXT_START_SEPERATIST"/>
 	<changeBackground>BACK_SECTOR_SEPARATIST</changeBackground>
-	<remove name="HIDDEN DUMMY"/>
+	<playSound>lightspeed</playSound>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -1059,7 +1061,7 @@
 -->	
 <textList name="TEXT_START_ZOLTAN">
 	<text>You've entered Zoltan territory. This species is not renowned for giving anything for nothing, but you can always be assured a fair hearing.</text>
-	<text>The Zoltan patrol their borders but let you pass when you ID as Federation. Let's hope they won't be so courteous to the Rebels.</text>
+	<text>The Zoltans patrol their borders but let you pass when you ID as Federation. Let's hope they won't be so courteous to the Rebels.</text>
 	<text>You arrive in Zoltan space. From what you have heard they anticipated the coming war and made preparations to hold their borders.</text>
 	<text>You're far from Federation home space here in Zoltan territory, and it's not clear whether the authorities will have any goodwill remaining. Still, you have to push forward.</text>
 </textList>
@@ -1070,20 +1072,21 @@
 	</beaconType>
 	<text load="TEXT_START_ZOLTAN"/>
 	<changeBackground>BACK_SECTOR_ZOLTAN</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_ZOLTAN" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
-	<choice hidden="true" req="MORALITY_ZOLTAN" lvl="0" max_lvl="2" max_group="0" blue="false">
+	<choice hidden="true" req="rep_zoltan" lvl="-2147483648" max_lvl="2" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_ZOLTAN"/>
 	</choice>
-	<choice hidden="true" req="MORALITY_ZOLTAN" lvl="3" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_zoltan" lvl="3" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_ZOLTAN_CRIMINAL"/>
 	</choice>
 </event>
 
 <event name="GUARD_ZOLTAN_CRIMINAL">
-	<text>Something seems off here. Usually, the Zoltan wouldn't bat an eye at ships like yours, but now, you catch suspicious chatter on the guard ship.</text>
+	<text>Something seems off here. Usually, the Zoltans wouldn't bat an eye at ships like yours, but now, you catch suspicious chatter on the guard ship.</text>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -1098,7 +1101,7 @@
 </event>
 
 <event name="GUARD_ZOLTAN">
-	<text>The Zoltan are a strict race, and it appears they have stationed a guard ship here to protect entry to their sector. They don't seem to show interest in you.</text>
+	<text>The Zoltans are a strict race, and it appears they have stationed a guard ship here to protect entry to their sector. They don't seem to show interest in you.</text>
 	<status type="limit" target="enemy" system="teleporter" amount="0"/>
 	<choice>
 		<text>Ignore the guard.</text>
@@ -1150,21 +1153,21 @@
 		<text>(Upg. Weapons) Threaten the guard.</text>
 		<event load="GUARD_ZOLTAN_THREATEN"/>
 	</choice>
-	<choice req="energy" hidden="true">
+	<choice req="zoltan" hidden="true">
 		<text>(Zoltan Crew) Request assistance.</text>
 		<event>
 			<text>"A friend. Welcome to our territory, and may you find solace along with these gifts of goodwill."</text>
 			<autoReward level="LOW">stuff</autoReward>
 		</event>
 	</choice>
-	<choice req="monk" hidden="true">
+	<choice req="zoltan_monk" hidden="true">
 		<text>(Monk Crew) Guilt them into giving you some scrap.</text>
 		<event>
 			<text>Your Monk gives a long speech about morals and living a life free of sin to the guard. Apparently it works, because the Zoltan crew feels enough guilt for whatever sins they might have committed in the past to pay your monk to free themselves of the weight.</text>
 			<autoReward level="LOW">scrap_only</autoReward>
 		</event>
 	</choice>
-	<choice req="peace" hidden="true">
+	<choice req="zoltan_peacekeeper" hidden="true">
 		<text>(Peacekeeper Crew) Request repairs.</text>
 		<event>
 			<text>Your Peacekeeper recites some line from the Zoltan code of law that seems to convince the guard to call in a support ship to patch up your hull.</text>
@@ -1313,13 +1316,14 @@
 	</beaconType>
 	<text load="TEXT_START_FREEMANTIS"/>
 	<changeBackground>BACK_SECTOR_FREEMANTIS</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_FREEMANTIS" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
-	<choice hidden="true" req="MORALITY_FREEMANTIS" lvl="0" max_lvl="3" max_group="0" blue="false">
+	<choice hidden="true" req="rep_freemantis" lvl="-2147483648" max_lvl="3" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_FREEMANTIS"/>
 	</choice>
-	<choice hidden="true" req="MORALITY_FREEMANTIS" lvl="4" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_freemantis" lvl="4" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_FREEMANTIS_CRIMINAL"/>
 	</choice>
@@ -1400,22 +1404,22 @@
 			<autoReward level="LOW">stuff</autoReward>
 		</event>
 	</choice>
-	<choice req="freemantis" hidden="true">
+	<choice req="mantis_free" hidden="true">
 		<text>(Free Mantis Crew) Request a warrior come join your crew.</text>
 		<event>
 			<text>"You needing soldier? Oh most certainly! I come with you!"</text>
-			<crewMember amount="1" class="freemantis"/>
+			<crewMember amount="1" class="mantis_free"/>
 		</event>
 	</choice>
-	<choice req="warlord" hidden="true">
+	<choice req="mantis_warlord" hidden="true">
 		<text>(Free Mantis Warlord) Request a warrior come join your crew.</text>
 		<event>
 			<text>"Your staff has warlord? Most incredible, Federation truly is place of wonders! I come with you yes, and bringing some supplies too."</text>
-			<crewMember amount="1" class="freemantis"/>
+			<crewMember amount="1" class="mantis_free"/>
 			<autoReward level="MED">stuff</autoReward>
 		</event>
 	</choice>
-	<choice req="LIST_CREW_HIVE" hidden="true">
+	<choice req="mantis" hidden="true">
 		<text>(Mantis Crew) Request a warrior come join your crew.</text>
 		<event>
 			<text>"This Hive Mantis, not one of us! You are traitor, we will kill!"</text>
@@ -1512,7 +1516,7 @@
 <event name="GUARD_FREEMANTIS_DEADCREW">
 	<text>You have defeated the Free Mantis guard. Without crew on-board to stop you, you can investigate their cargo. On-board you find a young Free mantis warrior who managed to survive the fight! However, he doesn't seem to realize you're the ones who killed his friends, and offers to work along with your crew. You agree and move on to scrap their hull, oddly enough with your new crew to assist.</text>
 	<autoReward level="MED">standard</autoReward>
-	<crewMember amount="1" class="freemantis"/>
+	<crewMember amount="1" class="mantis_free"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="GUARD_FREEMANTIS_FOLLOWUP"/>
@@ -1556,13 +1560,14 @@
 	</beaconType>
 	<text load="TEXT_START_CRYSTAL"/>
 	<changeBackground>BACK_SECTOR_CRYSTAL</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_CRYSTAL" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
-	<choice hidden="true" req="MORALITY_CRYSTAL" lvl="0" max_lvl="2" max_group="0" blue="false">
+	<choice hidden="true" req="rep_crystal" lvl="-2147483648" max_lvl="2" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_CRYSTAL"/>
 	</choice>
-	<choice hidden="true" req="MORALITY_CRYSTAL" lvl="3" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_crystal" lvl="3" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_CRYSTAL_CRIMINAL"/>
 	</choice>
@@ -1643,7 +1648,7 @@
 			<autoReward level="LOW">stuff</autoReward>
 		</event>
 	</choice>
-	<choice req="sentinel" hidden="true">
+	<choice req="crystal_sentinel" hidden="true">
 		<text>(Sentinel Crew) Request a weapon.</text>
 		<event>
 			<text>"Oh, heavens. Sir, I apologize. I did not recognize you. My apologies, we can most certainly provide a weapon for your mission."</text>
@@ -1709,7 +1714,7 @@
 	</event>
 </eventList>
 
-<ship name="SHIP_GUARD_CRYSTAL" auto_blueprint="MU_CRYSTAL_GUARD_A">
+<ship name="SHIP_GUARD_CRYSTAL" auto_blueprint="MU_CRYSTAL_GUARD">
 	<surrender min="5" max="6" load="GUARD_SIGNAL"/>
 	<destroyed load="GUARD_CRYSTAL_DESTROY"/>
 	<deadCrew load="GUARD_CRYSTAL_DEADCREW"/>
@@ -1733,7 +1738,7 @@
 	</choice>
 </event>
 
-<ship name="SHIP_CRYSTAL_REINFORCEMENTS" auto_blueprint="LIST_SHIPS_CRYSTAL_A_FIGHT">
+<ship name="SHIP_CRYSTAL_REINFORCEMENTS" auto_blueprint="LIST_SHIPS_CRYSTAL_FIGHT">
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
 </ship>
@@ -1790,13 +1795,14 @@
 	</beaconType>
 	<text load="TEXT_START_ORCHID"/>
 	<changeBackground>BACK_SECTOR_ORCHID</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_ORCHID" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
-	<choice hidden="true" req="MORALITY_ORCHID" lvl="0" max_lvl="2" max_group="0" blue="false">
+	<choice hidden="true" req="rep_orchid" lvl="-2147483648" max_lvl="2" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_ORCHID"/>
 	</choice>
-	<choice hidden="true" req="MORALITY_ORCHID" lvl="3" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_orchid" lvl="3" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_ORCHID_CRIMINAL"/>
 	</choice>
@@ -1869,14 +1875,14 @@
 		<text>(Upg. Weapons) Threaten the guard.</text>
 		<event load="GUARD_ORCHID_THREATEN"/>
 	</choice>
-	<choice req="LIST_CREW_ORCHID" hidden="true">
+	<choice req="orchid" hidden="true">
 		<text>(Orchid Crew) Request assistance.</text>
 		<event>
 			<text>Though the two Orchids speak no words, they seem to communicate briefly through a flash of their petals and the guard agrees to give some supplies.</text>
 			<autoReward level="LOW">stuff</autoReward>
 		</event>
 	</choice>
-	<choice req="chieftain" hidden="true">
+	<choice req="orchid_chieftain" hidden="true">
 		<text>(Chieftain Crew) Request a weapon.</text>
 		<event>
 			<text>The Orchid guard nods after seeing your crew and transfers over a Kernel weapon.</text>
@@ -2016,7 +2022,7 @@
 <textList name="TEXT_START_OUTCAST">
 	<text>Fortunately for you, the Outcasts have little beef with the Federation or most factions for that matter. The Theocracy prefers to stay clear of this place, instead sending contracted slavers like the Tiiikaka clan as well as occasional Coalition scouts to do its dirty work.</text>
 	<text>You've heard many stories of the massive ramshackle Outcast camps to be found in these sectors, spanning ranges of territory so large they can compete with modern cities. To mess with them would nearly be a death sentence, but fortunately you doubt they'll mind your presence.</text>
-	<text>Apparently sectors like these are where the legendary Dread-Pirate Tuco once lived. Now, you can find all kinds of people here. Apparently, even the Crystal Empire has begun sending "liberators" to the Theocracy, who have found an unexpected sanctuary among the Outcasts. Perhaps you could find the same luck here?</text>
+	<text>Apparently, sectors like these are where the legendary Dread-Pirate Tuco once lived. Now, you can find all kinds of people here. Even the Crystal Empire has begun sending "liberators" to the Theocracy, who have found an unexpected sanctuary among the Outcasts. Perhaps you could find the same luck here?</text>
 </textList>
 <event name="START_OUTCAST">
 	<preventQuest/>
@@ -2025,6 +2031,7 @@
 	</beaconType>
 	<text load="TEXT_START_OUTCAST"/>
 	<changeBackground>BACK_SECTOR_ROCK</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_OUTCAST" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
@@ -2086,7 +2093,7 @@
 		<text>(Upg. Weapons) Threaten the guard.</text>
 		<event load="GUARD_OUTCAST_THREATEN"/>
 	</choice>
-	<choice req="outcast" hidden="true">
+	<choice req="rock_outcast" hidden="true">
 		<text>(Outcast Crew) Request assistance.</text>
 		<event>
 			<text>"Mmmm. There is always something to be spared for brothers and sisters of our people. May you see safe travels through these lands."</text>
@@ -2094,7 +2101,7 @@
 		</event>
 	</choice>
 	<choice req="LIST_CREW_ROCK_FAITHFUL" hidden="true">
-		<text>(Theocracy-Aligned Crew) You are repulsive scum! You do not deserve to share this existence with us.</text>
+		<text>(Theocracy-Aligned Crew) "You are repulsive scum! You do not deserve to share this existence with us."</text>
 		<event>
 			<text>The Outcast laughs. "So the Theocracy has finally become bold enough to send its fleet here? We have left your lands peacefully, but if you so choose to cause hell, then let there be hell!"</text>
 			<ship hostile="true"/>
@@ -2180,7 +2187,7 @@
 <event name="GUARD_OUTCAST_DEADCREW">
 	<text>You have defeated the Outcast guard. Without crew on-board to stop you, you can investigate their cargo. You're surprised to find a lone survivor, who pleads with you to spare him. You give in to his request and continue salvaging his ship.</text>
 	<autoReward level="MED">standard</autoReward>
-	<crewMember amount="1" class="outcast"/>
+	<crewMember amount="1" class="rock_outcast"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="GUARD_OUTCAST_FOLLOWUP"/>
@@ -2243,11 +2250,11 @@
 	<img back="BACK_SECTOR_SHELL" planet="NONE"/>
 	<ship load="SHIP_GUARD_SHELL" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
-	<choice hidden="true" req="MORALITY_SHELL" lvl="0" max_lvl="2" max_group="0" blue="false">
+	<choice hidden="true" req="rep_shell" lvl="0" max_lvl="2" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_SHELL"/>
 	</choice>
-	<choice hidden="true" req="MORALITY_SHELL" lvl="3" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_shell" lvl="3" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_SHELL_CRIMINAL"/>
 	</choice>
@@ -2336,21 +2343,21 @@
 			<autoReward level="LOW">stuff</autoReward>
 		</event>
 	</choice>
-	<choice req="shellmedic" hidden="true">
+	<choice req="shell_scientist" hidden="true">
 		<text>(Shell Scientist Crew) Request medical supplies.</text>
 		<event>
 			<text>"I am not permitted to give Federation vessels any assistance... yet, I am allowed to grant medical supplies to Geniocracy citizens in need. Consider yourself lucky, but don't let anyone hear about thhhhis."</text>
 			<weapon name="BOMB_HEAL"/>
 		</event>
 	</choice>
-	<choice req="shellrepair" hidden="true">
+	<choice req="shell_mechanic" hidden="true">
 		<text>(Shell Mechanic Crew) Request repairs.</text>
 		<event>
 			<text>"I am not permitted to give Federation vessels any assistance... yet, Nerva likely wouldn't mind us helping out Management workers. Consider yourself lucky, but don't let anyone hear about thhhhis."</text>
 			<damage amount="-6"/>
 		</event>
 	</choice>
-	<choice req="shellguardian" hidden="true">
+	<choice req="shell_guardian" hidden="true">
 		<text>(Shell Guardian Crew) Request ammunition.</text>
 		<event>
 			<text>"I am not permitted to give Federation vessels any assistance... yet, Military personnel are allowed to be granted ammunition if required. Consider yourself lucky, but don't let anyone hear about thhhhis."</text>
@@ -2469,13 +2476,14 @@
 	</beaconType>
 	<text load="TEXT_START_SHELL"/>
 	<changeBackground>BACK_SECTOR_SHELL</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_SHELL" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
-	<choice hidden="true" req="MORALITY_SHELL" lvl="0" max_lvl="2" max_group="0" blue="false">
+	<choice hidden="true" req="rep_shell" lvl="-2147483648" max_lvl="2" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_SHELL"/>
 	</choice>
-	<choice hidden="true" req="MORALITY_SHELL" lvl="3" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_shell" lvl="3" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_SHELL_CRIMINAL"/>
 	</choice>
@@ -2740,7 +2748,7 @@
 	<text>The start beacon to this sector is littered in debris, not even worth salvaging. Data entries in the database seem to say this is a civilian sector, but you don't think this display of destruction is usual in such places. A Militia ship is guarding the entry beacon. "Wh- who the hell are you? This sector is off-entry! Didn't you hear, there's a bunch of damn bugs killing everyone who enters! Get out while you still can."</text>
 	<img back="BACK_SECTOR_SPIDER" planet="PLANET_INVISIBLE"/>
 	<ship load="SHIP_GUARD_MILITIA" hostile="false"/>
-	<remove name="HIDDEN DUMMY"/>
+	<variable name="loc_beentobrood" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Are you Commander Montgomery?</text>
 		<event>
@@ -2802,7 +2810,7 @@
 -->	
 <textList name="TEXT_START_REBEL">
 	<text>This sector was bustling with activity just a few years ago. Now, more than half of the jump beacons have been destroyed, many settlements have been abandoned and the Rebels patrol constantly.</text>
-	<text>This sector was hit hard by the rebellion. The many alien settlements and stations located here are now watched over by almost an equal number of Rebel bases, heavy-handedly 'keeping the peace'.</text>
+	<text>This sector was hit hard by the Rebellion. The many alien settlements and stations located here are now watched over by almost an equal number of Rebel bases, heavy-handedly 'keeping the peace'.</text>
 	<text>Once the Federation forces were scattered, the Rebels came down hard on the locals here. Between the 'tax collectors' and military bases, the Rebel presence in this sector is high.</text>
 	<text>At one point this was one of the most commonly travelled sectors. Knowing that, the Rebels have stationed a number of fleets here. Be careful.</text>
 	<text>You will have to be very cautious in this sector. The Rebels have full control and are no doubt looking for you.</text>
@@ -2814,6 +2822,7 @@
 	</beaconType>
 	<text load="TEXT_START_REBEL"/>
 	<changeBackground>BACK_SECTOR_REBEL</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_REBEL" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
@@ -2856,10 +2865,17 @@
 		<text>(Human Crew) Try to persuade them to let you go.</text>
 		<event load="GUARD_REBEL_TALK"/>
 	</choice>
-	<choice hidden="true" req="engineer">
-		<text>(Engineer Crew) This is a mistake! We are one of you.</text>
+	<choice hidden="true" req="LIST_CREW_ENGINEER">
+		<text>(Engineer Crew) "This is a mistake! We are one of you."</text>
 		<event>
 			<text>Luckily your Engineer is from Rebel background and convinces the guard the same for the rest of your crew. You're waved through the checkpoint without another word.</text>
+			<modifyPursuit amount="-1"/>
+		</event>
+	</choice>
+	<choice hidden="true" req="LIST_CREW_JERRY">
+		<text>(Jerry) "Hello!"</text>
+		<event>
+			<text load="TEXT_ENCOUNTER_REBEL_JERRY_HELLO"/>
 			<modifyPursuit amount="-1"/>
 		</event>
 	</choice>
@@ -2867,16 +2883,16 @@
 		<text>(Mind Control) Convince the guard to leave you alone.</text>
 		<event load="GUARD_MIND"/>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -2909,8 +2925,8 @@
 	<destroyed load="GUARD_REBEL_DESTROY"/>
 	<deadCrew load="GUARD_REBEL_DEADCREW"/>
 	<crew>
-		<crewMember type="rebel" prop="0.75"/>
-		<crewMember type="soldier" prop="0.25"/>
+		<crewMember type="human_rebel" prop="0.75"/>
+		<crewMember type="human_soldier" prop="0.25"/>
 	</crew>
 </ship>
 
@@ -2991,6 +3007,7 @@
 	<text load="TEXT_START_AUTO"/>
 	<ship load="SHIP_GUARD_AUTO" hostile="false"/>
 	<changeBackground>BACK_SECTOR_AUTO</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -3022,7 +3039,7 @@
 		<text>(Hacking) Attempt to deactivate the drone.</text>
 		<event load="GUARD_AUTO_HACK"/>
 	</choice>
-	<choice req="engineer" hidden="true">
+	<choice req="LIST_CREW_ENGINEER" hidden="true">
 		<text>(Engineer Crew) Access the drone's mainframe and disable it.</text>
 		<event>
 			<text>Your Engineer shuts off the Auto-guard, allowing you to pass.</text>
@@ -3033,11 +3050,11 @@
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -3123,7 +3140,7 @@
 -->	
 <textList name="TEXT_START_COALITION">
 	<text>Every action has an equal and opposite reaction. In this case, the Coalition would be the opposite of the Rebellion. A spiteful and shaky alliance between the 4 most dangerous races in the galaxy with one goal. To eliminate humanity.</text>
-	<text>The Coalition was a unfortunate side effect of the Slug Expansion wars. Now, they've become another issue for the Federation to deal with.</text>
+	<text>The Coalition was an unfortunate side effect of the Slug Expansion wars. Now, they've become another issue for the Federation to deal with.</text>
 	<text>You've entered a sector controlled by the Coalition. They are no small threat, so watch your step in this sector.</text>
 	<text>In many ways the Coalition is even more dangerous than the Rebellion themselves. Still, you must push forward and find your way out of this sector in one piece.</text>
 </textList>
@@ -3134,6 +3151,7 @@
 	</beaconType>
 	<text load="TEXT_START_COALITION"/>
 	<changeBackground>BACK_SECTOR_COALITION</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_COALITION" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
@@ -3181,16 +3199,16 @@
 		<text>(Mind Control) Your Mind Control will not work, as the guard has Slug crew on-board.</text>
 		<event load="OPTION_INVALID"/>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -3277,6 +3295,7 @@
 	</beaconType>
 	<text load="TEXT_START_ROCK"/>
 	<changeBackground>BACK_SECTOR_ROCK</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_ROCK" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
@@ -3318,10 +3337,17 @@
 		<text>(Rock Crew) Try to persuade them to let you go.</text>
 		<event load="GUARD_ROCK_TALK"/>
 	</choice>
-	<choice hidden="true" req="crusader">
-		<text>(Crusader Crew) Try to persuade them to let you go.</text>
+	<choice hidden="true" req="rock_crusader">
+		<text>(Crusader Crew) Persuade them to let you go.</text>
 		<event>
-			<text>The Rockmen would never question the word of a rock crusader. They say nothing further and allow you to pass.</text>
+			<text>The Rockmen would never question the word of a Rock Crusader. They say nothing further and allow you to pass.</text>
+		</event>
+	</choice>
+	<choice hidden="true" req="rock_paladin">
+		<text>(Paladin Crew) Demand entry at once.</text>
+		<event>
+			<text>The Rockmen are immediately silenced when your Paladin gets involved. They proceed to transfer some supplies and allow you to pass.</text>
+			<autoReward level="HIGH">standard</autoReward>
 		</event>
 	</choice>
 	<choice hidden="true" req="LIST_CREW_CRYSTAL">
@@ -3331,7 +3357,7 @@
 		</event>
 	</choice>
 	<choice hidden="true" req="LIST_CREW_ROCK_UNFAITHFUL">
-		<text>(Commando/Outcast Crew) Convince the guards of the Elder's faults.</text>
+		<text>(Unfaithful Rock Crew) Convince the guards of the Elder's faults.</text>
 		<event>
 			<text>As you should have expected, your words have no effect on the Rockmen. They ignore you, continuing their attack.</text>
 			<ship hostile="true"/>
@@ -3345,16 +3371,16 @@
 		<text>(Mind Control) Convince the guard to leave you alone.</text>
 		<event load="GUARD_MIND"/>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -3389,7 +3415,7 @@
 </event>
 <event name="GUARD_ROCK_DEADCREW">
 	<text>You have defeated the Rock guard. Without crew on-board to stop you, you can investigate their cargo. You find a weapon to bring back to the ship, and move on to scrap their hull.</text>
-	<autoReward level="MED">standard</autoReward>
+	<autoReward level="HIGH">standard</autoReward>
 	<weapon name="GIFTLIST_ROCK"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -3455,6 +3481,7 @@
 	</beaconType>
 	<text load="TEXT_START_DUSKBRINGER"/>
 	<changeBackground>BACK_SECTOR_DUSKBRINGER</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_DUSK" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
@@ -3496,20 +3523,20 @@
 		<text>(Zoltan Crew) Try to persuade them to let you go.</text>
 		<event load="GUARD_DUSK_TALK"/>
 	</choice>
-	<choice hidden="true" req="bomber">
-		<text>(Devotee Crew) Halt! We are one of you.</text>
+	<choice hidden="true" req="zoltan_devotee">
+		<text>(Devotee Crew) "Halt! We are one of you."</text>
 		<event>
 			<text>Your Devotee lies to the guard about your ship and your mission. Though it fortunately works and you're allowed to pass, you have to wonder why your Devotee is helping you.</text>
 		</event>
 	</choice>
-	<choice hidden="true" req="radical">
-		<text>(Radical Crew) Convince the Duskbringers to aid you.</text>
+	<choice hidden="true" req="zoltan_martyr">
+		<text>(Martyr Crew) Convince the Duskbringers to aid you.</text>
 		<event>
-			<text>Your Radical lies to the guard about your ship and your mission. Though it fortunately works and you're allowed to pass, you have to wonder why your Radical is helping you.</text>
+			<text>Your Martyr lies to the guard about your ship and your mission. Though it fortunately works and you're allowed to pass, you have to wonder why your Martyr is helping you.</text>
 			<autoReward level="HIGH">stuff</autoReward>
 		</event>
 	</choice>
-	<choice hidden="true" req="deathless">
+	<choice hidden="true" req="unique_devorak">
 		<text>(Devorak) Convince the Duskbringers to aid you.</text>
 		<event>
 			<text>"By the Eye! You carry the great Devorak with you? H-how is this possible? N-no, I dare not question a man so devoted. Please, take everything we can offer. May the Eye see a bright future for your travels."</text>
@@ -3528,16 +3555,16 @@
 			</item_modify>
 		</event>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -3561,8 +3588,8 @@
 	<destroyed load="GUARD_DUSK_DESTROY"/>
 	<deadCrew load="GUARD_DUSK_DEADCREW"/>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="bomber" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_devotee" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -3642,6 +3669,7 @@
 	</beaconType>
 	<text load="TEXT_START_MANTIS"/>
 	<changeBackground>BACK_SECTOR_MANTIS</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_MANTIS" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
@@ -3693,16 +3721,16 @@
         <text>(Mind Control) Convince the guard to leave you alone.</text>
         <event load="GUARD_MIND"/>
     </choice>
-    <choice hidden="true" req="cloak">
+    <choice hidden="true" req="cloaking">
         <text>(Cloaking) Cloak and try to escape.</text>
         <event load="GUARD_CLOAK"/>
     </choice>
     <choice hidden="true" req="engines" lvl="5">
-        <text>(Adv Engines) Try to escape the guard.</text>
+        <text>(Adv. Engines) Try to escape the guard.</text>
         <event load="GUARD_ESCAPE"/>
     </choice>
     <choice hidden="true" req="pilot" lvl="3">
-        <text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+        <text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
         <event load="GUARD_ESCAPE"/>
     </choice>
 </event>
@@ -3732,7 +3760,7 @@
 	<deadCrew load="GUARD_MANTIS_DEADCREW"/>
 	<crew>
 		<crewMember type="mantis" prop="0.80"/>
-		<crewMember type="suzerain" prop="0.20"/>	
+		<crewMember type="mantis_suzerain" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -3842,6 +3870,7 @@
 	</beaconType>
 	<text load="TEXT_START_GHOST"/>
 	<changeBackground>BACK_SECTOR_GHOST</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice>
 		<text>Continue...</text>
@@ -3868,6 +3897,7 @@
 	<ship load="SHIP_GUARD_GHOST" hostile="false"/>
 	<status type="limit" target="enemy" system="teleporter" amount="0"/>
 	<changeBackground>BACK_SECTOR_GHOST</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -3888,16 +3918,16 @@
 				<text>(Mind Control) Convince the guard to leave you alone.</text>
 				<event load="GUARD_MIND"/>
 			</choice>
-			<choice hidden="true" req="cloak">
+			<choice hidden="true" req="cloaking">
 				<text>(Cloaking) Cloak and try to escape.</text>
 				<event load="GUARD_CLOAK"/>
 			</choice>
 			<choice hidden="true" req="engines" lvl="5">
-				<text>(Adv Engines) Try to escape the guard.</text>
+				<text>(Adv. Engines) Try to escape the guard.</text>
 				<event load="GUARD_ESCAPE"/>
 			</choice>
 			<choice hidden="true" req="pilot" lvl="3">
-				<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+				<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 				<event load="GUARD_ESCAPE"/>
 			</choice>
 		</event>
@@ -3908,9 +3938,9 @@
 	<destroyed load="GUARD_GHOST_DESTROY"/>
 	<deadCrew load="GUARD_GHOST_DEADCREW"/>
 	<crew>
-		<crewMember type="goul" prop="0.33"/>
-		<crewMember type="mare" prop="0.33"/>
-		<crewMember type="wraith" prop="0.33"/>
+		<crewMember type="phantom_goul" prop="0.33"/>
+		<crewMember type="phantom_mare" prop="0.33"/>
+		<crewMember type="phantom_wraith" prop="0.33"/>
 	</crew>
 </ship>
 
@@ -3925,7 +3955,7 @@
 <event name="GUARD_GHOST_DEADCREW">
 	<text>You have defeated the Vagabond ship. Without crew on-board to stop you, you can investigate their cargo. You find a weapon to bring back to the ship, and move on to scrap their hull.</text>
 	<autoReward level="MED">standard</autoReward>
-	<weapon name="LIST_WEAPONS_RUSTY"/>
+	<weapon name="GIFTLIST_RUSTY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="GUARD_GHOST_FOLLOWUP"/>
@@ -3980,6 +4010,7 @@
 	</beaconType>
 	<text>The stories of this sector still fascinate you to this day. Long long before the Federation, this was once ruled by the Spectral Dynasty. But from nowhere, some mysterious force wiped practically every Ghost in this sector from existence. You wish you could ask the Ghosts themselves what went down, but you know that'll never happen...</text>
 	<changeBackground>BACK_SECTOR_GHOST</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_GHOSTWASTE" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
@@ -4020,13 +4051,13 @@
 		<text>(Phantom Crew) Try to persuade them to let you go.</text>
 		<event load="GUARD_DYNASTY_TALK"/>
 	</choice>
-	<choice hidden="true" req="phantomalpha">
+	<choice hidden="true" req="phantom_alpha">
 		<text>(Alpha Phantom Crew) Persuade them to let you go.</text>
 		<event>
 			<text>The two Ghosts talk back and forth, but their static is in such high frequency that not even your translator is certain of the specifics. It seems to have worked though, because the guard lowers its weapons and allows you through.</text>
 		</event>
 	</choice>
-	<choice hidden="true" req="MARKER_DYNASTY">
+	<choice hidden="true" req="loc_dynasty_impressed">
 		<text>(Savior of the Dynasty) Let us through!</text>
 		<event>
 			<text>The guard suddenly pauses. "You are the one who dethroned the demon, slicing its heart and freeing us from ruination! It is my most sorrowful mistake to impede you here! Please, take this."</text>
@@ -4037,16 +4068,16 @@
 		<text>(Mind Control) Convince the guard to leave you alone.</text>
 		<event load="GUARD_MIND"/>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -4101,7 +4132,7 @@
 -->	
 <textList name="TEXT_START_PIRATE">
 	<text>A few years ago this region was bustling with trade activity. Now it is overrun with bandits and marauders. You should tread lightly here.</text>
-	<text>This somewhat isolated region was thrown into chaos at the start of the rebellion. Even in peacetime it was always beset by pirates but now it houses a center of operations for countless pirate fleets.</text>
+	<text>This somewhat isolated region was thrown into chaos at the start of the Rebellion. Even in peacetime it was always beset by pirates but now it houses a center of operations for countless pirate fleets.</text>
 	<text>If the reports are true, this area has been under the control of pirates for quite some time. Some traders still attempt to trade with the few settlements that remain, but they do so at great risk.</text>
 	<text>A few Federation-friendly planets still exist in this sector, but they are constantly under attack by pirate raids. This is a dangerous sector, so be careful.</text>
 </textList>
@@ -4112,6 +4143,7 @@
 	</beaconType>
 	<text load="TEXT_START_PIRATE"/>
 	<changeBackground>BACK_SECTOR_PIRATE</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_PIRATE" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
@@ -4146,16 +4178,16 @@
 		<text>(Mind Control) Convince the guard to leave you alone.</text>
 		<event load="GUARD_MIND"/>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -4248,6 +4280,7 @@
 	</beaconType>
 	<text load="TEXT_START_SLUG"/>
 	<changeBackground>BACK_SECTOR_SLUG</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_SLUG" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
@@ -4278,6 +4311,14 @@
 			</item_modify>
 		</event>
 	</choice>
+	<choice hidden="true" req="slug_knight">
+		<text>(Knight Crew) "Hmmmm... no."</text>
+		<event>
+			<text>The Slug at the other end flinches upon hearing that, but considering the authority of the person that proclaimed their denial, they are clearly powerless to have a say in the matter. They distance themselves and grant you entry, but your Knight makes it clear he isn't satisfied enough with the outcome, which prompts them to also deliver the content of their holds.</text>
+			<autoReward level="LOW">standard</autoReward>
+			<weapon name="GIFTLIST_SLUG"/>
+		</event>
+	</choice>
 	<choice hidden="true" req="mind">
 		<text>(Mind Control) Your mind control will not work, as the guard is staffed by Slugs.</text>
 		<event>
@@ -4290,21 +4331,21 @@
 			</item_modify>
 		</event>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
 
-<ship name="SHIP_GUARD_SLUG" auto_blueprint="MU_SLUG_GUARD_A">
+<ship name="SHIP_GUARD_SLUG" auto_blueprint="MU_SLUG_GUARD">
 	<surrender min="5" max="6" load="GUARD_SIGNAL"/>
 	<destroyed load="GUARD_SLUG_DESTROY"/>
 	<deadCrew load="GUARD_SLUG_DEADCREW"/>
@@ -4415,6 +4456,7 @@
 	</beaconType>
 	<text load="TEXT_START_LEECH"/>
 	<changeBackground>BACK_SECTOR_LEECH</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_LEECH" hostile="false"/>
 	<environment type="asteroid"/>
 	<remove name="HIDDEN DUMMY"/>
@@ -4430,6 +4472,7 @@
 	</beaconType>
 	<text load="TEXT_START_LEECH"/>
 	<changeBackground>BACK_SECTOR_LEECH</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_LEECH_COALITION" hostile="false"/>
 	<environment type="asteroid"/>
 	<remove name="HIDDEN DUMMY"/>
@@ -4440,7 +4483,7 @@
 </event>
 
 <event name="GUARD_LEECH">
-	<text>Leech security in recent times has gotten more and more lax. So busy handling the threat of Alkram's revolution, the Kraterocracy can barely react to foreign intruders. This is good news for you - you should be able to get by without being bothered.</text>
+	<text>Leech security in recent times has gotten more and more lax. So busy handling the threat of Alkram's revolution, the Republic can barely react to foreign intruders. This is good news for you - you should be able to get by without being bothered.</text>
 	<status type="limit" target="enemy" system="teleporter" amount="0"/>
 	<choice>
 		<text>Ignore the guard.</text>
@@ -4548,16 +4591,16 @@
 			</item_modify>
 		</event>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -4680,7 +4723,8 @@
 	</beaconType>
 	<text>Leech space is hostile both in its inhabitants and its environment. A violent civil war has placed this sector in the center of a great turmoil, and none of its participants are very friendly towards the Federation.</text>
 	<changeBackground>BACK_SECTOR_LEECH</changeBackground>
-	<ship load="SHIP_GUARD_LEECH" hostile="false"/>
+	<playSound>lightspeed</playSound>
+	<ship load="SHIP_GUARD_LEECH_ELITE" hostile="false"/>
 	<environment type="asteroid"/>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
@@ -4688,13 +4732,13 @@
 		<event load="GUARD_LEECH"/>
 	</choice>
 </event>
-<ship name="SHIP_GUARD_LEECH" auto_blueprint="MU_LEECH_GUARD_ELITE">
+<ship name="SHIP_GUARD_LEECH_ELITE" auto_blueprint="MU_LEECH_GUARD_ELITE">
 	<surrender min="5" max="6" load="GUARD_SIGNAL"/>
 	<destroyed load="GUARD_LEECHCAP_DESTROY"/>
 	<deadCrew load="GUARD_LEECHCAP_DEADCREW"/>
 	<crew>
-		<crewMember type="ampere" prop="0.7"/>
-		<crewMember type="crusader" prop="0.3"/>
+		<crewMember type="leech_ampere" prop="0.7"/>
+		<crewMember type="rock_crusader" prop="0.3"/>
 	</crew>
 </ship>
 <event name="GUARD_LEECHCAP_DESTROY">
@@ -4718,6 +4762,10 @@
 <ship name="SHIP_LEECHCAP_REINFORCEMENTS" auto_blueprint="LIST_SHIPS_LEECH_ELITE_FIGHT">
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
+	<crew>
+		<crewMember type="leech_ampere" prop="0.60"/>
+		<crewMember type="rock_crusader" prop="0.40"/>	
+	</crew>
 </ship>
 <event name="GUARD_LEECHCAP_FOLLOWUP">
 	<noQuestText/>
@@ -4788,7 +4836,7 @@
 	<text>The Dynasty is one of the oldest running known civilizations on record, possibly longer than even the Lanius or Crystals. Somewhere in the timeline a massive chunk of their territory was simply... erased, and no one but the Ghosts know why. And they certainly aren't telling.</text>
 	<text>The Ghosts are biological mysteries, and so is much of the Dynasty's history. Maybe if they weren't so busy blaming the Federation for the Rebellion, they'd actually calm down and explain. But what are the chances of that?</text>
 	<text>According to the database, it looks like the Rebels have dispatched numerous Auto-ships to these sectors as part of some weird war against the Dynasty. Hopefully you can stay out of the crossfires as much as necessary.</text>
-	<text>The Dynasty isn't particuarly friendly to the Federation. They seem to have bunched them in along with the Rebels as 'bad men.' Maybe you can break this stereotype? Probably not, but one can dream...</text>
+	<text>The Dynasty isn't particularly friendly to the Federation. They seem to have bunched them in along with the Rebels as 'bad men'. Maybe you can break this stereotype? Probably not, but one can dream...</text>
 </textList>
 <event name="START_DYNASTY">
 	<preventQuest/>
@@ -4797,6 +4845,7 @@
 	</beaconType>
 	<text load="TEXT_START_DYNASTY"/>
 	<changeBackground>BACK_SECTOR_DYNASTY</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_DYANSTY" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
@@ -4837,13 +4886,13 @@
 		<text>(Phantom Crew) Try to persuade them to let you go.</text>
 		<event load="GUARD_DYNASTY_TALK"/>
 	</choice>
-	<choice hidden="true" req="phantomalpha">
+	<choice hidden="true" req="phantom_alpha">
 		<text>(Alpha Phantom Crew) Persuade them to let you go.</text>
 		<event>
 			<text>The two Ghosts talk back and forth, but their static is in such high frequency that not even your translator is certain of the specifics. It seems to have worked though, because the guard lowers its weapons and allows you through.</text>
 		</event>
 	</choice>
-	<choice hidden="true" req="MARKER_DYNASTY">
+	<choice hidden="true" req="loc_dynasty_impressed">
 		<text>(Savior of the Dynasty) Let us through!</text>
 		<event>
 			<text>The guard suddenly pauses. "You are the one who dethroned the demon, slicing its heart and freeing us from ruination! It is my most sorrowful mistake to impede you here! Please, take this."</text>
@@ -4854,16 +4903,16 @@
 		<text>(Mind Control) Convince the guard to leave you alone.</text>
 		<event load="GUARD_MIND"/>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -4887,7 +4936,7 @@
 	<deadCrew load="GUARD_DYNASTY_DEADCREW"/>
 	<crew>
 		<crewMember type="phantom" prop="0.7"/>
-		<crewMember type="phantomalpha" prop="0.3"/>
+		<crewMember type="phantom_alpha" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -5009,6 +5058,7 @@
 	</beaconType>
 	<text>This appears to be an ordinary Civilian sector, but something has gone wrong with the entrance beacon. Your computer is overloaded by strange signals and garbled static occasionally can be heard from your radio system.</text>
 	<changeBackground>BACK_SECTOR_HACKED</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -5032,7 +5082,7 @@
 			</item_modify>
 		</event>
 	</choice>
-	<choice hidden="true" req="engines" lvl="4">
+	<choice hidden="true" req="engines" lvl="4" max_lvl="5">
 		<text>(Upg. Engines) Try to dodge the fee.</text>
 		<event load="GUARD_HACKED_RUN"/>
 	</choice>
@@ -5122,7 +5172,7 @@
 		</choice>
 	</event>
 	<event>
-		<text>You fly past the civilian outpost. They make no attempt to stop you, though a hacker ship uncloaks and trys to block you. You collide with their hull, taking minor damage, but continue on your path, leaving them behind in the dust.</text>
+		<text>You fly past the civilian outpost. They make no attempt to stop you, though a hacker ship uncloaks and tries to block you. You collide with their hull, taking minor damage, but continue on your path, leaving them behind in the dust.</text>
 		<damage amount="2"/>
 	</event>
 </eventList>
@@ -5132,7 +5182,7 @@
 	<deadCrew load="GUARD_HACKED_WIN"/>
 	<crew>
 		<crewMember type="slug" prop="0.90"/>
-		<crewMember type="sabo" prop="0.10"/>	
+		<crewMember type="slug_saboteur" prop="0.10"/>	
 	</crew>
 </ship>
 
@@ -5184,6 +5234,302 @@
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->	
+<eventList name="START_ASTEROID_LIST">
+	<event load="START_ASTEROID_NOSHIP"/>
+	<event load="START_ASTEROID_MILITIA"/>
+	<event load="START_ASTEROID_LEECH"/>
+	<event load="START_ASTEROID_ROCK"/>
+	<event load="START_ASTEROID_ZOLTAN"/>
+	<!--<event load="START_ASTEROID_VAMPWEED"/>-->
+</eventList>
+
+<textList name="TEXT_START_ASTEROID">
+	<text>It's uncertain who first invented quantum fuel or what led to the discovery of the necessary components embedded within these asteroid belts, but ever since there's been a massive influx of traffic as prospectors and mining corporations hope to make profit harvesting the heavenly belts.</text>
+	<text>Most of the immediately profitable asteroid belts have been claimed by Zulfiqar already, and as a corporation based within the Theocracy, no-one's eager to mess with them. However, plenty of sectors like these remain up for grabs, so expect to see all kinds of faces here.</text>
+	<text>A couple small pebbles pass by, clanging against your hull. It's a bit unsettling but fortunately harmless. The same can't be said about everything here, but hopefully the loosely organized inhabitants of this sector won't pay you too much mind.</text>
+</textList>
+
+<event name="START_ASTEROID_NOSHIP">
+	<preventQuest/>
+	<beaconType id="map_icon_start" global="false">
+		<color r="46" g="252" b="51" a="1"/>
+	</beaconType>
+	<text load="TEXT_START_ASTEROID"/>
+	<changeBackground>BACK_SECTOR_ABANDONED</changeBackground>
+	<playSound>lightspeed</playSound>
+	<remove name="HIDDEN DUMMY"/>
+	<environment type="asteroid"/>
+	<choice>
+		<text>Continue...</text>
+		<event>
+			<text>Considering no faction has any kind of claim to make here, it's unsurprising there's no guard. Fortunately, the asteroid fields should make it difficult for the Rebel fleet to pass through.</text>
+			<modifyPursuit amount="-1"/>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
+		</event>
+	</choice>
+</event>
+
+<event name="START_ASTEROID_MILITIA">
+	<preventQuest/>
+	<beaconType id="map_icon_start" global="false">
+		<color r="46" g="252" b="51" a="1"/>
+	</beaconType>
+	<text load="TEXT_START_ASTEROID"/>
+	<ship load="SHIP_GUARD_CIVILIAN" hostile="false"/>
+	<status type="limit" target="enemy" system="teleporter" amount="0"/>
+	<changeBackground>BACK_SECTOR_ASTEROID</changeBackground>
+	<playSound>lightspeed</playSound>
+	<environment type="asteroid"/>
+	<modifyPursuit amount="-1"/>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event>
+			<text>A Militia guard seems to have been stationed here by the Galactic Union. "Under the Free Excavation Treaty, this sector is open to all citizens of the participating nations. I'll save you the legal jargon - you're allowed in. Just don't try anything funny."</text>
+			<choice>
+				<text>Ignore the guard.</text>
+				<event>
+					<text>You now have some time to do something on the ship.</text>
+					<choice>
+						<text>Do something onboard the ship.</text>
+						<event load="STORAGE_CHECK"/>
+					</choice>
+					<choice>
+						<text>Do nothing.</text>
+						<event/>
+					</choice>
+				</event>
+			</choice>
+			<choice hidden="true">
+				<text>Contact the guard.</text>
+				<event load="GUARD_CIVILIAN_INTERACT"/>
+			</choice>
+			<choice>
+				<text>Attack the guard.</text>
+				<event>
+					<text id="text_guard_attack"/>
+					<ship hostile="true"/>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event load="COMBAT_CHECK"/>
+					</choice>
+				</event>
+			</choice>
+		</event>
+	</choice>
+</event>
+
+<event name="START_ASTEROID_ZOLTAN">
+	<preventQuest/>
+	<beaconType id="map_icon_start" global="false">
+		<color r="46" g="252" b="51" a="1"/>
+	</beaconType>
+	<text load="TEXT_START_ASTEROID"/>
+	<ship load="SHIP_GUARD_ZOLTAN" hostile="false"/>
+	<status type="limit" target="enemy" system="teleporter" amount="0"/>
+	<changeBackground>BACK_SECTOR_ASTEROID</changeBackground>
+	<playSound>lightspeed</playSound>
+	<environment type="asteroid"/>
+	<modifyPursuit amount="-1"/>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event>
+			<text>Apparently, the Ministry thought it was worth dispatching a guard ship here. "It is stated under the doctrine of the Free Excavation Treaty that all vessels bearing identification from either the Union, Ministry, Theocracy, Republic, or Confederacy are allowed to travel through here freely." The Zoltan leans forward, looking at you. "Darn. Seems you're a Fed. Next time, try and forget your identification."</text>
+			<choice>
+				<text>Ignore the guard.</text>
+				<event>
+					<text>You now have some time to do something on the ship.</text>
+					<choice>
+						<text>Do something onboard the ship.</text>
+						<event load="STORAGE_CHECK"/>
+					</choice>
+					<choice>
+						<text>Do nothing.</text>
+						<event/>
+					</choice>
+				</event>
+			</choice>
+			<choice hidden="true">
+				<text>Contact the guard.</text>
+				<event load="GUARD_ZOLTAN_INTERACT"/>
+			</choice>
+			<choice>
+				<text>Attack the guard.</text>
+				<event>
+					<text id="text_guard_attack"/>
+					<ship hostile="true"/>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event load="COMBAT_CHECK"/>
+					</choice>
+				</event>
+			</choice>
+		</event>
+	</choice>
+</event>
+
+<event name="START_ASTEROID_LEECH">
+	<preventQuest/>
+	<beaconType id="map_icon_start" global="false">
+		<color r="46" g="252" b="51" a="1"/>
+	</beaconType>
+	<text load="TEXT_START_ASTEROID"/>
+	<ship load="SHIP_GUARD_LEECH" hostile="false"/>
+	<status type="limit" target="enemy" system="teleporter" amount="0"/>
+	<changeBackground>BACK_SECTOR_ASTEROID</changeBackground>
+	<playSound>lightspeed</playSound>
+	<environment type="asteroid"/>
+	<modifyPursuit amount="-1"/>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event>
+			<text>Seems the Republic has stationed a vessel to protect this sector. The Free Excavation Treaty does allow for you to travel here freely, but you suspect even if you weren't allowed in, the Leeches wouldn't care much to interfere.</text>
+			<choice>
+				<text>Ignore the guard.</text>
+				<event>
+					<text>You now have some time to do something on the ship.</text>
+					<choice>
+						<text>Do something onboard the ship.</text>
+						<event load="STORAGE_CHECK"/>
+					</choice>
+					<choice>
+						<text>Do nothing.</text>
+						<event/>
+					</choice>
+				</event>
+			</choice>
+			<choice hidden="true">
+				<text>Contact the guard.</text>
+				<event load="GUARD_LEECH_INTERACT"/>
+			</choice>
+			<choice>
+				<text>Attack the guard.</text>
+				<event>
+					<text id="text_guard_attack"/>
+					<ship hostile="true"/>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event load="COMBAT_CHECK"/>
+					</choice>
+				</event>
+			</choice>
+		</event>
+	</choice>
+</event>
+
+<event name="START_ASTEROID_ROCK">
+	<preventQuest/>
+	<beaconType id="map_icon_start" global="false">
+		<color r="46" g="252" b="51" a="1"/>
+	</beaconType>
+	<text load="TEXT_START_ASTEROID"/>
+	<ship load="SHIP_GUARD_ROCK" hostile="false"/>
+	<status type="limit" target="enemy" system="teleporter" amount="0"/>
+	<changeBackground>BACK_SECTOR_ASTEROID</changeBackground>
+	<playSound>lightspeed</playSound>
+	<environment type="asteroid"/>
+	<modifyPursuit amount="-1"/>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event>
+			<text>"This territory belongs to the Theocracy! There is no room for greedy Federation vessels here!" This claim, of course, is a lie. The Free Excavation Treaty prevents any one faction from making claims over the asteroid belt, but you doubt this ship cares.</text>
+			<choice hidden="true">
+				<text>Prepare to fight!</text>
+				<event>
+					<text>You rush to defensive positions as the guard approaches menacingly.</text>
+					<ship hostile="true"/>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event load="COMBAT_CHECK"/>
+					</choice>
+				</event>
+			</choice>
+			<choice>
+				<text>Try to bribe them.</text>
+				<event>
+					<text>You hope this is enough to satisfy them...</text>
+					<item_modify>
+						<item type="scrap" min="-20" max="-25"/>
+					</item_modify>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event>
+							<text>"We will not be poisoned by your sins! Try as you like, but you will not break our fortitude! Oh... this is a lot of scrap..." The Rockmen briefly wave you through and urge you to hurry before someone spots you.</text>
+						</event>
+					</choice>
+				</event>
+			</choice>
+			<choice hidden="true" req="rock">
+				<text>(Rock Crew) Try to persuade them to let you go.</text>
+				<event load="GUARD_ROCK_TALK"/>
+			</choice>
+			<choice hidden="true" req="rock_crusader">
+				<text>(Crusader Crew) Persuade them to let you go.</text>
+				<event>
+					<text>The Rockmen would never question the word of a Rock Crusader. They say nothing further and allow you to pass.</text>
+				</event>
+			</choice>
+			<choice hidden="true" req="rock_paladin">
+				<text>(Paladin Crew) Demand entry at once.</text>
+				<event>
+					<text>The Rockmen are immediately silenced when your Paladin gets involved. They proceed to transfer some supplies and allow you to pass.</text>
+					<autoReward level="HIGH">standard</autoReward>
+				</event>
+			</choice>	
+			<choice hidden="true" req="LIST_CREW_CRYSTAL">
+				<text>(Crystal Crew) Try to persuade them to let you go.</text>
+				<event>
+					<text>The Rockmen drop to their knees quivering in fear at the sight of your crew. You knew the Rockmen worshipped the Crystals, but you didn't know it was this extreme. With them distracted, you continue past.</text>
+				</event>
+			</choice>
+			<choice hidden="true" req="LIST_CREW_ROCK_UNFAITHFUL">
+				<text>(Unfaithful Rock Crew) Convince the guards of the Elder's faults.</text>
+				<event>
+					<text>As you should have expected, your words have no effect on the Rockmen. They ignore you, continuing their attack.</text>
+					<ship hostile="true"/>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event load="COMBAT_CHECK"/>
+					</choice>
+				</event>
+			</choice>
+			<choice hidden="true" req="mind">
+				<text>(Mind Control) Convince the guard to leave you alone.</text>
+				<event load="GUARD_MIND"/>
+			</choice>
+			<choice hidden="true" req="cloaking">
+				<text>(Cloaking) Cloak and try to escape.</text>
+				<event load="GUARD_CLOAK"/>
+			</choice>
+			<choice hidden="true" req="engines" lvl="5">
+				<text>(Adv. Engines) Try to escape the guard.</text>
+				<event load="GUARD_ESCAPE"/>
+			</choice>
+			<choice hidden="true" req="pilot" lvl="3">
+				<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
+				<event load="GUARD_ESCAPE"/>
+			</choice>
+		</event>
+	</choice>
+</event>
+
+<!--
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+					ABANDONED
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->	
 <eventList name="START_ABANDONED_LIST">
 	<event load="START_ABANDONED_NOSHIP"/>
 	<event load="START_ABANDONED_SHIP"/>
@@ -5203,6 +5549,7 @@
 	</beaconType>
 	<text load="TEXT_START_ABANDONED"/>
 	<changeBackground>BACK_SECTOR_ABANDONED</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice>
 		<text>Continue...</text>
@@ -5229,6 +5576,7 @@
 	<ship load="SHIP_GUARD_MILITIA_ABANDONED" hostile="false"/>
 	<status type="limit" target="enemy" system="teleporter" amount="0"/>
 	<changeBackground>BACK_SECTOR_ABANDONED</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -5339,6 +5687,7 @@
 	</beaconType>
 	<text load="TEXT_START_NEBULA"/>
 	<changeBackground>BACKGROUND</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -5408,13 +5757,15 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>You have entered the Civilian Coreworlds, a well protected Civilian sector, and home to the Galactic Union, and as such many important political figures from all over the galaxy. Just go about your business and don't try anything shifty, and you should be fine.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<ship load="SHIP_GUARD_CIVILIAN_COREWORLDS" hostile="false"/>
 	<changeBackground>BACK_SECTOR_CIVILIAN</changeBackground>
-	<choice hidden="true" req="MORALITY_CRIME" lvl="0" max_lvl="4" max_group="0" blue="false">
+	<playSound>lightspeed</playSound>
+	<choice hidden="true" req="rep_general" lvl="-2147483648" max_lvl="4" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_CIVILIAN_COREWORLDS"/>
 	</choice>
-	<choice hidden="true" req="MORALITY_CRIME" lvl="5" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_general" lvl="5" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_CIVILIAN_CRIMINAL"/>
 	</choice>
@@ -5432,7 +5783,7 @@
 	<choice hidden="true" req="symbiote" lvl="1" max_group="0" blue="false">
 		<text>Undergo the inspection.</text>
 		<event>
-			<text>After long last you make your way to the checkpoint entrance. Your crew are taken one by one into a full-room scanning machine that examines everything from their chemical makeup to the contents of their stomach. There's some trouble where they think your Symbiote is trying to smuggle in a Zoltan refugee, but after you try to explain the complciated situation they just give up and let them through. The rest of your crew might be a makeshift crew of all kinds, but the Militiamen don't seem to care and you're all allowed to pass.</text>
+			<text>After long last you make your way to the checkpoint entrance. Your crew are taken one by one into a full-room scanning machine that examines everything from their chemical makeup to the contents of their stomach. There's some trouble where they think your Symbiote is trying to smuggle in a Zoltan refugee, but after you try to explain the complicated situation they just give up and let them through. The rest of your crew might be a makeshift crew of all kinds, but the Militiamen don't seem to care and you're all allowed to pass.</text>
 		</event>
 	</choice>
 	<choice hidden="true" max_group="1">
@@ -5446,10 +5797,10 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="soldier">
-		<text>(Soldier Crew) Submit your Federation ID quickly and request repairs.</text>
+	<choice hidden="true" req="LIST_CREW_MILITIA_ELITE_RANDOM_PLAYER">
+		<text>(Soldier/Peacekeeper Crew) Submit your Federation ID quickly and request repairs.</text>
 		<event>
-			<text>It doesn't take long for your Soldier to get you though security, and with a little extra negotiation convinces the Militia ships to patch up your hull.</text>
+			<text>It doesn't take long for your crewmember to get you though security, and with a little extra negotiation, they convince the Militia ships to patch up your hull.</text>
 			<damage amount="-7"/>
 		</event>
 	</choice>
@@ -5484,8 +5835,8 @@
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
 	<crew>
-		<crewMember type="soldier" prop="0.50"/>
-		<crewMember type="peace" prop="0.25"/>
+		<crewMember type="human_soldier" prop="0.50"/>
+		<crewMember type="zoltan_peacekeeper" prop="0.25"/>
 		<crewMember type="random" prop="0.25"/>
 	</crew>
 </ship>
@@ -5537,27 +5888,29 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>You have entered the Engi Harmony Sector, the original homeworlds of the Engi race. Luckily Engi are known for their peaceful nature, but just make sure they don't catch you doing anything illegal.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<ship load="SHIP_GUARD_HARMONY" hostile="false"/>
 	<changeBackground>BACK_SECTOR_ENGI</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
-	<choice hidden="true" req="MORALITY_ENGI" lvl="0" max_lvl="3" max_group="0" blue="false">
+	<choice hidden="true" req="rep_engi" lvl="-2147483648" max_lvl="3" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_HARMONY"/>
 	</choice>
-	<choice hidden="true" req="MORALITY_ENGI" lvl="4" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_engi" lvl="4" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_ENGI_CRIMINAL"/>
 	</choice>
-	<!--<choice req="defend" hidden="true">
+	<!--<choice req="engi_defender" hidden="true">
 		<text>(Engi Defender) Your Engi is behaving strangely.</text>
 		<event>
 			<text>"Strange presence in Sector detected. Language unknown, translation slow. Co-ordinates transfered to ship database."</text>
 			<quest event="ANCSECTOR_PART_1"/> 
-			<choice hidden="true" req="MORALITY_ENGI" lvl="0" max_lvl="3" max_group="0" blue="false">
+			<choice hidden="true" req="rep_engi" lvl="0" max_lvl="3" max_group="0" blue="false">
 				<text>Continue...</text>
 				<event load="GUARD_HARMONY"/>
 			</choice>
-			<choice hidden="true" req="MORALITY_ENGI" lvl="4" max_lvl="999" max_group="0" blue="false">
+			<choice hidden="true" req="rep_engi" lvl="4" max_lvl="999" max_group="0" blue="false">
 				<text>Continue...</text>
 				<event load="GUARD_ENGI_CRIMINAL"/>
 			</choice>
@@ -5568,11 +5921,11 @@
 		<event>
 			<text>"This place... it feels familiar. I have a vague memory of a sector from long long ago... I wonder if... if its still there."</text>
 			<quest event="ANCSECTOR_PART_1"/> 
-			<choice hidden="true" req="MORALITY_ENGI" lvl="0" max_lvl="3" max_group="0" blue="false">
+			<choice hidden="true" req="rep_engi" lvl="0" max_lvl="3" max_group="0" blue="false">
 				<text>Continue...</text>
 				<event load="GUARD_HARMONY"/>
 			</choice>
-			<choice hidden="true" req="MORALITY_ENGI" lvl="4" max_lvl="999" max_group="0" blue="false">
+			<choice hidden="true" req="rep_engi" lvl="4" max_lvl="999" max_group="0" blue="false">
 				<text>Continue...</text>
 				<event load="GUARD_ENGI_CRIMINAL"/>
 			</choice>
@@ -5583,11 +5936,11 @@
 		<event>
 			<text>You've never seen anything like this before, and make sure to write down the location of the massive energy signature.</text>
 			<quest event="ANCSECTOR_PART_1"/> 
-			<choice hidden="true" req="MORALITY_ENGI" lvl="0" max_lvl="3" max_group="0" blue="false">
+			<choice hidden="true" req="rep_engi" lvl="0" max_lvl="3" max_group="0" blue="false">
 				<text>Continue...</text>
 				<event load="GUARD_HARMONY"/>
 			</choice>
-			<choice hidden="true" req="MORALITY_ENGI" lvl="4" max_lvl="999" max_group="0" blue="false">
+			<choice hidden="true" req="rep_engi" lvl="4" max_lvl="999" max_group="0" blue="false">
 				<text>Continue...</text>
 				<event load="GUARD_ENGI_CRIMINAL"/>
 			</choice>
@@ -5598,11 +5951,11 @@
 		<event>
 			<text>You've never seen anything like this before, and make sure to write down the location of the massive energy signature.</text>
 			<quest event="ANCSECTOR_PART_1"/> 
-			<choice hidden="true" req="MORALITY_ENGI" lvl="0" max_lvl="3" max_group="0" blue="false">
+			<choice hidden="true" req="rep_engi" lvl="0" max_lvl="3" max_group="0" blue="false">
 				<text>Continue...</text>
 				<event load="GUARD_HARMONY"/>
 			</choice>
-			<choice hidden="true" req="MORALITY_ENGI" lvl="4" max_lvl="999" max_group="0" blue="false">
+			<choice hidden="true" req="rep_engi" lvl="4" max_lvl="999" max_group="0" blue="false">
 				<text>Continue...</text>
 				<event load="GUARD_ENGI_CRIMINAL"/>
 			</choice>
@@ -5613,11 +5966,11 @@
 		<event>
 			<text>You've never seen anything like this before, and make sure to write down the location of the massive energy signature.</text>
 			<quest event="ANCSECTOR_PART_1"/> 
-			<choice hidden="true" req="MORALITY_ENGI" lvl="0" max_lvl="3" max_group="0" blue="false">
+			<choice hidden="true" req="rep_engi" lvl="0" max_lvl="3" max_group="0" blue="false">
 				<text>Continue...</text>
 				<event load="GUARD_HARMONY"/>
 			</choice>
-			<choice hidden="true" req="MORALITY_ENGI" lvl="4" max_lvl="999" max_group="0" blue="false">
+			<choice hidden="true" req="rep_engi" lvl="4" max_lvl="999" max_group="0" blue="false">
 				<text>Continue...</text>
 				<event load="GUARD_ENGI_CRIMINAL"/>
 			</choice>
@@ -5650,7 +6003,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="defend">
+	<choice hidden="true" req="engi_defender">
 		<text>(Engi Defender Crew) Show them your Defender as proof.</text>
 		<event>
 			<text>"Engi Defender aboard ship: suggests solid alliance with Engi kind. Verification: Granted. Ship will be allowed to pass, given high chance to benefit fellow Engis. Additional supplies will be given."</text>
@@ -5663,7 +6016,7 @@
 			<text>"Engi aboard ship: suggests low desire to harm fellow Engi. Verification: Granted. Ship will be allowed to pass."</text>
 		</event>
 	</choice>
-	<choice hidden="true" req="separatist">
+	<choice hidden="true" req="engi_separatist">
 		<text>(Separatist Crew) Show them your Separatist Engi as proof.</text>
 		<event>
 			<text>"Error 873. Identification Invalid. Enemy to Harmony detected. Failure to pass verification results in: removal from Sector. Do not resist."</text>
@@ -5698,26 +6051,26 @@
 			<text>"Non-harmful weapon recognized. Suggests ulterior motives to destruction of Engi ships. Verification: Granted. Ship will be allowed to pass."</text>
 		</event>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
 
-<ship name="SHIP_GUARD_HARMONY" auto_blueprint="MU_ENGI_GUARD_C">
+<ship name="SHIP_GUARD_HARMONY" auto_blueprint="MU_ENGI_GUARD_ELITE">
 	<surrender min="999" max="999" load="GUARD_SIGNAL"/>
 	<destroyed load="GUARD_HARMONY_DESTROY"/>
 	<deadCrew load="GUARD_HARMONY_DEADCREW"/>
 	<crew>
-		<crewMember type="defend" prop="0.50"/>
+		<crewMember type="engi_defender" prop="0.50"/>
 		<crewMember type="engi" prop="0.50"/>
 	</crew>
 </ship>
@@ -5744,6 +6097,10 @@
 <ship name="SHIP_HARMONY_REINFORCEMENTS" auto_blueprint="LIST_SHIPS_ENGI_ELITE_FIGHT">
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
+	<crew>
+		<crewMember type="engi_defender" prop="0.50"/>
+		<crewMember type="engi" prop="0.50"/>	
+	</crew>
 </ship>
 <event name="GUARD_HARMONY_FOLLOWUP">
 	<noQuestText/>
@@ -5792,22 +6149,24 @@
 	<beaconType id="map_icon_start" global="false">
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
-	<text>You've arrived in the Zoltan Capital, the home of the Zoltan Minister. The Zoltan government claims to be a unified Republic who promote peace and prosperity all around the galaxy, but behind closed doors corrupt aristocrats play puppet-master. Though they joined the Federation long ago, tensions between the two governments have been wearing thin.</text>
+	<text>You've arrived in the Zoltan Capital, the home of the Zoltan Minister. The Zoltan government claims to be a unified Republic who promote peace and prosperity all around the galaxy, but behind closed doors corrupt aristocrats play puppet-master. Though they joined the Federation long ago, relations between the two governments have been wearing thin.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<changeBackground>BACK_SECTOR_ZOLTAN</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_ZOLTAN_CAPITAL" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
-	<choice hidden="true" req="MORALITY_ZOLTAN" lvl="0" max_lvl="2" max_group="0" blue="false">
+	<choice hidden="true" req="rep_zoltan" lvl="-2147483648" max_lvl="2" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_ZOLTAN_CAPITAL"/>
 	</choice>
-	<choice hidden="true" req="MORALITY_ZOLTAN" lvl="3" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_zoltan" lvl="3" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_ZOLTAN_CRIMINAL"/>
 	</choice>
 </event>
 
 <event name="GUARD_ZOLTAN_CAPITAL">
-	<text>The guard ship here hails you. "Your arrival has been recorded. Please provide your reason for entry, as well as proof to verify your claim.</text>
+	<text>The guard ship here hails you. "Your arrival has been recorded. Please provide your reason for entry, as well as proof to verify your claim."</text>
 	<status type="limit" target="enemy" system="teleporter" amount="0"/>
 	<choice req="BLUELIST_MINISTRY_ENGI" hidden="true">
 		<text>(Engi Crew/Nano-bots) This is a peaceful Engi operated vessel.</text>
@@ -5848,16 +6207,16 @@
 		<text>We're merely passing through.</text>
 		<event load="GUARD_ZOLTAN_CAPITAL_BORING"/>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -5881,8 +6240,8 @@
 	<destroyed load="GUARD_ZOLTAN_CAPITAL_DESTROY"/>
 	<deadCrew load="GUARD_ZOLTAN_CAPITAL_DEADCREW"/>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="peace" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_peacekeeper" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -5907,6 +6266,10 @@
 <ship name="SHIP_CAPITAL_REINFORCEMENTS" auto_blueprint="LIST_SHIPS_ZOLTAN_ELITE_FIGHT">
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
+	<crew>
+		<crewMember type="zoltan_peacekeeper" prop="0.50"/>
+		<crewMember type="zoltan" prop="0.50"/>	
+	</crew>
 </ship>
 <event name="GUARD_ZOLTAN_CAPITAL_FOLLOWUP">
 	<noQuestText/>
@@ -5930,7 +6293,7 @@
 		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
 		<undiscoveredTooltip>An unvisited location.</undiscoveredTooltip>
 	</beaconType>
-	<text>"Stop right there! You are fugitives of the law, wanted for destruction of this sectors guard ship!" The nearby Zoltan ship moves in to attack.</text>
+	<text>"Stop right there! You are fugitives of the law, wanted for destruction of this sector's guard ship!" The nearby Zoltan ship moves in to attack.</text>
 	<ship load="SHIP_CAPITAL_REINFORCEMENTS" hostile="true"/>
 	<environment type="PDS" target="player"/>
 	<choice hidden="true">
@@ -5955,15 +6318,17 @@
 	<beaconType id="map_icon_start" global="false">
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
-	<text>This sector, according to your database, belongs to both the Free Mantis and Zoltan Ministry simultaneously. A battleground between the two, after the Zoltan refused the Free Mantis refugees entry, the Free Mantis attacked full force and captured several sectors of their own. This sector appears to be revered in the favor of hunting Zoltan citizens out of spite.</text>
+	<text>This sector, according to your database, belongs to both the Free Mantis and Zoltan Ministry simultaneously. A battleground between the two, after the Zoltans refused the Free Mantis refugees entry, the Free Mantis attacked full force and captured several sectors of their own. This sector appears to be revered in the favor of hunting Zoltan citizens out of spite.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<changeBackground>BACK_SECTOR_FREEMANTIS</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_HUNTGROUNDS" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
-	<choice hidden="true" req="MORALITY_FREEMANTIS" lvl="0" max_lvl="4" max_group="0" blue="false">
+	<choice hidden="true" req="rep_freemantis" lvl="-2147483648" max_lvl="4" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_HUNTGROUNDS"/>
 	</choice>
-	<choice hidden="true" req="MORALITY_FREEMANTIS" lvl="5" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_freemantis" lvl="5" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_FREEMANTIS_CRIMINAL"/>
 	</choice>
@@ -5993,67 +6358,67 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="energy" blue="false">
+			<choice hidden="true" req="zoltan" blue="false">
 				<text>Let them take your Zoltan and proceed.</text>
 				<event>
 					<text>The Free Mantis shackle up your Zoltan crew and drag them off your ship. "Glad to clear up scum on Federation vessel! If needing another check, just stop by and we help out." The Free Mantis drop off some scrap to "compensate for the Zoltan's damage" and leave.</text>
 					<autoReward level="LOW">scrap_only</autoReward>
-					<removeCrew class="energy">
+					<removeCrew class="zoltan">
 						<clone>false</clone>
 						<text>Your Zoltan cannot be cloned while they are still alive. For now, at least...</text>
 					</removeCrew>
 				</event>
 			</choice>
-			<choice hidden="true" req="monk" blue="false">
+			<choice hidden="true" req="zoltan_monk" blue="false">
 				<text>Let them take your Monk and proceed.</text>
 				<event>
 					<text>The Free Mantis shackle up your Zoltan crew and drag them off your ship. "Glad to clear up scum on Federation vessel! If needing another check, just stop by and we help out." The Free Mantis drop off some scrap to "compensate for the Zoltan's damage" and leave.</text>
 					<autoReward level="LOW">scrap_only</autoReward>
-					<removeCrew class="monk">
+					<removeCrew class="zoltan_monk">
 						<clone>false</clone>
 						<text>Your Zoltan cannot be cloned while they are still alive. For now, at least...</text>
 					</removeCrew>
 				</event>
 			</choice>
-			<choice hidden="true" req="peace" blue="false">
+			<choice hidden="true" req="zoltan_peacekeeper" blue="false">
 				<text>Let them take your Zoltan Peacekeeper and proceed.</text>
 				<event>
 					<text>The Free Mantis shackle up your Zoltan crew and drag them off your ship. "Glad to clear up scum on Federation vessel! If needing another check, just stop by and we help out." The Free Mantis drop off some scrap to "compensate for the Zoltan's damage" and leave.</text>
 					<autoReward level="HIGH">scrap_only</autoReward>
-					<removeCrew class="peace">
+					<removeCrew class="zoltan_peacekeeper">
 						<clone>false</clone>
 						<text>Your Zoltan cannot be cloned while they are still alive. For now, at least...</text>
 					</removeCrew>
 				</event>
 			</choice>
-			<choice hidden="true" req="bomber" blue="false">
+			<choice hidden="true" req="zoltan_devotee" blue="false">
 				<text>Let them take your Devotee and proceed.</text>
 				<event>
 					<text>The Free Mantis shackle up your Zoltan crew and drag them off your ship. "Glad to clear up scum on Federation vessel! If needing another check, just stop by and we help out." The Free Mantis drop off some scrap to "compensate for the Zoltan's damage" and leave.</text>
 					<autoReward level="LOW">scrap_only</autoReward>
-					<removeCrew class="bomber">
+					<removeCrew class="zoltan_devotee">
 						<clone>false</clone>
 						<text>Your Zoltan cannot be cloned while they are still alive. For now, at least...</text>
 					</removeCrew>
 				</event>
 			</choice>
-			<choice hidden="true" req="radical" blue="false">
-				<text>Let them take your Radical and proceed.</text>
+			<choice hidden="true" req="zoltan_martyr" blue="false">
+				<text>Let them take your Martyr and proceed.</text>
 				<event>
 					<text>The Free Mantis shackle up your Zoltan crew and drag them off your ship. "Glad to clear up scum on Federation vessel! If needing another check, just stop by and we help out." The Free Mantis drop off some scrap to "compensate for the Zoltan's damage" and leave.</text>
 					<autoReward level="HIGH">scrap_only</autoReward>
-					<removeCrew class="radical">
+					<removeCrew class="zoltan_martyr">
 						<clone>false</clone>
 						<text>Your Zoltan cannot be cloned while they are still alive. For now, at least...</text>
 					</removeCrew>
 				</event>
 			</choice>
-			<choice hidden="true" req="deathless" blue="false">
+			<choice hidden="true" req="unique_devorak" blue="false">
 				<text>Let them take Devorak and proceed.</text>
 				<event>
 					<text>The Free Mantis shackle up your Zoltan crew and drag them off your ship. "Glad to clear up scum on Federation vessel! If needing another check, just stop by and we help out." The Free Mantis drop off some scrap to "compensate for the Zoltan's damage" and leave.</text>
 					<autoReward level="HIGH">weapon</autoReward>
-					<removeCrew class="deathless">
+					<removeCrew class="unique_devorak">
 						<clone>false</clone>
 						<text>Your Zoltan cannot be cloned while they are still alive. For now, at least...</text>
 					</removeCrew>
@@ -6078,29 +6443,29 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="freemantis">
+	<choice hidden="true" req="mantis_free">
 		<text>(Free Mantis Crew) Convince them to let you past.</text>
 		<event>
 			<text>Your Free Mantis speaks briefly with the guard, but it seems they have already convinced them to let you pass without further question.</text>
 		</event>
 	</choice>
-	<choice hidden="true" req="warlord">
+	<choice hidden="true" req="mantis_warlord">
 		<text>(Warlord Crew) Convince them to let you past and donate supplies.</text>
         <event>
             <text>Your Free Mantis speaks briefly with the guard, but it seems they have already convinced them to let you pass without further question. The guard also transfers over some supplies, seeing a Warlord is aboard your ship.</text>
             <autoReward level="MED">standard</autoReward>
 		</event>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -6110,8 +6475,8 @@
 	<destroyed load="GUARD_HUNTGROUNDS_DESTROY"/>
 	<deadCrew load="GUARD_HUNTGROUNDS_DEADCREW"/>
 	<crew>
-		<crewMember type="freemantis" prop="0.70"/>
-		<crewMember type="warlord" prop="0.30"/>
+		<crewMember type="mantis_free" prop="0.70"/>
+		<crewMember type="mantis_warlord" prop="0.30"/>
 	</crew>
 </ship>
 
@@ -6137,8 +6502,8 @@
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
 	<crew>
-		<crewMember type="freemantis" prop="0.70"/>
-		<crewMember type="warlord" prop="0.30"/>
+		<crewMember type="mantis_free" prop="0.70"/>
+		<crewMember type="mantis_warlord" prop="0.30"/>
 	</crew>
 </ship>
 <event name="GUARD_HUNTGROUNDS_FOLLOWUP">
@@ -6189,7 +6554,9 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>The usual inhabitants of this sector, the Outcasts, are the least of your worries. Fortunately, the SSLG has little reason to get involved with you as well, so as long as the Theocracy can hold out long enough for you to get through safely, then this sector should prove to be a welcome rest from the chaos elsewhere in the galaxy. Though, your luck rarely seems to go that way...</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<changeBackground>BACK_SECTOR_ROCK</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_BADLANDS" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
@@ -6222,7 +6589,7 @@
 		<text>Lie; warn them of false danger.</text>
 		<event load="GUARD_BADLANDS_DANGER"/>
 	</choice>
-	<choice req="crusader" hidden="true">
+	<choice req="rock_crusader" hidden="true">
 		<text>(Crusader Crew) "The Theocracy approaches. Arm your men."</text>
 		<event>
 			<text>"If it is true your crew comes from the Inquisition themselves, then it would be foolish to ignore their advice. We will prepare ourselves at once. I do not know why you would seek to tell us this... but I will not make the mistake of ignoring this omen. You have our thanks. It is best you arm yourself too."</text>
@@ -6230,7 +6597,7 @@
 			<weapon name="RANDOM"/>
 		</event>
 	</choice>
-	<choice req="paladin" hidden="true">
+	<choice req="rock_paladin" hidden="true">
 		<text>(Paladin Crew) "The Theocracy approaches. Arm your men."</text>
 		<event>
 			<text>"If it is true your crew comes from the Inquisition themselves, then it would be foolish to ignore their advice. We will prepare ourselves at once. I do not know why you would seek to tell us this... but I will not make the mistake of ignoring this omen. You have our thanks. It is best you arm yourself too."</text>
@@ -6293,7 +6660,9 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>You've arrived in the Duskbringer Capitol, not to be confused with the Zoltan Capital. The spelling of the sector is a difficult topic, but it's the least of your concerns. This sector is populated by the most devoted of the Duskbringers, dangerous radical Zoltans whose fascist beliefs hardly coincide with those of the Federation. Keep a watchful eye as you traverse this sector, and watch out for stray Rebels too!</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<changeBackground>BACK_SECTOR_DUSKBRINGER</changeBackground>
+	<playSound>lightspeed</playSound>
 	<customFleet right="false" firing="false" autoDarkening="false">CUSTOM_FLEET_REBEL</customFleet>
 	<customFleet right="true" firing="true" autoDarkening="true">CUSTOM_FLEET_DUSK</customFleet>
 	<ship load="SHIP_GUARD_DUSK_ELITE" hostile="false"/>
@@ -6328,21 +6697,21 @@
 		<text>(Zoltan Crew) Attempt to convince the Duskbringers to aid you.</text>
 		<event load="GUARD_DUSKCAP_LIE"/>
 	</choice>
-	<choice hidden="true" req="bomber">
+	<choice hidden="true" req="zoltan_devotee">
 		<text>(Devotee Crew) Convince the Duskbringers to aid you.</text>
 		<event>
 			<text>Though most of the Duskbringer forces are busy handling the Rebel attackers, your Devotee still manages to catch the attention of one of the support ships. Panicked and in a hurry, they don't have time to evaluate your ship and quickly send over some supplies before rushing off to evacuate the injured from a nearby wreck.</text>
 			<autoReward level="LOW">stuff</autoReward>
 		</event>
 	</choice>
-	<choice hidden="true" req="radical">
-		<text>(Radical Crew) Convince the Duskbringers to aid you.</text>
+	<choice hidden="true" req="zoltan_martyr">
+		<text>(Martyr Crew) Convince the Duskbringers to aid you.</text>
 		<event>
-			<text>Though most of the Duskbringer forces are busy handling the Rebel attackers, your Radical still manages to catch the attention of one of the support ships. Panicked and in a hurry, they don't have time to evaluate your ship and quickly send over some supplies before rushing off to evacuate the injured from a nearby wreck.</text>
+			<text>Though most of the Duskbringer forces are busy handling the Rebel attackers, your Martyr still manages to catch the attention of one of the support ships. Panicked and in a hurry, they don't have time to evaluate your ship and quickly send over some supplies before rushing off to evacuate the injured from a nearby wreck.</text>
 			<autoReward level="HIGH">stuff</autoReward>
 		</event>
 	</choice>
-	<choice hidden="true" req="deathless">
+	<choice hidden="true" req="unique_devorak">
 		<text>(Devorak) Convince the Duskbringers to aid you.</text>
 		<event>
 			<text>"By the Eye! You carry the great Devorak with you? H-how is this possible? N-no, I dare not question a man so devoted. Please, take everything we can offer. May the Eye see a bright future for your travels."</text>
@@ -6364,9 +6733,9 @@
 	<destroyed load="GUARD_DUSKCAP_DESTROY"/>
 	<deadCrew load="GUARD_DUSKCAP_DEADCREW"/>
 	<crew>
-		<crewMember type="energy" prop="0.30"/>
-		<crewMember type="bomber" prop="0.30"/>
-		<crewMember type="radical" prop="0.30"/>
+		<crewMember type="zoltan" prop="0.30"/>
+		<crewMember type="zoltan_devotee" prop="0.30"/>
+		<crewMember type="zoltan_martyr" prop="0.30"/>
 	</crew>
 </ship>
 
@@ -6391,10 +6760,15 @@
 <ship name="SHIP_DUSKCAP_REINFORCEMENTS" auto_blueprint="LIST_SHIPS_DUSKBRINGER_ELITE_FIGHT">
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
+	<crew>
+		<crewMember type="zoltan" prop="0.30"/>
+		<crewMember type="zoltan_devotee" prop="0.30"/>
+		<crewMember type="zoltan_martyr" prop="0.30"/>
+	</crew>
 </ship>
 <event name="GUARD_DUSKCAP_FOLLOWUP">
 	<noQuestText/>
-	<removeHazards/>
+<!---	<removeHazards/> -->
 	<text>By killing the Duskbringer guard, you have no doubt caused them to dispatch reinforcements to track you down. Watch your step as you explore the sector.</text>
 	<quest event="REINFORCEMENTS_DUSKCAP"/>
 	<choice>
@@ -6440,14 +6814,16 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>You have discovered the Orchid Gardenworlds, the homeworlds of the shy but usually friendly race of plants. Though they're highly protective of this sector and the massive plants from which they grow their signature kernel weapons from, they're not likely to be unfriendly to a Federation ship such as yourself.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<changeBackground>BACK_SECTOR_ORCHID</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_GARDEN" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
-	<choice hidden="true" req="MORALITY_ORCHID" lvl="0" max_lvl="2" max_group="0" blue="false">
+	<choice hidden="true" req="rep_orchid" lvl="-2147483648" max_lvl="2" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_GARDEN"/>
 	</choice>
-	<choice hidden="true" req="MORALITY_ORCHID" lvl="3" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_orchid" lvl="3" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_ORCHID_CRIMINAL"/>
 	</choice>
@@ -6493,14 +6869,14 @@
 		<text>Request supplies.</text>
 		<event load="GUARD_GARDEN_REQUEST"/>
 	</choice>
-	<choice req="LIST_CREW_ORCHID" hidden="true">
+	<choice req="orchid" hidden="true">
 		<text>(Orchid Crew) Request assistance.</text>
 		<event>
 			<text>Though the two Orchids speak no words, they seem to communicate briefly through a flash of their petals and the guard agrees to give some supplies.</text>
 			<autoReward level="LOW">stuff</autoReward>
 		</event>
 	</choice>
-	<choice req="chieftain" hidden="true">
+	<choice req="orchid_chieftain" hidden="true">
 		<text>(Chieftain Crew) Request a weapon.</text>
 		<event>
 			<text>The Orchid guard nods after seeing your crew and transfers over a Kernel weapon.</text>
@@ -6539,7 +6915,7 @@
 	<deadCrew load="GUARD_GARDEN_DEADCREW"/>
 	<crew>
 		<crewMember type="orchid" prop="0.6"/>
-		<crewMember type="chieftain" prop="0.4"/>
+		<crewMember type="orchid_chieftain" prop="0.4"/>
 	</crew>
 </ship>
 
@@ -6565,6 +6941,10 @@
 <ship name="SHIP_GARDEN_REINFORCEMENTS" auto_blueprint="LIST_SHIPS_ORCHID_ELITE_FIGHT">
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
+	<crew>
+		<crewMember type="orchid_chieftain" prop="0.50"/>
+		<crewMember type="orchid" prop="0.50"/>	
+	</crew>
 </ship>
 <event name="GUARD_GARDEN_FOLLOWUP">
 	<noQuestText/>
@@ -6614,8 +6994,10 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>You've arrived at the Rebel Stronghold. This is a very dangerous place for you to be. Make sure your weapons are always prepared and get out as fast as you can.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<ship load="SHIP_GUARD_REBEL_S" hostile="false"/>
 	<changeBackground>BACK_SECTOR_REBEL</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<modifyPursuit amount="1"/>
 	<customFleet right="false" firing="true" autoDarkening="false">CUSTOM_FLEET_REBEL</customFleet>
@@ -6645,8 +7027,8 @@
 	<destroyed load="GUARD_REBELHOLD_DESTROY"/>
 	<deadCrew load="GUARD_REBELHOLD_DEADCREW"/>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -6659,9 +7041,9 @@
 	</choice>
 </event>
 <event name="GUARD_REBELHOLD_DEADCREW">
-	<text>You have defeated the MFK Ace guard. Without crew on-board to stop you, you can investigate their cargo. You find a well trained slave chained up in their cargo-bay, who you rescue and move on to scrap their hull.</text>
+	<text>You have defeated the MFK Ace guard. Without crew on-board to stop you, you can investigate their cargo. You find a Federation operative detained in their cargo-bay who you rescue, and move on to scrap their hull.</text>
 	<autoReward level="HIGH">standard</autoReward>
-	<crewMember amount="1" all_skills="1"/>
+	<crewMember amount="1" class="human_soldier" all_skills="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="GUARD_REBELHOLD_FOLLOWUP"/>
@@ -6708,6 +7090,125 @@
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+					WENTWORTH INNOVATIONS
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->	
+<event name="START_ESTATE">
+	<preventQuest/>
+	<beaconType id="map_icon_start" global="false">
+		<color r="46" g="252" b="51" a="1"/>
+	</beaconType>
+	<text>Arcadia might be the new corporate poster-child of the Union, but Wentworth Innovations remains ever churning out its supply of drone and AI tech. Working in concerning openness with the Rebellion, the industrial titan is responsible for the production of the majority of the Rebel Auto-ships you'll encounter outside of Universe 1. There's plenty of human faces to see around, but expect most of the fighting to be done versus murderous automations.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
+	<modifyPursuit amount="1"/>
+	<ship load="SHIP_GUARD_ESTATE" hostile="false"/>
+	<img back="BACK_SECTOR_ESTATE" planet="NONE"/>
+	<remove name="HIDDEN DUMMY"/>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event>
+			<text>As you approach the entrance beacon, you receive a message of confirmation from C.U.R.A. - "You've found your way here. Congratulations. Now you merely need to avoid dying until you can reach the Headquarters. I've marked the location on your map. Do not fail me, Renegade. This is your final task."</text>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="GUARD_ESTATE"/>
+			</choice>
+		</event>
+	</choice>
+</event>
+
+<event name="GUARD_ESTATE">
+	<text>Almost immediately following, an automated vessel appears, branded with the Wentworth iconography. "Greetings, valued guest! Unfortunately, unauthorized clientele are not welcome on these premises. Through sophisticated and patended algorithms developed by the top engineers at Wentworth Innovations, I have been able to determine that you are: [FEDERATION SCUM]. You must be stupid coming here, hehe! [INITIATING ASS-KICKING MODE]."</text>
+	<choice hidden="true">
+		<text>Prepare for combat!</text>
+		<event>
+			<text>You lock your weapons onto the guard and move in to attack.</text>
+			<ship hostile="true"/>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="COMBAT_CHECK"/>
+			</choice>
+		</event>
+	</choice>
+	<choice req="hacking">
+		<text>(Hacking) Attempt to deactivate the drone.</text>
+		<event load="GUARD_AUTO_HACK"/>
+	</choice>
+	<choice req="LIST_CREW_ENGINEER" hidden="true">
+		<text>(Engineer Crew) Access the drone's mainframe and disable it.</text>
+		<event>
+			<text>Your Engineer shuts off the Auto-guard, allowing you to pass.</text>
+		</event>
+	</choice>
+	<choice hidden="true" req="cloaking">
+		<text>(Cloaking) Cloak and try to escape.</text>
+		<event load="GUARD_CLOAK"/>
+	</choice>
+	<choice hidden="true" req="engines" lvl="5">
+		<text>(Adv. Engines) Try to escape the guard.</text>
+		<event load="GUARD_ESCAPE"/>
+	</choice>
+	<choice hidden="true" req="pilot" lvl="3">
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
+		<event load="GUARD_ESCAPE"/>
+	</choice>
+</event>
+
+<ship name="SHIP_GUARD_ESTATE" auto_blueprint="MU_ESTATE_SENTINEL">
+	<surrender min="999" max="999" load="GUARD_SIGNAL"/>
+	<destroyed load="GUARD_ESTATE_DESTROY"/>
+</ship>
+
+<event name="GUARD_ESTATE_DESTROY">
+	<text>You have defeated the Auto-guard. You salvage the remains.</text>
+	<autoReward level="HIGH">standard</autoReward>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event load="GUARD_ESTATE_FOLLOWUP"/>
+	</choice>
+</event>
+
+<event name="GUARD_ESTATE_FOLLOWUP">
+	<noQuestText/>
+	<removeHazards/>
+	<text>By killing the Auto-guard, you have no doubt caused them to dispatch reinforcements to track you down. Watch your step as you explore the sector.</text>
+	<quest event="REINFORCEMENTS_ESTATE"/>
+	<choice>
+		<text>Do something onboard the ship.</text>
+		<event load="STORAGE_CHECK"/>
+	</choice>
+	<choice>
+		<text>Do nothing.</text>
+		<event/>
+	</choice>
+</event>
+<ship name="SHIP_ESTATE_REINFORCEMENTS" auto_blueprint="LIST_SHIPS_ESTATE_AUTO">
+	<destroyed load="DESTROYED_REINFORCEMENTS"/>
+</ship>
+<event name="REINFORCEMENTS_ESTATE">
+	<preventQuest/>
+	<beaconType id="map_icon_reinforcements" global="true" req="LOOT_COMPASS">
+		<color r="200" g="55" b="82" a="1"/>
+		<unvisitedTooltip>An unvisited location.</unvisitedTooltip>
+		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+		<undiscoveredTooltip>An unvisited location.</undiscoveredTooltip>
+	</beaconType>
+	<text>A nearby Auto-ship swivvels and scans your ship. "Apologies, dear customer, but I'm afraid you have been permanently barred from entering Wentworth Innovations property for all foreseable futures. On behalf of the company, please die."</text>
+	<ship load="SHIP_ESTATE_REINFORCEMENTS" hostile="true"/>
+	<environment type="PDS" target="player"/>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event load="COMBAT_CHECK"/>
+	</choice>
+</event>
+
+<!--
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 					THE JEROME PROTECTORATE	
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -6719,11 +7220,11 @@
 	<beaconType id="map_icon_start" global="false">
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
-	<text>You've traveled to the location of the sector you overheard from the MFK Aces. Somewhere here lurks Admiral Vance of the Rebel fleet's nephew, and if he takes after his uncle, then chances are he won't be a friendly face.</text>
+	<text>You've finally arrived, and it seems the transport you followed has too. Before you is a massive wall with major security measures in place. You hide behind a small asteroid cluster while you watch the transport submit their ID. "Apologies for the delay. Had a little encounter with some pesky Feds..." </text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<ship load="SHIP_GUARD_REBEL_JERRY" hostile="false"/>
-	<img back="BACK_SECTOR_REBEL" planet="PLANET_INVISIBLE"/>
-	<remove name="HIDDEN DUMMY"/>
-	<hiddenAug>MARKER_BEENTOJERRY</hiddenAug>
+	<img back="BACK_SECTOR_JERRY" planet="PLANET_INVISIBLE"/>
+	<variable name="loc_beentoprotectorate" op="set" val="1"/>
 	<customFleet right="false" firing="true" autoDarkening="false">CUSTOM_FLEET_REBEL</customFleet>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -6732,11 +7233,11 @@
 </event>
 
 <event name="GUARD_JERRY">
-	<text>An MFK Ace protects the entrance to the sector, but they make no move to attack you. Instead, you receive a hail. "You a visitor? One of the boss's friends? State your business!"</text>
+	<text>As the transport is let through, almost immediately a vessel spots you. There's some shuffling, and then an MFK Guard is dispatched to handle you. "Halt! This sector is off-limits! Wait... are you a renegade?"</text>
 	<choice hidden="true">
-		<text>We've come to kill Vance's nephew, try and stop us!</text>
+		<text>Crap, looks like there's no avoiding this!</text>
 		<event>
-			<text>"What?! Why would you do that?" The guard seems baffled, but it's clear they've given up being peaceful and raise their weapons!</text>
+			<text>"Damn it, we got another Fed over here! Initiate the lockdown immediately!" The MFK Ace ship immediately locks onto you, and in the distance alarms begin to play in the city below.</text>
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -6744,24 +7245,19 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true">
-		<text>Uh... yeah, sure.</text>
-		<event>
-			<text>The guard stares at you for a long minute, but inevitably backs away.  "Alright then. Say hello to the boss for me." With that, the highly trained Rebel kill-soldier waves your Federation-owned vessel through into a high importance Rebel sector. Weird...</text>
-		</event>
-	</choice>
 </event>
 
 <ship name="SHIP_GUARD_REBEL_JERRY" auto_blueprint="MU_REBEL_GUARD_SELITE">
+	<surrender min="999" max="999" load="GUARD_SIGNAL"/>
 	<destroyed load="GUARD_JERRY_DESTROY"/>
 	<deadCrew load="GUARD_JERRY_DEADCREW"/>
 	<crew>
-		<crewMember type="mfk" prop="1"/>
+		<crewMember type="human_mfk" prop="1"/>
 	</crew>
 </ship>
 
 <event name="GUARD_JERRY_DESTROY">
-	<text>The MFK Ace ship has been defeated. As their ship explodes, you catch their captain, collapsing to her knees, utter the final words, "Damn you... Just... don't hurt... him..." A confusing final message, but you ignore it and scrap the ship.</text>
+	<text>The MFK Ace ship has been defeated. As their ship explodes, you catch their captain, collapsing to her knees, utter her final words. "God damn you and the Federation. You'll rue this day once Cyra gets ahold of you..." You ignore this premonition and scrap the ship.</text>
 	<autoReward level="HIGH">item</autoReward>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -6769,17 +7265,42 @@
 	</choice>
 </event>
 <event name="GUARD_JERRY_DEADCREW">
-	<text>The MFK Ace ship has been neutralized. You catch their captain, collapsing to her knees, utter the final words, "Damn you... Just... don't hurt... him..." A confusing final message, but you ignore it and scrap the ship.</text>
+	<text>The MFK Ace ship has been neutralized. You catch their captain, collapsing to her knees, utter the final words, "God damn you and the Federation. You'll rue this day once Cyra gets ahold of you..." You ignore this premonition and scrap the ship.</text>
 	<autoReward level="HIGH">item</autoReward>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="GUARD_JERRY_FOLLOWUP"/>
 	</choice>
 </event>
+
+<ship name="SHIP_JERRY_REINFORCEMENTS" auto_blueprint="LIST_SHIPS_REBEL_SELITE_FIGHT">
+	<destroyed load="DESTROYED_REINFORCEMENTS"/>
+	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
+	<crew>
+		<crewMember type="human_mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+	</crew>
+</ship>
 <event name="GUARD_JERRY_FOLLOWUP">
 	<noQuestText/>
-	<removeHazards/>
-	<text>You expect the guard to have dispatched reinforcements, but yet scans show no distress signals were made. Very odd...</text>
+	<text>Seems there's no luck for you - the ASB remains locked onto your location and the barrier's defenses are only preparing themselves further. There'll definitely be reinforcements sent after you, but for now you've got to push through, and do so quickly!</text>
+	<quest event="REINFORCEMENTS_JERRY"/>
+</event>
+<event name="REINFORCEMENTS_JERRY">
+	<preventQuest/>
+	<beaconType id="map_icon_reinforcements" global="true" req="LOOT_COMPASS">
+		<color r="200" g="55" b="82" a="1"/>
+		<unvisitedTooltip>An unvisited location.</unvisitedTooltip>
+		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+		<undiscoveredTooltip>An unvisited location.</undiscoveredTooltip>
+	</beaconType>
+	<text>An MFK Ace ship comes screaming towards you from behind a nearby moon. Seems this is an ambush, and there's only one good reason why... "You've got gusto kid, too bad that enthusiasm was pointed towards us rather than something that won't get you killed! I was sent here to do business, but my friend was on that guard ship. This is personal, you bastard."</text>
+	<ship load="SHIP_JERRY_REINFORCEMENTS" hostile="true"/>
+	<environment type="PDS" target="player"/>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event load="COMBAT_CHECK"/>
+	</choice>
 </event>
 
 <!--
@@ -6799,8 +7320,10 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>You've discovered the Central Automated Rebel shipyards. This sector is no doubt swarming with automated ships and factories.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<ship load="SHIP_GUARD_SHIPYARD" hostile="false"/>
 	<changeBackground>BACK_SECTOR_AUTO</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -6825,7 +7348,7 @@
 		<text>(Hacking) Attempt to deactivate the drone.</text>
 		<event load="GUARD_AUTO_HACK"/>
 	</choice>
-	<choice req="engineer" hidden="true">
+	<choice req="LIST_CREW_ENGINEER" hidden="true">
 		<text>(Engineer Crew) Access the drone's mainframe and disable it.</text>
 		<event>
 			<text>Your Engineer shuts off the Auto-guard, allowing you to pass.</text>
@@ -6836,11 +7359,11 @@
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -6907,7 +7430,9 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>You've taken a large risk coming here. Slugs are known for being dangerous tricksters and cheaters, but now you're in the lion's den. Trust nothing here, not even the silence around you.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<changeBackground>BACK_SECTOR_SLUG</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_SLUG_ELITE" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
@@ -6946,6 +7471,19 @@
 		<text>(Slug Crew) Negotiate with them.</text>
 		<event load="GUARD_SLUGHOME_NEGOTIATE_GOOD"/>
 	</choice>
+	<choice hidden="true" req="slug_knight">
+		<text>(Knight Crew) Your Knight has some discipline to teach to that Clairvoyant.</text>
+		<event>
+			<text>Your Knight makes their way towards the comms, and upon seeing them, the Saboteur at the other end falls in visible discomfort. Instead of exchanging words however, the Knight merely enters into what seems to be a transe state, joined in by the Clairvoyant at the other side.</text>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event>
+					<text>After a short time, your Knight shakes off the daze and appears triumphant, while the Slug at the other end collapses. One of their colleagues hails back: "If thisss isss the caliber of subordinatesss you keep, there isss no way we can ssstand up against you. Take thisss and let us ssswallow our ssshame."</text>
+					<autoReward level="HIGH">stuff</autoReward>
+				</event>
+			</choice>
+		</event>					
+	</choice>
 	<choice hidden="true" req="mind">
 		<text>(Mind Control) Your mind control will not work, as the guard is staffed by Slugs.</text>
 		<event>
@@ -6958,16 +7496,16 @@
 			</item_modify>
 		</event>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -7005,7 +7543,7 @@
 	<event load="GUARD_SLUGHOME_NEGOTIATE_GOOD"/>
 </eventList>
 <event name="GUARD_SLUGHOME_NEGOTIATE_GOOD">
-	<text>"Hmmmm, an interesssting proposssition. Maybe we can make this mutually beneficccial? What if we throw in a weapon, and lowered the price?"</text>
+	<text>"Hmmmm, an interesssting proposssitttion. Maybe we can make thisss mutually beneficccial? What if we throw in a weapon, and lower the price?"</text>
 	<choice hidden="true">
 		<text>Refuse.</text>
 		<event>
@@ -7020,7 +7558,7 @@
 	<choice>
 		<text>Pay their new fee.</text>
 		<event>
-			<text>"Sssse? We are not all unreassssonable. Pleassssure doing busssiness with you."</text>
+			<text>"Ssssee? We are not all unreassssonable. Pleassssure doing busssinesss with you."</text>
 			<weapon name="RANDOM"/>
 			<item_modify>
 				<item type="scrap" min="-80" max="-80"/>
@@ -7029,13 +7567,13 @@
 	</choice>
 </event>
 
-<ship name="SHIP_GUARD_SLUG_ELITE" auto_blueprint="MU_SLUG_GUARD_C">
+<ship name="SHIP_GUARD_SLUG_ELITE" auto_blueprint="MU_SLUG_GUARD_ELITE">
 	<surrender min="999" max="999" load="GUARD_SIGNAL"/>
 	<destroyed load="GUARD_SLUGHOME_DESTROY"/>
 	<deadCrew load="GUARD_SLUGHOME_DEADCREW"/>
 	<crew>
 		<crewMember type="slug" prop="0.80"/>
-		<crewMember type="sabo" prop="0.20"/>	
+		<crewMember type="slug_saboteur" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -7057,9 +7595,13 @@
 	</choice>
 </event>
 
-<ship name="SHIP_SLUGHOME_REINFORCEMENTS" auto_blueprint="LIST_SHIPS_SLUG_C_FIGHT">
+<ship name="SHIP_SLUGHOME_REINFORCEMENTS" auto_blueprint="LIST_SHIPS_SLUG_ELITE_FIGHT">
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
+	<crew>
+		<crewMember type="slug_saboteur" prop="0.40"/>
+		<crewMember type="slug" prop="0.60"/>	
+	</crew>
 </ship>
 <event name="GUARD_SLUGHOME_FOLLOWUP">
 	<noQuestText/>
@@ -7132,7 +7674,9 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>Your arrival in Guild territory has been all but a few minutes past but you're already on edge. The EHG isn't inherently hostile to the Federation, but your ship would make a fine addition to their hangar's collection... All the same, you might be able to make some friends here as well.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<changeBackground>BACK_SECTOR_SLUG</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_CLAN" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
@@ -7225,7 +7769,7 @@
 				<text>Start a bar fight for the hell of it.</text>
 				<event>
 					<text>You walk over to the bar, and pick up a glass of awful smelling liquid, then smash it over the head of one of the nearby Clansmen. "Oi lad, what the bloody hell are you doing?" The Clansman draws his rifle, followed by several of his friends. This was a really stupid idea.</text>
-					<boarders min="4" max="5" class="snail"/>
+					<boarders min="4" max="5" class="slug_clansman"/>
 				</event>
 			</choice>
 			<choice hidden="true">
@@ -7275,6 +7819,10 @@
 	<surrender min="999" max="999" load="GUARD_SIGNAL"/>
 	<destroyed load="GUARD_CLAN_DESTROY"/>
 	<deadCrew load="GUARD_CLAN_DEADCREW"/>
+	<crew>
+		<crewMember type="slug_clansman" prop="0.7"/>
+		<crewMember type="slug_ranger" prop="0.3"/>
+	</crew>
 </ship>
 
 <event name="GUARD_CLAN_DESTROY">
@@ -7370,6 +7918,7 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>According to Slocknog, this sector should currently be underway with the Crown Theft Festival. Nights will likely be hiding somewhere at the Royal Palace, so if you're hoping to watch the fireworks you'll have to head there.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<img back="BACK_SECTOR_SLUG" planet="NONE"/>
 	<ship load="SHIP_GUARD_KNIGHT" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
@@ -7406,16 +7955,16 @@
 					</item_modify>
 				</event>
 			</choice>
-			<choice hidden="true" req="cloak">
+			<choice hidden="true" req="cloaking">
 				<text>(Cloaking) Cloak and try to escape.</text>
 				<event load="GUARD_CLOAK"/>
 			</choice>
 			<choice hidden="true" req="engines" lvl="5">
-				<text>(Adv Engines) Try to escape the guard.</text>
+				<text>(Adv. Engines) Try to escape the guard.</text>
 				<event load="GUARD_ESCAPE"/>
 			</choice>
 			<choice hidden="true" req="pilot" lvl="3">
-				<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+				<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 				<event load="GUARD_ESCAPE"/>
 			</choice>
 		</event>
@@ -7438,12 +7987,12 @@
 	<deadCrew load="GUARD_NIGHTS_DEADCREW"/>
 	<crew>
 		<crewMember type="slug" prop="0.50"/>
-		<crewMember type="knight" prop="0.50"/>	
+		<crewMember type="slug_knight" prop="0.50"/>	
 	</crew>
 </ship>
 
 <event name="GUARD_NIGHTS_DEFEAT">
-	<text>The guard has been defeated. As you pull closer to investigate, you notice a small inscription around the logo on their hull reading "The Knights of Nights." You've never seen ships like this before, and the Federation has no information on them, but you suspect this sector might be swarming with them...</text>
+	<text>The guard has been defeated. As you pull closer to investigate, you notice a small inscription around the logo on their hull reading "The Knights of Nights". You've never seen ships like this before, and the Federation has no information on them, but you suspect this sector might be swarming with them...</text>
 	<autoReward level="HIGH">standard</autoReward>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -7451,7 +8000,7 @@
 	</choice>
 </event>
 <event name="GUARD_NIGHTS_DEADCREW">
-	<text>The guard has been defeated. As you pull closer to investigate, you notice a small inscription around the logo on their hull reading "The Knights of Nights." You've never seen ships like this before, and the Federation has no information on them, but you suspect this sector might be swarming with them...</text>
+	<text>The guard has been defeated. As you pull closer to investigate, you notice a small inscription around the logo on their hull reading "The Knights of Nights". You've never seen ships like this before, and the Federation has no information on them, but you suspect this sector might be swarming with them...</text>
 	<autoReward level="HIGH">standard</autoReward>
 	<weapon name="LIST_LOOT_KNIGHT"/>
 	<choice hidden="true">
@@ -7465,7 +8014,7 @@
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
 	<crew>
 		<crewMember type="slug" prop="0.50"/>
-		<crewMember type="knight" prop="0.50"/>	
+		<crewMember type="slug_knight" prop="0.50"/>	
 	</crew>
 </ship>
 <event name="GUARD_NIGHTS_FOLLOWUP">
@@ -7579,16 +8128,16 @@
 				<text>(Mind Control) You will allow us to pass.</text>
 				<event load="GUARD_MIND"/>
 			</choice>
-			<choice hidden="true" req="cloak">
+			<choice hidden="true" req="cloaking">
 				<text>(Cloaking) Cloak and try to escape.</text>
 				<event load="GUARD_CLOAK"/>
 			</choice>
 			<choice hidden="true" req="engines" lvl="5">
-				<text>(Adv Engines) Try to escape the guard.</text>
+				<text>(Adv. Engines) Try to escape the guard.</text>
 				<event load="GUARD_ESCAPE"/>
 			</choice>
 			<choice hidden="true" req="pilot" lvl="3">
-				<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+				<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 				<event load="GUARD_ESCAPE"/>
 			</choice>
 		</event>
@@ -7600,7 +8149,7 @@
 	<destroyed load="GUARD_SHELLHOME_DESTROY"/>
 	<deadCrew load="GUARD_SHELLHOME_DEADCREW"/>
 	<crew>
-		<crewMember type="toxic" prop="0.40"/>
+		<crewMember type="shell_radiant" prop="0.40"/>
 		<crewMember type="shell" prop="0.60"/>
 	</crew>
 </ship>
@@ -7628,7 +8177,7 @@
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
 	<crew>
-		<crewMember type="toxic" prop="0.40"/>
+		<crewMember type="shell_radiant" prop="0.40"/>
 		<crewMember type="shell" prop="0.60"/>
 	</crew>
 </ship>
@@ -7660,8 +8209,10 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>This sector does not host the homeworlds for which the Shells came from. After a long competition with the Slugs for control of their original sector, the Shells gave up and migrated to a new sector.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<ship load="SHIP_GUARD_SHELLHOME" hostile="false"/>
 	<changeBackground>BACK_SECTOR_SHELL</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -7712,30 +8263,30 @@
 			<text>Your Shell speaks briefly with the guard, but it seems they have already convinced them to let you pass without further question.</text>
 		</event>
 	</choice>
-	<choice hidden="true" req="toxic">
+	<choice hidden="true" req="shell_radiant">
 		<text>(Radiant Crew) Convince them to let you past and donate supplies.</text>
 		<event>
 			<text>Your Shell speaks briefly with the guard, but it seems they have already convinced them to let you pass without further question. The guard also transfers over some supplies, seeing a Radiant is aboard your ship.</text>
 			<autoReward level="MED">standard</autoReward>
 		</event>
 	</choice>
-	<choice hidden="true" req="shellalkali">
+	<choice hidden="true" req="unique_alkali">
 		<text>(Alkali) Convince them to let you past and donate supplies.</text>
 		<event>
 			<text>Alkali speaks briefly with the guard, but it seems he has already convinced them to let you pass without further question. The guard also transfers over some supplies.</text>
 			<autoReward level="HIGH">weapon</autoReward>
 		</event>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -7745,7 +8296,7 @@
 	<destroyed load="GUARD_SHELLHOME_DESTROY"/>
 	<deadCrew load="GUARD_SHELLHOME_DEADCREW"/>
 	<crew>
-		<crewMember type="toxic" prop="0.40"/>
+		<crewMember type="shell_radiant" prop="0.40"/>
 		<crewMember type="shell" prop="0.60"/>
 	</crew>
 </ship>
@@ -7773,7 +8324,7 @@
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
 	<crew>
-		<crewMember type="toxic" prop="0.40"/>
+		<crewMember type="shell_radiant" prop="0.40"/>
 		<crewMember type="shell" prop="0.60"/>
 	</crew>
 </ship>
@@ -7848,8 +8399,10 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>This sector is supposedly home to the Shell Geniocracy's finest scientists and where their primary genetic research is performed. However, the strange Atlas entry here leads you to assume something is up...</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<ship load="SHIP_GUARD_MORPH" hostile="false"/>
 	<changeBackground>BACK_SECTOR_MORPH</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -7900,22 +8453,22 @@
 		</event>
 	</choice>
 	<choice hidden="true" req="LIST_CREW_MORPH">
-		<text>(Morph Crew) Kik kik, urgl yoo too!</text>
+		<text>(Morph Crew) "Kik kik, urgl yoo too!"</text>
 		<event>
 			<text>Your Morph jiggles a bit, and speaks to the guard. This seems to pursuade them into giving you scrap, though you can only imagine what conversation was just exchanged...</text>
 			<autoReward level="MED">standard</autoReward>
 		</event>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -7954,7 +8507,7 @@
 
 <event name="GUARD_MORPH_FOLLOWUP">
 	<noQuestText/>
-	<removeHazards/>
+	<!-- <removeHazards/> -->
 	<text>The likelyhood of the Morphs having reinforcements to send after you is near zero, but you have no idea what else you might find in this sector...</text>
 	<choice>
 		<text>Do something onboard the ship.</text>
@@ -7983,8 +8536,10 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>The Coalition Stronghold has always been a curiosity. It was originally a regular sector completely void of nebulas, but not long after the Coalition took control of it the designation of the sector had to be changed in accordance of the numerous nebulae that appeared.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<ship load="SHIP_GUARD_COALITION_ELITE" hostile="false"/>
 	<changeBackground>BACK_SECTOR_COALITION</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -8190,15 +8745,17 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>You've arrived in the Mantis Hive, territory usually deemed forbidden for most. Regardless of whether you came here willingly or not, you're here now. Make sure you get out while you still have a crew to escape with.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<replaceSector name="SECTOR_MANTIS_UNIQUE">SECTOR_MANTIS</replaceSector>
 	<changeBackground>BACK_SECTOR_MANTIS</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_HIVE" hostile="false"/>
-	<hiddenAug>MARKER_BEENTOHIVE</hiddenAug>
+	<variable name="loc_beentohive" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="GUARD_HIVE"/>
 	</choice>
-	<choice hidden="true" req="kaz">
+	<choice hidden="true" req="unique_kaz">
 		<text>Kazaaak seems to have something to say.</text>
 		<event>
 			<text>"We... we are finally at Hive? I was not thinking I would see this place for longer time. If we are here... that means I can speak to Leikonpliiinakra. I can tell her to pull out of Coalition! There is only one problem. To access royal palace, we will need coordination of Bishop. How we will earn allegiance of Bishop, I am uncertain..."</text>
@@ -8224,10 +8781,10 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="kaz">
+	<choice hidden="true" req="unique_kaz">
 		<text>(Kazaaakplethkilik) Reason with the Bishop.</text>
 		<event>
-			<text>You hope Kazaaak might be able to reason with the guard and convince them to let you go, but instead it only seems to anger the guard more. "You shelter this traitor aboard vessel? I care not what claims he makes of the Queen, I knowing the stories and he is not one of us!"</text>
+			<text>You hope Kazaaak might be able to reason with the guard and convince them to let you go, but instead it only seems to anger the guard more. "You shelter this traitor aboard vessel? I care not what claims he makes of the Queen, I knowing the stories, and he is not one of us!"</text>
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -8249,16 +8806,16 @@
 		<text>(Mind Control) Convince the guard to leave you alone.</text>
 		<event load="GUARD_MIND"/>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="FEDERATION_DATABASE">
@@ -8318,9 +8875,9 @@
 	<destroyed load="GUARD_HIVE_DESTROY"/>
 	<deadCrew load="GUARD_HIVE_DEADCREW"/>
 	<crew>
-		<crewMember type="bishop" prop="0.20"/>
-		<crewMember type="suzerain" prop="0.30"/>
-		<crewMember type="defend" prop="0.50"/>	
+		<crewMember type="mantis_bishop" prop="0.20"/>
+		<crewMember type="mantis_suzerain" prop="0.30"/>
+		<crewMember type="engi_defender" prop="0.50"/>	
 	</crew>
 </ship>
 
@@ -8394,7 +8951,9 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>This is the capital of the Spectral Dynasty. This ancient faction of Phantoms has been on a path of war lately, which has led them directly into conflict with the Rebellion. Why they're so aggressive - and their sectors littered with ruins - is still a mystery to the Federation.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<changeBackground>BACK_SECTOR_DYNASTY</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_DYNCAP" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
@@ -8454,75 +9013,75 @@
 		<event>
 			<text>The two Ghosts converse back and forth in their native language - a mixture of static and shrill ticks. Eventually the guard speaks again. "Your identification has been approved. I give my most sincere apologies for the misunderstanding. May the lights of good fortune forever shine on the Dynasty." The guard offers some supplies.</text>
 			<autoReward level="MED">standard</autoReward>
-			<choice>
+			<!--<choice>
 				<text>Do something onboard the ship.</text>
 				<event load="STORAGE_CHECK"/>
 			</choice>
 			<choice>
 				<text>Do nothing.</text>
 				<event/>
-			</choice>
+			</choice>-->
 		</event>
 	</choice>
 	<choice hidden="true" req="LIST_CREW_VAGABOND">
 		<text>(Vagabond Crew) Try and talk your way through.</text>
 		<event>
 			<text>"You seek asylum in our sector yet bring with you known traitors to our troops? You are daft! Dismiss them at once or we will destroy you."</text>
-			<choice hidden="true" req="goul">
+			<choice hidden="true" req="phantom_goul">
 				<text>(Goul Crew) Turn over your Goul.</text>
 				<event>
 					<text>The Phantom on the other end merely lets slip a smear of static. "You will be permitted entry, but expect a careful eye placed on you."</text>
-					<removeCrew class="goul">
+					<removeCrew class="phantom_goul">
 						<clone>false</clone>
 						<text>Your Goul will likely be imprisoned for a long time, but without guaranteed knowledge of their passing, Federation law forbids you from cloning them.</text>
 					</removeCrew>
 				</event>
 			</choice>
-			<choice hidden="true" req="goulalpha">
+			<choice hidden="true" req="phantom_goul_alpha">
 				<text>(Goul Alpha Crew) Turn over your Goul.</text>
 				<event>
 					<text>The Phantom on the other end merely lets slip a smear of static. "You will be permitted entry, but expect a careful eye placed on you."</text>
-					<removeCrew class="goulalpha">
+					<removeCrew class="phantom_goul_alpha">
 						<clone>false</clone>
 						<text>Your Goul will likely be imprisoned for a long time, but without guaranteed knowledge of their passing, Federation law forbids you from cloning them.</text>
 					</removeCrew>
 				</event>
 			</choice>
-			<choice hidden="true" req="mare">
+			<choice hidden="true" req="phantom_mare">
 				<text>(Mare Crew) Turn over your Mare.</text>
 				<event>
 					<text>The Phantom on the other end merely lets slip a smear of static. "You will be permitted entry, but expect a careful eye placed on you."</text>
-					<removeCrew class="mare">
+					<removeCrew class="phantom_mare">
 						<clone>false</clone>
 						<text>Your Mare will likely be imprisoned for a long time, but without guaranteed knowledge of their passing, Federation law forbids you from cloning them.</text>
 					</removeCrew>
 				</event>
 			</choice>
-			<choice hidden="true" req="marealpha">
+			<choice hidden="true" req="phantom_mare_alpha">
 				<text>(Mare Alpha Crew) Turn over your Mare.</text>
 				<event>
 					<text>The Phantom on the other end merely lets slip a smear of static. "You will be permitted entry, but expect a careful eye placed on you."</text>
-					<removeCrew class="marealpha">
+					<removeCrew class="phantom_mare_alpha">
 						<clone>false</clone>
 						<text>Your Mare will likely be imprisoned for a long time, but without guaranteed knowledge of their passing, Federation law forbids you from cloning them.</text>
 					</removeCrew>
 				</event>
 			</choice>
-			<choice hidden="true" req="wraith">
+			<choice hidden="true" req="phantom_wraith">
 				<text>(Wraith Crew) Turn over your Wraith.</text>
 				<event>
 					<text>The Phantom on the other end merely lets slip a smear of static. "You will be permitted entry, but expect a careful eye placed on you."</text>
-					<removeCrew class="wraith">
+					<removeCrew class="phantom_wraith">
 						<clone>false</clone>
 						<text>Your Wraith will likely be imprisoned for a long time, but without guaranteed knowledge of their passing, Federation law forbids you from cloning them.</text>
 					</removeCrew>
 				</event>
 			</choice>
-			<choice hidden="true" req="wraithalpha">
+			<choice hidden="true" req="phantom_wraith_alpha">
 				<text>(Wraith Alpha Crew) Turn over your Wraith.</text>
 				<event>
 					<text>The Phantom on the other end merely lets slip a smear of static. "You will be permitted entry, but expect a careful eye placed on you."</text>
-					<removeCrew class="wraithalpha">
+					<removeCrew class="phantom_wraith_alpha">
 						<clone>false</clone>
 						<text>Your Wraith will likely be imprisoned for a long time, but without guaranteed knowledge of their passing, Federation law forbids you from cloning them.</text>
 					</removeCrew>
@@ -8560,7 +9119,7 @@
 	<deadCrew load="GUARD_DYNCAP_DEADCREW"/>
 	<crew>
 		<crewMember type="phantom" prop="0.2"/>
-		<crewMember type="phantomalpha" prop="0.8"/>
+		<crewMember type="phantom_alpha" prop="0.8"/>
 	</crew>
 </ship>
 
@@ -8657,9 +9216,10 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>You have arrived in the Rock Homeworlds, a dangerous sector ruled by the Rock Elders, a council of corrupt Rockmen who spread lies of their supposed demi-god status to enforce their authority.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<ship load="SHIP_GUARD_ROCK_ELITE" hostile="false"/>
 	<changeBackground>BACK_SECTOR_ROCK</changeBackground>
-	<remove name="HIDDEN DUMMY"/>
+	<playSound>lightspeed</playSound>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="GUARD_ROCKHOME"/>
@@ -8687,11 +9247,11 @@
 				<text>(Rock Crew) Share with them the truths that your Rockman has learned.</text>
 				<event load="GUARD_ROCKHOME_ROCK_LIES"/>
 			</choice>
-			<choice hidden="true" req="crusader">
+			<choice hidden="true" req="rock_crusader">
 				<text>(Crusader Crew) Share with them the truths that your Crusader has learned.</text>
 				<event>
 					<text>It takes an in-depth conversation between the two Crusaders before any progress can be made. "You have... you have presented ideas of a reality vastly different from the one I have been raised to believe in. Yet... there is a ring of truth to your nonsensical spewings. I must think this over. I will come with you, so that I may experience the outside world myself and decide what I shall believe."</text>
-					<crewMember amount="1" class="crusader"/>
+					<crewMember amount="1" class="rock_crusader"/>
 				</event>
 			</choice>
 		</event>
@@ -8705,6 +9265,13 @@
 				<text>Continue...</text>
 				<event load="COMBAT_CHECK"/>
 			</choice>
+		</event>
+	</choice>
+		<choice hidden="true" req="rock_paladin">
+		<text>(Paladin Crew) Demand entry at once.</text>
+		<event>
+			<text>The Rockmen are immediately silenced when your Paladin gets involved. They proceed to transfer some supplies and allow you to pass.</text>
+			<autoReward level="HIGH">standard</autoReward>
 		</event>
 	</choice>
 </event>
@@ -8728,7 +9295,7 @@
 	</event>
 	<event>
 		<text>It takes an in-depth conversation between the two Rockmen before any progress can be made. "You have... you have presented ideas of a reality vastly different from the one I have been raised to believe in. Yet... there is a ring of truth to your nonsensical spewings. I must think this over. I will come with you, so that I may experience the outside world myself and decide what I shall believe."</text>
-		<crewMember amount="1" class="crusader"/>
+		<crewMember amount="1" class="rock_crusader"/>
 	</event>
 </eventList>
 
@@ -8738,7 +9305,7 @@
 	<deadCrew load="GUARD_ROCKHOME_DEADCREW"/>
 	<crew>
 		<crewMember type="rock" prop="0.50"/>
-		<crewMember type="crusader" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.40"/>
 		<crewMember type="crystal" prop="0.10"/>	
 	</crew>
 </ship>
@@ -8753,7 +9320,7 @@
 </event>
 <event name="GUARD_ROCKHOME_DEADCREW">
 	<text>You have defeated the Rock guard. Without crew on-board to stop you, you can investigate their cargo. You find a weapon to bring back to the ship, and move on to scrap their hull.</text>
-	<autoReward level="MED">standard</autoReward>
+	<autoReward level="HIGH">standard</autoReward>
 	<weapon name="GIFTLIST_ROCK"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -8764,6 +9331,11 @@
 <ship name="SHIP_ROCKHOME_REINFORCEMENTS" auto_blueprint="LIST_SHIPS_ROCK_ELITE_FIGHT">
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
+	<crew>
+		<crewMember type="rock" prop="0.50"/>
+		<crewMember type="rock_crusader" prop="0.40"/>
+		<crewMember type="crystal" prop="0.10"/>	
+	</crew>
 </ship>
 <event name="GUARD_ROCKHOME_FOLLOWUP">
 	<noQuestText/>
@@ -8813,14 +9385,16 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>You have arrived in the newly founded homeworlds of the Crystalline race. Much of this place is under construction as their citizens flock from their original homeworlds, but there is still no doubt that the Crystals hold a strong grip over this sector, and they aren't eager to let foreigners ruin their lives for a second time.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<changeBackground>BACK_SECTOR_CRYSTAL_RED</changeBackground>
+	<playSound>lightspeed</playSound>
 	<ship load="SHIP_GUARD_CRYSTALHOME" hostile="false"/>
 	<remove name="HIDDEN DUMMY"/>
-	<choice hidden="true" req="MORALITY_CRYSTAL" lvl="0" max_lvl="2" max_group="0" blue="false">
+	<choice hidden="true" req="rep_crystal" lvl="-2147483648" max_lvl="2" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_CRYSTALHOME"/>
 	</choice>
-	<choice hidden="true" req="MORALITY_CRYSTAL" lvl="3" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_crystal" lvl="3" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="GUARD_CRYSTAL_CRIMINAL"/>
 	</choice>
@@ -8833,16 +9407,32 @@
 		<text>Try to talk it out with them.</text>
 		<event load="GUARD_CRYSTALHOME_SPEAK"/>
 	</choice>
-	<choice hidden="true" req="crystal">
+	<choice hidden="true" req="LIST_CREW_CRYSTAL">
 		<text>(Crystal Crew) Convince the guard you are harmless.</text>
 		<event>
 			<text>"It is our mistake! Apologies, it is so hard to tell which ships belong to us with so much diversity in this galaxy... welcome home, brother!"</text>
 		</event>
 	</choice>
-	<choice hidden="true" req="sentinel">
+	<choice hidden="true" req="crystal_sentinel">
 		<text>(Sentinel Crew) Convince them you're harmless and request supplies.</text>
 		<event>
 			<text>"It is our mistake! Apologies, it is so hard to tell which ships belong to us with so much diversity in this galaxy... welcome home, brother! Let us help you..."</text>
+			<weapon name="GIFTLIST_CRYSTAL_ELITE"/>
+			<autoReward level="LOW">stuff</autoReward>
+		</event>
+	</choice>
+	<choice hidden="true" req="unique_ruwen">
+		<text>(Ruwen) Let Ruwen speak to them.</text>
+		<event>
+			<text>"Ambassador! It seems we have made a severe mistake in our judgement! May you accept our dearest apologies; we did not mean to impede on your business with these acquaintances of yours... Please, make yourself at home. We will ensure that you are not bothered by any troublesome visitors."</text>
+			<modifyPursuit amount="-2"/>
+			<autoReward level="HIGH">stuff</autoReward>
+		</event>
+	</choice>
+	<choice hidden="true" req="LIST_CREW_ROCK_CULTIST">
+		<text>(Cultist Crew) Pray to the Crystals.</text>
+		<event>
+			<text>Your cultist falls to their knees and makes out a long prayer to the Crystals beneath fits of sobbing and incoherent rambling. Hit with a mixture of disgust and pity, the Crystal guard offers you a "blessing" if it'll make you leave faster.</text>
 			<weapon name="GIFTLIST_CRYSTAL_ELITE"/>
 			<autoReward level="LOW">stuff</autoReward>
 		</event>
@@ -8882,13 +9472,13 @@
 	</event>
 </eventList>
 
-<ship name="SHIP_GUARD_CRYSTALHOME" auto_blueprint="MU_CRYSTAL_GUARD_B">
+<ship name="SHIP_GUARD_CRYSTALHOME" auto_blueprint="MU_CRYSTAL_GUARD_ELITE">
 	<surrender min="999" max="999" load="GUARD_SIGNAL"/>
 	<destroyed load="GUARD_CRYSTALHOME_DESTROY"/>
 	<deadCrew load="GUARD_CRYSTALHOME_DEADCREW"/>
 	<crew>
 		<crewMember type="crystal" prop="0.7"/>
-		<crewMember type="sentinel" prop="0.3"/>
+		<crewMember type="crystal_sentinel" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -8904,16 +9494,20 @@
 <event name="GUARD_CRYSTALHOME_DEADCREW">
 	<text>You have defeated the Crystal guard. Without crew on-board to stop you, you can investigate their cargo. You find a weapon to bring back to the ship, and move on to scrap their hull.</text>
 	<autoReward level="MED">standard</autoReward>
-	<weapon name="LIST_WEAPONS_CRYSTAL_B"/>
+	<weapon name="GIFTLIST_CRYSTAL_ELITE"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="GUARD_CRYSTALHOME_FOLLOWUP"/>
 	</choice>
 </event>
 
-<ship name="SHIP_CRYSTALHOME_REINFORCEMENTS" auto_blueprint="LIST_SHIPS_CRYSTAL_B_FIGHT">
+<ship name="SHIP_CRYSTALHOME_REINFORCEMENTS" auto_blueprint="LIST_SHIPS_CRYSTAL_ELITE_FIGHT">
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
+	<crew>
+		<crewMember type="crystal_sentinel" prop="0.40"/>
+		<crewMember type="crystal" prop="0.60"/>	
+	</crew>
 </ship>
 <event name="GUARD_CRYSTALHOME_FOLLOWUP">
 	<noQuestText/>
@@ -8963,8 +9557,10 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>This sector appears to be the stronghold of the Lost Suns, formidable rock warriors who rebelled against their tyrannical government. Bittersweet allies with the Federation, the Lost Suns themselves shouldn't be too hostile towards you, but don't expect a warm welcome.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<ship load="SHIP_GUARD_LOSTSUN" hostile="false"/>
 	<changeBackground>BACK_SECTOR_LOSTSUN</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -9031,7 +9627,7 @@
 			<choice>
 				<text>Give them the supplies.</text>
 				<event>
-					<text>It's not easy to part with all of your resources, but it was a better choice than getting on the Lost Sun's bad side. The Rockman makes no further comment, but lets you through.</text>
+					<text>It's not easy to part with a bunch of resources, but it was a better choice than getting on the Lost Sun's bad side. The Rockman makes no further comment, but lets you through.</text>
 					<item_modify>
 						<item type="missiles" min="-7" max="-7"/>
 						<item type="drones" min="-4" max="-4"/>
@@ -9049,6 +9645,12 @@
 					</choice>
 				</event>
 			</choice>
+		</event>
+	</choice>
+	<choice hidden="true" req="LIST_CREW_LOSTSUN">
+		<text>(Lost Sun Crew) Convince them to let you past.</text>
+		<event>
+			<text>Your Lost Sun speaks briefly with the guard, but it seems they have already convinced them to let you pass without further question.</text>
 		</event>
 	</choice>
 	<choice>
@@ -9070,7 +9672,7 @@
 	<deadCrew load="GUARD_LOSTSUN_DEADCREW"/>
 	<crew>
 		<crewMember type="rock" prop="0.70"/>
-		<crewMember type="commando" prop="0.30"/>	
+		<crewMember type="rock_commando" prop="0.30"/>	
 	</crew>
 </ship>
 
@@ -9083,8 +9685,9 @@
 	</choice>
 </event>
 <event name="GUARD_LOSTSUN_DEADCREW">
-	<text>You might have made a dangerous mistake tangling with the Lost Suns, but it's a mistake you can live with. What does it matter if you angered a few Rocks, right? You hurry to leave before the reinforcements can catch you.</text>
+	<text>You might have made a dangerous mistake tangling with the Lost Suns, but it's a mistake you can live with. What does it matter if you angered a few Rocks, right? While scrapping the ship you find a weapon in a cargo, then hurry to leave before the reinforcements can catch you.</text>
 	<autoReward level="HIGH">standard</autoReward>
+	<weapon name="GIFTLIST_LOSTSUN"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="GUARD_LOSTSUN_FOLLOWUP"/>
@@ -9117,7 +9720,7 @@
 		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
 		<undiscoveredTooltip>An unvisited location.</undiscoveredTooltip>
 	</beaconType>
-	<text>"You have broken our trust! The Federation has tried to hard to convince us they wish to aid us, yet their mercenaries pillage their ways through our sectors? You will die for this!"</text>
+	<text>"You have broken our trust! The Federation has tried so hard to convince us they wish to aid us, yet their mercenaries pillage their ways through our sectors? You will die for this!"</text>
 	<ship load="SHIP_LOSTSUN_REINFORCEMENTS" hostile="true"/>
 	<environment type="PDS" target="player"/>
 	<choice hidden="true">
@@ -9143,8 +9746,10 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>As the Lanius species' mass hibernation came to a close, they woke up to find their homeworlds in shambles, picked dry by scavengers. Now, the Swarm works hard to repair the damage, usually with metal from alien ships. Perhaps this is why the Lanius have been so scrap hungry recently...</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<ship load="SHIP_GUARD_LANIUS" hostile="false"/>
 	<changeBackground>BACK_SECTOR_LANIUS</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -9209,22 +9814,22 @@
 		</choice>
 	</event>
 	<event>
-		<text>"Ship, talk. Surprise, bring shock great. Need... things? Givings." A few supplies fly out of an airlock on the Lanius ship. You swoop up the supplies while also wondering the reasoning behind why Lanius ships would have airlocks.</text>
+		<text>"Ship, talk. Surprise, bring shock great. Need... things? Givings." A few supplies fly out of an airlock on the Lanius ship. You scoop up the supplies while also wondering the reasoning behind why Lanius ships would have airlocks.</text>
 		<autoReward level="LOW">stuff</autoReward>
 	</event>
 </eventList>
 <event name="GUARD_LANIUS_COMMUNICATE_LANIUS">
-	<text>"Lanius... ship? Stuff give, deserving!" A few supplies fly out of an airlock on the Lanius ship. You swoop up the supplies while also wondering the reasoning behind why Lanius ships would have airlocks.</text>
+	<text>"Lanius... ship? Stuff give, deserving!" A few supplies fly out of an airlock on the Lanius ship. You scoop up the supplies while also wondering the reasoning behind why Lanius ships would have airlocks.</text>
 	<autoReward level="MED">stuff</autoReward>
 </event>
 
-<ship name="SHIP_GUARD_LANIUS" auto_blueprint="MU_LANIUS_GUARD_B">
+<ship name="SHIP_GUARD_LANIUS" auto_blueprint="MU_LANIUS_GUARD_ELITE">
 	<surrender min="999" max="999" load="GUARD_SIGNAL"/>
 	<destroyed load="GUARD_LANIUS_DESTROY"/>
 	<deadCrew load="GUARD_LANIUS_DEADCREW"/>
 	<crew>
-		<crewMember prop="0.2" type="welder"/>
-		<crewMember prop="0.8" type="anaerobic"/>
+		<crewMember prop="0.2" type="lanius_welder"/>
+		<crewMember prop="0.8" type="lanius"/>
 	</crew>
 </ship>
 
@@ -9249,6 +9854,10 @@
 <ship name="SHIP_LANIUS_REINFORCEMENTS" auto_blueprint="LIST_SHIPS_LANIUS_ELITE_FIGHT">
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
+	<crew>
+		<crewMember type="lanius_welder" prop="0.40"/>
+		<crewMember type="lanius" prop="0.60"/>	
+	</crew>
 </ship>
 <event name="GUARD_LANIUS_FOLLOWUP">
 	<noQuestText/>
@@ -9272,7 +9881,7 @@
 		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
 		<undiscoveredTooltip>An unvisited location.</undiscoveredTooltip>
 	</beaconType>
-	<text>"Are kill. Murder guard. Need remove, perish." though it's hard to decipher, you assume these Lanius were sent to avenge the guard ship you destroyed.</text>
+	<text>"Are kill. Murder guard. Need remove, perish." Though it's hard to decipher, you assume these Lanius were sent to avenge the guard ship you destroyed.</text>
 	<ship load="SHIP_LANIUS_REINFORCEMENTS" hostile="true"/>
 	<environment type="PDS" target="player"/>
 	<choice hidden="true">
@@ -9298,8 +9907,10 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>This is no ordinary pirate sector. Far from Federation jurisdiction, this is the heart of the black market, and the Smuggler clan's operations. Ships of all kinds come here, with an endless spectrum of motivations. You never know what you may find here, for better or for worse...</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<ship load="SHIP_GUARD_SMUGGLER" hostile="false"/>
 	<changeBackground>BACK_SECTOR_PIRATE</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -9333,16 +9944,16 @@
 			</item_modify>
 		</event>
 	</choice>
-	<choice hidden="true" req="cloak">
+	<choice hidden="true" req="cloaking">
 		<text>(Cloaking) Cloak and try to escape.</text>
 		<event load="GUARD_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="engines" lvl="5">
-		<text>(Adv Engines) Try to escape the guard.</text>
+		<text>(Adv. Engines) Try to escape the guard.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="3">
-		<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+		<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 		<event load="GUARD_ESCAPE"/>
 	</choice>
 </event>
@@ -9452,8 +10063,10 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>You've arrived at a refuge for the Zoltan Monks, a sacred location often visited by devoted followers on their annual pilgrimage. The Zoltan Monks have dedicated themselves in entirety to non-violence.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<ship load="SHIP_ZOLTAN_AUTO" hostile="false"/>
 	<changeBackground>BACK_SECTOR_MONK</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -9507,9 +10120,9 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>Even after closing your Atlas, the torrent of advertisements doesn't stop. Just about every product imaginable is shilled to you in under a minute. You finally resort to muting the ship's radio so you can hear yourself think again.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
 	<img back="BACK_EVENT_HEKTAR" planet="NONE"/>
 	<ship load="SHIP_GUARD_HEKTAR" hostile="false"/>
-	<remove name="HIDDEN COORDS_HEKTAR"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="GUARD_HEKTAR"/>
@@ -9517,12 +10130,11 @@
 </event>
 
 <event name="GUARD_HEKTAR">
-	<text>"Greetingsssss, valued cussstomersss! Welcome to Hektar Indusssstriesss (tm)'sss Hektar MEGA-MARKET(tm). It'sss alwaysss wonderful to ssssee new debtorsss in thessse parts!"</text>
-	<remove name="HIDDEN COORDS_HEKTAR"/>
+	<text>"Greetingsssss, valued cussstomersss! Welcome to Hektar Indusssstriesss (tm)'sss Hektar MEGA-MARKET(tm). It'sss alwaysss wonderful to ssssee new debtorsss in thessse partsss!"</text>
 	<choice hidden="true">
 		<text>Thanks - wait, did you just call us debtors?</text>
 		<event>
-			<text>"Oh ho, another one! You new arrivalssss alwayssss ssseem ssso sssurprissed. Yessss, I'm afraid you are in masssssive debt to Hektar Indussstriesss! Didn't you know that every U.W.U. point you collect comessss with a fee of 500 ssscrap? Yesssir, you now owe ussss a total of 2500 ssscrap! Quite the predicament..."</text>
+			<text>"Oh ho, another one! You new arrivalssss alwayssss ssseem ssso sssurprissed. Yessss, I'm afraid you are in masssssive debt to Hektar Indussstriesss! Didn't you know that every U.W.U. point you collect comessss with a fee of 625 ssscrap? Yesssir, you now owe ussss a total of 2500 ssscrap! Quite the predicament..."</text>
 			<choice hidden="true">
 				<text>Well, what do we do about it?</text>
 				<event>
@@ -9583,8 +10195,8 @@
 	<destroyed load="GUARD_HEKTAR_DESTROY"/>
 	<deadCrew load="GUARD_HEKTAR_DEADCREW"/>
 	<crew>
-		<crewMember type="hektar" prop="0.75"/>
-		<crewMember type="worker" prop="0.25"/>
+		<crewMember type="slug_hektar" prop="0.75"/>
+		<crewMember type="lizard" prop="0.25"/>
 	</crew>
 </ship>
 
@@ -9597,7 +10209,7 @@
 	</choice>
 </event>
 <event name="GUARD_HEKTAR_DEADCREW">
-	<text>You have defeated the Hektar guard. Without crew on-board to stop you, you can investigate their cargo. You find a weapon to bring back to the ship, and move on to scrap their hull.</text>
+	<text>You have defeated the Hektar guard. Without crew on-board to stop you, you can investigate their cargo. You find a Hektar product to bring back to the ship, and move on to scrap their hull.</text>
 	<autoReward level="MED">standard</autoReward>
 	<weapon name="GIFTLIST_MODULES"/>
 	<choice hidden="true">
@@ -9610,8 +10222,8 @@
 	<destroyed load="DESTROYED_REINFORCEMENTS"/>
 	<deadCrew load="DEADCREW_REINFORCEMENTS"/>
 	<crew>
-		<crewMember type="hektar" prop="0.75"/>
-		<crewMember type="worker" prop="0.25"/>
+		<crewMember type="slug_hektar" prop="0.75"/>
+		<crewMember type="lizard" prop="0.25"/>
 	</crew>
 </ship>
 <event name="GUARD_HEKTAR_FOLLOWUP">
@@ -9685,8 +10297,11 @@
 		<color r="46" g="252" b="51" a="1"/>
 	</beaconType>
 	<text>You awake to find yourself facing a large Lanius guard, colored same as the ship before. Your new Lanius friend fiddles with your translator so you can understand them properly.</text>
+	<variable name="loc_unique_sectors" op="add" val="1"/>
+	<achievement silent="false">ACH_TRUEEND_AUGMENTED</achievement>
 	<ship load="SHIP_GUARD_AUGMENTED" hostile="false"/>
 	<changeBackground>BACK_SECTOR_AUGMENTED</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -9714,7 +10329,7 @@
 							<item_modify>
 								<item type="scrap" min="-60" max="-60"/>
 							</item_modify>
-							<crewMember amount="1" class="augmented"/>
+							<crewMember amount="1" class="lanius_augmented"/>
 						</event>
 					</choice>
 					<choice>

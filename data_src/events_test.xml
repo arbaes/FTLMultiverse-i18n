@@ -97,7 +97,7 @@
 				<text>Continue...</text>
 				<event>
 					<text>The transformation is complete.</text>
-					<crewMember amount="1" class="anaerobic"/>
+					<crewMember amount="1" class="lanius"/>
 					<choice req="LIST_CREW_CANCHANGE" hidden="true" blue="false" max_group="0" lvl="0">
 						<text>Continue...</text>
 						<event>
@@ -151,7 +151,7 @@
 				<text>Continue...</text>
 				<event>
 					<text>The transformation is complete.</text>
-					<crewMember amount="1" class="anaerobic"/>
+					<crewMember amount="1" class="lanius"/>
 					<choice req="LIST_CREW_CANCHANGE" hidden="true" blue="false" max_group="0" lvl="0">
 						<text>Continue...</text>
 						<event>
@@ -181,7 +181,7 @@
 				<text>Continue...</text>
 				<event>
 					<text>The transformation is complete.</text>
-					<crewMember amount="1" class="anaerobic"/>
+					<crewMember amount="1" class="lanius"/>
 					<choice req="LIST_CREW_CANCHANGE" hidden="true" blue="false" max_group="0" lvl="0">
 						<text>Continue...</text>
 						<event>
@@ -235,7 +235,7 @@
 				<text>Continue...</text>
 				<event>
 					<text>The transformation is complete.</text>
-					<crewMember amount="1" class="anaerobic"/>
+					<crewMember amount="1" class="lanius"/>
 					<choice req="LIST_CREW_CANCHANGE" hidden="true" blue="false" max_group="0" lvl="0">
 						<text>Continue...</text>
 						<event>
@@ -254,6 +254,7 @@
 
 <event name="FREE_WIN">
 	<text>You win!</text>
+	<win creditsText="credit_victory_cheat" text="Nice" creditsBackground="VICTORY_DEFAULT"/>
 </event>
 
 <event name="TEST_DOUBLE_SPAWN_START">
@@ -265,7 +266,7 @@
 	<deadCrew load="TEST_DOUBLE_SPAWN_2_LOAD"/>
 </ship>
 <event name="TEST_DOUBLE_SPAWN_2_LOAD">
-	<event/>
+	<loadEvent>TEST_DOUBLE_SPAWN_2</loadEvent>
 </event>
 <event name="TEST_DOUBLE_SPAWN_2">
 	<text>Its dead</text>
@@ -314,6 +315,7 @@
 
 <event name="GIVE_CRIME">
 	<text>You now have +1 crime</text>
+	<variable name="rep_general" op="add" val="1"/>
 </event>
 <!--
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

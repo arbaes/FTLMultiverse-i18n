@@ -23,6 +23,7 @@
 	<event load="COALITION_REBEL_STRANDED"/>
 	<event load="COALITION_FED_AUTO"/>
 	<event load="COALITION_FREEMANTIS_SLAVES"/>
+	<event load="COALITION_HEKTAR"/>
 </eventList>
 
 <event name="COALITION_FED_AUTO" unique="true">
@@ -107,7 +108,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="LIST_CREW_HEKTAR">
+	<choice hidden="true" req="LIST_VARIANT_HEKTAR">
 		<text>(Hektar Crew) Request an employee discount.</text>
 		<event>
 			<text>"AHAHAHAHAHAHHAHAHAH! HAH! AHAH! Hah... oh boy. An employee dissscount? Are you ssstupid? Hektar doesssn't give employee dissscountsss, it gives employee markupsss! How dare you try and sssteal money from me, you leech!"</text>
@@ -116,6 +117,14 @@
 				<text>Continue...</text>
 				<event load="COMBAT_CHECK"/>
 			</choice>
+		</event>
+	</choice>
+	<choice hidden="true" req="LIST_VARIANT_BILLY">
+		<text>(Billy) Request a Hektar(tm) brand supply package.</text>
+		<event>
+			<text>It only takes a few minutes before Billy returns, and soon after a Hektar package is deposited in your hold. Guess it pays to have the CEO of a major corporation aboard your ship.</text>
+			<weapon name="HEKTAR_MODULAR_WEAPONS"/>
+			<store>STORE_HEKTAR_DEFAULT</store>
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -354,7 +363,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="cloaking">
+	<choice hidden="true" req="cloaking" max_lvl="2">
 		<text>(Cloaking) Try to sneak past.</text>
 		<event load="COALITION_CHECKPOINT_CLOAK"/>
 	</choice>
@@ -364,11 +373,11 @@
 			<text>The Coalition station stands no chance at detecting you with your superior cloaking. You slip past completely unnoticed.</text>
 		</event>
 	</choice>
-	<choice hidden="true" req="engines" lvl="3">
+	<choice hidden="true" req="engines" lvl="3" max_lvl="4">
 		<text>(Upg. Engines) Try to sneak past.</text>
 		<event load="COALITION_CHECKPOINT_ENGINES"/>
 	</choice>
-	<choice hidden="true" req="cloaking" lvl="5">
+	<choice hidden="true" req="engines" lvl="5">
 		<text>(Adv. Engines) Try to sneak past.</text>
 		<event>
 			<text>With the station completely immobile, you easily speed past them.</text>
@@ -504,7 +513,7 @@
 		</event>
 	</choice>
 	<choice hidden="true">
-		<text>Ignore the civilian.</text>
+		<text>Ignore the civilians.</text>
 		<event>
 			<text>You quickly fly away. Soon, the signals coming from the civilians are replaced by the flash of an explosion from their ship.</text>
 			<choice hidden="true">
@@ -578,7 +587,7 @@
 	</event>
 	<event>
 		<text>It appears most of the prisoners died or were severely injured during the fight. One lone survivor stumbles out of his cell, and with some help is healthy enough to work aboard your ship.</text>
-		<crewMember amount="1" class="soldier"/>
+		<crewMember amount="1" class="human_soldier"/>
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event/>
@@ -615,7 +624,7 @@
 		<choice>
 			<text>Recruit a Zoltan.</text>
 			<event>
-				<crewMember amount="1" class="energy"/>
+				<crewMember amount="1" class="zoltan"/>
 			</event>
 		</choice>
 		<choice>
@@ -639,9 +648,9 @@
 		</event>
 	</choice>
 	<choice hidden="true" req="REBEL_ID">
-		<text>(Forged ID) Attack the construction yard pretending to be a Rebel.</text>
+		<text>(Forged ID) Attack the construction yard while pretending to be a Rebel.</text>
 		<event>
-			<text>You open fire on the construction yard, as the Coalition enforcers engage. You make it pretty clear you're a "Rebel," shouting xenophobic insults and plenty of hearty 'glory to the Rebellion!'s. You're pretty sure the Coalition gets the message, and they probably won't be so welcoming to the Rebel fleet once it passes by either.</text>
+			<text>You open fire on the construction yard, as the Coalition enforcers engage. You make it pretty clear you're a "Rebel", shouting xenophobic insults and plenty of hearty 'Glory to the Rebellion!'s. You're pretty sure the Coalition gets the message, and they probably won't be so welcoming to the Rebel fleet once it passes by either.</text>
 			<modifyPursuit amount="-2"/>
 			<ship load="SHIP_COALITION_FIGHT" hostile="true"/> 
 			<choice hidden="true">
@@ -758,7 +767,7 @@
 		<text>Contact the Lost Sun.</text>
 		<event>
 			<text>"While Admiral Obadann might be more occupied with the Theocracy, there was a promise made in our alliance. The Federation, while reluctantly, has held their end of the bargain, and so I intend to uphold ours. Perhaps my strength may be of further benefit aboard your vessel."</text>
-			<crewMember amount="1" class="commando"/>
+			<crewMember amount="1" class="rock_commando"/>
 		</event>
 	</choice>
 </event>
@@ -775,7 +784,7 @@
 </event>
 
 <event name="COALITION_SLUG_PEACEFUL" unique="true">
-	<text>This ship here may not be a Coalition ship, but it's still a Slug! However, they still haven't attacked. "What, ssssuprisssed we aren't itching to fight you? Incasssse you didn't know, not every Sssslug likesss thievery and vengeanccce. We're just here to watch and ssspectate thingsss unfold."</text>
+	<text>This ship here may not be a Coalition ship, but it's still a Slug! However, they still haven't attacked. "What, ssssuprisssed we aren't itching to fight you? In casssse you didn't know, not every Sssslug likesss thievery and vengeanccce. We're just here to watch and ssspectate thingsss unfold."</text>
 	<ship load="SHIP_SLUG_FIGHT" hostile="false"/>
 	<choice hidden="true">
 		<text>Attack them!</text>
@@ -1064,9 +1073,9 @@
 	<event load="NEBULA_COALITION_ABDUCTOR"/>
 	<event load="NEBULA_COALITION_CHECKPOINT"/>
 	
-	<event load="NEBULA_BOARDERS_SLUG"/>
+	<!--<event load="NEBULA_BOARDERS_SLUG"/>
 	<event load="ENCOUNTER_ROGUE_NEBULA"/>
-	<event load="ENCOUNTER_REBEL_NEBULA"/>
+	<event load="ENCOUNTER_REBEL_NEBULA"/>-->
 </eventList>
 
 <event name="NEBULA_COALITION_ABDUCTOR" unique="true">
@@ -1092,14 +1101,14 @@
 		</event>
 	</choice>
 	<choice hidden="true" req="weapons" lvl="6">
-		<text>(Upg. Weapons) Neither.</text>
+		<text>(Upg. Weapons) Neither, dumbass.</text>
 		<event>
 			<text>"Ah yes yes, you are a skilled negotiator. Silly of me to think such tricks would work on you. Heheh..."</text>
 			<autoReward level="MED">standard</autoReward>
 		</event>
 	</choice>
 	<choice hidden="true" req="COMBAT_WARP_JAMMER">
-		<text>(Disruption Field) Neither.</text>
+		<text>(Disruption Field) Neither, dumbass.</text>
 		<event>
 			<text>"Ah yes yes, you are a skilled negotiator. Silly of me to think such tricks would work on you. Heheh..."</text>
 			<autoReward level="MED">standard</autoReward>
@@ -1122,7 +1131,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="cloaking">
+	<choice hidden="true" req="cloaking" max_lvl="2">
 		<text>(Cloaking) Try to sneak past.</text>
 		<event load="COALITION_CHECKPOINT_CLOAK"/>
 	</choice>
@@ -1132,11 +1141,11 @@
 			<text>The Coalition station stands no chance at detecting you with your superior cloaking. You slip past completely unnoticed.</text>
 		</event>
 	</choice>
-	<choice hidden="true" req="engines" lvl="3">
+	<choice hidden="true" req="engines" lvl="3" max_lvl="4">
 		<text>(Upg. Engines) Try to sneak past.</text>
 		<event load="COALITION_CHECKPOINT_ENGINES"/>
 	</choice>
-	<choice hidden="true" req="cloaking" lvl="5">
+	<choice hidden="true" req="engines" lvl="5">
 		<text>(Adv. Engines) Try to sneak past.</text>
 		<event>
 			<text>With the station completely immobile, you easily speed past them.</text>
@@ -1177,7 +1186,7 @@
 		</event>
 	</choice>
 	<choice hidden="true">
-		<text>Ignore the civilian.</text>
+		<text>Ignore the civilians.</text>
 		<event>
 			<text>You quickly fly away. Soon, the signals coming from the civilians are replaced by the flash of an explosion from their ship.</text>
 			<choice hidden="true">
@@ -1236,7 +1245,7 @@
 		<event>
 			<text>The Slug chuckles. "Hah, thessse guyssss get it! You guysss sssssuck, I'm chilling with the Fedsss now! Later lossssers."</text>
 			<ship load="SHIP_COALITION_SQUABBLING_NOSLUG" hostile="true"/>
-			<crewMember amount="1" class="sabo">Irsssnar</crewMember>
+			<crewMember amount="1" class="slug_saboteur">Irsssnar</crewMember>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event load="COMBAT_CHECK"/>
@@ -1248,7 +1257,7 @@
 		<event>
 			<text>The Mantis roars in triumph. "Yes! Someone understand me! I feel so validated! I prove loyalty to new friends by killing old sucky friends!"</text>
 			<ship load="SHIP_COALITION_SQUABBLING_NOMANTIS" hostile="true"/>
-			<crewMember amount="1" class="suzerain">Kackalacknak</crewMember>
+			<crewMember amount="1" class="mantis_suzerain">Kackalacknak</crewMember>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event load="COMBAT_CHECK"/>
@@ -1260,7 +1269,7 @@
 		<event>
 			<text>The Rockman bellows in laughter. "Hahahahahah! I could not agree more. All these idiots want is stealth this, stealth that, but they won't let me just install 30 missile launchers on this thing and blast everyone to oblivion! Maybe you guys will let me pursue my dreams!"</text>
 			<ship load="SHIP_COALITION_SQUABBLING_NOROCK" hostile="true"/>
-			<crewMember amount="1" class="crusader">Ockraban</crewMember>
+			<crewMember amount="1" class="rock_crusader">Ockraban</crewMember>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event load="COMBAT_CHECK"/>
@@ -1272,7 +1281,7 @@
 		<event>
 			<text>The Leech snickers. "Yeah, what the Federation ship said! You guys are no fun, you get your kicks from blowing up civvies! Take that stick out of your assholes and go roll in some mud or something. I'm outta here!"</text>
 			<ship load="SHIP_COALITION_SQUABBLING_NOLEECH" hostile="true"/>
-			<crewMember amount="1" class="ampere">Carlos</crewMember>
+			<crewMember amount="1" class="leech_ampere">Carlos</crewMember>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event load="COMBAT_CHECK"/>
@@ -1311,7 +1320,7 @@
 	<event>
 		<text>"Wanna know sssomething cool? Thisss was all a dissstraction!" A Coalition ship uncloaks, and the Slug draws his blaster!</text>
 		<ship load="SHIP_COALITION_FIGHT" hostile="true"/>
-		<boarders min="1" max="1" class="sabo"/>
+		<boarders min="1" max="1" class="slug_saboteur"/>
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event load="COMBAT_CHECK"/>
@@ -1323,7 +1332,7 @@
 			<text>Sure, welcome aboard.</text>
 			<event>
 				<text>"Ssssweeeet man. You're doing me a real favor here."</text>
-				<crewMember amount="1" class="sabo">Orssin</crewMember>
+				<crewMember amount="1" class="slug_saboteur">Orssin</crewMember>
 			</event>
 		</choice>
 		<choice hidden="true">
@@ -1337,7 +1346,7 @@
 <eventList name="NEBULA_COALITION_COOL_SLUG_ATTACK">
 	<event>
 		<text>"Hey man! Not cool. I wassss jussst asking for sssome help and you gotta do me this way?"</text>
-		<boarders min="1" max="1" class="sabo"/>
+		<boarders min="1" max="1" class="slug_saboteur"/>
 	</event>
 	<event>
 		<text>"Ah crap, they found me out!" The saboteur teleports away and a Coalition ship uncloaks, weapons ready!</text>
@@ -1454,6 +1463,7 @@
 		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
 	</beaconType>
 	<preventQuest/>
+	<preventFleet/>
 	<quest>
 		<nebulaBeacon>true</nebulaBeacon>
 		<createNebula>true</createNebula>
@@ -1490,11 +1500,11 @@
 		<text>Kazaaak jumps away, a rare display of cowardice by a Mantis, but apparently you were so unworthy he did not even consider you worthy enough an opponent to die to.</text>
 	</gotaway>
 	<destroyed>
-		<text>The once proud and esteemed Mantis warrior has fallen. And for what? His message was not a lie, but it without him to tell it, no one else will.</text>
+		<text>The once proud and esteemed Mantis warrior has fallen. And for what? His message was not a lie, but without him to tell it, no one else will.</text>
 		<autoReward level="MED">standard</autoReward>
 	</destroyed>
 	<deadCrew>
-		<text>The once proud and esteemed Mantis warrior has fallen. And for what? His message was not a lie, but it without him to tell it, no one else will.</text>
+		<text>The once proud and esteemed Mantis warrior has fallen. And for what? His message was not a lie, but without him to tell it, no one else will.</text>
 		<autoReward level="MED">standard</autoReward>
 	</deadCrew>
 </ship>
@@ -1503,11 +1513,11 @@
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>A muscular Mantis in red armor flexes his sharp appendages in from of the camera. "You are not of Coalition, but you carry boldness to approach me. It would seem neither of us meant to be here... What is Federation ship doing in Coalition space? It has been longest time since I have drawn arms against your people."</text>
+			<text>A muscular Mantis in red armor flexes his sharp appendages in front of the camera. "You are not of Coalition, but you carry boldness to approach me. It would seem neither of us meant to be here... What is Federation ship doing in Coalition space? It has been longest time since I have drawn arms against your people."</text>
 			<choice hidden="true">
 				<text>We could ask the same about you.</text>
 				<event>
-					<text>"Clever words, but you should know it is foolish not to answer question of Mantis captain. I am here doing what YOU could not. Prized though dear Leikonpliiinakra is to me, she has made grave mistake in forming this 'Coalition.' It is dishonorable, and I can see that it not meant to last. Federation sees it too, but they will not act. They would rather allow Coalition to collapse on itself than take action. You use precious bureaucracy as a shield of responsibility rather than taking action to prevent galactic-scale destruction!"</text>
+					<text>"Clever words, but you should know it is foolish not to answer question of Mantis captain. I am here doing what YOU could not. Prized though dear Leikonpliiinakra is to me, she has made grave mistake in forming this 'Coalition'. It is dishonorable, and I can see that it not meant to last. Federation sees it too, but they will not act. They would rather allow Coalition to collapse on itself than take action. You use precious bureaucracy as a shield of responsibility rather than taking action to prevent galactic-scale destruction!"</text>
 					<choice hidden="true">
 						<text>So to solve this you're massacring entire towns?</text>
 						<event>
@@ -1563,19 +1573,19 @@
 								<text>Continue...</text>
 								<event>
 									<text>"You have teaching me, Federation captain. Or at least, I think. Perhaps I have lessons yet to learn, as I'm sure you do as well. But now that my crew has been slaughtered and I am without purpose, maybe it's time I repent for my mistakes. I have no need for this ship of mine any longer. Perhaps it will service you better."</text>
-									<hiddenAug>ACH_BOSS_KAZAAAK</hiddenAug>
-									<hiddenAug>ACH_CREW_KAZAAAK</hiddenAug>
+									<variable name="ach_boss_kazaaak" op="set" val="1"/>
+									<variable name="ach_crew_kazaaak" op="set" val="1"/>
 									<autoReward level="HIGH">standard</autoReward>
 									<unlockCustomShip silent="false">PLAYER_SHIP_HIVE</unlockCustomShip>
-									<crewMember amount="1" all_skills="2" class="kaz">Kazaaakplethkilik</crewMember>
-									<choice hidden="true" req="MARKER_BEENTOHIVE" lvl="0" max_group="0" blue="false">
+									<crewMember amount="1" all_skills="2" class="unique_kaz">Kazaaakplethkilik</crewMember>
+									<choice hidden="true" req="loc_beentohive" lvl="0" max_group="0" blue="false">
 										<text>Continue...</text>
 										<event>
 											<text>"Asking one more favor of you, captain, if you are not minding. I wish to return to Hive, speak with queen. I am giving you coordinates now, in case we are not finding it on journeys."</text>
-											<hiddenAug>COORDS_HIVE</hiddenAug>
+											<variable name="coords_hive" op="set" val="1"/>
 										</event>
 									</choice>
-									<choice hidden="true" req="MARKER_BEENTOHIVE" lvl="1" max_group="0" blue="false">
+									<choice hidden="true" req="loc_beentohive" lvl="1" max_group="0" blue="false">
 										<text>Continue...</text>
 										<event/>
 									</choice>
@@ -1680,7 +1690,7 @@
 <ship name="SHIP_COALITION_CEALAFORMER_2" auto_blueprint="MU_COALITION_CEALAFORMER">
 	<destroyed>
 		<text>The Cealaformer has been eliminated. You scrap the remains.</text>
-		<hiddenAug>ACH_BOSS_CEALAFORMER</hiddenAug>
+		<variable name="ach_boss_cealaformer" op="set" val="1"/> 
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Investigate the spire.</text>
@@ -1689,7 +1699,7 @@
 	</destroyed>
 	<deadCrew>
 		<text>The Cealaformer has been eliminated. You scrap the remains.</text>
-		<hiddenAug>ACH_BOSS_CEALAFORMER</hiddenAug>
+		<variable name="ach_boss_cealaformer" op="set" val="1"/>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Investigate the spire.</text>
@@ -1698,6 +1708,11 @@
 	</deadCrew>
 </ship>
 <event name="COALITIONHOLD_CEALAFORMER_3">
+	<beaconType id="map_icon_coalition" global="true">
+		<color r="20" g="70" b="125" a="1.0"/>
+		<unvisitedTooltip>Location of the strange vessel.</unvisitedTooltip>
+		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+	</beaconType>
 	<preventFleet/>
 	<quest>
 		<nebulaBeacon>true</nebulaBeacon>
@@ -1710,7 +1725,7 @@
 	<choice hidden="true">
 		<text>Ignore the warning and approach.</text>
 		<event>
-			<text>As you move closer to the spire, you're stopped by an approaching ship - the same as you saw earlier! Now that you have time to scan it properly, it seems its using tech similar to the cealaforming stations deployed by the Kleptocracy - except mobile! This must be where the artificial nebulas in this sector came from! To figure out the mystery behind the giant structure in the distance you'll have to destroy this ship first.</text>
+			<text>As you move closer to the spire, you're stopped by an approaching ship - the same as you saw earlier! Now that you have time to scan it properly, it seems it's using tech similar to the cealaforming stations deployed by the Kleptocracy - except mobile! This must be where the artificial nebulas in this sector came from! To figure out the mystery behind the giant structure in the distance you'll have to destroy this ship first.</text>
 			<ship load="SHIP_COALITION_CEALAFORMER_2" hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -1753,7 +1768,7 @@
 							<choice hidden="true">
 								<text>Take a look at the rest of the room.</text>
 								<event>
-									<text>The rest of the room is filled with ruins of some ancient technology made from Aether, similar to that of the vessel the first Multiverse drive was reverse engineered from. On the table are papers with partial translations of the alien hieroglyphics, detailing strange and worrying descriptions of "doomsday bombs," "reality altering monoliths," and a drawing of a cubical robot with a single eye. You heard the Coalition recovered some precursor tech during the Aquarian invasions, but you had no idea their research was this in-depth. You don't have time to bring all of this back to the ship, but you grab one of the seemingly functional weapons to bring with you.</text>
+									<text>The rest of the room is filled with ruins of some ancient technology made from Aether, similar to that of the vessel the first Multiverse drive was reverse engineered from. On the table are papers with partial translations of the alien hieroglyphics, detailing strange and worrying descriptions of "doomsday bombs", "reality altering monoliths", and a drawing of a cubical robot with a single eye. You heard the Coalition recovered some precursor tech during the Aquarian invasions, but you had no idea their research was this in-depth. You don't have time to bring all of this back to the ship, but you grab one of the seemingly functional weapons to bring with you.</text>
 									<autoReward level="MED">stuff</autoReward>
 									<weapon name="ANCIENT_MISSILES"/>
 								</event>

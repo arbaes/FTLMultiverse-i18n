@@ -18,7 +18,7 @@
 <event name="FINISH_BEACON_CIVILIAN">
 	<text>You've arrived at the Long-Range Beacon. When the FTL Drive is charged you can jump to the next Sector.</text>
 	<choice hidden="true">
-		<text>Explore</text>
+		<text>Explore.</text>
 		<event load="EXIT_LIST_CIVILIAN"/>
 	</choice>
 	<choice hidden="true">
@@ -33,7 +33,7 @@
 <event name="FINISH_BEACON_CIVILIAN_COREWORLDS">
 	<text>You've arrived at the Long-Range Beacon. When the FTL Drive is charged you can jump to the next Sector.</text>
 	<choice hidden="true">
-		<text>Explore</text>
+		<text>Explore.</text>
 		<event load="EXIT_LIST_CIVILIAN"/>
 	</choice>
 	<choice hidden="true">
@@ -50,7 +50,6 @@
 	<event load="SLAVER_BETRAYAL"/>
 	<event load="REBEL_AUTO_SPY"/>
 	<event load="ROCK_SLUG_ARGUMENT"/>
-	<event load="MERCENARY_OFFER"/>
 	<event load="ASTEROID_EXPLORE"/>
 	<event load="REBEL_REFUEL_STATION"/>
 	<event load="AUTO_REFUEL_STATION"/>
@@ -59,7 +58,6 @@
 	
 	<event load="AUTO_REFUEL_STATION"/>
 	<event load="BROKEN_REBEL_DRONE"/>
-	<event load="FRIENDLY_SLAVER"/>
 	<event load="PIRATE_BRIBER"/>
 	<event load="AUTO_DEFENSE_ITEM"/> 
 	<event load="DONOR_PONY"/>
@@ -90,6 +88,7 @@
 -->
 
 <event name="KESTREL_UNLOCK" unique="true">
+	<preventQuest/>
 	<text>As is customary in Union space, several corporate advertisements from the planet nearby play over your radio. You listen to them idly as you browse the nearby shipyards, gazing at various antique vessels. One in particular catches your eye, a Kestrel in seemingly full working order! You don't get to look at it very long though, when one of the advertisements catches your ear. It seems one from "Dewey Alms", CEO of Archive Incorporated, has an outgoing request for any capable mercenary vessel.</text>
 	<img back="BACKGROUND_ARCHIVE_SHIPYARDS" planet="NONE"/>
 	<choice hidden="true">
@@ -111,12 +110,12 @@
 		</event>
 	</choice>
 </event>
-<event name="KESTREL_UNLOCK_OFFER" unique="true">
+<event name="KESTREL_UNLOCK_OFFER">
 	<text>It seems these shipyards are in fact owned by Archive, so it's not difficult to get in touch with a correspondant who patches you in to Dewey directly. "Renegades? I have experience with your types. Before we begin, I would like to make it clear that, while I might be the CEO of Archive Inc., in this request I am not speaking on behalf of the company in any way. It would be... bad PR to get involved with more inter-dimensional renegades after the disaster of the 'Rusting Hulks' incident. I'm sure you understand."</text>
 	<choice hidden="true">
 		<text>We do.</text>
 		<event>
-			<text>"Good, good. Heh, don't worry. We aren't skirting the Union's laws or anything with this. I just don't want any backlash from a personal affair. As you may or may not already know, Archive specializes in the... well, archival of Antiquum Terrae (or as you might know it, Old Earth) technology and culture. This matter concerns one of my most prized antiques, a 23rd century 'Kasparov,' the first FTL-capable ship produced by humankind. Originally made to transport passengers to and from Tau Ceti. A remarkable achievement... but she has been stolen by pirates! I can't gather why... sure she marks a new age in exploration and discovery, but why would a pirate want such an oudated piece of technology?"</text>
+			<text>"Good, good. Heh, don't worry. We aren't skirting the Union's laws or anything with this. I just don't want any backlash from a personal affair. As you may or may not already know, Archive specializes in the... well, archival of Antiquum Terrae (or as you might know it, Old Earth) technology and culture. This matter concerns one of my most prized antiques, a 23rd century 'Kasparov', the first FTL-capable ship produced by humankind. Originally made to transport passengers to and from Tau Ceti. A remarkable achievement... but she has been stolen by pirates! I can't gather why... sure, she marks a new age in exploration and discovery, but why would a pirate want such an outdated piece of technology?"</text>
 			<choice hidden="true">
 				<text>To sell it?</text>
 				<event>
@@ -124,7 +123,7 @@
 					<choice hidden="true">
 						<text>What about that old Kestrel?</text>
 						<event>
-							<text>"Huh? That old thing? Oh, I can most certainly part ways with it. I jumped on purchasing one when they saw a sudden resurgence in popularity at the end of the Civil War, but now it seems everyone has one. Good deal then. One last thing - I've programmed the coordinates for the pirate ship into my assistant, Gana. He's just a machine, and not a very personable one at that, but he'll be sufficiently useful in combat. I would advise keeping him around, or else you might not be able to find the Kasparov. Best of luck captain. Godspeed!"</text>
+							<text>"Huh? That old thing? Oh, I can most certainly part ways with it. I jumped on purchasing one when they saw a sudden resurgence in popularity at the end of the Civil War, but now it seems everyone has one. Good deal then. One last thing - I've programmed the coordinates for the pirate ship into my assistant, Gana. He's just a machine, and not a very personable one at that, but he'll be sufficiently useful in combat. Best of luck captain. Godspeed!"</text>
 							<quest event="KESTREL_UNLOCK_PIRATE"/>
 							<drone name="GANA_BATTLE"/>
 						</event>
@@ -186,12 +185,14 @@
 	</crew>
 </ship>
 <event name="KESTREL_UNLOCK_PIRATE">
-	<beaconType id="map_icon_thieves" global="true" req="KESTREL_MAP_CHECK">
+	<beaconType id="map_icon_thieves" global="true">
 		<color r="167" g="167" b="150" a="1"/>
 		<unvisitedTooltip>Location of the thieves.</unvisitedTooltip>
 		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
 		<undiscoveredTooltip>An unvisited location.</undiscoveredTooltip>
 	</beaconType>
+	
+	<preventFleet/>
 	<quest>
 		<nebulaBeacon>true</nebulaBeacon>
 		<createNebula>true</createNebula>
@@ -239,7 +240,7 @@
 	</choice>
 </event>
 <event name="KESTREL_UNLOCK_QUEST_2">
-	<text>"I'm not saying! Oh, wait. You can literally kill me right now. Alright fair game. We were hired by Hideo Tanaka, CEO of Hephaestus. I'm sure you've heard of him. He heard Archive had this big fancy ship called the 'Molotov' or... whatever. He didn't want anyone else to know he was stealing it though, so he hired us to do it. I've told you everything, now let us go!"</text>
+	<text>"I'm not saying! Oh, wait. You can literally kill me right now. Alright, fair game. We were hired by Hideo Tanaka, CEO of Hephaestus. I'm sure you've heard of him. He heard Archive had this big fancy ship called the 'Molotov' or... whatever. He didn't want anyone else to know he was stealing it though, so he hired us to do it. I've told you everything, now let us go!"</text>
 	<recallBoarders/>
 	<choice hidden="true">
 		<text>One last thing - where is the ship now?</text>
@@ -292,6 +293,7 @@
 		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
 		<undiscoveredTooltip>An unvisited location.</undiscoveredTooltip>
 	</beaconType>
+	<preventFleet/>
 	<quest>
 		<nebulaBeacon>false</nebulaBeacon>
 		<nextSector>true</nextSector>
@@ -430,14 +432,14 @@
 		<text>(Hektar Crew) Negotiate with the civilians.</text>
 		<event load="COREWORLDS_FUEL_RIDICULOUS_LOW"/>
 	</choice>
-	<choice req="mind" lvl="1" hidden="true">
+	<choice req="mind" lvl="1" max_lvl="2" hidden="true">
 		<text>(Mind Control) Convince them to lower the prices.</text>
 		<event load="COREWORLDS_FUEL_RIDICULOUS_LOW"/>
 	</choice>
 	<choice req="mind" lvl="3" hidden="true">
-		<text>(Adv Mind Control) Convince them to lower the prices.</text>
+		<text>(Adv. Mind Control) Convince them to lower the prices.</text>
 		<event>
-			<text>You notice the prices marked on the holoscreen built into the store going down rapidly. You stop once you've reached prices that you prefer. Completely free.</text>
+			<text>You notice the prices marked on the holoscreen built into the store going down rapidly. You stop once you've reached prices that you prefer: completely free.</text>
 			<item_modify>
 				<item type="drones" min="5" max="5"/>
 				<item type="missiles" min="5" max="5"/>
@@ -529,11 +531,11 @@
 		<event load="COREWORLDS_FREE_CREW_SECURITY"/>
 	</choice>
 	<choice hidden="true" req="BLUELIST_DRONES_BOARDING">
-		<text>(Boarding Crew) Let them aboard but station your drone as extra security.</text>
+		<text>(Boarding Drone) Let them aboard but station your drone as extra security.</text>
 		<event load="COREWORLDS_FREE_CREW_SECURITY"/>
 	</choice>
 	<choice hidden="true" req="sensors" lvl="3">
-		<text>(Adv Sensors) Let them aboard but keep constant scans running on them.</text>
+		<text>(Adv. Sensors) Let them aboard but keep constant scans running on them.</text>
 		<event load="COREWORLDS_FREE_CREW_SECURITY"/>
 	</choice>
 	<choice hidden="true">
@@ -727,7 +729,7 @@
 	</choice>
 </event>
 <event name="COREWORLDS_FREEMANTIS_LOST_SURRENDER">
-	<text>The Militia ship is near destruction. The captain looks at you desperately. "What... are you serious? You're going to kill us for some bloody mantis?"</text>
+	<text>The Militia ship is near destruction. The captain looks at you desperately. "What... are you serious? You're going to kill us for some bloody Mantis?"</text>
 	<choice hidden="true">
 		<text>Let the Free Mantis go and we'll spare you.</text>
 		<event>
@@ -773,7 +775,7 @@
 	Events that always have a fight
 -->
 <eventList name="HOSTILE_COREWORLDS">
-	<event load="ENCOUNTER_MILITIA_COREWORLD"/>
+	<event load="ENCOUNTER_MILITIA_COREWORLDS"/>
 	
 	<event load="ENCOUNTER_PIRATE_STATION_COREWORLDS"/>
 	<event load="ENCOUNTER_COALITION_COREWORLDS"/>
@@ -783,7 +785,6 @@
 	
 	<event load="ENCOUNTER_REBEL"/>
 	<event load="ENCOUNTER_AUTO"/>
-	<event load="ENCOUNTER_PIRATE"/>
 </eventList>
 
 <event name="ENCOUNTER_MILITIA_COREWORLDS">
@@ -838,7 +839,6 @@
 	<event load="DONOR_PONY"/>
 	<event load="BROKEN_REBEL_DRONE"/>
 	<event load="CONFUSED_MANTIS"/>
-	<event load="MERCENARY_OFFER"/>
 	<event load="ASTEROID_EXPLORE"/>
 	<event load="FED_BROKEN_SUPPLY_DRONE"/>
 </eventList>
@@ -949,7 +949,7 @@
 	<choice hidden="true" req="REBEL_ID">
 		<text>(Forged ID) Pretend to be a Rebel requisition officer.</text>
 		<event>
-			<text>The Militia ship doesn't seem terribly happy with your presence. "The Union does not serve Rebel scum. Or at least, we shouldn't. What happened to the glory days of the Federation, when you orange assholes didn't accost the innocent?" The </text>
+			<text>The Militia ship doesn't seem terribly happy with your presence. "The Union does not serve Rebel scum. Or at least, we shouldn't. What happened to the glory days of the Federation, when you orange assholes didn't accost the innocent?"</text>
 			<autoReward level="HIGH">missiles_only</autoReward>
 		</event>
 	</choice>
@@ -1050,9 +1050,9 @@
 	<preventQuest/>
 	<beaconType id="map_icon_earth" global="false">
 		<color r="105" g="157" b="76" a="1.0"/>
-		<unvisitedTooltip>This is Earth, the Homeworlds of the Human race.</unvisitedTooltip>
+		<unvisitedTooltip>This is Earth, the Homeworld of the Human race.</unvisitedTooltip>
 	</beaconType>
-	<text>You've discovered a planet all too familiar. It's Antiquum Terrae, more often referred to as Old Earth, the homeworlds and origin of the Human race! Though most of the planet has flooded, a few large and densely populated cities remain.</text>
+	<text>You've discovered a planet all too familiar. It's Antiquum Terrae, more often referred to as Old Earth, the homeworld and origin of the Human race! Though most of the planet has flooded, a few large and densely populated cities remain.</text>
 	<img back="BACKGROUND_EARTH" planet="PLANET_INVISIBLE"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -1134,6 +1134,7 @@
 
 <event name="QUEST_GATLING_BARREL">
 	<preventQuest/>
+	<preventFleet/>
 	<quest>
 		<nonNebulaBeacon>true</nonNebulaBeacon>
 		<nebulaBeacon>false</nebulaBeacon>
@@ -1174,7 +1175,7 @@
 				<event>
 					<text>"No! No! No! Not care who are! Shoo! Not welcome here." Despite the Mantis's tantrum, the only option that remains is to take it from him.</text>
 					<choice hidden="true">
-						<text>Attack</text>
+						<text>Attack!</text>
 						<event>
 							<text>The Mantis shrieks and ends the call, and the Suzerain ship comes to life. It rises to meet you. If you had to guess, the 'spinny stick' is kept on that ship and you'll have to empty it of crew to get it.</text>
 							<ship load="SHIP_MANTIS_BARREL" hostile="true"/>
@@ -1291,6 +1292,7 @@
 
 <event name="QUEST_GATLING_AUGMENT">
 	<preventQuest/>
+	<preventFleet/>
 	<quest>
 		<nonNebulaBeacon>true</nonNebulaBeacon>
 		<nebulaBeacon>true</nebulaBeacon>
@@ -1309,7 +1311,7 @@
 	<choice>
 		<text>Hail them.</text>
 		<event>
-			<text>You hail the Smugglers and explain the situation. The captain gives a wheezy chuckle at your explanation. "Is that so now? Well I've been struggling to get rid of this crap for a while now, and at last I found someone willing to pay a price for it! Hell, I'll ever offer you a special 'Jumbo Deal' with some extra supplies for only a minor price increase!"</text>
+			<text>You hail the Smugglers and explain the situation. The captain gives a wheezy chuckle at your explanation. "Is that so now? Well I've been struggling to get rid of this crap for a while now, and at last I found someone willing to pay a price for it! Hell, I'll even offer you a special 'Jumbo Deal' with some extra supplies for only a minor price increase!"</text>
 			<choice>
 				<text>Buy the Pre-Igniter.</text>
 				<event>
@@ -1334,7 +1336,7 @@
 			<choice hidden="true">
 				<text>Take it through force!</text>
 				<event>
-					<text>You aren't going to pat these smugglers anything! You raise the weapons and attack. The other few ships shopping scatter as you approach the station.</text>
+					<text>You aren't going to pay these smugglers anything! You raise the weapons and attack. The other few ships shopping scatter as you approach the station.</text>
 					<ship hostile="true"/>
 					<choice hidden="true">
 						<text>Continue...</text>
@@ -1422,18 +1424,18 @@
 					</removeCrew>
 				</event>
 			</choice>
-			<choice req="LIST_CREW_CLAN">
+			<choice hidden="true" req="LIST_CREW_CLAN">
 				<text>(Clansman Crew) Claim to be hunters yourself.</text>
 				<event>
 					<text>"Ahh, another hunter? To think I thought I wasss the firsssst with thisss idea... Oooh, your sssship isss ssso much larger than mine. You probably have ssso much more ssssuccesss!" The Slug offers his services. Hopefully he doesn't mind hunting Rebels.</text>
-					<crewMember amount="1" class="snail"/>
+					<crewMember amount="1" class="slug_clansman"/>
 				</event>
 			</choice>
-			<choice req="CREW_FIREARMS">
+			<choice hidden="true" req="CREW_FIREARMS">
 				<text>(Improved Armories) Claim to be hunters yourself.</text>
 				<event>
 					<text>"Ahh, another hunter? To think I thought I wasss the firsssst with thisss idea... Oooh, your sssship isss ssso much larger than mine. You probably have ssso much more ssssuccesss!" The Slug offers his services. Hopefully he doesn't mind hunting Rebels.</text>
-					<crewMember amount="1" class="snail"/>
+					<crewMember amount="1" class="slug_clansman"/>
 				</event>
 			</choice>
 			<choice>
@@ -1521,11 +1523,11 @@
 	<choice>
 		<text>Continue...</text>
 		<event>
-			<text>"Oh, hello. I am Bolin, a Zoltan soldier for the Militia Corps. I've been working hard on a speech that I intend to share during the next meeting of the Galactic Union, but no one wants to listen to it or give me feedback. Would you mind if I shared them with you?"</text>
+			<text>"Oh, hello. I am Boline, a Zoltan soldier for the Militia Corps. I've been working hard on a speech that I intend to share during the next meeting of the Galactic Union, but no one wants to listen to it or give me feedback. Would you mind if I shared them with you?"</text>
 			<choice hidden="true">
 				<text>Agree.</text>
 				<event>
-					<text>"Wonderful! I shall now begin." Bolin pulls out a massive book, slamming it down on the desk in front of him and pulls open the cover. He clears his throat, and begins to read...</text>
+					<text>"Wonderful! I shall now begin." Boline pulls out a massive book, slamming it down on the desk in front of her and pulls open the cover. She clears her throat, and begins to read...</text>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event load="MILITIA_TEXTWALL_LOAD"/>
@@ -1550,18 +1552,18 @@
 	</choice>
 </event>
 <event name="MILITIA_TEXTWALL_LOAD">
-	<event/>
+	<loadEvent ignoreUnique="true">MILITIA_TEXTWALL_TEXT</loadEvent>
 </event>
 <event name="MILITIA_TEXTWALL_TEXT">
 	<text>"My fellow citizens of the Galactic Union, subsidiary of the United Federation and regulator of laws in Union territory, I have come to speak with you about a very important matter. Since the dawn of civilization we have been creatures bound to our weapons of war. Every race, Human, Zoltan, Aquarian, Rockman, Mantis, even Engi or Orchid, we have all waged wars not just against each other, but ourselves. It is beyond many of us, unthinkable even, to surrender these tools of destruction... nay, these evil and wicked thoughts that plague our civilizations. We say we wish to evolve, learn and grow, but how can we do this when we still hold so dear to us the ideas of revenge and hatred?"</text>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>"To emphasize my point, let me tell you all a story. Back during the infamous Mantis - Human war, a time when the seeds of thought that would grow to be the Federation had only just barely been planted, the Human people were in dire straits. The far more dangerous and warrior-like creatures that were the Mantis caused havoc among the unprepared human colonies. The Humans turned to the only allies they had at the time, the Engi, hoping for assistance. The Engi reluctantly accepted, but only in turn if the humans would liberate the slaves from the Mantis war camps. The two forces fought for years and years for control over the neighbouring planet Mars, which the Mantis had managed to secure as a stronghold and key point for planning their invasion. Rather than negotiating for a ceasefire, or surrendering, the human people continued to fight the Mantis to near extinction. The Mantis would show the humans no mercy either, and would not stop until humanity had been eradicated."</text>
+			<text>"To emphasize my point, let me tell you all a story. Back during the infamous Mantis - Human war, a time when the seeds of thought that would grow to be the Federation had only just barely been planted, the Human people were in dire straits. The far more dangerous and warrior-like creatures that were the Mantis caused havoc among the unprepared human colonies. The Humans turned to the only allies they had at the time, the Engis, hoping for assistance. The Engis reluctantly accepted, but only in turn if the humans would liberate the slaves from the Mantis war camps. The two forces fought for years and years for control over the neighbouring planet Mars, which the Mantis had managed to secure as a stronghold and key point for planning their invasion. Rather than negotiating for a ceasefire, or surrendering, the human people continued to fight the Mantis to near extinction. The Mantis would show the humans no mercy either, and would not stop until humanity had been eradicated."</text>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event>
-					<text>Bolin clears his thought, and flips through a few pages, confused. "The uh... The Mantis are not the only violent race known to have staged such terrible wars. The Rock Inquisitions are perhaps some of the worst battles known to the galaxy. Believing themselves to be superior, the Rockmen sent forth battalions of armored ships staffed by trained soldiers known as the Crusaders to claim other territory in the name of the holy Rock Theocracy. The Chrysolic Faith that drove the Rockmen to such violence was the very same used by the Rock Elders to enslave their population through tactics of fear. Clearly an immoral action, it is known to many that the Rock dictatorship is perhaps one of the most violent and unforgiving forces in the galaxy."</text>
+					<text>Boline clears her throat, and flips through a few pages, confused. "The uh... The Mantis are not the only violent race known to have staged such terrible wars. The Rock Inquisitions are perhaps some of the worst battles known to the galaxy. Believing themselves to be superior, the Rockmen sent forth battalions of armored ships staffed by trained soldiers known as the Crusaders to claim other territory in the name of the holy Rock Theocracy. The Chrysolic Faith that drove the Rockmen to such violence was the very same used by the Rock Elders to enslave their population through tactics of fear. Clearly an immoral action, it is known to many that the Rock dictatorship is perhaps one of the most violent and unforgiving forces in the galaxy."</text>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event>
@@ -1569,7 +1571,7 @@
 							<choice hidden="true">
 								<text>Continue...</text>
 								<event>
-									<text>"However, it also stands to say that the Orchids may actually function better with the Shells, who's reliance on oxygen naturally would pair them with the plant beings. It is a scientific wonder how a single Orchid is capable of effectively replacing a life support system for extended periods of time. Many biologists, many of which coincidentally also happen to be Shells, have attempted to study Orchid biology. For those of you who might not be aware, the Shell race has placed a heavy focus on scientific study, even occasionally abducting tourists or visiting ships to run quick, albeit painless, tests. This has led to many cultural misunderstandings with the less understanding species, such as the Rockmen or Mantis. The Slugs also have a particular interest in the Shells, though not for any innocent reasons. A clan of Slug hobbyists known as the Exotic Hunters Guild has formed, whose specific purpose is to hunt rare or sapient creatures. The Shells are their prime targets, because of their armored abilities."</text>
+									<text>"However, it also stands to say that the Orchids may actually function better with the Shells, who's reliance on oxygen naturally would pair them with the plant beings. It is a scientific wonder how a single Orchid is capable of effectively replacing a Life Support system for extended periods of time. Many biologists, many of which coincidentally also happen to be Shells, have attempted to study Orchid biology. For those of you who might not be aware, the Shell race has placed a heavy focus on scientific study, even occasionally abducting tourists or visiting ships to run quick, albeit painless, tests. This has led to many cultural misunderstandings with the less understanding species, such as the Rockmen or Mantis. The Slugs also have a particular interest in the Shells, though not for any innocent reasons. A clan of Slug hobbyists known as the Exotic Hunters Guild has formed, whose specific purpose is to hunt rare or sapient creatures. The Shells are their prime targets, because of their armored abilities."</text>
 									<choice hidden="true">
 										<text>Continue...</text>
 										<event>
@@ -1577,7 +1579,7 @@
 											<choice hidden="true">
 												<text>Continue...</text>
 												<event>
-													<text>Bolin licks the page and flips to the next. He coughs slightly, pounds on his chest, and continues to read. "Starting after the Rebellion's rise to power, the Federation forces were dedicated to clearing out Rebel ships from their territory. This left much of space unprotected from invaders. The Slugs, who had previously been shunned from the Federation for their traitorous nature, took notice to this pattern and began planning a mass migration to new territory. Though they started with nebulous sectors, they soon found themselves courageous enough to attack clear sectors, sometimes even already occupied space. This came to cause issues when the Slugs dared invade Mantis and Rock space, much to the reasonable displeasure of those governments. Both the Hive and Elders declared war on the Slugs, and so they fought for several years. Eventually, the Slugs surrendered and offered back territory. They didn't stop there however, and even offered some of their original territory up as well. This eventually evolved into an alliance that we have come to know as the Coalition."</text>
+													<text>Boline licks the page and flips to the next. She coughs slightly, pounds on her chest, and continues to read. "Starting after the Rebellion's rise to power, the Federation forces were dedicated to clearing out Rebel ships from their territory. This left much of space unprotected from invaders. The Slugs, who had previously been shunned from the Federation for their traitorous nature, took notice to this pattern and began planning a mass migration to new territory. Though they started with nebulous sectors, they soon found themselves courageous enough to attack clear sectors, sometimes even already occupied space. This came to cause issues when the Slugs dared invade Mantis and Rock space, much to the reasonable displeasure of those governments. Both the Hive and Elders declared war on the Slugs, and so they fought for several years. Eventually, the Slugs surrendered and offered back territory. They didn't stop there however, and even offered some of their original territory up as well. This eventually evolved into an alliance that we have come to know as the Coalition."</text>
 													<choice hidden="true">
 														<text>Continue...</text>
 														<event>
@@ -1585,7 +1587,8 @@
 															<choice hidden="true">
 																<text>Oh thank god.</text>
 																<event>
-																	<text>"I WILL however tell the story of the Coalition, in case you might not be aware. The Coalition is a truce between the Sethnian Kleptocracy, the Urtharean Theocracy, the Yeitiiik Hive, and the Eargen Kraterocracy... oh my notes aren't really sure what the Leech government is called. Seems it's actually the Eargen Republic, but that's not relevant to the history. These 4 races are perhaps some of the most hostile and deadly in the galaxy, and this alliance has caused fear for both the Federation and Rebellion. The Coalition continues to grow in power, and even occupies several of its own sectors. The Coalition has also taken usage of Slug Cealaforming tech, a method of transporting nebulous gases to create artificial nebulas. Though these fake clouds are incapable of forming into stars, they still cause sensors to malfunction and can even generate the same electrical currents as ion storms, a deepspace hazard I'm sure any pilots here are definitely familiar with if you've ever been to a nebula sector."</text>
+																	<text>"I WILL however tell the story of the Coalition, in case you might not be aware. The Coalition is a truce between the Sethnian Kleptocracy, the Urtharean Theocracy, the Yeitiiik Hive, and the Eargen Republic. These 4 races are perhaps some of the most hostile and deadly in the galaxy, and this alliance has caused fear for both the Federation and Rebellion. The Coalition continues to grow in power, and even occupies several of its own sectors. The Coalition has also taken usage of Slug Cealaforming tech, a method of transporting nebulous gases to create artificial nebulas. Though these fake clouds are incapable of forming into stars, they still cause sensors to malfunction and can even generate the same electrical currents as ion storms, a deepspace hazard I'm sure any pilots here are definitely familiar with if you've ever been to a nebula sector."</text>
+																	<modifyPursuit amount="1"/>
 																	<choice hidden="true">
 																		<text>Continue...</text>
 																		<event>
@@ -1593,15 +1596,15 @@
 																			<choice hidden="true">
 																				<text>Continue...</text>
 																				<event>
-																					<text>"Wait... is it Zluficar? Zultifigar? I know it starts with a Z..." Bolin flips back through his text, searching for something. "Ah, I spelled it right here. Zulfiqar, thats it. Now, where was I... Oh, damn I lost my page. Do you uh, do you want me to start again?"</text>
+																					<text>"Wait... is it Zluficar? Zultifigar? I know it starts with a Z..." Boline flips back through her text, searching for something. "Ah, I spelled it right here. Zulfiqar, that's it. Now, where was I... Oh, damn I lost my page. Do you uh, do you want me to start again?"</text>
 																					<choice hidden="true">
 																						<text>Continue...</text>
 																						<event>
-																							<text>Bolin awaits your response.</text>
+																							<text>Boline awaits your response.</text>
 																							<choice hidden="true">
 																								<text>Yes.</text>
 																								<event>
-																									<text>"Ok, if you say so!" Bolin flips back to page one. "From the top then."</text>
+																									<text>"Ok, if you say so!" Boline flips back to page one. "From the top then."</text>
 																									<choice hidden="true">
 																										<text>Continue...</text>
 																										<event load="MILITIA_TEXTWALL_LOAD"/>
@@ -1611,18 +1614,18 @@
 																							<choice hidden="true">
 																								<text>No.</text>
 																								<event>
-																									<text>"Oh, ok. Fair enough!" Bolin flips the book closed. "Thanks for listening that far at least. So uh, what did you think?"</text>
+																									<text>"Oh, ok. Fair enough!" Boline flips the book closed. "Thanks for listening that far at least. So uh, what did you think?"</text>
 																									<choice hidden="true">
 																										<text>Pretty good.</text>
 																										<event>
 																											<text>"Really? You liked it? Amazing! Thank you so much for your feedback. Oh man, no one has ever said anything nice about my speech before, not even my own crew! Hey uh, what if I joined yours? You seem much nicer, and maybe with your encouragement I can even finish this draft in time to present it!"</text>
-																											<crewMember amount="1" class="peace">Bolin</crewMember>
+																											<crewMember amount="1" class="zoltan_peacekeeper">Boline</crewMember>
 																										</event>
 																									</choice>
 																									<choice hidden="true">
 																										<text>Dear god that was the biggest waste of time in my life.</text>
 																										<event>
-																											<text>Bolin looks down at his feet in shame. "Oh... ok." He cuts comms. You probably didn't have to be so rude, but at least you don't have to listen to him ramble any longer.</text>
+																											<text>Boline looks down at her feet in shame. "Oh... ok." She cuts comms. You probably didn't have to be so rude, but at least you don't have to listen to her ramble any longer.</text>
 																										</event>
 																									</choice>
 																								</event>
@@ -1707,7 +1710,7 @@
 </event>
 
 <event name="ENCOUNTER_MILITIA_ELITE" unique="true">
-	<text>Operative vessels are some of the deadliest in the Militia fleet, and for good reason. Boasting highly trained crew, these ships don't mess around in combat. Unfortunately for you, the ship here deems you a threat and attacks!</text>
+	<text>The CDEG vessels are some of the deadliest in the Militia fleet, and for good reason. Boasting highly trained crew, these ships don't mess around in combat. Unfortunately for you, the ship here deems you a threat and attacks!</text>
 	<ship load="SHIP_MILITIA_ELITE_FIGHT" hostile="true"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -1831,13 +1834,13 @@
 			<autoReward level="LOW">stuff</autoReward>
 		</event>
 	</choice>
-	<choice req="soldier">
+	<choice req="human_soldier">
 		<text>(Soldier Crew) Request more supplies.</text>
 		<event>
 			<autoReward level="HIGH">stuff</autoReward>
 		</event>
 	</choice>
-	<choice req="medic">
+	<choice req="LIST_CREW_MEDIC">
 		<text>(Medic Crew) Request medical supplies.</text>
 		<event>
 			<autoReward level="MED">missiles_only</autoReward>
@@ -1883,9 +1886,9 @@
 				<event load="COMBAT_CHECK"/>
 			</choice>
 			<triggeredEvent event="MILITIA_TRAINIES_WIN" thisFight="true" clearOnJump="true" time="60.0">
-				<triggeredEventBox load="DEFAULT_TIMER">
+				<triggeredEventBox load="DEFAULT_TIMER" pos="combat">
 					<warning time="10.0" flash="true"/>
-					<tooltip>The training exercize will end in this much time. Make sure not to kill anyone until then!</tooltip>
+					<tooltip>The training exercise will end in this much time. Make sure not to kill anyone until then!</tooltip>
 				</triggeredEventBox>
 				<timerSounds load="DEFAULT_TIMER_SOUNDS"/>
 			</triggeredEvent>
@@ -1912,9 +1915,10 @@
 	<ship hostile="false"/>
 </event>
 <event name="MILITIA_TRAINIES_WIN">
-	<text>The commander contacts you in person once the other ships disperse. "Thank you for your help! These are some of our newest recruits, they have little experience in actual combat. I'm sure going up against an actual Multiverse Traveller was quite the experience for them! I don't have much supplies to give you, but here's a combat augment we use for training, maybe you can find use in it."</text>
+	<text>The commander contacts you in person once the other ships disperse. "Thank you for your help! These are some of our newest recruits, they have little experience in actual combat. I'm sure going up against an actual Multiverse Renegade was quite the experience for them! I don't have much supplies to give you, but here's a combat augment we use for training, maybe you can find use in it."</text>
 	<augment name="GIFTLIST_AUGMENT_COMBAT"/>
 	<ship hostile="false"/>
+	<surrender/>
 </event>
 
 <event name="MILITIA_RECRUITMENT" unique="true">
@@ -1942,7 +1946,7 @@
 			<autoReward level="MED">standard</autoReward>
 		</event>
 	</choice>
-	<choice hidden="true" req="monk">
+	<choice hidden="true" req="zoltan_monk">
 		<text>(Monk Crew) Shame the Rebels for their violent ways.</text>
 		<event>
 			<text>Your Monk spends the next 30 minutes insulting the Rebels for their barbaric ways, attacking men only doing their duty by defending civilians. The Rebels are so ashamed of themselves several crumple to the floor sobbing. One particularly moved individual offers to join your crew, and the rest agree to leave the Militiamen alone.</text>
@@ -1966,7 +1970,7 @@
 	<choice hidden="true">
 		<text>Stay away from this.</text>
 		<event>
-			<text>You fly past the Militia center. Hopefully, the situation will be resolved... No thanks to you.</text>
+			<text>You fly past the Militia center. Hopefully, the situation will be resolved... no thanks to you.</text>
 			<choice>
 				<text>Do something onboard the ship.</text>
 				<event load="STORAGE_CHECK"/>
@@ -2062,7 +2066,7 @@
 			<choice hidden="true">
 				<text>Inform the Militiamen they're safe.</text>
 				<event>
-					<text>"Thank you, it was unlikely we'd have survived that pirate attack otherwise. We cannot offer much other than some fuel that we don't need.</text>
+					<text>"Thank you, it was unlikely we'd have survived that pirate attack otherwise. We cannot offer much other than some fuel that we don't need."</text>
 					<autoReward level="LOW">fuel_only</autoReward>
 				</event>
 			</choice>
@@ -2135,7 +2139,7 @@
 					<autoReward level="MED">augment</autoReward>
 				</event>
 			</choice>
-			<choice hidden="true" req="engineer">
+			<choice hidden="true" req="LIST_CREW_ENGINEER">
 				<text>(Engineer) Have your engineer transfer Auto-ship data.</text>
 				<event>
 					<text>"Oh my, this is marvelous! This will help speed up our development greatly."</text>
@@ -2284,6 +2288,15 @@
 			</choice>
 		</event>
 	</choice>
+	<choice hidden="true" req="unique_haynes">
+		<text>(Haynes) Hail the station.</text>
+		<event>
+			<text>Haynes, aboard the other station, receives the hail, only to stare in shock at a mirror image of himself on the other end. "Me, listen. It was Thom. He used the Anti-Personel drone, shot Henry. Both of them are Rebel spies. He learned how to use the Drone Control from Daniel. No time to waste, Rebel attack imminent. Get the picture? Good. Hop aboard, we have a hangar to save."</text>
+			<variable name="ach_crew_haynes" op="set" val="1"/>
+			<crewMember amount="1" class="unique_haynes">Sherlock Haynes</crewMember>
+			<quest event="DETECTIVE_HANGARATTACK"/>
+		</event>
+	</choice>
 	<choice hidden="true">
 		<text>Ignore the station.</text>
 		<event>
@@ -2300,9 +2313,9 @@
 	</choice>
 </event>
 <event name="DETECTIVE_EVIDENCE_MENU_LOAD">
-	<event/>
+	<loadEvent ignoreUnique="true">DETECTIVE_EVIDENCE_MENU</loadEvent>
 </event>
-<event name="DETECTIVE_EVIDENCE_MENU" unique="true">
+<event name="DETECTIVE_EVIDENCE_MENU">
 	<text>You stand in the station's lobby, observing your surroundings.
 	[You will be able to investigate as many times as you want in whatever order you want.]</text>
 	<choice hidden="true">
@@ -2374,23 +2387,23 @@
 		<event>
 			<text>Sherlock raises an eyebrow. "So, you have come to a conclusion? Who shot ol' Henry?""
 			[You will only be able to accuse suspects that you have talked to]</text>
-			<choice hidden="true" req="MARKER_EVIDENCE_DRONEKILLER" blue="true">
+			<choice hidden="true" req="loc_evidence_dronekiller" blue="true">
 				<text>None of them killed Henry personally. It was the drone who fired the fatal shot!</text>
 				<event load="DETECTIVE_ACCUSE_DRONE"/>
 			</choice>
-			<choice hidden="true" req="MARKER_EVIDENCE_THOM" blue="false">
+			<choice hidden="true" req="loc_evidence_thom" blue="false">
 				<text>Accuse Thom Nicholson.</text>
 				<event load="DETECTIVE_ACCUSE_THOM"/>
 			</choice>
-			<choice hidden="true" req="MARKER_EVIDENCE_AMY" blue="false">
+			<choice hidden="true" req="loc_evidence_amy" blue="false">
 				<text>Accuse Amy Sheppard.</text>
 				<event load="DETECTIVE_ACCUSE_AMY"/>
 			</choice>
-			<choice hidden="true" req="MARKER_EVIDENCE_DANIEL" blue="false">
+			<choice hidden="true" req="loc_evidence_daniel" blue="false">
 				<text>Accuse Daniel Browne.</text>
 				<event load="DETECTIVE_ACCUSE_DANIEL"/>
 			</choice>
-			<choice hidden="true" req="MARKER_EVIDENCE_SHERLOCK" blue="false">
+			<choice hidden="true" req="loc_evidence_sherlock" blue="false">
 				<text>Accuse Sherlock Haynes.</text>
 				<event load="DETECTIVE_ACCUSE_SHERLOCK"/>
 			</choice>
@@ -2409,7 +2422,7 @@
 </event>
 <event name="DETECTIVE_CORPSE">
 	<text>You walk over to Henry's corpse. You notice no obvious cuts on the body, though there is a large burn mark on his back. This must have been from blaster fire, but the radius of the wound is too large to have been from a standard hand-held blaster.</text>
-	<hiddenAug>MARKER_EVIDENCE_BURNS</hiddenAug>
+	<variable name="loc_evidence_burns" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="DETECTIVE_EVIDENCE_MENU_LOAD"/>
@@ -2430,17 +2443,17 @@
 </event>
 <event name="DETECTIVE_ACCUSE_DRONE">
 	<text>Sherlock looks as surprised as the rest of the suspects. "The drone, huh? An interesting theory indeed! But one catch - someone had to have been controlling the drone. Which one was it?"</text>
-	<choice hidden="true" req="MARKER_EVIDENCE_OXYGENDANIEL" lvl="0" blue="false" max_group="0">
+	<choice hidden="true" req="loc_evidence_oxygendaniel" lvl="0" blue="false" max_group="0">
 		<text>It was Daniel!</text>
 		<event>
-			<text>Daniel looks shocked that you blamed this on him. Sherlock nods. "Yes, Dr. Browne is the head engineer here, which would make him an excellent suspect. HOWEVER, he could not have done it! If you checked the oxygen system, then interviewed Daniel about it, you would know he was busy last night performing upgrades. He would not have been able to murder Henry AND upgrade the system at the same time, the oxygen upgrade simply takes too long."</text>
+			<text>Daniel looks shocked that you blamed this on him. Sherlock nods. "Yes, Dr. Browne is the head engineer here, which would make him an excellent suspect. HOWEVER, he could not have done it! If you checked the Oxygen system, then interviewed Daniel about it, you would know he was busy last night performing upgrades. He would not have been able to murder Henry AND upgrade the system at the same time, the Oxygen upgrade simply takes too long."</text>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event load="DETECTIVE_WRONG"/>
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="MARKER_EVIDENCE_OXYGENDANIEL" lvl="1" blue="false" max_group="0">
+	<choice hidden="true" req="loc_evidence_oxygendaniel" lvl="1" blue="false" max_group="0">
 		<text>You've already found a solid alibi for Daniel. You know it cannot be him.</text>
 		<event>
 			<item_modify>
@@ -2454,7 +2467,7 @@
 	<choice hidden="true" max_group="1">
 		<text>It was Amy!</text>
 		<event>
-			<text>Amy's scowl grows even darker. Sherlock shakes his head. "No, Ms. Sheppard could not have done it. She has no experience with the drone system, it is too unlikely that she would have been capable of operating a drone long enough to kill Henry."</text>
+			<text>Amy's scowl grows even darker. Sherlock shakes his head. "No, Ms. Sheppard could not have done it. She has no experience with the Drone system, it is too unlikely that she would have been capable of operating a drone long enough to kill Henry."</text>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event load="DETECTIVE_WRONG"/>
@@ -2464,8 +2477,8 @@
 	<choice hidden="true" max_group="2">
 		<text>It was Thom!</text>
 		<event>
-			<text>Thom's eyes go wide. "W-what? No, it can't be me! I don't know a thing about drones!" His easy going country accent suddenly disapears and his voice becomes uneasy.</text>
-			<choice hidden="true" req="MARKER_EVIDENCE_THOMLIE">
+			<text>Thom's eyes go wide. "W-what? No, it can't be me! I don't know a thing about drones!" His easy going country accent suddenly disappears and his voice becomes uneasy.</text>
+			<choice hidden="true" req="loc_evidence_thomlie">
 				<text>No, that's a lie!</text>
 				<event>
 					<text>Sherlock cocks his head. You explain how Thom actually got lessons from Daniel on how to operate drones, not too long before the murder as well. Sherlock contemplates this for a moment. "You're right. Goodness, even I did not catch that!"</text>
@@ -2499,21 +2512,21 @@
 	</choice>
 </event>
 <event name="DETECTIVE_ACCUSE_THOM">
-	<text>Thom's eyes go wide at your accusation. Sherlock gets up from his spot and walks over to you. "An interesting hypothesis indeed. However, if you inspected the wounds on Henry you would notice a blaster could not have been the weapon used. Mr. Nicholson only owns a standard grade defense pistol.The only thing on this station capable of leaving such a mark was the Anti-Personnel drone, and Mr. Nicholson has no experience with operating drone systems."</text>
+	<text>Thom's eyes go wide at your accusation. Sherlock gets up from his spot and walks over to you. "An interesting hypothesis indeed. However, if you inspected the wounds on Henry, you would notice a blaster could not have been the weapon used. Mr. Nicholson only owns a standard grade defense pistol. The only thing on this station capable of leaving such a mark was the Anti-Personnel drone, and Mr. Nicholson has no experience with operating drone systems."</text>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="DETECTIVE_WRONG"/>
 	</choice>
 </event>
 <event name="DETECTIVE_ACCUSE_AMY">
-	<text>Amy glares at you. Sherlock gets up from his spot and walks over to you. "An interesting hypothesis indeed. However, if you inspected the wounds on Henry you would notice a blaster could not have been the weapon used. Ms. Sheppard only owns a standard grade defense pistol. The only thing on this station capable of leaving such a mark was the Anti-Personnel drone, and Ms. Sheppard has no experience with operating drone systems."</text>
+	<text>Amy glares at you. Sherlock gets up from his spot and walks over to you. "An interesting hypothesis indeed. However, if you inspected the wounds on Henry, you would notice a blaster could not have been the weapon used. Ms. Sheppard only owns a standard grade defense pistol. The only thing on this station capable of leaving such a mark was the Anti-Personnel drone, and Ms. Sheppard has no experience with operating drone systems."</text>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="DETECTIVE_WRONG"/>
 	</choice>
 </event>
 <event name="DETECTIVE_ACCUSE_DANIEL">
-	<text>Daniel looks offended that you would accuse him. Sherlock gets up from his spot and walks over to you. "An interesting hypothesis indeed. However, Daniel was busy on the night of the murder. If you inspected the oxygen, then interviewed Dr. Browne, you would know that he was busy all night long upgrading the system. This would not have left him with enough time to also have overriden the drone control and killed Henry."</text>
+	<text>Daniel looks offended that you would accuse him. Sherlock gets up from his spot and walks over to you. "An interesting hypothesis indeed. However, Daniel was busy on the night of the murder. If you inspected the Oxygen system, then interviewed Dr. Browne, you would know that he was busy all night long upgrading the system. This would not have left him with enough time to also have overriden the Drone Control and killed Henry."</text>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="DETECTIVE_WRONG"/>
@@ -2552,7 +2565,7 @@
 	<text>"Do remember, you can never be sure if anyone is telling the truth! Put more faith into the physical evidence than a tale spun by a man."</text>
 </textList>
 <event name="DETECTIVE_TALK_SHERLOCK">
-	<hiddenAug>MARKER_EVIDENCE_SHERLOCK</hiddenAug>
+	<variable name="loc_evidence_sherlock" op="set" val="1"/>
 	<text load="TEXT_SHERLOCK_TALK"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -2561,7 +2574,7 @@
 </event>
 <event name="DETECTIVE_TALK_THOM">
 	<text>What do you want to ask Thom?</text>
-	<hiddenAug>MARKER_EVIDENCE_THOM</hiddenAug>
+	<variable name="loc_evidence_thom" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Ask Thom about himself.</text>
 		<event>
@@ -2643,11 +2656,11 @@
 		<event>
 			<text>What evidence do you want to ask Thom about?
 			[As you investigate more clues or evidence, more options will appear here]</text>
-			<choice hidden="true" req="MARKER_EVIDENCE_DRONES">
+			<choice hidden="true" req="loc_evidence_drones">
 				<text>Ask Thom about the Drone system.</text>
 				<event>
 					<text>"Nope, never had the head for any of that drone stuff. I trust Doctor Browne for that kind of stuff, because I can't even figure out how to turn the drones on in the first place!"</text>
-					<choice hidden="true" req="MARKER_EVIDENCE_THOMLIE">
+					<choice hidden="true" req="loc_evidence_thomlie">
 						<text>Call Thom out on his lie.</text>
 						<event load="DETECTIVE_TALK_THOM_LIE"/>
 					</choice>
@@ -2657,7 +2670,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="MARKER_EVIDENCE_SENSORS">
+			<choice hidden="true" req="loc_evidence_sensors">
 				<text>Ask Thom about the Sensor system.</text>
                 <event>
                     <text>"No recordings? That sounds problematic. You are a detective though, so surely you can figure this out without them, right?"</text>
@@ -2667,7 +2680,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="MARKER_EVIDENCE_OXYGEN">
+			<choice hidden="true" req="loc_evidence_oxygen">
 				<text>Ask Thom about the Oxygen system.</text>
 				<event>
 					<text>"Oh, that's rather odd. That wasn't me who upgraded the system. I was busy last night during the murder, and I haven't had time to check it since. But I do know it was only level 1 the day before."</text>
@@ -2686,7 +2699,7 @@
 </event>
 <event name="DETECTIVE_TALK_THOM_LIE">
 	<text>You point out Daniel's mention to Thom learning about how to operate the drones. Thom stutters, not sure what to say. You don't push further but take note of this.</text>
-	<hiddenAug>MARKER_EVIDENCE_THOMCATCH</hiddenAug>
+	<variable name="loc_evidence_thomcatch" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="DETECTIVE_EVIDENCE_MENU_LOAD"/>
@@ -2694,7 +2707,7 @@
 </event>
 <event name="DETECTIVE_TALK_AMY">
 	<text>What do you want to ask Amy?</text>
-	<hiddenAug>MARKER_EVIDENCE_AMY</hiddenAug>
+	<variable name="loc_evidence_amy" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Ask Amy about herself.</text>
 		<event>
@@ -2776,7 +2789,7 @@
         <event>
             <text>What evidence do you want to ask Amy about?
 [As you investigate more clues or evidence, more options will appear here]</text>
-            <choice hidden="true" req="MARKER_EVIDENCE_DRONES">
+            <choice hidden="true" req="loc_evidence_drones">
                 <text>Ask Amy about the Drone system.</text>
                 <event>
                     <text>"The drones? Never touched them. That damn robot stole my job at killing pirates. If I WAS a murderer, I would have gone for the Anti-Person drone instead of Henry. Damn robots can't feel pain anyways..."</text>
@@ -2786,7 +2799,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="MARKER_EVIDENCE_SENSORS">
+			<choice hidden="true" req="loc_evidence_sensors">
 				<text>Ask Amy about the Sensor system.</text>
 				<event>
 					<text>"Guess you got no recordings then, or whatever. Aren't detectives supposed to be able to figure things out without recordings anyways? I don't know what you want me to tell you about it."</text>
@@ -2796,7 +2809,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="MARKER_EVIDENCE_OXYGEN">
+			<choice hidden="true" req="loc_evidence_oxygen">
 				<text>Ask Amy about the Oxygen system.</text>
 				<event>
 					<text>"I don't know nothin' about the life support. That's all Thom's doing, not mine."</text>
@@ -2815,7 +2828,7 @@
 </event>
 <event name="DETECTIVE_TALK_DANIEL">
 	<text>What do you want to ask Daniel?</text>
-	<hiddenAug>MARKER_EVIDENCE_DANIEL</hiddenAug>
+	<variable name="loc_evidence_daniel" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Ask Daniel about himself.</text>
 		<event>
@@ -2897,11 +2910,11 @@
 		<event>
 			<text>What evidence do you want to ask Daniel about?
 			[As you investigate more clues or evidence, more options will appear here]</text>
-			<choice hidden="true" req="MARKER_EVIDENCE_DRONES">
+			<choice hidden="true" req="loc_evidence_drones">
 				<text>Ask Daniel about the Drone system.</text>
 				<event load="DETECTIVE_TALK_DANIEL_EVIDENCE_DRONE"/> <!--separate to give a marker-->
 			</choice>
-			<choice hidden="true" req="MARKER_EVIDENCE_SENSORS">
+			<choice hidden="true" req="loc_evidence_sensors">
 				<text>Ask Daniel about the Sensor system.</text>
 				<event>
 					<text>"The sensors are no longer functional? Oh dear, that's quite unfortunate. Surely even without the recordings though, there is some way to catch the person behind this!"</text>
@@ -2911,7 +2924,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="MARKER_EVIDENCE_OXYGEN">
+			<choice hidden="true" req="loc_evidence_oxygen">
 				<text>Ask Daniel about the Oxygen system.</text>
 				<event load="DETECTIVE_TALK_DANIEL_EVIDENCE_OXYGEN"/>
 			</choice>
@@ -2924,7 +2937,7 @@
 </event>
 <event name="DETECTIVE_TALK_DANIEL_EVIDENCE_OXYGEN">
 	<text>"Oh yes, that was my doing actually! Thom normally works on the essential systems, but last night he was busy working with the drones and I had nothing to do. So, I decided to put my old bones to use and upgrade the oxygen. H..Henry was always complaining about the bad ventilation..."</text>
-	<hiddenAug>MARKER_EVIDENCE_OXYGENDANIEL</hiddenAug>
+	<variable name="loc_evidence_oxygendaniel" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="DETECTIVE_EVIDENCE_MENU_LOAD"/>
@@ -2932,7 +2945,7 @@
 </event>
 <event name="DETECTIVE_TALK_DANIEL_EVIDENCE_DRONE">
 	<text>"Oh yes, of course! No ship or station is complete until its been outfitted with drone tech. I spend most of my time working with the system, though Thom has also been spending a fair bit of time in there as well after he asked me for lessons with operating the drones."</text>
-	<hiddenAug>MARKER_EVIDENCE_THOMLIE</hiddenAug>
+	<variable name="loc_evidence_thomlie" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="DETECTIVE_EVIDENCE_MENU_LOAD"/>
@@ -2947,7 +2960,7 @@
 </event>
 <event name="DETECTIVE_SYSTEM_DRONES">
 	<text>You take a look at the dronebay. Though there aren't too many schematics on the station's computers, you notice an Anti-Personnel drone and a standard issue Combat Drone.</text>
-	<hiddenAug>MARKER_EVIDENCE_DRONES</hiddenAug>
+	<variable name="loc_evidence_drones" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Inspect the Combat Drone.</text>
 		<event>
@@ -2962,7 +2975,8 @@
 		<text>Inspect the Anti-Personnel drone.</text>
 		<event>
 			<text>The computers inform you the Anti-Personnel drone has been used a total of 38 times since its purchase, though that's not surprising. With the influx of pirates in this sector, the number of boarders this station must see is unfavourably high.</text>
-			<choice hidden="true" req="MARKER_EVIDENCE_BURNS">
+			<variable name="loc_evidence_burns" op="set" val="1"/>
+			<choice hidden="true">
 				<text>Inspect the drone's laser.</text>
 				<event load="DETECTIVE_DRONE_CANNON"/>
 			</choice>
@@ -2979,7 +2993,7 @@
 </event>
 <event name="DETECTIVE_DRONE_CANNON">
 	<text>You inspect the Anti-Personnel Drone's laser. To your surprise, the arm-mounted cannon appears to be much stronger than a standard defense blaster, and certainly capable of leaving a burn mark the same size as the one on Henry's corpse!</text>
-	<hiddenAug>MARKER_EVIDENCE_DRONEKILLER</hiddenAug>
+	<variable name="loc_evidence_dronekiller" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="DETECTIVE_EVIDENCE_MENU_LOAD"/>
@@ -2994,7 +3008,7 @@
 </event>
 <event name="DETECTIVE_SYSTEM_OXYGEN">
 	<text>You inspect the oxygen system. The system appears to be running at a higher level than usual, and is in pristine condition. From the looks of it, the system was upgraded very recently.</text>
-	<hiddenAug>MARKER_EVIDENCE_OXYGEN</hiddenAug>
+	<variable name="loc_evidence_oxygen" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="DETECTIVE_EVIDENCE_MENU_LOAD"/>
@@ -3002,7 +3016,7 @@
 </event>
 <event name="DETECTIVE_SYSTEM_SENSORS">
 	<text>You inspect the sensors system. It appears someone has sabotaged the computers, and deleted all of the recordings from the night of the murder! There's nothing else here of use, but someone had to have done this...</text>
-	<hiddenAug>MARKER_EVIDENCE_SENSORS</hiddenAug>
+	<variable name="loc_evidence_sensors" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="DETECTIVE_EVIDENCE_MENU_LOAD"/>
@@ -3033,13 +3047,13 @@
 							<choice hidden="true">
 								<text>Slap him.</text>
 								<event>
-									<text>You slap Thom across the face. "O-ok I'll talk! I was just a dormant agent sent to watch the sector. For a while now the Rebellion has been planning to invade this sector and siege the Militia's hangars and armories, and today that plan is about to carry out! Aboard the same station I was stationed at was Henry, another undercover Rebel spy. However, he grew too attached to that old man Browne, and when he learned the invasion would put everyone here - even the doctor - at risk, he got weak and was going to snitch. I secured the safety of the Rebellion by killing that coward!"</text>
+									<text>You slap Thom across the face. "O-ok I'll talk! I was just a dormant agent sent to watch the sector. For a while now the Rebellion has been planning to invade this sector and lay siege to the Militia's hangars and armories, and today that plan is about to be carried out! Aboard the same station I was stationed at was Henry, another undercover Rebel spy. However, he grew too attached to that old man Browne, and when he learned the invasion would put everyone here - even the doctor - at risk, he got weak and was going to snitch. I secured the safety of the Rebellion by killing that coward!"</text>
 									<choice hidden="true">
 										<text>Continue...</text>
 										<event>
 											<text>"Yeah, a real job securing them you did just now, blabbering all their secrets." Sherlock motions for one of the Militia guards to gag Thom and remove him from the room. "Damn it, if his intel's any good then we have a serious situation on our hands. We need to head to the central hangar and alert the General about this, quickly! Your ship seems a lot faster than mine, so I hope you don't mind if I catch a ride."</text>
-											<hiddenAug>ACH_CREW_HAYNES</hiddenAug>
-											<crewMember amount="1" class="detective">Sherlock Haynes</crewMember>
+											<variable name="ach_crew_haynes" op="set" val="1"/>
+											<crewMember amount="1" class="unique_haynes">Sherlock Haynes</crewMember>
 											<quest event="DETECTIVE_HANGARATTACK"/>
 										</event>
 									</choice>
@@ -3055,9 +3069,9 @@
 
 <ship name="SHIP_MILITIA_BOSS" auto_blueprint="MU_MILITIA_BOSS">
 	<triggeredEvent event="DETECTIVE_HANGARATTACK_FAILURE" time="100" thisFight="true" clearOnJump="true">
-		<triggeredEventBox load="DEFAULT_TIMER" pos="default">
+		<triggeredEventBox load="DEFAULT_TIMER" pos="combat">
 			<warning time="10.0" flash="true"/>
-			<tooltip>The shield reactor will be disabled in this amount of time. Be sure to defeat the Dreadnaught because the time runs out.</tooltip>
+			<tooltip>The shield reactor will be disabled in this amount of time. Be sure to defeat the Dreadnaught before the time runs out.</tooltip>
 		</triggeredEventBox>
 		<timerSounds load="DEFAULT_TIMER_SOUNDS"/>
 	</triggeredEvent>
@@ -3070,7 +3084,7 @@
 		</choice>
 	</destroyed>
 	<deadCrew>
-		<text>The Dreadnaught has been emptied of crew. The ship falls back down to the surface of the planet, taking out several ship on its way. Fortunately, the generator takes little damage from the impact.</text>
+		<text>The Dreadnaught has been emptied of crew. The ship falls back down to the surface of the planet, taking out several ships on its way. Fortunately, the generator takes little damage from the impact.</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Continue...</text>	
@@ -3078,12 +3092,12 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="soldier" prop="0.20"/>
-		<crewMember type="engineer" prop="0.20"/>
+		<crewMember type="human_soldier" prop="0.20"/>
+		<crewMember type="human_engineer" prop="0.20"/>
 		<crewMember type="LIST_CREW_REBEL_RANDOM" prop="0.60"/>	
 	</crew>
 </ship>
-<event name="DETECTIVE_HANGARATTACK" unique="true">
+<event name="DETECTIVE_HANGARATTACK">
 	<preventQuest/>
 	<preventFleet/>
 	<quest>
@@ -3095,13 +3109,13 @@
 		<unvisitedTooltip>The Militia's hangar.</unvisitedTooltip>
 		<visitedTooltip>Visited location.</visitedTooltip>
 	</beaconType>
-	<text>It appears you're too late. Already, it seems the Rebels have begun the invasion. In the distance is a massive militia ship firing on its own men, which can mean only one thing. The Rebels have already captured the ship, and are using it to lead their attack!</text>
+	<text>It appears you're too late. Already, it seems the Rebels have begun the invasion. In the distance is a massive Militia ship firing on its own men, which can mean only one thing. The Rebels have already captured the ship, and are using it to lead their attack!</text>
 	<img back="BACK_EVENT_HANGAR" planet="PLANET_INVISIBLE"/>
 	<ship load="SHIP_MILITIA_BOSS" hostile="false"/> 
 	<choice hidden="true">
 		<text>Hail the Militiamen and ask if you can assist.</text>
 		<event>
-			<text>The Militia general responds. "Yes, for gods sake we need any help we can get! A couple Rebel ships got in before we could raise the shield generator, but it's up now. Unfortunately, the Rebels have caused critical damage and that damn Dreadnaught is about to finish it off. We only have so long until the shield falls and we're all doomed! If we can destroy that Dreadnaught - or capture it - we might be able to repair the shield generator and keep the Rebel fleet away!"</text>
+			<text>The Militia general responds. "Yes, for god sake we need any help we can get! A couple Rebel ships got in before we could raise the shield generator, but it's up now. Unfortunately, the Rebels have caused critical damage and that damn Dreadnaught is about to finish it off. We only have so long until the shield falls and we're all doomed! If we can destroy that Dreadnaught - or capture it - we might be able to repair the shield generator and keep the Rebel fleet away!"</text>
 			<choice hidden="true">
 				<text>Fight the Dreadnaught.</text>
 				<event>
@@ -3138,18 +3152,20 @@
 </event>
 <event name="DETECTIVE_HANGARATTACK_FAILURE">
 	<text>From behind you erupts a massive explosion, as a blue ball of light engulfs the massive shield generator and reduces the entire complex to ash! You've failed, and now that the shield is down the Dreadnaught jumps away and the Rebel fleet floods in.</text>
+	<recallBoarders/>
 	<choice hidden="true">
 		<text>Run!</text>
 		<event>
 			<text>You manage to evade most of the ships, but your hull catches several missiles and a nearby Dropship beams some soldiers aboard. Still, this could have ended a lot worse... Though this looks bleak for the survival of the Militia.</text>
+			<instantEscape/>
 			<damage amount="7"/>
-			<boarders min="2" max="3" class="soldier"/>
+			<boarders min="2" max="3" class="human_soldier"/>
 		</event>
 	</choice>
 </event>
 <event name="DETECTIVE_HANGARATTACK_DESTROY">
 	<text>Without the Dreadnaught to destroy the generator, the fleet stuck within the shield is rendered useless. They're swiftly overtaken by Militia reinforcements, and a team of engineers goes to work on fixing the damage immediately. The Rebel fleet arrives only to find no way into the hangar. They fire pointlessly on the shields but soon realize their efforts are futile.</text>
-	<hiddenAug>ACH_BOSS_MILDREAD</hiddenAug>
+	<variable name="ach_boss_mildread" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Contact the Militia command.</text>
 		<event>
@@ -3166,7 +3182,7 @@
 </event>
 <event name="DETECTIVE_HANGARATTACK_DEADCREW"> <!--give better reward?-->
 	<text>Without the Dreadnaught to destroy the generator, the fleet stuck within the shield is rendered useless. They're swiftly overtaken by Militia reinforcements, and a team of engineers goes to work on fixing the damage immediately. The Rebel fleet arrives only to find no way into the hangar. They fire pointlessly on the shields but soon realize their efforts are futile.</text>
-	<hiddenAug>ACH_BOSS_MILDREAD</hiddenAug>
+	<variable name="ach_boss_mildread" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Contact the Militia command.</text>
 		<event>

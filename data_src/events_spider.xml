@@ -1,9 +1,9 @@
 <FTL>
 <!--start quest-->
 <event name="SPIDER_QUEST_START" unique="true">
-	<text>You find a number of ships fleeing from a small space station. A squadron of Militia vessels have been deployed around the area. One ship hails you. "Civilian, this system is restricted. We must request that you leave immediately."</text>
+	<text>You find a number of ships fleeing from a small space station. A squadron of Militia vessels have been deployed around the area. One ship hails you: "Civilian, this system is restricted. We must request that you leave immediately."</text>
 	<distressBeacon/>
-	<choice req="ACH_SHIP_INFESTED" lvl="0" hidden="true" blue="false" max_group="0">
+	<choice req="loc_beentobrood" lvl="0" hidden="true" blue="false" max_group="0">
 		<text>We're no Civilian ship, what is the issue?</text>
 		<event>
 			<text>"A Federation military vessel? My bad then. This station has been infected by some kind of weird... giant alien spiders. Think you could clear this station of the infestation, without causing too much damage?"</text>
@@ -25,7 +25,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice req="ACH_SHIP_INFESTED" lvl="1" hidden="true" blue="false" max_group="0">
+	<choice req="loc_beentobrood" lvl="1" hidden="true" blue="false" max_group="0">
 		<text>We're no Civilian ship, what is the issue?</text>
 		<event>
 			<text>"Well, I'll be! You're the ship who was sent out to take care of that spider issue. Unfortunately, there's still some spider problems on the outskirts here. Don't suppose you could take care of these ones again, could you?"</text>
@@ -33,7 +33,7 @@
 			<choice hidden="true">
 				<text>Agree.</text>
 				<event>
-					<text>The Militiamen give you clearance to engage the station, but give two last warnings. "Just as before, please try and be careful! We can't go around blowing up civilian property!"</text>
+					<text>The Militiamen give you clearance to engage the station. "Just as before, please try and be careful! We can't go around blowing up civilian property!"</text>
 					<ship hostile="true"/>
 					<choice hidden="true">
 						<text>Continue...</text>
@@ -47,7 +47,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true">
+	<choice req="pilot" lvl="1" hidden="true" max_group="1" blue="false">
 		<text>Agree to leave.</text>
 		<event>
 			<text>You navigate away from the station, but you stay in the system long enough to do something on the ship.</text>
@@ -66,7 +66,6 @@
 <event name="INFESTED_STATION_WIN">
 	<text>You've cleared out the spider infestation from the station. The Militiamen thank you for your help, and payment is given for your effort.</text>
 	<autoReward level="HIGH">standard</autoReward>
-	<hiddenAug>ACH_SHIP_INFESTED</hiddenAug>
 	<choice hidden="true">
 		<text>Ask about the spiders.</text>
 		<event>
@@ -75,7 +74,7 @@
 				<text>Could we help?</text>
 				<event>
 					<text>"We hired another Renegade sorta like you a while back to help but from what I understand he hasn't been of much use. I'd be hesitant sending in another loose cannon, but considering you handled the situation so delicately here why the hell not. I'll transfer the coordinates for the Brood stronghold to you. Best of luck."</text>
-					<hiddenAug>COORDS_SPIDER</hiddenAug>
+					<variable name="coords_spider" op="set" val="1"/>
 				</event>
 			</choice>
 		</event>
@@ -190,7 +189,7 @@
 						<text>Rescue the child!</text>
 						<event>
 							<text>You raise your weapon and shoot at the spider, but it barely hurts them! Several weavers come crawling out from the surrounding tunnels, alerted by the gunfire. You're chased back to the ship with the spiders in pursuit!</text>
-							<boarders min="2" max="3" class="weaver"/>
+							<boarders min="2" max="3" class="spider_weaver"/>
 						</event>
 					</choice>
 					<choice hidden="true">
@@ -431,7 +430,7 @@
 <event name="INFESTATION_MAFIA_EXPLOSIVES">
 	<text>The walls of the room are lined with explosives, many of which have small skulls printed on them.</text>
 	<choice hidden="true">
-		<text>Grab some of the explosives</text>
+		<text>Grab some of the explosives.</text>
 		<event>
 			<text>Your crew grab as much ammunition as they can carry, until a Duskbringer in bright red armor bursts into the room, holding a small bomb. "Feds, in my territory? Oh, now you've really made me mad!"</text>
 			<autoReward level="HIGH">missiles_only</autoReward>
@@ -449,7 +448,7 @@
 		</event>
 	</choice>
 	<choice hidden="true">
-		<text>Leave, we shouldn't be stealing from pirates</text>
+		<text>Leave, we shouldn't be stealing from pirates.</text>
 		<event load="INFESTATION_MAFIA_EARLYLEAVE"/>
 	</choice>
 </event>
@@ -567,7 +566,6 @@
 <event name="INFESTATION_PURGER_WIN">
 	<text>The Auto-Purger has been dealt with. You scrap the remains of the ship.</text>
 	<autoReward level="MED">standard</autoReward>
-	<weapon name="BEAM_FIRE"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -652,13 +650,13 @@
 <textList name="TEXT_ENCOUNTER_CLANSMEN_INFESTATION">
 	<text>"I grow tired of thessse ssspiderss. I came for a challenge, but thessse arachnidsss are too easssy to kill. I long for a challenge... ssssuch asss you!" A Slug clansman attacks!</text>
 	<text>The Clansmen enjoy a good exotic hunt, and the spiders are just that. However, that doesn't mean they won't also go out of the way to hunt ships like yours!</text>
-	<text>"Piss off Feds! This sector is my hunting ground, not yours!" An offended Slug arms their weapons, and it's about time for you to do the same!</text>
+	<text>"Pissss off Feds! Thisss sssector is my hunting ground, not yoursss!" An offended Slug arms their weapons, and it's about time for you to do the same!</text>
 	<text>Few things are deadlier than a mad Slug, and the Clansman here is particularly miffed. "Damn ssspiders keep eating my crew. You, Fed sship. Sssstay ssstill and let me kill you, I need an easssy kill for onccce!"</text>
 	
 	<!--duplicate-->
 	<text>"I grow tired of thessse ssspiderss. I came for a challenge, but thessse arachnidsss are too easssy to kill. I long for a challenge... ssssuch asss you!" A Slug clansman attacks!</text>
 	<text>The Clansmen enjoy a good exotic hunt, and the spiders are just that. However, that doesn't mean they won't also go out of the way to hunt ships like yours!</text>
-	<text>"Piss off Feds! This sector is my hunting ground, not yours!" An offended Slug arms their weapons, and it's about time for you to do the same!</text>
+	<text>"Pissss off Feds! Thissss sssector is my hunting ground, not yoursss!" An offended Slug arms their weapons, and it's about time for you to do the same!</text>
 	<text>Few things are deadlier than a mad slug, and the Clansman here is particularly miffed. "Damn ssspiders keep eating my crew. You, Fed sship. Sssstay ssstill and let me kill you, I need an easssy kill for onccce!"</text>
 </textList>
 
@@ -818,7 +816,7 @@
 						<text>Agree to avoid the hive.</text>
 						<event>
 							<text>You run back to the ship, careful not to awaken the spiders. Though their friend stays behind, stupidly decided to take back the cache all on his own, the red head offers to stay with you.</text>
-							<crewMember amount="1" class="soldier">Ronald Westly</crewMember>
+							<crewMember amount="1" class="human_soldier">Ronald Westly</crewMember>
 						</event>
 					</choice>
 					<choice hidden="true">
@@ -983,7 +981,7 @@
 		<event>
 			<text>You pull closer, careful not to be spotted. It seems you failed to spot a second ship, a large Mantis cruiser in Brood colors. You land behind one of the massive solar panels and tune into the conversation between the two ships. It seems Irwin is speaking with an unusually well-dressed Brood member in what seems to be a painted Ace uniform.</text>
 			<ship load="SHIP_BROOD_CRUISER" hostile="false"/>
-			<choice hidden="true" req="MARKER_BEENTONEST" blue="false" lvl="0" max_group="0">
+			<choice hidden="true" req="loc_beentonest" blue="false" lvl="0" max_group="0">
 				<text>Continue...</text>
 				<event>
 					<text>"Heheh, hey there Virgo. Look, I know thisss looksss bad but..." Irwin is cut off by the imposing figure. "I do not have time for your shit anymore Irwin. Vael is getting tired. You had ONE job, to recover the DNA. And what happened? You come slithering back to me with nothing. Now, they're about to blow the whole nest to hell. You expect me to TOLERATE this?"</text>
@@ -1013,7 +1011,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="MARKER_BEENTONEST" blue="false" lvl="1" max_group="0">
+			<choice hidden="true" req="loc_beentonest" blue="false" lvl="1" max_group="0">
 				<text>Continue...</text>
 				<event>
 					<text>"Heheh, hey there Virgo. Look, I know thisss looksss bad but..." Irwin is cut off by the imposing figure. "I do not have time for your shit anymore Irwin. Vael is getting tired. You had ONE job, to recover the DNA. And what happened? You come slithering back to me with nothing. Now, they've blown that nest to hell and we have no way of recovering the samples! You expect me to TOLERATE this?"</text>
@@ -1064,7 +1062,7 @@
 							<choice hidden="true">
 								<text>Follow through with what?</text>
 								<event>
-									<text>"Ssstealing sssome kind of DNA. Thessse G.A.S., the Vek, bla bla bla, they're all basssed on the sssame ssstuff. I ain't a biologissst, I dunno what I'm talking about. Point isss, Vael caught wind Senator Wright wasss getting cold feet and was gonna blow the top off thisss whole thing. I wasss SSSUPPOSSSED to bring Vael the DNA before the big boom, but I like being alive, you know?"</text>
+									<text>"Ssstealing sssome kind of DNA. Thessse G.A.S., the Vek, bla bla bla, they're all basssed on the sssame ssstuff. I ain't a biologissst, I dunno what I'm talking about. Point isss, Vael caught wind Sssenator Wright wasss getting cold feet and was gonna blow the top off thisss whole thing. I wasss SSSUPPOSSSED to bring Vael the DNA before the big boom, but I like being alive, you know?"</text>
 									<choice hidden="true">
 										<text>Didn't you use to be a Clansman?</text>
 										<event>
@@ -1073,8 +1071,9 @@
 												<text>Right...</text>
 												<event>
 													<text>"That being sssaid, I need a ride. My ship isss toassst. Ssssince you're a renegade, I'm sure you could alwaysss ussse more help. Ssso, let'ss ssstrike a deal! I join your crew, and we sssplit the profitsss half and half. Deal? No!? Alright well, I guessss we can figure out the numbersss later... Oh, and sssseeing asss I won't need my ssship anymore, you do whatever with it."</text>
-													<crewMember amount="1" all_skills="2" class="hunter">Irwin</crewMember>
-													<hiddenAug>ACH_CREW_IRWIN</hiddenAug>
+													<crewMember amount="1" all_skills="2" class="unique_irwin">Irwin</crewMember>
+													<variable name="ach_boss_brood" op="set" val="1"/>
+													<variable name="ach_crew_irwin" op="set" val="1"/>
 													<autoReward level="MED">standard</autoReward>
 													<unlockCustomShip silent="false">PLAYER_SHIP_SPIDER</unlockCustomShip>
 												</event>
@@ -1134,8 +1133,8 @@
 													<choice hidden="true">
 														<text>Follow her.</text>
 														<event>
-															<text>You crawl through the tunnel and find yourself now standing in a massive rectangular room with ships and lab equipment. You wipe away some of the dirt caked onto the walls and find underneath is rusted metal. This was a research center at some point, but judging from the smell, the staff is all dead. You see the queen walk over to a row of tubes on the walls, where you find many exotic creatures, some of which seem eerlily similar to the G.A.S., Vek, and other insectoid monstrosities used by the Brood. You glance over at a nearby desk where you find a letter addressed to, of all people, Oscar Wright. Next to it is a dongle containing blueprints for some kind of cruiser model, which you slip into your pocket.</text>
-															<hiddenAug>MARKER_BEENTONEST</hiddenAug>
+															<text>You crawl through the tunnel and find yourself now standing in a massive rectangular room with ships and lab equipment. You wipe away some of the dirt caked onto the walls and find underneath is rusted metal. This was a research center at some point, but judging from the smell, the staff are all dead. You see the queen walk over to a row of tubes on the walls, where you find many exotic creatures, some of which seem eerlily similar to the G.A.S., Vek, and other insectoid monstrosities used by the Brood. You glance over at a nearby desk where you find a letter addressed to, of all people, Oscar Wright. Next to it is a dongle containing blueprints for some kind of cruiser model, which you slip into your pocket.</text>
+															<variable name="loc_beentonest" op="set" val="1"/>
 															<choice hidden="true">
 																<text>Read the letter.</text>
 																<event>
@@ -1216,7 +1215,7 @@
 </event>
 <event name="INFESTATION_NEST_WIN">
 	<text>Montgomery in the end was not enough to stop you. Though the rest of the crew aboard his vessel were likely oblivious to his intentions, they were necessary casualties.</text>
-	<hiddenAug>ACH_BOSS_MILCRUISER</hiddenAug>
+	<variable name="ach_boss_milcruiser" op="set" val="1"/>
 	<autoReward level="HIGH">standard</autoReward>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -1225,13 +1224,13 @@
 			<choice hidden="true">
 				<text>We have to rescue the queen!</text>
 				<event>
-					<text>You run back into the hatchery where you find the queen conforting several wailing hatchlings. The droning sound of the bombs as they count down drowns out your cries but the queen spots you, and somehow understands the severity of the situation. You make your way back to the ship and take off, rushing through the tunnels as the walls shake and the inferno behind you expands. In the end it comes down to almost a matter of seconds as you kick the engines into maximum thrust and take off from the planet.</text>
-					<crewMember amount="1" class="queen" combat="2">The Queen</crewMember>
-					<hiddenAug>ACH_CREW_QUEEN</hiddenAug>
+					<text>You run back into the hatchery where you find the queen comforting several wailing hatchlings. The droning sound of the bombs as they count down drowns out your cries but the queen spots you, and somehow understands the severity of the situation. You make your way back to the ship and take off, rushing through the tunnels as the walls shake and the inferno behind you expands. In the end it comes down to almost a matter of seconds as you kick the engines into maximum thrust and take off from the planet.</text>
+					<crewMember amount="1" class="unique_queen" combat="2">The Queen</crewMember>
+					<variable name="ach_crew_queen" op="set" val="1"/>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event>
-							<text>So many different questions are left running through your head. Why was the Rebellion testing the spiders and the Vek? What is the 'new candidate'? Who is Dr E.W.? You arent sure if any of these questions will be answered, but you can't linger for too much longer. The queen, while safe, is obviously disturbed by the loss of her children. Had you not saved her, the entire species would have likely gone extinct. All you can do now is be glad another Ace is dead and carry on with your mission. Maybe some day, whether it's you or another captain, someone will get to the bottom of this. You pull out the dongle from earlier and download the blueprint data onto your ship for later.</text>
+							<text>So many different questions are left running through your head. Why was the Rebellion testing the spiders and the Vek? What is the 'new candidate'? Who is Dr E.W.? You aren't sure if any of these questions will be answered, but you can't linger for too much longer. The queen, while safe, is obviously disturbed by the loss of her children. Had you not saved her, the entire species would have likely gone extinct. All you can do now is be glad another Ace is dead, and carry on with your mission. Maybe some day, whether it's you or another captain, someone will get to the bottom of this. You pull out the dongle from earlier and download the blueprint data onto your ship for later.</text>
 							<unlockCustomShip silent="false">PLAYER_SHIP_BROOD</unlockCustomShip>
 						</event>
 					</choice>

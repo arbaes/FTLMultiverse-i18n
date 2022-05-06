@@ -40,7 +40,7 @@
 		</choice>
 	</surrender>
 	<destroyed load="DESTROYED_PIRATE"/>
-	<deadCrew load="DEAD_CREW_SLAVER"/>
+	<deadCrew load="DEAD_CREW_SLAVERS"/>
 </ship>
 
 <ship name="SHIP_MANTIS_START" auto_blueprint="LIST_SHIPS_MANTIS_START">
@@ -83,7 +83,7 @@
 	<text>"Looks like you've stumbled into my.... AMBUSH! Nyeh heh heh! Heh. Heh... Die." The Rebel ship moves in to attack.</text>
 	<text>"Your mistake for coming here, bucko. End of the line!" It's the end of the line for someone, but let's hope it's not you!</text>
 	<text>The Rebel captain says nothing, but imitates a pair of guns with his fingers and draws a line across his throat. When did the Rebels get so childish?</text>
-	<text>The Rebel Elite breaks into laughter upon seeing your ship. You won't take this insult lightly. Not like you have a choice, since their weapons are already firing!</text>
+	<text>The Rebel captain breaks into laughter upon seeing your ship. You won't take this insult lightly. Not like you have a choice, since their weapons are already firing!</text>
 </textList>
 <event name="FINISH_BEACON_DROPPOINT_ENCOUNTER_CASUAL">
 	<text load="TEXT_FINISH_BEACON_DROPPOINT_ENCOUNTER"/>
@@ -120,19 +120,19 @@
 
 <event name="FINISH_BEACON_DROPPOINT">
 	<text>You've reached the end of the first step of your journey. However, it appears you aren't alone. The Rebel fleet must have sent one of their fighters after you!</text>
-	<choice hidden="true" req="DIFFICULTY_CASUAL" lvl="1" blue="false" max_group="0">
+	<choice hidden="true" req="challenge_level" lvl="0" blue="false" max_group="0">
 		<text>Continue...</text>
 		<event load="FINISH_BEACON_DROPPOINT_ENCOUNTER_CASUAL"/>
 	</choice>
-	<choice hidden="true" req="DIFFICULTY_NORMAL" lvl="1" blue="false" max_group="0">
+	<choice hidden="true" req="challenge_level" lvl="1" blue="false" max_group="0">
 		<text>Continue...</text>
 		<event load="FINISH_BEACON_DROPPOINT_ENCOUNTER_NORMAL"/>
 	</choice>
-	<choice hidden="true" req="DIFFICULTY_CHALLENGE" lvl="1" blue="false" max_group="0">
+	<choice hidden="true" req="challenge_level" lvl="2" blue="false" max_group="0">
 		<text>Continue...</text>
 		<event load="FINISH_BEACON_DROPPOINT_ENCOUNTER_CHALLENGE"/>
 	</choice>
-	<choice hidden="true" req="DIFFICULTY_EXTREME" lvl="1" blue="false" max_group="0">
+	<choice hidden="true" req="challenge_level" lvl="3" blue="false" max_group="0">
 		<text>Continue...</text>
 		<event load="FINISH_BEACON_DROPPOINT_ENCOUNTER_EXTREME"/>
 	</choice>
@@ -170,7 +170,7 @@
 </ship>
 
 <event name="FINISH_BEACON_DROPPOINT_WIN">
-	<text>You've successfully defeated the Elite ship. You now have some time to do something else on the ship.</text>
+	<text>You've successfully defeated the Rebel ship. You now have some time to do something else on the ship.</text>
 	<autoReward level="MED">weapon</autoReward>
 	<choice>
 		<text>Do something on-board the ship.</text>
@@ -476,7 +476,6 @@
 	<event load="ASTEROID_EXPLORE"/>
 	<event load="TRADER_CIV"/>
 	<event load="PIRATE_SALESMAN"/>
-	<event load="MERCENARY_OFFER"/>
 	<event load="DONOR_PLAGUE"/>
 	<event load="WRECKAGE_EVENT"/>
 </eventList>
@@ -491,6 +490,7 @@
 			<choice>
 				<text>Buy an engine upgrade.</text>
 				<event>
+					<text>Surprisingly, the pirates do honor their deal, and your engines have gained in efficiency. This will be a welcome boost for the road ahead.</text>
 					<upgrade amount="1" system="engines"/>
 					<item_modify>
 						<item type="fuel" min="-3" max="-3"/>
@@ -504,6 +504,7 @@
 					<choice>
 						<text>Take the upgrade.</text>
 						<event>
+							<text>Surprisingly, the pirates do honor their deal, and your engines have gained in efficiency. This will be a welcome boost for the road ahead.</text>
 							<upgrade amount="1" system="engines"/>
 							<item_modify>
 								<item type="fuel" min="-3" max="-3"/>
@@ -514,6 +515,7 @@
 						<text>Nah, we'll just kill you.</text>
 						<event>
 							<text>"Wow, you must really be bad at math, or desperate for fuel. Your stupidity bodes well for me!"</text>
+							<metaVariable name="prof_fuel_betrayal" op="add" val="1"/>
 							<ship hostile="true"/>
 							<choice hidden="true">
 								<text>Continue...</text>
@@ -555,7 +557,7 @@
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
-				<event load="COMBAT_CHECK"/>
+				<event load="REPUTATION_DECREASE_SLAVER_COMBAT"/>
 			</choice>
 		</event>
 	</choice>
@@ -681,7 +683,7 @@
 		<upgrade amount="1" system="reactor"/>
 	</event>
 	<event>
-		<text>Looks like the cache is protected by some kind of complicated keypad connected to a bomb. Playing with it is too risky. You leave behind the cache disappointed.</text>
+		<text>Looks like the cache is protected by some kind of complicated keypad connected to a bomb. Playing with it is too risky. You leave the cache behind, disappointed.</text>
 	</event>
 	<event>
 		<text>You open up the cache, only to find a band of malnourished and ravenous pirates trapped inside!</text>
@@ -796,7 +798,7 @@
 	<choice req="MAGNET_ARM" hidden="true">
 		<text>(Magnetic Arm) Attempt to mine the asteroids.</text>
 		<event>
-			<text>Your magnetic arm is not well suited to the task, but it is able to salvage a very small portion of space junk drifting around nearby..</text>
+			<text>Your magnetic arm is not well suited to the task, but it is able to salvage a very small portion of space junk drifting around nearby.</text>
 			<autoReward level="LOW">stuff</autoReward>
 		</event>
 	</choice>
@@ -909,7 +911,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="commando">
+	<choice hidden="true" req="rock_commando">
 		<text>(Lost Sun Commando) Offer to teach them how to construct makeshift explosives.</text>
 		<event>
 			<text>Your commando, being both an experienced arsonist and knowledgeable in the ways of explosives, explains to the miners how the Lost Suns have been using "recycled" ammunition to save costs. Thoroughly impressed by this knowledge, the colony's leader grants you access to some of their latest spoils.</text>
@@ -933,7 +935,7 @@
 </event>
 
 <event name="MV_TERRAFORMING_SCAN"  unique="true">
-	<text>A small terraforming team is working on a nearby moon hails you, and a short, stubby Rockman captain appears on the screen. "We require assistance, and you are the first ship we've seen in this system for weeks. We're in the middle of terraforming this barren moon, but our sensors aren't strong enough to break through the atmosphere."</text>
+	<text>A small terraforming team working on a nearby moon hails you, and a short, stubby Rockman captain appears on the screen. "We require assistance, and you are the first ship we've seen in this system for weeks. We're in the middle of terraforming this barren moon, but our sensors aren't strong enough to break through the atmosphere."</text>
 	<img planet="PLANET_UNPOPULATED_TERRA"/>
 	<choice>
 		<text>You offer your assistance.</text>
@@ -948,7 +950,7 @@
 				<event load="MV_HIGH_SCAN_TERRAFORMING"/>
 			</choice>
 			<choice req="LIST_CREW_ZOLTAN" hidden="true">
-				<text>(Zoltan) Send your crewman to overcharge their systems.</text>
+				<text>(Zoltan Crew) Send your crewman to overcharge their systems.</text>
 				<event load="MV_HIGH_SCAN_TERRAFORMING"/>
 			</choice>
 			<choice req="ADV_SCANNERS" hidden="true">
@@ -1057,7 +1059,7 @@
 	<event load="DROPPOINT_FREEMANTIS"/>
 	
 	<event load="MV_REFUGEE_NO_DISTRESS"/>
-	<event load="ROGUE_REBEL"/>
+	<event load="MV_ROGUE_REBEL"/>
 	<event load="FED_BROKEN_SUPPLY_DRONE"/>
 	<event load="CIVILIAN_EXPLODED"/>
 </eventList>
@@ -1084,7 +1086,7 @@
 		<event>
 			<text>"Any help you could offer would be a life saver. We only just barely managed to chase away those damn rebels, and they'll no doubt be returning with reinforcements soon. We're undermanned and we won't be able to get these repairs done in time."</text>
 			<choice hidden="true">
-				<text>Offer to wait behind longer and fight off the rebels.</text>
+				<text>Offer to wait behind longer and fight off the Rebels.</text>
 				<event>
 					<text>You wait behind until you spot a small squadron of Rebel ships approaching. Hurry to combat positions!</text>
 					<modifyPursuit amount="1"/>
@@ -1153,10 +1155,10 @@
 </event>
 
 <ship name="SHIP_FREEMANTIS_START_CHALLENGE" auto_blueprint="LIST_SHIPS_FREEMANTIS_START">
-	<surrender min="1" max="2">
+	<surrender min="1" max="3">
 		<text>"You winnings! Most greatest of fighters. As promise, I coming with."</text>
 		<ship hostile="false"/>
-		<crewMember amount="1" class="freemantis"/>
+		<crewMember amount="1" class="mantis_free"/>
 	</surrender>
 	<destroyed>
 		<text>By mistake it appears you have accidentally slain the Free Mantis. There's nothing left but to scrap their hull.</text>
@@ -1173,35 +1175,35 @@
 			<text>(Medical Crew) Revive the Free Mantis.</text>
 			<event>
 				<text>Once safely returned to the realm of the living, the Free Mantis applauds you. "Excellency of fighter beyond any realm of imaginings! I must coming with and see you in further action."</text>
-				<crewMember amount="1" class="freemantis"/>
+				<crewMember amount="1" class="mantis_free"/>
 			</event>
 		</choice>
 		<choice hidden="true" req="medbay" lvl="2">
 			<text>(Upg. Medbay) Revive the Free Mantis.</text>
 			<event>
 				<text>Once safely returned to the realm of the living, the Free Mantis applauds you. "Excellency of fighter beyond any realm of imaginings! I must coming with and see you in further action."</text>
-				<crewMember amount="1" class="freemantis"/>
+				<crewMember amount="1" class="mantis_free"/>
 			</event>
 		</choice>
 		<choice hidden="true" req="clonebay" lvl="2">
 			<text>(Upg. Clone Bay) Revive the Free Mantis.</text>
 			<event>
 				<text>Once safely returned to the realm of the living, the Free Mantis applauds you. "Excellency of fighter beyond any realm of imaginings! I must coming with and see you in further action."</text>
-				<crewMember amount="1" class="freemantis"/>
+				<crewMember amount="1" class="mantis_free"/>
 			</event>
 		</choice>
 		<choice hidden="true" req="RECON_AND_TELEPORT"> <!--I dont know how you'd get this in s1 but I'll include it-->
-			<text>(Adv Tp + Recon Tele) Revive the Free Mantis.</text>
+			<text>(Reconstructive Teleporter) Revive the Free Mantis.</text>
 			<event>
 				<text>Once safely returned to the realm of the living, the Free Mantis applauds you. "Excellency of fighter beyond any realm of imaginings! I must coming with and see you in further action."</text>
-				<crewMember amount="1" class="freemantis"/>
+				<crewMember amount="1" class="mantis_free"/>
 			</event>
 		</choice>
 		<choice hidden="true" req="BLUELIST_BOMBS_HEAL">
 			<text>(Healing Bomb) Revive the Free Mantis.</text>
 			<event>
 				<text>Once safely returned to the realm of the living, the Free Mantis applauds you. "Excellency of fighter beyond any realm of imaginings! I must coming with and see you in further action."</text>
-				<crewMember amount="1" class="freemantis"/>
+				<crewMember amount="1" class="mantis_free"/>
 			</event>
 		</choice>
 	</deadCrew>
@@ -1237,7 +1239,7 @@
 </event>
 
 <ship name="SHIP_PIRATE_DROPPOINT_RAID" auto_blueprint="LIST_SHIPS_PIRATE_START">
-	<surrender  chance="0.5" min="3" max="4">
+	<surrender  chance="0.5" min="2" max="3">
 		<text>The pirates hail you. "Ok, you've made your point Mr. Feddy Man. These are your supplies, yes yes, but we need to be able to feed ourselves too! How about we make a compromise?"</text>
 		<choice>
 			<text>Agree to their compromise and split the supplies.</text>
@@ -1375,7 +1377,7 @@
 	</event>
 	<event>
 		<text>By the time your crew arrive the situation has already escalated. They manage to rescue one of the Federation staff, a medical unit who was caught in the cross-fire, and bring them back to the ship. Unfortunately, it seems a few of the protesters noticed and have followed you back to the ship!</text>
-		<crewMember amount="1" class="medic"/>
+		<crewMember amount="1" class="human_medic"/>
 		<boarders min="2" max="3" class="random"/>
 	</event>
 </eventList>
@@ -1390,7 +1392,7 @@
 		<text>Pay him. [-20~]</text>
 		<event load="DROPPOINT_CRAZYZOLTAN_PAY"/>
 	</choice>
-	<choice hidden="true" req="monk">
+	<choice hidden="true" req="zoltan_monk">
 		<text>(Monk Crew) Retaliate with even greater spiritual nonsense.</text>
 		<event>
 			<text>Both Zoltans launch into a long debate that gets so heated it eventually reaches a point not even your translator can comprehend the words they are saying. That's mostly because they aren't words, just primal screeching. Your monk returns and reports that the second Zoltan died during the argument, and implores you to not ask questions. You scrap his ship.</text>
@@ -1401,14 +1403,14 @@
 		<text>(Medical Crew) Evaluate his condition.</text>
 		<event>
 			<text>Your crew determines he has some kind of mind erosion, not uncommon for elderly Zoltan as their hard-light forms start to deteriorate. They manage to talk some sense into the Zoltan, and convince him to stand down while they take a look at his situation. They manage to patch him up, and in return he joins your crew.</text>
-			<crewMember amount="1" class="energy"/>
+			<crewMember amount="1" class="zoltan"/>
 		</event>
 	</choice>
 	<choice hidden="true" req="BLUELIST_DRONES_MEDICAL">
 		<text>(Medical Drone) Evaluate his condition.</text>
 		<event>
 			<text>Your drone determines he has some kind of mind erosion, not uncommon for elderly Zoltan as their hard-light forms start to deteriorate. They manage to talk some sense into the Zoltan, and convince him to stand down while they take a look at his situation. They manage to patch him up, and in return he joins your crew.</text>
-			<crewMember amount="1" class="energy"/>
+			<crewMember amount="1" class="zoltan"/>
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -1613,8 +1615,6 @@
 	<event load="ENCOUNTER_PIRATE_DROPPOINT"/>
 	
 	<event load="INFORMANT_RUNNER"/>
-	<event load="MV_PIRATE_CHOICE"/>
-	<event load="MV_SLAVER_CHOICE"/>
 </eventList>
 
 <event name="ENCOUNTER_REBEL_DROPPOINT">
@@ -1641,73 +1641,6 @@
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="COMBAT_CHECK"/>
-	</choice>
-</event>
-
-<event name="MV_PIRATE_CHOICE">
-	<img planet="NONE"/>
-	<text>Upon completing your jump, you receive a message from a nearby ship. "Greetings and welcome to our beacon! For a small fee, we'll let you continue on your way."</text>
-	<ship load="SHIP_PIRATE_START" hostile="false"/>
-	<choice>
-		<text>Pay their toll.</text>
-		<event>
-			<text>"You made the right decision, friend."</text>
-			<item_modify>
-				<item type="scrap" min="-25" max="-15"/>
-			</item_modify>
-		</event>
-	</choice>
-	<choice>
-		<text>Reject their 'offer'.</text>
-		<event>
-			<text>"Too bad... You will regret this decision!"</text>
-			<ship hostile="true"/>
-			<choice hidden="true">
-				<text>Continue...</text>
-				<event load="COMBAT_CHECK"/>
-			</choice>
-		</event>
-	</choice>
-	<choice req="weapons" lvl="5">
-		<text>(Adv Weapons) Threaten the pirates to let you go.</text>
-		<event load="PIRATE_CHOICE_THREAT"/>
-	</choice>
-</event>
-
-<event name="MV_SLAVER_CHOICE" unique="false">
-	<text>An especially well-armed pirate ship approaches you. "Hand over one of your crew-members and the rest of you can go free unharmed."</text>
-	<ship load="SHIP_SLAVER_START" hostile="false"/>
-	<choice>
-		<text>Draw straws and send a crew-member over to the slavers.</text>
-		<event>
-			<text>The chosen crew-member leaves without complaint, knowing you had no choice.</text>
-			<removeCrew>
-				<clone>false</clone>
-				<text>You briefly consider cloning a replacement, but decide to respect the Federation laws regarding simultaneous duplicates.</text>
-			</removeCrew>
-		</event>
-	</choice>
-	<choice>
-		<text>We will never surrender one of our crew to slavers!</text>
-		<event>
-			<text>You prepare to fight the slaver.</text>
-			<ship hostile="true"/>
-			<choice hidden="true">
-				<text>Continue...</text>
-				<event load="COMBAT_CHECK"/>
-			</choice>
-		</event>
-	</choice>
-	<choice req="spider" hidden="true">
-		<text>(Spider Crew) "Give" them your spider and let them cause havoc.</text>
-		<event>
-			<text>"Wait, what is thi- OH GOD AHGHWHAHAGGHHAHHH" The slaver falls to the floor as the spider tears out his throat, and moves on to consume the rest of the crew. While it might have killed everyone aboard, including the slaves, the hull of the ship remains intact for you to scrap.</text>
-			<autoReward level="HIGH">standard</autoReward>
-		</event>
-	</choice>
-	<choice req="engines" lvl="6" hidden="true">
-		<text>(Engines) Attempt to out-run the slaver ship.</text>
-		<event load="SLAVER_CHOICE_RUN"/>
 	</choice>
 </event>
 

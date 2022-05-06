@@ -17,7 +17,7 @@
 <event name="FINISH_BEACON_ZOLTAN">
 	<text>You've arrived at the Long-Range Beacon. When the FTL Drive is charged you can jump to the next Sector.</text>
 	<choice hidden="true">
-		<text>Explore</text>
+		<text>Explore.</text>
 		<event load="EXIT_LIST_ZOLTAN"/>
 	</choice>
 	<choice hidden="true">
@@ -37,7 +37,6 @@
 	<event load="ZOLTAN_CREW_SCAN"/>
 	
 	<event load="REFUGEE_NO_DISTRESS"/>
-	<event load="FRIENDLY_SLAVER"/>
 	<event load="PIRATE_BRIBER"/>
 	<event load="ASTEROID_EXPLORE"/>	
 </eventList>
@@ -73,7 +72,7 @@
 </event>
 
 <event name="ZOLTAN_FREE_MAP" unique="true">
-	<text>The Zoltan stationed near this beacon are happy to receive you. As they give you the formal tour of their ship you spy some local star charts and mentally log the details.</text>
+	<text>The Zoltans stationed near this beacon are happy to receive you. As they give you the formal tour of their ship you spy some local star charts and mentally log the details.</text>
 	<reveal_map/>
 	<ship load="SHIP_ZOLTAN_GENERIC" hostile="false"/>
 </event>
@@ -110,7 +109,7 @@
 				<text>Continue...</text>
 				<event>
 					<text>Your drone discovers a vast cave network and evidence of excavation. Buried deep below you find a Zoltan scientist, still hard at work. He tells you that all his colleagues are long dead. You decide not to ask questions and offer to let him join your crew.</text>
-					<crewMember amount="1" class="energy"/>
+					<crewMember amount="1" class="zoltan"/>
 				</event>
 			</choice>
 		</event>
@@ -155,7 +154,7 @@
 		</item_modify>
 	</event>
 	<event>
-		<text>Your explosives reveal the 'cave' is actually a secret base, located in a network of bunkers just under the surface. Everyone inside is dead; some Mantis clearly came through here recently. It looks like the Zoltan were researching advanced ship weaponry. You take one of their better examples back to your ship.</text>
+		<text>Your explosives reveal the 'cave' is actually a secret base, located in a network of bunkers just under the surface. Everyone inside is dead; some Mantis clearly came through here recently. It looks like the Zoltans were researching advanced ship weaponry. You take one of their better examples back to your ship.</text>
 		<autoReward level="RANDOM">weapon</autoReward>
 		<item_modify>
 			<item type="missiles" min="-1" max="-1"/>
@@ -250,7 +249,7 @@
 	</choice>
 </event>
 <textList name="TEXT_ENCOUNTER_ZOLTAN_AUTO">
-	<text>The Zoltan are one of the few races who've invested in automated drone tech. Unfortunately, these ships are unpredictable at best and often attack random passers-by, such as yourself.</text>
+	<text>The Zoltans are one of the few races who've invested in automated drone tech. Unfortunately, these ships are unpredictable at best and often attack random passers-by, such as yourself.</text>
 	<text>"Combat mode engaged... looking for targets... target found!" An automated Zoltan vessel moves in to attack.</text>
 	<text>It appears the automated Zoltan vessel here is malfunctioning... and has falsely decided that you are a threat!</text>
 </textList>
@@ -353,7 +352,7 @@
 	<event>
 		<text>The Zoltan guards stumble into the Multiverse drive room and upon realizing you are carrying highly illegal tech, raise the alarms!</text>
 		<ship load="SHIP_ZOLTAN_GUARD" hostile="true"/>
-		<boarders min="2" max="2" class="energy"/>
+		<boarders min="2" max="2" class="zoltan"/>
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event load="COMBAT_CHECK"/>
@@ -392,7 +391,6 @@
 
 	<event load="REFUGEE_NO_DISTRESS"/>
 	
-	<event load="FRIENDLY_SLAVER"/>
 	<event load="PIRATE_BRIBER"/>
 	<event load="ASTEROID_EXPLORE"/>
 	<event load="PIRATE_STATION_CROPS"/>	
@@ -491,7 +489,7 @@
 		<item_modify>
 			<item type="scrap" min="-40" max="-40"/>
 		</item_modify>
-		<crewMember amount="1" class="energy"/>
+		<crewMember amount="1" class="zoltan"/>
 	</event>
 </eventList>
 
@@ -574,7 +572,7 @@
 		<text>The Zoltan security staff board your ship and scan the crew's faces into a computer. After a few tense moments of uncertainty they allow your ship to pass.</text>
 	</event>
 	<event>
-		<text>The Zoltan security staff board your ship and begin scanning the crew's faces into a computer. Suddenly alarms go off and the Zoltan leap on one of your crew! "This person is wanted on five charges of Utter Villainy! Surrender them to us!"</text>
+		<text>The Zoltan security staff board your ship and begin scanning the crew's faces into a computer. Suddenly alarms go off and the Zoltans leap on one of your crew! "This person is wanted on five charges of Utter Villainy! Surrender them to us!"</text>
 		<choice hidden="true">
 			<text>Give up your crewmember.</text>
 			<event>
@@ -590,7 +588,7 @@
 			<event>
 				<text>You're not going to leave anyone behind. You pull away from the station with the enemy guards on board. Unfortunately, they are able to sabotage your weapon system in the chaos. It's time to leave!</text>
 				<ship load="SHIP_ZOLTAN_CREW_SCAN" hostile="true"/>
-				<boarders min="2" max="4" class="energy"/>
+				<boarders min="2" max="4" class="zoltan"/>
 				<status type="divide" target="player" system="weapons" amount="2"/>
 				<choice hidden="true">
 					<text>Continue...</text>
@@ -630,7 +628,7 @@
 						<text>Continue...</text>
 						<event>
 							<text>They violently toss the Zoltan onto your floor and apologize, then walk off. You inspect the Zoltan, only to realize they're a pacifist monk! The Zoltan explains their situation, "I was once a trained Zoltan warrior, but I eventually saw the light and joined the Monks, but not long after I was abducted by these men. You have saved me from slavery, and I shall now serve you. As ironic as that sounds."</text> 
-							<crewMember amount="1" combat="2" class="monk"/>
+							<crewMember amount="1" combat="2" class="zoltan_monk"/>
 						</event>
 					</choice>
 				</event>
@@ -706,7 +704,7 @@
 	<choice hidden="true">
 		<text>Interfere and help the Zoltan ship.</text>
 		<event>
-			<text>You overtake the Zoltan and catch up with the Mantis ship in the asteroid belt. Time to make some friends.</text>
+			<text>You overtake the Zoltans and catch up with the Mantis ship in the asteroid belt. Time to make some friends.</text>
 			<environment type="asteroid"/>
 			<ship load="SHIP_ZOLTAN_SAVE_MANTIS2" hostile="true"/>
 			<choice hidden="true">
@@ -718,7 +716,7 @@
 	<choice hidden="true">
 		<text>Don't interfere.</text>
 		<event>
-			<text>The Zoltan know their business better than most - best to leave them to it. You prepare to jump.</text>
+			<text>The Zoltans know their business better than most - best to leave them to it. You prepare to jump.</text>
 		</event>
 	</choice>
 </event>
@@ -798,7 +796,7 @@
 	<event>
 		<text>They don't see many of your species in these parts, and you stick out like a Casvagarian Sea Slug in a Plutonian Shrimp Stew. You make it back to the ship with a gang of Zoltan guards in tow!</text>
 		<ship load="SHIP_ZOLTAN_FIGHT" hostile="true"/>
-		<boarders min="2" max="4" class="energy"/>
+		<boarders min="2" max="4" class="zoltan"/>
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event load="COMBAT_CHECK"/>
@@ -1012,9 +1010,9 @@
 	<text>An Engi ship at this beacon is sitting dormant. You hail it, asking if it has seen the lost law book. "Bound paper object of conduction code has been found. Intentions: keep book safe until owner returns."</text>
 	<ship load="SHIP_ENGI_LAWBOOK" hostile="false"/>
 	<choice hidden="true"> <!--maybe add a chance?-->
-		<text>Tell the Engi that the Zoltan sent you.</text>
+		<text>Tell the Engi that the Zoltans sent you.</text>
 		<event>
-			<text>"Likely hood of Zoltan sending Federation ship to retrieve Law Book... favorable." They send over the book.</text>
+			<text>"Likelihood of Zoltans sending Federation ship to retrieve Law Book... favorable." They send over the book.</text>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event load="ZOLTAN_QUEST_LAWBOOK_OBTAIN"/>
@@ -1035,7 +1033,7 @@
 	<choice hidden="true">
 		<text>Leave.</text>
 		<event>
-			<text>The law book is likely safe with the Engi. Hopefully, the Zoltan return here to find the Engi and get the book back.</text>
+			<text>The law book is likely safe with the Engi. Hopefully, the Zoltans return here to find the Engi and get the book back.</text>
 			<choice>
 				<text>Do something on-board the ship.</text>
 				<event load="STORAGE_CHECK"/>
@@ -1414,7 +1412,6 @@
 </eventList>
 <eventList name="NEUTRAL_CAPITAL_GENERIC">
 	<event load="REFUGEE_NO_DISTRESS"/>
-	<event load="FRIENDLY_SLAVER"/>
 	<event load="PIRATE_BRIBER"/>
 	<event load="ASTEROID_EXPLORE"/>	
 	<event load="CIVILIAN_EXPLODED"/>
@@ -1461,7 +1458,7 @@
 				<text>(Zoltan Deleter) Begone.</text>
 				<event>
 					<text>It only takes a single shot to erase the peace-keeper from existence. You help the Free Mantis to their feet. "Thanking you very much Federation, we come here only make friends, but Zoltan not trust us. Me coming with you, much friendlier."</text>
-					<crewMember amount="1" class="warlord"/>
+					<crewMember amount="1" class="mantis_warlord"/>
 				</event>
 			</choice>
 		</event>
@@ -1483,11 +1480,11 @@
 </event>
 <event name="CAPITAL_FREEMANTIS_FRIENDLY_REASON_ZOLTAN">
 	<text>"What are you doing? Is this really keeping the peace? The Ministry stands for lawful justice, and yet here you are attacking a defenseless Mantis! Is this what you signed up to the force for?" The Peacekeeper falters for a moment. "I- don't try and get involved in things that have nothing to do with you, Federation!" The Zoltan begins to say more, but is immediately sliced in twain by the Free Mantis, who crawled off the floor while the Zoltan was distracted. You hurry back to the ship before the Peacekeeper ship notices something is wrong, but it's too late. You escape from the ship, but a team of Zoltan beam aboard your ship!</text>
-	<crewMember amount="1" class="warlord"/>
-	<boarders min="2" max="3" class="peace"/>
+	<crewMember amount="1" class="mantis_warlord"/>
+	<boarders min="2" max="3" class="zoltan_peacekeeper"/>
 	<choice>
 		<text>Continue...</text>
-		<event load="MORALITY_UPDATE_ZOLTAN"/>
+		<!--<event load="MORALITY_UPDATE_ZOLTAN"/>-->
 	</choice>
 </event>
 
@@ -1568,7 +1565,7 @@
 	</event>
 	<event>
 		<text>It appears your efforts were in vain, as the Duskbringer forces beat back the Peace-Keepers and slowly take control over the city. As the Capital forces flee, a lone soldier runs to your ship and offers to join you so they can escape.</text>
-		<crewMember amount="1" class="peace"/>
+		<crewMember amount="1" class="zoltan_peacekeeper"/>
 	</event>
 	<event>
 		<text>While scrapping the hull of the Duskbringer ship, a massive explosion erupts from one of the nearby buildings! Your ship takes some damage but luckily you pull away in time before it can be compromised. Another series of explosions rocks the city, as buildings crumble to the ground! A squadron of Duskbringer bombs descend from the sky, reducing the city to ashes. You fly away as quickly as possible.</text>
@@ -1655,9 +1652,9 @@
 		</event>
 	</choice>
 	<choice hidden="true">
-		<text>Report the pirates to the Zoltan.</text>
+		<text>Report the pirates to the Zoltans.</text>
 		<event>
-			<text>The Zoltan gruffly thank you and give you some fuel, then go back to dealing with the pirates.</text>
+			<text>The Zoltans gruffly thank you and give you some fuel, then go back to dealing with the pirates.</text>
 			<autoReward level="LOW">fuel_only</autoReward>
 		</event>
 	</choice>
@@ -1723,7 +1720,7 @@
 			<choice hidden="true">
 				<text>Take on the ship leading the squadron.</text>
 				<event>
-					<text>A powerful MFK Ace is leading the Rebels. If you can destroy it, the Zoltan might be able to win this battle.</text>
+					<text>A powerful MFK Ace is leading the Rebels. If you can destroy it, the Zoltans might be able to win this battle.</text>
 					<ship load="SHIP_CAPITAL_RAID_ACE" hostile="true"/>
 					<choice hidden="true">
 						<text>Continue...</text>
@@ -1744,7 +1741,7 @@
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>The Zoltan are too busy dealing with the conflict to reward you, so you decide it's a good time to leave before another Rebel ship attacks you.</text>
+			<text>The Zoltans are too busy dealing with the conflict to reward you, so you decide it's a good time to leave before another Rebel ship attacks you.</text>
 		</event>
 	</choice>
 </event>
@@ -1754,7 +1751,7 @@
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>The Zoltan are too busy dealing with the conflict to reward you, so you decide it's a good time to leave before another Rebel ship attacks you.</text>
+			<text>The Zoltans are too busy dealing with the conflict to reward you, so you decide it's a good time to leave before another Rebel ship attacks you.</text>
 		</event>
 	</choice>
 </event>
@@ -1770,7 +1767,7 @@
 				<event>
 					<text>"You have saved us from a terrible defeat. We are grateful for your assistance. Allow me to repay our debt to you."</text>
 					<autoReward level="MED">stuff</autoReward>
-					<crewMember amount="1" class="peace"/>
+					<crewMember amount="1" class="zoltan_peacekeeper"/>
 				</event>
 			</choice>
 		</event>
@@ -1925,7 +1922,7 @@
 		<text>Agree to "test your mind".</text>
 		<event>
 			<text>The Monks lead you to a room shrouded in complete darkness, and lock the door. You wait inside for several hours completely alone. Right when you think you are about to go insane, you drift into a deep sleep. When you awake, you are back on the ship with a monk and the core!</text>
-			<crewMember amount="1" class="monk"/>
+			<crewMember amount="1" class="zoltan_monk"/>
 			<modifyPursuit amount="1"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -1933,7 +1930,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="monk">
+	<choice hidden="true" req="zoltan_monk">
 		<text>(Monk Crew) Negotiate with them for the core.</text>
 		<event>
 			<text>Your Monk crew member seems to have been able to convince the others to give you their core.</text>
@@ -2140,7 +2137,7 @@
 		<text>Leave.</text>
 		<event>
 			<text>As you leave, a Zoltan Peacekeeper rushes up to you. You prepare to defend yourselves, but they drop their gun in surrender. "You're the ones who leaked the information, right? Please, take me with you. I can't continue to serve my bosses after hearing this, but I will never be accepted by the citizens either. My only option now is to escape with you while I still can!"</text>
-			<crewMember amount="1" class="peace" shields="1">Magic Badger</crewMember>
+			<crewMember amount="1" class="zoltan_peacekeeper" shields="1">Magic Badger</crewMember>
 		</event>
 	</choice>
 </event>-->
@@ -2278,7 +2275,7 @@
 </event>
 <event name="OSMIA_RAID_ESCAPE_OFFER">
 	<text>"Absolutely not! You are under direct orders to keep firing on that ship until they are dead! Do NOT attempt to follow them, they are dangerous and must be stopped!"</text>
-	<hiddenAug>MARKER_OS_ESCAPE_OFFER</hiddenAug>
+	<variable name="loc_evidence_os_escape_offer" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Keep fighting.</text>
 		<event/>
@@ -2290,7 +2287,7 @@
 		<text>Continue...</text>
 		<event load="OSMIA_RAID_WIN"/>   
 	</choice>
-	<choice hidden="true" req="MARKER_OS_ESCAPE_OFFER">
+	<choice hidden="true" req="loc_evidence_os_escape_offer">
 		<text>Grab the coordinates of the terrorist ship's new location first.</text>
 		<event>
 			<text>While you speak further with Allta, you proceed to discretely download the trajectory and coordinates of the strange Zoltan ship. You aren't sure where this will lead, but clearly there's something there the Ministry doesn't want anyone near.</text>
@@ -2307,7 +2304,7 @@
 	<autoReward level="HIGH">droneparts</autoReward>
 	<drone name="DRONE_SHIELD_POWERLESS"/>
 	<unlockCustomShip silent="false">PLAYER_SHIP_ZOLTAN</unlockCustomShip>
-	<hiddenAug>ACH_BOSS_OSMIAN</hiddenAug>
+	<variable name="ach_boss_osmian" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Accept the gift and leave.</text>
 		<event/>
@@ -2319,11 +2316,11 @@
 </event>
 <event name="OSMIA_RAID_QUESTIONS">
 	<text>"Oh? Questions? I'm a very busy man I'm afraid. I'll try to entertain your thoughts, but I cannot stick around for long."</text>
-	<choice hidden="true" req="MARKER_OS_QUESTION_HELP" lvl="0" blue="false">
+	<choice hidden="true" req="loc_evidence_os_question_help" lvl="0" blue="false">
 		<text>Why did none of the other ships help us?</text>
 		<event>
 			<text>"We could see that you had the situation under control. With ships as deadly as theirs, we were not willing to risk our more valuable security teams unless necessary. Many citizens and ground patrols were not given full information on the events that were to transpire to ensure there would be no hysteria. That is all, I hope you were not offended."</text>
-			<hiddenAug>MARKER_OS_QUESTION_HELP</hiddenAug>
+			<variable name="loc_evidence_os_question_help" op="set" val="1"/>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event>
@@ -2332,11 +2329,11 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="MARKER_OS_QUESTION_ATTACK" lvl="0" blue="false">
+	<choice hidden="true" req="loc_evidence_os_question_attack" lvl="0" blue="false">
 		<text>Why were there no other ships attacking?</text>
 		<event>
-			<text>"It would seem that we were largely misinformed on the scale of the attack. You see, informants can't get everything right all of the time... With this vessel destroyed I am certain the terrorists will hesitate before making future attacks, but should we ever need help in the future, I suppose we know who to call... Heheh..."</text>
-			<hiddenAug>MARKER_OS_QUESTION_ATTACK</hiddenAug>
+			<text>"It would seem that we were largely misinformed on the scale of the attack. You see, informants can't get everything right all of the time... With this vessel dealt with, I am certain the terrorists will hesitate before making future attacks, but should we ever need help in the future, I suppose we know who to call... Heheh..."</text>
+			<variable name="loc_evidence_os_question_attack" op="set" val="1"/>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event>
@@ -2345,11 +2342,11 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="MARKER_OS_QUESTION_MASK" lvl="0" blue="false">
+	<choice hidden="true" req="loc_evidence_os_question_mask" lvl="0" blue="false">
 		<text>Why were those terrorists' masks so realistic?</text>
 		<event>
 			<text>"What reasonable man could try and justify the absurd efforts of mentally unstable zealots? Their dedication to their craft is, as some would say, remarkable, but I would sooner call it disturbing. Never fear though, those ghastly creatures are just the same as all Zoltan, and thank goodness for it!"</text>
-			<hiddenAug>MARKER_OS_QUESTION_MASK</hiddenAug>
+			<variable name="loc_evidence_os_question_mask" op="set" val="1"/>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event>
@@ -2437,11 +2434,11 @@
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event>
-					<text>"The lost explorers roamed the surrounding nebula, unable to settle for long without devolving into war once again. However, in those mysterious clouds they found something. At the center of the infamous Great Eye nebula was a monolith that held immense, god-like power. The Zoltan came to worship it, and so it brought them unity. This gave birth to the Illesctrian faith and the Ministry who sought to uphold this new peace. The Ministry, however, was brutal with its enforcement, and to justify its cruelty the leadership constructed an ever-large and rapidly expanding codex of laws no man nor army could ever memorize. Through force they assimilated every last Zoltan colony."</text>
+					<text>"The lost explorers roamed the surrounding nebula, unable to settle for long without devolving into war once again. However, in those mysterious clouds they found something. At the center of the infamous Great Eye nebula was a monolith that held immense, god-like power. The Zoltans came to worship it, and so it brought them unity. This gave birth to the Illesctrian faith and the Ministry who sought to uphold this new peace. The Ministry, however, was brutal with its enforcement, and to justify its cruelty the leadership constructed an ever-large and rapidly expanding codex of laws no man nor army could ever memorize. Through force they assimilated every last Zoltan colony."</text>
 					<choice hidden="true">
-						<text>But what happened? Why are the Zoltan hard-light now?</text>
+						<text>But what happened? Why are the Zoltans hard-light now?</text>
 						<event>
-							<text>"Yes, see, the Great Eye also brought with it the discovery of other, similar tech. Aether, a highly conductive and resistant metal alloy used to forge the ruins around the Eye could be used to create sustainable hard-light generators. This tech inticed the Ministry's top scientists, who saw it as a solution for the Osmia crisis alongside various other tech. Though Aether was used to construct most of Zoltan kind's most infamous technology like our special shields, we also used it to create new part-organic part-mechanical forms to explore Osmia with. This was a success and the explorers were revered as heroes, and many flocked back to recolonize the planet. The current Minister at the time only lived for a little longer until he succumbed to a natural death and was replaced by the new Minister, Lumei."</text>
+							<text>"Yes, see, the Great Eye also brought with it the discovery of other, similar tech. Aether, a highly conductive and resistant metal alloy used to forge the ruins around the Eye could be used to create sustainable hard-light generators. This tech enticed the Ministry's top scientists, who saw it as a solution for the Osmia crisis alongside various other tech. Though Aether was used to construct most of Zoltan kind's most infamous technology like our special shields, we also used it to create new part-organic part-mechanical forms to explore Osmia with. This was a success and the explorers were revered as heroes, and many flocked back to recolonize the planet. The current Minister at the time only lived for a little longer until he succumbed to a natural death and was replaced by the new Minister, Lumei."</text>
 							<choice hidden="true">
 								<text>Wait, but wasn't this centuries ago? How is Lumei still in charge?</text>
 								<event>
@@ -2449,7 +2446,7 @@
 									<choice hidden="true">
 										<text>Continue...</text>
 										<event>
-											<text>"Most adamant non-transformants died of natural causes and the newer more 'progressive' mindset took hold. All Zoltan over the age of 7 were to be immediately transitioned into hard-light chassis. The only place the Ministry struggled to touch was, ironically, Osmia itself. A group of non-transformants had taken hold there, seizing control of the territory between the wastelands that had survived the initial holocaust. Eventually the Ministry gave up and spent their effort erasing the importance of Osmia from the rest of the Zoltan - something made easier by the recent discovery of other sapient life. And so, that is how the first of we Osmians came to be. The Ministry wants nothing more than for the galaxy to forget we exist and for us to die out naturally."</text>
+											<text>"Most adamant non-transformants died of natural causes and the newer more 'progressive' mindset took hold. All Zoltan over the age of 7 were to be immediately transitioned into hard-light chassis. The only place the Ministry struggled to touch was, ironically, Osmia itself. A group of non-transformants had taken hold there, seizing control of the territory between the wastelands that had survived the initial holocaust. Eventually the Ministry gave up and spent their effort erasing the importance of Osmia from the rest of the Zoltans - something made easier by the recent discovery of other sapient life. And so, that is how the first of we Osmians came to be. The Ministry wants nothing more than for the galaxy to forget we exist and for us to die out naturally."</text>
 											<choice hidden="true">
 												<text>So, what is it that you needed of us?</text>
 												<event load="OSMIA_UNLOCK_QUESTION"/>
@@ -2468,9 +2465,9 @@
 <event name="OSMIA_UNLOCK_QUESTION">
 	<text>"Yes, well I suppose it's best I explain why we were there at the capital then, before I ask of you anything... You see, there are a few of our kind left which have not taken refuge on Osmia. They were captured by the Ministry and kept locked away in a secret laboratory under 'protocol 3,' in the case of an unforeseen cataclysmic failure of the hard-light forms. We estimate there's likely several hundred of them locked away from centuries ago - each of them an innocent life, as well as a time capsule for ancient forgotten history. We hoped to storm the Capital and force them to release the captives, but as you can see that didn't work out as planned."</text>
 	<choice hidden="true">
-		<text>Woops. Sorry about that.</text>
+		<text>Whoops. Sorry about that.</text>
 		<event>
-			<text>"Don't be. We understand your alliance with the Ministry as part of the Federation took presidence. But now, I'm afraid I must ask of you a favor that is not in the interest of that alliance. Our military is not strong enough to take on the vessel guarding the lab, and our only ship capable, you caused quite the damage to. We cannot offer you the same as the Ministry might, so I expect nothing more than your refusal. But if you accept this plea out of the kindness of your heart, then you will forever have the Osmian people's gratitude."</text>
+			<text>"Don't be. We understand your alliance with the Ministry as part of the Federation took precedence. But now, I'm afraid I must ask of you a favor that is not in the interest of that alliance. Our military is not strong enough to take on the vessel guarding the lab, and our only ship capable, you caused quite the damage to. We cannot offer you the same as the Ministry might, so I expect nothing more than your refusal. But if you accept this plea out of the kindness of your heart, then you will forever have the Osmian people's gratitude."</text>
 			<choice hidden="true">
 				<text>Agree to rescue the captives.</text>
 				<event>
@@ -2513,6 +2510,7 @@
 		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
 	</beaconType>
 	<preventQuest/>
+	<preventFleet/>
 	<quest>
 		<nebulaBeacon>true</nebulaBeacon>
 		<createNebula>true</createNebula>
@@ -2560,13 +2558,13 @@
 </event>
 <event name="OSMIAN_ARRIVAL">
 	<clearTriggeredEvent name="TRIGGER_OSMIAN_ARRIVAL"/>
-	<text>Your radar immediately picks up several more pings. You're afraid this means the Zoltan have received reinforcements - but this isn't the case. In fact, it's quite the opposite. The Osmians have arrived, and unlike most of your "allies" in conflicts like this, they're actually providing firepower from the sidelines!</text>
+	<text>Your radar immediately picks up several more pings. You're afraid this means the Zoltans have received reinforcements - but this isn't the case. In fact, it's quite the opposite. The Osmians have arrived, and unlike most of your "allies" in conflicts like this, they're actually providing firepower from the sidelines!</text>
 	<environment type="PDS" target="enemy"/>
 </event>
 <event name="OSMIA_LAB_WIN">
 	<text>The Osmian troops, though limited in ships, are plentiful in manpower and storm the lab. The Zoltan scientists surrender. You take note of assorted Engi and even a few workers in Federation garb in the crowd, but you're distracted by Malki. "Thank you for your help. Though material offers I cannot extend, I can provide your Federation blueprints for our finest warship. We-" Suddenly, an alarm blares. Something bad is happening!</text>
 	<unlockCustomShip silent="false">PLAYER_SHIP_OSMIA</unlockCustomShip>
-	<hiddenAug>ACH_BOSS_ZONE</hiddenAug>
+	<variable name="ach_boss_zone" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -2612,7 +2610,7 @@
 				<text>There were Federation scientists there too. Why?</text>
 				<event>
 					<text>"You think the Federation didn't know about us? I'm sure they've briefed all the rest that we're some dangerous threat. That way, if we ever tried to start another civil war, the Federation wouldn't hesitate to side with the Ministry. But that's besides the point. I shouldn't be so grim. We didn't save everyone. We couldn't have. But we still saved dozens of our people, and we may finally recover some of our lost history. But as the leader of my people I have failed to prepare us for such outcomes. I cannot return to Osmia. I humbly request that you accept my services, captain."</text>
-					<crewMember amount="1" all_skills="2" class="zoltan">Malki</crewMember>
+					<crewMember amount="1" all_skills="2" class="zoltan_osmian">Malki</crewMember>
 				</event>
 			</choice>
 		</event>
@@ -2727,10 +2725,16 @@
 	</choice>
 </event>
 <event name="MONK_TEMPLE_REWARD">
-	<text>You take a seat on the floor admid the other Zoltan and join in with their low humming. Almost half a day passes before you are suddenly startled from your sleep and realize how much time has passed by. The Monks briefly thank you for your visit, and as you leave you feel a strange feeling come over you... almost as if you were blessed.</text>
-	<hiddenAug>ZOLTAN_BLESSING</hiddenAug>
+	<text>You take a seat on the floor admid the other Zoltans and join in with their low humming. Almost half a day passes before you are suddenly startled from your sleep and realize how much time has passed by...</text>
 	<modifyPursuit amount="2"/>
-	<damage amount="-30"/>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event>
+			<text>The Monks briefly thank you for your visit, and as you leave you feel a strange feeling come over you... almost as if you were blessed.</text>
+			<hiddenAug>ZOLTAN_BLESSING</hiddenAug>
+			<damage amount="-30"/>
+		</event>
+	</choice>
 </event>
 <eventList name="ZOLTAN_AUTO_TEMPLE_WIN">
 	<event>
@@ -2777,7 +2781,7 @@
 	<choice>
 		<text>Accept them on your ship.</text>
 		<event>
-			<crewMember amount="1" class="monk"/>
+			<crewMember amount="1" class="zoltan_monk"/>
 		</event>
 	</choice>
 	<choice>
@@ -2818,7 +2822,7 @@
 			<choice hidden="true">
 				<text>Refuse.</text>
 				<event>
-					<text>Your comfort your crew, explaining that the mission is more important, and that they can return to the monks when you've saved this reality.</text>
+					<text>You comfort your crew, explaining that the mission is more important, and that they can return to the monks when you've saved this reality.</text>
 				</event>
 			</choice>
 		</event>
@@ -2866,7 +2870,7 @@
 	</event>
 	<event>
 		<text>"Oh thank you, you are so kind. Perhaps I shall stay with you... you seem like such nice people."</text>
-		<crewMember amount="1" class="monk"/>
+		<crewMember amount="1" class="zoltan_monk"/>
 	</event>
 	<event>
 		<text>"Oh thank you, you are so kind. I do not have much, but back in my day I used to know a thing or two about reactors. Maybe I can do some work on yours."</text>
@@ -2878,8 +2882,8 @@
 		<text>"It is ok... I understand" The monk beams away without another word.</text>
 	</event>
 	<event>
-		<text>The Monk stands upright, immediately looking several years younger. He throws off his robe, revealing a blaster! "Tsk tsk captain, you should have been more giving! Several more Zoltans appear, and a pirate ship approaches.</text>
-		<boarders min="2" max="3" class="energy"/>
+		<text>The Monk stands upright, immediately looking several years younger. He throws off his robe, revealing a blaster! "Tsk tsk captain, you should have been more giving!" Several more Zoltans appear, and a pirate ship approaches.</text>
+		<boarders min="2" max="3" class="zoltan"/>
 		<ship load="SHIP_PIRATE_ZOLTAN_CREW" hostile="true"/>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -2936,25 +2940,25 @@
 			<choice hidden="true">
 				<text>Give them 5 missiles.</text>
 				<event>
-					<text>"Your gift is appreciated. Please accept this token of gratitude." You expect scrap or perhaps a some fuel, but instead a Ghost crew member materializes on your ship!</text>
+					<text>"Your gift is appreciated. Please accept this token of gratitude." You expect scrap or perhaps some fuel, but instead a Ghost crew member materializes on your ship!</text>
 					<item_modify>
 						<item type="missiles" min="-5" max="-5"/>
 					</item_modify>
-					<crewMember amount="1" class="wraith">Casper</crewMember> <!--does anyone even get these references?-->
+					<crewMember amount="1" class="phantom_wraith">Casper</crewMember> <!--does anyone even get these references?-->
 				</event>
 			</choice>
 			<choice hidden="true">
 				<text>Give them 10 missiles.</text>
 				<event>
-					<text>"Unexpectedly high quantity of ammo. Please accept this token of gratitude." You expect scrap or perhaps a some fuel, but instead a Ghost crew member materializes on your ship!</text>
+					<text>"Unexpectedly high quantity of ammo. Please accept this token of gratitude." You expect scrap or perhaps some fuel, but instead a Ghost crew member materializes on your ship!</text>
 					<item_modify>
 						<item type="missiles" min="-10" max="-10"/>
 					</item_modify>
-					<crewMember amount="1" class="wraithalpha" all_skills="2">Casper</crewMember>
+					<crewMember amount="1" class="phantom_wraith_alpha" all_skills="2">Casper</crewMember>
 				</event>
 			</choice>
 			<choice hidden="true">
-				<text>If they're low on missiles that means they're an easy target!</text>
+				<text>If they're low on missiles, that means they're an easy target!</text>
 				<event>
 					<text>You refuse to help the Ghosts, but rather attack them instead.</text>
 					<ship hostile="true"/>
@@ -3025,7 +3029,7 @@
     <text>Monks aren't the only Zoltan ships to be found here. A Zoltan vessel admiring the scenery spots you, and somehow feels threatened by your presence enough to retaliate violently!</text>
     <text>"What are you? Pirates? Mercenaries? You have come here to harm the Monks, have you not? Prepare to meet your end!" A confused Zoltan ship moves in to attack.</text>
     <text>A Zoltan ship slips out of the nebula, its weapons drawn. It must have already been in the middle of a fight, and now that it has stumbled across you, it mistakes you for its previous attacker and locks on to attack.</text>
-    <text>A Zoltan ship comes lumbering drunkenly out of the nebula. It scrapes against your ship, though luckily it only does superficial damage. Still, in their strange stupor, the Zoltan blame you for the collision, and activate their weapons!</text>
+    <text>A Zoltan ship comes lumbering drunkenly out of the nebula. It scrapes against your ship, though luckily it only does superficial damage. Still, in their strange stupor, the Zoltans blame you for the collision, and activate their weapons!</text>
 </textList>
 
 <event name="NEBULA_ENCOUNTER_MONK_PIRATE">
@@ -3113,7 +3117,7 @@
 		<event>
 			<text>"What- what have you done??? NOOOOOOOOO!" The Zoltan falls to his knees, utterly defeated as the rift in the distance slowly closes and the environment returns to normal. Terrified of your much more real power, the Zoltan submits to your service.</text>
 			<environment type="nebula"/>
-			<crewMember amount="1" class="monk" all_skills="2"/> 
+			<crewMember amount="1" class="zoltan_monk" all_skills="2"/> 
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -3260,7 +3264,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice req="monk" hidden="true">
+			<choice req="zoltan_monk" hidden="true">
 				<text>(Monk Crew) Have your Monk hail them.</text>
 				<event>
 					<text>"Ah, one of us. I will send an automated vessel up to repair your hull. Have a nice day."</text>
@@ -3330,7 +3334,7 @@
 		</choice>
 	</event>
 	<event>
-		<text>It appears the ship were simple Monks. They say hello before once again slipping away once again.</text>
+		<text>It appears the ship were simple Monks. They say hello before slipping away once again.</text>
 		<ship load="SHIP_MONK" hostile="false"/>
 	</event>
 </eventList>
@@ -3397,7 +3401,7 @@
 				<text>Contact the monks.</text>
 				<event>
 					<text>"Thank you friend. We thought this was how we would die. The Hackers have held control over us for weeks, and many of us have already starved. May we last few survivors come with you?"</text>
-					<crewMember amount="3" class="monk">Monk</crewMember>
+					<crewMember amount="3" class="zoltan_monk">Monk</crewMember>
 				</event>
 			</choice>
 		</event>
@@ -3437,11 +3441,11 @@
 		<text>Huh?</text>
 		<event>
 			<text>The Monk sighs. "It's a proverb. It means one whom associates themselves with those who are devoid of morals shall find themselves in a similar predicament. A warning, so I should say, for one's own situation, living within the Federation."</text>
-			<choice hidden="true" req="monk">
+			<choice hidden="true" req="zoltan_monk">
 				<text>(Monk Crew) A warning well headed, but not without risks of its own.</text>
 				<event>
 					<text>The other Monk nods, and the two launch into a long philosophical discussion about moral principles. You can't understand a word of what they say, but it seems your monk has convinced the other of your wisdom and they come aboard.</text>
-					<crewMember amount="1" repair="1" class="monk"/>
+					<crewMember amount="1" repair="1" class="zoltan_monk"/>
 				</event>
 			</choice>
 			<choice hidden="true">
@@ -3491,7 +3495,7 @@
 		<event>
 			<text>A gasping Zoltan is brought aboard, still wearing their peace-keeper armor. "T-Thank you for saving me! We were tasked with transporting a Monk ship carrying an important Zoltan operative who's undercover. Everything was fine, until a mercenary hired by the Duskbringers showed up and obliterated our ship. The monks fled, but it won't be long before the Mercenaries catch up. I'll upload their co-ordinates to the the computer, I hope you will help me."</text>
 			<quest event="MONK_LOST_MAN_QUEST"/>
-			<crewMember amount="1" class="peace"/>
+			<crewMember amount="1" class="zoltan_peacekeeper"/>
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -3607,6 +3611,7 @@
 </eventList>
 <event name="MONK_PEACE_QUEST2">
 	<preventQuest/>
+	<preventFleet/>
 	<beaconType id="map_icon_peace" global="true">
 		<color r="84" g="201" b="30" a="1.0"/>
 		<unvisitedTooltip>The location of the Monk's brethren.</unvisitedTooltip>
@@ -3684,7 +3689,7 @@
 </event>
 <event name="MONK_PEACE_QUEST_REWARD">
 	<text>"Although your methods are crude and most certainly ineffective, it is clear you took our previous meeting to heart. If your ship represents the Federation's willingness to adapt we shall do what we can to aid in their fight. Would you like a sample of our tech, or perhaps I could send a well trained Peacekeeper to assist you?"</text>
-	<hiddenAug>MARKER_PEACEQUEST</hiddenAug>
+	<variable name="loc_peacequest" op="set" val="1"/>
 	<unlockCustomShip silent="false">PLAYER_SHIP_MONK</unlockCustomShip>
 	<autoReward level="LOW">scrap_only</autoReward>
 	<choice>
@@ -3696,7 +3701,7 @@
 	<choice>
 		<text>Request the crew.</text>
 		<event>
-			<crewMember amount="1" class="peace" all_skills="2">Envoy</crewMember>
+			<crewMember amount="1" class="zoltan_peacekeeper" all_skills="2">Envoy</crewMember>
 		</event>
 	</choice>
 </event>
@@ -3706,7 +3711,32 @@
 		GREAT EYE!!!!!
 		GREAT EYE!!!!!
 -->
-<event name="NEBULA_MONK_EYE" unique="true">
+<event name="NEBULA_MONK_EYE">
+	<img back="BACK_EVENT_EYE" planet="PLANET_UNPOPULATED_TERRA"/>
+	<loadEventList seeded="false" first="true" generate="true">
+		<event name="NEBULA_MONK_EYE_OFFERING" req="prof_eye_offering" lvl="1"/>
+		<event name="NEBULA_MONK_EYE_NORMAL" req="prof_eye_offering" lvl="0" max_lvl="0"/>
+	</loadEventList>
+</event>
+<event name="NEBULA_MONK_EYE_OFFERING">
+	<preventQuest/>
+	<beaconType id="map_icon_eye" global="true">
+		<color r="223" g="200" b="200" a="1.0"/>
+		<unvisitedTooltip>The location of the great eye, a giant monolith worshipped by the Zoltans.</unvisitedTooltip>
+		<visitedTooltip>The location of the great eye, a giant monolith worshipped by the Zoltans.</visitedTooltip>
+	</beaconType>
+	<text>As you approach the Great Eye, suddenly a rift opens and a chunk of scrap comes hurtling towards you. Fortunately it only lightly bounces off of your hull, and you scoop it up. You have no idea where it comes from, but you'll take the scrap.</text>
+	<img back="BACK_EVENT_EYE" planet="PLANET_UNPOPULATED_TERRA"/>
+	<metaVariable name="prof_eye_offering" op="set" val="0"/>
+	<item_modify>
+		<item type="scrap" min="15" max="15"/>
+	</item_modify>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event load="MONK_EYE_OPTIONS"/>
+	</choice>
+</event>
+<event name="NEBULA_MONK_EYE_NORMAL">
 	<preventQuest/>
 	<beaconType id="map_icon_eye" global="true">
 		<color r="223" g="200" b="200" a="1.0"/>
@@ -3717,52 +3747,56 @@
 	<img back="BACK_EVENT_EYE" planet="PLANET_UNPOPULATED_TERRA"/>
 	<choice hidden="true">
 		<text>Continue...</text>
+		<event load="MONK_EYE_OPTIONS"/>
+	</choice>
+</event>
+<event name="MONK_EYE_OPTIONS">
+	<text>It is said the monolith has strange, unpredictable powers. Those who can get it to speak to them may find many wonders or horrors that await.</text>
+	<choice hidden="true">	
+		<text>Speak to the Monolith and await your fate.</text>
+		<event load="GREAT_EYE_LIST"/>
+	</choice>
+	<choice req="prof_eye_offering" lvl="0" max_lvl="0" blue="false">	
+		<text>Make an offering to the Great Eye.</text>
 		<event>
-			<text>It is said the monolith has strange, unpredictable powers. Those who can get it to speak to them may find many wonders or horrors that await.</text>
+			<text>You toss some scrap towards the Great Eye, wondering if something will occur. Unfortunately, nothing seems to. Perhaps those old Zoltan myths are false? Maybe it's worth another try?</text>
+			<metaVariable name="prof_eye_offering" op="set" val="1"/>
+			<item_modify>
+				<item type="scrap" min="-15" max="-15"/>
+			</item_modify>
 			<choice hidden="true">	
-				<text>Speak to the Monolith and await your fate.</text>
-				<event load="GREAT_EYE_LIST"/>
-			</choice>
-			<choice hidden="true" req="monk">	
-				<text>(Monk Crew) Pray to the Eye for a chance at better rewards.</text>
-				<event load="GREAT_EYE_LIST_GOOD"/>
-			</choice>
-			<choice req="LIST_CREW_ANCIENT" hidden="true">	
-				<text>(Obelisk Crew) Your Obelisk recognizes this structure.</text>
+				<text>Continue...</text>
 				<event>
-					<text>"This structure was an early design of an Obelisk Reality Manipulator. You can probably guess what it does from the name. Strange it ended up here, but I suppose this explains why the monolith can supposedly do all kinds of strange things. We could bring it aboard and I can make some repairs, but I doubt the Zoltan would appreciate it."</text>
-					<choice>	
-						<text>Take the Reality Manipulator.</text>
-						<event>
-							<text>As you bring aboard the Reality Manipulator, a Zoltan Peacekeeper stops you. "You dare disturb the Great Eye? You have insulted our entire species, not to mention the divine creators! You will be punished!"</text>
-							<augment name="COMBAT_HAZARD"/>
-							<ship load="SHIP_ZOLTAN_ELITE_FIGHT" hostile="true"/>
-							<choice hidden="true">
-								<text>Continue...</text>
-								<event load="COMBAT_CHECK"/>
-							</choice>
-						</event>
-					</choice>
-					<choice>	
-						<text>It's not worth the risk.</text>
-						<event>
-							<text>It's tempting, but not worth the risk to mess with an item worshipped and valued so highly by the Zoltans.</text>
-							<choice>
-								<text>Do something onboard the ship.</text>
-								<event load="STORAGE_CHECK"/>
-							</choice>
-							<choice>
-								<text>Do nothing.</text>
-								<event/>
-							</choice>
-						</event>
+					<loadEvent>MONK_EYE_OPTIONS</loadEvent>
+				</event>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true" req="zoltan_monk">	
+		<text>(Monk Crew) Pray to the Eye for a chance at better rewards.</text>
+		<event load="GREAT_EYE_LIST_GOOD"/>
+	</choice>
+	<choice req="LIST_CREW_ANCIENT" hidden="true">	
+		<text>(Obelisk Crew) Your Obelisk recognizes this structure.</text>
+		<event>
+			<text>"This structure was an early design of an Obelisk Reality Manipulator. You can probably guess what it does from the name. Strange it ended up here, but I suppose this explains why the monolith can supposedly do all kinds of strange things. We could bring it aboard and I can make some repairs, but I doubt the Zoltans would appreciate it."</text>
+			<choice>	
+				<text>Take the Reality Manipulator.</text>
+				<event>
+					<text>As you bring aboard the Reality Manipulator, a Zoltan Peacekeeper stops you. "You dare disturb the Great Eye? You have insulted our entire species, not to mention the divine creators! You will be punished!"</text>
+					<achievement silent="false">ACH_OBEL_STEALGREATEYE</achievement>
+					<augment name="COMBAT_HAZARD"/>
+					<ship load="SHIP_ZOLTAN_ELITE_FIGHT" hostile="true"/>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event load="COMBAT_CHECK"/>
 					</choice>
 				</event>
 			</choice>
 			<choice>	
-				<text>Ignore the monolith.</text>
+				<text>It's not worth the risk.</text>
 				<event>
-					<text>Your mission is to save the Federation, not discover new wonders around the galaxy. You prepare to jump.</text>
+					<text>It's tempting, but not worth the risk to mess with an item worshipped and valued so highly by the Zoltans.</text>
 					<choice>
 						<text>Do something onboard the ship.</text>
 						<event load="STORAGE_CHECK"/>
@@ -3775,7 +3809,22 @@
 			</choice>
 		</event>
 	</choice>
+	<choice>	
+		<text>Ignore the monolith.</text>
+		<event>
+			<text>Your mission is to save the Federation, not discover new wonders around the galaxy. You prepare to jump.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
+		</event>
+	</choice>
 </event>
+
 <eventList name="GREAT_EYE_LIST">
 	<!--
 	\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -3817,21 +3866,21 @@
 			<text>Piloting.</text>
 			<event>
 				<text>The nanobots form into an Separatist Engi, well trained in piloting.</text>
-				<crewMember amount="1" pilot="1" class="separatist">L-6644</crewMember>
+				<crewMember amount="1" pilot="1" class="engi_separatist">L-6644</crewMember>
 			</event>
 		</choice>
 		<choice hidden="true">
 			<text>Defense.</text>
 			<event>
 				<text>The nanobots form into an Separatist Engi, well trained in shield engineering.</text>
-				<crewMember amount="1" shields="1" class="separatist">L-6644</crewMember>
+				<crewMember amount="1" shields="1" class="engi_separatist">L-6644</crewMember>
 			</event>
 		</choice>
 		<choice hidden="true">
 			<text>Combat.</text>
 			<event>
 				<text>The nanobots form into an Separatist Engi, well trained in combat.</text>
-				<crewMember amount="1" combat="1" class="separatist">L-6644</crewMember>
+				<crewMember amount="1" combat="1" class="engi_separatist">L-6644</crewMember>
 			</event>
 		</choice>
 	</event>
@@ -3866,7 +3915,7 @@
 		</item_modify>
 	</event>
 	<event>
-		<text>A thick gas begins to form around the ship, as a nebula consumes the beacon! A passing Zoltan ship tells you not to worry, and that this is a regular occurrence. The nebula usually goes away after a little while. Luckily, the Rebels will probably struggle to track you."</text>
+		<text>A thick gas begins to form around the ship, as a nebula consumes the beacon! A passing Zoltan ship tells you not to worry, and that this is a regular occurrence. The nebula usually goes away after a little while. Luckily, the Rebels will probably struggle to track you.</text>
 		<environment type="storm"/>
 		<modifyPursuit amount="-1"/>
 	</event>
@@ -3901,7 +3950,7 @@
 		<text>As you approach the surface, you notice a storm of missiles flying straight towards you! As they collide with the ship, they cause considerable damage, but they also turn into scrap on impact as well. In fact, it's just enough scrap to repair all of that damage and more...</text>
 		<damage amount="7"/>
 		<item_modify>
-			<item type="scrap" min="30" max="30"/>
+			<item type="scrap" min="35" max="35"/>
 		</item_modify>
 	</event>
 	<event>
@@ -3931,7 +3980,7 @@
 		<modifyPursuit amount="2"/>
 	</event>
 	<event>
-		<text>A rift opens in front of you, and a fleet of Rebel ships is dumped out the other end! A Rebel ship moves in to attack, apparently not phased by being warped through time and space.</text>
+		<text>A rift opens in front of you, and a fleet of Rebel ships is dumped out the other end! A Rebel ship moves in to attack, apparently not fazed by being warped through time and space.</text>
 		<customFleet right="true" firing="true" autoDarkening="false">CUSTOM_FLEET_REBEL</customFleet>
 		<modifyPursuit amount="1"/>
 		<ship load="SHIP_REBEL_FIGHT" hostile="true"/>
@@ -4001,21 +4050,21 @@
 			<text>Piloting.</text>
 			<event>
 				<text>The nanobots form into an Separatist Engi, well trained in piloting.</text>
-				<crewMember amount="1" pilot="1" class="separatist">L-6644</crewMember>
+				<crewMember amount="1" pilot="1" class="engi_separatist">L-6644</crewMember>
 			</event>
 		</choice>
 		<choice hidden="true">
 			<text>Defense.</text>
 			<event>
 				<text>The nanobots form into an Separatist Engi, well trained in shield engineering.</text>
-				<crewMember amount="1" shields="1" class="separatist">L-6644</crewMember>
+				<crewMember amount="1" shields="1" class="engi_separatist">L-6644</crewMember>
 			</event>
 		</choice>
 		<choice hidden="true">
 			<text>Combat.</text>
 			<event>
 				<text>The nanobots form into an Separatist Engi, well trained in combat.</text>
-				<crewMember amount="1" combat="1" class="separatist">L-6644</crewMember>
+				<crewMember amount="1" combat="1" class="engi_separatist">L-6644</crewMember>
 			</event>
 		</choice>
 	</event>
@@ -4050,7 +4099,7 @@
 		</item_modify>
 	</event>
 	<event>
-		<text>A thick gas begins to form around the ship, as a nebula consumes the beacon! A passing Zoltan ship tells you not to worry, and that this is a regular occurrence. The nebula usually goes away after a little while. Luckily, the Rebels will probably struggle to track you."</text>
+		<text>A thick gas begins to form around the ship, as a nebula consumes the beacon! A passing Zoltan ship tells you not to worry, and that this is a regular occurrence. The nebula usually goes away after a little while. Luckily, the Rebels will probably struggle to track you.</text>
 		<environment type="storm"/>
 		<modifyPursuit amount="-1"/>
 	</event>
@@ -4085,7 +4134,7 @@
 		<text>As you approach the surface, you notice a storm of missiles flying straight towards you! As they collide with the ship, they cause considerable damage, but they also turn into scrap on impact as well. In fact, it's just enough scrap to repair all of that damage and more...</text>
 		<damage amount="7"/>
 		<item_modify>
-			<item type="scrap" min="30" max="30"/>
+			<item type="scrap" min="35" max="35"/>
 		</item_modify>
 	</event>
 	<event>

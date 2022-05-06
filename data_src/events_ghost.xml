@@ -20,7 +20,7 @@
 	<deadCrew load="DYNASTY_OUTPOST_DEFEAT"/>
 	<crew>
 		<crewMember type="phantom" prop="0.75"/>
-		<crewMember type="phantomalpha" prop="0.25"/>	
+		<crewMember type="phantom_alpha" prop="0.25"/>	
 	</crew>
 </ship>
 
@@ -28,7 +28,7 @@
     <text>The Dynasty seems to appreciate keeping a very close watch over potential threats... so close in fact, that they've set up a forward station all the way out here. Maybe it contains data worth something to you?</text>
     <text>You've seen few factions as overly paranoid as the Dynasty. A full blown outpost has been established here, and scans show it has data. Valuable data.</text>
     <text>For what reason is this beacon marked as important? As soon as you jump in, it's clear. A Dynasty outpost has been established here, and the beacon marker was a warning for ships to stay away. Somehow they haven't spotted you, yet...</text>
-    <text>Looks like a broadcast in many different languages is being sent out from a nearby Dynasty outpost. It's right to the point. "This observation location is not to be tampered with. Attempts to raid or damage Dynasty property will be met with lethal force."</text>
+    <text>Looks like a broadcast in many different languages is being sent out from a nearby Dynasty outpost. It's right to the point: "This observation location is not to be tampered with. Attempts to raid or damage Dynasty property will be met with lethal force."</text>
     <text>At first you assume your eyes are deceiving you, but nay. This is a Dynasty outpost, quite bravely posted so far out from Dynasty space.</text>
 </textList>
 <event name="DYNASTY_OUTPOST">
@@ -59,6 +59,15 @@
 			</choice>
 		</event>
 	</choice>
+	<choice hidden="true" req="unique_dessius">
+		<text>(Dessius) Request access to the data held in the outpost.</text>
+		<event>
+			<text>If the Dynasty is watching this sector, chances are they've already collected a ton of data. Luckily, you do happen to have a powerful ally at your side, who can grant you access to said data. Smooth talk aside, you are granted supplies and an advantage against the Rebel fleet.</text>
+			<autoReward level="MED">standard</autoReward>
+			<reveal_map/>
+			<modifyPursuit amount="-1"/>
+		</event>
+	</choice>
 </event>
 <event name="NEBULA_DYNASTY_OUTPOST">
 	<text load="TEXT_DYNASTY_OUTPOST"/>
@@ -87,6 +96,15 @@
 				<text>Do nothing.</text>
 				<event/>
 			</choice>
+		</event>
+	</choice>
+	<choice hidden="true" req="unique_dessius">
+		<text>(Dessius) Request access to the data held in the outpost.</text>
+		<event>
+			<text>If the Dynasty is watching this sector, chances are they've already collected a ton of data. Luckily, you do happen to have a powerful ally at your side, who can grant you access to said data. Smooth talk aside, you are granted supplies and an advantage against the Rebel fleet.</text>
+			<autoReward level="MED">standard</autoReward>
+			<reveal_map/>
+			<modifyPursuit amount="-1"/>
 		</event>
 	</choice>
 </event>
@@ -120,6 +138,7 @@
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->
 <event name="NEBULA_DYNASTY_DREADNAUGHT" unique="true">
+<preventQuest/>
 	<text>This beacon provides quite the break from the bland purple clouds elsewhere in this sector. In the distance is also what looks to be the Dynasty Capitol, and the Prime Reaper's palace. You're surprised the Ghosts have so little protection for this important structure...</text>
 	<img back="BACK_EVENT_DYNASTYCAP" planet="NONE"/>
 	<choice hidden="true">
@@ -169,7 +188,7 @@
 </event>
 <event name="DYNASTY_DREADNAUGHT_VICTORY">
 	<text>You land on the planet's surface, briefly considering salvaging some of the Dynasty wrecks before a massive Dynasty cruiser flies by and lands next to yours. Out of it steps several Alphas and a pink Ghost wearing armor and wielding a massive sword. If you had to take a guess, this would be the Prime Reaper, the ancestral leader of the Dynasty.</text>
-	<hiddenAug>ACH_BOSS_AUTODREAD</hiddenAug>
+	<variable name="ach_boss_autodread" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -181,13 +200,13 @@
 					<choice hidden="true">
 						<text>The who?</text>
 						<event>
-							<text>"The Obelisk. Ancient creatures your kind seem to have forgotten. I do not blame you, those foul cuboids were but their own cause of destruction. A god complex does no good, especially not if you wield tech capable of ripping holes through space time. But enough of them. They're dead, much unlike us today! At last, we see the end of the foul demons. Their kind shall plague us no more!"</text>
+							<text>"The Obelisk. One of 5 ancient empires that ruled the galaxy so long ago your kind have no memories of their rule. I cannot blame your ignorance, those foul cuboids were but their own cause of destruction. A god complex does no good, especially not if you wield tech capable of ripping holes through space time. But enough of them. They're dead, much unlike us today! At last, we see the end of the foul demons. Their kind shall plague us no more!"</text>
 							<choice hidden="true">
 								<text>The Rebel AI is kept on the Flagship, not that Dreadnaught.</text>
 								<event>
 									<text>"You are to say... that was not the demon's heart? Then we shall continue to teeter on the brink of imminent doom unless this monster can be brought to ultimate peace! But, my not-present ears detect the faintest slivers of hope in your breath. You say, you know the location of the heart? The true source of our sufferings? Then I must go in attendance. In our wake shall remain not one demon's twitching coniver that we have not sent to the gallows!"</text>
-									<hiddenAug>ACH_CREW_DESSIUS</hiddenAug>
-									<crewMember amount="1" all_skills="1" class="reaper">Dessius</crewMember>
+									<variable name="ach_crew_dessius" op="set" val="1"/>
+									<crewMember amount="1" all_skills="1" class="unique_dessius">Dessius</crewMember>
 									<choice hidden="true">
 										<text>Continue...</text>
 										<event load="DYNASTY_DREADNAUGHT_REWARD"/>
@@ -211,7 +230,7 @@
 <event name="NEBULA_DYNASTY_SPECIALRUIN" unique="true">
 	<preventQuest/>
 	<beaconType id="map_icon_ruins_dynasty" global="false">
-		<color r="228" g="208" b="236" a="1.0"/>
+		<color r="36" g="255" b="0" a="1.0"/>
 		<undiscoveredTooltip>An unvisited location.</undiscoveredTooltip>
 		<unvisitedTooltip>This beacon contains ancient ruins.</unvisitedTooltip>
 	</beaconType>
@@ -220,7 +239,7 @@
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>A massive Dynasty ship lurches towards you. "Wastes of days past are not those which require the temperment of modern day's impacts. What shift in the cosmic balance has lead to your sudden appearance to this location? Do thou seek to stir a ruckus? Or just make the days of mine less enjoyable for the forseable future? Should I even continue to persist in this reality after?"</text>
+			<text>A massive Dynasty ship lurches towards you. "Wastes of days past are not those which require the temperament of modern day's impacts. What shift in the cosmic balance has lead to your sudden appearance to this location? Do thou seek to stir a ruckus? Or just make the days of mine less enjoyable for the forseeable future? Should I even continue to persist in this reality after?"</text>
 			<ship load="SHIP_DYNASTY_SCAVENGER_BOSS" hostile="false"/>
 			<choice hidden="true">
 				<text>Do you speak normally?</text>
@@ -260,7 +279,7 @@
 <event name="DYNASTY_SPECIALRUIN_REWARD">
 	<text>"Ruination! It comes! Oh how the foul blackness consumes my sight. I weaken, and I fade. Exit, stage right..." The Dynasty vessel has fallen, and you scrap the wreck.</text>
 	<autoReward level="HIGH">standard</autoReward>
-	<choice hidden="true" req="reaper" max_group="0" lvl="0" blue="false">
+	<choice hidden="true" req="unique_dessius" max_group="0" lvl="0" blue="false">
 		<text>Continue...</text>
 		<event>
 			<text>With the Dynasty out of the way, you pull apart the ancient wreckage, and find a unique weapon unlike any you've seen!</text>
@@ -271,7 +290,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="reaper" max_group="0" lvl="1" blue="false">
+	<choice hidden="true" req="unique_dessius" max_group="0" lvl="1" blue="false">
 		<text>Continue...</text>
 		<event>
 			<text>You catch Dessius giving you a disapproving look, but you figure he'll get over it eventually. If he really cared, he would have stepped in beforehand. You pull apart the ancient wreckage, and find a unique weapon unlike any you've seen!</text>
@@ -285,7 +304,7 @@
 </event>
 <event name="DYNASTY_SPECIALRUIN_LOG">
 	<text>As you start to leave, you notice a strange, still illuminated, augment installed in the ship's cargo bay. Scans reveal the device can tap into Multiverse Drives from across other realities!</text>
-	<hiddenAug>ACH_BOSS_DYNSALVAGER</hiddenAug>
+	<variable name="ach_boss_salvager" op="set" val="1"/>
 	<augment name="MVBOSS_SPAWNER"/>
 </event>
 
@@ -302,7 +321,6 @@
 	<text>You weren't really prepared to encounter a Slug Hacker vessel out here, but looks like they're having some sort of auction with a few pirates and even a Reaper vessel!</text>
 	<environment type="nebula"/>
 	<ship load="SHIP_HACKER" hostile="false"/> 
-	<distressBeacon/>
 	<choice hidden="true">
 		<text>Inquire.</text>
 		<event>
@@ -909,8 +927,8 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="reaper">
-		<text>(Dessius) You are not my grandfather.</text>
+	<choice hidden="true" req="unique_dessius">
+		<text>(Dessius) "You are not my grandfather."</text>
 		<event>
 			<text>"Hahahah! Then I bet you are not even that of the real Dessius! Do not lie to me!" The ship suddenly attacks!</text>
 			<ship load="SHIP_GHOST_ELITE" hostile="true"/> 
@@ -1088,7 +1106,7 @@
 	</event>
 	<event>
 		<text>No matter how much you try, you simply can't open the cache. Even worse, you've been spotted by a Dynasty ship, which moves in to attack!</text>
-		<ship load="SHIP_DYNASTY_GENERIC" hostile="false"/>
+		<ship load="SHIP_DYNASTY_GENERIC" hostile="true"/>
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event load="COMBAT_CHECK"/>
@@ -1102,7 +1120,7 @@
 </eventList>
 
 <event name="DYNASTY_SLUGOCC" unique="true">
-	<text>Usually, Dynasty ships aren't so open to soliciting to ships like yours, but one here seems in need of your assistance. "Thou are of the Federation? A military vessel no less? You will be perfect. I am the leader of salvage opperation DN-43, and my task was to reclaim Dynasty property left on this planet. I have been met with a most... unfortuitous happenstance. This planet is now occupied by... egh... Slugs. I am a salvager, not a soldier. Might you assist?"</text>
+	<text>Usually, Dynasty ships aren't so open to soliciting to ships like yours, but one here seems in need of your assistance. "Thou are of the Federation? A military vessel no less? You will be perfect. I am the leader of salvage operation DN-43, and my task was to reclaim Dynasty property left on this planet. I have been met with a most... unfortuitous happenstance. This planet is now occupied by... egh... Slugs. I am a salvager, not a soldier. Might you assist?"</text>
 	<img planet="PLANET_WATER"/>
 	<choice hidden="true">
 		<text>Accept.</text>
@@ -1202,7 +1220,7 @@
 </eventList>
 
 <event name="NEBULA_DYNASTY_FILTH" unique="true">
-	<text>The Dynasty has employed several fleets of ships strictly for salvaging ruins. You see no ruin here - but nontheless a salvager vessel is darting back and forth.</text>
+	<text>The Dynasty has employed several fleets of ships strictly for salvaging ruins. You see no ruin here - but nonetheless a salvager vessel is darting back and forth.</text>
 	<environment type="nebula"/>
 	<ship load="SHIP_DYNASTY_GENERIC" hostile="false"/>
 	<choice hidden="true">
@@ -1212,11 +1230,11 @@
 			<choice hidden="true">
 				<text>Woah man, calm down.</text>
 				<event>
-					<text>"DO NOT- do... do not tell me to 'calm down.' Lest you spare me the details and inform as to how you find necessity in my botherings? Do you seek to help?"</text>
+					<text>"DO NOT- do... do not tell me to 'calm down'. Lest you spare me the details and inform as to how you find necessity in my botherings? Do you seek to help?"</text>
 					<choice hidden="true">
 						<text>Help with what?</text>
 						<event>
-							<text>"Do thou suffer from a fatal case of ear cloggage? The FILTH, you dimwitted poppy sniffing breather! The rubbish left behind by fellow breathers like the dastardly Rebels! Oh, I do believe you call it 'scrap.' Collect for us a substantial amount so that I may declare this beacon clean and I shall reward you... erm... my sincerest gratitudes?"</text>
+							<text>"Do thou suffer from a fatal case of ear cloggage? The FILTH, you dimwitted poppy sniffing breather! The rubbish left behind by fellow breathers like the dastardly Rebels! Oh, I do believe you call it 'scrap'. Collect for us a substantial amount so that I may declare this beacon clean and I shall reward you... erm... my sincerest gratitudes?"</text>
 							<choice hidden="true">
 								<text>Take some time to collect some scrap for him.</text>
 								<event>
@@ -1302,7 +1320,7 @@
 				<text>Shelter the Alpha from the other Ghosts.</text>
 				<event>
 					<text>You quickly motion for the Alpha to follow, and they do so willingly. Running back to your ship, it looks like you've angered the Dynasty ships. One of their Reaper vessels is dispatched to reclaim their soldier.</text>
-					<crewMember amount="1" class="phantomalpha"/>
+					<crewMember amount="1" class="phantom_alpha"/>
 					<ship load="SHIP_DYNASTY_ELITE_FIGHT" hostile="true"/>
 					<choice hidden="true">
 						<text>Continue...</text>
@@ -1310,7 +1328,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="mind">
+			<choice hidden="true" req="mind" max_lvl="1">
 				<text>(Mind Control) Subdue the Alpha.</text>
 				<event>
 					<text>Under the influence of the mind control, the Ghost Alpha is subdued long enough for the Dynasty medical staff to inject them full of a blue liquid that apparently begins the splitting process involuntarily. They thank you for your efficient problem solving and offer a reward.</text>
@@ -1324,7 +1342,7 @@
 					<crewMember amount="2" class="phantom"/>
 				</event>
 			</choice>
-			<choice hidden="true" req="shellmedic">
+			<choice hidden="true" req="LIST_CREW_SHELL_SCIENTIST">
 				<text>(Shell Scientist) Explain the process.</text>
 				<event>
 					<text>You catch various odd phrases among the Shell's speech like "plasma membrane" and "rapid sub-division of the quantum something something." Does it mean anything? You're inclined to say no. Later, your Shell does indeed tell you that they made up everything they said, but it seems to register with the Alpha who finally agrees to go through with the process. The medical team pays you for your help.</text>
@@ -1370,7 +1388,7 @@
         <event>
             <text>You step aboard the ship, surprised to find it's full of oxygen. Around the walls are hanging various small trinkets. "These are my prized creations. Would you care for one?  Only 10 scrap..."</text>
             <choice hidden="true">
-                <text>Buy a totem of war [-10% weapon cooldown].</text>
+                <text>Buy a totem of war [+10% weapon fire rate].</text>
                 <event load="NEBULA_DYNASTY_TRINKETS_WAR"/>
             </choice>
             <choice hidden="true">
@@ -1378,7 +1396,7 @@
                 <event load="NEBULA_DYNASTY_TRINKETS_SPEED"/>
             </choice>
             <choice hidden="true">
-                <text>Buy an ingot of fortitude [+10% shield charge speed].</text>
+                <text>Buy an ingot of fortitude [+20% shield charge speed].</text>
                 <event load="NEBULA_DYNASTY_TRINKETS_SHIELD"/>
             </choice>
             <choice hidden="true">
@@ -1404,18 +1422,21 @@
 </event>
 <event name="NEBULA_DYNASTY_TRINKETS_WAR">
 	<text>"Heheh... just don't ask how it works." You head back to the ship, uncertain what to do with the object. You finally decide to place it on your dashboard and hope it works.</text>
+	<hiddenAug>TRINKET_WAR</hiddenAug>
 	<item_modify>
 		<item type="scrap" min="-10" max="-10"/>
 	</item_modify>
 </event>
 <event name="NEBULA_DYNASTY_TRINKETS_SPEED">
 	<text>"Heheh... just don't ask how it works." You head back to the ship, uncertain what to do with the object. You finally decide to place it on your dashboard and hope it works.</text>
+	<hiddenAug>TRINKET_SPEED</hiddenAug>
 	<item_modify>
 		<item type="scrap" min="-10" max="-10"/>
 	</item_modify>
 </event>
 <event name="NEBULA_DYNASTY_TRINKETS_SHIELD">
 	<text>"Heheh... just don't ask how it works." You head back to the ship, uncertain what to do with the object. You finally decide to place it on your dashboard and hope it works.</text>
+	<hiddenAug>TRINKET_SHIELD</hiddenAug>
 	<item_modify>
 		<item type="scrap" min="-10" max="-10"/>
 	</item_modify>
@@ -1439,7 +1460,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="engineer">
+			<choice hidden="true" req="LIST_CREW_ENGINEER">
 				<text>(Engineer Crew) Interface with the Auto and "make it speak".</text>
 				<event>
 					<text>Your engineer remotely access the Auto-ship and powers it online. Fortunately, its vocal module is still active. "OooOooOoOoh! You have captured me. You are now cursed! If you do not give the Federation all of your scrap, your children will be stillborn and your crops will be plagued. OooOoOoOoooOh!" The Ghosts suddenly go into panic, scrambling for a weapon, until they realize you're a Federation ship. Desperate not to be cursed, they give you all of their scrap.</text>
@@ -1453,7 +1474,7 @@
 					<autoReward level="MED">scrap_only</autoReward>
 				</event>
 			</choice>
-			<!--<choice hidden="true" req="MARKER_DYNASTY">
+			<!--<choice hidden="true" req="loc_dynasty_impressed">
 				<text>(Savior of the Dynasty) Take my word, it's for the best.</text>
 				<event>
 					<text>The alpha suddenly goes into shock, realizing who you are. They fall to their knees, thanking you for saving their people, and promise to do anything you say. The medical staff are in shock as well, and offer a reward higher than you would have expected.</text>
@@ -1555,7 +1576,7 @@
 					<autoReward level="LOW">scrap_only</autoReward>
 				</event>
 			</choice>
-			<choice hidden="true" req="MARKER_DYNASTY">
+			<choice hidden="true" req="loc_dynasty_impressed">
 				<text>(Savior of the Dynasty) Could you do us a favor?</text>
 				<event>
 					<text>"Oh the gods bestow upon me an honor like I never knew! An embarassment, I am, for not having recognized the savior of our lands! Yes, yes, we will do anything!" You kindly ask them to allow your smuggler 'friends' through, and they oblige without hesitation.</text>
@@ -1823,7 +1844,7 @@
 	<choice hidden="true">
 		<text>Hail one of the stations.</text>
 		<event>
-			<text>You assume they'll simply ignore you, but to your surprise a Phantom appears on the other end. "Oh? Have the maniacal hands of the lingering demon not yet snatched you away from this plain? Then consider yourself lucky, and take this chance to flee. You would be no coward to do such a thing..."</text>
+			<text>You assume they'll simply ignore you, but to your surprise a Phantom appears on the other end. "Oh? Have the maniacal hands of the lingering demon not yet snatched you away from this plane? Then consider yourself lucky, and take this chance to flee. You would be no coward to do such a thing..."</text>
 			<choice hidden="true">
 				<text>What monster?</text>
 				<event>
@@ -1870,12 +1891,12 @@
 	<choice hidden="true">
 		<text>Try and track down the Engineers.</text>
 		<event>
-			<text>Exploring the nearby system leads you to a Dynasty station with several ships docked. Inside several Ghosts are jeering as one of the engineers is escorted towards a guillotine device with a shimmering electrified blade. They spot you and gives you a pleading glance, silently begging you to help them.</text>
+			<text>Exploring the nearby system leads you to a Dynasty station with several ships docked. Inside several Ghosts are jeering as one of the engineers is escorted towards a guillotine device with a shimmering electrified blade. They spot you and give you a pleading glance, silently begging you to help them.</text>
 			<ship load="SHIP_DYNASTY_STATION_ENGINEER" hostile="false"/>
 			<choice hidden="true">
 				<text>Aid the engineer.</text>
 				<event>
-					<text>You draw your blaster and shoot the guard escorting the engineer, followed by the execution machine itself. You run out of the room followed by the wounded engineer as angry Ghosts follow!</text>
+					<text>You draw your blaster and shoot the guard escorting the engineer, followed by the execution machine itself. You run out of the room followed by the wounded engineer as angry Ghosts rush towards you!</text>
 					<boarders min="2" max="3" class="phantom"/>
 					<ship hostile="true"/>
 					<choice hidden="true">
@@ -1909,7 +1930,7 @@
 <eventList name="DYNASTY_ENGINEER_REWARD">
 	<event>
 		<text>"T-thanks. Those gas bastards were chanting something about me being a demon maker or something like that. I would be dead if it wasn't for you. My training tells me I should shoot you right now... but I feel like that training is wrong."</text>
-		<crewMember amount="1" class="engineer"/>
+		<crewMember amount="1" class="human_engineer"/>
 	</event>
 	<event>
 		<text>"T-thanks. Those gas bastards were chanting something about me being a demon maker or something like that. I would be dead if it wasn't for you. My training tells me I should shoot you right now... but I feel like that training is wrong."</text>
@@ -2205,33 +2226,33 @@
 				</event>
 			</choice>
 			<choice hidden="true" req="sensors" lvl="3">
-				<text>(Adv Sensors) Offer him your detailed map data.</text>
+				<text>(Adv. Sensors) Offer him your detailed map data.</text>
 				<event>
 					<text>Domodius takes a look at the data you've given him. "Hmmm. Inconclusive. Still, this proves you are a purveyor of fine knowledge and a keen explorer with an eye for discovery! If I join you, our combined intellect should be unrivaled!"</text>
-					<crewMember amount="1" class="wraith">Domodius</crewMember>
+					<crewMember amount="1" class="phantom_wraith">Domodius</crewMember>
 				</event>
 			</choice>
 			<choice hidden="true" req="ADV_SCANNERS">
 				<text>(Long Range Scanners) Offer him your detailed map data.</text>
 				<event>
 					<text>Domodius takes a look at the data you've given him. "Hmmm. Inconclusive. Still, this proves you are a purveyor of fine knowledge and a keen explorer with an eye for discovery! If I join you, our combined intellect should be unrivaled!"</text>
-					<crewMember amount="1" class="wraith">Domodius</crewMember>
+					<crewMember amount="1" class="phantom_wraith">Domodius</crewMember>
 				</event>
 			</choice>
 			<choice hidden="true" req="PRE_SCANNER">
 				<text>(Slip Scanner) Offer him your detailed map data.</text>
 				<event>
 					<text>Domodius takes a look at the data you've given him. "Hmmm. Inconclusive. Still, this proves you are a purveyor of fine knowledge and a keen explorer with an eye for discovery! If I join you, our combined intellect should be unrivaled!"</text>
-					<crewMember amount="1" class="wraith">Domodius</crewMember>
+					<crewMember amount="1" class="phantom_wraith">Domodius</crewMember>
 				</event>
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="traveler">
+	<choice hidden="true" req="unique_wither">
 		<text>(Aenwithe) "Yuck. Yeah, I know what those are."</text>
 		<event>
 			<text>Aenwithe explains that acid nebulas don't come from this reality, or any others like it. This seems to satisfy Domodius. "I have never heard of this... edition of captains you speak of, but it sounds most horrible. I've never been so glad to live in this reality. If you are so knowledgeable, then I shall come with you, so that our combined intellect should know no limits!"</text>
-			<crewMember amount="1" class="wraith">Domodius</crewMember>
+			<crewMember amount="1" class="phantom_wraith">Domodius</crewMember>
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -2271,20 +2292,19 @@
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>"BOO!" The word flashes on the screen, shortly followed by the text, "have I caused you fear?"</text>
+			<text>"BOO!" The word flashes on the screen, shortly followed by the text, "Have I caused you fear?"</text>
 			<choice hidden="true">
 				<text>Yes, I was very scared.</text>
 				<event>
 					<text>The screen goes blank, and then a Ghost beams onto the bridge. "Hah! You cause me sensations of joy. That is an emotion I have not felt in many cycles. I think I'll stick with you, breather."</text>
-					<status type="clear" target="player" system="sensors" amount="100"/>
-					<crewMember amount="1" class="mare"/>
+					<crewMember amount="1" class="phantom_mare"/>
 				</event>
 			</choice>
 			<choice hidden="true">
 				<text>Not really.</text>
 				<event>
 					<text>The computer shuts off, and a set of Ghosts apparate on the bridge, and make their move towards you. You ready your crew for combat.</text>
-					<boarders min="2" max="3" class="mare"/>
+					<boarders min="2" max="3" class="phantom_mare"/>
 				</event>
 			</choice>
 		</event>
@@ -2292,7 +2312,7 @@
 </event>
 
 <event name="NEBULA_GHOST_DONATION" unique="true">
-    <text>Ghost Vagabonds usually inhabit their ship for long periods of time until the damage becomes too major to be ignored. The Ghost Ship at this beacon is on its last breath, but unexpectedly the Ghost crew makes no attempt to attack your ship. A quick scan shows why; their weapons are barely functional and the engines are leaking fuel fast.</text>
+    <text>Ghost Vagabonds usually inhabit their ship for long periods of time until the damage becomes too major to be ignored. The Ghost ship at this beacon is on its last breath, but unexpectedly the Ghost crew makes no attempt to attack your ship. A quick scan shows why; their weapons are barely functional and the engines are leaking fuel fast.</text>
     <environment type="nebula"/>
     <ship load="SHIP_GHOST_ALL" hostile="false"/>
     <choice hidden="true">
@@ -2309,7 +2329,7 @@
         </event>
     </choice>
     <choice hidden="true">
-        <text>Pay them scrap to fix up their hull. [-35 ~]</text>
+        <text>Pay them scrap to fix up their hull. [-35~]</text>
         <event load="GHOST_DONATION_CREW"/>
     </choice>
     <choice hidden="true">
@@ -2333,27 +2353,28 @@
         <item_modify>
             <item type="scrap" min="-35" max="-35"/>
         </item_modify>
-        <crewMember amount="1" class="goul"/>
+        <crewMember amount="1" class="phantom_goul"/>
     </event>
     <event>
         <text>"Your donations are most generous, but they will not be enough to accomodate everyone. This vessel will live another day, but I must seek somewhere new to continue my travels. You will do."</text>
         <item_modify>
             <item type="scrap" min="-35" max="-35"/>
         </item_modify>
-        <crewMember amount="1" class="mare"/>
+        <crewMember amount="1" class="phantom_mare"/>
     </event>
     <event>
         <text>"Your donations are most generous, but they will not be enough to accomodate everyone. This vessel will live another day, but I must seek somewhere new to continue my travels. You will do."</text>
         <item_modify>
             <item type="scrap" min="-35" max="-35"/>
         </item_modify>
-        <crewMember amount="1" class="wraith"/>
+        <crewMember amount="1" class="phantom_wraith"/>
     </event>
 </eventList>
 
 <event name="NEBULA_GHOST_BREEDER" unique="true">
 	<text>A Slug vessel is already at this beacon, surrounded by several Vagabond ships. Oddly enough, none of the Ghosts are attacking the Slug, nor is the Slug scrapping the wrecks.</text>
 	<ship load="SHIP_SLUG_GENERIC" hostile="false"/>
+	<environment type="nebula"/>
 	<choice hidden="true">
 		<text>Hail them.</text>
 		<event>
@@ -2370,7 +2391,7 @@
 						<text>Continue...</text>
 						<event>
 							<text>"What?! Thissss doesssn't even make sssenssse! Ugh... this busssinessss issssn't the right place for me. You're sssaying thessse big guysss are important? Fine, take one. What point issss there to it anywayssss..."</text>
-							<crewMember amount="1" class="goulalpha"/>
+							<crewMember amount="1" class="phantom_goul_alpha"/>
 						</event>
 					</choice>
 				</event>
@@ -2414,7 +2435,7 @@
 		</event>
 	</choice>
 	<choice hidden="true">
-		<text>Ignore them</text>
+		<text>Ignore them.</text>
 		<event>
 			<text>Slugs, even scientists, cannot be trusted, nor do you wish to aggravate a clan of Ghosts. You decide to stay at a distance from their shady dealings.</text>
 			<choice hidden="true">
@@ -2441,21 +2462,21 @@
 		<item_modify>
 			<item type="scrap" min="-40" max="-40"/>
 		</item_modify>
-		<crewMember amount="1" class="goul"/>
+		<crewMember amount="1" class="phantom_goul"/>
 	</event>
 	<event>
 		<text>"You... you want to BUY one of thessse freaksss? Well, can't argue with sssome ssscrap."</text>
 		<item_modify>
 			<item type="scrap" min="-40" max="-40"/>
 		</item_modify>
-		<crewMember amount="1" class="mare"/>
+		<crewMember amount="1" class="phantom_mare"/>
 	</event>
 	<event>
 		<text>"You... you want to BUY one of thessse freaksss? Well, can't argue with sssome ssscrap."</text>
 		<item_modify>
 			<item type="scrap" min="-40" max="-40"/>
 		</item_modify>
-		<crewMember amount="1" class="wraith"/>
+		<crewMember amount="1" class="phantom_wraith"/>
 	</event>
 </eventList>
 
@@ -2486,7 +2507,7 @@
 <textList name="NEBULA_GHOST_FIGHT">	
 	<text>The Ghosts might not be paranormal, but they sure do put you on edge. You jump when a Vagabond ship comes drifting out of the nebula. Man the stations!</text>	
 	<text>You always find yourself second guessing when you encounter a wreck. You don't have to think about it for very long because the wreck at this beacon moves in to attack you first.</text>	
-	<text>The Vagabond usually get their ships by stealing them from their victims, but if they encounter an already abandoned ship they'll happily inhabit it. Whichever way they inherited this ship doesn't matter, because it's hostile and moves in to attack.</text>	
+	<text>The Vagabonds usually get their ships by stealing them from their victims, but if they encounter an already abandoned ship they'll happily inhabit it. Whichever way they inherited this ship doesn't matter, because it's hostile and moves in to attack.</text>	
 	<text>The wreck at this beacon is no idle ship forgotten amongst the clouds. It's teeming with Ghosts ready to steal your ship.</text>	
 	<text>You've prepared for and experienced all kinds of situations in the Federation, but nothing startles you as much as the Ghost-populated vagabond wrecks that are always oozing out from these clouds.</text>	
 	<text>Your ship receives a hail, but you aren't sure from where. You accept, and a painfully loud static floods the speakers, insulting your bloodline and calling you a 'filthy lung-borne breather'. A Ghost ship approaches, weapons ready!</text>	
@@ -2505,7 +2526,7 @@
 </event>
 
 <event name="NEBULA_GHOST_AUTO_ESCAPE" unique="true">
-	<text>It looks like a Rebel autoship was exploring this sector, but got lost in the nebulas. Now attempting to return to base before Ghosts can capture it, it raises its weapons to defend itself from you while its FTL drive charges.</text>
+	<text>It looks like a Rebel Auto-ship was exploring this sector, but got lost in the nebulas. Now attempting to return to base before Ghosts can capture it, it raises its weapons to defend itself from you while its FTL drive charges.</text>
 	<ship load="SHIP_AUTO_GHOST_ESCAPE" hostile="true"/>
 	<environment type="nebula"/>
 	<choice hidden="true">
@@ -2538,18 +2559,18 @@
 	<event load="NEBULA_GHOST_FEDMORALITY"/>
 </eventList>
 
-<event name="NEBULA_GHOST_GASGIANT">
+<event name="NEBULA_GHOST_GASGIANT" unique="true">
 	<text>Looks like a Vagabond ship is scanning the nearby gas giant, but quickly hails you when you jump in. "Isn't my darling beautiful?"</text>
 	<img back="BACK_EVENT_LIGHTNEBULA" planet="PLANET_GAS"/>
 	<status type="loss" target="player" system="sensors" amount="1"/>
 	<choice hidden="true">
 		<text>Your... who?</text>
 		<event>
-			<text>"Don't be silly! I know you can see. She's quite large!" It doesn't take long to realize they're referring to the gas planet. "Say, can you do me a favor? My darling hungers! I must feed her. But I lack the food. You must bring me a wreck. I heard a demon lingers about! But, perhaps you'd prefer to go after some rebels instead..."</text>
+			<text>"Don't be silly! I know you can see. She's quite large!" It doesn't take long to realize they're referring to the gas planet. "Say, can you do me a favor? My darling hungers! I must feed her. But I lack the food. You must bring me a wreck. I heard a demon lingers about! But, perhaps you'd prefer to go after some Rebels instead..."</text>
 			<choice hidden="true">
 				<text>Go after the 'demon'.</text>
 				<event>
-					<text>Looks like the 'demon' in question is... a rebel Auto-ship? Well, you'll have to kill this thing either way, get ready to fight!</text>
+					<text>Looks like the 'demon' in question is... a Rebel Auto-ship? Well, you'll have to kill this thing either way, get ready to fight!</text>
 					<ship load="SHIP_GASGIANT_AUTO" hostile="true"/>
 					<choice hidden="true">
 						<text>Continue...</text>
@@ -2590,7 +2611,7 @@
 	<drone name="RANDOM"/>
 </event>
 
-<event name="NEBULA_GHOST_FEDMORALITY">
+<event name="NEBULA_GHOST_FEDMORALITY" unique="true">
 	<text>You've become accustomed to not seeing many Fed ships around - so seeing one here comes as quite the shock. Even weirder, their weapons are powered and hull shows some minor damage. They must have just been in combat.</text>
 	<environment type="nebula"/>
 	<choice hidden="true">
@@ -2854,7 +2875,7 @@
 	<choice hidden="true">
 		<text>Fight the Ghosts before they can damage your system.</text>
 		<event>
-			<boarders min="3" max="3" class="wraith"/>
+			<boarders min="3" max="3" class="phantom_wraith"/>
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -2864,12 +2885,12 @@
 </event>
 <eventList name="NEBULA_GHOST_UPGRADERS_WAIT">
 	<event>
-		<text>You wait and watch the Ghosts as they look over every inch of your system. Thought they have no visible tools, you wonder if they're taking measurements. One of the Ghosts tinkers with the mechanism in the system, then just as suddenly as they appeared the Ghosts walk out the door and disappear. You don't know what they've done, but it almost seems as if your engines are running at higher capacity than before.</text>
+		<text>You wait and watch the Ghosts as they look over every inch of your system. Though they have no visible tools, you wonder if they're taking measurements. One of the Ghosts tinkers with the mechanism in the system, then just as suddenly as they appeared the Ghosts walk out the door and disappear. You don't know what they've done, but it almost seems as if your engines are running at higher capacity than before.</text>
 		<upgrade amount="1" system="engines"/>
 	</event>
 	<event>
 		<text>You wait and watch the Ghosts as they look over every inch of your system. Suddenly, in a violent motion, one of the Ghosts tears off a metal covering on the Multiverse drive casing, resulting in a violent explosion! You don't wait any longer and order the crew to attack.</text>
-		<boarders min="3" max="3" class="wraith"/>
+		<boarders min="3" max="3" class="phantom_wraith"/>
 		<damage amount="3" system="engines"/>
 	</event>
 </eventList>
@@ -2885,13 +2906,13 @@
 </eventList>
 
 <event name="NEBULA_VAGABOND_ORCHID" unique="true">
-	<text>Looks like an Orchid ship, of all things, is the source of this distress beacon. One of their crew hail you - "Please help! We were sent by the Gathering to negotiate with one of the goul clans who keep burning our colonies, but our captain was taken hostage and they won't give him back!"</text>	
+	<text>Looks like an Orchid ship, of all things, is the source of this distress beacon. One of their crew hail you - "Please help! We were sent by the Gathering to negotiate with one of the Goul clans who keep burning our colonies, but our captain was taken hostage and they won't give him back!"</text>	
 	<environment type="nebula"/>
 	<distressBeacon/>
 	<choice hidden="true">
 		<text>Agree to help.</text>
 		<event>
-			<text>You follow the Orchid ship's directions to a Vagabond war camp populated mostly by Gouls. You request to speak with their leader directly. "Does the life of this frail plant thing concern you to a degree that would drive further ambitions to seek our favor in release? If you wish for this floral being not to suffer any longer, then you must prove your worth and destroy a Dynasty vessel who has been troubling my people."</text>
+			<text>You follow the Orchid ship's directions to a Vagabond war camp populated mostly by Gouls. You request to speak with their leader directly: "Does the life of this frail plant thing concern you to a degree that would drive further ambitions to seek our favor in release? If you wish for this floral being not to suffer any longer, then you must prove your worth and destroy a Dynasty vessel who has been troubling my people."</text>
 			<choice hidden="true">
 				<text>We'll fight the Dynasty ship.</text>
 				<event>
@@ -3012,7 +3033,7 @@
 </eventList>
 
 <event name="VAGABOND_SEPARATISTS" unique="true">
-	<text>"Identity of Federation vessel confirmed. It is implied your allegiance promotes your ability to assist. Currently at large: Separatist Saboteur 'B0N-N3' and Wraith Outlaw 'Clydeo.' Have eluded capture from Harmony for too long. Request: Federation vessel holds off criminals until Engi reinforcements can arrive. Is this deal acceptable?"</text>
+	<text>"Identity of Federation vessel confirmed. It is implied your allegiance promotes your ability to assist. Currently at large: Separatist Saboteur 'B0N-N3' and Wraith Outlaw 'Clydeo'. Have eluded capture from Harmony for too long. Request: Federation vessel holds off criminals until Engi reinforcements can arrive. Is this deal acceptable?"</text>
 	<ship load="SHIP_ENGI_GENERIC" hostile="false"/>
 	<choice hidden="true">
 		<text>Accept.</text>
@@ -3134,7 +3155,7 @@
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event>
-							<text>You are met by a large mare alpha wearing a paper mache crown that barely manages to stay on his gaseous 'head'. "I, am the trash king! Bow before me breathers!"</text>
+							<text>You are met by a large Mare Alpha wearing a paper mache crown that barely manages to stay on his gaseous 'head'. "I, am the trash king! Bow before me breathers!"</text>
 							<choice hidden="true">
 								<text>Bow.</text>
 								<event>
@@ -3433,6 +3454,7 @@
 </event>
 <event name="UNLOCK_GHOST_QUEST_2">
 	<preventQuest/>
+	<preventFleet/>
 	<beaconType id="map_icon_bounty" global="true">
 		<color r="255" g="255" b="255" a="1.0"/>
 	</beaconType>
@@ -3441,7 +3463,7 @@
 	<choice hidden="true">
 		<text>Follow it.</text>
 		<event>
-			<text>You slip through the nebulas after it, only to find a massive gap in the clouds where there resides, right in the center, the old Rebel Flagship. "Good, good, you made it! Now give us a hand, would you?" Shouts the Spook Chasers, as they fire on the Flagship to no avail.</text>
+			<text>You slip through the nebulas after it, only to find a massive gap in the clouds where there resides, right in the center, the old Rebel Flagship. "Good, good, you made it! Now give us a hand, would you?", shout the Spook Chasers, as they fire on the Flagship to no avail.</text>
 			<ship load="SHIP_GHOST_FLAGSHIP" hostile="false"/>
 			<choice hidden="true">
 				<text>Help them!</text>
@@ -3463,7 +3485,7 @@
 </event>
 <event name="UNLOCK_GHOST_QUEST_WIN">
 	<text>The gargantuan ship, for which you've heard so many legends about, finally gives one last quake before an explosion in the engines causes it to erupt into flames and explode. The Flagship, and the Vagabonds with it, is dead... yet again.</text>
-	<hiddenAug>ACH_BOSS_GHOSTFLAG</hiddenAug>
+	<variable name="ach_boss_ghostflag" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>

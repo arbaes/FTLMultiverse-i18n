@@ -27,13 +27,13 @@
 <event name="START_ORIGINS">
 	<text>You've arrived at the original Crystal Homeworlds, and already you can see the aftermath of the brutal invasion of tourists and "pioneers". The skeletons of Crystal structures dot the surface of the planet of which the entry beacon is concerningly close...</text>
 	<ship load="SHIP_GUARD_CULTIST" hostile="false"/>
-	<img back="BACK_SECTOR_CRYSTAL_HOME" planet="PLANET_INVISIBLE"/>
-	<remove name="HIDDEN DUMMY"/>
-	<choice hidden="true" req="MARKER_CRYSTALHOMEWORLDS" lvl="0" blue="false" max_group="0">
+	<changeBackground>BACK_SECTOR_CRYSTAL_HOME</changeBackground>
+	<playSound>lightspeed</playSound>
+	<choice hidden="true" req="loc_crystalhome" lvl="0" blue="false" max_group="0">
 		<text>Continue...</text>
 		<event load="GUARD_CULTIST"/>
 	</choice>
-	<choice hidden="true" req="MARKER_CRYSTALHOMEWORLDS" lvl="1" blue="false" max_group="0">
+	<choice hidden="true" req="loc_crystalhome" lvl="1" blue="false" max_group="0">
 		<text>We've been here before...</text>
 		<event load="GUARD_CULTIST_REVISIT"/>
 	</choice>
@@ -55,6 +55,7 @@
 	This sector/questline is in a transitional period. Certain elements/dialogue might not make sense. It will be redone in a later (but hopefully soon) update. The current questline/unlock however should at least be functional as they were before for the time being.</text>
 	<ship load="SHIP_GUARD_CULTIST" hostile="false"/>
 	<changeBackground>BACK_SECTOR_CRYSTAL_HOME</changeBackground>
+	<playSound>lightspeed</playSound>
 	<remove name="HIDDEN DUMMY"/>
 	<modifyPursuit amount="-2"/>
 	<choice hidden="true">
@@ -66,11 +67,11 @@
 <event name="START_ORIGINS_RUWEN_2"> <!--separated because of the hidden aug-->
 	<text>Ruwen explains to you the situation. The item you're looking for is the Waystone Key, a device used to activate or shut down the old waystone. The Crystals need it back so they can activate the new waystone that they are constructing. He transfers the co-ordinates to your ship.</text>
 	<quest event="CULTIST_CHURCH_RUWEN"/>
-	<choice hidden="true" req="MARKER_CRYSTALHOMEWORLDS" lvl="0" blue="false" max_group="0">
+	<choice hidden="true" req="loc_crystalhome" lvl="0" blue="false" max_group="0">
 		<text>Continue...</text>
 		<event load="GUARD_CULTIST"/>
 	</choice>
-	<choice hidden="true" req="MARKER_CRYSTALHOMEWORLDS" lvl="1" blue="false" max_group="0">
+	<choice hidden="true" req="loc_crystalhome" lvl="1" blue="false" max_group="0">
 		<text>We've been here before...</text>
 		<event load="GUARD_CULTIST_REVISIT"/>
 	</choice>
@@ -107,41 +108,41 @@
 							</choice>
 						</event>
 					</choice>
-					<choice hidden="true" req="lord">
+					<choice hidden="true" req="unique_vortigon">
 						<text>(Vortigon) This vessel has permission from the Grand Priest to travel here.</text>
 						<event>
 							<text>The Cultists pause, and quickly apologize. Terrified of Vortigon's wrath, they hand over some supplies and beg for forgiveness.</text>
 							<autoReward level="HIGH">item</autoReward>
 						</event>
 					</choice>
-					<choice hidden="true" req="cultist">
+					<choice hidden="true" req="rock_cultist">
 						<text>(Cultist Crew) Show them proof of your loyalty.</text>
 						<event>
 							<text>The cultist gives a large, hearty laugh. "Hah! Brother, it is good to see you. How have you been? It has been so long since I have seen you, I thought you had died. So few of us have left this sector in such a long time... maybe I shall come with you so I can hear the tales of your travels."</text>
-							<crewMember amount="1" class="cultist">Hadrich</crewMember>
+							<crewMember amount="1" class="rock_cultist">Hadrich</crewMember>
 						</event>
 					</choice>
 					<choice hidden="true" req="LIST_CREW_CRYSTAL">
 						<text>(Crystal Crew) Reason with the cultists.</text>
 						<event>
 							<text>"Gasp! An Ember, you are one of those who paved the very infrastructure for which this sector was constructed from! I thought you had left us mortals behind in your Exodus from this territory. Oh heavens be, please grant me passage on your vessel."</text>
-							<crewMember amount="1" class="cultist">Hadrich</crewMember>
+							<crewMember amount="1" class="rock_cultist">Hadrich</crewMember>
 						</event>
 					</choice>
 					<choice hidden="true" req="mind">
 						<text>(Mind Control) Convince the guard to leave you alone.</text>
 						<event load="GUARD_MIND"/>
 					</choice>
-					<choice hidden="true" req="cloak">
+					<choice hidden="true" req="cloaking">
 						<text>(Cloaking) Cloak and try to escape.</text>
 						<event load="GUARD_CLOAK"/>
 					</choice>
 					<choice hidden="true" req="engines" lvl="5">
-						<text>(Adv Engines) Try to escape the guard.</text>
+						<text>(Adv. Engines) Try to escape the guard.</text>
 						<event load="GUARD_ESCAPE"/>
 					</choice>
 					<choice hidden="true" req="pilot" lvl="3">
-						<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+						<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 						<event load="GUARD_ESCAPE"/>
 					</choice>
 				</event>
@@ -167,41 +168,41 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="lord">
+			<choice hidden="true" req="unique_vortigon">
 				<text>(Vortigon) This vessel has permission from the Grand Priest to travel here.</text>
 				<event>
 					<text>The Cultists pause, and quickly apologize. Terrified of Vortigon's wrath, they hand over some supplies and beg for forgiveness.</text>
 					<autoReward level="HIGH">item</autoReward>
 				</event>
 			</choice>
-			<choice hidden="true" req="cultist">
+			<choice hidden="true" req="rock_cultist">
 				<text>(Cultist Crew) Show them proof of your loyalty.</text>
 				<event>
 					<text>The cultist gives a large, hearty laugh. "Hah! Brother, it is good to see you. How have you been? It has been so long since I have seen you, I thought you had died. So few of us have left this sector in such a long time... maybe I shall come with you so I can hear the tales of your travels."</text>
-					<crewMember amount="1" class="cultist">Hadrich</crewMember>
+					<crewMember amount="1" class="rock_cultist">Hadrich</crewMember>
 				</event>
 			</choice>
 			<choice hidden="true" req="LIST_CREW_CRYSTAL">
 				<text>(Crystal Crew) Reason with the cultists.</text>
 				<event>
 					<text>"Gasp! An Ember, you are one of those who paved the very infrastructure for which this sector was constructed from! I thought you had left us mortals behind in your Exodus from this territory. Oh heavens be, please grant me passage on your vessel."</text>
-					<crewMember amount="1" class="cultist">Hadrich</crewMember>
+					<crewMember amount="1" class="rock_cultist">Hadrich</crewMember>
 				</event>
 			</choice>
 			<choice hidden="true" req="mind">
 				<text>(Mind Control) Convince the guard to leave you alone.</text>
 				<event load="GUARD_MIND"/>
 			</choice>
-			<choice hidden="true" req="cloak">
+			<choice hidden="true" req="cloaking">
 				<text>(Cloaking) Cloak and try to escape.</text>
 				<event load="GUARD_CLOAK"/>
 			</choice>
 			<choice hidden="true" req="engines" lvl="5">
-				<text>(Adv Engines) Try to escape the guard.</text>
+				<text>(Adv. Engines) Try to escape the guard.</text>
 				<event load="GUARD_ESCAPE"/>
 			</choice>
 			<choice hidden="true" req="pilot" lvl="3">
-				<text>(Adv Autopilot) Activate the auto-pilot to try and escape.</text>
+				<text>(Adv. Autopilot) Activate the auto-pilot to try and escape.</text>
 				<event load="GUARD_ESCAPE"/>
 			</choice>
 		</event>
@@ -217,7 +218,7 @@
 
 <event name="GUARD_CULTIST_BOARDERS">
 	<text>As the cultist guard sputters, you detect a distress signal coming from their ship. However, no ASB appears due to how close you are to the planet's surface. Instead, several cultists are beamed aboard!</text>
-	<boarders min="2" max="3" class="cultist"/>
+	<boarders min="2" max="3" class="rock_cultist"/>
 </event>
 
 <event name="GUARD_CULTIST_DESTROY">
@@ -238,10 +239,18 @@
 	</choice>
 </event>
 <event name="GUARD_CULTIST_FOLLOWUP">
+	<noQuestText/>
 	<text>If there was any hope of getting through the sector unnoticed, you've botched it. They will no doubt send reinforcements to hunt you down.</text>
 	<quest event="REINFORCEMENTS_CULTIST"/>
 </event>
 <event name="REINFORCEMENTS_CULTIST">
+	<preventQuest/>
+	<beaconType id="map_icon_reinforcements" global="true" req="LOOT_COMPASS">
+		<color r="200" g="55" b="82" a="1"/>
+		<unvisitedTooltip>An unvisited location.</unvisitedTooltip>
+		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+		<undiscoveredTooltip>An unvisited location.</undiscoveredTooltip>
+	</beaconType>
 	<text>As you expected, a Cultist vessel approaches to avenge their dead guard, with their weapons armed and their captain very displeased.</text>
 	<ship load="SHIP_CULTIST_REINFORCEMENTS" hostile="true"/>
 	<environment type="PDS" target="player"/>
@@ -256,8 +265,9 @@
 		FINISH BEACON!!!!!
 		FINISH BEACON!!!!!
 -->
-<event name="ORIGINS_EXIT" unique="true">
+<event name="ORIGINS_EXIT">
 	<text>You have arrived at the exit beacon. It appears the apparatus will deposit you in a random sector once we jump away.</text>
+	<variable name="loc_crystalhome" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Check the storage.</text>
 		<event load="STORAGE_CHECK"/>
@@ -268,17 +278,18 @@
 	</choice>
 </event>
 
-<event name="ORIGINS_RUWEN_EXIT" unique="true">
+<event name="ORIGINS_RUWEN_EXIT">
 	<text>You have arrived at the exit beacon. It appears the apparatus will deposit in a random sector once we jump away.</text>
-	<choice hidden="true" req="MARKER_WAYSTONE" lvl="1" max_group="0" blue="false">
+	<variable name="loc_crystalhome" op="set" val="1"/>
+	<choice hidden="true" req="loc_waystone" lvl="1" max_group="0" blue="false">
 		<text>Inspect the Waystone.</text>
 		<event>
 			<text>The crystalline tech that makes up the device is fascinating, if not completely foreign to you.</text>
-			<choice hidden="true" req="ruwen" lvl="1" max_group="0" blue="false">
+			<choice hidden="true" req="unique_ruwen" lvl="1" max_group="0" blue="false">
 				<text>Talk to Ruwen.</text>
 				<event>
 					<text>Ruwen is gleeful, very pleased with this outcome. "Good, good! This is most excellent."</text>
-					<choice hidden="true" req="lord" lvl="1" max_group="0" blue="false">
+					<choice hidden="true" req="unique_vortigon" lvl="1" max_group="0" blue="false">
 						<text>Continue...</text>
 						<event>
 							<text>Ruwen takes a glance at Vortigon, who is snoring away in a corner of the ship nearby. Suddenly, Ruwen lifts up the key and smashes it against the ground of the ship. "I... I have decided that it is best I do not return this to my people. You, despite not needing to in any capacity, decided to show this man mercy and even convince him to join your ranks. Any doubts I had about you have been assuaged. It will be an honor to continue to serve under your command. I suppose this reward is worthy of you, even if the original mission is obsolete."</text>
@@ -287,14 +298,14 @@
 							<damage amount="-15"/>
 						</event>
 					</choice>
-					<choice hidden="true" req="lord" lvl="0" max_group="0" blue="false">
+					<choice hidden="true" req="unique_vortigon" lvl="0" max_group="0" blue="false">
 						<text>Continue...</text>
 						<event>
 							<text>"You have my thanks, captain. I'm afraid I must now return to my people with this tech. But let me not forget to pay you for your help!"</text>
 							<autoReward level="HIGH">scrap_only</autoReward>
 							<weapon name="GIFTLIST_CRYSTAL_ELITE"/> <!--make this special?-->
 							<damage amount="-15"/>
-							<removeCrew class="ruwen">
+							<removeCrew class="unique_ruwen">
 								<clone>false</clone>
 								<text>You cannot clone Ruwen as he is not dead. He probably wouldn't be very pleased with it either.</text>
 							</removeCrew>
@@ -302,7 +313,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="ruwen" lvl="0" max_group="0" blue="false">
+			<choice hidden="true" req="unique_ruwen" lvl="0" max_group="0" blue="false">
 				<text>Continue...</text>
 				<event>
 					<text>Unfortunately, Ruwen is no longer with you. With no proper way to return the device back to the Crystal people now, you break it down into scrap.</text>
@@ -319,11 +330,11 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="MARKER_WAYSTONE" lvl="0" max_group="0" blue="false">
+	<choice hidden="true" req="loc_waystone" lvl="0" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event>
 			<text>Unfortunately, it seems you did not obtain the Waystone key... that was the whole reason you came here, was it not?</text>
-			<choice hidden="true" req="ruwen" lvl="1" max_group="0" blue="false">
+			<choice hidden="true" req="unique_ruwen" lvl="1" max_group="0" blue="false">
 				<text>Talk to Ruwen.</text>
 				<event>
 					<text>Ruwen looks very disappointed. "You had one task... I... I suppose we will have to reconstruct a new one. That tech was ancient, and it'll be hard to replicate it. I'm afraid I can stay with you no longer. I must return to my people now, and give them the bad news. Though it may be ironic, but I have one last favor to ask of you..."</text>
@@ -331,7 +342,7 @@
 						<text>Yes? What is it?</text>
 						<event>
 							<text>"Never return to our sectors again." With that, Ruwen moves to pack up his things and depart once you leave the sector.</text>
-							<removeCrew class="ruwen">
+							<removeCrew class="unique_ruwen">
 								<clone>false</clone>
 								<text>You cannot clone Ruwen as he is not dead. He probably wouldn't be very pleased with it either.</text>
 							</removeCrew>
@@ -339,7 +350,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="ruwen" lvl="0" max_group="0" blue="false">
+			<choice hidden="true" req="unique_ruwen" lvl="0" max_group="0" blue="false">
 				<text>Continue...</text>
 				<event>
 					<text>Either way, Ruwen is no longer with us. You can consider this mission a total failure, but at least you got see some new sights.</text>
@@ -366,7 +377,8 @@
 <event name="CULTIST_CHURCH_FAKE"> <!--when you visit via rock homeworlds-->
 	<text>You've stumbled across a massive church at this beacon.</text>
 	<img back="BACK_EVENT_EMBERCHURCH" planet="PLANET_INVISIBLE"/>
-	<choice hidden="true" req="MARKER_EMBERCHURCH_RUWEN" lvl="1" max_group="0" blue="false">
+	<variable name="loc_emberchurch_noruwen" op="set" val="1"/>
+	<choice hidden="true" req="loc_emberchurch_ruwen" lvl="1" max_group="0" blue="false">
 		<text>Continue...</text> <!--the player has been here!-->
 		<event>
 			<text>It seems most of the church has been abandoned since you were last here. They probably relocated to another place since then...</text>
@@ -380,7 +392,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="MARKER_EMBERCHURCH_RUWEN" lvl="0" max_group="0" blue="false">
+	<choice hidden="true" req="loc_emberchurch_ruwen" lvl="0" max_group="0" blue="false">
 		<text>Continue...</text> <!--the player has not been here-->
 		<event>
 			<text>It's quite the spectacle, but there's little for you to do here.</text>
@@ -405,7 +417,8 @@
 	</beaconType>
 	<text>You've arrived at the co-ordinates specified by Ruwen.</text>
 	<img back="BACK_EVENT_EMBERCHURCH" planet="NONE"/>
-	<choice hidden="true" req="MARKER_EMBERCHURCH_FALSE" lvl="1" max_group="0" blue="false">
+	<variable name="loc_emberchurch_ruwen" op="set" val="1"/>
+	<choice hidden="true" req="loc_emberchurch_noruwen" lvl="1" max_group="0" blue="false">
 		<text>Continue...</text> <!--the player has been here!-->
 		<event>
 			<text>You're surprised to see it's the same church as before. Ruwen is as confused as you are as to why the co-ordinates led you here though, but he suggests that we enter and investigate.</text>
@@ -415,7 +428,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="MARKER_EMBERCHURCH_FALSE" lvl="0" max_group="0" blue="false">
+	<choice hidden="true" req="loc_emberchurch_noruwen" lvl="0" max_group="0" blue="false">
 		<text>Continue...</text> <!--the player has not been here-->
 		<event>
 			<text>The location appears to be home to a massive church. Ruwen is as confused as you are as to why the co-ordinates led you here though, but he suggests that we enter and investigate.</text>
@@ -433,7 +446,7 @@
 		<text>This is important; interrupt the sermon.</text>
 		<event>
 			<text>You stand up and approach the preacher. He doesn't look pleased.</text>
-			<choice hidden="true" req="ruwen" lvl="1" max_group="0" blue="false">
+			<choice hidden="true" req="unique_ruwen" lvl="1" max_group="0" blue="false">
 				<text>Have Ruwen speak with him.</text>
 				<event>
 					<text>Ruwen outreaches his hand, but the Rockman won't shake it. "I am Grand Priest Vortigon, and this is my church. For what reason have you deemed it necessary to barge in and interrupt my preaching?"</text>
@@ -443,11 +456,11 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="ruwen" lvl="0" max_group="0" blue="false">>
+			<choice hidden="true" req="unique_ruwen" lvl="0" max_group="0" blue="false">>
 				<text>Just stand there and stare.</text>
 				<event>
 					<text>Without Ruwen you have no idea what to say. For a few awkward moments you stand there staring until the Rockman gets tired and orders three of his guards to come and carry you out. You run out of the church with the cultists in pursuit.</text>
-					<boarders min="3" max="3" class="cultist"/>
+					<boarders min="3" max="3" class="rock_cultist"/>
 				</event>
 			</choice>
 		</event>
@@ -464,7 +477,7 @@
 						<text>Break open the case.</text>
 						<event>
 							<text>You smash the case, only for the pedestal to rapidly recede into the floor and an alarm to blare. You hear shouts from the other room and run out, pursued by enraged several cultists.</text>
-							<boarders min="1" max="1" class="cultist"/>
+							<boarders min="1" max="1" class="rock_cultist"/>
 							<choice hidden="true">
 								<text>Hurry back to the ship!</text>
 								<event>
@@ -485,7 +498,7 @@
 										<text>We can't risk it, run!</text>
 										<event>
 											<text>You have enough problems to deal with, like the hordes of Cultists swarming to attack your ship.</text>
-											<boarders min="2" max="2" class="cultist"/>
+											<boarders min="2" max="2" class="rock_cultist"/>
 										</event>
 									</choice>
 								</event>
@@ -497,9 +510,9 @@
 			<choice hidden="true">
 				<text>Enter the door marked 'storage'.</text>
 				<event>
-					<text>You enter the storage room, and begin to pilfer through the junk. You find plenty of junk, but not the key. You start to consider looping back and checking out the shrine when several cultists enter the room and spot you looting their junk. Reasonably displeased, they chase you back to the ship!</text>
+					<text>You enter the storage room, and begin to pilfer through the junk. You find plenty of junk, but not the key. You start to consider looping back and checking out the shrine when several cultists enter the room and spot you looting their junk. Reasonably displeased with you looting their junk, they chase you back to the ship!</text>
 					<autoReward level="MED">stuff</autoReward>
-					<boarders min="3" max="3" class="cultist"/>
+					<boarders min="3" max="3" class="rock_cultist"/>
 				</event>
 			</choice>
 		</event>
@@ -511,7 +524,7 @@
 		<text>Take it through force!</text>
 		<event>
 			<text>You push past Vortigon and prepare to march to take the key before you realize... you have absolutely no idea where it is. Vortigon coughs, then orders his guards to chase you off. Crap, mission abort!</text>
-			<boarders min="3" max="3" class="cultist"/>
+			<boarders min="3" max="3" class="rock_cultist"/>
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -526,7 +539,7 @@
 						<text>Break open the case.</text>
 						<event>
 							<text>You smash the case, only for the pedestal to rapidly recede into the floor and an alarm to blare. You hear shouts from the other room and run out, pursued by enraged several cultists.</text>
-							<boarders min="1" max="1" class="cultist"/>
+							<boarders min="1" max="1" class="rock_cultist"/>
 							<choice hidden="true">
 								<text>Hurry back to the ship!</text>
 								<event>
@@ -547,7 +560,7 @@
 										<text>We can't risk it, run!</text>
 										<event>
 											<text>You have enough problems to deal with, like the hordes of Cultists swarming to attack your ship.</text>
-											<boarders min="2" max="2" class="cultist"/>
+											<boarders min="2" max="2" class="rock_cultist"/>
 										</event>
 									</choice>
 								</event>
@@ -559,9 +572,9 @@
 			<choice hidden="true">
 				<text>Enter the door marked 'storage'.</text>
 				<event>
-					<text>You enter the storage room, and begin to pilfer through the junk. You find plenty of junk, but not the key. You start to consider looping back and checking out the shrine when several cultists enter the room and spot you looting their junk. Reasonably displeased, they chase you back to the ship!</text>
+					<text>You enter the storage room, and begin to pilfer through the junk. You find plenty of junk, but not the key. You start to consider looping back and checking out the shrine when several cultists enter the room and spot you looting their junk. Reasonably displeased with you looting their junk, they chase you back to the ship!</text>
 					<autoReward level="MED">stuff</autoReward>
-					<boarders min="3" max="3" class="cultist"/>
+					<boarders min="3" max="3" class="rock_cultist"/>
 				</event>
 			</choice>
 		</event>
@@ -578,7 +591,7 @@
 </ship>
 <event name="VORTIGON_DESTROY">
 	<text>Vortigon's ship explodes, sending debris scattering down onto the church. You swoop in to collect some material before leaving - disappointed that the Key was destroyed along with the cruiser.</text>
-	<hiddenAug>ACH_BOSS_VORTIGON</hiddenAug>
+	<variable name="ach_boss_vortigon" op="set" val="1"/>
 	<autoReward level="HIGH">standard</autoReward>
 </event>
 <event name="VORTIGON_SURRENDER">
@@ -622,7 +635,8 @@
 <event name="VORTIGON_KEY">
 	<text>You scoop up the Key off the floor of the ship. At last, you have what you came for.</text>
 	<unlockCustomShip silent="false">PLAYER_SHIP_CULTIST</unlockCustomShip>
-	<hiddenAug>ACH_BOSS_VORTIGON</hiddenAug>
+	<variable name="ach_boss_vortigon" op="set" val="1"/>
+	<variable name="loc_waystone" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -658,9 +672,8 @@
 </event>
 <event name="VORTIGON_SAVED">
 	<text>In a little while Vortigon wakes up. "You... you saved me? Are you mentally ill? You attacked my church to try and steal the sacred Eternal Ember, and you have the audacity to spare my life? I-thank you?"</text>
-	<hiddenAug>ACH_CREW_VORTIGON</hiddenAug>
-	<unlockCustomShip shipReq="PLAYER_SHIP_CULTIST" silent="false">PLAYER_SHIP_CULTIST_3</unlockCustomShip>
-	<crewMember amount="1" class="lord">Vortigon</crewMember>
+	<variable name="ach_crew_vortigon" op="set" val="1"/>
+	<crewMember amount="1" class="unique_vortigon">Vortigon</crewMember>
 </event>
 <!--
 		ITEM!!!
@@ -676,7 +689,7 @@
 
 <event name="ORIGINS_FREECREW" unique="false">
 	<text>You're surprised to find a burnt civilian ship drifting nearby. It appears they were tourists attacked by the Cultists, and few survived. You welcome one of their remaining crew aboard.</text>
-	<crewMember amount="1" class="energy"/>
+	<crewMember amount="1" class="zoltan"/>
 </event>
 
 <event name="CULTIST_MOURNING" unique="true">
@@ -714,14 +727,14 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="cultist">
+			<choice hidden="true" req="rock_cultist">
 				<text>(Cultist Crew) "Yes!"</text>
 				<event>
 					<text>"Ah, brother, my mistake! I did not recognize you amongst all of your strange friends. Have a nice day!" You continue on and find a spot with several unprotected cultist ships, which you raid for supplies before heading back to the ship.</text>
 					<autoReward level="HIGH">standard</autoReward>
 				</event>
 			</choice>
-			<choice hidden="true" req="lord">
+			<choice hidden="true" req="unique_vortigon">
 				<text>(Vortigon) "Yes, you troglodyte."</text>
 				<event>
 					<text>"Oh heavens, Vortigon! My-my apologies!" All of the nearby cultists take a step back, shocked to see their leader with you. Not long after they're showering you with gifts, praising Vortigon and his 'friends.'</text>
@@ -763,7 +776,7 @@
 <event name="CULTIST_MOURNING_INCORRECT">
 	<text>"That is not his name! You are an impostor!" You run back to the ship, with several angry cultists and a hostile ship in pursuit.</text>
 	<ship load="SHIP_CULTIST_FIGHT" hostile="true"/>
-	<boarders min="2" max="2" class="cultist"/>
+	<boarders min="2" max="2" class="rock_cultist"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="COMBAT_CHECK"/>
@@ -825,7 +838,7 @@
 		</item_modify>
 	</event>
 	<event>
-		<weapon name="CRYSTAL_STUN_BURST"/>
+		<weapon name="CRYSTAL_STUN"/>
 		<item_modify>
 			<item type="scrap" min="-40" max="-60"/>
 		</item_modify>
@@ -853,7 +866,7 @@
 			<text>You try to explain, but the Cultists merely insult your intelligence. "Nah, you have no idea what you're talking about! Leave this kind of stuff to the smart ones like us, ok?"</text>
 		</event>
 	</choice>
-	<choice hidden="true" req="engineer">
+	<choice hidden="true" req="LIST_CREW_ENGINEER">
 		<text>(Engineer) Have your Engineer help them.</text>
 		<event>
 			<text>Your Engineer grumbles, not happy to be working with xenos. Still, they agree and offer assistance to the cultists. A little while later, they've drawn out designs for a floating temple idea. The cultists seem pleased and pay you in thanks.</text>
@@ -888,7 +901,7 @@
 	<choice hidden="true">
 		<text>Eavesdrop on their conversation.</text>
 		<event>
-			<text>You move closer and listen. "I'm telling you, it says Amber not Ember! Look here, right in Rebirth 15:6!" "No, that is a typo! You think we would have gone through such trouble to name ourselves the 'Cult of the Eternel Ember' if it was actually meant to be Amber?"</text>
+			<text>You move closer and listen. "I'm telling you, it says Amber not Ember! Look here, right in Rebirth 15:6!" "No, that is a typo! You think we would have gone through such trouble to name ourselves the 'Cult of the Eternal Ember' if it was actually meant to be Amber?"</text>
 			<choice>
 				<text>Keep listening.</text>
 				<event>
@@ -1261,7 +1274,7 @@
 		<text>Contact the other cultists.</text>
 		<event>
 			<text>The other cultists are confused and afraid. One individual, who seems to understand the situation, thanks you. "You must be truly enlightened to have seen through his convincing lies! I wish to come with you."</text>
-			<crewMember amount="1" class="cultist">Jones</crewMember>
+			<crewMember amount="1" class="rock_cultist">Jones</crewMember>
 		</event>
 	</choice>
 </event>
@@ -1288,7 +1301,7 @@
 		<text>Continue...</text>
 		<event load="COMBAT_CHECK"/>
 	</choice>
-	<choice hidden="true" req="lord">
+	<choice hidden="true" req="unique_vortigon">
 		<text>(Vortigon) Halt! This vessel has permission from the Grand Priest to travel here.</text>
 		<event>
 			<text>The Cultists pause, and quickly apologize. Terrified of Vortigon's wrath, they hand over some supplies and beg for forgiveness.</text>
@@ -1376,7 +1389,7 @@
 		<text>Continue...</text>
 		<event load="COMBAT_CHECK"/>
 	</choice>
-	<choice hidden="true" req="lord">
+	<choice hidden="true" req="unique_vortigon">
 		<text>(Vortigon) Halt! This vessel has permission from the Grand Priest to travel here.</text>
 		<event>
 			<text>The Cultists pause, and quickly apologize. Terrified of Vortigon's wrath, they hand over some supplies and beg for forgiveness.</text>

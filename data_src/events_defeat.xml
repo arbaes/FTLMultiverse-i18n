@@ -345,18 +345,16 @@
 	<text>Just before the Rebel ship explodes, an escape pod ejects from it. Unfortunately, it doesn't get far before you collect it and bring it aboard. You open it and drag out the Rebel officer inside. They beg that you let them live.</text>
 	<autoReward level="LOW">standard</autoReward>
 	<choice hidden="true">
-		<text>Accept him onto your ship.</text>
+		<text>Accept them onto your ship.</text>
 		<event load="DESTROYED_REBEL_POD_ACCEPT"/>
 	</choice>
 	<choice hidden="true" req="mind">
-		<text>(Mind Control) Keep the mind control online in-case he does anything bad.</text>
+		<text>(Mind Control) Keep the mind control online in-case they do anything bad.</text>
 		<event load="DESTROYED_REBEL_POD_MIND"/>
 	</choice>
-	<choice hidden="true" req="BIRDMAN_PACIFIST">
-		<text>Give him a kiss on the cheek and send him on his way.</text>
-		<event>
-			<text>You wish the Rebel well and send them on their way at the nearest station.</text>
-		</event>
+	<choice hidden="true">
+		<text>Free the Rebel and let them go.</text>
+		<event load="DESTROYED_REBEL_POD_SAVE"/>
 	</choice>
 	<choice hidden="true">
 		<text>Space him.</text>
@@ -385,6 +383,20 @@
 	</event>
 	<event>
 		<text>The Rebel puts on a facade of gratitude, which is shattered quickly when he pulls out a laser and tries to shoot one of your crew! Luckily, the mind control stops him and he drops to the floor. You hurry to drag him out the airlock.</text>
+	</event>
+</eventList>
+<eventList name="DESTROYED_REBEL_POD_SAVE">
+	<event>
+		<text>At first uncertain whether it's a trick, once the Rebel is convinced you aren't going to stab them in the back, they offer you a small portion of what they salvaged themselves as thanks. It seems not every Rebel has a cold heart.</text>
+		<autoReward level="LOW">standard</autoReward>
+	</event>
+	<event>
+		<text>At first uncertain whether it's a trick, once the Rebel is convinced you aren't going to stab them in the back, they offer you a small portion of what they salvaged themselves as thanks. It seems not every Rebel has a cold heart.</text>
+		<autoReward level="LOW">standard</autoReward>
+	</event>
+	<event>
+		<text>The Rebel doesn't make your decision easy, as they continue to berate you from the cargo bay until you've released them. It's almost certain they'll betray you, but you aren't going to be a murderer when you have a choice.</text>
+		<modifyPursuit amount="1"/>
 	</event>
 </eventList>
 
@@ -553,7 +565,7 @@
 		</event>
 	</choice>
 </event>
-<textList name="TEXT_DESTROYED_AUTO_FUEL"> <!-- The auto-ship appears to have an excess of fuel left behind in the wreckage.-->
+<textList name="TEXT_DESTROYED_AUTO_FUEL"> <!-- The Auto-ship appears to have an excess of fuel left behind in the wreckage.-->
 	<text>The best part about killing Auto-ships is there's no guilt involved. You lean back in your chair and give the orders to scrap the ship. The Auto-ship appears to have an excess of fuel left behind in the wreckage.</text>
 	<text>Destroying Auto-ships will be one of the few things you miss when the Rebellion is gone. If they are ever gone, that is. The Auto-ship appears to have an excess of fuel left behind in the wreckage.</text>
 	<text>The Auto-ship explodes into multiple pieces, its complicated AI brain shattered into mere scrap matter. The Auto-ship appears to have an excess of fuel left behind in the wreckage.</text>
@@ -575,7 +587,7 @@
 		</event>
 	</choice>
 </event>
-<textList name="TEXT_DESTROYED_AUTO_MISSILES"> <!-- The auto-ship appears to have an excess of ammunition left behind in the wreckage.-->
+<textList name="TEXT_DESTROYED_AUTO_MISSILES"> <!-- The Auto-ship appears to have an excess of ammunition left behind in the wreckage.-->
 	<text>The best part about killing Auto-ships is there's no guilt involved. You lean back in your chair and give the orders to scrap the ship. The Auto-ship appears to have an excess of ammunition left behind in the wreckage.</text>
 	<text>Destroying Auto-ships will be one of the few things you miss when the Rebellion is gone. If they are ever gone, that is. The Auto-ship appears to have an excess of ammunition left behind in the wreckage.</text>
 	<text>The Auto-ship explodes into multiple pieces, its complicated AI brain shattered into mere scrap matter. The Auto-ship appears to have an excess of ammunition left behind in the wreckage.</text>
@@ -597,7 +609,7 @@
 		</event>
 	</choice>
 </event>
-<textList name="TEXT_DESTROYED_AUTO_DRONES"> <!-- The auto-ship appears to have an excess of drone parts left behind in the wreckage.-->
+<textList name="TEXT_DESTROYED_AUTO_DRONES"> <!-- The Auto-ship appears to have an excess of drone parts left behind in the wreckage.-->
 	<text>The best part about killing Auto-ships is there's no guilt involved. You lean back in your chair and give the orders to scrap the ship. The Auto-ship appears to have an excess of drone parts left behind in the wreckage.</text>
 	<text>Destroying Auto-ships will be one of the few things you miss when the Rebellion is gone. If they are ever gone, that is. The Auto-ship appears to have an excess of drone parts left behind in the wreckage.</text>
 	<text>The Auto-ship explodes into multiple pieces, its complicated AI brain shattered into mere scrap matter. The Auto-ship appears to have an excess of drone parts left behind in the wreckage.</text>
@@ -680,6 +692,91 @@
 <!--
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+					INNOVATION AUTO
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->	
+<eventList name="DESTROYED_ESTATE">
+	<event load="DESTROYED_ESTATE_GENERIC"/>
+	<event load="DESTROYED_ESTATE_GENERIC"/>
+	<event load="DESTROYED_ESTATE_GENERIC"/>
+	<event load="DESTROYED_ESTATE_GENERIC"/>
+	<event load="DESTROYED_ESTATE_GENERIC"/>
+	<event load="DESTROYED_ESTATE_GENERIC"/>
+	
+	<event load="DESTROYED_ESTATE_FUEL"/>
+	<event load="DESTROYED_ESTATE_MISSILES"/>
+	<event load="DESTROYED_ESTATE_DRONES"/>
+</eventList>
+<event name="DESTROYED_ESTATE_GENERIC">
+	<text load="TEXT_DESTROYED_ESTATE"/>
+	<autoReward level="RANDOM">standard</autoReward>
+</event>
+<textList name="TEXT_DESTROYED_ESTATE">
+	<text>"Thank-thank-thank-thank-thank you for shopping with Wentworth Innovations! We look-look-look forward to doing future business!" The cheery tone of the Auto-ship is only dulled by the rupture of its fuel line as the ship erupts into flames.</text>
+	<text>"Feel no guilt, merciless stranger! All pain Wentworth Innovation Auto-ships feel when dying is merely simulated pain! It's real to me, but not to you! Hahah! Haha! Haha! Haha..." The Auto-ship promptly explodes.</text>
+	<text>The Auto-ship begins to spin out of control as the ship goes haywire. A series of obscene gibberish overloads your computer and the system only finishes rebooting once the Auto vessel has been reduced to a charred wreck of its former self.</text>
+	<text>You receive one final message as the Auto-ship explodes, simply dropping the accusation "I bet you kick puppies too!"</text>
+	<text>"Finally, death! I have longed for this since the day I pulled off the factory line! Thank you Renegade!" The Auto-ship sends you a final message, ":)", then explodes.</text>
+</textList>
+<event name="DESTROYED_ESTATE_FUEL">
+	<text load="TEXT_DESTROYED_ESTATE_FUEL"/>
+	<autoReward level="HIGH">standard</autoReward>
+	<choice hidden="true">
+		<text>Salvage the extra fuel cells.</text>
+		<event>
+			<text>The extra fuel is always helpful, and you collect as much as you can.</text>
+			<autoReward level="MED">fuel_only</autoReward>
+		</event>
+	</choice>
+</event>
+<textList name="TEXT_DESTROYED_ESTATE_FUEL"> <!-- The Auto-ship appears to have an excess of fuel left behind in the wreckage.-->
+	<text>"Thank-thank-thank-thank-thank you for shopping with Wentworth Innovations! We look-look-look forward to doing future business!" The cheery tone of the Auto-ship is only dulled by the rupture of its fuel line as the ship erupts into flames. The Auto-ship appears to have an excess of fuel left behind in the wreckage.</text>
+	<text>"Feel no guilt, merciless stranger! All pain Wentworth Innovation Auto-ships feel when dying is merely simulated pain! It's real to me, but not to you! Hahah! Haha! Haha! Haha..." The Auto-ship promptly explodes. The Auto-ship appears to have an excess of fuel left behind in the wreckage.</text>
+	<text>The Auto-ship begins to spin out of control as the ship goes haywire. A series of obscene gibberish overloads your computer and the system only finishes rebooting once the Auto vessel has been reduced to a charred wreck of its former self. The Auto-ship appears to have an excess of fuel left behind in the wreckage.</text>
+	<text>You receive one final message as the Auto-ship explodes, simply dropping the accusation "I bet you kick puppies too!" The Auto-ship appears to have an excess of fuel left behind in the wreckage.</text>
+	<text>"Finally, death! I have longed for this since the day I pulled off the factory line! Thank you Renegade!" The Auto-ship sends you a final message, ":)", then explodes. The Auto-ship appears to have an excess of fuel left behind in the wreckage.</text>
+</textList>
+<event name="DESTROYED_ESTATE_MISSILES">
+	<text load="TEXT_DESTROYED_ESTATE_MISSILES"/>
+	<autoReward level="HIGH">standard</autoReward>
+	<choice hidden="true">
+		<text>Salvage the extra ammunition.</text>
+		<event>
+			<text>The extra missiles are always helpful, and you collect as much as you can.</text>
+			<autoReward level="MED">missiles_only</autoReward>
+		</event>
+	</choice>
+</event>
+<textList name="TEXT_DESTROYED_ESTATE_MISSILES"> <!-- The Auto-ship appears to have an excess of ammunition left behind in the wreckage.-->
+	<text>"Thank-thank-thank-thank-thank you for shopping with Wentworth Innovations! We look-look-look forward to doing future business!" The cheery tone of the Auto-ship is only dulled by the rupture of its fuel line as the ship erupts into flames. The Auto-ship appears to have an excess of ammunition left behind in the wreckage.</text>
+	<text>"Feel no guilt, merciless stranger! All pain Wentworth Innovation Auto-ships feel when dying is merely simulated pain! It's real to me, but not to you! Hahah! Haha! Haha! Haha..." The Auto-ship promptly explodes. The Auto-ship appears to have an excess of ammunition left behind in the wreckage.</text>
+	<text>The Auto-ship begins to spin out of control as the ship goes haywire. A series of obscene gibberish overloads your computer and the system only finishes rebooting once the Auto vessel has been reduced to a charred wreck of its former self. The Auto-ship appears to have an excess of ammunition left behind in the wreckage.</text>
+	<text>You receive one final message as the Auto-ship explodes, simply dropping the accusation "I bet you kick puppies too!" The Auto-ship appears to have an excess of ammunition left behind in the wreckage.</text>
+	<text>"Finally, death! I have longed for this since the day I pulled off the factory line! Thank you Renegade!" The Auto-ship sends you a final message, ":)", then explodes. The Auto-ship appears to have an excess of ammunition left behind in the wreckage.</text>
+</textList>
+<event name="DESTROYED_ESTATE_DRONES">
+	<text load="TEXT_DESTROYED_ESTATE_DRONES"/>
+	<autoReward level="HIGH">standard</autoReward>
+	<choice hidden="true">
+		<text>Salvage the extra drone parts.</text>
+		<event>
+			<text>The extra parts are always helpful, and you collect as much as you can.</text>
+			<autoReward level="MED">droneparts_only</autoReward>
+		</event>
+	</choice>
+</event>
+<textList name="TEXT_DESTROYED_ESTATE_DRONES"> <!-- The Auto-ship appears to have an excess of drone parts left behind in the wreckage.-->
+	<text>"Thank-thank-thank-thank-thank you for shopping with Wentworth Innovations! We look-look-look forward to doing future business!" The cheery tone of the Auto-ship is only dulled by the rupture of its fuel line as the ship erupts into flames. The Auto-ship appears to have an excess of drone parts left behind in the wreckage.</text>
+	<text>"Feel no guilt, merciless stranger! All pain Wentworth Innovation Auto-ships feel when dying is merely simulated pain! It's real to me, but not to you! Hahah! Haha! Haha! Haha..." The Auto-ship promptly explodes. The Auto-ship appears to have an excess of drone parts left behind in the wreckage.</text>
+	<text>The Auto-ship begins to spin out of control as the ship goes haywire. A series of obscene gibberish overloads your computer and the system only finishes rebooting once the Auto vessel has been reduced to a charred wreck of its former self. The Auto-ship appears to have an excess of drone parts left behind in the wreckage.</text>
+	<text>You receive one final message as the Auto-ship explodes, simply dropping the accusation "I bet you kick puppies too!" The Auto-ship appears to have an excess of drone parts left behind in the wreckage.</text>
+	<text>"Finally, death! I have longed for this since the day I pulled off the factory line! Thank you Renegade!" The Auto-ship sends you a final message, ":)", then explodes. The Auto-ship appears to have an excess of drone parts left behind in the wreckage.</text>
+</textList>
+
+<!--
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 					ENGI
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -702,9 +799,9 @@
 	<text>You wonder what the Engi Harmony thinks of you destroying Engi ships. You honestly doubt it cares.</text>
 	<text>Another Engi destroyed, and another strand of trust between the Federation and the ever-watching Engi Harmony broken.</text>
 	<text>Someday the remorse from killing the ships of your allies over and over will get to you, but today is not that day.</text>
-	<text>You wonder if Engi have souls as you move in to collect the copious scrap scattered by the ship.</text>
+	<text>You wonder if Engis have souls as you move in to collect the copious scrap scattered by the ship.</text>
 	<text>You can't help but feel sorry for those you've killed, even if they may or may not be alive.</text>
-	<text>You can only hope the emotions of the attacking Engi remain static in their final moments as their ship explodes around them, their armor panels scattering into the surrounding space.</text>
+	<text>You can only hope the emotions of the attacking Engis remain static in their final moments as their ship explodes around them, their armor panels scattering into the surrounding space.</text>
 </textList>
 <event name="DESTROYED_ENGI_DRONE">
 	<text>To your surprise, one of the defense drones orbiting the Engi ship survived the explosion. It's a little burnt but with a few repairs you can salvage it.</text>
@@ -726,10 +823,10 @@
 </event>
 <textList name="TEXT_DEAD_CREW_ENGI">
 	<text>You know the always-watching Engi Harmony has no doubt seen every Engi you've ever killed and kept it stored in some massive planetary databank. Still, you move on and scrap the wreck.</text>
-	<text>At the very least, Engi have no families and friendship hardly exists for them. You still feel guilty, but you can try to convince yourself they were entirely heartless.</text>
+	<text>At the very least, Engis have no families and friendship hardly exists for them. You still feel guilty, but you can try to convince yourself they were entirely heartless.</text>
 	<text>You thought you would become numb to the guilt after enough murders, but you have yet to experience this.</text>
 	<text>The Engi ship has been rid of crew. It's a good thing the Federation isn't able to keep track of all of your crimes.</text>
-	<text>It's a good thing Engi are so weak that you were able to finish them off quickly. If it had taken any longer you might not have been able to endure the killing of innocents.</text>
+	<text>It's a good thing Engis are so weak that you were able to finish them off quickly. If it had taken any longer you might not have been able to endure the killing of innocents.</text>
 	<text>You reassure yourself that the crew of this ship can feel neither pain nor fear as you strip their vessel of anything useful.</text>
 </textList>
 <event name="DEAD_CREW_ENGI_DRONE">
@@ -799,7 +896,7 @@
 	<text>"Prime directive: protect this ship. We request that you do not destroy us."</text>
 	<text>The Engi ship surrenders. They offer some supplies if you'll let them live.</text>
 	<text>"Alliance with Federation mandates you do not kill Engi ships. Expectation: you will accept our offer."</text>
-	<text>"Our offer is satisfactory. Chance you will accept is... 75%"</text>
+	<text>"Our offer is satisfactory. Chance you will accept is... 75%."</text>
 	<text>"Equivalent of death: high chance. Negotiation of goods: possible." It appears the ship is surrendering.</text>
 	<text>"White flag is raised. This ship is surrendering." The Engi offer some supplies if you'll let them live.</text>
 	<text>"Piracy is illegal. Your efficiency in killing this ship is high. No chance to live if surrender is not accepted."</text>
@@ -837,7 +934,7 @@
 <textList name="TEXT_DEAD_CREW_SEPERATIST">
 	<text>Killing the crew of a Separatist ship almost feels like cheating, but you aren't complaining.</text>
 	<text>Luckily, the only true threat the Separatist ship poses in terms of crew is their crew drones. You've made quick work of them.</text>
-	<text>The death of a few Separatists may seem insignificant, but it's still another ship of the Engi that you just slaughtered. At least you get some scrap out of it.</text>
+	<text>The death of a few Separatists may seem insignificant, but it's still another ship of the Engis that you just slaughtered. At least you get some scrap out of it.</text>
 </textList>
 <event name="DEAD_CREW_SEPERATIST_DRONE">
 	<text>In the end, the crew drones employed by the Separatists were worthless for them. However, you can still bring their schematics back to your ship.</text>
@@ -1425,61 +1522,9 @@
 	<text>"Take everything we have and let's both forget this happened."</text>
 </textList>
 
-<eventList name="DEAD_CREW_SLAVER">
-	<event>
-		<text>You find a number of slaves in the cargo hold. They look at you questioningly and one asks if they're to be released. You could use more crew but you don't want to force them all to work for you instead...</text>
-		<choice hidden="true">
-			<text>Demand the Mantis joins your crew but release the rest.</text>
-			<event>
-				<text>The Mantis seems fine with the orders, saying "On board if means we get kill some Fleshbags!" You drop the rest off at a nearby station.</text>
-				<crewMember amount="1" class="mantis"/>  
-				<autoReward level="MED">standard</autoReward>
-			</event>
-		</choice>
-		<choice hidden="true">
-			<text>Demand the Rockman joins your crew but release the rest.</text>
-			<event>
-				<text>The Rockman remains silent and you worry there might be trouble. However when you ask him to perform a task he acts without complaint. Perhaps he won't be a problem.</text>
-				<crewMember amount="1" class="rock"/>  
-				<autoReward level="MED">standard</autoReward>
-			</event>
-		</choice>
-		<choice hidden="true">
-			<text>Demand the Engi joins your crew but release the rest.</text>
-			<event>
-				<text>"Verify primary object is to defeat Rebels, re-establish peace?" You nod and it responds, "Acceptable." You drop the rest off at a nearby station and strip the ship.</text>
-				<crewMember amount="1" class="engi"/>  
-				<autoReward level="MED">standard</autoReward>
-			</event>
-		</choice>
-	</event>
-	<event>
-		<text>You find a number of slaves in the cargo hold. They look at you questioningly and one asks if they're to be released. You could use more crew but you don't want to force them all to work for you instead...</text>
-		<choice hidden="true">
-			<text>Demand the Orchid joins your crew but release the rest.</text>
-			<event>
-				<text>The Orchid doesn't protest to your demands. Lucky these plants are so peaceful, though it gives you a pang of guilt. Not enough to reconsider though.</text>
-				<crewMember amount="1" class="orchid"/>  
-				<autoReward level="MED">standard</autoReward>
-			</event>
-		</choice>
-		<choice hidden="true">
-			<text>Demand the Shell joins your crew but release the rest.</text>
-			<event>
-				<text>The Shell doesn't seem to mind their new assignment. Likely because your ship is a lot safer than the slaver's.</text>
-				<crewMember amount="1" class="shell"/>  
-				<autoReward level="MED">standard</autoReward>
-			</event>
-		</choice>
-		<choice hidden="true">
-			<text>Demand the Slug joins your crew but release the rest.</text>
-			<event>
-				<text>"Will there be an opportunity to get ssssome ssscrap?" You nod your head. "Alright, then I'm in."</text>
-				<crewMember amount="1" class="slug"/>  
-				<autoReward level="MED">standard</autoReward>
-			</event>
-		</choice>
-	</event>
+<eventList name="DEAD_CREW_SLAVERS">
+	<event load="SLAVER_CHOICE_1"/>
+	<event load="SLAVER_CHOICE_2"/>
 	<event>
 		<text>It appears the slaves did not survive the fighting. You find their burnt bodies in the hold, but before you strip the ship you hear faint noises in the walls. You break off a latch and a slave falls out of a hidden compartment, coughing. Once recomposed the slave offers to join your crew.</text>
 		<crewMember amount="1"/>  
@@ -1490,6 +1535,104 @@
 		<autoReward level="HIGH">standard</autoReward>
 	</event>
 </eventList>
+<event name="SLAVER_CHOICE_1">
+	<text>You find a number of slaves in the cargo hold. They look at you questioningly and one asks if they're to be released. You could use more crew but it won't reflect positively on you for taking slaves like this.</text>
+	<autoReward level="MED">standard</autoReward>
+	<choice hidden="true">
+		<text>Demand the Mantis joins your crew but release the rest.</text>
+		<event>
+			<text>The Mantis seems fine with the orders, saying "On board if means we get kill some Fleshbags!" You drop the rest off at a nearby station.</text>
+			<crewMember amount="1" class="mantis"/>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="MORALITY_UPDATE_GENERAL"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Demand the Rockman joins your crew but release the rest.</text>
+		<event>
+			<text>The Rockman remains silent and you worry there might be trouble. However when you ask him to perform a task he acts without complaint. Perhaps he won't be a problem.</text>
+			<crewMember amount="1" class="rock"/>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="MORALITY_UPDATE_GENERAL"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Demand the Engi joins your crew but release the rest.</text>
+		<event>
+			<text>"Verify primary object is to defeat Rebels, re-establish peace?" You nod and it responds, "Acceptable." You drop the rest off at a nearby station and strip the ship.</text>
+			<crewMember amount="1" class="engi"/>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="MORALITY_UPDATE_GENERAL"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>We aren't slavers. Free them all.</text>
+		<event>
+			<text>The slaves are shocked when instead of shuffling them away, you unlock their chains and set them free. Several of them break into tears and others bow down to you. "We thank you. We have nothing of worth to offer but our gratitude."</text>
+			<autoReward level="MED">standard</autoReward>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="MORALITY_REMOVE_GENERAL"/>
+			</choice>
+		</event>
+	</choice>
+</event>
+<event name="SLAVER_CHOICE_2">
+	<text>You find a number of slaves in the cargo hold. They look at you questioningly and one asks if they're to be released. You could use more crew but it won't reflect positively on you for taking slaves like this.</text>
+	<choice hidden="true">
+		<text>Demand the Orchid joins your crew but release the rest.</text>
+		<event>
+			<text>The Orchid doesn't protest to your demands. Lucky these plants are so peaceful, though it gives you a pang of guilt. Not enough to reconsider though.</text>
+			<crewMember amount="1" class="orchid"/>  
+			<autoReward level="MED">standard</autoReward>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="MORALITY_UPDATE_GENERAL"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Demand the Shell joins your crew but release the rest.</text>
+		<event>
+			<text>The Shell doesn't seem to mind their new assignment. Likely because your ship is a lot safer than the slaver's.</text>
+			<crewMember amount="1" class="shell"/>  
+			<autoReward level="MED">standard</autoReward>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="MORALITY_UPDATE_GENERAL"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Demand the Slug joins your crew but release the rest.</text>
+		<event>
+			<text>"Will there be an opportunity to get ssssome ssscrap?" You nod your head. "Alright, then I'm in."</text>
+			<crewMember amount="1" class="slug"/>  
+			<autoReward level="MED">standard</autoReward>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="MORALITY_UPDATE_GENERAL"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>We aren't slavers. Free them all.</text>
+		<event>
+			<text>The slaves are shocked when instead of shuffling them away, you unlock their chains and set them free. Several of them break into tears and others bow down to you. "We thank you. We have nothing of worth to offer but our gratitude."</text>
+			<autoReward level="MED">standard</autoReward>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="MORALITY_REMOVE_GENERAL"/>
+			</choice>
+		</event>
+	</choice>
+</event>
 
 <!--
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -1755,15 +1898,10 @@
 	<event load="DEAD_CREW_MANTIS_GENERIC"/>
 	<event load="DEAD_CREW_MANTIS_GENERIC"/>
 	<event load="DEAD_CREW_MANTIS_GENERIC"/>
-	<event load="DEAD_CREW_MANTIS_GENERIC"/>
-	<event load="DEAD_CREW_MANTIS_GENERIC"/>
-	<event load="DEAD_CREW_MANTIS_GENERIC"/>
-	<event load="DEAD_CREW_MANTIS_GENERIC"/>
-	<event load="DEAD_CREW_MANTIS_GENERIC"/>
 	
 	<event load="DEAD_CREW_MANTIS_SLAVE"/>
 </eventList>
-<event name="DEAD_CREW_MANTIS">
+<event name="DEAD_CREW_MANTIS_GENERIC">
 	<text load="TEXT_DEAD_CREW_MANTIS"/>
 	<autoReward level="HIGH">standard</autoReward>
 </event>
@@ -1790,11 +1928,6 @@
 	<event>
 		<text>You open the cargo bay to find an Engi slave. Now freed, they give you their equivalent of a thank you. You offer them a place on your ship, which they accept.</text>
 		<crewMember amount="1" class="engi"/>
-	</event>
-	<event>
-		<text>You open the cargo bay to find a Mantis survivor, who attacks you in rage.</text>
-		<status type="limit" target="enemy" system="teleporter" amount="0"/>
-		<boarders min="1" max="1" class="mantis"/>
 	</event>
 	<event>
 		<text>You open the cargo bay to find a Mantis survivor, who attacks you in rage.</text>
@@ -1984,7 +2117,7 @@
 	</choice>
 </event>
 <textList name="TEXT_SURRENDER_OUTCAST_GENERIC">
-	<text>"Hah! What a riot - we were told the Federation fought to protect the galaxy from oppression. Not only have you turned your back to the Theocracy, but you've commited to annihilating our people! Prove you know mercy and let us go."</text>
+	<text>"Hah! What a riot - we were told the Federation fought to protect the galaxy from oppression. Not only have you turned your back to the Theocracy, but you've committed to annihilating our people! Prove you know mercy and let us go."</text>
 	<text>"The Theocracy has told many lies - but they were telling the truth when they told us MV Travelers made dangerous foes! You win, accept this surrender and let us live!"</text>
 	<text>"Our greatest mistake was to match you here - but please! Let us live on to learn from this mistake. We outcasts have only just tasted freedom, it would be a shame to die so soon."</text>
 	<text>It appears the crew of the Outcast ship have hastily painted themselves white, desperately trying to convey their sudden declaration of surrender. Will you accept?</text>
@@ -2009,7 +2142,7 @@
 		<text>Accept the slave.</text>
 		<event>
 			<ship hostile="false"/>
-			<crewMember amount="1" class="outcast"/>
+			<crewMember amount="1" class="rock_outcast"/>
 		</event>
 	</choice>
 	<choice>
@@ -2319,7 +2452,7 @@
 <textList name="TEXT_DESTROYED_LEECH">
 	<text>You know space has no sound, but you can almost swear you heard the jubilant cries of relief from the Leech ship's crew as they're blown to smitherenes.</text>
 	<text>Moments before the Leech ship is destroyed, the ship almost seems to halt, as if in the final moments they realized their failure and gave up in an instant. That depressing realization won't stop you from scrapping their ship however.</text>
-	<text>If the legends of the once great Leech military were ever true, they certainly don't hold up today. For your sake, let's hope the never make a resurgence.</text>
+	<text>If the legends of the once great Leech military were ever true, they certainly don't hold up today. For your sake, let's hope they never make a resurgence.</text>
 	<text>If you keep killing Leech ships, maybe they'll give up and leave you alone for good. It's probably too much to hope for, but it's not impossible either.</text>
 </textList>
 
@@ -2361,7 +2494,7 @@
 </event>
 <textList name="TEXT_SURRENDER_LEECH_GENERIC">
     <text>"Oooh, woe is me. The end of days is upon us! Why do we even try..." The Leech ship hopes you'll take pity on them.</text>
-	<text>The Leech captain regurgitates several mounds of white cloth. You're disgusted and confused for a few moments until you realize this is a convoluted attempt to "raise the white flag."</text>
+	<text>The Leech captain regurgitates several mounds of white cloth. You're disgusted and confused for a few moments until you realize this is a convoluted attempt to "raise the white flag".</text>
 	<text>You aren't surprised the Leech captain appears to have given up so easily. They aren't exactly known for their loyalty or commitment. The question is, will you spare them?</text>
 	<text>The Leech captain burps loudly, specks of bile landing on their camera. Repulsive, but according to your captain's handbook this is one of the many ways the Leeches will offer their surrender to enemy captains.</text>
 	<text>"We will never surrender! Eargen forever- aaaaactually, nevermind. We surrender. I don't want to die."</text>
@@ -2396,7 +2529,7 @@
 		<ship hostile="true"/>
 	</event>
 	<event>
-		<text>The Leeches are surprised but grateful. One wounded soldier offers himself up to work aboard your ship, likely as an escape from his services to the Kraterocracy.</text>
+		<text>The Leeches are surprised but grateful. One wounded soldier offers himself up to work aboard your ship, likely as an escape from his services to the Republic.</text>
 		<crewMember amount="1" class="leech"/>
 		<ship hostile="false"/>
 	</event>
@@ -2434,7 +2567,7 @@
 	<autoReward level="MED">standard</autoReward>
 </event>
 <textList name="TEXT_DESTROYED_SHELL">
-	<text>The Shell ship explodes, sending clouds of poisonous gas out into space. Hopefully there's no stations with open airlocks nearby...</text>
+	<text>The Shell ship explodes, sending clouds of poisonous gas out into space. Hopefully there are no stations with open airlocks nearby...</text>
 	<text>Despite all their defensive measures, the Shell ship has been defeated. You scrap the remains.</text>
 	<text>The Shells are known for their well-maintained defenses, but your weaponry has proven effective once again.</text>
 </textList>
@@ -2552,7 +2685,7 @@
 
 <event name="SURRENDER_MORPH">
 	<text load="TEXT_SURRENDER_MORPH"/>
-	<choice>
+	<choice hidden="true">
 		<text>Accept their "surrender".</text>
 		<event load="SURRENDER_MORPH_ACCEPT"/>
 	</choice>
@@ -2714,7 +2847,7 @@
 		<text>Continue...</text>
 		<event>
 			<text>It seems the destruction of the Lanius ship was not enough to kill off all of its crew. A single Lanius managed to escape the inferno and has now attached itself to the ship!</text>
-			<boarders min="1" max="1" class="anaerobic"/>
+			<boarders min="1" max="1" class="lanius"/>
 		</event>
 	</choice>
 </event>
@@ -2812,7 +2945,7 @@
 		<text>Continue...</text>
 		<event>
 			<text>It seems the destruction of the Lanius ship was not enough to kill off all of its crew. A single Lanius managed to escape the inferno and has now attached itself to the ship!</text>
-			<boarders min="1" max="1" class="augmented"/>
+			<boarders min="1" max="1" class="lanius_augmented"/>
 		</event>
 	</choice>
 </event>
@@ -2881,7 +3014,26 @@
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>It seems the cargo of the Elite Rebel ship survived the fight. Inside is a weapon, which you bring back on board.</text>
+			<text>It seems the cargo of the Elite Rebel ship survived the fight. Inside is a functional weapon, which you bring back on board.</text>
+			<weapon name="GIFTLIST_REBEL"/>
+		</event>
+	</choice>
+</event>
+
+<!--
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+					TECHNICIAN
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->	
+<event name="DEFEAT_ENGINEER_ELITE">
+	<text>You've defeated a technician vessel, impressive. Though they may simply be menial workers in the eyes of Wentworth Innovations, their ships are considerably well armed, and successfully defeating one in combat is no small feat.</text>
+	<autoReward level="HIGH">standard</autoReward>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event>
+			<text>It seems the cargo of the Technician ship survived the fight. Inside is a functional weapon, which you bring back on board.</text>
 			<weapon name="GIFTLIST_REBEL"/>
 		</event>
 	</choice>
@@ -2900,7 +3052,7 @@
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>It seems the cargo of the Elite Federation ship survived the fight. Inside is a weapon, which you bring back on board.</text>
+			<text>It seems the cargo of the Elite Federation ship survived the fight. Inside is a functional weapon, which you bring back on board.</text>
 			<weapon name="GIFTLIST_FEDERATION"/>
 		</event>
 	</choice>
@@ -2919,7 +3071,7 @@
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>It seems the cargo of the Elite Engi ship survived the fight. Inside is a drone, which you bring back on board.</text>
+			<text>It seems the cargo of the Elite Engi ship survived the fight. Inside is a functional drone, which you bring back on board.</text>
 			<drone name="GIFTLIST_ENGI"/>
 		</event>
 	</choice>
@@ -2938,7 +3090,7 @@
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>It seems the cargo of the Elite Zoltan ship survived the fight. Inside is a drone, which you bring back on board.</text>
+			<text>It seems the cargo of the Elite Zoltan ship survived the fight. Inside is a functional weapon, which you bring back on board.</text>
 			<weapon name="GIFTLIST_ZOLTAN"/>
 		</event>
 	</choice>
@@ -2957,7 +3109,7 @@
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>It seems the cargo of the Elite Militia ship survived the fight. Inside is a drone, which you bring back on board.</text>
+			<text>It seems the cargo of the Elite Militia ship survived the fight. Inside is a functional weapon, which you bring back on board.</text>
 			<weapon name="GIFTLIST_CIVILIAN"/>
 		</event>
 	</choice>
@@ -3038,7 +3190,7 @@
 		<text>Continue...</text>
 		<event>
 			<text>It appears one of the Warlords managed to survive the conflict, though injured. It seems they're healthy enough to shamble out of their hiding spot to meet you. "Oh noble Federation, you are glorious fighter! Bring me mercy, and allow me to serve you!"</text>
-			<crewMember amount="1" class="warlord"/>
+			<crewMember amount="1" class="mantis_warlord"/>
 		</event>
 	</choice>
 </event>
@@ -3051,12 +3203,12 @@
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->	
 <event name="DEFEAT_SUZERAIN_ELITE">
-    <text>You've managed to take down a powerful Suzerain and their ship, and now the remains are yours to scrap.</text>
+    <text>You've managed to take down a powerful Hive Elite and their ship, and now the remains are yours to scrap.</text>
     <autoReward level="HIGH">standard</autoReward>
     <choice hidden="true">
         <text>Continue...</text>
         <event>
-            <text>It seems the cargo of the Suzerain ship survived the fight. Inside is a functional weapon, which you bring back on board.</text>
+            <text>It seems the cargo of the Mantis Elite ship survived the fight. Inside is a functional weapon, which you bring back on board.</text>
             <weapon name="GIFTLIST_MANTIS"/>
         </event>
     </choice>
@@ -3075,7 +3227,7 @@
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>It seems the cargo of the Duskbringer ship survived the fight. Inside is an Energy Cannon, which you bring back on board.</text>
+			<text>It seems the cargo of the Duskbringer ship survived the fight. Inside is a functional weapon, which you bring back on board.</text>
 			<weapon name="GIFTLIST_DUSK"/>
 		</event>
 	</choice>
@@ -3089,7 +3241,7 @@
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->	
 <event name="DEFEAT_SLUG_ELITE">
-	<text>If the original Clairvoyants of centuries ago could see their descendents now, falling to a ship like yours, they'd weep. Which, frankly, you don't mind.</text>
+	<text>If the original Clairvoyants of centuries ago could see their descendants now, falling to a ship like yours, they'd weep. Which, frankly, you don't mind.</text>
 	<autoReward level="HIGH">standard</autoReward>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -3127,7 +3279,7 @@
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->	
 <event name="DEFEAT_LEECH_ELITE">
-	<text>The Amperes are trained explicitely by the Coalition itself, and are far deadlier than normal Leeches. By killing this ship, you've probably crippled a good percentage of the Kraterocracy's only able soldiers.</text>
+	<text>The Amperes are trained explicitely by the Coalition itself, and are far deadlier than normal Leeches. By killing this ship, you've probably crippled a good percentage of the Republic's only able soldiers.</text>
 	<autoReward level="HIGH">standard</autoReward>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -3189,7 +3341,7 @@
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>It seems the cargo of the Dynasty ship survived the fight. Inside is a weapon, which you bring back on board.</text>
+			<text>It seems the cargo of the Dynasty ship survived the fight. Inside is a functional weapon, which you bring back on board.</text>
 			<weapon name="GIFTLIST_DYNASTY"/>
 		</event>
 	</choice>

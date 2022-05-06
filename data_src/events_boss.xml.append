@@ -34,12 +34,25 @@
 <event name="LAST_STAND_START">
 	<text load="TEXT_LIGHTSPEED"/>
 	<img back="BACKGROUND_LIGHTSPEED" planet="PLANET_INVISIBLE"/>
-	<choice hidden="true" req="MARKER_LASTSTAND" lvl="0" max_group="0" blue="false">
+	<choice hidden="true" req="loc_laststand" lvl="0" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="ATLAS_MENU"/>
 	</choice>
 </event>
 <event name="LASTSTAND_WARP">
+	<loadEventList seeded="false" first="true" generate="true">
+		<event name="SET_DETERGENT" req="detergent_mode" lvl="1"/>
+		<event name="LASTSTAND_WARP_REAL" req="detergent_mode" lvl="0"/>
+	</loadEventList>
+</event>
+<event name="SET_DETERGENT">
+	<jumpEvent>DETERGENT_WIN</jumpEvent>
+	<loadEvent>LASTSTAND_WARP_REAL</loadEvent>
+</event>
+<event name="HAS_VISITED_LASTSTAND">
+	<variable name="loc_laststand" op="add" val="1"/>
+</event>
+<event name="LASTSTAND_WARP_REAL">
 	<text>Name: Federation Capital
 	Type: Friendly
 	Unique: True
@@ -47,36 +60,38 @@
 	Rebel Threat Level: !CRITICALLY HIGH!
 
 	The Federation Capital is your final destination. Under siege by the Rebellion, to save this reality you must kill the Rebel Flagship before it destroys the Federation base.</text>
-	<playSound>lightspeed</playSound>
-	<choice hidden="true" req="MARKER_LASTSTAND" lvl="1" max_group="0" blue="false">
+	<queueEvent>HAS_VISITED_LASTSTAND</queueEvent>
+	<choice hidden="true" req="loc_laststand" lvl="1" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="TRUE_LAST_STAND_START_EMERGENCY"/>
 	</choice>
-	<choice hidden="true" blue="false" req="DIFFICULTY_EXTREME" lvl="0" max_group="0">
-		<text>Exit light speed.</text>
-		<event load="TRUE_LAST_STAND_START"/>
-	</choice>
-	<choice hidden="true" blue="false" req="DIFFICULTY_EXTREME" lvl="1" max_group="0">
-		<text>Exit light speed.</text>
+	<choice hidden="true" blue="false" req="challenge_level" lvl="3" max_group="0">
+		<text>Exit hyperspeed.</text>
 		<event load="TRUE_LAST_STAND_START_EXTREME"/>
+	</choice>
+	<choice hidden="true" blue="false" req="pilot" lvl="1" max_group="0">
+		<text>Exit hyperspeed.</text>
+		<event load="TRUE_LAST_STAND_START"/>
 	</choice>
 	<choice hidden="true" req="COORDS" blue="false">
 		<text>Reroute.</text>
-		<event load="REROUTE_MENU"/>
+		<event load="REROUTE_MENU_LASTSTAND"/>
 	</choice>
 </event>
 <ship name="SHIP_LAST_STAND_START_EXTREME" auto_blueprint="MU_REBEL_PICKET_SELITE">
 	<destroyed load="LAST_STAND_START_EXTREME_FINISH"/>
 	<deadCrew load="LAST_STAND_START_EXTREME_FINISH"/>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 <event name="TRUE_LAST_STAND_START_EMERGENCY">
-	<hiddenAug>MARKER_LASTSTAND</hiddenAug>
 	<changeBackground>BACK_EVENT_LASTSTAND</changeBackground>
+	<metaVariable name="prof_finalsector" op="add" val="1"/>
 	<customFleet right="false" firing="true" autoDarkening="false">CUSTOM_FLEET_REBEL</customFleet>
+	<playSound>lightspeed</playSound>
+	<recallBoarders/>
 	<text>It seems your impromptu departure from Node 17 has spelled disaster for the Federation. The Flagship has already reached the base and the Federation forces here are overwhelmed. There's no time to waste, you need to get to the base immediately!</text>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -87,10 +102,12 @@
 </event>
 <event name="TRUE_LAST_STAND_START_EXTREME">
 	<text>The second you exit light speed, it becomes clear something is wrong. It looks as though the entrance beacon is under attack by an MFK Ace!</text>
-	<hiddenAug>MARKER_LASTSTAND</hiddenAug>
 	<changeBackground>BACK_EVENT_LASTSTAND</changeBackground>
+	<playSound>lightspeed</playSound>
+	<variable name="loc_laststand" op="add" val="-1"/>
 	<customFleet right="true" firing="false" autoDarkening="false">CUSTOM_FLEET_FED</customFleet>
 	<customFleet right="false" firing="true" autoDarkening="false">CUSTOM_FLEET_REBEL</customFleet>
+	<metaVariable name="prof_finalsector" op="add" val="1"/>
 	<ship load="SHIP_LAST_STAND_START_EXTREME" hostile="true"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -100,24 +117,42 @@
 <event name="LAST_STAND_START_EXTREME_FINISH">
 	<text>The MFK Ace has been taken care of, and you scrap the remains before carrying on. You contact the survivors of the Federation fleet, including Admiral Tully himself.</text>
 	<autoReward level="HIGH">standard</autoReward>
-	<choice hidden="true">
+	<queueEvent>HAS_VISITED_LASTSTAND</queueEvent>
+	<choice hidden="true" req="loc_laststand" lvl="1" blue="false">
+		<text>Continue...</text>
+		<event load="TRUE_LAST_STAND_START_EMERGENCY"/>
+	</choice>
+	<choice hidden="true" req="loc_laststand" lvl="0" max_lvl="0" blue="false">
 		<text>Continue...</text>
 		<event load="TRUE_LAST_STAND_START"/>
 	</choice>
 </event>
+<event name="DETERGENT_WIN">
+	<text>Before you can leave, you receive another hail from Tully. "Wait - is that detergent you have? Oh thank Newton, the Rebel blockade has drained us of essential supplies, and we have a surplus of uniforms to clean. It's not much, but with this, maybe we can get our troops back into shape!"</text>
+	<achievement>ACH_ACC_DETERGENT</achievement>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event>
+			<text>DETERGENT MODE COMPLETE!
+			Congratulations Renegade on successfully completing DETERGENT MODE! It was a turbulent journey for certain, but you've pulled through triumphantly! The Federation shall have dirty laundry no more, thanks to you.</text>
+			<playSound>victory</playSound>
+		</event>
+	</choice>
+</event>
 <event name="TRUE_LAST_STAND_START">
 	<text>You've finally arrived at Node 17, the Federation Capital. You've heard the stories of this conflict back in Universe 0, the reality where the Multiverse tech was discovered. Now, you're about to take a part in it. Your actions here will either save or doom this reality.</text>
-	<hiddenAug>MARKER_LASTSTAND</hiddenAug>
+	<metaVariable name="prof_finalsector" op="add" val="1"/>
 	<customFleet right="false" firing="false" autoDarkening="false">CUSTOM_FLEET_FED</customFleet>
 	<changeBackground>BACK_EVENT_LASTSTAND</changeBackground>
-	<choice hidden="true" req="MORALITY_CRIME" lvl="0" max_lvl="7" max_group="0" blue="false">
+	<playSound>lightspeed</playSound>
+	<choice hidden="true" req="rep_general" lvl="-2147483648" max_lvl="7" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event>
 			<text>With a quick scan of your ID, you are allowed through the beacon without issue.</text>
 			<choice hidden="true" max_group="1" req="SHIP_MULTIVERSE" blue="false">
 				<text>Contact Federation command.</text>
 				<event>
-					<text>On the vidscreen appears several Federation and Engi officers, as well as Admiral Tully in the center. "So you're the Multiverse ship I've heard about? You've come a long way, and I can only hope its all paid off. You're the Federation's last stand against the Flagship."</text>
+					<text>On the vidscreen appears several Federation and Engi officers, as well as Admiral Tully in the center. "So you're the Multiverse ship I've heard about? You've come a long way, and I can only hope it's all paid off. You're the Federation's last stand against the Flagship."</text>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event load="LAST_STAND_START_2"/>
@@ -367,7 +402,7 @@
 			<choice hidden="true" max_group="1" req="SHIP_LEECH" blue="false">
 				<text>Contact Federation command.</text>
 				<event>
-					<text>On the vidscreen appears several Federation and Engi officers, as well as Admiral Tully in the center. "I didn't realize the Kraterocracy had the resources to send in a ship to help the Federation. No less, I'm glad you're here. Let's hope those tales of the once mighty Leech military were true and we're about to see a resurgence, because we sure as hell need it."</text>
+					<text>On the vidscreen appears several Federation and Engi officers, as well as Admiral Tully in the center. "I didn't realize the Eargen Republic had the resources to send in a ship to help the Federation. No less, I'm glad you're here. Let's hope those tales of the once mighty Leech military were true and we're about to see a resurgence, because we sure as hell need it."</text>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event load="LAST_STAND_START_2"/>
@@ -388,6 +423,16 @@
 				<text>Contact Federation command.</text>
 				<event>
 					<text>On the vidscreen appears several Federation and Engi officers, as well as Admiral Tully in the center. He recoils in shock at the sight of your ship. "Orchids, hmmm? I didn't think your kind would take it upon yourselves to assist in this battle. I'm grateful for the reinforcements, we're running thin on soldiers and ships and every ounce of help is worth millions."</text>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event load="LAST_STAND_START_2"/>
+					</choice>
+				</event>
+			</choice>
+			<choice hidden="true" max_group="1" req="SHIP_VAMPWEED" blue="false">
+				<text>Contact Federation command.</text>
+				<event>
+					<text>On the vidscreen appears several Federation and Engi officers, as well as Admiral Tully in the center. "Vampweeds? I cannot say I expected any support from the Confederacy. Is all of that drama from the Federation-Mantis War finally water under the bridge? Well, I suspect not... but we can discuss this later. Right now there's a Flagship that needs killing."</text>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event load="LAST_STAND_START_2"/>
@@ -448,6 +493,16 @@
 				<text>Contact Federation command.</text>
 				<event>
 					<text>On the vidscreen appears several Federation and Engi officers, as well as Admiral Tully in the center. He recoils in shock at the sight of your ship. "I never believed in a million years the ship who would be saving the Federation would be a Rebel vessel. I'm sure you have your reasons for betraying the Rebellion, and I'd love to hear them, but we have more pressing matters to deal with, such as the Flagship."</text>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event load="LAST_STAND_START_2"/>
+					</choice>
+				</event>
+			</choice>
+			<choice hidden="true" max_group="1" req="SHIP_CURA" blue="false">
+				<text>Contact Federation command.</text>
+				<event>
+					<text>On the vidscreen appears several Federation and Engi officers, as well as Admiral Tully in the center. He takes a step back as he takes in your ship. "That W... um... I don't know what you are, or why Universe 0 hired an automated ship as a Renegade, but if whatever you are is the solution to our problem then... be my guest? But I'll be keeping my eye on you..."</text>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event load="LAST_STAND_START_2"/>
@@ -556,7 +611,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="MORALITY_CRIME" lvl="8" max_lvl="999" max_group="0" blue="false">
+	<choice hidden="true" req="rep_general" lvl="8" max_lvl="999" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event>
 			<text>You scan your ID, but something appears wrong. A nearby Federation ship approaches, and you notice their weapons are online. You receive a hail from the ship. "You've been on quite the escapade in your journey here. I'm afraid the Federation simply cannot support someone with so many bad marks on their record. If you want any shot at forgiveness, eliminating the Flagship would be a good place to start." On that note, they cut comms.</text>
@@ -609,7 +664,7 @@
 		<text>Request additional crew.</text>
 		<event>
 			<text>Tully dispatches a trained Federation soldier to serve on your ship.</text>
-			<crewMember amount="1" class="soldier"/>
+			<crewMember amount="1" class="human_soldier"/>
 			<choice>
 				<text>Continue...</text>
 				<event load="LASTSTAND_EMPTY_BEACON"/>
@@ -639,13 +694,13 @@
 		<event>
 			<text>As soon as Tully lays his eyes on the box, he changes his posture completely. He permits you inside the Federation command.</text>
 			<remove name="TULLY_PRESENT"/>
-			<choice>
+			<choice hidden="true">
 				<text>Continue...</text>
 				<event load="TULLY_CONTACT"/>
 			</choice>
 		</event>
 	</choice>
-	<!--<choice hidden="true" req="turzil">
+	<!--<choice hidden="true" req="unique_turzil">
 		<text>The Engi wishes to speak with Tully.</text>
 		<event>
 			<text>The Engi fugitive transmits a secret code to Federation command that authorizes you to enter the control room! Tully shakes the Engi by the hand, welcoming him. "Turzil! I wondered what had happened to you! You went silent and the Engi brigade never showed up to assist us."</text>
@@ -665,7 +720,7 @@
 <event name="TURZIL_TRUTH">
 	<text>Tully dispatches one of the largest support ships in the Federation fleet to fix up your hull and provide as much assistance as possible. Turzil pulls you aside, "Your assistance was: necessary for continued survival. It is understood common methods of showing gratitude involve transmission of items of high personal value. I desire to give you: old cruiser. No longer in use, but Federation can fix it up."</text>
 	<unlockCustomShip silent="false">PLAYER_SHIP_ENGI</unlockCustomShip>
-	<hiddenAug>ACH_CREW_TURZIL</hiddenAug>
+	<variable name="ach_crew_turzil" op="set" val="1"/>
 	<damage amount="-20"/>
 	<reveal_map/>
 	<item_modify>
@@ -680,8 +735,8 @@
 </event>
 <event name="TULLY_CONTACT">
 	<text>Tully sits down with you, and places the box on the table in front of you. "Do you know what's inside this package?" You shake your head. "Well I'll tell you. Absolutely nothing." The confused look on your face makes Tully chuckle. "I gave these packages to several important Federation officials. They are to be given to those who they deem trustworthy and are to be brought to me. It's a sign that you really are worthy of this final fight. We best get going then, this Flagship won't destroy itself."</text>
-	<hiddenAug>ACH_CREW_TULLY</hiddenAug>
-	<crewMember amount="1" class="tully">Tully</crewMember>
+	<variable name="ach_crew_tully" op="set" val="1"/>
+	<crewMember amount="1" class="unique_tully">Tully</crewMember>
 	<damage amount="-15"/>
 	<autoReward level="MED">standard</autoReward>
 	<choice>
@@ -725,29 +780,29 @@
 
 <event name="BOSS_TEXT_1">
 	<text>This is it... The Rebel Flagship. If you are able to destroy this monstrosity, the Federation fleet will have a chance of surviving. There's no turning back!</text>
-	<hiddenAug>MARKER_FLAGSHIP</hiddenAug>
+	<variable name="loc_flagship" op="set" val="1"/>
 	<status type="clear" target="player" system="sensors" amount="100"/>
-	<choice hidden="true" req="MARKER_PEACEQUEST">
+	<choice hidden="true" req="loc_peacequest">
 		<text>Perhaps there could be a reconciliation of our ideals without war?</text>
 		<event>
 			<text>The Flagship's commander blinks, confused. "Hah, spoken like a foolish, peace loving monk! You would not know the importance of this movement! Your loyalties to the Federation blind you from the importance of the rebellion! When have YOU ever gone up against oppression?"</text>
-			<choice hidden="true" req="ACH_BOSS_ROCKCRUISER">
+			<choice hidden="true" req="ach_boss_rockcruiser">
 				<text>We inspired a rebellion within the Rock Homeworlds to overthrow Stonewall.</text>
 				<event load="BOSS_NEGOTIATE_1"/>
 			</choice>
-			<choice hidden="true" req="ACH_BOSS_ZONE">
+			<choice hidden="true" req="ach_boss_zone">
 				<text>We defied the Ministry and saved an entire planet from their oppression.</text>
 				<event load="BOSS_NEGOTIATE_1"/>
 			</choice>
-			<choice hidden="true" req="ACH_BOSS_SUZZY">
+			<choice hidden="true" req="ach_boss_suzzycruiser">
 				<text>We went up against the Hive and raided their private hatcheries.</text>
 				<event load="BOSS_NEGOTIATE_1"/>
 			</choice>
-			<choice hidden="true" req="ACH_BOSS_LEECHDREAD">
+			<choice hidden="true" req="ach_boss_leechdread">
 				<text>We overthrew Tyrdeo and brought about a new era to the Eargen Republic.</text>
 				<event load="BOSS_NEGOTIATE_1"/>
 			</choice>
-			<choice hidden="true" req="MARKER_SLUGDEMOCRACY">
+			<choice hidden="true" req="loc_slugdemocracy">
 				<text>We dethroned Nights and convinced the Kleptocracy to turn to democracy.</text>
 				<event load="BOSS_NEGOTIATE_1"/>
 			</choice>
@@ -763,7 +818,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="jerry">
+	<choice hidden="true" req="unique_jerry">
 		<text>(Jerry) Contact the Flagship.</text>
 		<event>
 			<text>The Flagship doesn't take long to notice you. Before it can begin to target you, Jerry taps into the Rebel comms and requests them to pause, demanding they put him on a line with Vance.</text>
@@ -773,7 +828,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" blue="false" max_group="1" req="MARKER_JERRYKILL" lvl="0">
+	<choice hidden="true" blue="false" max_group="1" req="loc_jerrykill" lvl="0">
 		<text>Continue...</text>
 		<event>
 			<text>The Flagship doesn't take long to notice you. Thinking you're just a regular Federation ship in its way, it powers up its artilleries and approaches.</text>
@@ -783,10 +838,10 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" blue="false" max_group="1" req="MARKER_JERRYKILL" lvl="1">
+	<choice hidden="true" blue="false" max_group="1" req="loc_jerrykill" lvl="1">
 		<text>Continue...</text>
 		<event>
-			<text>As you approach the Flagship, suddenly you receive a hail from the massive ship. "You're the bastard who killed Jerry! He was the best man at my wedding! I'm going to kill you for that!" In the distance, several dozen fleet ships break off from their current skirmish and approach, unleashing a salvo of ASB shots in your direction.</text>
+			<text>As you approach the Flagship, you receive a hail from its captain. "You... you're the monster who murdered Jerome Wentworth. You hideous, repulsive, vile scum. You claim we're villains, yet you murder the kindest spirit in the whole galaxy in cold blood? Vance gave us direct orders to see to it your mission ends here, but frankly? I don't need those orders. I'm going to enjoy watching you die, as will all the rest of the galaxy."</text>
 			<environment type="PDS" target="player"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -798,10 +853,11 @@
 
 <event name="FLAGSHIP_JERRY">
 	<text>Not too long later, Vance appears on your screen, his bright orange uniform and massive, muscular figure standing out from the faded white of the officers around him. You aren't sure where Vance is, but that no longer matters.</text>
+	<variable name="loc_vance_betrayal" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>Vance stares down to look at his star nephew, a look of confusion upon his face. "Jerome? Have you been taken by this scum to be used as a mere trading good with me? Pathetic. Do not worry nephew, I will send my finest strike force to rescue you." Jerry shakes his head. "N-no sir. I'm no hostage. I've come to bargain."</text>
+			<text>Vance stares down to look at his star nephew, a look of confusion upon his face. "Jerome? Have you been taken by this scum to be used as a mere trading good with me? How pathetic of the Federation. Do not worry nephew, I will send my finest strike force to rescue you." Jerry shakes his head. "N-no sir. I'm no hostage. I've come to bargain."</text>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event>
@@ -809,12 +865,12 @@
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event>
-							<text>Jerry tries to continue, but Vance cuts him off. "A traitor? My own nephew? Enough wasting my time. If that is your choice, then so it shall be. You will die a short-sided buffoon as your mother did." Vance turns his back to Jerry. Though he is done addressing your ship, you can still hear him give the orders for the Flagship to attack in full force. You can hear their protest, but at the sight of Vance's glare they go silent and the Flagship stirs to life once again.</text>
+							<text>Jerry tries to continue, but Vance cuts him off. "You.. you left the protectorate? Then Cyra... Cyra... no. No, this can't be... A-and my nephew? A traitor? My own... nephew?" A tear comes to Vance's eye, but he wipes it away immediately, then turns his back to the screen. "Enough of this. If this is your decision, then so be it. You will die a short sighted fool, just as the Renegade. Goodbye, Jerome."</text>
 							<choice hidden="true">
 								<text>Continue...</text>
 								<event>
 									<text>Jerry collapses to his knees, shocked and speechless as how easily he was betrayed. "I should have known..." Jerry chokes up a sob, and holds his head in his hands while tears form puddles on the ground.</text>
-									<removeCrew class="jerry">
+									<removeCrew class="unique_jerry">
 										<clone>false</clone>
 										<text>Jerry sits in the corner, crying. The Flagship approaches, weapons charging. You want to console him, but you have to get going.</text>
 									</removeCrew>
@@ -822,8 +878,8 @@
 										<text>Continue...</text>
 										<event>
 											<text>Suddenly, Jerry gets back up to his feet, wiping away the tears. "Well, there's only one thing left to do now." He draws out a massive Gatling gun. You aren't sure where he got it from, but you don't have the time to question it.</text>
-											<crewMember amount="1" class="jerryg">Jerry</crewMember>
-											<choice hidden="true" blue="false" lvl="0" max_group="0" req="ponyt">
+											<crewMember amount="1" class="unique_jerry_gun">Jerry</crewMember>
+											<choice hidden="true" blue="false" lvl="0" max_group="0" req="pony_tamed">
 												<text>Continue...</text>
 												<event load="COMBAT_CHECK"/>
 											</choice>
@@ -831,7 +887,7 @@
 												<text>Continue...</text>
 												<event>
 													<text>Before you can proceed on to the Flagship, Jerry pauses, and walks out of the room.</text>
-													<removeCrew class="jerryg">
+													<removeCrew class="unique_jerry_gun">
 														<clone>false</clone>
 														<text>You have no idea where Jerry is going, but you follow him.</text>
 													</removeCrew>
@@ -848,10 +904,10 @@
 																<event>
 																	<text>Then, Jerry proceeds to mount the pony! "Alright. Now I'm ready."</text>
 																	<unlockCustomShip silent="false">PLAYER_SHIP_PONY_3</unlockCustomShip>
-																	<crewMember amount="1" class="ponycj">Jerry</crewMember>
+																	<crewMember amount="1" class="unique_jerry_pony_crystal">Jerry</crewMember>
 																	<choice hidden="true">
 																		<text>Continue...</text>
-																		<event load="COMBAT_CHECK"/>
+																		<event load="COMBAT_CHECK_FLAGSHIP"/>
 																	</choice>
 																</event>
 															</choice>
@@ -859,11 +915,11 @@
 													</choice>
 												</event>
 											</choice>
-											<choice hidden="true" blue="false" lvl="1" max_group="0" req="ponyt">
+											<choice hidden="true" blue="false" lvl="1" max_group="0" req="pony_tamed">
 												<text>Continue...</text>
 												<event>
 													<text>Before you can proceed on to the Flagship, Jerry pauses, and walks out of the room.</text>
-													<removeCrew class="jerryg">
+													<removeCrew class="unique_jerry_gun">
 														<clone>false</clone>
 														<text>You have no idea where Jerry is going, but you follow him.</text>
 													</removeCrew>
@@ -871,7 +927,7 @@
 														<text>Continue...</text>
 														<event>
 															<text>Jerry enters the room where the Equinoid is sleeping...</text>
-															<removeCrew class="ponyt">
+															<removeCrew class="pony_tamed">
 																<clone>false</clone>
 																<text>You have no idea what Jerry is doing, and watch in confusion.</text>
 															</removeCrew>
@@ -880,10 +936,10 @@
 																<event>
 																	<text>Then, Jerry proceeds to mount the pony! "Alright. Now I'm ready."</text>
 																	<unlockCustomShip silent="false">PLAYER_SHIP_PONY_3</unlockCustomShip>
-																	<crewMember amount="1" class="ponyj">Jerry</crewMember>
+																	<crewMember amount="1" class="unique_jerry_pony">Jerry</crewMember>
 																	<choice hidden="true">
 																		<text>Continue...</text>
-																		<event load="COMBAT_CHECK"/>
+																		<event load="COMBAT_CHECK_FLAGSHIP"/>
 																	</choice>
 																</event>
 															</choice>
@@ -906,7 +962,7 @@
 <event name="BOSS_TEXT_2">
 	<text>You chase down the Flagship and discover it is heavily damaged from the previous fight. Scans indicate that it has redirected considerable power to its drones. Get ready for a fight.</text>
 	<status type="clear" target="player" system="sensors" amount="100"/>
-	<choice hidden="true" req="MARKER_NEGOTIATION" lvl="0" blue="false" max_group="0">
+	<choice hidden="true" req="loc_negotiation" lvl="0" blue="false" max_group="0">
 		<text>Continue...</text>
 		<event>
 			<text>The Flagship might be weakened, but it is still formidable. Keep up the fight!</text>
@@ -916,21 +972,17 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="MARKER_NEGOTIATION" lvl="1" blue="false" max_group="0">
+	<choice hidden="true" req="loc_negotiation" lvl="1" blue="false" max_group="0">
 		<text>Continue...</text>
 		<event>
 			<text>Suddenly, a small automated vessel breaks off from the fleet in the distance. You receive a hail from the shuttle. "Hello. This is an automated message sent from Admiral Vance of the Rebel fleet. We have taken into consideration your past victories, and the considerable damage you have already dealt to the Flagship. With this in mind, the Rebellion no longer holds interest in this reality. We offer our surrender."</text>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event>
-					<text>Congratulations captain, you have completed the negotiation ending! Accept this payment to boost your score.</text>
 					<item_modify>
 						<item type="scrap" min="2000" max="2000"/>
 					</item_modify>
-					<choice hidden="true">
-						<text>Continue...</text>
-						<event load="WIN_PEACEFUL"/>
-					</choice>
+					<win ach="peace" creditsText="credit_victory_peace" text="" creditsBackground="VICTORY_PEACE"/>
 				</event>
 			</choice>
 		</event>
@@ -940,11 +992,11 @@
 <event name="BOSS_TEXT_3">
 	<text>You're not certain how it's able to keep fighting with the amount of damage it has sustained. It looks like it's transferred power to defensive systems as well as... some kind of super weapon. Be prepared... this is it!</text>
 	<status type="clear" target="player" system="sensors" amount="100"/>
-	<choice hidden="true" req="MARKER_VANCE_BETRAYAL" lvl="0" blue="false" max_group="0">
+	<choice hidden="true" req="loc_vance_betrayal" lvl="0" blue="false" max_group="0">
 		<text>Continue...</text>
 		<event load="COMBAT_CHECK_FLAGSHIP"/>
 	</choice>
-	<choice hidden="true" req="MARKER_VANCE_BETRAYAL" lvl="1" blue="false" max_group="0">
+	<choice hidden="true" req="loc_vance_betrayal" lvl="1" blue="false" max_group="0">
 		<text>Continue...</text>
 		<event>
 			<text>As you approach the Flagship for a third time, an ASB shot flies past your ship and nearly collides with the Flagship. In the distance, the Rebel forces have turned amongst each other. It appears as though word of Vance's betrayal has caught on, and it's created a schism in their forces. Expect additional fire support during this final stretch!</text>
@@ -959,27 +1011,27 @@
 	
 <event name="BOSS_NEGOTIATE_1">
 	<text>"So, you can invade the homeworlds of some barbaric aliens and convince them to turn against themselves. That is nothing compared to the mission of our movement! We seek to bring peace to galaxy. I doubt you know anything of peace."</text>
-	<choice hidden="true" req="MARKER_ORCHIDQUEST">
+	<choice hidden="true" req="ach_boss_orchidcruiser">
 		<text>We saved the Orchid Gardenworlds from a pirate siege.</text>
 		<event load="BOSS_NEGOTIATE_2"/>
 	</choice>
-	<choice hidden="true" req="MARKER_FEDQUEST">
+	<choice hidden="true" req="ach_boss_mfkgunboat">
 		<text>We saved an entire city and memorial from a siege put on by the Rebellion.</text>
 		<event load="BOSS_NEGOTIATE_2"/>
 	</choice>
-	<choice hidden="true" req="ACH_BOSS_AUTODREAD">
+	<choice hidden="true" req="ach_boss_autodread">
 		<text>We saved the Spectral Dynasty from one of your own Auto-Dreadnaughts.</text>
 		<event load="BOSS_NEGOTIATE_2"/>
 	</choice>
-	<choice hidden="true" req="ACH_BOSS_CLAN">
+	<choice hidden="true" req="ach_boss_clancruiser">
 		<text>We saved the last of an endangered alien species from the EHG.</text>
 		<event load="BOSS_NEGOTIATE_2"/>
 	</choice>
-	<choice hidden="true" req="ACH_BOSS_HACKER">
+	<choice hidden="true" req="ach_boss_hacker">
 		<text>We liberated an entire civilian sector from the hacker clan.</text>
 		<event load="BOSS_NEGOTIATE_2"/>
 	</choice>
-	<choice hidden="true" req="ACH_CREW_DIANESH">
+	<choice hidden="true" req="ach_crew_dianesh">
 		<text>We managed to convince the Crystalline Empress herself to be open to the rest of the galaxy.</text>
 		<event load="BOSS_NEGOTIATE_2"/>
 	</choice>
@@ -996,23 +1048,23 @@
 </event>
 <event name="BOSS_NEGOTIATE_2">
 	<text>"And how might have you accomplished those? Through killing? As to be expected. The Federation and Rebellion are not any different when it comes to war, but where the Federation is weak, the Rebellion will stand strong! You have delayed this fight for too long. I doubt you would be capable of taking on a ship as powerful as this!"</text>
-	<choice hidden="true" req="ACH_BOSS_CONSTRUCTION">
+	<choice hidden="true" req="ach_boss_construction">
 		<text>We destroyed one of your Flagships back in the Rebel Stronghold. If we did it once, we can do it again.</text>
 		<event load="BOSS_NEGOTIATE_3"/>
 	</choice>
-	<choice hidden="true" req="ACH_BOSS_GHOSTFLAG">
+	<choice hidden="true" req="ach_boss_ghostflag">
 		<text>We destroyed the original Flagship in the Spectral Wastelands. If we did it once, we can do it again.</text>
 		<event load="BOSS_NEGOTIATE_3"/>
 	</choice>
-	<choice hidden="true" req="ACH_BOSS_MFKCRUISER">
+	<choice hidden="true" req="ach_boss_mfkcruiser">
 		<text>It's no Flagship, but we destroyed an MFK Cruiser. We can handle anything the Rebellion throws at us.</text>
 		<event load="BOSS_NEGOTIATE_3"/>
 	</choice>
-	<choice hidden="true" req="ACH_BOSS_GUNBOAT">
+	<choice hidden="true" req="ach_boss_mfkgunboat">
 		<text>It's no Flagship, but we destroyed an MFK Gunboat. We can handle anything the Rebellion throws at us.</text>
 		<event load="BOSS_NEGOTIATE_3"/>
 	</choice>
-	<choice hidden="true" req="ACH_BOSS_SMUGGUN">
+	<choice hidden="true" req="ach_boss_smugglergun">
 		<text>It's no Flagship, but we destroyed a stolen Rebel Gunboat. We can handle anything the Rebellion throws at us.</text>
 		<event load="BOSS_NEGOTIATE_3"/>
 	</choice>
@@ -1028,29 +1080,26 @@
 	</choice>
 </event>
 <event name="BOSS_NEGOTIATE_3">
-	<text>"So you are the one responsible for that? Mighty impressive, but that ship was not yet complete! You will find this ship is far better prepared for a tiny cruiser like yours. Enough delay, you will not escape this fight."</text>
+	<text>"So you are the one responsible for that? Mighty impressive, but that ship was nothing compared to what you're about to face! You will find this ship is far better prepared for a tiny cruiser like yours. Enough delay, you will not escape this fight."</text>
+	<variable name="loc_negotiation" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="COMBAT_CHECK_FLAGSHIP"/>
 	</choice>
 </event>
-
-<event name="WIN_PEACEFUL">
-	<event/>
-</event>
 	
 <event name="BOSS_REPAIR_STATION">  <!-- the various stations that heal you around the map-->
 	<text>You jump into the system, noticing the repair station signal from nearby.</text>
 	<repair/>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="1" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="0" max_group="1">
 		<text>Continue...</text>
 		<event load="BOSS_REPAIR_STATION_NORMAL"/>
 	</choice>
-	<choice hidden="true" blue="false" req="DIFFICULTY_NORMAL" lvl="1" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="1" max_group="1">
 		<text>Continue...</text>
 		<event load="BOSS_REPAIR_STATION_NORMAL"/>
 	</choice>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CHALLENGE" lvl="1" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="2" max_group="1">
 		<text>Continue...</text>
 		<event>
 			<text>It looks as though a Rebel Elite is firing on the repair station! You'll have to clear these guys out first before you can get assistance.</text>
@@ -1061,7 +1110,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" blue="false" req="DIFFICULTY_EXTREME" lvl="1" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="3" max_group="1">
 		<text>Continue...</text>
 		<event>
 			<text>It looks as though an MFK Ace is firing on the repair station! You'll have to clear these guys out first before you can get assistance.</text>
@@ -1081,8 +1130,8 @@
 	<destroyed load="BOSS_REPAIR_STATION_FIGHT"/>
 	<deadCrew load="BOSS_REPAIR_STATION_FIGHT"/>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 <event name="BOSS_REPAIR_STATION_FIGHT">
@@ -1163,7 +1212,7 @@
 			<weapon name="LIST_WEAPONS_ROCK_BOSS"/>
 		</event>
 	</choice>
-	<choice hidden="true" req="commando">
+	<choice hidden="true" req="rock_commando">
 		<text>(Lost Sun Commando) We have befriended the Lost Suns.</text>
 		<event>
 			<text>"The Lost Suns and Federation have always have a thin alliance, and you have helped strengthen it. Perhaps this shall aid you, I'm sure your Commando will know how to use it."</text>
@@ -1720,7 +1769,7 @@
 							</choice>
 						</event>
 					</choice>
-					<choice req="REPAIR">
+					<choice req="BLUELIST_DRONES_REPAIR_ALL">
 						<text>(Repair Drone) Dispatch the drone to fix up their equipment.</text>
 						<event>
 							<text>"Perfect, this'll help us greatly. Thank you so much Captain."</text>
@@ -1753,7 +1802,7 @@
 <eventList name="BOSS_GROUND_FIGHT_HELP">
 	<event>
 		<text>While the soldiers are gathering to prepare, Conrad pulls you aside with another soldier. "I'm going to be totally honest here, this mission is doomed. I have a duty to serve here, and I cannot abandon my men. However, this man is my brother. I can't let him die here with me. He will serve faithfully on your ship."</text>
-		<crewMember amount="1" class="soldier"/>
+		<crewMember amount="1" class="human_soldier"/>
 	</event>
 	<event>
 		<text>"We have no use for this. It's a ship mounted weapon that fell off a Rebel ship we shot down, but as you can see we have no ship to mount it to. I hope it serves you well."</text>
@@ -1839,7 +1888,7 @@
 	<choice hidden="true">
 		<text>Ignore them.</text>
 		<event>
-			<text>You fly way from the strange ship and mute their call.</text>
+			<text>You fly away from the strange ship and mute their call.</text>
 			<choice>
 				<text>Do something onboard the ship.</text>
 				<event load="STORAGE_CHECK"/>
@@ -1981,7 +2030,7 @@
 <eventList name="BOSS_SLUG_SPECTATOR_WIN">
 	<event>
 		<text>It appears the Slug captain is still alive, though his ship and crew are barely holding together. The Slug doesn't seem fazed by the imminent destruction of his ship. "Hah! You sssshowed that Rebel what for. That'ssss what I call entertainment. Though, you can ssssee my ssship won't hold together long, and my crew isss doomed. Perhapsss I will ssstick with you, ssso I can sssssee this ssspectacle all the way to the end."</text>
-		<crewMember amount="1" class="sabo">Rygel</crewMember> <!--used to be Slotz, but that was moved to the slug casino event-->
+		<crewMember amount="1" class="slug_saboteur">Rygel</crewMember> <!--used to be Slotz, but that was moved to the slug casino event-->
 	</event>
 	<event>
 		<text>It seems none of the Slugs survived. Disappointed, you take what remains from their ship.</text>

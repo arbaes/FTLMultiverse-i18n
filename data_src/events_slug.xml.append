@@ -70,7 +70,7 @@
 </textList>
 
 <event name="ENCOUNTER_SLUG_MANTIS_CLEARING" unique="true">
-	<text>You intercept comm chatter from an incoming Mantis ship. "Look. This ship appears not to be owned by the squishy ones. Maybe they won't smell so bad when we cut them open." They move in on your position.</text>
+	<text>You intercept comm chatter from an incoming Mantis ship. "Look. This ship not seeming to be owned by squishy ones. Maybe won't smell so bad when cut them open." They move in on your position.</text>
 	<ship load="SHIP_MANTIS_FIGHT" hostile="true"/>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -169,6 +169,7 @@
 	<event load="NEBULA_SLUG_MYSTERIOUS_TECH"/>
 	<event load="NEBULA_SLUG_BIOLAB"/>
 	<event load="NEBULA_SLUG_HIGH_PRICE"/>
+	<event load="NEBULA_SLUG_CREW_UPGRADE"/>
 </eventList>
 
 <event name="NEBULA_SLUG_HIGH_PRICE" unique="true">   
@@ -398,7 +399,7 @@
 		<text>Dock with the station.</text>
 		<event load="NEBULA_SLUG_BIOLAB_INVESTIGATE"/>
 	</choice>
-	<choice hidden="true" req="sensors" lvl="2">
+	<choice hidden="true" req="sensors" lvl="2" max_lvl="2">
 		<text>(Upg. Sensors) Scan the station.</text>
 		<event load="NEBULA_SLUG_BIOLAB_SCANS"/>
 	</choice>
@@ -406,7 +407,7 @@
 		<text>(Adv. Sensors) Scan the station.</text>
 		<event load="NEBULA_SLUG_BIOLAB_SCANS_GOOD"/>
 	</choice>
-	<choice hidden="true" req="BLUELIST_DRONES_BOARDER">
+	<choice hidden="true" req="BLUELIST_DRONES_BOARDING">
 		<text>(Boarding Drone) Send the drone to the station.</text>
 		<event load="NEBULA_SLUG_BIOLAB_SCANS_BOARD"/>
 	</choice>
@@ -556,7 +557,7 @@
 							<item_modify>
 								<item type="scrap" min="-20" max="-30"/>
 							</item_modify>
-							<transformRace class="human">engineer</transformRace>
+							<transformRace class="human">human_engineer</transformRace>
 						</event>
 					</choice>
 					<choice>
@@ -564,9 +565,9 @@
 						<event>
 							<text>"Fantassstic, we'll take thisss one." The process takes a while, but eventually your crew member, considerably altered, returns, escorted by the Slugs scientists from earlier.</text>
 							<item_modify>
-								<item type="scrap" min="-70" max="-80"/>
+								<item type="scrap" min="-55" max="-65"/>
 							</item_modify>
-							<transformRace class="human">soldier</transformRace>
+							<transformRace class="human">human_soldier</transformRace>
 						</event>
 					</choice>
 					<choice hidden="true">
@@ -588,7 +589,7 @@
 							<item_modify>
 								<item type="scrap" min="-20" max="-30"/>
 							</item_modify>
-							<transformRace class="engi">separatist</transformRace>
+							<transformRace class="engi">engi_separatist</transformRace>
 						</event>
 					</choice>
 					<choice>
@@ -596,9 +597,9 @@
 						<event>
 							<text>"Fantassstic, we'll take thisss one." The process takes a while, but eventually your crew member, considerably altered, returns, escorted by the Slugs scientists from earlier.</text>
 							<item_modify>
-								<item type="scrap" min="-80" max="-90"/>
+								<item type="scrap" min="-60" max="-75"/>
 							</item_modify>
-							<transformRace class="engi">defend</transformRace>
+							<transformRace class="engi">engi_defender</transformRace>
 						</event>
 					</choice>
 					<choice hidden="true">
@@ -609,7 +610,7 @@
 					</choice>
 				</event>
 			</choice>
-			<!-- <choice hidden="true" req="separatist" blue="false">
+			<!-- <choice hidden="true" req="engi_separatist" blue="false">
 				<text>Volunteer your Separatist Engi.</text>
 				<event>
 					<text>"Good... now, for a fee, we will be able to change your Engi'sss expertise to whatever you choossssse!"</text>
@@ -620,7 +621,7 @@
 							<item_modify>
 								<item type="scrap" min="-20" max="-30"/>
 							</item_modify>
-							<transformRace class="separatist">engi</transformRace>
+							<transformRace class="engi_separatist">engi</transformRace>
 						</event>
 					</choice>
 					<choice>
@@ -630,7 +631,7 @@
 							<item_modify>
 								<item type="scrap" min="-80" max="-90"/>
 							</item_modify>
-						<transformRace class="separatist">defend</transformRace>
+						<transformRace class="engi_separatist">defend</transformRace>
 						</event>
 					</choice>
 					<choice hidden="true">
@@ -652,7 +653,7 @@
 							<item_modify>
 								<item type="scrap" min="-7" max="-7"/>
 							</item_modify>
-						<transformRace class="rock">outcast</transformRace>
+						<transformRace class="rock">rock_outcast</transformRace>
 						</event>
 					</choice>
 					<choice>
@@ -662,7 +663,7 @@
 							<item_modify>
 								<item type="scrap" min="-20" max="-20"/>
 							</item_modify>
-						<transformRace class="rock">commando</transformRace>
+						<transformRace class="rock">rock_commando</transformRace>
 						</event>
 					</choice>
 					<choice>
@@ -670,9 +671,9 @@
 						<event>
 							<text>"Fantassstic, we'll take thisss one." The process takes a while, but eventually your crew member, considerably altered, returns, escorted by the Slugs scientists from earlier.</text>
 							<item_modify>
-								<item type="scrap" min="-70" max="-70"/>
+								<item type="scrap" min="-50" max="-60"/>
 							</item_modify>
-							<transformRace class="rock">crusader</transformRace>
+							<transformRace class="rock">rock_crusader</transformRace>
 						</event>
 					</choice>
 					<choice hidden="true">
@@ -683,7 +684,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="energy" blue="false">
+			<choice hidden="true" req="zoltan" blue="false">
 				<text>Volunteer your Zoltan.</text>
 				<event>
 					<text>"Good... now, for a fee, we will be able to change your Zoltan'sss expertise to whatever you choosssse!"</text>
@@ -694,7 +695,7 @@
 							<item_modify>
 								<item type="scrap" min="-15" max="-15"/>
 							</item_modify>
-							<transformRace class="energy">bomber</transformRace>
+							<transformRace class="zoltan">zoltan_devotee</transformRace>
 						</event>
 					</choice>
 					<choice>
@@ -704,7 +705,7 @@
 							<item_modify>
 								<item type="scrap" min="-10" max="-10"/>
 							</item_modify>
-							<transformRace class="energy">monk</transformRace>
+							<transformRace class="zoltan">zoltan_monk</transformRace>
 						</event>
 					</choice>
 					<choice>
@@ -712,9 +713,9 @@
 						<event>
 							<text>"Fantassstic, we'll take thisss one." The process takes a while, but eventually your crew member, considerably altered, returns, escorted by the Slugs scientists from earlier.</text>
 							<item_modify>
-								<item type="scrap" min="-70" max="-70"/>
+								<item type="scrap" min="-60" max="-75"/>
 							</item_modify>
-							<transformRace class="energy">peace</transformRace>
+							<transformRace class="zoltan">zoltan_peacekeeper</transformRace>
 						</event>
 					</choice>
 					<choice hidden="true">
@@ -799,7 +800,7 @@
 	<choice>
 		<text>Attack!</text>
 		<event>
-			<text>You prepare for combat</text>
+			<text>You prepare for combat.</text>
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -892,6 +893,7 @@
 		<text>(Anti-Virus) Counter the remote hacking.</text>
 		<event>
 			<text>Your Anti-virus module automatically counters the digital assault and you move in to fight the ship.</text>
+			<ship load="SHIP_SLUG_STATUS_HACKING" hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event load="COMBAT_CHECK"/>
@@ -1033,12 +1035,10 @@
 
 	<event load="NEBULA_REFUGEE_SLUG"/>
 	<event load="ROCK_SLUG_ARGUMENT_NEBULA"/>
-	<event load="NEBULA_BATTLEFIELD"/>
 
 	<event load="NEBULA_REBEL_UNDETECTED"/>
 	<event load="NEBULA_AUTO_DEFENSE_ITEM"/>
 	<event load="NEBULA_LOST_SHIP"/>
-	<event load="NEBULA_WEAPONS_TRADER"/>
 	<event load="NEBULA_REBEL_CHASE"/>
 </eventList>
 
@@ -1141,7 +1141,7 @@
 			<text>You can work off your debt by serving on our ship.</text>
 			<event>
 				<text>"Really? You would let me work aboard your ssship? I have alwaysss wanted to sssee the galaxy outssside of thessse nebulasss..."</text>
-				<crewMember amount="1" class="sabo"/>
+				<crewMember amount="1" class="slug_saboteur"/>
 			</event>
 		</choice>
 		<choice hidden="true">
@@ -1205,7 +1205,7 @@
 	</choice>
 </event>
 <event name="SURRENDER_SLUG_JAILER"> 
-	<text>"I sssse your weaponsss are rather... well ssstocked. However, you look a little low on crew. Perhapsss we could offer one of our prisssonersss to you?"</text>
+	<text>"I sssee your weaponsss are rather... well ssstocked. However, you look a little low on crew. Perhapsss we could offer one of our prisssonersss to you?"</text>
 	<environment type="nebula"/>
 	<choice>
 		<text>Accept a prisoner.</text>
@@ -1267,7 +1267,7 @@
 		<choice>
 			<text>Recruit a Zoltan.</text>
 			<event>
-				<crewMember amount="1" class="energy"/>
+				<crewMember amount="1" class="zoltan"/>
 			</event>
 		</choice>
 		<choice>
@@ -1377,7 +1377,7 @@
 </eventList> 
 <eventList name="SLUG_DRINK_GHOST">
 	<event>
-		<text>Your Ghost, being made mostly of gas, is not only immune to poison, but litterally cannot drink. The Slug is confused, but seems to understand the inconvenience. With honest intentions, he repairs your hull and offers to trade.</text>
+		<text>Your Ghost, being made mostly of gas, is not only immune to poison, but literally cannot drink. The Slug is confused, but seems to understand the inconvenience. With honest intentions, he repairs your hull and offers to trade.</text>
 		<damage amount="-10"/>
 		<store>STORE_SLUG</store>
 	</event>
@@ -1420,7 +1420,7 @@
 	<choice hidden="true">
 		<text>Oxygen.</text>
 		<event>
-			<text>"A being that would choose sssuffocation? Who am I to judge..." Your life support is sabatoged and they move in to attack.</text>
+			<text>"A being that would choose sssuffocation? Who am I to judge..." Your life support is sabotaged and they move in to attack.</text>
 			<ship load="SHIP_SLUG_STATUS_OXYGEN" hostile="true"/>
 			<status type="divide" target="player" system="oxygen" amount="2"/>
 			<choice hidden="true">
@@ -1475,7 +1475,7 @@
 	<choice hidden="true" req="hacking"> <!-- CHANGED-->
 		<text>(Hacking System) Counter any hack attempt.</text>
 		<event>
-			<text>"Sssilence won't protect you. I'll make the choice mysself... Wait. Why isn't this working?" You cut transmission and move in to attack.</text>
+			<text>"Sssilence won't protect you. I'll make the choice mysself... Wait. Why isssn't thisss working?" You cut transmission and move in to attack.</text>
 			<ship load="SHIP_SLUG_STATUS_HACKING" hostile="true"/>
 			<status type="limit" target="player" system="hacking" amount="0"/>
 			<choice hidden="true">
@@ -1620,7 +1620,7 @@
 		</choice>
 	</event>
 	<event>
-		<text>Just before the transmission is cut you hear, "They're not falling for it. Just kill the crew and we can ssstrip..." Looks like you're not getting out of here without a fight.</text>
+		<text>Just before the transmission is cut you hear, "They're not falling for it. Jussst kill the crew and we can ssstrip..." Looks like you're not getting out of here without a fight.</text>
 		<ship load="SHIP_SLUG_FIGHT" hostile="true"/>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -1636,13 +1636,14 @@
 <eventList name="NEBULA_DISTRESS_SLUG">
 	<event load="NEBULA_SLUG_DISTRESS_ROCK"/>
 	<event load="NEBULA_DISTRESS_SLUG_QUESTION"/>
-	<event load="DISTRESS_SLUG_TRICK"/>
+	<event load="SLUG_DISTRESS_TRICK"/>
 	<!--<event load="DISTRESS_SLUG_RESCUE"/>-->
 </eventList>
 
 <event name="SLUG_DISTRESS_TRICK" unique="true">
 	<text>You find a Slug vessel broadcasting the distress signal and contact them. "Ah, yesss, we are having problems with our oxygen generation unit. Perhaps your crew can assist in repairsss?"</text>
 	<environment type="nebula"/>
+	<distressBeacon/>
 	<ship load="SHIP_SLUG_GENERIC" hostile="false"/>
 	<choice hidden="true">
 		<text>Send some crew to help.</text>
@@ -1652,6 +1653,14 @@
 		<text>Ignore them.</text>
 		<event>
 			<text>You know better than to trust the Slugs. You cut communications and prepare to jump.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
 		</event>
 	</choice>
 	<choice hidden="true" req="mantis">
@@ -1923,6 +1932,10 @@
 				<event>
 					<text>There's money to be made here. The Slugs know that. You turn on the pirate and intercept just before he can reach the cache!</text>
 					<ship load="SHIP_QUEST_SLUG_PIRATE_TRAP1" hostile="true"/>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event load="COMBAT_CHECK"/>
+					</choice>
 				</event>
 			</choice>
 			<choice hidden="true">
@@ -1930,6 +1943,10 @@
 				<event>
 					<text>When he sees you making for the cache the Slug captain hails: "Foolish alienss, no eye for profit. Bessst of luck to you." They jump off, leaving you toe to toe with the pirate!</text>
 					<ship load="SHIP_QUEST_SLUG_PIRATE_TRAP2" hostile="true"/>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event load="COMBAT_CHECK"/>
+					</choice>
 				</event>
 			</choice>
 		</event>
@@ -2075,6 +2092,7 @@
 		<event>
 			<text>"All we can offer issss thissss prototype modified Bio-beam. They won't be happy about ussss giving thissss up..."</text>
 			<ship hostile="false"/>
+			<surrender/>
 			<choice>
 				<text>Accept the prototype weapon.</text>
 				<event>
@@ -2122,6 +2140,7 @@
 		<text>Demand they give you tribute.</text>
 		<event>
 			<text>It doesn't take much to get the Slugs to surrender at this point. So afraid you'll wipe the entire construction crew out of existence, they offer a similar prototype weapon to the one earlier, some scrap, and the blueprints to one of the Slug cruisers!</text>
+			<unlockCustomShip silent="false">PLAYER_SHIP_SLUG</unlockCustomShip>
 			<weapon name="LOOT_SLUG_1"/>
 			<autoReward level="HIGH">standard</autoReward>
 		</event>
@@ -2217,7 +2236,7 @@
 						</event>
 					</choice>
 					<choice>
-						<text>Nevermind, lets leave.</text>
+						<text>Nevermind, let's leave.</text>
 						<event/>
 					</choice>
 				</event>
@@ -2337,7 +2356,7 @@
 		<event>
 			<text>"Assss you know, the sshort-sssighted Federation hasss decccided to outlaw the cloning of ssstill living organissssmssss. Luckily for ussss, thisss iss not Federation territory. For a sssmall fee, we would be willing to duplicate one of your crew, though the clone will not ssshare the sssame memoriesss or ssskillss asss the original."</text>
 			<choice req="LIST_CREW_HUMAN" blue="false" hidden="true">
-				<text>Clone your Human crew. [-30 scrap]</text>
+				<text>Clone your Human crew. [-30~]</text>
 				<event>
 					<text>"Remember to tell your friendssss!" The Slugs drop off the clone before disappearing back into their ship.</text>
 					<crewMember amount="1" class="human"/>
@@ -2347,27 +2366,27 @@
 				</event>
 			</choice>
 			<choice req="LIST_CREW_ENGI" blue="false" hidden="true">
-				<text>Clone your Engi crew. [-30 scrap]</text>
+				<text>Clone your Engi crew. [-35~]</text>
 				<event>
 					<text>"Remember to tell your friendssss!" The Slugs drop off the clone before disappearing back into their ship.</text>
 					<crewMember amount="1" class="engi"/>
 					<item_modify>
-						<item type="scrap" min="-30" max="-30"/>
+						<item type="scrap" min="-35" max="-35"/>
 					</item_modify>
 				</event>
 			</choice>
 			<choice req="LIST_CREW_ZOLTAN" blue="false" hidden="true">
-				<text>Clone your Zoltan crew. [-40 scrap]</text>
+				<text>Clone your Zoltan crew. [-35~]</text>
 				<event>
 					<text>"Remember to tell your friendssss!" The Slugs drop off the clone before disappearing back into their ship.</text>
-					<crewMember amount="1" class="energy"/>
+					<crewMember amount="1" class="zoltan"/>
 					<item_modify>
-						<item type="scrap" min="-40" max="-40"/>
+						<item type="scrap" min="-35" max="-35"/>
 					</item_modify>
 				</event>
 			</choice>
 			<choice req="LIST_CREW_ORCHID" blue="false" hidden="true">
-				<text>Clone your Orchid crew. [-40 scrap]</text>
+				<text>Clone your Orchid crew. [-35~]</text>
 				<event>
 					<text>"Remember to tell your friendssss!" The Slugs drop off the clone before disappearing back into their ship.</text>
 					<crewMember amount="1" class="orchid"/>
@@ -2377,7 +2396,7 @@
 				</event>
 			</choice>
 			<choice req="LIST_CREW_MANTIS" blue="false" hidden="true">
-				<text>Clone your Mantis crew. [-40 scrap]</text>
+				<text>Clone your Mantis crew. [-40~]</text>
 				<event>
 					<text>"Remember to tell your friendssss!" The Slugs drop off the clone before disappearing back into their ship.</text>
 					<crewMember amount="1" class="mantis"/>
@@ -2387,7 +2406,7 @@
 				</event>
 			</choice>
 			<choice req="LIST_CREW_ROCK" blue="false" hidden="true">
-				<text>Clone your Rock crew. [-40 scrap]</text>
+				<text>Clone your Rock crew. [-40~]</text>
 				<event>
 					<text>"Remember to tell your friendssss!" The Slugs drop off the clone before disappearing back into their ship.</text>
 					<crewMember amount="1" class="rock"/>
@@ -2397,17 +2416,17 @@
 				</event>
 			</choice>
 			<choice req="LIST_CREW_CRYSTAL" blue="false" hidden="true">
-				<text>Clone your Crystal crew. [-50 scrap]</text>
+				<text>Clone your Crystal crew. [-45~]</text>
 				<event>
 					<text>"Remember to tell your friendssss!" The Slugs drop off the clone before disappearing back into their ship.</text>
 					<crewMember amount="1" class="crystal"/>
 					<item_modify>
-						<item type="scrap" min="-50" max="-50"/>
+						<item type="scrap" min="-45" max="-45"/>
 					</item_modify>
 				</event>
 			</choice>
 			<choice req="LIST_CREW_SLUG" blue="false" hidden="true">
-				<text>Clone your Slug crew. [-30 scrap]</text>
+				<text>Clone your Slug crew. [-30~]</text>
 				<event>
 					<text>"Remember to tell your friendssss!" The Slugs drop off the clone before disappearing back into their ship.</text>
 					<crewMember amount="1" class="slug"/>
@@ -2417,17 +2436,17 @@
 				</event>
 			</choice>
 			<choice req="LIST_CREW_SHELL" blue="false" hidden="true">
-				<text>Clone your Shell crew. [-30 scrap]</text>
+				<text>Clone your Shell crew. [-35~]</text>
 				<event>
 					<text>"Remember to tell your friendssss!" The Slugs drop off the clone before disappearing back into their ship.</text>
 					<crewMember amount="1" class="shell"/>
 					<item_modify>
-						<item type="scrap" min="-30" max="-30"/>
+						<item type="scrap" min="-35" max="-35"/>
 					</item_modify>
 				</event>
 			</choice>
 			<choice req="LIST_CREW_PHANTOM" blue="false" hidden="true">
-				<text>Clone your Phantom crew. [-20 scrap]</text>
+				<text>Clone your Phantom crew. [-20~]</text>
 				<event>
 					<text>"Remember to tell your friendssss!" The Slugs drop off the clone before disappearing back into their ship.</text>
 					<crewMember amount="1" class="phantom"/>
@@ -2437,47 +2456,47 @@
 				</event>
 			</choice>
 			<choice req="LIST_CREW_GOUL" blue="false" hidden="true">
-				<text>Clone your Goul crew. [-20 scrap]</text>
+				<text>Clone your Goul crew. [-20~]</text>
 				<event>
 					<text>"Remember to tell your friendssss!" The Slugs drop off the clone before disappearing back into their ship.</text>
-					<crewMember amount="1" class="goul"/>
+					<crewMember amount="1" class="phantom_goul"/>
 					<item_modify>
 						<item type="scrap" min="-20" max="-20"/>
 					</item_modify>
 				</event>
 			</choice>
 			<choice req="LIST_CREW_MARE" blue="false" hidden="true">
-				<text>Clone your Mare crew. [-20 scrap]</text>
+				<text>Clone your Mare crew. [-20~]</text>
 				<event>
 					<text>"Remember to tell your friendssss!" The Slugs drop off the clone before disappearing back into their ship.</text>
-					<crewMember amount="1" class="mare"/>
+					<crewMember amount="1" class="phantom_mare"/>
 					<item_modify>
 						<item type="scrap" min="-20" max="-20"/>
 					</item_modify>
 				</event>
 			</choice>
 			<choice req="LIST_CREW_WRAITH" blue="false" hidden="true">
-				<text>Clone your Wraith crew. [-20 scrap]</text>
+				<text>Clone your Wraith crew. [-20~]</text>
 				<event>
 					<text>"Remember to tell your friendssss!" The Slugs drop off the clone before disappearing back into their ship.</text>
-					<crewMember amount="1" class="wraith"/>
+					<crewMember amount="1" class="phantom_wraith"/>
 					<item_modify>
 						<item type="scrap" min="-20" max="-20"/>
 					</item_modify>
 				</event>
 			</choice>
 			<choice req="LIST_CREW_LANIUS" blue="false" hidden="true">
-				<text>Clone your Lanius crew. [-40 scrap]</text>
+				<text>Clone your Lanius crew. [-40~]</text>
 				<event>
 					<text>"Remember to tell your friendssss!" The Slugs drop off the clone before disappearing back into their ship.</text>
-					<crewMember amount="1" class="anaerobic"/>
+					<crewMember amount="1" class="lanius"/>
 					<item_modify>
 						<item type="scrap" min="-40" max="-40"/>
 					</item_modify>
 				</event>
 			</choice>
 			<choice req="LIST_CREW_SPIDER" blue="false" hidden="true">
-				<text>Clone your Spider crew. [-20 scrap]</text>
+				<text>Clone your Spider crew. [-20~]</text>
 				<event>
 					<text>"Remember to tell your friendssss!" The Slugs drop off the clone before disappearing back into their ship.</text>
 					<crewMember amount="1" class="spider"/>
@@ -2487,12 +2506,12 @@
 				</event>
 			</choice>
 			<choice req="LIST_CREW_ANCIENT" blue="false" hidden="true">
-				<text>Clone your Ancient crew. [-80 scrap]</text>
+				<text>Clone your Obelisk crew. [-60~]</text>
 				<event>
-					<text>"What a ssstrange creature. Ah well, if they can be cloned then I won't asssk quessstionsss." The Slugs drop off the clone before disappearing back into their ship.</text>
-					<crewMember amount="1" class="ancient"/>
+					<text>"What a ssstrange creature. Ah well, if they can be cloned, then I won't asssk quessstionsss." The Slugs drop off the clone before disappearing back into their ship.</text>
+					<crewMember amount="1" class="obelisk"/>
 					<item_modify>
-						<item type="scrap" min="-80" max="-80"/>
+						<item type="scrap" min="-60" max="-60"/>
 					</item_modify>
 				</event>
 			</choice>
@@ -2580,7 +2599,7 @@
 		</event>
 	</choice>
 </event>
-<event name="SLUGHOME_GRAVE_WIN" unique="true">
+<event name="SLUGHOME_GRAVE_WIN">
 	<text>Though the gravesite is dotted with many different tombs, 3 in particular stand out to you.</text>
 	<choice hidden="true">
 		<text>Raid the tomb marked as "Arsagh".</text>
@@ -2762,6 +2781,7 @@
 <event name="NEBULA_ENCOUNTER_SLUGHOME_HACKER" unique="true">
 	<text>The Slug Hackers are surprisingly rare, even in Slug territory. Despite this, you seem to have had the misfortune to have encountered one at this beacon.</text>
 	<ship load="SHIP_HACKER" hostile="true"/>
+	<environment type="nebula"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="COMBAT_CHECK"/>
@@ -2836,8 +2856,8 @@
 <eventList name="NEBULA_DISTRESS_SLUGHOME">
 	<event load="NEBULA_SLUG_DISTRESS_ROCK"/>
 	<event load="NEBULA_DISTRESS_SLUG_QUESTION"/>
-	<!--<event load="DISTRESS_SLUG_TRICK"/> THESE DON'T EXIST???
-	<event load="DISTRESS_SLUG_RESCUE"/>-->
+	<event load="SLUG_DISTRESS_TRICK"/>
+	<!--<event load="DISTRESS_SLUG_RESCUE"/>-->
 </eventList>
 
 
@@ -2858,7 +2878,7 @@
 <event name="NEBULA_SLUGHOME_PLEASURE_1" unique="true">
 	<preventQuest/>
 	<text>The nebula at this beacon has cleared partially, revealing a massive Slug pleasure barge! These ships are populated to the brim with Slugs looking to have an... enjoyable experience. Despite its size, the ship doesn't seem to wield any weapons at all.</text>
-	<img back="BACK_EVENT_LIGHTNEBULA" planet="PLANET_PLEASURE"/>
+	<img back="BACK_EVENT_LIGHTNEBULA" planet="PLANET_NEST"/>
 	<status type="divide" target="player" system="sensors" amount="2"/>
 	<choice hidden="true">
 		<text>Should be easy enough, raid the barge.</text>
@@ -2892,6 +2912,7 @@
 	<choice hidden="true">
 		<text>There's nothing else we can do. Let it jump.</text>
 		<event>
+			<noQuestText/>
 			<text>You might not be able to fight it here, but maybe you'll have the luck to run into it again in this sector or the next.</text>
 			<quest event="SLUGHOME_PLEASURE_2_NOQUEST"/>
 		</event>
@@ -2965,7 +2986,7 @@
 	</choice>
 </event>
 <event name="SLUGHOME_PLEASURE_HIDDENAUG">
-	<hiddenAug>ACH_BOSS_PLEASUREBARGE</hiddenAug>
+	<variable name="ach_boss_pleasurebarge" op="set" val="1"/>
 	<unlockCustomShip silent="false">PLAYER_SHIP_PLEASURE</unlockCustomShip>
 </event>
 
@@ -2984,7 +3005,7 @@
 				<choice hidden="true">
 					<text>They're at our mercy. Force them to serve on the ship.</text>
 					<event>
-						<crewMember amount="1" class="sabo"/>
+						<crewMember amount="1" class="slug_saboteur"/>
 					</event>
 				</choice>
 				<choice hidden="true">
@@ -3019,7 +3040,7 @@
 					<event>
 						<text>The Slug teleports over, reluctant to work among you but realizing it's the only way to save the civilians from your wrath.</text>
 						<ship hostile="false"/>
-						<crewMember amount="1" pilot="2" class="sabo"/>
+						<crewMember amount="1" pilot="2" class="slug_saboteur"/>
 						<choice hidden="true">
 							<text>Continue...</text>
 							<event load="SLUGHOME_PLEASURE_HIDDENAUG"/>
@@ -3053,7 +3074,7 @@
 		</choice>
 	</surrender>
 	<destroyed>
-		<text>The Pleasure Barge explodes, scattering debris and the corpses of dozens of civilian Slug corpses. You salvage the debris, of which there is quite a decent portion of.</text>
+		<text>The Pleasure Barge explodes, scattering debris and the corpses of dozens of civilian Slug. You salvage the debris, of which there is quite a decent portion of.</text>
 		<autoReward level="HIGH">scrap_only</autoReward>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -3221,7 +3242,7 @@
 	<deadCrew load="PONY_WORLD_WIN"/>
 	<crew>
 		<crewMember type="slug" prop="0.50"/>
-		<crewMember type="knight" prop="0.50"/>	
+		<crewMember type="slug_knight" prop="0.50"/>	
 	</crew>
 </ship>
 <event name="PONY_WORLD_WIN">
@@ -3230,7 +3251,7 @@
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>Before you can do anything, the grey cloud suddenly grows larger and conceals the Slugs in a curtain of grey. You hear a blood curtling scream and suddenly the cloud dissipates, leaving nothing but puddle of lacerated flesh and blood. "We warned them not to disturb the equinoids... Some people simply do not listen..."</text>
+			<text>Before you can do anything, the grey cloud suddenly grows larger and conceals the Slugs in a curtain of grey. You hear a blood curdling scream and suddenly the cloud dissipates, leaving nothing but puddle of lacerated flesh and blood. "We warned them not to disturb the equinoids... Some people simply do not listen..."</text>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event>
@@ -3271,7 +3292,7 @@
 			<event>
 				<text>"You... oh... It appears I've made a severe lapse in my judgment. Then why are you here?"</text>
 				<ship hostile="false"/>
-				<hiddenAug>ACH_BOSS_SALT</hiddenAug>
+				<variable name="ach_boss_salt" op="set" val="1"/>
 				<choice hidden="true">
 					<text>Sylvan sent us.</text>
 					<event>
@@ -3302,15 +3323,20 @@
 	<destroyed>
 		<text>It appears you've destroyed the Salt Man's ship. While it's true he wasn't aboard, you doubt you'll be able to find his location now.</text>
 		<autoReward level="HIGH">standard</autoReward>
-		<hiddenAug>ACH_BOSS_SALT</hiddenAug>
+		<variable name="ach_boss_salt" op="set" val="1"/>
 	</destroyed>
 	<deadCrew>
 		<text>It appears you've killed the Salt Man's crew. While it's true he wasn't aboard, you doubt you'll be able to find his location now.</text>
 		<autoReward level="HIGH">standard</autoReward>
-		<hiddenAug>ACH_BOSS_SALT</hiddenAug>
+		<variable name="ach_boss_salt" op="set" val="1"/>
 	</deadCrew>
 </ship>
 <event name="NEBULA_SALT_QUEST">
+	<beaconType id="map_icon_merchantquest_major" global="true">
+        <color r="155" g="90" b="205" a="1.0"/>
+        <unvisitedTooltip>This is the location of a quest from the Traveling Merchant.</unvisitedTooltip>
+        <visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+    </beaconType>
 	<preventFleet/>
 	<quest>
 		<nebulaBeacon>true</nebulaBeacon>
@@ -3364,6 +3390,17 @@
 </event>
 
 <event name="NEBULA_SALT_QUEST_2">
+	<beaconType id="map_icon_merchantquest_major" global="true">
+        <color r="155" g="90" b="205" a="1.0"/>
+        <unvisitedTooltip>This is the location of a quest from the Traveling Merchant.</unvisitedTooltip>
+        <visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+    </beaconType>
+	<quest>
+		<nebulaBeacon>true</nebulaBeacon>
+		<createNebula>false</createNebula>
+		<aggressive>2</aggressive>
+	</quest>
+	<preventFleet/>
 	<text>You find yourself in yet another clearing, and see a massive bay. It's very pleasant looking and you aren't sure where the Clansmen could possibly be keeping something as sinister as a "dissection center"... until you look towards the sky.</text>
 	<img back="BACK_EVENT_CLANJAIL" planet="NONE"/>
 	<choice hidden="true">
@@ -3420,7 +3457,7 @@
 						</event>
 					</choice>
 					<choice hidden="true" req="LIST_CREW_CLAN">
-						<text>(Clansman Crew) Of course!</text>
+						<text>(Clansman Crew) "Of courssse!"</text>
 						<event>
 							<text>Your Clansman crew flashes a smile and pulls out his membership card. It always pays to have connections in the right places. Or... wrong places.</text>
 							<choice hidden="true">
@@ -3551,8 +3588,8 @@
 
 <event name="SYLVAN_DOES_AN_EX_MACHINA">
 	<text>As more ships approach, underneath the shadow of the massive dissection center, it becomes apparent this is the end. "The EHG hasss had enough of you messsing around in our sssector! Ssssurrender the Sssalt Man or be annihilated!"</text>
-	<hiddenAug>ACH_BOSS_CLAN</hiddenAug>
-	<choice hidden="true">
+	<variable name="ach_boss_clancruiser" op="set" val="1"/>
+	<choice hidden="true" req="pilot" blue="false" max_group="0">
 		<text>No, screw you! You guys can't even keep a consistent accent!</text>
 		<event>
 			<text>"Oi! Lad, you don't have to be rude! Anywaysss, you've made your choiccce mate. Time to sssuffer the consssequencc-" The Clansman doesn't get a chance to finish his sentence when an 18 burst salvo takes out his shields then engines, causing him to spiral into a nearby ship and crash into the market below in a fiery ball of destruction!</text>
@@ -3560,7 +3597,7 @@
 				<text>Continue...</text>
 				<event>
 					<text>From the sky descends Sylvan's ship, followed by the Salt Man's own cruiser, firing away into the fleet. "Crap crap crap it'sssss Ssssylvan! RUN!" The Clansmen scatter. You knew Sylvan had a particularly... well armed ship, but you didn't think he was strong enough to scare away an entire fleet. Evidently, his departure from the Guild left quite the impression.</text>
-					<choice hidden="true">
+					<choice hidden="true" req="salt" blue="false" lvl="1">
 						<text>Continue...</text>
 						<event>
 							<text>You watch as Sylvan and the Salt cruiser land in front of you. "Sssstranger ssstranger, I knew I could count on you!" Sylvan laughs nervously, then faces Obyn, but before he can speak he's cut off. "If you dare address me as 'stranger' I'll crack open your skull." "Heheh, I wouldn't dream of it Obyn. It'ssss been a long time. How'ssss life?"</text>
@@ -3592,11 +3629,15 @@
 							</choice>
 						</event>
 					</choice>
+					<choice hidden="true" req="salt" blue="false" lvl="0" max_lvl="0">
+						<text>Continue...</text>
+						<event load="SYLVAN_SALT_REWARD_NOCREW"/>
+					</choice>
 				</event>
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true">
+	<choice hidden="true" req="salt" blue="false" max_group="1">
 		<text>Give up the Salt Man.</text>
 		<event>
 			<text>The Salt Man turns to you in shock, but you have little choice. You can't take on an entire fleet! You push him forward, where a team of Clansmen pick him up. "Wissse choiccce ssson. Looksss like you'll live to sssee tomorrow after all. But do usss a favor, and don't come back."</text>
@@ -3608,6 +3649,18 @@
 	</choice>
 </event>
 <event name="SYLVAN_SALT_REWARD">
+	<loadEventList seeded="true" first="true" generate="true">
+		<event name="SYLVAN_SALT_REWARD_OBYN" req="salt" lvl="1"/>
+		<event name="SYLVAN_SALT_REWARD_NOCREW" req="salt" lvl="0" max_lvl="0"/>
+	</loadEventList>
+</event>
+<event name="SYLVAN_SALT_REWARD_NOCREW">
+	<text>You watch as Sylvan and the Salt cruiser land in front of you. Sylvan understandably remains silent at the moment, but with the help of Obyn's former crew, carry over a large crate of scrap. They transfer over some blueprints for Obyn's vessel as well to you, figuring the Federation might have some use for them. You can tell Sylvan is distraught about losing Obyn, but it's too late now. "Sssstranger, I ssstill have an old gun of hisss on hand. I... I don't think I can keep it around any longer. Sssso, perhapsss it isss bessst if you take it. I don't blame you for thisss, but... oh well."</text>
+	<unlockCustomShip silent="false">PLAYER_SHIP_SALT</unlockCustomShip>
+	<autoReward level="HIGH">scrap_only</autoReward>
+	<weapon name="SALT_LAUNCHER"/>
+</event>
+<event name="SYLVAN_SALT_REWARD_OBYN">
 	<text>Sylvan, with the help of Obyn and his crew, carry over a large crate of scrap. Obyn transfers over some blueprints for his vessel as well to you, figuring the Federation might have some use for them. Sylvan heads back to his ship, but Obyn stands between the three ships with a look of indecision on his face.</text>
 	<unlockCustomShip silent="false">PLAYER_SHIP_SALT</unlockCustomShip>
 	<autoReward level="HIGH">scrap_only</autoReward>
@@ -3634,7 +3687,7 @@
 				<text>Entice him to stay with you and become a Federation hero.</text>
 				<event>
 					<text>"A hero of the Federation? You know how to win me over... I've tried being a bounty hunter, but things obviously didn't work well, and the life of a merchant isn't for me. I'm sure we'll see each other again Sylvan. As for you, Garter." Obyn turns to face the Rockman you spoke with earlier. "I'm trusting you with my ship. Take good care of it." Obyn turns to you. "Now, shall we go? I see adventure on the horizon!"</text>
-					<hiddenAug>ACH_CREW_OBYN</hiddenAug>
+					<variable name="ach_crew_obyn" op="set" val="1"/>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event load="SALT_CHOICE_SELF"/>
@@ -3661,7 +3714,7 @@
 </event>
 <event name="SALT_CHOICE_SYLVAN">
 	<text>That was... quite the adventure all in all. In the end, you reunited Sylvan with his lost partner, figured out what the hell a Salt Man is, probably solved some ancient biological mystery, and pissed off an entire guild of Slugs. Doesn't sound particularly out of place for you.</text>
-	<hiddenAug>MARKER_SYLVAN_AND_SALT</hiddenAug>
+	<variable name="loc_sylvanboyfriend" op="set" val="1"/>
 </event>
 <event name="SALT_CHOICE_CREW">
 	<text>That was... quite the adventure all in all. In the end, you saved the Salt Man and helped Sylvan face his fears at being personal, figured out what the hell a Salt Man is, probably solved some ancient biological mystery, and pissed off an entire guild of Slugs. Doesn't sound particularly out of place for you.</text>
@@ -3704,7 +3757,7 @@
 	<choice hidden="true" req="weapons" lvl="5">
 		<text>(Upg. Weapons) Give me everything you have or die.</text>
 		<event>
-			<text>"Jeez! No need to be so hostile! We'll give you anything you want!" The Crystals send over some supplies.</text>
+			<text>"By the crypt! No need to be so hostile! We'll give you anything you want!" The Crystals send over some supplies.</text>
 			<autoReward level="LOW">stuff</autoReward>
 		</event>
 	</choice>
@@ -3850,7 +3903,7 @@
 							</choice>
 						</event>
 					</choice>
-					<choice hidden="true" req="soldier">
+					<choice hidden="true" req="LIST_CREW_SOLDIER">
 						<text>(Soldier Crew) Your Soldier has some training in mounted combat. Send him.</text>
 						<event>
 							<text>Your crew steps up to the competitors' chamber amongst some other aliens. Some Clansmen finish up preparing, and then usher in the first few contestants...</text>
@@ -3861,7 +3914,7 @@
 						</event>
 					</choice>
 					<choice hidden="true" req="LIST_CREW_JERRY">
-						<text>(Jerry) Jerry really really really wants to ride the horse! Send him.</text>
+						<text>(Jerry) Jerry really really wants to ride the horse! Send him.</text>
 						<event>
 							<text>Jerry steps up to the competitors' chamber amongst some other aliens. Some Clansmen finish up preparing, and then usher in the first few contestants...</text>
 							<choice hidden="true">
@@ -3870,7 +3923,7 @@
 							</choice>
 						</event>
 					</choice>
-					<choice hidden="true" req="lizard">
+					<choice hidden="true" req="LIST_CREW_MORPH_LIZARD">
 						<text>(Lizard Crew) Your Lizard has ridden Equinoids before. Send him.</text>
 						<event>
 							<text>Your crew steps up to the competitors' chamber amongst some other aliens. Some Clansmen finish up preparing, and then usher in the first few contestants...</text>
@@ -3892,7 +3945,7 @@
 							<item_modify>
 								<item type="scrap" min="-30" max="-30"/>
 							</item_modify>
-							<crewMember amount="1" class="ponyt"/>
+							<crewMember amount="1" class="pony_tamed"/>
 						</event>
 					</choice>
 					<choice>
@@ -3960,7 +4013,7 @@
 		<text>Continue...</text>
 		<event>
 			<text>As you prepare to leave the rodeo, you see an Equinoid running towards you dragging the Ranger by its lead. "Woah, woah! Ssstop!" The Clansmen brings the Equinoid to a halt, but only because the horse has stopped right before Jerry. "Thisss one broke out of containment and chasssed you all the way out here. Guesss ssshe really likesss your friend. Might asss well keep her, we got plenty more."</text>
-			<crewMember amount="1" combat="2" class="ponyt"/>
+			<crewMember amount="1" combat="2" class="pony_tamed"/>
 			<unlockCustomShip silent="false">PLAYER_SHIP_PONY</unlockCustomShip>
 		</event>
 	</choice>
@@ -4060,7 +4113,7 @@
 		<text>Arrest him.</text>
 		<event>
 			<text>You don't actually have handcuffs on you, and you aren't really sure what you're doing. Fortunately the Clansman doesn't seem to know Federation law very well either, so when you tell him it's standard for Federation criminals to do service aboard the ship holding the arrest, he doesn't question it.</text>
-			<crewMember amount="1" class="snail"/>
+			<crewMember amount="1" class="slug_clansman"/>
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -4075,7 +4128,7 @@
 		<event>
 			<text>Your Zoltan breaks out a pair of handcuffs from somewhere and cuffs the Clansmen one by one. They order the facility shut down, citing various codes if you hadn't known better would have assumed were made up, then ushers the Clansmen aboard your ship and confiscated several crates of supplies. When you ask what happens next, your Zoltan shrugs and figures you might as well make use of all this.</text>
 			<autoReward level="HIGH">standard</autoReward>
-			<crewMember amount="1" class="snail"/>
+			<crewMember amount="1" class="slug_clansman"/>
 		</event>
 	</choice>
 </event>
@@ -4090,7 +4143,7 @@
 			<choice>
 				<text>Buy a Mantis ship.</text>
 				<event>
-					<text>This is probably the most scrap you've ever spent on one item before, but hopefully it's worth it. The Ghosts bring over a mantis ship, which you find still contains the corpses of the previous crew, and their weapons as well!</text>
+					<text>This is probably the most scrap you've ever spent on one item before, but hopefully it's worth it. The Ghosts bring over a Mantis ship, which you find still contains the corpses of the previous crew, and their weapons as well!</text>
 					<item_modify>
 						<item type="scrap" min="-500" max="-500"/>
 					</item_modify>
@@ -4117,8 +4170,8 @@
 													<choice hidden="true">
 														<text>Continue...</text>
 														<event>
-															<text>Now that you've taken all of the weapons, you grab one of the augments installed on the ship then prepare to leave.</text>
-															<augment name="LIST_WEAPONS_ALL_CRAPBUCKET"/>
+															<text>You pull another weapon off of the hull.</text>
+															<weapon name="LIST_WEAPONS_ALL_CRAPBUCKET"/>
 															<choice hidden="true">
 																<text>Continue...</text>
 																<event load="BOUGHT_THE_GHOST_SHIP"/>
@@ -4174,7 +4227,7 @@
 		<event>
 			<text>You scrounge around in the Mantis ships and grab some more supplies, but an angry team of Ghosts climbs aboard to avenge their fallen friends!</text>
 			<autoReward level="MED">standard</autoReward>
-			<boarders min="2" max="3" class="goul"/>
+			<boarders min="2" max="3" class="phantom_goul"/>
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -4184,6 +4237,7 @@
 </event>
 <event name="BOUGHT_THE_GHOST_SHIP">
 	<text>Though you've taken everything you need from the ship for now, you figure there's no harm in sending the wreck back to the Federation hangar... because why not?</text>
+	<unlockCustomShip silent="false">PLAYER_SHIP_STUPIDGHOST</unlockCustomShip>
 </event>
 
 <event name="NEBULA_CLAN_PLUSHIES" unique="true">
@@ -4216,7 +4270,7 @@
 											<item_modify>
 												<item type="scrap" min="-14" max="-14"/>
 											</item_modify>
-											<crewMember amount="1" class="ranger"/>
+											<crewMember amount="1" class="slug_ranger"/>
 										</event>
 									</choice>
 									<choice hidden="true">
@@ -4253,7 +4307,7 @@
 											<item_modify>
 												<item type="scrap" min="-14" max="-14"/>
 											</item_modify>
-											<crewMember amount="1" class="ranger"/>
+											<crewMember amount="1" class="slug_ranger"/>
 										</event>
 									</choice>
 									<choice hidden="true">
@@ -4290,7 +4344,7 @@
 											<item_modify>
 												<item type="scrap" min="-14" max="-14"/>
 											</item_modify>
-											<crewMember amount="1" class="ranger"/>
+											<crewMember amount="1" class="slug_ranger"/>
 										</event>
 									</choice>
 									<choice hidden="true">
@@ -4417,7 +4471,7 @@
 					<ship hostile="true"/>
 					<choice hidden="true">
 						<text>Continue...</text>
-						<event load="COMBAT_CHECK"/>
+						<event load="MORALITY_UPDATE_SHELL_FIGHT"/>
 					</choice>
 				</event>
 			</choice>
@@ -4494,7 +4548,7 @@
 				<text>Isn't this a nebula though?</text>
 				<event>
 					<text>"Haha, stupid Federation captain thinking all nebula sector once nebula sector! Haven't ever heard of Coalition Cealaforming tech? Guild, trading with Coalition, buying many many cealaformer to make this sector!"</text>
-					<choice hidden="true" req="ACH_BOSS_CEALAFORMER">
+					<choice hidden="true" req="ach_boss_cealaformer">
 						<text>Yeah, I think I've fought one of those before.</text>
 						<event>
 							<text>"Having you? Then you do good service to all galaxy! Slug thinking they can make everything nebula? Well they wrong! Federation got them, apparently! Hahah! This service cannot go unpaid!"</text>
@@ -4585,7 +4639,7 @@
 														<text>(Hive Mantis) Convince him to join you.</text>
 														<event>
 															<text>"Federation having Mantis? I here thinking only Free Mantis welcome. Federation might be in bad spot, but not bad as Coalition! I take offer, captain."</text>
-															<crewMember amount="1" class="suzerain"/>
+															<crewMember amount="1" class="mantis_suzerain"/>
 														</event>
 													</choice>
 													<choice hidden="true">
@@ -4623,7 +4677,7 @@
 														<text>(Hive Mantis) Convince him to join you.</text>
 														<event>
 															<text>"Federation having Mantis? I here thinking only Free Mantis welcome. Federation might be in bad spot, but not bad as Coalition! I take offer, captain."</text>
-															<crewMember amount="1" class="suzerain"/>
+															<crewMember amount="1" class="mantis_suzerain"/>
 														</event>
 													</choice>
 													<choice hidden="true">
@@ -4655,7 +4709,7 @@
 							<choice hidden="true">
 								<text>Wouldn't an alliance mean more Slugs are in Mantis Territory?</text>
 								<event>
-									<text>"If it were dumb Federation, yes! But we smarter, alliance not grant permit for other race in other territory. Coalition territory shared, all others independant. Vital for Coalition survival. Making sense to you?"</text>
+									<text>"If it were dumb Federation, yes! But we smarter, alliance not grant permit for other race in other territory. Coalition territory shared, all others independent. Vital for Coalition survival. Making sense to you?"</text>
 									<choice hidden="true">
 										<text>Yes of course.</text>
 										<event>
@@ -4733,7 +4787,7 @@
 							<choice>
 								<text>Use some missiles to blow the Clansmen out of the cave.</text>
 								<event>
-									<text>You set lay the bombs all around the cave then wait for them to explode. The impact sends the cave crumbling in and forcing the Clansmen out, where they're arrested.</text>
+									<text>You lay the bombs all around the cave then wait for them to explode. The impact sends the cave crumbling in and forcing the Clansmen out, where they're arrested.</text>
 									<item_modify>
 										<item type="missiles" min="-7" max="-7"/>
 									</item_modify>
@@ -4942,8 +4996,8 @@
 	</choice>
 </event>
 <textList name="NEBULA_SLUG_CLAN_FIGHT">
-	<text>Usualy the Slug ships you expect see here are property of the Guild, but sometimes standard Kleptocracy citizens make their way to this sector for a bit of hunting. And as usual, looks like you're the one being hunted!</text>
-	<text>"Federation! Thisss isss Kleptocraccccy ssspacce. Don't think jussst caussse the Guild letssss in outsssidersss that you'll be welcomed by ussss!"</text>
+	<text>Usually the Slug ships you expect to see here are property of the Guild, but sometimes standard Kleptocracy citizens make their way to this sector for a bit of hunting. And as usual, looks like you're the one being hunted!</text>
+	<text>"Federation! Thisss isss Kleptocraccccy ssspacce. Don't think jussst becaussse the Guild letssss in outsssidersss that you'll be welcomed by ussss!"</text>
 	<text>A Slug vessel is inbound! They might not be EHG, but they're still a hostile you need to eliminate or run from!</text>
 	<text>"You're the lasssst kill I need to passsss my memberssship exam and become a member of the Guild! Now sssstand ssstill, I'm tired of having to put effort into thisss!"</text>
 	<text>There's many Slugs in EHG space, but you didn't expect to see a standard Kleptocracy citizen. Not that you're surprised, but you are mildly displeased that they've already turned hostile!</text>
@@ -4981,15 +5035,16 @@
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->
 <event name="NEBULA_DISTRESS_SLOCKNOG_START" unique="true">
+	<preventQuest/>
     <text>The distress beacon here appears to be broadcasting through a clearing in the nebula. Following it, you come across a rogue planet drifting through the abyss. Scans indicate that something has crashed on the surface.</text>
     <img back="BACK_EVENT_LIGHTNEBULA" planet="PLANET_WATER"/>
     <status type="loss" target="player" system="sensors" amount="1"/>
     <distressBeacon/>
-    <choice req="MARKER_FOUND_SLOCKNOG" lvl="0" hidden="true" max_group="0" blue="false">
+    <choice req="loc_found_slocknog" lvl="0" hidden="true" max_group="0" blue="false">
         <text>Investigate.</text>
         <event load="DISTRESS_SLOCKNOG_INVESTIGATE"/>
     </choice>
-    <choice req="MARKER_FOUND_SLOCKNOG" lvl="1" hidden="true" max_group="0" blue="false">
+    <choice req="loc_found_slocknog" lvl="1" hidden="true" max_group="0" blue="false">
         <text>Investigate.</text>
         <event load="DISTRESS_SLOCKNOG_INVESTIGATE_BORING"/>
     </choice> 
@@ -5009,7 +5064,7 @@
     </choice>
 </event>
 <event name="DISTRESS_SLOCKNOG_INVESTIGATE" unique="true">
-	<hiddenAug>MARKER_FOUND_SLOCKNOG</hiddenAug>
+	<variable name="loc_found_slocknog" op="set" val="1"/>
 	<text>You pilot closer to the planet. Though it is almost entirely pitch black, a single light is emitting from a large elite Slug cruiser! As soon as you approach a bright yellow Slug comes crawling out from inside, a weapon drawn.</text>
 	<choice>
 		<text>Speak with the Slug.</text>
@@ -5038,7 +5093,7 @@
 					<choice>
 						<text>Continue...</text>
 						<event>
-							<text>" I need not thisss weapon any longer, it will sssservicce you inssstead. Asss thankss, for your mossst generous offer."</text>
+							<text>"I need not thisss weapon any longer, it will sssservicce you inssstead. Asss thankss, for your mossst generous offer."</text>
 							<weapon name="RANDOM"/>
 						</event>
 					</choice>
@@ -5065,7 +5120,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice>
+	<choice hidden="true">
 		<text>Blast him and scrap his ship.</text>
 		<event>
 			<text>Taking no chances, you immediately shoot the Slug first, turning him into a smoking puddle of blood and ooze. You land the ship and dismantle his cruiser.</text>
@@ -5074,17 +5129,17 @@
 	</choice>
 </event>
 <event name="SLOCKNOG_REVEAL">
-	<text>"Oh, heheh, yessss. I lied about the wandering hero part, I am but in fact Sssssir Ssslocknog Sssalvadi III. I WASSS king of thissss placce, until that bassstard Nightsss cheated and ssstole the crown, then exiled me!"</text>
+	<text>"Oh, heheh, yessss. I lied about the wandering hero part, I am but in fact Sssssir Ssslocknog Dssilli. I WASSS king of thissss placce, until that bassstard Nightsss cheated and ssstole the crown, then exiled me!"</text>
 	<choice hidden="true">
 		<text>Nights? Isn't that a reference to a different event?</text>
 		<event>
-			<text>"Event? The hell iss an event? Anywaysss, Nightsss isss a pirate and a ssself proclaimed 'badassss.' Every 4 yearsss the Sssslugs hold their Crown Theft Fesssstival, where thievesss compete to sssteal the crown and become the next king. It isss a time honored and non-violent tradition, at leasssst until Nightsss came and killed my men and forced me into giving the crown to him!"</text>
+			<text>"Event? The hell iss an event? Anywaysss, Nightsss isss a pirate and a ssself proclaimed 'badassss'. Every 4 yearsss the Sssslugs hold their Crown Theft Fesssstival, where thievesss compete to sssteal the crown and become the next king. It isss a time honored and non-violent tradition, at leasssst until Nightsss came and killed my men and forced me into giving the crown to him!"</text>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event>
 					<text>"I wasss KING until that sssscumlord cheated and took everything from me! But now with thisss scrap, I can fix up my ssship and retake my throne! Thank you captain. Have thissss augment, and sssshould you wissh to sssee the sspectacle for yoursself, here are the coordinatesss to the Royal Nebula."</text>
 					<augment name="RANDOM"/>
-					<hiddenAug>COORDS_NIGHTS</hiddenAug>
+					<variable name="coords_nights" op="set" val="1"/>
 				</event>
 			</choice>
 		</event>
@@ -5107,6 +5162,7 @@
 
 <event name="KNIGHT_PALACE" unique="true">
 	<preventQuest/>
+	<preventFleet/>
 	<beaconType id="map_icon_palace2" global="true">
 		<color r="220" g="210" b="60" a="1"/>
 	</beaconType>
@@ -5123,7 +5179,7 @@
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event>
-							<text>Slocknog urges Nights to come out several more times, then gives up and waits. There's a moment of silence, finally followed by Night's raspy voice over the intercom. "Fine, you sssshriveled pisss colored sssmelly sssson-of-a-bitch! I'll come out alright!" A few minutes later, Nights's signature ship, the Black Raven, comes bursting out of one of the hangars firing directly at Slocknog's much larger cruiser. Immediately, chaos breaks out.</text>
+							<text>Slocknog urges Nights to come out several more times, then gives up and waits. There's a moment of silence, finally followed by Night's raspy voice over the intercom. "Fine, you sssshriveled pisss colored sssmelly sssson-of-a-bitch! I'll come out alright!" A few minutes later, Nights' signature ship, the Black Raven, comes bursting out of one of the hangars firing directly at Slocknog's much larger cruiser. Immediately, chaos breaks out.</text>
 							<choice hidden="true">
 								<text>Continue...</text>
 								<event>
@@ -5179,16 +5235,16 @@
 </event>
 <event name="KNIGHT_PALACE_RESOLUTION_SLOCKNOG">
 	<text>As the Black Raven crashes into the lake, the fighting suddenly seems to come to a halt. You land your ship next to the Clairvoyant Cruiser, where Slocknog smiles and shakes your hand. "I of coursssse could have done it on my own, but... thank you, captain. Thisss isss twiccce now you have gone out of your way to help me. May the ssstarssss ssshine brightesst between usss, eh friend?"</text>
-	<hiddenAug>ACH_BOSS_NIGHTS</hiddenAug>
+	<variable name="ach_boss_nights" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="KNIGHT_PALACE_RESOLUTION_SLOCKNOG_REAL"/>
 	</choice>
-	<choice hidden="true" req="MARKER_GOT_CLANCROWN">
+	<choice hidden="true" req="loc_got_clancrown">
 		<text>Go after the crown yourself.</text>
 		<event>
 			<text>While you watch the ship be fished out of the lake, you remember the Clansmen from earlier, and get the urge to retrieve the crown for yourself, though it won't be easy. Assuming they're still with you, that is.</text>
-			<choice hidden="true" req="ranger">
+			<choice hidden="true" req="slug_ranger">
 				<text>Your Clansman is alive, let's go for it.</text>
 				<event>
 					<text>The Slugs have just found the Black Raven's wreck, and have dropped it onto the bank. You'll need stealth to get over there undetected.</text>
@@ -5233,6 +5289,51 @@
 					</choice>
 				</event>
 			</choice>
+			<choice hidden="true" req="beans">
+				<text>Bean Sylvan is alive, let's go for it.</text>
+				<event>
+					<text>The Slugs have just found the Black Raven's wreck, and have dropped it onto the bank. You'll need stealth to get over there undetected.</text>
+					<choice hidden="true" req="cloaking" lvl="2">
+						<text>(Upg. Cloaking) Cloak and approach.</text>
+						<event>
+							<text>You cloak the ship and pilot closer to the wreckage. Now, you'll need to be able to teleport your crew onto the Raven without being seen.</text>
+							<choice hidden="true" req="teleporter">
+								<text>(Teleporter) Beam the crew aboard.</text>
+								<event>
+									<text>Now that your crew are aboard, the stakes are a lot higher. Unfortunately, it's not easy to see in the dark corridors.</text>
+									<choice hidden="true" req="sensors" lvl="2">
+										<text>(Upg. Sensors) Guide them.</text>
+										<event load="KNIGHT_BEANS_THEFT"/>
+									</choice>
+									<choice hidden="true" req="ADV_SCANNERS">
+										<text>(LRS) Guide them.</text>
+										<event load="KNIGHT_BEANS_THEFT"/>
+									</choice>
+									<choice hidden="true">
+										<text>Proceed in the darkness.</text>
+										<event>
+											<text>Oblivious to their surroundings, your crew end up caught by one of the salvage team, and are shot! You have no choice but to pull away, but it's too late. The guards are now on high alert, and your ship takes heavy damage.</text>
+											<damage amount="7"/>
+											<removeCrew>
+												<clone>true</clone>
+												<text>Fortunately, your crew is able to be cloned, but that won't reverse the damage you've taken.</text>
+											</removeCrew>
+										</event>
+									</choice>
+								</event>
+							</choice>
+							<choice hidden="true">
+								<text>Nevermind.</text>
+								<event load="KNIGHT_PALACE_RESOLUTION_SLOCKNOG_REAL"/>
+							</choice>
+						</event>
+					</choice>
+					<choice hidden="true">
+						<text>Nevermind.</text>
+						<event load="KNIGHT_PALACE_RESOLUTION_SLOCKNOG_REAL"/>
+					</choice>
+				</event>
+			</choice>
 			<choice hidden="true">
 				<text>Nevermind.</text>
 				<event load="KNIGHT_PALACE_RESOLUTION_SLOCKNOG_REAL"/>
@@ -5247,14 +5348,32 @@
 		<event>
 			<text>Your crew waltz out of the wreck, crown on-top his head for all to see. You're amazed to see as the Slugs all around, Slocknog included, bow down, willing to accept this change of events...</text>
 			<choice hidden="true">
-				<text>Nevermind.</text>
-				<event load="WIN_SLUG"/>
+				<text>We've done it.</text>
+				<event>
+					<win ach="slug" creditsText="credit_victory_slug" text="The galaxy is now a slightly worse place thanks to you." creditsBackground="VICTORY_SLUG"/>
+				</event>
+			</choice>
+		</event>
+	</choice>
+</event>
+<event name="KNIGHT_BEANS_THEFT">
+	<text>You grab the crown and hold it up to admire it. However, a band of Saboteurs burst in and see your crew, and draw their lasers to shoot. Your team is almost killed before Bean Sylvan shouts for them to stop, declaring themselves the new king by rule of the Crown Theft Contest. The Slugs are dumbfounded, but you raise the can of beans into the air and no one protests.</text>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event>
+			<text>Your crew waltz out of the wreck, the crown ill-fittingly placed around the can of beans who drags it around him. You're amazed to see as the Slugs all around, Slocknog included, bow down, willing to accept this change of events... Like seriously, why are they so fine with this?</text>
+			<unlockCustomShip silent="false">PLAYER_SHIP_SYLVANTRANS_3</unlockCustomShip>
+			<choice hidden="true">
+				<text>We've done it.</text>
+				<event>
+					<win ach="slug" creditsText="credit_victory_slug_beans" text="The galaxy is now a slightly worse place thanks to you." creditsBackground="VICTORY_SLUG"/>
+				</event>
 			</choice>
 		</event>
 	</choice>
 </event>
 <event name="KNIGHT_PALACE_RESOLUTION_SLOCKNOG_REAL">
-	<text>Once Nights's corpse has been recovered, he is moved to a hearse ship for later. The crown too is recovered, broken but miraculously not obliterated. The Slugs gather together to discuss what to do next.</text>
+	<text>Once Nights' corpse has been recovered, he is moved to a hearse ship for later. The crown too is recovered, broken but miraculously not obliterated. The Slugs gather together to discuss what to do next.</text>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -5271,7 +5390,9 @@
 								<text>Continue...</text>
 								<event>
 									<text>"Well my friend, thisss isss now the THIRD time. Heheh, I'm forever in your debt I ssssuppossse. Perhapsss thisss isss a good ssstart to repaying you."</text>
+									<unlockCustomShip silent="false">PLAYER_SHIP_KNIGHT</unlockCustomShip>
 									<weapon name="RANDOM"/>
+									<augment name="EX_AUTO_COOLDOWN"/>
 									<autoReward level="HIGH">scrap_only</autoReward>
 								</event>
 							</choice>
@@ -5281,13 +5402,13 @@
 						<text>Suggest that the Slugs hold an election the proper way - through a vote.</text>
 						<event>
 							<text>Surprisingly, this revolutionary idea is not immediately rejected. Persuaded by recent events, the Slugs seem to genuinely consider settling their differences and staging a government reform for the better good. However, one member of the crowd inquires, "Then what ssshall happen to Sssslocknog?"</text>
-							<hiddenAug>MARKER_SLUGDEMOCRACY</hiddenAug>
+							<variable name="loc_slugdemocracy" op="set" val="1"/>
 							<choice hidden="true">
 								<text>We'll take him with us.</text>
 								<event>
 									<text>"Well, if it isss a choiccce between death or working aboard the sssship who hasss worked sso valiantly to assssissst me, I think I ssshall prefer not dying. Farewell to all of you, I hope you rot without me." Slocknog sharply turns and slithers onto your ship.</text>
-									<hiddenAug>ACH_CREW_SLOCKNOG</hiddenAug>
-									<crewMember amount="1" class="slocknog">Slocknog</crewMember>
+									<variable name="ach_crew_slocknog" op="set" val="1"/>
+									<crewMember amount="1" class="unique_slocknog">Slocknog</crewMember>
 								</event>
 							</choice>
 							<choice hidden="true">
@@ -5300,11 +5421,11 @@
 							</choice>
 						</event>
 					</choice>
-					<!--<choice hidden="true" req="MARKER_GOT_CLANCROWN">
+					<!--<choice hidden="true" req="loc_got_clancrown">
 						<text>We know a guy who was looking for the crown.</text>
 						<event>
 							<text>You look around for the Clansmen from earlier.</text>
-							<choice hidden="true" blue="false" req="snail" lvl="1" max_group="0">
+							<choice hidden="true" blue="false" req="slug_clansman" lvl="1" max_group="0">
 								<text>Here he is!</text>
 								<event>
 									<text>The crowd look at your Clansman and murmur. "It isss true, they have a Ssslug, and of anyone here they are the one who got the clossssessst to ssstealing it." A small circle of prominent Slugs gather to discuss this further.</text>
@@ -5320,7 +5441,7 @@
 									</choice>
 								</event>
 							</choice>
-							<choice hidden="true" blue="false" req="snail" lvl="0" max_group="0">
+							<choice hidden="true" blue="false" req="slug_clansman" lvl="0" max_group="0">
 								<text>Oh nevermind he's dead.</text>
 								<event>
 									<text>The crowd groans and goes back to their discussion.</text>
@@ -5370,7 +5491,7 @@
 </event>
 <event name="KNIGHT_PALACE_RESOLUTION_NIGHTS">
 	<text>As Slocknog's cruiser crashes into the lake, the fighting suddenly seems to come to a halt. You land your ship next to the Black Raven, where Nights is chuckling. "HAH! That'll ssshow that idiot what happenssss when you messs with Nights baby!" Nights pumps his tentacle into the air triumphantly, and you don't bother mentioning you did all of the work.</text>
-	<hiddenAug>ACH_BOSS_SLOCKNOG</hiddenAug>
+	<variable name="ach_boss_slocknog" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -5378,7 +5499,7 @@
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event>
-					<text>Furious, Nights storms up to them demanding they hand back to the crown to him, but the crowd refuses. "You basssstard, you don't dessserve ssshit! Had you jussst done your duty asss a king and handled thisss asss ssomething other than an overgrown man-child, we wouldn't have the corpsssess of dozensss sssmoldering in front of the Royal palaccce!" Shouts someone from the crowd, shockingly appearing to be straight from Nights's inner circle.</text>
+					<text>Furious, Nights storms up to them demanding they hand back to the crown to him, but the crowd refuses. "You basssstard, you don't dessserve ssshit! Had you jussst done your duty asss a king and handled thisss asss ssomething other than an overgrown man-child, we wouldn't have the corpsssess of dozensss sssmoldering in front of the Royal palaccce!" Shouts someone from the crowd, shockingly appearing to be straight from Nights' inner circle.</text>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event>
@@ -5390,13 +5511,10 @@
 									<choice hidden="true">
 										<text>Continue...</text>
 										<event>
-											<text>Nights might be an egregious and irredeemable asshole in many ways, but he apparently has enough of a conscience to thank you personally. Extending the greatest show of goodwill that he can, likely to gain favor from you in case of future issues, he bestows upon you a specialized weapon from his arsenal followed by heaps of scrap.</text>
-											<weapon name="RANDOM"/>
+											<text>Nights might be an egregious and irredeemable asshole in many ways, but he apparently has enough of a conscience to thank you personally. Extending the greatest show of goodwill that he can, likely to gain favor from you in case of future issues, he dispatches two guards of his inner circle to assist your mission, followed by heaps of scrap.</text>
+											<crewMember amount="2" class="slug_knight">Knight</crewMember>
 											<autoReward level="HIGH">scrap_only</autoReward>
-											<choice hidden="true">
-												<text>Continue...</text>
-												<event load="KNIGHT_SHIP_UNLOCK"/>
-											</choice>
+											<unlockCustomShip silent="false">PLAYER_SHIP_KNIGHT</unlockCustomShip>
 										</event>
 									</choice>
 								</event>
@@ -5405,13 +5523,13 @@
 								<text>Suggest that the Slugs hold an election the proper way - through a vote.</text>
 								<event>
 									<text>Surprisingly, this revolutionary idea is not immediately rejected. Persuaded by recent events, the Slugs seem to genuinely consider settling their differences and staging a government reform for the better good. However, one member of the crowd inquires, "Then what ssshall happen to Nightsss?"</text>
-									<hiddenAug>MARKER_SLUGDEMOCRACY</hiddenAug>
+									<variable name="loc_slugdemocracy" op="set" val="1"/>
 									<choice hidden="true">
 										<text>He can work for us to pay off his debt to the galaxy.</text>
 										<event>
 											<text>Nights isn't eager about the idea, but the Slugs seem to find great humor in banishing him to work aboard a Federation vessel. Greatly preferring paid labor aboard a ship over public execution by disintegration ray, Nights accepts, and soon after you've got a new crew member aboard.</text>
-											<hiddenAug>ACH_CREW_NIGHTS</hiddenAug>
-											<crewMember amount="1" class="nights">Nights</crewMember>
+											<variable name="ach_crew_nights" op="set" val="1"/>
+											<crewMember amount="1" class="unique_nights">Nights</crewMember>
 										</event>
 									</choice>
 									<choice hidden="true">
@@ -5431,18 +5549,13 @@
 		</event>
 	</choice>
 </event>
-<event name="KNIGHT_SHIP_UNLOCK">
-	<event/>
-</event>
-<event name="WIN_SLUG">
-	<event/>
-</event>
 
 <!--
 		CLEARING
 -->
 
 <event name="KNIGHT_CLAN" unique="true">
+	<preventQuest/>
 	<text>A Clan vessel has taken a rest nearby. You aren't sure why they're here so far outside of the nebulas where ships are hunting for the crown.</text>
 	<ship load="SHIP_CLAN_KING" hostile="false"/> 
 	<choice hidden="true">
@@ -5507,8 +5620,8 @@
 </event>
 <event name="KNIGHT_CLAN_OFFER">
 	<text>"You are truly an excccellent fighter! I could think of no one better to work for. Here'ssss to hoping we get that crown, friend!"</text>
-	<crewMember amount="1" class="ranger"/>
-	<hiddenAug>MARKER_GOT_CLANCROWN</hiddenAug>
+	<crewMember amount="1" class="slug_ranger"/>
+	<variable name="loc_got_clancrown" op="set" val="1"/>
 </event>
 
 <!--
@@ -5528,7 +5641,7 @@
 	<choice hidden="true">
 		<text>Respond.</text>
 		<event>
-			<text>"If our data issss correct, might it be true that you are the ssship everyone iss talking about? The one that hasss brought back to usss Slocknog, our great king?"</text>
+			<text>"If our data issss correct, might it be true that you are the ssship everyone iss talking about? The one that hasss brought back to usss Ssslocknog, our great king?"</text>
 			<choice hidden="true">
 				<text>Yes.</text>
 				<event>
@@ -5538,7 +5651,7 @@
 						<event>
 							<text>"Interesssting. And what makesss you sssay that?"</text>
 							<choice hidden="true">
-								<text>He keeps things traditional. No need to change what works</text>
+								<text>He keeps things traditional. No need to change what works.</text>
 								<event>
 									<text>"Yesss, if it ain't broke, don't fix it... Well then, I cannot thank you enough for sssaving our king. Accept thisss asss humble payment."</text>
 									<autoReward level="MED">stuff</autoReward>
@@ -5607,6 +5720,14 @@
 			</choice>
 		</event>
 	</choice>
+	<choice hidden="true" req="unique_slocknog">
+		<text>(Slocknog) "Yesss, it isss indeed that ssship."</text>
+		<event>
+			<text>"My liege! I ssswear to follow you wherever you ssshall tread." The Clairvoyants offer supplies and one of them even join your crew.</text>
+			<autoReward level="MED">stuff</autoReward>
+			<crewMember amount="1" all_skills="1" class="slug_saboteur"/>
+		</event>		
+	</choice>	
 </event>
 
 <event name="NEBULA_KNIGHT_TRAP" unique="true">
@@ -5684,7 +5805,7 @@
 </eventList>
 <eventList name="KNIGHT_TRAP_PLANET_SCAN">
 	<event>
-		<text>Though the first sweep reveals little, a second and much more in-deep one reveals a massive explosive trap on the surface, wired to explode as soon as you get too close. It's too risky to approach.</text>
+		<text>Though the first sweep reveals little, a second and much more in-depth one reveals a massive explosive trap on the surface, wired to explode as soon as you get too close. It's too risky to approach.</text>
 	</event>
 	<event>
 		<text>Scans show a massive explosive trap meant to explode as soon as you approach, but whoever must have wired it did a terrible job. It should have already detonated on your approach, but without anything to protect it, you scrap as much as you can.</text>
@@ -5701,7 +5822,7 @@
 		<event>
 			<text>The smuggler captain appears on the screen. Though he tries to put on a menacing appearance, you can tell from his eager smug grin he's pleased by the prospect of another client. "If you're looking for guns or explosives, can't help you there Feddy boy. I'm on an express trip to Nights himself to deliver some brain melting power. These narcotics sell for premium price among the Slugs here, though not much in any other place."</text>
 			<choice>
-				<text>Buy the narcotics, they could be a valuable bargaining chip among Nights's men.</text>
+				<text>Buy the narcotics, they could be a valuable bargaining chip among Nights' men.</text>
 				<event>
 					<text>"An excellent purchase! Just don't ask what they're made of." You hear the pirate mumble something about Orchid children and Equinoid droppings, then hangs up.</text>
 					<augment name="SLUG_NARCOTICS"/>
@@ -5781,7 +5902,7 @@
 				<text>"An excellent purchase! Just don't ask what they're made of." You hear the pirate mumble something about Orchid children and Equinoid droppings, then hangs up.</text>
 				<augment name="SLUG_NARCOTICS"/>
 				<item_modify>
-					<item type="scrap" min="-30" max="-30"/>
+					<item type="scrap" min="-20" max="-20"/>
 				</item_modify>
 			</event>
 		</choice>
@@ -5810,12 +5931,30 @@
 	<choice hidden="true" req="LIST_CREW_MANTIS">
 		<text>(Mantis Crew) Have your Mantis duel.</text>
 		<event>
-			<text>You send out your Mantis to duel. They give their all, and manage to disarm the Slug! "Alright, a deal isss a deal... Though I don't like the way you played, heresssss my ssscrap."</text>
+			<text>You send out your Mantis to duel. They give their all, and manage to disarm the Slug! "Alright, a deal isss a deal... Though I don't like the way you played, here'sssss my ssscrap."</text>
 			<item_modify>
 				<item type="scrap" min="35" max="45"/>
 			</item_modify>
 		</event>
 	</choice>
+	<choice hidden="true" req="unique_dessius"> <!-- because he literally has a sword -->
+		<text>(Dessius) Have Dessius take the duel.</text>
+		<event>
+			<text>Being a perfect match for such opportunity, Dessius accepts the challenge and unsheaths his own blade. Both fighters give their all, and this chivalrous clash results in the Slug getting disarmed! "Alright, a deal isss a deal. Your companion's prowesss and ssstyle is remarkable, and you do dessserve thisss ssscrap."</text>
+			<item_modify>
+				<item type="scrap" min="75" max="85"/>
+			</item_modify>
+		</event>		
+	</choice>
+	<choice hidden="true" req="slug_knight">
+		<text>(Knight Crew) Have your Knight duel.</text>
+		<event>
+			<text>"I wasssn't expecting to sssee one of my brothersss aboard your vesssel, and even lesss that I'd be going againsst them, but I ssstill look forward to it." Both Slugs fiercely fight, and after a long clash, your own Knight prevails! "Alright, a deal isss a deal. I greatly enjoyed thisss valiant ssskirmisssh, and you do dessserve thisss ssscrap."</text>
+			<item_modify>
+				<item type="scrap" min="75" max="85"/>
+			</item_modify>
+		</event>		
+	</choice>	
 	<choice hidden="true">
 		<text>Decline.</text>
 		<event/>
@@ -5823,7 +5962,7 @@
 </event>
 <eventList name="KNIGHT_DUEL_DUEL">
 	<event>
-		<text>You pick a crew at random, and send them out to duel. They make a valiant effort, but unfortunately it's not enough. They fail, and the Slug disarms them. "Haha! You losssst. Now, hand over your fuel... And no funny buisssnessss!"</text>
+		<text>You pick a crew at random, and send them out to duel. They make a valiant effort, but unfortunately it's not enough. They fail, and the Slug disarms them. "Haha! You losssst. Now, hand over your fuel... And no funny busssinessss!"</text>
 		<choice hidden="true">
 			<text>A deal is a deal.</text>
 			<event>
@@ -5846,7 +5985,7 @@
 				<choice hidden="true" req="ANTI_VIRUS">
 					<text>(Anti-Virus) Unjam your shields.</text>
 					<event>
-						<text>You re-enable your shields, and prepare to fight the slugs.</text>
+						<text>You re-enable your shields, and prepare to fight the Slugs.</text>
 						<status type="clear" target="player" system="shields" amount="100"/>
 						<choice hidden="true">
 							<text>Continue...</text>
@@ -5858,7 +5997,7 @@
 		</choice>
 	</event>
 	<event>
-		<text>You pick a crew at random, and send them out to duel. They give their all, and somehow they manage to disarm the Slug! "Alright, a deal isss a deal... Heresssss my ssscrap."</text>
+		<text>You pick a crew at random, and send them out to duel. They give their all, and somehow they manage to disarm the Slug! "Alright, a deal isss a deal... Heres'ssss my ssscrap."</text>
 		<item_modify>
 			<item type="scrap" min="75" max="85"/>
 		</item_modify>
@@ -5896,7 +6035,7 @@
 <textList name="NEBULA_KNIGHT_FIGHT">
 	<text>"Thessse nebulasss aren't for the Federation to be sssnooping around in! Get lossssst."</text>
 	<text>The Knights of Nights sure are determined not to let anyone interfere with the festival. Despite you not even being able to participate, the mere suggestion you might be working with Slocknog is enough to drive the ship nearby to murder.</text>
-	<text>A Knight ship jumps in weapons, blazing. It's not usual for Slugs to attack in such a blunt manner, but judging from the strange flight patterns of the ship, they're likely drunk. Let's hope that plays in your favor.</text>
+	<text>A Knight ship jumps in, weapons blazing. It's not usual for Slugs to attack in such a blunt manner, but judging from the strange flight patterns of the ship, they're likely drunk. Let's hope that plays in your favor.</text>
 	<text>It appears a Knight vessel is waiting for you here. "I made a bet that I would be the one to kill you! Now ssssit ssstill and let me blow you up."</text>
 	<text>A Knight vessel appears to just have finished salvaging the remains of a small Slug interceptor, but as soon as you enter they decide to pick you off next!</text>
 	<text>The Knights of Nights have proven to be far more aggressive than regular Slug vessels, and aren't afraid to attack you straight on!</text>
@@ -5917,7 +6056,7 @@
 </event>
 <textList name="NEBULA_KNIGHT_CLAIRVOYANT_FIGHT">
 	<text>The Clairvoyants are primarily in favor of Slocknog, but despite this it seems the ship here has chosen protecting their homeland over letting a foreign Federation ship rumored to be supporting their king running about.</text>
-	<text>Though you haven't encountered as many Clairvoyant ships as you might have expected in a dense slug nebula like this, it appears your luck has run out.</text>
+	<text>Though you haven't encountered as many Clairvoyant ships as you might have expected in a dense Slug nebula like this, it appears your luck has run out.</text>
 	<text>A Clairvoyant ship has chosen to do their job and protect their sector, and is moving in to attack.</text>
 	<text>"Federation, you aren't ssssuppossssed to be here! Thissss isss a private sssector!" A Clairvoyant ship moves in to attack.</text>
 </textList>
@@ -5938,7 +6077,7 @@
 
 <event name="NEBULA_KNIGHT_ENGINES" unique="true">
 	<text>Immediately after jumping into the beacon, your engines sputter and malfunction. Something is jamming them, and not longer after it's revealed who. A Knight vessel slips out of the nebula, offering to "fix" your engines for a bit of scrap.</text>
-	<ship load="SHIP_KNIGHT" hostile="true"/>
+	<ship load="SHIP_KNIGHT" hostile="false"/>
 	<environment type="nebula"/>
 	<status type="divide" target="player" system="engines" amount="2"/>
 	<choice hidden="true">
@@ -5960,7 +6099,6 @@
 		<text>Pay.</text>
 		<event>
 			<text>The Knight captain can't help but snicker as they board and pretend to work on your engines, scoop up some scrap, and leave.</text>
-			<ship hostile="false"/> 
 			<item_modify>
 				<item type="scrap" min="-30" max="-25"/>
 			</item_modify>
@@ -5986,7 +6124,7 @@
 	<choice hidden="true">
 		<text>Attack the Coalition!</text>
 		<event>
-			<text>You power up your weapons and engage the Slug vessel.</text>
+			<text>You power up your weapons and engage the RUES vessel.</text>
 			<ship hostile="true"/> 
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -6032,11 +6170,11 @@
 	<event>
 		<text>The Suzerain beams aboard, but only to immediately detonate a fire bomb that damages the ship! It was a trick!</text>
 		<damage amount="3" system="random" effect="fire"/>
-		<boarders min="1" max="1" class="suzerain"/>
+		<boarders min="1" max="1" class="mantis_suzerain"/>
 	</event>
 	<event>
 		<text>True to his word, the Suzerain beams aboard your ship, ready to turn on his old crew-mates.</text>
-		<crewMember amount="1" combat="1" class="suzerain"/>
+		<crewMember amount="1" combat="1" class="mantis_suzerain"/>
 	</event>
 </eventList>
 
@@ -6087,9 +6225,9 @@
 		</event>
 	</choice>
 	<choice hidden="true">	
-		<text>Refuse.</text>
+		<text>Don't get involved.</text>
 		<event>
-			<text>The Saboteur frowns and beams away to whatever ship is hiding nearby in the nebula watching you.</text>
+			<text>Slugs have never been known to be reliable allies, so you don't bother helping any side.</text>
 			<choice hidden="true">
 				<text>Check the storage.</text>
 				<event load="STORAGE_CHECK"/>
@@ -6167,13 +6305,13 @@
 		<text>(Fire Weapon) Make an example, torch the colony.</text>
 		<event>
 			<text>In a short period of time, the colony is ablaze and about half of its population dead. It's a gruesome display that will undoubtedly be used as propaganda in the future, but it's had quite the impression on the Saboteur. So amazed at your dedication to the task, he even offers to join your crew!</text>
-			<crewMember amount="1" class="sabo"/>
+			<crewMember amount="1" class="slug_saboteur"/>
 		</event>
 	</choice>
 </event>
 
 <event name="NEBULA_KNIGHT_SHAKESPEARE" unique="true">
-	<text>"Hail th're did feed'ration. Though mine own w'rds might beest rough, I asketh thee to holdeth with me. I may give you nay harmeth, lest thee stow thine weapons 'r brandish dram m're than the bravado one might beest accustom'd to. Aye? art these reasonable t'rms 'r might we beest needing a duel?"</text>
+	<text>"Hail th're did Feed'ration. Though mine own w'rds might beest rough, I asketh thee to holdeth with me. I may give you nay harmeth, lest thee stow thine weapons 'r brandish dram m're than the bravado one might beest accustom'd to. Aye? Art these reasonable t'rms 'r might we beest needing a duel?"</text>
 	<environment type="nebula"/>
 	<ship load="SHIP_KNIGHT" hostile="false"/>
 	<choice hidden="true">
@@ -6184,7 +6322,7 @@
 				<text>Try to speak back in whatever language that was.</text>
 				<event load="KNIGHT_SHAKESPEARE_GUESS"/>
 			</choice>
-			<choice hidden="true" req="detective">
+			<choice hidden="true" req="unique_haynes">
 				<text>(Haynes) Haynes recognizes the language.</text>
 				<event>
 					<text>Haynes explains that the Slugs are speaking in old Earth English. After a quick translation, you learn the Slugs are offering a truce, which you accept and bring back a weapon from their ship as a sign of goodwill!</text>
@@ -6194,14 +6332,14 @@
 			<choice hidden="true" req="LIST_CREW_SLUG">
 				<text>(Slug Crew) Have your Slug speak with them.</text>
 				<event>
-					<text>Your Slug bickers back and forth with the knights for a while, then reports back to you. "They sssspeak fine, they're jusssst ssstubborn and refuse to talk to ussss normally. They sssseem to want to make friendssss though, and are offering fuel."</text>
+					<text>Your Slug bickers back and forth with the knights for a while, then reports back to you. "They sssspeak fine, they're jusssst ssstubborn and refussse to talk to ussss normally. They sssseem to want to make friendssss though, and are offering fuel."</text>
 					<autoReward level="MED">fuel_only</autoReward>
 				</event>
 			</choice>
 			<choice hidden="true" req="LIST_CREW_ENGI">
 				<text>(Engi Crew) Analyze their speech patterns to translate.</text>
 				<event>
-					<text>"Language detected: Old Earth English. Updating databases..." Your Engi explains the Slugs don't wish to fight, but actually wish to give you some fuel out of good will.</text>
+					<text>"Language detected: old Earth English. Updating databases..." Your Engi explains the Slugs don't wish to fight, but actually wish to give you some fuel out of good will.</text>
 					<autoReward level="MED">fuel_only</autoReward>
 				</event>
 			</choice>
@@ -6210,7 +6348,7 @@
 </event>
 <eventList name="KNIGHT_SHAKESPEARE_GUESS">
 	<event>
-		<text>You fumble out some meaningless garble in hopeless imitation of the slug. They obviously don't fall for it, and attack you out of outrage for your pathetic attempt.</text>
+		<text>You fumble out some meaningless garble in hopeless imitation of the Slug. They obviously don't fall for it, and attack you out of outrage for your pathetic attempt.</text>
 		<ship hostile="true"/>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -6229,7 +6367,7 @@
 </eventList>
 
 <event name="NEBULA_KNIGHT_JAILER" unique="true">
-	<text>A Knighted Jailer flies pass, only to briefly sling an insult at you. "Pissss off Federation, don't get involved lesssst you want a bullet in your ssskull!"</text>
+	<text>A Knighted Jailer flies past, only to briefly sling an insult at you. "Pissss off Federation, don't get involved lesssst you want a bullet in your ssskull!"</text>
 	<ship load="SHIP_KNIGHT_JAILER" hostile="false"/> 
 	<environment type="nebula"/>
 	<choice hidden="true">
@@ -6294,8 +6432,8 @@
 	<choice hidden="true">
 		<text>Check the prisoners.</text>
 		<event>
-			<text>It appears most of the prisoners are dissenters from Nights's reign. A Saboteur loyal to Slocknog, recognizing you as the Federation ship sent by his hero, offers to work for you.</text>
-			<crewMember amount="1" class="sabo"/>
+			<text>It appears most of the prisoners are dissenters from Nights' reign. A Saboteur loyal to Slocknog, recognizing you as the Federation ship sent by his hero, offers to work for you.</text>
+			<crewMember amount="1" class="slug_saboteur"/>
 		</event>
 	</choice>
 </event>
@@ -6305,8 +6443,8 @@
 	<choice hidden="true">
 		<text>Check the prisoners.</text>
 		<event>
-			<text>It appears most of the prisoners are dissenters from Nights's reign. A Saboteur loyal to Slocknog, recognizing you as the Federation ship sent by his hero, offers to work for you.</text>
-			<crewMember amount="1" class="sabo"/>
+			<text>It appears most of the prisoners are dissenters from Nights' reign. A Saboteur loyal to Slocknog, recognizing you as the Federation ship sent by his hero, offers to work for you.</text>
+			<crewMember amount="1" class="slug_saboteur"/>
 		</event>
 	</choice>
 </event>
@@ -6405,7 +6543,7 @@
 			<ship load="SHIP_SHELL_ELITE_GENERIC" hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
-				<event load="MORALITY_UPDATE_SLUG_FIGHT"/>
+				<event load="MORALITY_UPDATE_SHELL_FIGHT"/>
 			</choice>
 		</event>
 	</choice>
@@ -6431,7 +6569,7 @@
 		<text>Check on the spy.</text>
 		<event>
 			<text>Once free, you offer to bring the Radiant back, but he refuses. "Can't, our mission has been compromised. I'll order my men back, but I can't return to thhhe Geniocracy. Thhhhey have little tolerance for failure from Radiants like me. I will come with you instead, if that is alright with you."</text>
-			<crewMember amount="1" class="toxic">Bond</crewMember>
+			<crewMember amount="1" class="shell_radiant">Bond</crewMember>
 			<ship hostile="false"/>
 		</event>
 	</choice>

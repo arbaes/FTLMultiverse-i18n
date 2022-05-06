@@ -9,6 +9,9 @@
 <ship name="SHIP_ENGI_TRAPPER" auto_blueprint="MU_ENGI_TRAPPER">
 	<destroyed load="DESTROYED_TRAPPER"/>
 	<deadCrew load="DEAD_CREW_TRAPPER"/>
+	<weaponOverride count="1">
+		<name>LIST_WEAPONS_TRAPPER</name>
+	</weaponOverride>
 </ship>
 
 <event name="TRAPPER_ENGI" unique="true">
@@ -21,7 +24,7 @@
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
-				<event load="COMBAT_CHECK"/>
+				<event load="MORALITY_UPDATE_ENGI_FIGHT"/>
 			</choice>
 		</event>
 	</choice>
@@ -51,10 +54,13 @@
 <ship name="SHIP_SEPARATIST_TRAPPER" auto_blueprint="LIST_SHIPS_SEPARATIST_TRAPPER">
 	<destroyed load="DESTROYED_TRAPPER"/>
 	<deadCrew load="DEAD_CREW_TRAPPER"/>
+	<weaponOverride count="1">
+		<name>LIST_WEAPONS_TRAPPER</name>
+	</weaponOverride>
 </ship>
 
 <event name="TRAPPER_SEPARATIST" unique="true">
-	<text>The Separatists don't take kindly to strangers, so the usage of Trapper vessels to lay defensive minefields isn't much of a surprise. Fortunately, as a Federation vessel, they don't care much about your presence, but keep a respectful distance away.</text>
+	<text>As soon as you arrive at the beacon, a mine locks onto your ship and you only just barely manage to swerve out of the way in time. In the distance appears an irate Separatist, who begins to yell. "NOT [YOU] GOD DAMN FEDS AGAIN! GET -OUT- OF MY STAR FIELD! DON'T MAKE ME COME [DOWN] THERE!"</text>
 	<ship load="SHIP_SEPARATIST_TRAPPER" hostile="false"/> 
 	<choice hidden="true">
 		<text>Attack, we can steal their Mine Launcher tech!</text>
@@ -93,6 +99,9 @@
 <ship name="SHIP_ZOLTAN_TRAPPER" auto_blueprint="MU_ZOLTAN_TRAPPER">
 	<destroyed load="DESTROYED_TRAPPER"/>
 	<deadCrew load="DEAD_CREW_TRAPPER"/>
+	<weaponOverride count="1">
+		<name>LIST_WEAPONS_TRAPPER</name>
+	</weaponOverride>
 </ship>
 
 <event name="TRAPPER_ZOLTAN" unique="true">
@@ -105,7 +114,7 @@
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
-				<event load="COMBAT_CHECK"/>
+				<event load="MORALITY_UPDATE_ZOLTAN_FIGHT"/>
 			</choice>
 		</event>
 	</choice>
@@ -136,9 +145,12 @@
 	<destroyed load="DESTROYED_TRAPPER"/>
 	<deadCrew load="DEAD_CREW_TRAPPER"/>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="bomber" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_devotee" prop="0.20"/>	
 	</crew>
+	<weaponOverride count="1">
+		<name>LIST_WEAPONS_TRAPPER</name>
+	</weaponOverride>
 </ship>
 
 <event name="TRAPPER_DUSK" unique="true">
@@ -181,6 +193,13 @@
 <ship name="SHIP_MANTIS_TRAPPER" auto_blueprint="MU_MANTIS_TRAPPER">
 	<destroyed load="DESTROYED_TRAPPER"/>
 	<deadCrew load="DEAD_CREW_TRAPPER"/>
+	<crew>
+		<crewMember type="mantis" prop="0.80"/>
+		<crewMember type="engi" prop="0.20"/>	
+	</crew>
+	<weaponOverride count="1">
+		<name>LIST_WEAPONS_TRAPPER</name>
+	</weaponOverride>
 </ship>
 
 <event name="TRAPPER_MANTIS" unique="true">
@@ -223,6 +242,9 @@
 <ship name="SHIP_LEECH_TRAPPER" auto_blueprint="MU_LEECH_TRAPPER">
 	<destroyed load="DESTROYED_TRAPPER"/>
 	<deadCrew load="DEAD_CREW_TRAPPER"/>
+	<weaponOverride count="1">
+		<name>LIST_WEAPONS_TRAPPER</name>
+	</weaponOverride>
 </ship>
 
 <event name="NEBULA_TRAPPER_LEECH" unique="true">
@@ -268,9 +290,12 @@
 	<destroyed load="DESTROYED_TRAPPER"/>
 	<deadCrew load="DEAD_CREW_TRAPPER"/>
 	<crew>
-		<crewMember type="rock" prop="0.80"/>
-		<crewMember type="commando" prop="0.20"/>	
+		<crewMember type="rock_outcast" prop="0.80"/>
+		<crewMember type="rock_commando" prop="0.20"/>	
 	</crew>
+	<weaponOverride count="1">
+		<name>LIST_WEAPONS_TRAPPER</name>
+	</weaponOverride>
 </ship>
 
 <event name="TRAPPER_LOSTSUN" unique="true">
@@ -312,6 +337,9 @@
 -->	
 <ship name="SHIP_AUTO_TRAPPER" auto_blueprint="MU_AUTO_TRAPPER">
 	<destroyed load="DESTROYED_TRAPPER"/>
+	<weaponOverride count="1">
+		<name>LIST_WEAPONS_TRAPPER</name>
+	</weaponOverride>
 </ship>
 
 <event name="TRAPPER_AUTO" unique="true">
@@ -347,28 +375,20 @@
 <!--
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-					CRYSTAL
+					ESTATE
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->	
-<ship name="SHIP_CRYSTAL_TRAPPER" auto_blueprint="MU_CRYSTAL_TRAPPER_A">
-	<destroyed load="DESTROYED_TRAPPER_CRYSTAL"/>
-	<deadCrew load="DEAD_CREW_TRAPPER_CRYSTAL"/>
+<ship name="SHIP_ESTATE_TRAPPER" auto_blueprint="MU_ESTATE_PORTER">
+	<destroyed load="DESTROYED_TRAPPER"/>
+	<weaponOverride count="1">
+		<name>LIST_WEAPONS_TRAPPER</name>
+	</weaponOverride>
 </ship>
-<event name="DESTROYED_TRAPPER_CRYSTAL">
-	<text>While scrapping the wreckage of the Trapper ship, you find a functional Mine Launcher weapon drifting in the midst of the wreckage.</text>
-	<autoReward level="MED">standard</autoReward>
-	<weapon name="MINELAUNCHER_CRYSTAL"/>
-</event>
-<event name="DEAD_CREW_TRAPPER_CRYSTAL">
-	<text>The Trapper has been emptied of crew. While scrapping it, you find a Mine Launcher in its storage.</text>
-	<autoReward level="MED">standard</autoReward>
-	<weapon name="MINELAUNCHER_CRYSTAL"/>
-</event>
 
-<event name="TRAPPER_CRYSTAL" unique="true">
-	<text>The Crystalline Empire is more territorial than any other government or species. A Trapper, wielding specialized Mine Launcher tech, is patrolling the beacon, but for once they don't seem to care about your presence.</text>
-	<ship load="SHIP_CRYSTAL_TRAPPER" hostile="false"/> 
+<event name="TRAPPER_ESTATE" unique="true">
+	<text>Wentworth Innovations values its security almost as much as its brand. With Vance's personal distaste for Renegades such as yourself, it shouldn't come as a surprise there's minefields and Trappers - or as this Auto-ship's pretentious name puts it, "Porter's" - prowling about.</text>
+	<ship load="SHIP_ESTATE_TRAPPER" hostile="false"/> 
 	<choice hidden="true">
 		<text>Attack, we can steal their Mine Launcher tech!</text>
 		<event>
@@ -399,13 +419,71 @@
 <!--
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-					ENGI
+					CRYSTAL
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->	
+<ship name="SHIP_CRYSTAL_TRAPPER" auto_blueprint="MU_CRYSTAL_TRAPPER">
+	<destroyed load="DESTROYED_TRAPPER_CRYSTAL"/>
+	<deadCrew load="DEAD_CREW_TRAPPER_CRYSTAL"/>
+	<weaponOverride count="1">
+		<name>MINELAUNCHER_CRYSTAL</name>
+	</weaponOverride>
+</ship>
+<event name="DESTROYED_TRAPPER_CRYSTAL">
+	<text>While scrapping the wreckage of the Trapper ship, you find a functional Mine Launcher weapon drifting in the midst of the wreckage.</text>
+	<autoReward level="MED">standard</autoReward>
+	<weapon name="MINELAUNCHER_CRYSTAL"/>
+</event>
+<event name="DEAD_CREW_TRAPPER_CRYSTAL">
+	<text>The Trapper has been emptied of crew. While scrapping it, you find a Mine Launcher in its storage.</text>
+	<autoReward level="MED">standard</autoReward>
+	<weapon name="MINELAUNCHER_CRYSTAL"/>
+</event>
+
+<event name="TRAPPER_CRYSTAL" unique="true">
+	<text>The Crystalline Empire is more territorial than any other government or species. A Trapper, wielding specialized Mine Launcher tech, is patrolling the beacon, but for once they don't seem to care about your presence.</text>
+	<ship load="SHIP_CRYSTAL_TRAPPER" hostile="false"/> 
+	<choice hidden="true">
+		<text>Attack, we can steal their Mine Launcher tech!</text>
+		<event>
+			<text>You've taken the risky choice of fighting the ship. Hopefully, you can protect yourself from their salvo long enough.</text>
+			<ship hostile="true"/>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="MORALITY_UPDATE_CRYSTAL_FIGHT"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Avoid the Trapper.</text>
+		<event>
+			<text>Messing with a Trapper is a bad idea.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
+		</event>
+	</choice>
+</event>
+
+<!--
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+					ROCK
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->	
 <ship name="SHIP_ROCK_TRAPPER" auto_blueprint="MU_ROCK_TRAPPER">
 	<destroyed load="DESTROYED_TRAPPER"/>
 	<deadCrew load="DEAD_CREW_TRAPPER"/>
+	<weaponOverride count="1">
+		<name>LIST_WEAPONS_TRAPPER</name>
+	</weaponOverride>
 </ship>
 
 <event name="TRAPPER_ROCK" unique="true">
@@ -448,6 +526,9 @@
 <ship name="SHIP_ORCHID_TRAPPER" auto_blueprint="MU_ORCHID_TRAPPER">
 	<destroyed load="DESTROYED_TRAPPER_ORCHID"/>
 	<deadCrew load="DEAD_CREW_TRAPPER_ORCHID"/>
+	<weaponOverride count="1">
+		<name>MINELAUNCHER_KERNEL</name>
+	</weaponOverride>
 </ship>
 <event name="DESTROYED_TRAPPER_ORCHID">
 	<text>While scrapping the wreckage of the Trapper ship, you find a functional Mine Launcher weapon drifting in the midst of the wreckage.</text>
@@ -470,7 +551,7 @@
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
-				<event load="COMBAT_CHECK"/>
+				<event load="MORALITY_UPDATE_ORCHID_FIGHT"/>
 			</choice>
 		</event>
 	</choice>
@@ -493,13 +574,16 @@
 <!--
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-					MANTIS
+					LANIUS
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->	
-<ship name="SHIP_LANIUS_TRAPPER" auto_blueprint="MU_LANIUS_TRAPPER_A">
+<ship name="SHIP_LANIUS_TRAPPER" auto_blueprint="MU_LANIUS_TRAPPER">
 	<destroyed load="DESTROYED_TRAPPER"/>
 	<deadCrew load="DEAD_CREW_TRAPPER"/>
+	<weaponOverride count="1">
+		<name>LIST_WEAPONS_TRAPPER</name>
+	</weaponOverride>
 </ship>
 
 <event name="TRAPPER_LANIUS" unique="true">
@@ -543,13 +627,16 @@
 	<destroyed load="DESTROYED_TRAPPER_ANCIENT"/>
 	<deadCrew load="DEAD_CREW_TRAPPER_ANCIENT"/>
 	<crew>
-		<crewMember type="ancient" prop="0.8"/>
-		<crewMember type="avatar" prop="0.2"/>	
+		<crewMember type="obelisk" prop="0.8"/>
+		<crewMember type="cognitive" prop="0.2"/>	
 	</crew>
+	<weaponOverride count="1">
+		<name>ANCIENT_MINELAUNCHER</name>
+	</weaponOverride>
 </ship>
 
 <event name="TRAPPER_ANCIENT" unique="true">
-	<text>It appears even the Obelisks had Trapper class vessels, because an Obelisk ship wielding 2 Mine Launchers is laying a small defensive field at this beacon. They don't notice you luckily.</text>
+	<text>It appears even the Obelisks had Trapper class vessels, because an Obelisk ship is laying a small defensive minefield at this beacon. They don't notice you luckily.</text>
 	<ship load="SHIP_ANCIENT_TRAPPER" hostile="false"/> 
 	<choice hidden="true">
 		<text>Attack the Trapper!</text>

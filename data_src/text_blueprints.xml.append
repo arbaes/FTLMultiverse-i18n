@@ -11,17 +11,17 @@
 <text name="crew_morph_title">Morph</text>
 <text name="crew_morph_desc">The Morphs are a genetic experiment from the Shells gone wrong. They have the unique ability to mimic other carbon crew and their capabilities.</text>
 <text name="crew_morph_power_1">45 Health, immune to suffocation</text>
-<text name="crew_morph_power_2">At empty beacons can be made to mimic most genetic crew types. All mimicked crew will have 25% less health than normal but suffocation immunity.</text>
+<text name="crew_morph_power_2">At empty beacons can be made to mimic most genetic crew types. All mimicked crew will have 25% less health than normal and suffocation immunity.</text>
 
 <text name="crew_gold_title">Malform</text>
 <text name="crew_gold_desc">A reverse engineered monstrosity produced by the members of a secret Rebel organization. Do not underestimate these blobish creatures because of their size.</text>
 <text name="crew_gold_power_1">60 Health, immune to suffocation</text>
-<text name="crew_gold_power_2">At empty beacons can be made to mimic most elite crew types. All mimicked crew will have 25% less health than normal but suffocation immunity. Cannot change its form after morphing.</text>
+<text name="crew_gold_power_2">At empty beacons can be made to mimic most elite crew types. All mimicked crew will have 25% less health than normal and suffocation immunity. Cannot change its form after morphing.</text>
 
 <text name="crew_techno_title">Technopath</text>
 <text name="crew_techno_desc">The Technopaths carry a special mutation of the Morph genes that allow them to conduct electricity, and therefore imitate certain electronics or metaloid beings.</text>
 <text name="crew_techno_power_1">55 Health, immune to suffocation</text>
-<text name="crew_techno_power_2">At empty beacons can be made to mimic most electronic or Drone crew types. All mimicked crew will have 15% less health than normal but suffocation immunity.</text>
+<text name="crew_techno_power_2">At empty beacons can be made to mimic most electronic or Drone crew types. All mimicked crew will have 15% less health than normal and suffocation immunity.</text>
 
 <!-- 
 **********************************************************************************************************************
@@ -53,15 +53,13 @@
 PAGE 0
 \\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->
-<text name="ship_PLAYER_SHIP_MVSET1_2_unlock">Get to Sector 5 with the Kestrel Multiverse Cruiser to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_MVSET1_3_unlock">Get to Sector 5 with the Federation Multiverse Cruiser to unlock this ship.</text>
-
-<text name="ship_PLAYER_SHIP_MVSET2_unlock">Get to Sector 5 with the Stealth Multiverse Cruiser to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_MVSET2_2_unlock">Get to Sector 5 with the Engineer Multiverse Cruiser to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_MVSET2_3_unlock">Get to Sector 5 with the Civilian Multiverse Cruiser to unlock this ship.</text>
-
-<text name="ship_PLAYER_SHIP_MVSET3_unlock">Get to Sector 5 with the Imperial Multiverse Cruiser to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_MVSET3_2_unlock">Get to Sector 5 with the Spectral Multiverse Cruiser to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_MVFED_unlock">Get to Sector 5 with the Kestrel Multiverse Cruiser to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_MVSTEALTH_unlock">Get to Sector 5 with the Federation Multiverse Cruiser to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_MVENGI_unlock">Get to Sector 5 with the Stealth Multiverse Cruiser to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_MVCIVILIAN_unlock">Get to Sector 5 with the Harmony Multiverse Cruiser to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_MVCRYSTAL_unlock">Get to Sector 5 with the Union Multiverse Cruiser to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_MVDYNASTY_unlock">Get to Sector 5 with the Imperial Multiverse Cruiser to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_MVLANIUS_unlock">Get to Sector 5 with the Spectral Multiverse Cruiser to unlock this ship.</text>
 
 <text name="ship_PLAYER_SHIP_PROTOMV_unlock">Travel the Multiverses and unlock all of the page 1 Multiverse cruisers to unlock the first Federation Multiverse vessel.</text>
 <text name="ship_PLAYER_SHIP_PROTOMV_2_unlock">Get to Sector 8 with the Proto-MV Cruiser Type A to unlock this ship.</text>
@@ -77,10 +75,10 @@ PAGE 1
 \\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->
 <text name="ship_PLAYER_SHIP_CIVILIAN_unlock">Defeat the Flagship using any Multiverse Cruiser or the Proto-MV Cruisers to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_CIVILIAN_2_unlock">Get to Sector 5 with the Civilian Cruiser Type A to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_CIVILIAN_3_unlock">Get to Sector 5 with the Civilian Cruiser Type B or beat the game with the Civilian Cruiser Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_CIVILIAN_2_unlock">Get to Sector 5 with the Union Cruiser Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_CIVILIAN_3_unlock">Get to Sector 5 with the Union Cruiser Type B or beat the game with the Union Cruiser Type A to unlock this ship.</text>
 
-<text name="ship_PLAYER_SHIP_MILITIA_unlock">Meet up with the famous detective Haynes and save the Militia from a Rebel attack to unlock this ship... OR win the game with any Civilian Cruiser.</text>
+<text name="ship_PLAYER_SHIP_MILITIA_unlock">Meet up with the famous detective Haynes and save the Militia from a Rebel attack to unlock this ship... OR win the game with any Union Cruiser.</text>
 <text name="ship_PLAYER_SHIP_MILITIA_2_unlock">Get to Sector 5 with the Militia Cruiser Type A to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_MILITIA_3_unlock">Get to Sector 5 with the Militia Cruiser Type B or beat the game with the Militia Cruiser Type A to unlock this ship.</text>
 
@@ -100,13 +98,25 @@ PAGE 1
 <text name="ship_PLAYER_SHIP_ENGINEER_2_unlock">Get to Sector 5 with the Engineer Cruiser Type A to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_ENGINEER_3_unlock">Get to Sector 5 with the Engineer Cruiser Type B or beat the game with the Engineer Cruiser Type A to unlock this ship.</text>
 
+<text name="ship_PLAYER_SHIP_MVREBEL_unlock">Win the game with the first 5 MV ships on page 1.</text>
+<text name="ship_PLAYER_SHIP_MVREBEL_2_unlock">Get to Sector 5 with the MV Rebel Cruiser Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_MVREBEL_3_unlock">Get to Sector 5 with the MV Rebel Cruiser Type B or beat the game with the MV Rebel Cruiser Type A to unlock this ship.</text>
+
+<text name="ship_PLAYER_SHIP_MFK_unlock">Infiltrate the heart of the local Rebellion and sabotage Vance Wentworth's pride and joy to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_MFK_2_unlock">Get to Sector 5 with the Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_MFK_3_unlock">Get to Sector 5 with the Type B or beat the game with the Type A to unlock this ship.</text>
+
+<text name="ship_PLAYER_SHIP_CURA_unlock">Complete C.U.R.A.'s final task to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_CURA_2_unlock">Get to Sector 5 with the Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_CURA_3_unlock">Get to Sector 5 with the Type B or beat the game with the Type A to unlock this ship.</text>
+
 <!--
 \\\\\\\\\\\\\\\\\\\\\\\\\\\
 PAGE 2
 \\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->
-<text name="ship_PLAYER_SHIP_TUCO_unlock">Help out the legendary pirate Tuco with his gambling issues to unlock this ship... OR defeat the flagship with Prototype Cruiser A.</text>
-<text name="ship_PLAYER_SHIP_TUCO_2_unlock">Assist Sky-Drifter casino with their pirate dillema to unlock this ship... OR defeat the flagship with Prototype Cruiser B.</text>
+<text name="ship_PLAYER_SHIP_TUCO_unlock">Help out the legendary pirate Tuco with his gambling issues to unlock this ship... OR defeat the Flagship with Prototype Cruiser A.</text>
+<text name="ship_PLAYER_SHIP_TUCO_2_unlock">Assist Sky-Drifter casino with their pirate dillema to unlock this ship... OR defeat the Flagship with Prototype Cruiser B.</text>
 <text name="ship_PLAYER_SHIP_TUCO_3_unlock">Unlock both Tuco's Cruisers A and B.</text>
 
 <text name="ship_PLAYER_SHIP_PROTOTYPE_unlock">Find the Smuggler Clan's secret hangars and recover the blueprints for their newest prototype to unlock this ship.</text>
@@ -114,7 +124,7 @@ PAGE 2
 <text name="ship_PLAYER_SHIP_PROTOTYPE_3_unlock">Get to Sector 5 with the Prototype Cruiser Type B or beat the game with the Prototype Cruiser Type A to unlock this ship.</text>
 
 <text name="ship_PLAYER_SHIP_ANGEL_unlock">Rescue Hektar Industries's CEO from one of the Syndicate's finest mercenaries to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_ANGEL_2_unlock">Get to Sector 5 with the Type A  to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_ANGEL_2_unlock">Get to Sector 5 with the Type A to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_ANGEL_3_unlock">Get to Sector 5 with the Type B or beat the game with the Type A to unlock this ship.</text>
 
 <!--
@@ -140,10 +150,10 @@ PAGE 4
 \\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->
 <text name="ship_PLAYER_SHIP_ZOLTAN_unlock">Aid the Ministry in defense against a terrorist attack to unlock this ship... OR win the game with any Monk Cruiser.</text>
-<text name="ship_PLAYER_SHIP_ZOLTAN_2_unlock">Get to Sector 5 with the Zoltan Cruiser Type A to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_ZOLTAN_3_unlock">Get to Sector 5 with the Zoltan Cruiser Type B or beat the game with the Zoltan Cruiser Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_ZOLTAN_2_unlock">Get to Sector 5 with the Ministry Cruiser Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_ZOLTAN_3_unlock">Get to Sector 5 with the Ministry Cruiser Type B or beat the game with the Ministry Cruiser Type A to unlock this ship.</text>
 
-<text name="ship_PLAYER_SHIP_DUSKBRINGER_unlock">Aid the infamous Duskbringer warhero Devorak the Deathless and earn his trust to unlock this ship... OR win the game with any Zoltan Cruiser.</text>
+<text name="ship_PLAYER_SHIP_DUSKBRINGER_unlock">Aid the infamous Duskbringer warhero Devorak the Deathless and earn his trust to unlock this ship... OR win the game with any Ministry Cruiser.</text>
 <text name="ship_PLAYER_SHIP_DUSKBRINGER_2_unlock">Get to Sector 5 with the Duskbringer Cruiser Type A to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_DUSKBRINGER_3_unlock">Get to Sector 5 with the Duskbringer Cruiser Type B or beat the game with the Duskbringer Cruiser Type A to unlock this ship.</text>
 
@@ -161,10 +171,10 @@ PAGE 5
 \\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->
 <text name="ship_PLAYER_SHIP_HIVE_unlock">Defeat the Legendary thief Kazaaakplethkilik to unlock this ship... OR win the game with any Free Mantis Cruiser.</text>
-<text name="ship_PLAYER_SHIP_HIVE_2_unlock">Get to Sector 5 with the Mantis Cruiser Type A to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_HIVE_3_unlock">Get to Sector 5 with the Mantis Cruiser Type B or beat the game with the Mantis Cruiser Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_HIVE_2_unlock">Get to Sector 5 with the Hive Cruiser Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_HIVE_3_unlock">Get to Sector 5 with the Hive Cruiser Type B or beat the game with the Hive Cruiser Type A to unlock this ship.</text>
 
-<text name="ship_PLAYER_SHIP_FREEMANTIS_unlock">Travel to the prized hunting grounds of the Free Mantis and save a Free Mantis revolutionary from the clutches of the Hive to unlock this ship... OR win the game with any Mantis Cruiser.</text>
+<text name="ship_PLAYER_SHIP_FREEMANTIS_unlock">Travel to the prized hunting grounds of the Free Mantis and save a Free Mantis revolutionary from the clutches of the Hive to unlock this ship... OR win the game with any Hive Cruiser.</text>
 <text name="ship_PLAYER_SHIP_FREEMANTIS_2_unlock">Get to Sector 5 with the Free Mantis Cruiser Type A to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_FREEMANTIS_3_unlock">Get to Sector 5 with the Free Mantis Cruiser Type B or beat the game with the Free Mantis Cruiser Type A to unlock this ship.</text>
 
@@ -187,8 +197,8 @@ PAGE 6
 \\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->
 <text name="ship_PLAYER_SHIP_ROCKMAN_unlock">Reach the Rock Homeworlds and cause the Elders some chaos to unlock this ship... OR win the game with any Lost Sun Cruiser.</text>
-<text name="ship_PLAYER_SHIP_ROCKMAN_2_unlock">Get to Sector 5 with the Rock Cruiser Type A to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_ROCKMAN_3_unlock">Get to Sector 5 with the Rock Cruiser Type B or beat the game with the Rock Cruiser Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_ROCKMAN_2_unlock">Get to Sector 5 with the Theocracy Cruiser Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_ROCKMAN_3_unlock">Get to Sector 5 with the Theocracy Cruiser Type B or beat the game with the Theocracy Cruiser Type A to unlock this ship.</text>
 
 <text name="ship_PLAYER_SHIP_OUTCAST_unlock">Defend the Outcast Trade Hub of Turban to unlock this ship... OR win the game with any Theocracy Cruiser.</text>
 <text name="ship_PLAYER_SHIP_OUTCAST_2_unlock">Get to Sector 5 with the Outcast Cruiser Type A to unlock this ship.</text>
@@ -231,7 +241,7 @@ PAGE 7
 <text name="ship_PLAYER_SHIP_CLAN_2_unlock">Get to Sector 5 with the Guild Cruiser Type A to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_CLAN_3_unlock">Get to Sector 5 with the Guild Cruiser Type B or beat the game with the Guild Cruiser Type A to unlock this ship.</text>
 
-<text name="ship_PLAYER_SHIP_HEKTAR_unlock">Help promote change within Hektar Industries and bring about a brighter future for its workers to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_HEKTAR_unlock">Help promote change within Hektar Industries and bring about a brighter future for its workers to unlock this ship... OR win the game with any Retail Cruiser.</text>
 <text name="ship_PLAYER_SHIP_HEKTAR_2_unlock">Get to Sector 5 with the Hektar Cruiser Type A to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_HEKTAR_3_unlock">Get to Sector 5 with the Hektar Cruiser Type B or beat the game with the Hektar Cruiser Type A to unlock this ship.</text>
 
@@ -261,9 +271,9 @@ PAGE 8
 <text name="ship_PLAYER_SHIP_SHELL_2_unlock">Get to Sector 5 with the Shell Cruiser Type A to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_SHELL_3_unlock">Get to Sector 5 with the Shell Cruiser Type B or beat the game with the Shell Cruiser Type A to unlock this ship.</text>
 
-<text name="ship_PLAYER_SHIP_MECH_unlock">TEMPORARY UNLOCK: Unlock Shell Cruiser and Scientist Cruiser A.</text>
-<text name="ship_PLAYER_SHIP_MECH_2_unlock">TEMPORARY UNLOCK: Unlock Shell Cruiser and Scientist Cruiser B.</text>
-<text name="ship_PLAYER_SHIP_MECH_3_unlock">TEMPORARY UNLOCK: Unlock Shell Cruiser and Scientist Cruiser C.</text>
+<text name="ship_PLAYER_SHIP_MECH_unlock">TEMPORARY UNLOCK: Unlock Shell Cruiser and Scientist Cruiser A. (may require a game reboot if conditions were met)</text>
+<text name="ship_PLAYER_SHIP_MECH_2_unlock">TEMPORARY UNLOCK: Unlock Shell Cruiser and Scientist Cruiser B. (may require a game reboot if conditions were met)</text>
+<text name="ship_PLAYER_SHIP_MECH_3_unlock">TEMPORARY UNLOCK: Unlock Shell Cruiser and Scientist Cruiser C. (may require a game reboot if conditions were met)</text>
 <!--<text name="ship_PLAYER_SHIP_MECH_2_unlock">Get to Sector 5 with the Mechanic Cruiser Type A to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_MECH_3_unlock">Get to Sector 8 with the Mechanic Cruiser Type B to unlock this ship.</text>-->
 
@@ -280,17 +290,25 @@ PAGE 8
 PAGE 9
 \\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->
-<text name="ship_PLAYER_SHIP_ORCHID_unlock">Travel to Rt'lak Et and carefully put an end to a pirate raid to earn the Orchids' favor and unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_ORCHID_2_unlock">Get to Sector 5 with the Orchid Cruiser Type A to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_ORCHID_3_unlock">Get to Sector 5 with the Orchid Cruiser Type B or beat the game with the Orchid Cruiser Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_ORCHID_unlock">Travel to Rt'lak Et and carefully put an end to a pirate raid to earn the Orchids' favor and unlock this ship.</text> <!--... OR win the game with any Confederacy Cruiser-->
+<text name="ship_PLAYER_SHIP_ORCHID_2_unlock">Get to Sector 5 with the Gathering Cruiser Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_ORCHID_3_unlock">Get to Sector 5 with the Gathering Cruiser Type B or beat the game with the Gathering Cruiser Type A to unlock this ship.</text>
 
-<text name="ship_PLAYER_SHIP_LEECH_unlock">Aid a famous Leech general in his revolution to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_LEECH_2_unlock">Get to Sector 5 with the Leech Cruiser Type A to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_LEECH_3_unlock">Get to Sector 5 with the Leech Cruiser Type B or beat the game with the Leech Cruiser Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_VAMPWEED_unlock">COMING SOON</text>
+<text name="ship_PLAYER_SHIP_VAMPWEED_2_unlock">COMING SOON</text>
+<text name="ship_PLAYER_SHIP_VAMPWEED_3_unlock">COMING SOON</text>
 
-<text name="ship_PLAYER_SHIP_ALKRAM_unlock">Help a Rockman destroy a repurposed mining colony being used by revolutionaries to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_LEECH_unlock">Aid a famous Leech general in his revolution to unlock this ship... OR win the game with any Revolutionary Cruiser.</text>
+<text name="ship_PLAYER_SHIP_LEECH_2_unlock">Get to Sector 5 with the Eargen Cruiser Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_LEECH_3_unlock">Get to Sector 5 with the Eargen Cruiser Type B or beat the game with the Eargen Cruiser Type A to unlock this ship.</text>
+
+<text name="ship_PLAYER_SHIP_ALKRAM_unlock">Help a Rockman destroy a repurposed mining colony being used by revolutionaries to unlock this ship... OR win the game with any Eargen Cruiser.</text>
 <text name="ship_PLAYER_SHIP_ALKRAM_2_unlock">Get to Sector 5 with the Revolutionary Cruiser Type A to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_ALKRAM_3_unlock">Get to Sector 5 with the Revolutionary Cruiser Type B or beat the game with the Revolutionary Cruiser Type A to unlock this ship.</text>
+
+<text name="ship_PLAYER_SHIP_TONY_unlock">Help rescue a certain Leech from his depressive state to unlock this ship... OR win the game with any Hektar Cruiser.</text>
+<text name="ship_PLAYER_SHIP_TONY_2_unlock">Get to Sector 5 with the Retail Cruiser Type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_TONY_3_unlock">Get to Sector 5 with the Retail Cruiser Type B or beat the game with the Retail Cruiser Type A to unlock this ship.</text>
 
 <text name="ship_PLAYER_SHIP_COALITION_unlock">Travel to the Coalition's Strongholds and track down the mysterious source of the nebulas to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_COALITION_2_unlock">Get to Sector 5 with the Coalition Cruiser Type A to unlock this ship.</text>
@@ -335,19 +353,19 @@ PAGE 10
 ELITE
 \\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->
-<text name="ship_ELITE_SHIP_OPERATIVE_unlock">Unlock all variants of the Civilian and Militia Cruisers to unlock this ship.</text>
+<text name="ship_ELITE_SHIP_OPERATIVE_unlock">Unlock all variants of the Union and Militia Cruisers to unlock this ship.</text>
 <text name="ship_ELITE_SHIP_FED_ELITE_unlock">Unlock all variants of the Federation and Kestrel Cruisers to unlock this ship.</text>
 <text name="ship_ELITE_SHIP_REBEL_1_unlock">Unlock all variants of the Rebel and Engineer Cruisers to unlock this ship.</text>
-<text name="ship_ELITE_SHIP_REBEL_2_unlock">Unlock all variants of the Civilian, Militia, Kestrel, Federation, Rebel, and Engineer Cruisers to unlock this ship.</text>
+<text name="ship_ELITE_SHIP_REBEL_2_unlock">Unlock all variants of the Union, Militia, Kestrel, Federation, Rebel, and Engineer Cruisers to unlock this ship.</text>
 <text name="ship_ELITE_SHIP_HARMONY_unlock">Unlock all variants of the Engi and Separatist Cruisers to unlock this ship.</text>
 <text name="ship_ELITE_SHIP_SUZZY_unlock">Unlock all variants of the Suzerain and Bishop Cruisers to unlock this ship.</text>
 <text name="ship_ELITE_SHIP_BISHY_unlock">Unlock all variants of the Mantis, Suzerain, Free Mantis, and Bishop Cruisers to unlock this ship.</text>
 <text name="ship_ELITE_SHIP_WARLORD_unlock">Unlock all variants of the Free Mantis and Suzerain Cruisers to unlock this ship.</text>
-<text name="ship_ELITE_SHIP_PEACE_unlock">Unlock all variants of the Zoltan and Monk Cruisers to unlock this ship.</text>
+<text name="ship_ELITE_SHIP_PEACE_unlock">Unlock all variants of the Ministry and Monk Cruisers to unlock this ship.</text>
 <text name="ship_ELITE_SHIP_RADICAL_unlock">Unlock all variants of the Duskbringer and Monk Cruisers to unlock this ship.</text>
-<text name="ship_ELITE_SHIP_CLAIRVOYANT_unlock">Unlock all variants of the Kleptocracy Slug and Clan Cruisers to unlock this ship.</text>
+<text name="ship_ELITE_SHIP_CLAIRVOYANT_unlock">Unlock all variants of the Kleptocracy Slug and Guild Cruisers to unlock this ship.</text>
 <text name="ship_ELITE_SHIP_KNIGHTALT_unlock">Unlock all variants of the Hacker and Knighted Cruisers to unlock this ship.</text>
-<text name="ship_ELITE_SHIP_COALITION_ELITE_unlock">Unlock the Type A and B of the Slug, Rock, Mantis, and Leech Cruisers to unlock this ship.</text>
+<text name="ship_ELITE_SHIP_COALITION_ELITE_unlock">Unlock all variants of the Slug, Rock, Mantis, and Eargen Cruisers to unlock this ship.</text>
 <text name="ship_ELITE_SHIP_CHIEFTAIN_unlock">Unlock all variants of the Orchid Cruisers to unlock this ship.</text>
 <text name="ship_ELITE_SHIP_AMPERE_unlock">Unlock all variants of the Leech and Revolutionary Cruisers to unlock this ship.</text>
 <text name="ship_ELITE_SHIP_RADIANT_unlock">Unlock all variants of the Shell, Science, and Mechanic Cruisers to unlock this ship.</text>
@@ -392,6 +410,7 @@ CREW
 <text name="ship_CREW_SHIP_SYMBIOTE_unlock">Consult the advice of one of a two certain former "butt-buddies" about a certain artifact to unlock this ship.</text>
 <text name="ship_CREW_SHIP_QUEEN_unlock">Consult the advice of a certain arachnid about a certain artifact to unlock this ship.</text>
 <text name="ship_CREW_SHIP_WITHER_unlock">Unlock all other unique crew ships to unlock the ultimate Multiverse cruiser.</text>
+<text name="ship_CREW_SHIP_CHILD_unlock">Consult the advice of ??? about a certain artifact to unlock this ship.</text>
 <!--
 \\\\\\\\\\\\\\\\\\\\\\\\\\\
 VANILLA
@@ -400,8 +419,8 @@ VANILLA
 <text name="ship_VANILLA_SHIP_KESTREL_unlock">Unlock the type A, B, and C of the Kestrel Cruisers.</text>
 <text name="ship_VANILLA_SHIP_KESTREL_2_unlock">Win with the type C of the Kestrel Cruiser.</text>
 <text name="ship_VANILLA_SHIP_KESTREL_3_unlock">Get to sector 8 with the Vanilla Kestrel B.</text>
-<text name="ship_VANILLA_SHIP_ENGI_unlock">Unlock the type A, B, and C of the Harmony Cruisers.</text>
-<text name="ship_VANILLA_SHIP_ENGI_2_unlock">Win with the type C of the Harmony Cruiser.</text>
+<text name="ship_VANILLA_SHIP_ENGI_unlock">Unlock the type A, B, and C of the Engi Cruisers.</text>
+<text name="ship_VANILLA_SHIP_ENGI_2_unlock">Win with the type C of the Engi Cruiser.</text>
 <text name="ship_VANILLA_SHIP_ENGI_3_unlock">Get to sector 8 with the Vanilla Engi B.</text>
 <text name="ship_VANILLA_SHIP_FED_unlock">Unlock the type A, B, and C of the Federation Cruisers.</text>
 <text name="ship_VANILLA_SHIP_FED_2_unlock">Win with the type C of the Federation Cruiser.</text>
@@ -430,18 +449,22 @@ VANILLA
 PRESTIGE
 \\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->
-<text name="ship_PLAYER_SHIP_VANILLA_unlock">Unlock every vanilla cruiser on page 13.</text>
+<text name="ship_PLAYER_SHIP_VANILLA_unlock">Unlock every vanilla cruiser on page 15.</text>
 <text name="ship_PLAYER_SHIP_WITHER_unlock">Unlock every single non-elite Type A ship in the game, Ember C, Tuco C, Hektar C, Augmented C, Sodium C, Knighted C, Bishop C, Spider C, Morph C, and Brood C to unlock this vessel.</text>
-<text name="ship_PLAYER_SHIP_PLEASUREFLAG_unlock">Unlock all variants of the Slug, Clan, Hacker, Knighted, Pleasure, and Coalition Cruisers to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_PLEASUREFLAG_unlock">Unlock all variants of the Slug, Guild, Hacker, Knighted, Pleasure, and Coalition Cruisers to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_STUPIDGHOST_unlock">Make a very suspicious purchase to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_STUPIDGHOST_2_unlock">Win the game using the type A to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_STUPIDGHOST_3_unlock">Complete the true ending with the type A and B to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_GOLD_unlock">Prove the extent of your frivolous wealth by investing in one of the many bad decisions one can make in the Multiverse to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_SYLVANTRANS_unlock">Travel to the center of existence and earn the allegiance of Sylvan OR unlock all variants of all standard ships on pages 1 to 11 to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_GOLD_2_unlock">Defeat the Debt Collector to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_SYLVANTRANS_unlock">Travel to the center of existence and earn the allegiance of Sylvan OR unlock all variants of all standard ships on pages 1 to 13 to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_SYLVANTRANS_2_unlock">Subject the Multiverse to your own tyranny without any help from your own Universe OR win the game with all standard ships on pages 1 to 13 to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_SYLVANTRANS_3_unlock">Recruit a sentient can of beans and make him king OR complete the true ending with all crewsers to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_PONY_unlock">Win the EHG's rodeo with a very eager crew mate to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_PONY_2_unlock">Reunite the Story Teller with his old friend to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_PONY_3_unlock">Mount a certain rebel on top of any equinoid to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_PONY_3_unlock">Mount a certain Rebel on top of any equinoid to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_LIMIT_unlock">Win the game using any Elite vessel to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_LIMIT_2_unlock">Win the game using the Limit to unlock this ship.</text>
 <text name="ship_PLAYER_SHIP_LIMIT_3_unlock">Win the game using the Limit 2 to unlock this ship.</text>
-<text name="ship_PLAYER_SHIP_LIMIT_4_unlock">Defeat Sylvan using the Limit 3 to unlock this ship.</text>
+<text name="ship_PLAYER_SHIP_LIMIT_4_unlock">Defeat Sylvan using the Limit 3 or beat the True Ending with all other Limits to unlock this ship.</text>
 </FTL>

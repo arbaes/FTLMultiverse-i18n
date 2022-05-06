@@ -77,14 +77,11 @@
 	
 	<!--MV-->
 	<event load="INFORMANT_RUNNER"/>
-	<event load="MERCENARY_REBEL_OFFER"/>
 	<event load="PIRATE_MANTIS_CHOICE"/>
 	<event load="AUTO_CHOICE"/>
 	
 	<!--vanilla-->
 	<event load="AUTO_CIVILIAN"/>
-	<event load="PIRATE_CHOICE"/>
-	<event load="SLAVER_CHOICE"/>
 </eventList>
 
 <!--standard encounters with generic hostile factions-->
@@ -92,14 +89,12 @@
 	<event load="ENCOUNTER_REBEL"/>
 	<event load="ENCOUNTER_AUTO"/>
 	<event load="ENCOUNTER_MANTIS"/>
-	<event load="ENCOUNTER_PIRATE"/>
 	<event load="ENCOUNTER_ROCK"/>
 </eventList>
 
 <eventList name="HOSTILE_GENERIC_REGULAR">
 	<event load="ENCOUNTER_REBEL"/>
 	<event load="ENCOUNTER_AUTO"/>
-	<event load="ENCOUNTER_PIRATE"/>
 </eventList>
 
 <!--events that will always end with your ship being boarded... can contain unavoidable fights as well-->
@@ -203,9 +198,7 @@
 	<event load="TRADER_CIV"/>
 	<event load="PIRATE_SALESMAN"/>
 	<event load="HELP_MINERS"/>
-	<event load="REBELSIDE_MARKET"/>
 	<event load="TRADER_UPGRADES_EXCHANGE"/>
-	<event load="MERCENARY_OFFER"/>
 	<event load="DONOR_PONY"/>
 	<event load="DONOR_PLAGUE"/>
 	<event load="TERRAFORMING_SCAN"/>
@@ -228,9 +221,7 @@
 	<event load="TRADER_CIV"/>
 	<event load="PIRATE_SALESMAN"/>
 	<event load="HELP_MINERS"/>
-	<event load="REBELSIDE_MARKET"/>
 	<event load="TRADER_UPGRADES_EXCHANGE"/>
-	<event load="MERCENARY_OFFER"/>
 	<event load="DONOR_PONY"/>
 	<event load="DONOR_PLAGUE"/>
 	<event load="TERRAFORMING_SCAN"/>
@@ -260,7 +251,7 @@
 <!--events with a distress beacon. Can be empty, hostile, neutral, or item events-->
 <eventList name="DISTRESS">
 	<!--vanilla standard-->
-	<event load="DISTRESS_REFUGEE_GHOST"/>
+	<event load="DISTRESS_REFUGEE_ABANDONED"/>
 	<event load="DISTRESS_FRIENDLY_BEACON"/>
 	<event load="DISTRESS_TRAP_BEACON"/>
 	<event load="DISTRESS_CIVILIAN_ASTEROIDS_BEACON"/>
@@ -724,7 +715,7 @@
 </eventList>
 <event name="TRADER_REACTOR_EXCHANGE" unique="true"> 
 	<text load="TRADER_REACTOR_EXCHANGE_TEXT"/>
-	<choice req="reactor" lvl="1" max_lvl="24" max_group="0" blue="false" hidden="true">
+	<choice req="reactor" lvl="1" max_lvl="24" max_group="0" blue="false" hidden="false">
 		<text>Agree to the trade.</text>
 		<event load="TRADER_REACTOR_EXCHANGE_LIST"/>
 	</choice>
@@ -751,7 +742,7 @@
 	<text>"You look like a military vessel. We're trying to get back to our homes alive. I'm an engineer by trade and could try to improve your reactor if you have any extra supplies."</text>
 	<text>You receive a message from a small convoy. They're looking for some military supplies and are offering to try to improve your reactor in exchange.</text>
 </textList>
-<eventList name="TRADER_ENGINES_EXCHANGE_LIST">
+<eventList name="TRADER_REACTOR_EXCHANGE_LIST">
 	<event>
 		<text>You make the exchange and their team comes on board to try to improve your reactor.</text>
 		<item_modify>
@@ -993,7 +984,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="commando">
+	<choice hidden="true" req="rock_commando">
 		<text>(Lost Sun Commando) Offer to teach them how to construct makeshift explosives.</text>
 		<event>
 			<text>Your commando, being both an experienced arsonist and knowledgeable in the ways of explosives, explains to the miners how the Lost Suns have been using "recycled" ammunition to save costs. Thoroughly impressed by this knowledge, the colony's leader grants you access to some of their latest spoils.</text>
@@ -1009,7 +1000,7 @@
 				<event load="STORAGE_CHECK"/>
 			</choice>
 			<choice hidden="true">
-				<text>Do Nothing.</text>
+				<text>Do nothing.</text>
 				<event/>
 			</choice>
 		</event>
@@ -1082,18 +1073,18 @@
 
 <event name="WRECKAGE_EVENT" unique="false">
 	<text load="WRECKAGE_TEXT"/>
-	<choice req="sensors" lvl="2" max_group="0" hidden="true">
+	<choice req="sensors" lvl="2" max_lvl="2" hidden="true">
 		<text>(Improved Sensors) Use your Sensors to scan the wreckage.</text>
 		<event>
 			<text>You scan the battlefield, and with the aid of your Sensors, you are able to salvage a moderate amount of material from the wreckage. You prepare to jump.</text>
 			<autoReward level="MED">stuff</autoReward>
 		</event>
 	</choice>
-	<choice req="sensors" lvl="3" max_group="0" hidden="true">
+	<choice req="sensors" lvl="3" hidden="true">
 		<text>(Advanced Sensors) Use your Sensors to scan the wreckage.</text>
 		<event load="WRECKAGE_SCANNED"/>
 	</choice>
-	<choice req="ADV_SCANNERS" max_group="0" hidden="true">
+	<choice req="ADV_SCANNERS" hidden="true">
 		<text>(LRS) Use your Sensors to scan the wreckage.</text>
 		<event load="WRECKAGE_SCANNED"/>
 	</choice>
@@ -1412,7 +1403,7 @@
 		<text>Offer him a position on your ship.</text>
 		<event>
 			<text>He graciously accepts, having always wanted to serve in the Federation.</text>
-			<crewMember amount="1" class="freemantis">Robert Smith</crewMember>
+			<crewMember amount="1" class="mantis_free">Robert Smith</crewMember>
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -1539,9 +1530,9 @@
 			</choice>
 		</event>
 	</choice>
-	<choice req="LIST_CREW_SLUG">
-		<text>(Slug Crew) "Sssir, we can dock, but I sssensse that we better plan on making a purcchassse..."</text>
-		<event load="DOCK_PIRATE_SALESMAN"/>
+	<choice req="LIST_CREW_SLUG" hidden="true">	<!-- flavor only like options in Haynes event since it did the same as docking -->
+		<text>(Slug Crew) "Sssir, we can dock, but I sssensse that we better plan on making a purchassse..."</text>
+		<event load="OPTION_INVALID"/>
 	</choice>
 	<choice req="hacking" hidden="true">
 		<text>(Hacking) Disable their Weapon system before docking.</text>
@@ -1757,7 +1748,7 @@
 		<choice hidden="true" req="clonebay">
 			<text>(Clone Bay) Search for a surviving DNA bank.</text>
 			<event>
-				<text>While the cloning facilites are no longer functioning, you find someone was in queue to be cloned. You transfer their data to your Clone Bay and after a time their body is rebuilt.</text>
+				<text>While the cloning facilities are no longer functioning, you find someone was in queue to be cloned. You transfer their data to your Clone Bay, and after some time their body is rebuilt.</text>
 				<choice hidden="true">
 					<text>Continue...</text>
 					<event load="EMPTY_STATION2_CLONE"/>
@@ -1826,7 +1817,7 @@
 	<choice>
 		<text>Fend for yourself, attack and escape.</text>
 		<event>
-			<text>You move in to attack the rebel ship.</text>
+			<text>You move in to attack the Rebel ship.</text>
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -1869,8 +1860,8 @@
 			</choice>
 		</event>
 	</choice>
-	<choice req="engineer" hidden="true">
-		<text>(Engineer) Pretend to be a Rebel ship.</text>
+	<choice req="LIST_CREW_ENGINEER" hidden="true">
+		<text>(Engineer Crew) Pretend to be a Rebel ship.</text>
 		<event>
 			<text>Rebel forces are bloated with washups, conscripts, or disheartened officers who are only in its ranks because their reality was conquered by Rebels first. The Rebel running the checkpoint barely even glances at your Engineer's outdated Rebel ID before deciding to let you past.</text>
 			<choice hidden="true">
@@ -1936,7 +1927,7 @@
 	<choice>
 		<text>Attack the Rebels.</text>
 		<event>
-			<text>You engage the rebel ship.</text>
+			<text>You engage the Rebel ship.</text>
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -1969,7 +1960,7 @@
 	<choice>
 		<text>Leave them be.</text>
 		<event>
-			<text>You decide not to bother the rebels.</text>
+			<text>You decide not to bother the Rebels.</text>
 			<choice>
 				<text>Do something onboard the ship.</text>
 				<event load="STORAGE_CHECK"/>
@@ -2032,8 +2023,8 @@
 	</event>
 	<event>
 		<text>The colonists aren't willing to give up the supplies without a fight. As you bring the cargo back to your ship, a horde of angry civilians board and try to take it back!</text>
-		<autoReward level="LOW">scrap_only</autoReward>
 		<boarders min="2" max="3" class="random"/>
+		<autoReward level="LOW">scrap_only</autoReward>
 		<choice>
 			<text>Continue...</text>
 			<event load="MORALITY_UPDATE_GENERAL"/>
@@ -2096,7 +2087,7 @@
 	<choice>
 		<text>No time to search, you prepare to jump away.</text>
 		<event>
-			<text>You decide not to go hunting for rebels.</text>
+			<text>You decide not to go hunting for Rebels.</text>
 			<choice hidden="true">
 				<text>Check the storage.</text>
 				<event load="STORAGE_CHECK"/>
@@ -2269,7 +2260,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="anaerobic">
+	<choice hidden="true" req="lanius">
 		<text>(Lanius Crew) Offer to have your crewmember help.</text>
 		<event>
 			<text>"Interesting. So this metal man can help us make some of these unique parts out of scrap? That would be a huge help." Your crewmember checks over the blueprints and quickly converts some of their base metal sheets into the specialized parts.</text>
@@ -2282,7 +2273,7 @@
 						<event>
 							<text>Once your Lanius crewmember understands the situation it appears to like the idea of assisting with construction in deep space. Much less dangerous. They offer you some goods in exchange.</text>
 							<autoReward level="HIGH">augment</autoReward>
-							<removeCrew class="anaerobic">
+							<removeCrew class="lanius">
 								<clone>false</clone>
 								<text>Your Clone Bay obviously does not revive your crewmember since they did not die.</text>
 							</removeCrew>

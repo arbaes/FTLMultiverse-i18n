@@ -24,11 +24,11 @@
 	</beaconType>
 	<text>It appears you've discovered a Harmony Link. These massive planet-sized structures are made up of trillions of nanobots, and transmit a strong signal to all of the Engi in the sector. However, it appears this one is no longer functional, likely sabotaged by the Separatists when they took control of this sector.</text>
 	<img back="BACK_EVENT_HARMONYLINK" planet="NONE"/>
-	<choice hidden="true" lvl="0" req="MARKER_FOUNDANCIENT" max_group="1" blue="false">
+	<choice hidden="true" lvl="1" req="HARMONY_LINK_CHECK" max_group="1" blue="false">
 		<text>Continue...</text>
 		<event load="HARMONY_LINK_SEP_EVENTS"/>
 	</choice>
-	<choice hidden="true" lvl="1" req="MARKER_FOUNDANCIENT" max_group="1" blue="false">
+	<choice hidden="true" lvl="0" req="HARMONY_LINK_CHECK" max_group="1" blue="false">
 		<text>Continue...</text>
 		<event load="HARMONY_LINK_EVENTS_SEP_NOANCIENT"/>
 	</choice>
@@ -46,7 +46,7 @@
 </eventList>
 
 <event name="HARMONY_LINK_SEPARATIST">
-	<text>A Separatist vessel is analyzing the Harmony link. They either don't notice you or could care less of your presence.</text>
+	<text>A Separatist vessel is analyzing the Harmony link. They either don't notice you or couldn't care less about your presence.</text>
 	<ship load="SHIP_SEPERATIST_FIGHT" hostile="false"/>
 	<choice hidden="true">
 		<text>Hail them.</text>
@@ -139,6 +139,49 @@
 	<augment name="RANDOM"/>
 </event>
 
+<event name="SEPERATIST_ICECREAM" unique="true">
+    <text>A small Separatist vendor nearby is advertising to passing ships some kind of miracle concoction it claims can solve anyone's problems. Sounds incredulous, but would it hurt to check it out?</text>
+    <choice hidden="true">
+        <text>Investigate the vendor.</text>
+        <event>
+			<text>"Welcome, welcome, [valued] customer! Might I interest you in the -exotic-, delightful, and positively splenerific taste of F.D.P.T.W.T.F.M.C.E.? You won't regret it!"</text>
+			<choice hidden="true">
+				<text>What?</text>
+				<event>
+					<text>"Have you never heard of [Frozen Dairy Product Topped With Terran Fruit and Melted Coco Extract]? I am told it is -all- the rage in the Union. I recommend a purchase. It will make your crew happier."</text>
+					<choice hidden="true">
+						<text>Buy the F.D.P.T.W.T.F.M.C.E.</text>
+						<event>
+							<text>"Thank you for your [purchase] Renegade! I hope to have more flavors in the -future-!"</text>
+							
+						</event>
+					</choice>
+				</event>
+			</choice>
+			<choice hidden="true">
+				<text>That sounds like it'll kill us. No thanks.</text>
+				<event>
+					<text>The Separatist frowns but says nothing more. You brush past them and move on.</text>
+				</event>
+			</choice>
+		</event>
+    </choice>
+    <choice hidden="true">
+        <text>Ignore the Engi.</text>
+        <event>
+            <text>Their promises are clearly fabricated. You don't have time to waste on dissapointing yourself, better to get a move on.</text>
+            <choice>
+                <text>Do something onboard the ship.</text>
+                <event load="STORAGE_CHECK"/>
+            </choice>
+            <choice>
+                <text>Do nothing.</text>
+                <event/>
+            </choice>
+        </event>
+    </choice>
+</event>
+
 <event name="SEPERATIST_TRAP_SCAN" unique="true">
     <text>A neighboring Separatist ship hails you soon after you jump in. "You are in [luck] captain of Federation vessel. I am in possession of an expansive data suite, including a map of this sector. Would you like to download?"</text>
     <choice hidden="true">
@@ -181,7 +224,7 @@
 		<text>Welcome aboard!</text>
 		<event>
 			<text>"Oh, Thank thank you captain!"</text>
-			<crewMember amount="1" class="separatist">L-4673</crewMember>
+			<crewMember amount="1" class="engi_separatist">L-4673</crewMember>
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -198,66 +241,78 @@
 		<text>Allow him.</text>
 		<event load="SEPERATIST_BODY_SCAN_ALLOW"/>
 	</choice>
-	<choice hidden="true" req="soldier">
-		<text>(Soldier) Entice him with your Soldier.</text>
+	<choice hidden="true" req="LIST_CREW_SOLDIER">
+		<text>(Elite Human) Entice him with your Elite Human.</text>
 		<event load="SEPERATIST_BODY_SCAN_SOLDIER"/>
 	</choice>
 	<choice hidden="true" req="LIST_CREW_SUZERAIN">
-        <text>(Hive Elite) Entice him with your Mantis Elite.</text>
+        <text>(Hive Elite) Entice him with your Elite Mantis.</text>
         <event load="SEPERATIST_BODY_SCAN_SUZERAIN"/>
     </choice>
-	<choice hidden="true" req="sabo">
-		<text>(Saboteur) Entice him with your Saboteur.</text>
+	<choice hidden="true" req="LIST_CREW_SABOTEUR">
+		<text>(Elite Slug) Entice him with your Elite Slug.</text>
 		<event load="SEPERATIST_BODY_SCAN_SABOTEUR"/>
 	</choice>
-	<choice hidden="true" req="peace">
+	<choice hidden="true" req="zoltan_peacekeeper">
 		<text>(Peacekeeper) Entice him with your Peacekeeper.</text>
 		<event load="SEPERATIST_BODY_SCAN_PEACE"/>
 	</choice>
-	<choice hidden="true" req="crusader">
-		<text>(Crusader) Entice him with your Crusader.</text>
+	<choice hidden="true" req="LIST_CREW_CRUSADER">
+		<text>(Elite Rock) Entice him with your Elite Rock.</text>
 		<event load="SEPERATIST_BODY_SCAN_CRUSADER"/>
 	</choice>
-	<choice hidden="true" req="chieftain">
+	<choice hidden="true" req="orchid_chieftain">
 		<text>(Chieftain) Entice him with your Chieftain.</text>
 		<event load="SEPERATIST_BODY_SCAN_CHIEFTAIN"/>
 	</choice>
-	<choice hidden="true" req="sentinel">
+	<choice hidden="true" req="crystal_sentinel">
 		<text>(Sentinel) Entice him with your Sentinel.</text>
 		<event load="SEPERATIST_BODY_SCAN_SENTINEL"/>
 	</choice>
-	<choice hidden="true" req="welder">
+	<choice hidden="true" req="lanius_welder">
 		<text>(Welder) Entice him with your Welder.</text>
 		<event load="SEPERATIST_BODY_SCAN_WELDER"/>
 	</choice>
-	<choice hidden="true" req="phantomalpha">
+	<choice hidden="true" req="phantom_alpha">
 		<text>(Alpha Phantom) Entice him with your Phantom Alpha.</text>
 		<event load="SEPERATIST_BODY_SCAN_PHANTOMALPHA"/>
 	</choice>
-	<choice hidden="true" req="marealpha">
+	<choice hidden="true" req="phantom_mare_alpha">
 		<text>(Alpha Mare) Entice him with your Mare Alpha.</text>
 		<event load="SEPERATIST_BODY_SCAN_MAREALPHA"/>
 	</choice>
-	<choice hidden="true" req="goulalpha">
+	<choice hidden="true" req="phantom_goul_alpha">
 		<text>(Alpha Goul) Entice him with your Goul Alpha.</text>
 		<event load="SEPERATIST_BODY_SCAN_GOULALPHA"/>
 	</choice>
-	<choice hidden="true" req="wraithalpha">
+	<choice hidden="true" req="phantom_wraith_alpha">
 		<text>(Alpha Wraith) Entice him with your Wraith Alpha.</text>
 		<event load="SEPERATIST_BODY_SCAN_WRAITHALPHA"/>
 	</choice>
-	<choice hidden="true" req="toxic">
+	<choice hidden="true" req="shell_radiant">
 		<text>(Radiant) Entice him with your Radiant.</text>
 		<event load="SEPERATIST_BODY_SCAN_RADIANT"/>
 	</choice>
-	<choice hidden="true" req="radical">
-		<text>(Radical) Entice him with your Radical.</text>
+	<choice hidden="true" req="zoltan_martyr">
+		<text>(Martyr) Entice him with your Martyr.</text>
 		<event load="SEPERATIST_BODY_SCAN_RADICAL"/>
 	</choice>
-	<choice hidden="true" req="warlord">
+	<choice hidden="true" req="mantis_warlord">
 		<text>(Warlord) Entice him with your Warlord.</text>
 		<event load="SEPERATIST_BODY_SCAN_WARLORD"/>
 	</choice>
+	<choice hidden="true" req="slug_ranger">
+		<text>(Ranger) Entice him with your Ranger.</text>
+		<event load="SEPERATIST_BODY_SCAN_RANGER"/>
+	</choice>
+	<choice hidden="true" req="leech_ampere">
+		<text>(Ampere) Entice him with your Ampere.</text>
+		<event load="SEPERATIST_BODY_SCAN_AMPERE"/>
+	</choice>
+	<choice hidden="true" req="human_technician">
+		<text>(Technician) Entice him with your Technician.</text>
+		<event load="SEPERATIST_BODY_SCAN_TECH"/>
+	</choice>		
 	<choice hidden="true" req="LIST_CREW_ENGI">
 		<text>(Engi) Encourage him to scan the Engi.</text>
 		<event>
@@ -292,7 +347,7 @@
 	</event>
 	<event>
 		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
-		<crewMember amount="1" class="soldier">L-9678</crewMember>
+		<crewMember amount="1" class="human_soldier">L-9678</crewMember>
 	</event>
 </eventList>
 <eventList name="SEPERATIST_BODY_SCAN_SUZERAIN">
@@ -302,7 +357,7 @@
 	</event>
 	<event>
 		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
-		<crewMember amount="1" class="suzerain">L-9678</crewMember>
+		<crewMember amount="1" class="mantis_suzerain">L-9678</crewMember>
 	</event>
 </eventList>
 <eventList name="SEPERATIST_BODY_SCAN_SABOTEUR">
@@ -312,7 +367,7 @@
 	</event>
 	<event>
 		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
-		<crewMember amount="1" class="sabo">L-9678</crewMember>
+		<crewMember amount="1" class="slug_saboteur">L-9678</crewMember>
 	</event>
 </eventList>
 <eventList name="SEPERATIST_BODY_SCAN_PEACE">
@@ -322,7 +377,7 @@
 	</event>
 	<event>
 		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
-		<crewMember amount="1" class="peace">L-9678</crewMember>
+		<crewMember amount="1" class="zoltan_peacekeeper">L-9678</crewMember>
 	</event>
 </eventList>
 <eventList name="SEPERATIST_BODY_SCAN_CRUSADER">
@@ -332,7 +387,7 @@
 	</event>
 	<event>
 		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
-		<crewMember amount="1" class="crusader">L-9678</crewMember>
+		<crewMember amount="1" class="rock_crusader">L-9678</crewMember>
 	</event>
 </eventList>
 <eventList name="SEPERATIST_BODY_SCAN_CHIEFTAIN">
@@ -342,7 +397,7 @@
 	</event>
 	<event>
 		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
-		<crewMember amount="1" class="chieftain">L-9678</crewMember>
+		<crewMember amount="1" class="orchid_chieftain">L-9678</crewMember>
 	</event>
 </eventList>
 <eventList name="SEPERATIST_BODY_SCAN_SENTINEL">
@@ -352,7 +407,7 @@
 	</event>
 	<event>
 		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
-		<crewMember amount="1" class="sentinel">L-9678</crewMember>
+		<crewMember amount="1" class="crystal_sentinel">L-9678</crewMember>
 	</event>
 </eventList>
 <eventList name="SEPERATIST_BODY_SCAN_WELDER">
@@ -362,7 +417,7 @@
 	</event>
 	<event>
 		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
-		<crewMember amount="1" class="welder">L-9678</crewMember>
+		<crewMember amount="1" class="lanius_welder">L-9678</crewMember>
 	</event>
 </eventList>
 <eventList name="SEPERATIST_BODY_SCAN_PHANTOMALPHA">
@@ -372,7 +427,7 @@
 	</event>
 	<event>
 		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
-		<crewMember amount="1" class="phantomalpha">L-9678</crewMember>
+		<crewMember amount="1" class="phantom_alpha">L-9678</crewMember>
 	</event>
 </eventList>
 <eventList name="SEPERATIST_BODY_SCAN_GOULALPHA">
@@ -382,7 +437,7 @@
 	</event>
 	<event>
 		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
-		<crewMember amount="1" class="goulalpha">L-9678</crewMember>
+		<crewMember amount="1" class="phantom_goul_alpha">L-9678</crewMember>
 	</event>
 </eventList>
 <eventList name="SEPERATIST_BODY_SCAN_MAREALPHA">
@@ -392,7 +447,7 @@
 	</event>
 	<event>
 		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
-		<crewMember amount="1" class="marealpha">L-9678</crewMember>
+		<crewMember amount="1" class="phantom_mare_alpha">L-9678</crewMember>
 	</event>
 </eventList>
 <eventList name="SEPERATIST_BODY_SCAN_WRAITHALPHA">
@@ -402,7 +457,7 @@
 	</event>
 	<event>
 		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
-		<crewMember amount="1" class="wraithalpha">L-9678</crewMember>
+		<crewMember amount="1" class="phantom_wraith_alpha">L-9678</crewMember>
 	</event>
 </eventList>
 <eventList name="SEPERATIST_BODY_SCAN_RADIANT">
@@ -412,7 +467,7 @@
 	</event>
 	<event>
 		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
-		<crewMember amount="1" class="toxic">L-9678</crewMember>
+		<crewMember amount="1" class="shell_radiant">L-9678</crewMember>
 	</event>
 </eventList>
 <eventList name="SEPERATIST_BODY_SCAN_RADICAL">
@@ -422,7 +477,7 @@
 	</event>
 	<event>
 		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
-		<crewMember amount="1" class="radical">L-9678</crewMember>
+		<crewMember amount="1" class="zoltan_martyr">L-9678</crewMember>
 	</event>
 </eventList>
 <eventList name="SEPERATIST_BODY_SCAN_WARLORD">
@@ -432,7 +487,37 @@
 	</event>
 	<event>
 		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
-		<crewMember amount="1" class="warlord">L-9678</crewMember>
+		<crewMember amount="1" class="mantis_warlord">L-9678</crewMember>
+	</event>
+</eventList>
+<eventList name="SEPERATIST_BODY_SCAN_RANGER">
+	<event>
+		<text>"Yes, this one will do. Satisfaction 98%. I can work out the last 2%. Thank you friend. Accept this gift as gratitude." He morphs into an exact copy of your crew and beams off the ship, leaving behind some droneparts.</text>
+		<autoReward level="MED">droneparts_only</autoReward>
+	</event>
+	<event>
+		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
+		<crewMember amount="1" class="slug_ranger">L-9678</crewMember>
+	</event>
+</eventList>
+<eventList name="SEPERATIST_BODY_SCAN_AMPERE">
+	<event>
+		<text>"Yes, this one will do. Satisfaction 98%. I can work out the last 2%. Thank you friend. Accept this gift as gratitude." He morphs into an exact copy of your crew and beams off the ship, leaving behind some droneparts.</text>
+		<autoReward level="MED">droneparts_only</autoReward>
+	</event>
+	<event>
+		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
+		<crewMember amount="1" class="leech_ampere">L-9678</crewMember>
+	</event>
+</eventList>
+<eventList name="SEPERATIST_BODY_SCAN_TECH">
+	<event>
+		<text>"Yes, this one will do. Satisfaction 98%. I can work out the last 2%. Thank you friend. Accept this gift as gratitude." He morphs into an exact copy of your crew and beams off the ship, leaving behind some droneparts.</text>
+		<autoReward level="MED">droneparts_only</autoReward>
+	</event>
+	<event>
+		<text>"This form is... magnificent. I shall begin the scan, but the details must be perfect. I shall stay around longer, so that I can shape myself in their form to perfection."</text>
+		<crewMember amount="1" class="human_technician">L-9678</crewMember>
 	</event>
 </eventList>
 
@@ -517,7 +602,7 @@
 	
 	<event load="ASTEROID_EXPLORE"/>
 	<event load="BROKEN_REBEL_DRONE"/>
-	<event load="ALISON_MANTIS_CREW"/>
+	<event load="ALISON_MANTIS_CREW_MV"/>
 </eventList>
 
 <event name="SEPERATIST_ENGI_CHOICE" unique="true">
@@ -573,7 +658,7 @@
 <event name="SEPERATIST_ENGI_CHOICE_WIN">
 	<text>"An unfortunate death. We wish the Harmony would leave this sector. Still, I thank you Federation. Perhaps if I take refuge on your ship, I will be safe from their scouts."</text>
 	<autoReward level="MED">standard</autoReward>
-	<crewMember amount="1" class="separatist">L-6437</crewMember>
+	<crewMember amount="1" class="engi_separatist">L-6437</crewMember>
 </event>
 
 <event name="SEPERATIST_NANOCLOUD" unique="true">
@@ -852,7 +937,7 @@
 		<event>
 			<text>"Greetings unwelcome stranger. Consider yourself now welcome. We have request. We have recently been infected by [deadly] virus, casualties are over -1/4th- of population. Can you assist?</text>
 			<choice>
-				<text>Pay some supplies</text>
+				<text>Pay some supplies.</text>
 				<event>
 					<text>Though you can tell from their reactions it won't help much, the Engis are still grateful for your donation.</text>
 					<item_modify>
@@ -880,7 +965,7 @@
 						<event>
 							<text>It takes the rest of the day to cure the other Separatists, but at last it appears you have managed to cure the entire colony of the virus. They are extremely grateful, and gift you a piece of equipment for your ship. One of their workers also offers in secret to work aboard your crew, afraid of their fate in the colony if the virus resurfaces.</text>
 							<weapon name="RANDOM"/>
-							<crewMember amount="1" class="separatist">L-8133</crewMember>
+							<crewMember amount="1" class="engi_separatist">L-8133</crewMember>
 							<modifyPursuit amount="1"/>
 						</event>
 					</choice>
@@ -896,7 +981,7 @@
 				<text>(Engi Crew) Send your Engi down to help.</text>
 				<event load="DISTRESS_SEPERATIST_COMMUNITY_VIRUS_ENGI"/>
 			</choice>
-			<choice hidden="true" req="separatist">
+			<choice hidden="true" req="engi_separatist">
 				<text>(Separatist Crew) Send your Separatist down to help.</text>
 				<event load="DISTRESS_SEPERATIST_COMMUNITY_VIRUS_SEPARATIST"/>
 			</choice>
@@ -941,7 +1026,7 @@
 		<drone name="RANDOM"/>
 	</event>
 	<event>
-		<text>Your Engi attempts to debug the Separatists, but only ends up catching the virus themselves. It slowly erodes at the code that causes it to maintain a solid shape and evaporates as its nanobots scatter. The Separatists send their condoleances but have nothing else to say.</text>
+		<text>Your Engi attempts to debug the Separatists, but only ends up catching the virus themselves. It slowly erodes at the code that causes it to maintain a solid shape and evaporates as its nanobots scatter. The Separatists send their condolences but have nothing else to say.</text>
 		<removeCrew class="engi">
 			<clone>false</clone>
 			<text>You aren't sure if a virtual infection will carry over the Clone Bay, and attempt to revive your crew. Unfortunately the clone appears to be suffering many glitches and cannot keep a constant form. You put them out of their misery and delete their data from the clone bank.</text>
@@ -954,8 +1039,8 @@
 		<drone name="RANDOM"/>
 	</event>
 	<event>
-		<text>Your Engi attempts to debug the Separatists, but only ends up catching the virus themselves. It slowly erodes at the code that causes it to maintain a solid shape and evaporates as its nanobots scatter. The Separatists send their condoleances but have nothing else to say.</text>
-		<removeCrew class="separatist">
+		<text>Your Engi attempts to debug the Separatists, but only ends up catching the virus themselves. It slowly erodes at the code that causes it to maintain a solid shape and evaporates as its nanobots scatter. The Separatists send their condolences but have nothing else to say.</text>
+		<removeCrew class="engi_separatist">
 			<clone>false</clone>
 			<text>You aren't sure if a virtual infection will carry over the Clone Bay, and attempt to revive your crew. Unfortunately the clone appears to be suffering many glitches and cannot keep a constant form. You put them out of their misery and delete their data from the clone bank.</text>
 		</removeCrew>
@@ -983,7 +1068,7 @@
 			<choice hidden="true">
 				<text>Agree.</text>
 				<event>
-					<text>The Engi transmit the location of the Separatist ship</text>
+					<text>The Engi transmit the location of the Separatist ship.</text>
 					<quest event="QUEST_SEPERATIST_ENGI_BOUNTY_QUEST"/>
 				</event>
 			</choice>

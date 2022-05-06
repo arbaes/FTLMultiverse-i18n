@@ -4,6 +4,10 @@
 		<name>showdown</name>
 		<explore>mv_MUS_Showdown.ogg</explore>
 	</track>
+	<track> <!--composed by Maddie-->
+		<name>CURA</name>
+		<explore>mv_MUS_Cura.ogg</explore>
+	</track>
 	<track> <!--composed by PDTM-->
 		<name>paragon</name>
 		<explore>mv_MUS_Paragon.ogg</explore>
@@ -17,6 +21,11 @@
 		<name>spaceass</name>
 		<explore>mv_MUS_SpaceAssEXPLORE.ogg</explore>
 		<combat>mv_MUS_SpaceAssBATTLE.ogg</combat>
+	</track>
+	<track> <!--composed by SquishyBoi-->
+		<name>voyager</name>
+		<explore>mv_MUS_VoyagerEXPLORE.ogg</explore>
+		<combat>mv_MUS_VoyagerBATTLE.ogg</combat>
 	</track>
 	<track> <!--composed by PDTM-->
 		<name>serenity</name>
@@ -38,10 +47,20 @@
 		<explore>mv_MUS_AutoEXPLORE.ogg</explore>
 		<combat>mv_MUS_AutoBATTLE.ogg</combat>
 	</track>
+	<track> <!--composed by Maddie-->
+		<name>insurgence</name>
+		<explore>mv_MUS_InsurgenceEXPLORE.ogg</explore>
+		<combat>mv_MUS_InsurgenceBATTLE.ogg</combat>
+	</track>
 	<track> <!--composed by JumboCarrot-->
 		<name>monk</name>
 		<explore>mv_MUS_MonkEXPLORE.ogg</explore>
 		<combat>mv_MUS_MonkBATTLE.ogg</combat>
+	</track>
+	<track> <!--composed by SquishyBoi-->
+		<name>dusk</name>
+		<explore>mv_MUS_DuskEXPLORE.ogg</explore>
+		<combat>mv_MUS_DuskBATTLE.ogg</combat>
 	</track>
 	<track> <!--composed by JumboCarrot-->
 		<name>separatist</name>
@@ -52,6 +71,11 @@
 		<name>coalition</name>
 		<explore>mv_MUS_CoalitionEXPLORE.ogg</explore>
 		<combat>mv_MUS_CoalitionBATTLE.ogg</combat>
+	</track>
+	<track> <!--composed by Maddie-->
+		<name>freemantis</name>
+		<explore>mv_MUS_FreeMantisEXPLORE.ogg</explore>
+		<combat>mv_MUS_FreeMantisBATTLE.ogg</combat>
 	</track>
 	<track> <!--composed by SquishyBoi-->
 		<name>hektar</name>
@@ -110,16 +134,18 @@
 
 <humanDeathSpecial volume="6">aliens/bp_sfx_human_death_special.ogg</humanDeathSpecial>
 
-<coomerDeath0 volume="5">ship/hl_sfx_coomer_death0.ogg</coomerDeath0>
-<coomerDeath1 volume="5">ship/hl_sfx_coomer_death1.ogg</coomerDeath1>
-<coomerDeath2 volume="5">ship/hl_sfx_coomer_death2.ogg</coomerDeath2>
-<coomerDeath3 volume="5">ship/hl_sfx_coomer_death3.ogg</coomerDeath3>
-<coomerDeath4 volume="5">ship/hl_sfx_coomer_death4.ogg</coomerDeath4>
+<!--<coomerDeath0 volume="5">aliens/hl_sfx_coomer_death0.ogg</coomerDeath0>-->
+<coomerDeath1 volume="5">aliens/hl_sfx_coomer_death1.ogg</coomerDeath1>
+<coomerDeath2 volume="5">aliens/hl_sfx_coomer_death2.ogg</coomerDeath2>
+<coomerDeath3 volume="5">aliens/hl_sfx_coomer_death3.ogg</coomerDeath3>
+<coomerDeath4 volume="5">aliens/hl_sfx_coomer_death4.ogg</coomerDeath4>
 
 <orchidDeath volume="6">aliens/bp_sfx_orchid_death.ogg</orchidDeath>
 <orchidShoot1 volume="4">aliens/bp_sfx_orchid_shoot1.ogg</orchidShoot1>
 <orchidShoot2 volume="4">aliens/bp_sfx_orchid_shoot2.ogg</orchidShoot2>
 <orchidShoot3 volume="4">aliens/bp_sfx_orchid_shoot3.ogg</orchidShoot3>
+
+<cultivatorSpore volume="4">aliens/bp_sfx_cultivator_spore.ogg</cultivatorSpore>
 
 <mantisSlash volume="6">aliens/bp_sfx_mantis_slash.ogg</mantisSlash>
 
@@ -132,6 +158,8 @@
 <detectiveShoot1 volume="4">aliens/bp_sfx_detective_shoot1.ogg</detectiveShoot1>
 <detectiveShoot2 volume="4">aliens/bp_sfx_detective_shoot2.ogg</detectiveShoot2>
 <detectiveShoot3 volume="4">aliens/bp_sfx_detective_shoot3.ogg</detectiveShoot3>
+
+<saltSizzle volume="2">aliens/bp_sfx_salt_sizzle.ogg</saltSizzle>
 
 <vanceShoot volume="2">aliens/bp_sfx_vance_shoot.ogg</vanceShoot>
 
@@ -159,6 +187,8 @@
 
 <butlerRave volume="3">aliens/bp_sfx_butler_rave.ogg</butlerRave>
 
+<birdDeath volume="5">aliens/bp_bird_death.ogg</birdDeath>
+
 <!--WEAPONS-->
 <laser_piece volume="2">weapons/mv_pierce_laser.ogg</laser_piece>
 
@@ -168,6 +198,10 @@
 
 <focus_weak volume="6">weapons/bp_focus_weak.ogg</focus_weak>
 <focus_strong volume="6">weapons/bp_focus_strong.ogg</focus_strong>
+
+<gaster_blaster volume="3">weapons/mv_gaster_blaster.ogg</gaster_blaster>
+
+<slotgun volume="2">weapons/mv_slotgun_fire.ogg</slotgun>
 
 <energy volume="2">weapons/mv_energy.ogg</energy>
 

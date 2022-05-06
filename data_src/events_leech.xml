@@ -34,7 +34,7 @@
 
 <textList name="TEXT_LEECH_SPACE_TRASH">
 	<text>It's only here in Leech space that you could expect to find immense volumes of garbage littering the cosmos. This beacon is abandoned save for all of the trash, so perhaps you could take advantage of it?</text>
-	<text>Several large junks of debris almost collide with your ship, but fortunately you're able to swerve out of the way. Looks like the nearby region is littered with space trash left behind by the Leeches.</text>
+	<text>Several large chunks of debris almost collide with your ship, but fortunately you're able to swerve out of the way. Looks like the nearby region is littered with space trash left behind by the Leeches.</text>
 	<text>A black bag filled with toiletries and used food wrappers splatters on your windshield. Disgusting, but it looks like the rings of garbage all around this system might contain some hidden treasures.</text>
 </textList>
 <event name="LEECH_SPACE_TRASH" unique="true">
@@ -334,9 +334,9 @@
 	<text>The Vampweeds welcome you aboard the station. They offer you some fuel cells for showing so much interest in their garden.</text>
 	<autoReward level="HIGH">fuel_only</autoReward>
 	<choice>
-		<text>Buy one of their Kernel weapons.</text>
+		<text>Buy one of their Spore weapons.</text>
 		<event>
-			<weapon name="GIFTLIST_KERNEL"/>
+			<weapon name="GIFTLIST_SPORE"/>
 			<item_modify>
 				<item type="scrap" min="-50" max="-70"/>
 			</item_modify>
@@ -345,7 +345,7 @@
 	<choice>
 		<text>Hire one of the gardeners.</text>
 		<event>
-			<crewMember amount="1" class="vampweed"/>
+			<crewMember amount="1" class="orchid_vampweed"/>
 			<item_modify>
 				<item type="scrap" min="-40" max="-60"/>
 			</item_modify>
@@ -362,7 +362,7 @@
 	<choice hidden="true">
 		<text>Visit.</text>
 		<event>
-			<text>Several air fresheners hang from the ceiling, and the faint stains of alien blood decorate the crimson walls. You spot several familiar faces of other Multiverse travelers, but your attention is stolen away by two drunken Leeches arguing with each other over the state of the Eargen Republic. Judging from their slang, one appears to be a loyalist, and the other a revolutionary.</text>
+			<text>Several air fresheners hang from the ceiling, and the faint stains of alien blood decorate the crimson walls. You spot several familiar faces of other Multiverse renegades, but your attention is stolen away by two drunken Leeches arguing with each other over the state of the Eargen Republic. Judging from their slang, one appears to be a loyalist, and the other a revolutionary.</text>
 			<choice hidden="true">
 				<text>Step in - support the loyalist.</text>
 				<event>
@@ -417,7 +417,7 @@
 		<event>
 			<text>"Yeah yeah yeah, whatever. Point issss, I need to let off ssssome sssteam. But I can't go killin Leechessss myssself, got one of thosssse wormsss working on my ssship giving me weird looksss while I tell you all thissss. Ssso go blow up sssome Leechessss. I don't care who. Better yet, if you find a not-blown-up orphanage, go blow it up!"</text>
 			<choice hidden="true">
-				<text>Track down a Kraterocracy ship.</text>
+				<text>Track down an Eargen ship.</text>
 				<event>
 					<text>This'll make a good target. Hopefully the Coalition will be satisfied with this kill.</text>
 					<ship load="SHIP_LEECH_FEDUP_NORMAL" hostile="true"/>
@@ -457,7 +457,7 @@
 						<text>Continue...</text>
 						<event>
 							<text>"You actually did it? Ohhhh man, that felt sssso good to watch. I think I peed a little... or at leasssst I hope that'sss pee. Doesn't matter. You are an elite sssslayer of Leechesss! I think I will come with you in hopesss we can do thisss more often..."</text>
-							<crewMember amount="1" class="sabo"/>
+							<crewMember amount="1" class="slug_saboteur"/>
 						</event>
 					</choice>
 				</event>
@@ -527,6 +527,8 @@
 		<text>Pay the fee to obliterate you and your ship violently.</text>
 		<event>
 			<text>The Slug greedily scoops up your scrap and grants you permission to power off your engines. You do so, allowing your ship to plummet to the ground below. You're killed before you can even hear the chaotic explosion of your ship being torn to little bits.</text>
+			<unlockCustomShip silent="false">PLAYER_SHIP_GOLD</unlockCustomShip>
+			<achievement silent="false">ACH_EVENT_SUICIDEMOON</achievement>
 			<damage amount="999"/>
 			<item_modify>
 				<item type="scrap" min="-50" max="-50"/>
@@ -597,7 +599,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="LIST_ORCHID_CREW">
+			<choice hidden="true" req="LIST_CREW_ORCHID">
 				<text>(Orchid Crew) Lecture the Leeches.</text>
 				<event>
 					<text>"Okay, okay. You know what, we're sorry, we're sorry. Please just stop talking to us. You're the police or something? You know we gotta dispose of these bodies somehow! Oh... I said too much..." The Leeches offer you a bribe if you don't tell anyone what they're up to. Your Orchid disapproves, but what are they going to do about it?</text>
@@ -684,9 +686,9 @@
 </event>
 <textList name="TEXT_ENCOUNTER_LEECH">
 	<text>Leeches might be depressive and unmotivated, but not even that can get in the way of their arrogance. Some high and mighty Leech soldier apparently thinks he can take you on and attacks!</text>
-	<text>The unpredictable strategies employed by the incompetent and usually only half-willing modern Kraterocracy military can make Leech ships frightening adversaries. Let's hope you can make it out of this one without too many scratches!</text>
+	<text>The unpredictable strategies employed by the incompetent and usually only half-willing modern Eargen military can make Leech ships frightening adversaries. Let's hope you can make it out of this one without too many scratches!</text>
 	<text>A Leech captain of the nearby ship hails you and clears his throat. "Ah crap, I had something I was gonna say. Awkward... uh, I'm just going to kill you. But it was going to sound WAY cooler if I had remembered my original speech."</text>
-	<text>Judging alone from the drunken movements of the nearby Leech ship, you suspect their captain isn't all there at the moment. In his stuppor, he mistakes you for an enemy and attacks! Looks like you won't be able to reason with this one.</text>
+	<text>Judging alone from the drunken movements of the nearby Leech ship, you suspect their captain isn't all there at the moment. In his stupor, he mistakes you for an enemy and attacks! Looks like you won't be able to reason with this one.</text>
 	<text>Hard to say why the nearby Leech ship has chosen to attack you. A death wish perhaps? You wouldn't be surprised, but you would have prefered if they had just asked instead of forcing it upon you!</text>
 	<text>A Leech ship eyes you passing by, and orders you to stop. Apparently, he's one of the last few soldiers left with the motivation to actually uphold his post. It's a shame his effort is wasted on you!</text>
 </textList>
@@ -724,7 +726,7 @@
 	<text>It sure seems as if nearly every government nowadays is in the midst of rebellion, including the Leeches. A revolutionary vessel, dangerously low on fuel, decides to attack you for all that you've got!</text>
 	<text>A nearby revolutionary ship accuses you of supporting President Tyrdeo and attacks before you can defend yourself!</text>
 	<text>As with many insurrections, it appears the Leech revolutionaries are violent and aggressive nationalists who'll attack anyone, even passing Federation ships like you with no word in the matter!</text>
-	<text>The Leech revolutionaries themselves probably wouldn't mind the Federation so much if it weren't for the Vampweeds assisting them. The Vampweeds technically aren't your enemies - but their militaristic nation and the fact they fought on the side of the Hive in the Fed-Mantis war means they aren't so hesistant to taking on Federation ships in their space!</text>
+	<text>The Leech revolutionaries themselves probably wouldn't mind the Federation so much if it weren't for the Vampweeds assisting them. The Vampweeds technically aren't your enemies - but with their nation being so inclined towards militarization, and the fact they fought on the side of the Hive in the Federation-Mantis war means they aren't so hesitant to taking on Federation ships in their space!</text>
 	<text>"The future is now! First the Eargen Republic, then the galaxy, then the Multiverse! The Leeches shall taste glory once again!" These revolutionaries seem to be setting their sights a bit too high, but you won't waste time talking it through.</text>
 </textList>
 
@@ -764,7 +766,7 @@
 	</choice>
 </event>
 <textList name="TEXT_ENCOUNTER_LEECH_COALITION">
-	<text>The introduction of the Leeches into the Coalition seems to have been only a half-hearted gesture on both sides. The Kraterocracy doesn't seem all too keen on acting in the interest of the Coalition, and it's highly probable the Coalition is only helping fight the revolutionaries because of the number of soldiers the Leeches can provide. Now, enough politics. A threat approaches!</text>
+	<text>The introduction of the Leeches into the Coalition seems to have been only a half-hearted gesture on both sides. The Republic doesn't seem all too keen on acting in the interest of the Coalition, and it's highly probable the Coalition is only helping fight the revolutionaries because of the number of soldiers the Leeches can provide. Now, enough politics. A threat approaches!</text>
 	<text>For all the Coalition's build up as some grand galactic threat, they really haven't seemed to do much besides the Aquarian Invasions. Sure, it's a nuisance you have to deal with ships like the one barreling towards you right now, but at least they aren't directly attacking the Federation anymore.</text>
 	<text>"Geh, you know what's worse than a stupid smelly Leech? A stupider, smellier Federation captain!" The Coalition captain receives several high-fives from his crew, then attacks!</text>
 	<text>A Coalition ship looms, unsure whether it will attack you. That's a joke of course - they already made up in their minds to attack before you'd even had the time to read the first sentence.</text>
@@ -852,7 +854,7 @@
 		<text>Purchase one of the Zoltan slaves.</text>
 		<event>
 			<text>The slavers are startled by your sudden appearance, but once they realize your offer is in earnest, they quickly go along with it.</text>
-			<crewMember amount="1" class="energy"/>
+			<crewMember amount="1" class="zoltan"/>
 			<item_modify>
 				<item type="scrap" min="-40" max="-55"/>
 			</item_modify>
@@ -886,7 +888,7 @@
 	<event load="DISTRESS_LEECH_GRAPHITI"/>
 	
 	<event load="DISTRESS_FEDERATION_LOST"/>
-	<event load="DISTRESS_REFUGEE_GHOST"/>
+	<event load="DISTRESS_REFUGEE_ABANDONED"/>
 </eventList>
 
 <event name="DISTRESS_LEECH_GRAPHITI" unique="true">
@@ -1080,12 +1082,13 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="ampere" prop="0.7"/>
-		<crewMember type="crusader" prop="0.3"/>
+		<crewMember type="leech_ampere" prop="0.7"/>
+		<crewMember type="rock_crusader" prop="0.3"/>
 	</crew>
 </ship>
 <event name="ALKRAM_MEET">
 	<text>Curiously, a fleet of Eargen ships have congregated here as they're fired upon by revolutionary vessels. It's an unfortunate skirmish to get caught in, until you spot an unusually decorated craft flying among the ships.</text>
+	<preventQuest/>
 	<customFleet right="false" firing="true" autoDarkening="true">CUSTOM_FLEET_LEECH</customFleet>
 	<customFleet right="true" firing="true" autoDarkening="true">CUSTOM_FLEET_ALKRAM</customFleet>
 	<choice hidden="true">
@@ -1125,7 +1128,7 @@
 				<event>
 					<text>The Leech pauses, and his two eye slits squint tighter than normal. "You look too high standing to be an agent of that purple parasite. My introduction is irrelevant, so I will spare you the details. I am Alkram Tripae, former general of the Eargen Republic under leadership of President Oertiss during the Federation-Mantis War. Now, in my old age, I have taken to ensuring the stability of the crown by ridding it of its current incompetency."</text>
 					<choice hidden="true">
-						<text>Crown? I though Tyrdeo was president.</text>
+						<text>Crown? I thought Tyrdeo was president.</text>
 						<event>
 							<text>"Exactly my point. That exuberant, dimwitted moron carries with him a shiny golden crown and fancies himself king, yet he has done nothing but lead our kind into even greater turmoil. If you do not fight for Tyrdeo, and are most certainly not of the Rebellion, then I figure you must be Federation in some respect. This skirmish is only a minor one - soon, we will reconvene at Tyrdeo's mansion where he is hiding, and seize the Republic. If you stand for the same liberties as the Federation claims then I hope you will join us." Alkram transfers over some coordinates and immediately goes back to focusing on his crew.</text>
 							<quest event="TYRDEO_PALACE"/>
@@ -1164,8 +1167,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="ampere" prop="0.7"/>
-		<crewMember type="crusader" prop="0.3"/>
+		<crewMember type="leech_ampere" prop="0.7"/>
+		<crewMember type="rock_crusader" prop="0.3"/>
 	</crew>
 </ship>
 <event name="TYRDEO_PALACE">
@@ -1210,7 +1213,7 @@
 </event>
 <event name="TYRDEO_PALACE_ENTER">
 	<text>With the Dreadnaught downed, the barrier falls in a matter of minutes and revolutionaries swarm the palace grounds. In the heat of the conflict you manage to slip past the rest of the defenses and enter the mansion.</text>
-	<hiddenAug>ACH_BOSS_LEECHDREAD</hiddenAug>
+	<variable name="ach_boss_leechdread" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -1218,7 +1221,7 @@
 			<choice hidden="true">
 				<text>Your time is up, Tyrdeo!</text>
 				<event>
-					<text>The Leech turns around, frightened. His wavering voice is surprisingly soft, like a child rather than a dictator. "Oh heavens! Please, have mercy. Oh dear oh dear. What have I done? Has it really come to this? A foreign hitman breaking down my door, cutting my head off upon my own bed? Please, do it quick, and don't hurt my wealsey." Tyrdeo points with one of his tongues to a cage in the corner of the room with contains a large, bright yellow avian creature, who chirps cheerfully despite the dire mood of the room.</text>
+					<text>The Leech turns around, frightened. His wavering voice is surprisingly soft, like a child rather than a dictator. "Oh heavens! Please, have mercy. Oh dear oh dear. What have I done? Has it really come to this? A foreign hitman breaking down my door, cutting my head off upon my own bed? Please, do it quick, and don't hurt my Wealsey." Tyrdeo points with one of his tongues to a cage in the corner of the room with contains a large, bright yellow avian creature, who chirps cheerfully despite the dire mood of the room.</text>
 					<choice hidden="true">
 						<text>We aren't hitmen - you'll answer for your crimes in front of your people.</text>
 						<event>
@@ -1245,8 +1248,8 @@
 																<text>Continue...</text>
 																<event>
 																	<text>"Uh, did I say myself? Sorry, I didn't mean that. What I meant to say was that I think it's time the Republic finally elect a president for the first time since it was founded! But I'm afraid I musn't take part. I've gotten old. It's time I retire. Goodbye." Alkram slithers off the stage over to you. "This has been a disaster. But I've done my part. At least the Republic might finally see better days. Are you in need of a fighter? I have gotten older, but I'm still more than competent."</text>
-																	<hiddenAug>ACH_CREW_ALKRAM</hiddenAug>
-																	<crewMember amount="1" all_skills="2" class="alkram">Alkram</crewMember>
+																	<variable name="ach_crew_alkram" op="set" val="1"/>
+																	<crewMember amount="1" all_skills="2" class="unique_alkram">Alkram</crewMember>
 																</event>
 															</choice>
 														</event>
@@ -1261,8 +1264,14 @@
 														<text>Throne? So you're going to be king after him?</text>
 														<event>
 															<text>Alkram blinks, realizing his poor choice of words, but it's too late. The crowd takes notice and soon their hostility turns towards him. "You're no better than Tyrdeo! You're just another corrupt, power hungry wannabe trying to seize power through force!" cries one angry bystander, and the rest agree. Soon the mob has swarmed Alkram and things turn bloody. In the chaos, Tyrdeo breaks free and rushes over to you. "I might faint. I haven't been this terrified in all my life. I've soiled myself! Oh wait, sorry, you didn't need to know that. Anyways - please, take me with you! I can do more than trim hedges, I promise!" You agree, but before you can make it back to the ship, Tyrdeo ducks back into his palace and returns with his bird which he loads into the cargo. What a strange, strange man.</text>
-															<hiddenAug>ACH_CREW_TYRDEO</hiddenAug>
-															<crewMember amount="1" all_skills="2" class="tyrdeo">Tyrdeo</crewMember>
+															<variable name="ach_crew_tyrdeo" op="set" val="1"/>
+															<crewMember amount="1" all_skills="2" class="unique_tyrdeo">Tyrdeo</crewMember>
+															<choice hidden="true">
+																<text>Continue...</text>
+																<event>
+																	<crewMember amount="1" all_skills="2" class="unique_tyrdeo_bird">Wealsey</crewMember>
+																</event>
+															</choice>
 														</event>
 													</choice>
 												</event>
@@ -1362,7 +1371,7 @@
 	<deadCrew load="LEECH_INQUISITIONER_CACHE_WIN"/>
 	<crew>
 		<crewMember type="leech" prop="0.66"/>
-		<crewMember type="vampweed" prop="0.33"/>
+		<crewMember type="orchid_vampweed" prop="0.33"/>
 	</crew>
 </ship>
 <event name="LEECH_INQUISITIONER_CACHE">
@@ -1375,7 +1384,7 @@
 	</quest>
 	<beaconType id="map_icon_cache" global="true">
 		<color r="135" g="50" b="55" a="1"/>
-		<unvisitedTooltip>Location of the Revolutionary Cache mansion.</unvisitedTooltip>
+		<unvisitedTooltip>Location of the Revolutionary cache.</unvisitedTooltip>
 		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
 	</beaconType>
 	<text>The scenery in front of you forces you to double check the coordinates, but this is definitely the right place. So much for a simple cache - this is an entire base of operations. Sculpted from what was once an abandoned mining colony, the Revolutionaries have set up several large warehouses below.</text>
@@ -1409,7 +1418,7 @@
 </event>
 <event name="LEECH_INQUISITIONER_CACHE_WIN">
 	<text>The prototype vessel has been defeated. This'll probably set back the revolutionaries quite a lot, for better or for worse.</text>
-	<hiddenAug>ACH_BOSS_REVCRUISER</hiddenAug>
+	<variable name="ach_boss_revcruiser" op="set" val="1"/>
 	<autoReward level="HIGH">standard</autoReward>
 	<choice hidden="true">
 		<text>Hail Gora.</text>

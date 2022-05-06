@@ -100,7 +100,7 @@
 				<text>Suggest the Lanius join your crew to learn even more.</text>
 				<event>
 					<text>The Lanius agrees to your suggestion and comes on-board.</text>
-					<crewMember amount="1" class="anaerobic"/>
+					<crewMember amount="1" class="lanius"/>
 				</event>
 			</choice>
 		</event>
@@ -142,7 +142,7 @@
 						<text>Continue.</text>
 						<event>
 							<text>Now fully healed, the Lanius gladly joins your crew to pay off its debt for you saving its life.</text>
-							<crewMember amount="1" class="anaerobic"/>
+							<crewMember amount="1" class="lanius"/>
 						</event>
 					</choice>
 				</event>
@@ -151,7 +151,7 @@
 				<text>(Upg. Medbay) Heal the Lanius.</text>
 				<event>
 					<text>Somehow, the medbays nanobots are capable of repairing the damage to the Lanius's body. Grateful for saving its life, the Lanius joins your crew.</text>
-					<crewMember amount="1" class="anaerobic"/>
+					<crewMember amount="1" class="lanius"/>
 				</event>
 			</choice>
 			<choice hidden="true">
@@ -189,7 +189,7 @@
 					<text>Continue.</text>
 					<event>
 						<text>Now fully healed, the Lanius gladly joins your crew to pay off its debt for you saving its life.</text>
-						<crewMember amount="1" class="anaerobic"/>
+						<crewMember amount="1" class="lanius"/>
 					</event>
 				</choice>
 			</event>
@@ -198,7 +198,7 @@
 			<text>(Upg. Medbay) Heal the Lanius.</text>
 			<event>
 				<text>Somehow, the medbays nanobots are capable of repairing the damage to the Lanius's body. Grateful for saving its life, the Lanius joins your crew.</text>
-				<crewMember amount="1" class="anaerobic"/>
+				<crewMember amount="1" class="lanius"/>
 			</event>
 		</choice>
 		<choice hidden="true">
@@ -208,7 +208,7 @@
 	</event>
 	<event>
 		<text>The Lanius is heavily injured and very aggressive. Feeling threatened by you, they stumble forward and attack.</text>
-		<boarders min="1" max="1" class="anaerobic"/>
+		<boarders min="1" max="1" class="lanius"/>
 	</event>
 </eventList>
 
@@ -218,14 +218,14 @@
 		<text>Accept the surviving Free Mantis.</text>
 		<event>
 			<text>The Lanius drop the unconscious Mantis off on your ship and head back to theirs. Once the Free Mantis wakes up, they're surprised to see themselves on a Federation ship, but are more than glad to serve under your command.</text>
-			<crewMember amount="1" class="freemantis"/>
+			<crewMember amount="1" class="mantis_free"/>
 		</event>
 	</choice>
 	<choice hidden="true">
 		<text>We don't need any more crew.</text>
 		<event>
 			<text>"We keep can't. TAKE!" The Lanius forcibly board your ship, trying to give you the Mantis, and the struggle turns into a full on fight!</text>
-			<boarders min="2" max="3" class="anaerobic"/>
+			<boarders min="2" max="3" class="lanius"/>
 		</event>
 	</choice>
 </event>
@@ -243,7 +243,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="engineer" blue="false">
+	<choice hidden="true" req="human_engineer" blue="false">
 		<text>Let them scan your Engineer.</text>
 		<event>
 			<text>Your Engineer is nervous to go, and the Lanius make no attempt to reassure them. They bring it aboard their ship into a special oxygen filled room for research. Now you must wait...</text>
@@ -253,7 +253,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="medic" blue="false">
+	<choice hidden="true" req="human_medic" blue="false">
 		<text>Let them scan your Medic.</text>
 		<event>
 			<text>Your Medic is nervous to go, and the Lanius make no attempt to reassure them. They bring it aboard their ship into a special oxygen filled room for research. Now you must wait...</text>
@@ -263,7 +263,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="soldier" blue="false">
+	<choice hidden="true" req="LIST_CREW_SOLDIER" blue="false">
 		<text>Let them scan your Soldier.</text>
 		<event>
 			<text>Your Soldier marches along with the Lanius, fearless as ever. They bring it aboard their ship into a special oxygen filled room for research. Now you must wait...</text>
@@ -321,7 +321,7 @@
 <eventList name="LANIUS_LUNG_SCAN_ENGINEER">
 	<event>
 		<text>After a little while you are hailed by the Lanius again. "Mistake. In process, human's lungs are removed. Very unfortunate. Will pay in return for loss."</text>
-		<removeCrew class="engineer">
+		<removeCrew class="human_engineer">
 			<clone>true</clone>
 			<text>Your crew comes gasping out of the Clone Bay, clawing at their chest. You take a moment to assure them that their lungs are back where they should be.</text>
 		</removeCrew>
@@ -351,7 +351,7 @@
 <eventList name="LANIUS_LUNG_SCAN_MEDIC">
 	<event>
 		<text>After a little while you are hailed by the Lanius again. "Mistake. In process, human's lungs are removed. Very unfortunate. Will pay in return for loss."</text>
-		<removeCrew class="medic">
+		<removeCrew class="human_medic">
 			<clone>true</clone>
 			<text>Your crew comes gasping out of the Clone Bay, clawing at their chest. You take a moment to assure them that their lungs are back where they should be.</text>
 		</removeCrew>
@@ -382,7 +382,7 @@
 	<event>
 		<text>You wait for a while but the Lanius do not respond. Suddenly, you see your soldier running back, followed by two angry Lanius! Your soldier quickly explains that the Lanius nearly removed their lungs by mistake, and they were forced to fight their way to freedom.</text>
 		<ship hostile="true"/>
-		<boarders min="2" max="2" class="anaerobic"/>
+		<boarders min="2" max="2" class="lanius"/>
 	</event>
 	<event>
 		<text>After a little while you are hailed by the Lanius again. "Very good. Learned lot. Here is human and pay."</text>
@@ -458,7 +458,7 @@
 	<choice hidden="true">
 		<text>Inquire about the process.</text>
 		<event>
-			<text>They respond, "We haven't the foggiest idea how it works. They appear to meld part of their bodies into the metal and reshape it. They have been willing to demonstrate their ability if you have some extra metal that you would like converted into something.</text>
+			<text>They respond, "We haven't the foggiest idea how it works. They appear to meld part of their bodies into the metal and reshape it. They have been willing to demonstrate their ability if you have some extra metal that you would like converted into something."</text>
 			<choice hidden="true">
 				<text>Give 45 scrap to craft an augmentation.</text>  
 				<event>
@@ -599,7 +599,7 @@
 				<text>Purchase the translator for 40 scrap.</text>
 				<event>
 					<text>Your ships dock and you are more than a little surprised when the Lanius you spoke with boards your ship. It appears the 'device' you purchased was one of the beings that learned your language.</text>
-					<crewMember amount="1" class="anaerobic">Translator</crewMember>
+					<crewMember amount="1" class="lanius">Translator</crewMember>
 					<item_modify>
 						<item type="scrap" min="-40" max="-40"/>
 					</item_modify>
@@ -787,7 +787,7 @@
 </event>
 <textList name="TEXT_ENCOUNTER_PIRATE_LANIUS">
 	<text>"Funny, how these Lanius still think they own this sector. They signed away their rights to be here the moment they fell asleep! This is our territory now, and we don't appreciate Federation ships coming in here and getting involved in our business!"</text>
-	<text>Its a strange day when you can bet just as much on a hostile Pirate encounter as a Lanius one in the Lanius's Homeworlds. Had you gambled on the pirate, you could have made some nice money just now.</text>
+	<text>It's a strange day when you can bet just as much on a hostile Pirate encounter as a Lanius one in the Lanius's Homeworlds. Had you gambled on the pirate, you could have made some nice money just now.</text>
 	<text>Debris from a number of battleships are scattered around the beacon. As you approach the area a pirate ship thrusts itself through the hulks to attack. It must be using the metal to lure the Lanius into a trap.</text> 
 	<text>The pirate ship patrolling this sector has been busy. The debris of several Lanius scouts and at least one civilian ship litter the area. "Welcome, welcome, there's room for one more!" The over-confident pirate hails you as he charges his weapons and moves in to attack.</text>
 	<text>A pirate vessel is hunkered down at this beacon in wait of a victim to appear. Satisfied with your ship over some giant Lanius militarized convoy, they attack.</text>
@@ -893,7 +893,7 @@
 				<text>Lanius who?</text>
 				<event>
 					<text>"Lanius phyxiate you!" You hear the distinct sound of crew teleporting aboard!</text>
-					<boarders min="2" max="2" class="anaerobic"/>
+					<boarders min="2" max="2" class="lanius"/>
 				</event>
 			</choice>
 		</event>
@@ -914,14 +914,14 @@
 				<text>(Lanius Crew) Have your Lanius explain.</text>
 				<event>
 					<text>The Lanius apologize for their misunderstanding. Most of them detach from your ship and float away into the vacuum of space, but one Lanius does not wish to go with the others. Instead, they desire to stay with your crew.</text>
-					<crewMember amount="1" class="anaerobic"/>
+					<crewMember amount="1" class="lanius"/>
 				</event>
 			</choice>
 			<choice hidden="true">
 				<text>This isn't worth our time. Just fight them off.</text>
 				<event>
 					<text>It doesn't take long for the Lanius to make their way into the body of the ship. Prepare to defend the ship!</text>
-					<boarders min="2" max="3" class="anaerobic"/>
+					<boarders min="2" max="3" class="lanius"/>
 					<damage amount="0" system="random" effect="breach"/>
 					<damage amount="0" system="random" effect="breach"/>
 				</event>
@@ -932,7 +932,7 @@
 		<text>Get ready to fight!</text>
 		<event>
 			<text>It doesn't take long for the Lanius to make their way into the body of the ship. They're somehow surprised to see crew onboard, but that doesn't stop them from attacking!</text>
-			<boarders min="2" max="3" class="anaerobic"/>
+			<boarders min="2" max="3" class="lanius"/>
 			<damage amount="0" system="random" effect="breach"/>
 			<damage amount="0" system="random" effect="breach"/>
 		</event>
@@ -944,13 +944,13 @@
 	</event>
 	<event>
 		<text>Your explanation is pointless. The Lanius are only more confused and ignore your crew, going back to salvaging your ship. You have no choice but to fight them off.</text>
-		<boarders min="2" max="3" class="anaerobic"/>
+		<boarders min="2" max="3" class="lanius"/>
 		<damage amount="0" system="random" effect="breach"/>
 		<damage amount="0" system="random" effect="breach"/>
 	</event>
 	<event>
 		<text>Your crew tries to explain the situation to the Lanius, but instead of understanding, they simply get tired of your crew babbling nonsense and stab them through the heart. They promptly go back to eating their way through the hull.</text>
-		<boarders min="2" max="3" class="anaerobic"/>
+		<boarders min="2" max="3" class="lanius"/>
 		<damage amount="0" system="random" effect="breach"/>
 		<damage amount="0" system="random" effect="breach"/>
 		<removeCrew>
@@ -1030,7 +1030,6 @@
 	<!--<event load="LANIUS_BEACON_EATER"/> NOW A MINIBOSS-->
 </eventList>
 <eventList name="NEUTRAL_LANIUS_GENERIC">
-	<event load="FRIENDLY_SLAVER"/>
 	<event load="SLAVER_BETRAYAL"/>
 	<event load="PIRATE_BRIBER"/>
 	<event load="ASTEROID_EXPLORE"/>	
@@ -1100,6 +1099,7 @@
 <event name="LANIUS_GOLD" unique="true">
 	<text>At first you're certain this beacon hosts a very close star, but it's in fact a very bright, golden Lanius ship. On it is a strange golden Flak gun. It looks expensive, but not terribly efficient as a weapon. Still, maybe you could steal the weapon from them?</text>
 	<ship load="SHIP_LANIUS_GOLD" hostile="false"/>
+	<preventQuest/>
 	<choice hidden="true">
 		<text>Attack them.</text>
 		<event>
@@ -1395,7 +1395,7 @@
 		<event load="LANIUS_DORMANT_PILOT"/>
 	</choice>
 	<choice hidden="true" req="pilot" lvl="2">
-		<text>[Advanced Piloting] Engage the autopilot to strip the ship safely.</text>
+		<text>(Upg. Piloting) Engage the autopilot to strip the ship safely.</text>
 		<event>
 			<text>The computer matches the rotation and speed of the target ship, and you take the opportunity to gather what residual scrap you can without awakening the Lanius crew. You get an excellent haul!</text>
 			<autoReward level="MED">standard</autoReward>
@@ -1425,7 +1425,7 @@
 	<event load="DISTRESS_LANIUS_EMPTY"/>
 	
 	<event load="DISTRESS_LANIUS_FIGHT"/>
-	<event load="DISTRESS_LANIUS_TOOLATE"/>
+	<!--<event load="DISTRESS_LANIUS_TOOLATE"/> doesn't exist? -->
 	
 	<event load="DISTRESS_LANIUS_FEEDING"/>
 	
@@ -1565,7 +1565,7 @@
 	</choice>
 </event>
 
-<event name="LANIUS_SLUG_DISTRESS" unique="true">
+<event name="DISTRESS_LANIUS_SLUG" unique="true">
 	<text>The distress signal from this system is coming from a Slug vessel under attack by the Lanius! The Slugs beg for assistance as the Lanius tear into their hull plating.</text>
 	<distressBeacon/>
 	<choice>
@@ -1604,7 +1604,7 @@
 	</event>
 </eventList>
 
-<event name="LANIUS_MANTIS_DISTRESS" unique="true">
+<event name="DISTRESS_LANIUS_MANTIS" unique="true">
 	<text>The Mantis ship in this system looks like its distress beacon is malfunctioning... likely due to the Lanius ship mining their hull and sub-systems! It doesn't look like the Mantis ship will last much longer.</text>
 	<distressBeacon/>
 	<choice>
@@ -1644,7 +1644,7 @@
 	</event>
 </eventList>
 
-<event name="LANIUS_ROCK_DISTRESS" unique="true">
+<event name="DISTRESS_LANIUS_ROCK" unique="true">
 	<text>A distress beacon pulses weakly from a Rockman ship in this system... their hull (and their crew) are being mined by the Lanius, lasers and weapons tearing through the ship!</text>
 	<distressBeacon/>
 	<choice>
@@ -1737,7 +1737,7 @@
 	<choice hidden="true">
 		<text>Just wait and watch.</text>
 		<event>
-			<text>The Zoltan leader speaks slowly to the Lanius, as if that will help them understand. "Hello, my metal friends. We have brought you a wonderful proposition for peace. We request full access to all territory in your sector, the rights to all of your trade routes, etc, in return for the nobility of being allied with the Zoltan rac-" the Zoltans are cut off when one of the Lanius grows bored and fires a missile launcher straight into their engines, destroying the ship. Chaos ensues, and you figure its time that you leave.</text>
+			<text>The Zoltan leader speaks slowly to the Lanius, as if that will help them understand. "Hello, my metal friends. We have brought you a wonderful proposition for peace. We request full access to all territory in your sector, the rights to all of your trade routes, etc, in return for the nobility of being allied with the Zoltan rac-" the Zoltans are cut off when one of the Lanius grows bored and fires a missile launcher straight into their engines, destroying the ship. Chaos ensues, and you figure it's time that you leave.</text>
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -1765,7 +1765,7 @@
 </event>
 <event name="LANIUS_ZOLTAN_PEACE_ZOLTAN_WIN"> <!--you kill the zoltan-->
 	<text>The Lanius ship appears to be an Elite, though its received critical damage. "Federation... savior. Recruitment, option, yes?" It seems the captain wants to work on your ship, given their ship is near destruction and the Zoltans have proven an unsatisfactory ally.</text>
-	<crewMember amount="1" class="welder">Solaris</crewMember> <!--mr. schism creator man, the lanius based overhaul laythe came from-->
+	<crewMember amount="1" class="lanius_welder">Solaris</crewMember> <!--mr. schism creator man, the lanius based overhaul laythe came from-->
 </event>
 <event name="LANIUS_ZOLTAN_PEACE_LANIUS_WIN"> <!--you kill the lanius-->
 	<text>"You have performed... Satisfactory at protecting our squadron. Though you were far from perfect, I do not have the time to fully evaluate your performance. I shall pay you adequately, but do try harder next time, should this situation arise again."</text>
@@ -1837,7 +1837,7 @@
 		<text>(Ship Repair Drone) Send a drone to help.</text>
 		<event>
 			<text>As soon as the drone gets close, a Lanius in a type of spacewalk maneuvering unit grabs it and immediately starts breaking it down for metal. You prepare for a fight but they appear quite grateful for the act. They start to use the metal to repair key portions of their ship. From what you can understand from the translator it appears one of their crew wishes to join you.</text> 
-			<crewMember amount="1" class="anaerobic"/>
+			<crewMember amount="1" class="lanius"/>
 		</event>
 	</choice> 
 </event>
@@ -1911,16 +1911,16 @@
 <!--NEW EVENT-->
 <event name="BEACON_EATER_START" unique="true">
 	<preventQuest/>
-	<text>It appears the distress call is coming from a civilian station. They hail you, warning that a crazed Lanius ship is feeding on the nearby beacon. The destruction of the beacon means the entire system will be shut off from the rest of the sector, and the civilians aren't sure when help would arrive to install a new one, if ever.</text>
+	<text>It appears the distress call is coming from a civilian station. One of the few brave souls left trying to defend their weak claim to this territory, it seems they've now fallen victim to some sort of attack. Fearful help will never arrive, they're willing to pay you to sort out the issue. They just give one warning - these Lanius aren't like the usual.</text>
 	<distressBeacon/>
 	<choice hidden="true">
 		<text>Promise to assist.</text>
 		<event>
-			<text>The civilians weren't kidding about the Lanius being crazed. An Elite Lanius Harvester flutters back and forth like a hummingbird, while a set of feverous Lanius slowly disassemble parts of the beacon.</text>
+			<text>The civilians weren't kidding about the Lanius being... different. A feverent and bizarrely colored Lanius vessel is disassembling the nearby beacon. If they succeed, it would cut off the entire system from the Atlas!</text>
 			<choice hidden="true">
 				<text>Contact the Lanius.</text>
 				<event>
-					<text>The Lanius hail you, but from their maddened ramblings and the struggling translator it's near impossible to determine what they're saying. You manage to make out the phrase "Feed the Beacon Eater" before the Lanius ship turns aggressive and attacks you.</text>
+					<text>"Interruption not! Gathering! Gift the Beacon Eater! Queen demanding!" With that brief refusal, the Lanius go back to tearing apart the beacon. The only evident option here is to fight!</text>
 					<ship load="SHIP_LANIUS_BEACON_UNDERLING_CONTACT" hostile="true"/>
 					<choice hidden="true">
 						<text>Continue...</text>
@@ -1942,9 +1942,9 @@
 		</event>
 	</choice>
 	<choice>
-		<text>We can't risk being stuck here if that happens.</text>
+		<text>We have other matters to attend to.</text>
 		<event>
-			<text>Of course, this is a lie. Your Multiverse drive would let you jump away even without the beacon, though it's very risky. Still, you aren't willing to risk it.</text>
+			<text>Lanius are no small threat and you aren't sure its a good idea to get involved with any 'strange Lanius', especially when you have a much more important mission at hand.</text>
 			<choice>
 				<text>Do something onboard the ship.</text>
 				<event load="STORAGE_CHECK"/>
@@ -1952,6 +1952,29 @@
 			<choice>
 				<text>Do nothing.</text>
 				<event/>
+			</choice>
+		</event>
+	</choice>
+</event>
+<event name="BEACON_EATER_START_WIN">
+	<text>"Thank you so much, you saved us from what could have been a slow and painful death from isolation. I don't know what we were thinking building a station here... Hopefully the beacon will remain functional until a repair team can arrive, but for now let us pay you for your assistance."</text>
+	<autoReward level="MED">standard</autoReward>
+	<choice hidden="true">
+		<text>Ask if they know what the 'Beacon Eater' is.</text>
+		<event>
+			<text>"Oh... I know a little. From what I understand, he goes by many names. I've heard he feeds exclusively on beacons, which is where his current name comes from. The King of the Lanius Swarm is extremely ancient and vindictive. His swarm is the one that has claimed this territory, and they've been terrorizing the settlers here ever since the Civil War. I'm not sure what you could possibly hope to do, but if you could try and stop the attacks, I'm sure the Union as a whole would be grateful."</text>
+			<quest event="QUEST_BEACON_EATER"/>
+			<choice hidden="true">
+				<text>Thank them and carry on.</text>
+				<event/>
+			</choice>
+			<choice hidden="true">
+				<text>Stay behind and take some time to salvage the 'gift'.</text>
+				<event>
+					<text>You scoop up some of the parts left behind from the battle. The Rebel fleet will likely be catching up to you by now, but you can probably use these later.</text>
+					<augment name="BEACON_PARTS"/>
+					<modifyPursuit amount="1"/>
+				</event>
 			</choice>
 		</event>
 	</choice>
@@ -1964,19 +1987,20 @@
 		<nebulaBeacon>false</nebulaBeacon>
 		<aggressive>2</aggressive>
 	</quest>
+	<img back="BACK_EVENT_SWARMHOME" planet="NONE"/>
 	<beaconType id="map_icon_swarm" global="true">
 		<color r="255" g="255" b="255" a="1.0"/>
 	</beaconType>
-	<text>In the distance swarm hundreds of Lanius ships, conforming to strict patterns all leading towards a central point, where a massive Elite Lanius Cruiser rests. This must be the Beacon Eater.</text>
+	<text>You've certainly found... something. A humongous artificial mass of garbage hastily thrown together from millions of tons of scrap metal hosts a swarm of Lanius, flickering about like bees in a beehive. None of the ships pay you any mind, but rather carry with them heaps of metal to add to the structure. In the center of the massive sphere between it all, you notice a much more refined vessel of gigantic proportions.</text>
 	<ship load="SHIP_BEACON_EATER" hostile="false"/>
 	<choice hidden="true">
 		<text>Approach.</text>
 		<event>
-			<text>A crackling sound screams through your intercom, followed by a robotic voice. It seems they have a much better translator, because you can actually understand what they're saying, minus some grammar issues. "Halt there, Federation. I Beacon Eater, the feared most Lanius in sector. Why you have come here, other than bask in my glory?"</text>
+			<text>A crackling sound screams through your intercom, followed by a robotic voice. It seems they have a much better translator, because you can actually understand what they're saying, minus some grammar issues. "Pestulent outsider. Our kind endured millenia of suffering under the Forefathers, and stand here triumphant. Still, you learn not to grant us the space and respect of the last standing elder race? Get OUT of my territory, or I will tear apart your puny bodies like your invasive beacons I devour."</text>
 			<choice hidden="true">
 				<text>This guy and his swarm are a threat, and we need to destroy them.</text>
 				<event>
-					<text>You raise the weapons and attack the Beacon Eater. Indignant towards you for attacking, the cruiser lurches forward to meet you.</text>
+					<text>You raise the weapons and attack the Beacon Eater. Indignant towards you for attacking, the cruiser lurches forward to meet you. "If this is your choice, be it so. I will look forward to your death."</text>
 					<ship hostile="true"/>
 					<choice hidden="true">
 						<text>Continue...</text>
@@ -1987,7 +2011,7 @@
 			<choice hidden="true">
 				<text>Try to negotiate with them to stop eating beacons.</text>
 				<event>
-					<text>You try in vain to negotiate with the Beacon Eater. "This sector belongs to Lanius. I eat beacons however please! Federation come here, try tell to me I cannot eat own beacon? I show you boss who!"</text>
+					<text>You try in vain to negotiate with the Beacon Eater. "You are deaf? Unclog ears and listen to words I am saying. This sector belongs to my people. You are invaders. Pests. If you desire your own extermination so much, then I will appease you."</text>
 					<ship hostile="true"/>
 					<choice hidden="true">
 						<text>Continue...</text>
@@ -2003,26 +2027,30 @@
 	</choice>
 </event>
 <event name="BEACON_EATER_WIN">
-	<text>Around you the Lanius swarm has ceased moving, as if in apprehension. You return back to the ship to find the Beacon Eater, highly injured, clawing their way through your airlock. They won't live long.</text>
-	<unlockCustomShip silent="false">PLAYER_SHIP_LANIUS</unlockCustomShip>
-	<hiddenAug>ACH_BOSS_BEACONEATER</hiddenAug>
+	<text>As the Beacon Eater falls, defeated, the entire swarm around you freezes in apprehension. In one last desperate effort, the Beacon Eater claws his way through your airlocks, dragging his deteriorating body towards you. "I... I have lived longer than your species has been alive. Yet, this is how I dying? Pity..."</text>
+	<variable name="ach_boss_beaconeater" op="set" val="1"/>
 	<choice hidden="true" req="BEACON_PARTS" blue="false">
 		<text>We still have the beacon parts. Give them to him.</text>
 		<event>
-			<text>The Beacon Eater assimilates the part into his body, healing rapidly. "You... you have me save. This unusual mercy. I debt am in, I will off pay."</text>
+			<text>The Beacon Eater assimilates the part into his body, healing rapidly. "You... you have saved me. This is unusual mercy." The elder Lanius attempts to stand as his body continues to take back its original shape. "I have never known such gratitude of outsiders. The Forefathers... they never would have done the same."</text>
 			<remove name="BEACON_PARTS"/>
-			<hiddenAug>ACH_CREW_BEACON</hiddenAug>
-			<crewMember amount="1" class="eater" all_skills="1">Beacon Eater</crewMember>
+			<variable name="ach_crew_beacon" op="set" val="1"/>
 			<choice hidden="true">
-				<text>Continue...</text>
-				<event load="BEACON_EATER_REWARD_SAVE"/>
+				<text>The Forefathers?</text>
+				<event>
+					<text>"I dare not speak their name. Long ago, there were 5 ancient empires. The Imperials, the Dynasty, the Swarm, the Utopians, and... the Forefathers. They made the technology you use to lay war on existence. In the end, they destroy themselves and nearly all other empires. Only the great Swarm resist them! In my immortality I have lived through the worst of those days. It is where I have learned to trust none but my own. If all kinds tended to themselves, and themselves only, war there wouldn't be."</text>
+					<choice hidden="true">
+						<text>Sounds like what the Rebels want.</text>
+						<event load="BEACON_EATER_REWARD_SAVE"/>
+					</choice>
+				</event>
 			</choice>
 		</event>
 	</choice>
 	<choice hidden="true">
 		<text>He won't last long, just put him out of his misery.</text>
 		<event>
-			<text>A blaster charge to the back of the head is all it takes to finish off the once threatening Welder. The Lanius ships outside stir once again, and you receive several hails at once.</text>
+			<text>A blaster charge to the back of the head is all it takes to finish off the once threatening King of the Lanius. The Lanius ships outside stir once again, and you receive several hails at once.</text>
 			<choice hidden="true">
 				<text>Respond.</text>
 				<event load="BEACON_EATER_REWARD"/>
@@ -2031,15 +2059,26 @@
 	</choice>
 </event>
 <event name="BEACON_EATER_REWARD">
-	<text>It seems the entire swarm had been watching the spectacle. "Beacon Eater dead! Hail new leader!" While you'd love to stay behind and be worshipped by the Lanius, you don't think it's a good idea for their species. Instead, you have them patch up your hull and give you some supplies.</text>
-	<damage amount="-10"/>
+	<text>It seems the entire swarm had been watching the spectacle. "Outsider King murder! Bow, bow!" You can't stay for long, but accept the tribute from the concerned Lanius and hope that this victory will be enough to discourage the ravaging of Union settlements a little longer.</text>
+	<unlockCustomShip silent="false">PLAYER_SHIP_LANIUS</unlockCustomShip>
 	<autoReward level="HIGH">standard</autoReward>
 	<weapon name="RANDOM"/>
 </event>
 <event name="BEACON_EATER_REWARD_SAVE">
-	<text>The Beacon Eater speaks to the other Lanius in the swarm, informing them that you have chosen to spare him, and that he now intends to help with your mission. He also orders them to bring you supplies and upgrade your ship.</text>
-	<damage amount="-10"/>
+	<text>"You compare me to the visions of the great tyrant Wentworth? I am insulted, had you not bested me here dead you would be now. My ship... it is in ruins. I have a great debt to pay off, and an insatiable curiosity. I will journey with you and see if your people are worthy. If you are truly different from the Forefathers. Perhaps... perhaps we can yet find truce."</text>
+	<crewMember amount="1" class="unique_eater" all_skills="1">Beacon Eater</crewMember>
+	<unlockCustomShip silent="false">PLAYER_SHIP_LANIUS</unlockCustomShip>
 	<autoReward level="HIGH">standard</autoReward>
 	<weapon name="RANDOM"/>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event/>
+	</choice>
+	<choice hidden="true">
+		<text>Ask about the strange Lanius ship you saw earlier.</text>
+		<event>
+			<text>You explain to the Beacon Eater the origins of the gift. "Hmm... the Anointed returns. Long ago, my people had great schism. In the end, two halves were made. The repugnant 'Augmented' left on a great exodus to harness the power of the Forefathers. The rest, pure and clear minded, remained loyal to me. We do not speak of them unless we must. Be fortunate it is you who carried this gift. If it were them, I would have waged a war so great it would tear the galaxy in half. How dare she try to settle such irreconciliable differences."</text>
+		</event>
+	</choice>
 </event>
 </FTL>

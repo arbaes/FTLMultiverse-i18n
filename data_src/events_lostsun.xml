@@ -28,7 +28,15 @@
 
 <event name="LOSTSUN_MISSILES_DRIFT" unique="true">	
 	<text>A destroyed Rock ship drifts, its hull picked clean recently. However, you are lucky and find one surviving crate of ammunition.</text>	
-	<autoReward level="LOW">missiles_only</autoReward>	
+	<autoReward level="LOW">missiles_only</autoReward>
+	<choice>
+		<text>Do something onboard the ship.</text>
+		<event load="STORAGE_CHECK"/>
+	</choice>
+	<choice>
+		<text>Do nothing.</text>
+		<event/>
+	</choice>	
 </event>
 
 <event name="LOSTSUN_SHRINE" unique="true">
@@ -153,17 +161,17 @@
 					</choice>
 				</event>
 			</choice>
-			<choice req="EXPLOSIVE_REPLICATOR">
-				<text>(Explosive Replicator) Give them the replicator.</text>
+			<choice req="RECYCLER">
+				<text>(Recycler) Give them the augment.</text>
 				<event>
 					<text>"Interesting technology. I have heard of it, yes, but our budget is low. This will help us considerably. Thank you, captain."</text>
-					<remove name="EXPLOSIVE_REPLICATOR"/>
+					<remove name="RECYCLER"/>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event>
 							<text>The Lost Suns repay your tech with some of their own, as well as some scrap.</text>
 							<autoReward level="LOW">scrap_only</autoReward>
-							<weapon name="BEAM_COMBUST"/>
+							<weapon name="GIFTLIST_FIRE"/>
 						</event>
 					</choice>
 				</event>
@@ -242,7 +250,7 @@
 	<text>"Your alliance with the radical terrorist group that is the Lost Suns will not be tolerated anymore, Federation Captain."</text>	
 	<text>The Rock government frequently sends ships to attack this sector. One such ship has noticed you, and doesn't risk you revealing their position.</text>	
 	<text>Shots scatter across your defenses, but none do any severe damage. An unseen Rock ship scouting out the sector is attacking!</text>	
-	<text>"Brave, coming here. The Rockmen do not appreciate your support of these cultists, and we intend to do right by our true leaders!"</text>	
+	<text>"Brave, coming here. The Rockmen do not appreciate your support of these arsonists, and we intend to do right by our true leaders!"</text>	
 </textList>
 
 <event name="ENCOUNTER_COALITION_LOSTSUN_1" unique="true">
@@ -264,7 +272,7 @@
 <textList name="TEXT_ENCOUNTER_COALITION_LOSTSUN">	
 	<text>As the Rockmen are a powerful ally of the Coalition, they have requested that some force be dispatched to take care of the Lost Sun threat. The ship here appears to group you in with that threat and attacks!</text>	
 	<text>A Coalition ship hunting down Lost Sun ships spots you. They waste no time to power up their weapons and attack.</text>	
-	<text>An angered Slug captain aboard the Coalition ship at this beacon hails you. "I came here to hunt ssome fire-obsesssed freaksss, not more Federation asssssholesss! Prepare to be erasssed."</text>	
+	<text>An angered Slug captain aboard the Coalition ship at this beacon hails you. "I came here to hunt ssome fire-obsssesssed freaksss, not more Federation asssssholesss! Prepare to be erasssed."</text>	
 </textList>
 
 <event name="LOSTSUN_ROCK_CHOICE">
@@ -319,7 +327,7 @@
 
 <event name="BOARDERS_LOSTSUN_FIRE" unique="true">
 	<text>You hear the unmistakable sound of the explosion of a fire bomb and a teleporter's whirl. You aren't sure where they came from, but you have some unwelcome visitors for sure!</text>
-	<boarders min="2" max="3" class="commando"/>
+	<boarders min="2" max="3" class="rock_commando"/>
 	<damage amount="0" effect="fire" system="random"/>
 	<damage amount="0" effect="fire" system="random"/>
 </event>
@@ -330,7 +338,7 @@
 -->
 <eventList name="HAZARD_LOSTSUN">
 	<event load="ENCOUNTER_LOSTSUN_SUN"/>
-	<event load="ENCOUNTER_LOSTSUN_ASTEROID"/>
+	<event load="ENCOUNTER_LOSTSUN_ROCK_ASTEROID"/>
 </eventList>
 
 <event name="ENCOUNTER_LOSTSUN_SUN" unique="true">
@@ -442,7 +450,7 @@
 <event name="LOSTSUN_CIVILIAN_RESCUE" unique="true">
 	<text>You see a Lost Sun ship attacking an unarmed civilian ship trying to pass through the sector. You doubt the Lost Sun notices you, due to its complete focus on mauling civilians.</text>
 	<choice hidden="true">
-		<text>Protect the civilians</text>
+		<text>Protect the civilians.</text>
 		<event>
 			<text>You kick your engines into high gear and chase away the Lost Sun from the civilian. Time for a fight.</text>
 			<ship load="SHIP_LOSTSUN_CIVILIAN" hostile="true"/> 
@@ -482,7 +490,7 @@
 		</event>
 	</choice>
 	<choice hidden="true">
-		<text>Fight them with without life support or medical systems.</text>
+		<text>Fight them without life support or medical systems.</text>
 		<event>
 			<text>"Let the battle commence!"</text>
 			<ship load="SHIP_LOSTSUN_CHALLENGE_MEDICAL" hostile="true"/> 
@@ -496,7 +504,7 @@
 		</event>
 	</choice>
 	<choice hidden="true">
-		<text>Fight them with with a weakened reactor.</text>
+		<text>Fight them with a weakened reactor.</text>
 		<event>
 			<text>"Let the battle commence!"</text>
 			<ship load="SHIP_LOSTSUN_CHALLENGE_REACTOR" hostile="true"/> 
@@ -748,7 +756,7 @@
 							</choice>
 						</event>
 					</choice>
-					<choice hidden="true" req="commando">
+					<choice hidden="true" req="rock_commando">
 						<text>(Lost Sun Commando) The use of propaganda to lie to their citizens.</text>
 						<event load="LOSTSUN_CHALLENGE_CORRECT_1"/>
 					</choice>
@@ -795,7 +803,7 @@
 					<ship load="SHIP_LOSTSUN_FIGHT" hostile="true"/>
 				</event>
 			</choice>
-			<choice hidden="true" req="commando">
+			<choice hidden="true" req="rock_commando">
 				<text>(Lost Sun Commando) None. Only the holy fires can truly be pure.</text>
 				<event load="LOSTSUN_CHALLENGE_CORRECT_2"/>
 			</choice>
@@ -827,7 +835,7 @@
 					<ship load="SHIP_LOSTSUN_FIGHT" hostile="true"/>
 				</event>
 			</choice>
-			<choice hidden="true" req="commando"> <!--impossible to choose-->
+			<choice hidden="true" req="rock_commando"> <!--impossible to choose-->
 				<text>(Lost Sun Commando) Your commando does not know the answer.</text>
 				<event>
 					<text>Despite the question not involving the commando, you still turn to them for an answer. They shrug. The Lost Sun captain grows tired of waiting. "This is a simple question captain! I have no more time for your nonsense."</text>
@@ -845,7 +853,7 @@
 </event>
 <event name="LOSTSUN_CHALLENGE_CORRECT_3">
 	<text>"You impress me, captain. I have challenged many, many ships who have passed through here before, and not one has been able to prove themselves. You have my respect. Let me come with you on your journey, so that I may see how a surveyor of truth such as yourself handles such a daunting mission that awaits you."</text>
-	<crewMember amount="1" all_skills="1" class="commando">Captain Solid</crewMember>
+	<crewMember amount="1" all_skills="1" class="rock_commando">Captain Solid</crewMember>
 </event>
 
 <event name="LOSTSUN_ROCK_SETTLEMENT" unique="true">
@@ -976,7 +984,7 @@
 	<choice hidden="true">
 		<text>Hail them.</text>
 		<event>
-			<text>The Lost Suns are reluctant to respond until you show your Federation badge, which luckily seems to resonate them them. "So, eager to prove your alliance? We have a task for you, but it is of utmost importance. Are you up for a challenge?"</text>
+			<text>The Lost Suns are reluctant to respond until you show your Federation badge, which luckily seems to resonate with them. "So, eager to prove your alliance? We have a task for you, but it is of utmost importance. Are you up for a challenge?"</text>
 			<choice hidden="true">
 				<text>Agree.</text>
 				<event>
@@ -1085,6 +1093,14 @@
 		<text>Deny their request.</text>
 		<event>
 			<text>"So, the things I have heard about the Federation are true? I should've expected this. Go, leave this place and hope you do not fall victim to the same enemies that we are defenseless against."</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -1102,6 +1118,14 @@
 				<text>Deny their request.</text>
 				<event>
 					<text>"So, the things I have heard about the Federation are true? I should've expected this. Go, leave this place and hope you do not fall victim to the same enemies that we are defenseless against."</text>
+					<choice>
+						<text>Do something onboard the ship.</text>
+						<event load="STORAGE_CHECK"/>
+					</choice>
+					<choice>
+						<text>Do nothing.</text>
+						<event/>
+					</choice>
 				</event>
 			</choice>
 		</event>
@@ -1127,7 +1151,7 @@
 				<text>Accept.</text>
 				<event>
 					<text>The Rockman eagerly hurries to gather his things and come aboard. He says a brief, formal farewell to his crew, wishing them luck in their future struggles.</text>
-					 <crewMember amount="1" class="commando"/>
+					 <crewMember amount="1" class="rock_commando"/>
 					 <autoReward level="LOW">scrap_only</autoReward>
 				</event>
 			</choice>
@@ -1226,25 +1250,25 @@
 </event>
 <event name="LOSTSUN_FLEET_UNLOCK3">
 	<text>"Yes, and it is safe to say you have passed. The Lost Suns are not sparing with their alliances. If you truly represent the Federation, then you have done a good job showing your loyalty. The Theocracy will resent ever having crossed our path with you on our side."</text>
-	<hiddenAug>ACH_BOSS_LOSTSUN</hiddenAug>
+	<variable name="ach_boss_lostsun" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
 			<text>"It would be criminal to not extend aid to you as well. I will provide you with quality military supplies to assist you. I have already begun the transfer of the blueprints for this very ship to the Federation, in hopes it will be used in their fight."</text>
-			<hiddenAug>ACH_CREW_ARIADNE</hiddenAug>
+			<variable name="ach_crew_ariadne" op="set" val="1"/>
 			<unlockCustomShip silent="false">PLAYER_SHIP_LOSTSUN</unlockCustomShip>
-			<crewMember amount="1" class="ariadne" all_skills="2">Ariadne</crewMember>
+			<crewMember amount="1" class="unique_ariadne" all_skills="2">Ariadne</crewMember>
 			<autoReward level="HIGH">standard</autoReward>
 			<weapon name="RANDOM"/>
 		</event>
 	</choice>
-	<choice hidden="true" req="MARKER_ROCKQUEST">
+	<choice hidden="true" req="ach_boss_rockcruiser">
 		<text>As a matter of fact, I did overthrow the Rock government once.</text>
 		<event>
 			<text>Ariadne breaks into laughter, but stops. "My stars, you ARE the ship we heard about. Overthrow is hardly the word, but you have sent their homeworlds into chaos! Your efforts have been a considerable aid to ours. Allow me to help you in every way I can."</text>
-			<hiddenAug>ACH_CREW_ARIADNE</hiddenAug>
+			<variable name="ach_crew_ariadne" op="set" val="1"/>
 			<unlockCustomShip silent="false">PLAYER_SHIP_LOSTSUN</unlockCustomShip>
-			<crewMember amount="1" class="ariadne" all_skills="2">Ariadne</crewMember>
+			<crewMember amount="1" class="unique_ariadne" all_skills="2">Ariadne</crewMember>
 			<autoReward level="HIGH">standard</autoReward>
 			<upgrade amount="2" system="weapons"/>
 			<reveal_map/>

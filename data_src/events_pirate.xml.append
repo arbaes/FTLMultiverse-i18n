@@ -31,7 +31,6 @@
 <eventList name="ITEMS_PIRATE">
 	<event load="SMUGGLER_PLAYER_WEPS"/>
 	<event load="PIRATE_SALESMAN"/>
-	<event load="PIRATE_CHOICE"/>
 	
 	<event load="FUEL_FOR_DRONE"/>
 	<event load="TAVERN_HIRE"/>
@@ -49,7 +48,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="energy"/>
+		<crewMember amount="1" class="zoltan"/>
 		<item_modify>
 			<item type="scrap" min="-50" max="-70"/>
 		</item_modify>
@@ -73,7 +72,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="separatist"/>
+		<crewMember amount="1" class="engi_separatist"/>
 		<item_modify>
 			<item type="scrap" min="-40" max="-60"/>
 		</item_modify>
@@ -99,97 +98,97 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 </eventList>
 <eventList name="PIRATE_ODDSHOP_SLAVE_ELITE">
 	<event>
-		<crewMember amount="1" class="defend"/>
+		<crewMember amount="1" class="engi_defender"/>
 		<item_modify>
 			<item type="scrap" min="-100" max="-120"/>
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="suzerain"/>
+		<crewMember amount="1" class="mantis_suzerain"/>
 		<item_modify>
 			<item type="scrap" min="-110" max="-130"/>
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="sabo"/>
+		<crewMember amount="1" class="slug_saboteur"/>
 		<item_modify>
 			<item type="scrap" min="-80" max="-100"/>
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="crusader"/>
+		<crewMember amount="1" class="rock_crusader"/>
 		<item_modify>
 			<item type="scrap" min="-80" max="-100"/>
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="welder"/>
+		<crewMember amount="1" class="lanius_welder"/>
 		<item_modify>
 			<item type="scrap" min="-90" max="-110"/>
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="peace"/>
+		<crewMember amount="1" class="zoltan_peacekeeper"/>
 		<item_modify>
 			<item type="scrap" min="-90" max="-110"/>
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="sentinel"/>
+		<crewMember amount="1" class="crystal_sentinel"/>
 		<item_modify>
 			<item type="scrap" min="-110" max="-130"/>
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="chieftain"/>
+		<crewMember amount="1" class="orchid_chieftain"/>
 		<item_modify>
 			<item type="scrap" min="-115" max="-135"/>
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="radical"/>
+		<crewMember amount="1" class="zoltan_martyr"/>
 		<item_modify>
 			<item type="scrap" min="-90" max="-100"/>
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="ranger"/>
+		<crewMember amount="1" class="slug_ranger"/>
 		<item_modify>
 			<item type="scrap" min="-90" max="-100"/>
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="phantomalpha"/>
+		<crewMember amount="1" class="phantom_alpha"/>
 		<item_modify>
 			<item type="scrap" min="-80" max="-100"/>
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="goulalpha"/>
+		<crewMember amount="1" class="phantom_goul_alpha"/>
 		<item_modify>
 			<item type="scrap" min="-80" max="-100"/>
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="marealpha"/>
+		<crewMember amount="1" class="phantom_mare_alpha"/>
 		<item_modify>
 			<item type="scrap" min="-80" max="-100"/>
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="wraithalpha"/>
+		<crewMember amount="1" class="phantom_wraith_alpha"/>
 		<item_modify>
 			<item type="scrap" min="-80" max="-100"/>
 		</item_modify>
 	</event>
 	<event>
-		<crewMember amount="1" class="toxic"/>
+		<crewMember amount="1" class="shell_radiant"/>
 		<item_modify>
 			<item type="scrap" min="-100" max="-120"/>
 		</item_modify>
 	</event>
 </eventList>
-<eventList name="PIRATE_ODDSHOP_WEAPON">
+<!--<eventList name="PIRATE_ODDSHOP_WEAPON">
 	<event>
 		<weapon name="MISSILES_BREACH"/>
 		<item_modify>
@@ -465,8 +464,8 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 		<item_modify>
 			<item type="scrap" min="-40" max="-60"/>
 		</item_modify>
-	</event>
-</eventList>
+	</event> 
+</eventList> -->
 
 <!--
 		HOSTILE!!!
@@ -476,70 +475,13 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	<event load="HOSTILE_PIRATE_EVENTS"/>
 </eventList>
 <eventList name="HOSTILE_PIRATE_EVENTS">
-	<event load="ENCOUNTER_PIRATE"/>
 	<event load="ENCOUNTER_PIRATE_NO_ESCAPE"/>
-	<event load="PIRATE_CHOICE"/>
-	
-	<event load="MERCENARY_REBEL_OFFER"/>
 	
 	<event load="PIRATE_ASTEROID"/>
 	<event load="PIRATE_SUN"/>
 	
-	<event load="SLAVER_CHOICE"/>
-	
 	<event load="PIRATE_PULSAR"/>
 </eventList>
-
-<event name="ENCOUNTER_PIRATE">
-	<text load="TEXT_ENCOUNTER_PIRATE"/>
-	<ship load="SHIP_PIRATE_ALL" hostile="true"/> 
-	<choice hidden="true">
-		<text>Continue...</text>
-		<event load="COMBAT_CHECK"/>
-	</choice>
-</event>
-<textList name="TEXT_ENCOUNTER_PIRATE">
-	<text>As you jump into the system a pirate advances on your position. They are refusing all hails. Prepare for a fight.</text>
-	<text>Soon after arriving in the system you are hailed by a small cruiser. "What good fortune that we happen to run into each other. Nothing personal, but you have some information we need!"</text>
-	<text>The only other ship at this beacon messages you: "Finally, after months of waiting, someone has fallen into our trap!"</text>
-	<text>You barely have time to register jump completion before your ship warns you of an incoming ship with weapons hot.</text>
-</textList>
-
-<textList name="TEXT_MERCENARY_REBEL_OFFER">
-	<text>"Well well well, if it isn't just the ship of the hour! I just had a client come by and pay me a handsome sum to kill you. Though... I'll make you a unique deal. Pay me more than the amount they gave me, and I'll let you go."</text>
-	<text>"Ah, hello my friends! It is most unfortunate, for you, that we meet here in such a way! My clients just left, and they've given me quite the sum of money. Perhaps you could... match their pricing?"</text>
-	<text>"Today is a wonderful day, Captain! I have been paid a bountiful amount of scrap with the task of killing you! I'm afraid I will have to follow through with this... unless you could... give us some more scrap?"</text>
-</textList>
-<event name="MERCENARY_REBEL_OFFER">
-	<text>You spot a Rebel ship making an offer with a mercenary ship. As soon as you approach, the Rebel jumps away. The mercenary hails you, their weapons already charging.</text>
-	<ship load="SHIP_MERCENARY_ALL" hostile="false"/>
-	<choice>
-		<text>Continue...</text>
-		<event>
-			<text load="TEXT_MERCENARY_REBEL_OFFER"/>
-			<choice>
-				<text>Pay the fee.</text>
-				<event>
-					<text>"Excellent choice. Maybe I'll see you again some time."</text>
-					<item_modify>
-						<item type="scrap" min="-25" max="-15"/>
-					</item_modify>
-				</event>
-			</choice>
-			<choice>
-				<text>Refuse.</text>
-				<event>
-					<text>"Alrighty then, time for a fight!"</text>
-					<ship hostile="true"/>
-					<choice hidden="true">
-						<text>Continue...</text>
-						<event load="COMBAT_CHECK"/>
-					</choice>
-				</event>
-			</choice>
-		</event>
-	</choice>
-</event>
 
 <event name="ENCOUNTER_PIRATE_NO_ESCAPE" unique="true">
 	<text>Once you arrive, your screen lights up with warnings. A nearby pirate seems to have advanced hacking tools and they have tried to shut down your Engines. Your crew manages to keep them barely operational and you move into attack.</text>
@@ -547,7 +489,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>Your Engines are down, and you prepare for combat</text>
+			<text>Your Engines are down, and you prepare for combat.</text>
 			<status type="limit" target="player" system="engines" amount="1"/>	
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -578,49 +520,6 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 		</event>
 	</choice>
 </event>
-
-<event name="PIRATE_CHOICE">
-	<img planet="NONE"/>
-	<text>Upon completing your jump, you receive a message from a nearby ship. "Greetings and welcome to our beacon! For a small fee, we'll let you continue on your way."</text>
-	<ship load="SHIP_PIRATE_ALL" hostile="false"/>
-	<choice>
-		<text>Pay their toll.</text>
-		<event>
-			<text>"You made the right decision, friend."</text>
-			<item_modify>
-				<item type="scrap" min="-25" max="-15"/>
-			</item_modify>
-		</event>
-	</choice>
-	<choice>
-		<text>Reject their 'offer'.</text>
-		<event>
-			<text>"Too bad... You will regret this decision!"</text>
-			<ship hostile="true"/>
-			<choice hidden="true">
-				<text>Continue...</text>
-				<event load="COMBAT_CHECK"/>
-			</choice>
-		</event>
-	</choice>
-	<choice req="weapons" lvl="5">
-		<text>(Adv Weapons) Threaten the pirates to let you go.</text>
-		<event load="PIRATE_CHOICE_THREAT"/>
-	</choice>
-</event>
-<eventList name="PIRATE_CHOICE_THREAT">
-	<event>
-		<text>The pirates aren't fazed by your threats, and instead power up their weapons as well!</text>
-		<ship hostile="true"/>
-		<choice hidden="true">
-			<text>Continue...</text>
-			<event load="COMBAT_CHECK"/>
-		</choice>
-	</event>
-	<event>
-		<text>"Ok, ok! We get it, you aren't messing around. Sorry to bother you."</text>
-	</event>
-</eventList>
 
 <!--
 		ENVIRONMENT!!!
@@ -782,8 +681,6 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 -->
 <eventList name="NEUTRAL_PIRATE">
 	<event load="PIRATE_CIVILIAN"/>
-	<event load="MERCENARY_OFFER"/>
-	<event load="FRIENDLY_SLAVER"/>
 	<event load="PIRATE_BRIBER"/>
 	<event load="ASTEROID_EXPLORE"/>
 	<event load="PIRATE_NAME"/>
@@ -800,7 +697,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	<event load="REFUGEE_PIRATE"/>
 </eventList>
 
-<event name="REFUGEE_NO_DISTRESS_PIRATE"> 
+<event name="REFUGEE_PIRATE"> 
 	<text>Your sensors have picked up a refugee ship drifting through the system, no doubt one of many fleeing the Rebel advance. It doesn't appear to have detected you... or else it is trying to avoid notice.</text>
 	<choice>
 		<text>Hail them.</text>
@@ -921,64 +818,6 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	<text>You come across a pirate in hot pursuit of an unidentified ship. You quickly receive a transmission from the pirate: "Stay out of this fight and we'll make it worth your while."</text>
 	<text>An unidentified ship is badly damaged and still being assaulted by a space pirate. The victim begins a distress message until the pirate cuts in and offers to split the bounty if you sit tight.</text>
 	<text>A missile shoots across your bow when the jump completes. Your scans quickly reveal a ship with pirate markings pursuing an unknown vessel. The pirate hails you: "Damn it, we weren't expecting company. Stay out of this and you could profit."</text>
-</textList>
-
-<event name="MERCENARY_OFFER" unique="true">
-	<text load="MERCENARY_OFFER"/>
-	<ship load="SHIP_MERCENARY_ALL" hostile="false"/>
-	<choice>
-		<text>Hire the mercenary to delay the Rebels.</text>
-		<event>
-			<text>The mercenary ship masks its jump signature to mimic your own and then jumps off in the opposite direction. This should keep the Rebels guessing.</text>
-			<item_modify>
-				<item type="scrap" min="-25" max="-10"/>
-			</item_modify>
-			<modifyPursuit amount="-2"/>
-		</event>
-	</choice>
-	<choice>
-		<text>Hire the mercenary to scout the sector.</text>
-		<event>
-			<text>Your map has been updated.</text>
-			<item_modify>
-				<item type="scrap" min="-20" max="-10"/>
-			</item_modify>
-			<reveal_map/>
-		</event>
-	</choice>
-	<choice>
-		<text>Fight the ship.</text>
-		<event>
-			<text>Mercenaries are worse than Rebels. The only honorable course is to engage the mercenary in battle.</text>
-			<ship hostile="true"/>
-			<choice hidden="true">
-				<text>Continue...</text>
-				<event load="COMBAT_CHECK"/>
-			</choice>
-		</event>
-	</choice>
-	<choice>
-		<text>You have no need of his services.</text>
-		<event>
-			<text>The mercenary doesn't bother you.</text>
-			<choice>
-				<text>Do something onboard the ship.</text>
-				<event load="STORAGE_CHECK"/>
-			</choice>
-			<choice>
-				<text>Do nothing.</text>
-				<event/>
-			</choice>
-		</event>
-	</choice>
-</event>
-<textList name="MERCENARY_OFFER">
-	<text>You find a mercenary for hire at this Beacon. Their unique skills can sometimes prove to be useful.</text>
-	<text>A mercenary hails you: "Greetings, friend! We've heard tell of your quest and are here to offer our valuable services."</text>
-	<text planet="PLANET_POPULATED">There's a ship with pirate markings orbiting the nearby planet. You receive his hail: "Anything is possible, for the right price."</text>
-	<text>The captain of this ship claims he can provide "services" as long as you've got the scrap.</text>
-	<text>Mercenaries are swarming the galaxy now, knowing that their less-than-legal services are in demand during this period of unrest. One is waiting at this beacon and hails you.</text>
-	<text>A ship hails you: "Good sir! It seems you're having some troubles with the Rebels. I'd like to help you, but I can't afford the upkeep required on this hunk of junk I'm flying... maybe we can come to an arrangement?"</text>
 </textList>
 
 <event name="PIRATE_NAME" unique="true">
@@ -1175,13 +1014,11 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	
 	<event load="NEBULA_LIGHT_PIRATE_STATION"/>
 	<event load="NEBULA_SIGNAL"/>
-	<event load="NEBULA_BOARDERS_HUMAN"/>
 	<event load="NEBULA_DUEL"/>
 	<event load="NEBULA_WHALE"/>
 	
 	<event load="NEBULA_PIRATE_SMUGGLE"/>
 	<event load="NEBULA_LOST_SHIP"/>
-	<event load="NEBULA_WEAPONS_TRADER"/>
 	<event load="NEBULA_ROCK_RACIST"/>
 </eventList>
 
@@ -1201,63 +1038,6 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 -->	
 
-<!--
-		HOSTILE!!!
-	Events that call up a fight for sure
--->
-
-<event name="SLAVER_CHOICE" unique="false">
-	<text>An especially well-armed pirate ship approaches you. "Hand over one of your crew-members and the rest of you can go free unharmed."</text>
-	<ship load="SHIP_SLAVER_ALL" hostile="false"/>
-	<choice>
-		<text>Draw straws and send a crew-member over to the slavers.</text>
-		<event>
-			<text>The chosen crew-member leaves without complaint, knowing you had no choice.</text>
-			<removeCrew>
-				<clone>false</clone>
-				<text>You briefly consider cloning a replacement, but decide to respect the Federation laws regarding simultaneous duplicates.</text>
-			</removeCrew>
-		</event>
-	</choice>
-	<choice>
-		<text>We will never surrender one of our crew to slavers!</text>
-		<event>
-			<text>You prepare to fight the slaver.</text>
-			<ship hostile="true"/>
-			<choice hidden="true">
-				<text>Continue...</text>
-				<event load="COMBAT_CHECK"/>
-			</choice>
-		</event>
-	</choice>
-	<choice req="spider" hidden="true">
-		<text>(Spider Crew) "Give" them your spider and let them cause havoc.</text>
-		<event>
-			<text>"Wait, what is thi- OH GOD AHGHWHAHAGGHHAHHH" The slaver falls to the floor as the spider tears out his throat, and moves on to consume the rest of the crew. While it might have killed everyone aboard, including the slaves, the hull of the ship remains intact for you to scrap.</text>
-			<autoReward level="MED">standard</autoReward>
-		</event>
-	</choice>
-	<choice req="engines" lvl="6" hidden="true">
-		<text>(Engines) Attempt to out-run the slaver ship.</text>
-		<event load="SLAVER_CHOICE_RUN"/>
-	</choice>
-</event>
-<eventList name="SLAVER_CHOICE_RUN">
-	<event>
-		<text>You quickly fire up your Engines and make a break for it. However, it seems to be in vain. They catch up to you effortlessly and power up their weapons.</text>
-		<ship hostile="true"/>
-		<choice hidden="true">
-			<text>Continue...</text>
-			<event load="COMBAT_CHECK"/>
-		</choice>
-	</event>
-	<event>
-		<text>You divert all available power to your Engines and flee. You caught them off-guard, but they seem to be gaining on you. Luckily you are able to stay out of range long enough to charge the FTL drive.</text>
-	</event>
-	<event>
-		<text>You fire up the Engines and try to escape. Their slower ship is unable to keep pace; eventually it gives up and returns to the beacon to await an easier target.</text>
-	</event>
-</eventList>
 
 <!--
 		NEUTRAL!!!
@@ -1405,7 +1185,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	</choice>
 </event>
 <event name="DEAD_CREW_SLAVER_DEADSLAVES">
-	<text>You find a number of slaves in the cargo hold. You could use more crew but you don't want to force them all to work for you instead...</text>
+	<text>You find a number of slaves in the cargo hold. You could use more crew but it won't reflect positively on you for taking slaves like this.</text>
 	<choice hidden="true">
 		<text>Demand the Mantis joins your crew but release the rest.</text>
 		<event>
@@ -1427,79 +1207,17 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 			<autoReward level="MED">standard</autoReward>
 		</event>
 	</choice>
+	<choice hidden="true">
+		<text>We aren't slavers. Free them all.</text>
+		<event>
+			<text>You open the cages, but none are eager to get out. That is when you remember that you were advertised dead slaves...</text>
+			<autoReward level="MED">standard</autoReward>
+		</event>
+	</choice>
 </event>
 
 
-<event name="FRIENDLY_SLAVER" unique="true">
-    <ship load="SHIP_SLAVER_ALL" hostile="false"/>
-    <text>You recognize the ship as a well-known slave trader. He hails you and offers you "labourers" for cheap.</text>
-    <choice>
-        <text>Buy one slave and free them to join your crew.</text>
-        <event>
-            <item_modify>
-                <item type="scrap" min="-45" max="-25"/>
-            </item_modify>
-            <crewMember amount="1"/>
-        </event>
-    </choice>
-    <choice>
-        <text>Attack the slaver scum.</text>
-        <event>
-            <text>You prepare to attack the slaver.</text>
-            <ship hostile="true"/>
-            <choice hidden="true">
-                <text>Continue...</text>
-                <event load="COMBAT_CHECK"/>
-            </choice>
-        </event>
-    </choice>
-    <choice>
-        <text>Ignore the slaver and continue on your way.</text>
-        <event>
-            <text>You're not interested in their line of trade.</text>
-            <choice>
-                <text>Do something onboard the ship.</text>
-                <event load="STORAGE_CHECK"/>
-            </choice>
-            <choice>
-                <text>Do nothing.</text>
-                <event/>
-            </choice>
-        </event>
-    </choice>
-    <choice req="teleporter" lvl="2" hidden="true">
-        <text>(Teleporter) Use your teleporter to attempt to board the ship and release some of the slaves.</text>
-        <event load="FRIENDLY_SLAVER_TELEPORTER"/>
-    </choice>
-</event>
-<eventList name="FRIENDLY_SLAVER_TELEPORTER">
-    <event>
-        <text>You beam a small team into their holds. They work quickly to free the slaves and teleport back to your ship. One of the captives seems fit for battle and you throw them a weapon in preparation for a fight.</text>
-        <crewMember amount="1"/>
-        <ship hostile="true"/>
-        <choice hidden="true">
-            <text>Continue...</text>
-            <event load="COMBAT_CHECK"/>
-        </choice>
-    </event>
-    <event>
-        <text>You teleport an away team into their hold to attempt to free their prisoners. They are able to get to one person before being caught and forced into a corner by the crew. You quickly beam the team and prisoner back to your ship.</text>
-        <crewMember amount="1"/>
-        <ship hostile="true"/>
-        <choice hidden="true">
-            <text>Continue...</text>
-            <event load="COMBAT_CHECK"/>
-        </choice>
-    </event>
-    <event>
-        <text>You beam a team onto their ship. However, your estimations of the location of their prisoners was off. By the time they get their bearings the slavers spot them. You beam them back to the ship and prepare for a fight.</text>
-        <ship hostile="true"/>
-        <choice hidden="true">
-            <text>Continue...</text>
-            <event load="COMBAT_CHECK"/>
-        </choice>
-    </event>
-</eventList>
+
 
 <event name="SLAVER_BETRAYAL" unique="true"> <!--NEW - MULTIVERSE-->
 	<ship load="SHIP_SLAVER_ALL" hostile="false"/>
@@ -1849,12 +1567,21 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 			<text>Your crew grab the map, making sure to note down the co-ordinates that appear to be some sort of smuggler shipyard.</text>
 			<reveal_map/>
 			<quest event="SMUGGLER_UNLOCK_2"/>
+			<choice>
+				<text>Continue...</text>
+				<event load="GUARD_SMUGGLER_FOLLOWUP"/>
+			</choice>
 		</event>
 	</choice>
 	<choice>
 		<text>There's a brand-new weapon in the corner.</text>
 		<event>
+			<text>You grab the weapon and load it onto your ship.</text>
 			<weapon name="RANDOM"/>
+			<choice>
+				<text>Continue...</text>
+				<event load="GUARD_SMUGGLER_FOLLOWUP"/>
+			</choice>
 		</event>
 	</choice>
 </event>
@@ -1918,13 +1645,13 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	</choice>
 </event>
 <event name="SMUGGLER_UNLOCK_3" unique="true">
-	<text>The gunboat ship explodes, scattering debris around the interior of the shipyards. You scoop up the material.</text>
-	<hiddenAug>ACH_BOSS_SMUGGUN</hiddenAug>
-	<autoReward level="HIGH">item</autoReward>
+	<text>The gunboat collapses, scattering debris around the interior of the shipyards. You scoop up the material.</text>
+	<variable name="ach_boss_smugglergun" op="set" val="1"/>
+	<autoReward level="HIGH">weapon</autoReward>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
-			<text>As you approach the cruiser, a much larger Smuggler vessel uncloaks nearby, and hails you. A tall, slender Slug appears on the vidscreen. "I ssssee you have come for our new prototype cruissser, eh?" The Slug chuckles. "In cassse you aren't aware, that cruissser right there was being built ssspecificaly for the boss, Ocym. But, sssseeing how well you dessstroyed that vesssel of oursss I'd say the ssship isss better in your hands. Heheheh..."</text>
+			<text>As you approach the cruiser, a much larger Smuggler vessel uncloaks nearby, and hails you. A tall, slender Slug appears on the vidscreen. "I ssssee you have come for our new prototype cruissser, eh?" The Slug chuckles. "In cassse you aren't aware, that cruissser right there was being built ssspecifically for the boss, Ocym. But, sssseeing how well you dessstroyed that vesssel of oursss I'd say the ssship isss better in your hands. Heheheh..."</text>
 			<choice hidden="true">
 				<text>Accept his offer and take the ship.</text>
 				<event>
@@ -1943,7 +1670,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 					<choice hidden="true">
 						<text>What's so funny?</text>
 						<event>
-							<text>"Well you sssee, thisss wass ssuposssed to be a trap. That sssship isss rigged to explode when anyone triesss to take it. But... you've ssseemed to have outsssmarted me. Ssssso, I'll make you a deal. I won't give you the sssship, no. But the blueprintsss, mossst cccertainly! It ticklesss me to think of the Federation usssing ssssmuggler tech... and I can ssshow you a way to hijack enemy frequenccciessss too!"</text>
+							<text>"Well you sssee, thisss wass ssupposssed to be a trap. That sssship isss rigged to explode when anyone triesss to take it. But... you ssseemed to have outsssmarted me. Ssssso, I'll make you a deal. I won't give you the sssship, no. But the blueprintsss, mossst cccertainly! It ticklesss me to think of the Federation usssing Sssmuggler tech... and I can ssshow you a way to hijack enemy frequenccciessss too!"</text>
 							<augment name="LOOT_COMPASS"/>
 							<unlockCustomShip silent="false">PLAYER_SHIP_PROTOTYPE</unlockCustomShip>
 						</event>
@@ -2067,7 +1794,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	</choice>
 	<choice>
 		<text>Buy a weapon.</text>
-		<event load="SMUGGLER_PLAYER_WEPS_LIST"/>
+		<event load="SMUGGLER_PLAYER_WEPS_LIST_ALT"/>
 	</choice>
 	<choice>
 		<text>Buy a drone.</text>
@@ -2090,35 +1817,77 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 </event>
 <eventList name="SMUGGLER_PLAYER_WEPS_LIST">
 	<event>
+	<!--	Torch		-->
 		<weapon name="BEAM_FIRE_PLAYER"/>
 		<item_modify>
-			<item type="scrap" min="-40" max="-60"/>
+			<item type="scrap" min="-40" max="-55"/>
 		</item_modify>
 	</event>
 	<event>
+	<!--	Hades	-->
 		<weapon name="MISSILES_FIRE_PLAYER"/>
 		<item_modify>
-			<item type="scrap" min="-32" max="-50"/>
+			<item type="scrap" min="-50" max="-65"/>
 		</item_modify>
 	</event>
 	<event>
+	<!--	Energy 2	-->
 		<weapon name="ENERGY_2_PLAYER"/>
 		<item_modify>
-			<item type="scrap" min="-50" max="-70"/>
+			<item type="scrap" min="-45" max="-60"/>
 		</item_modify>
 	</event>
 	<event>
-		<weapon name="MISSILE_CHARGEGUN_PLAYER"/>
+	<!-- 	Hydra	-->
+		<weapon name="MISSILES_BURST_2_PLAYER"/>
 		<item_modify>
-			<item type="scrap" min="-55" max="-75"/>
+			<item type="scrap" min="-40" max="-55"/>
 		</item_modify>
 	</event>
 </eventList>
+<!--	new 5.1 list by Jersee	-->
+<eventList name="SMUGGLER_PLAYER_WEPS_LIST_ALT">
+	<event>
+	<!--	Frost 2		-->
+		<weapon name="LASER_FROST_2_PLAYER"/>
+		<item_modify>
+			<item type="scrap" min="-60" max="-75"/>
+		</item_modify>
+	</event>
+	<event>
+	<!-- 	Halberd		-->
+		<weapon name="BEAM_2_PLAYER"/>
+		<item_modify>
+			<item type="scrap" min="-60" max="-75"/>
+		</item_modify>
+	</event>
+	<event>
+	<!--	Fauchard Beam	-->
+		<weapon name="BEAM_GUILLOTINE_PLAYER"/>
+		<item_modify>
+			<item type="scrap" min="-60" max="-75"/>
+		</item_modify>
+	</event>
+	<event>
+	<!--	Toxic Flak 	-->
+		<weapon name="SHOTGUN_TOXIC_PLAYER"/>
+		<item_modify>
+			<item type="scrap" min="-55" max="-70"/>
+		</item_modify>
+	</event>
+</eventList>
+
 <eventList name="SMUGGLER_PLAYER_DRONES_LIST">
 	<event>
 		<drone name="DRONE_SHIELD_POWERLESS"/>
 		<item_modify>
-			<item type="scrap" min="-50" max="-70"/>
+			<item type="scrap" min="-50" max="-65"/>
+		</item_modify>
+	</event>
+		<event>
+		<drone name="HELLRAISER_FIRE_PLAYER"/>
+		<item_modify>
+			<item type="scrap" min="-40" max="-55"/>
 		</item_modify>
 	</event>
 </eventList>
@@ -2472,7 +2241,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 						<item type="missiles" min="-3" max="-3"/>
 					</item_modify>
 					<choice hidden="true" req="BOMB_HEAL" blue="false">
-						<text>Sell them the bombs. [Removes Healing Bomb, gives 35~]</text>
+						<text>Sell them the bomb. [Removes Healing Bomb, gives 35~]</text>
 						<event>
 							<text>"Thank you, this will prove to be very useful. Let us repair some damage for you as well using our automated repair drones."</text>
 							<item_modify>
@@ -2498,7 +2267,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 					<ship hostile="true"/>
 					<choice hidden="true">
 						<text>Continue...</text>
-						<event load="COMBAT_CHECK"/>
+						<event load="MORALITY_UPDATE_GENERAL_FIGHT"/>
 					</choice>
 				</event>
 			</choice>
@@ -2539,13 +2308,9 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	Events that are a guarenteed fight 
 -->
 <eventList name="HOSTILE_BLACKMARKET">
-	<event load="ENCOUNTER_PIRATE"/>
 	<event load="ENCOUNTER_SMUGGLER"/>
 	<event load="HAZARD_BLACKMARKET"/>
 	
-	<event load="MERCENARY_REBEL_OFFER"/>
-	
-	<event load="BLACKMARKET_BOUNTYHUNTER"/>
 	<event load="BLACKMARKET_REBEL"/>
 	<event load="BLACKMARKET_FED_ANGERY"/>
 	<event load="ZOLTAN_LECTURE_MARKET"/>
@@ -2554,16 +2319,6 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 <event name="ENCOUNTER_SMUGGLER" unique="true">
 	<text>Out of nowhere, a smuggler jumps in, guns blazing. You don't know why they're attacking, but you have no choice but to engage.</text>
 	<ship load="SHIP_SMUGGLER_ALL" hostile="true"/> 
-	<choice hidden="true">
-		<text>Continue...</text>
-		<event load="COMBAT_CHECK"/>
-	</choice>
-</event>
-
-
-<event name="BLACKMARKET_BOUNTYHUNTER" unique="true">
-	<text>You spot a small market at this beacon, but as you approach it a mercenary ship swings around and attacks. "Hah! What luck of ours. Our clients came here to hire us to scout you out, and here you are in the very same sector!"</text>
-	<ship load="SHIP_MERCENARY_ALL" hostile="true"/> 
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="COMBAT_CHECK"/>
@@ -2600,7 +2355,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 </event>
 
 <event name="ZOLTAN_LECTURE_MARKET" unique="true">
-	<text>A Zoltan "peace" brigade is lecturing some pirates on the importance of good morals. You stop in to watch in amusement when one of the pirates gets impatient and attacks. You're too close to get away, so you have to decide which side you're going to have to take.</text>
+	<text>A Zoltan peace brigade is lecturing some pirates on the importance of good morals. You stop in to watch in amusement when one of the pirates gets impatient and attacks. You're too close to get away, so you have to decide which side you're going to have to take.</text>
 	<choice hidden="true">
 		<text>Side with the Zoltans.</text>
 		<event>
@@ -2630,7 +2385,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	<choice hidden="true">
 		<text>Contact your pirate "brethren".</text>
 		<event>
-			<text>"Say, that was some good fightin' kid. Thanks for the help. I'm sure I have something to repay you." You're surprised at the pirates' gratitude and are suspicious of a trick, but the cargo crate the deliver you is surprisingly harmless and contains a shiny new military class weapon.</text>
+			<text>"Say, that was some good fightin' kid. Thanks for the help. I'm sure I have something to repay you." You're surprised at the pirates' gratitude and are suspicious of a trick, but the cargo crate they deliver you is surprisingly harmless and contains a shiny new military class weapon.</text>
 			<autoReward level="MED">weapon</autoReward>
 		</event>
 	</choice>
@@ -2691,9 +2446,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	<event load="SLAVER_DEAD_SLAVES"/>
 	
 	<event load="PIRATE_CIVILIAN"/>
-	<event load="MERCENARY_OFFER"/>
-	<event load="FRIENDLY_SLAVER"/>
-	<event load="SLAVER_BETRAYAL"/>
+	<!--<event load="MERCENARY_OFFER"/>-->
 	<event load="PIRATE_BRIBER"/>
 	<event load="PIRATE_STATION_CROPS"/>
 </eventList>
@@ -2712,7 +2465,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 					<item_modify>
 						<item type="scrap" min="-30" max="-30"/>
 					</item_modify>
-					<crewMember amount="1" class="anaerobic">Laythe</crewMember>
+					<crewMember amount="1" class="lanius">Laythe</crewMember>
 				</event>
 			</choice>
 			<choice hidden="true">
@@ -2744,7 +2497,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 				<text>(Mind control) Convince them to donate the Lanius.</text>
 				<event>
 					<text>Your mind control system is able to easily convince the slaver captain that she should give you the Lanius for free so that they may depart for a more profitable beacon. The Lanius is quickly ejected towards your ship in a small shuttle before the effects of the mind control wear off. Realizing they've been tricked, the slaver separates from the station and powers up its weapons.</text>
-					<crewMember amount="1" class="anaerobic">Laythe</crewMember>
+					<crewMember amount="1" class="lanius">Laythe</crewMember>
 					<ship hostile="true"/> 
 					<choice hidden="true">
 						<text>Continue...</text>
@@ -2928,7 +2681,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 									<choice hidden="true">
 										<text>Aid the Zoltan in arresting the Engi.</text>
 										<event>
-											<text>You quickly explain the Zoltan that you intend to help. "Fine, we will accept your assistance. But do not kill the Engi. This is a peaceful operation."</text>
+											<text>You quickly explain to the Zoltan that you intend to help. "Fine, we will accept your assistance. But do not kill the Engi. This is a peaceful operation."</text>
 											<ship load="SHIP_ENGI_ILLEGAL_ARREST" hostile="true"/> 
 											<choice hidden="true">
 												<text>Continue...</text>
@@ -2947,7 +2700,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 											</choice>
 										</event>
 									</choice>
-									<choice hidden="true" req="Engi">
+									<choice hidden="true" req="LIST_CREW_ENGI">
 										<text>(Engi Crew) Explain to the Engi that they purchased illegal drugs.</text>
 										<event>
 											<text>Your Engi is successfully able to explain the situation to the ship. You explain to the Zoltan the misunderstanding and the Engi transfer the drugs over to the Zoltan. Satisfied, the Zoltan ship jumps away. The Engi offer you some droneparts and a drone in thanks.</text>
@@ -3182,7 +2935,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 			<choice>
 				<text>Accept.</text>
 				<event>
-					<text>"Well that's a surprise. Alright kid, I'll transfer over the co-ordinates. Find the depot and kill the guard. Go to the storage room and there'll be a vault. Ain't no way they opened it yet, only I got the passcode, and the vault's super blast resistant. I have no choice to trust you, so here you go. The code is 7-E-Blue. Don't ask why. Get the cargo and there will be another list of co-ordinates to bring it back to. I'll be waiting for you there."</text>
+					<text>"Well that's a surprise. Alright kid, I'll transfer over the co-ordinates. Find the depot and kill the guard. Go to the storage room and there'll be a vault. Ain't no way they opened it yet, only I got the passcode, and the vault's super blast resistant. I have no choice but to trust you, so here you go. The code is 7-E-Blue. Don't ask why. Get the cargo and there will be another list of coordinates to bring it back to. I'll be waiting for you there."</text>
 					<quest event="QUEST_SMUGGLER_RAID"/>
 				</event>
 			</choice>
@@ -3675,15 +3428,15 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 </event>
 <event name="TUCO_WIN">   
     <text>The casino enforcer plummets towards the ground. The rest of the ships, seeing Tuco is now no longer the only threat, retreat. The yacht owners offer a handsome sum of money, and free drinks, to both you and Tuco if you promise not to cause further damage.</text>
-    <hiddenAug>ACH_BOSS_CASINO</hiddenAug>
+    <variable name="ach_boss_casino" op="set" val="1"/>
 	<autoReward level="HIGH">standard</autoReward>
     <choice hidden="true">
         <text>Continue...</text>
         <event>
             <text>Tuco chuckles as he brings the scrap back to his ship. "Good fightin' there kid. Couldn't have done it better myself. SO, I'll tell you what; this hunk o' junk that I'm disgraced to call my personal cruiser has seen much better days. So how 'bout I hitch a ride on that pretty ship o' yours, and you do whatever you'd like with mine."</text>
 			<unlockCustomShip silent="false">PLAYER_SHIP_TUCO</unlockCustomShip>
-			<hiddenAug>ACH_CREW_TUCO</hiddenAug>
-			<crewMember amount="1" class="tuco" all_skills="2">Tuco</crewMember>
+			<variable name="ach_crew_tuco" op="set" val="1"/>
+			<crewMember amount="1" class="unique_tuco" all_skills="2">Tuco</crewMember>
         </event>
     </choice>
 </event>
@@ -3695,7 +3448,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 		<event>
 			<text>Despite all the damage caused in the fight, the yacht owners are extremely grateful for your help. "That idiot has been a regular for years, and he's always causing issues. It's about time he got what was coming to him. Pffft, dread pirate my ass. As generous payment, please accept this scrap and a few of our slot machines!" You aren't sure what you think about the unusual reward, but you aren't going to turn it down.</text>
 			<unlockCustomShip silent="false">PLAYER_SHIP_TUCO_2</unlockCustomShip>
-			<hiddenAug>ACH_BOSS_TUCO</hiddenAug>
+			<variable name="ach_boss_tuco" op="set" val="1"/>
 			<autoReward level="MED">scrap_only</autoReward>
 			<augment name="GAMBLING_MACHINE"/>
 		</event>
@@ -3786,7 +3539,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 </event>
 <event name="HACKER_CACHE_DEFEAT">
 	<text>The Hackers have been defeated. Your systems return to normal, and you move in to scrap the station.</text>
-	<hiddenAug>MARKER_HACKER_STATION</hiddenAug>
+	<variable name="loc_hackerstation" op="add" val="1"/>
 	<status type="clear" target="player" system="sensors" amount="100"/>
 	<status type="clear" target="player" system="engines" amount="100"/>
 	<status type="clear" target="player" system="doors" amount="100"/>
@@ -3806,11 +3559,11 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	<event>
 		<text>The cache is rather underwhelming. You find a small amount of droneparts and nothing else.</text>
 		<autoReward level="LOW">droneparts_only</autoReward>
-		<choice hidden="true" req="MARKER_HACKER_STATION" max_lvl="2" max_group="0" blue="false">
+		<choice hidden="true" req="loc_hackerstation" max_lvl="2" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event/>
 		</choice>
-		<choice hidden="true" req="MARKER_HACKER_STATION" lvl="3" max_group="0" blue="false">
+		<choice hidden="true" req="loc_hackerstation" lvl="3" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="HACKER_CACHE_QUEST"/>
 		</choice>
@@ -3818,11 +3571,11 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	<event>
 		<text>Inside the cache is a brand new Ion weapon! You take it on-board.</text>
 		<weapon name="GIFTLIST_ION"/>
-		<choice hidden="true" req="MARKER_HACKER_STATION" max_lvl="2" max_group="0" blue="false">
+		<choice hidden="true" req="loc_hackerstation" max_lvl="2" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event/>
 		</choice>
-		<choice hidden="true" req="MARKER_HACKER_STATION" lvl="3" max_group="0" blue="false">
+		<choice hidden="true" req="loc_hackerstation" lvl="3" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="HACKER_CACHE_QUEST"/>
 		</choice>
@@ -3830,11 +3583,11 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	<event>
 		<text>The cache appears to be storage for various supplies, which you help yourself to.</text>
 		<autoReward level="MED">stuff</autoReward>
-		<choice hidden="true" req="MARKER_HACKER_STATION" max_lvl="2" max_group="0" blue="false">
+		<choice hidden="true" req="loc_hackerstation" max_lvl="2" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event/>
 		</choice>
-		<choice hidden="true" req="MARKER_HACKER_STATION" lvl="3" max_group="0" blue="false">
+		<choice hidden="true" req="loc_hackerstation" lvl="3" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="HACKER_CACHE_QUEST"/>
 		</choice>
@@ -3842,11 +3595,11 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	<event>
 		<text>Inside the cache is a de-activated Engi, likely kept as a slave. You provide it with power back on your ship, and it re-activates, ready to serve on your crew.</text>
 		<crewMember amount="1" class="engi"/>
-		<choice hidden="true" req="MARKER_HACKER_STATION" max_lvl="2" max_group="0" blue="false">
+		<choice hidden="true" req="loc_hackerstation" max_lvl="2" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event/>
 		</choice>
-		<choice hidden="true" req="MARKER_HACKER_STATION" lvl="3" max_group="0" blue="false">
+		<choice hidden="true" req="loc_hackerstation" lvl="3" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="HACKER_CACHE_QUEST"/>
 		</choice>
@@ -3854,11 +3607,11 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	<event>
 		<text>The cache was trapped! Explosions rock the walls and you jump for cover. However, as you get back to your feet, nothing appears to have been damaged. The trap wasn't a trap after all, instead several Repair Bursts had been set off by accident!</text>
 		<damage amount="-7"/>
-		<choice hidden="true" req="MARKER_HACKER_STATION" max_lvl="2" max_group="0" blue="false">
+		<choice hidden="true" req="loc_hackerstation" max_lvl="2" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event/>
 		</choice>
-		<choice hidden="true" req="MARKER_HACKER_STATION" lvl="3" max_group="0" blue="false">
+		<choice hidden="true" req="loc_hackerstation" lvl="3" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="HACKER_CACHE_QUEST"/>
 		</choice>
@@ -3866,11 +3619,11 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	<event>
 		<text>You open the cache, and a screeching noise pierces the air. You run back to the ship and find a stream of garbled data streaming down your computer. Luckily you're able to shut it off in time, but you suspect it may confuse the Rebels for a while.</text>
 		<modifyPursuit amount="-1"/>
-		<choice hidden="true" req="MARKER_HACKER_STATION" max_lvl="2" max_group="0" blue="false">
+		<choice hidden="true" req="loc_hackerstation" max_lvl="2" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event/>
 		</choice>
-		<choice hidden="true" req="MARKER_HACKER_STATION" lvl="3" max_group="0" blue="false">
+		<choice hidden="true" req="loc_hackerstation" lvl="3" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="HACKER_CACHE_QUEST"/>
 		</choice>
@@ -3890,13 +3643,14 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 </event>
 <event name="HACKER_FED_WIN">
 	<text>Right as you finish off the hackers, a life pod detaches from the ship and spirals out into space... only for you to scoop it up and bring it aboard. Inside, you can see the surviving Slug quivering in fear.</text>
-	<hiddenAug>ACH_BOSS_HACKER</hiddenAug>
+	<variable name="ach_boss_hacker" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
 			<text>You pry open the lifepod, and the Slug slides out slowly, hands in the air. "Ok, I sssurrender! You fight well. Too well... I'll give you anything and everything you want! Data, labor, scrap, all I assssk isss you don't kill me!"</text>
+			<unlockCustomShip silent="false">PLAYER_SHIP_HACKER</unlockCustomShip>
 			<autoReward level="HIGH">standard</autoReward>
-			<crewMember amount="1" class="sabo" all_skills="2">Kemi</crewMember>
+			<crewMember amount="1" class="slug_saboteur" all_skills="2">Kemi</crewMember>
 			<modifyPursuit amount="-2"/>
 			<reveal_map/>
 		</event>
@@ -3947,7 +3701,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 </event>
 <event name="HACKER_EXIT_DEFEAT">
 	<text>The Hacker station has been defeated. Fortunately, your Atlas connects to the exit beacon as soon as the hacker threat is removed.</text>
-	<hiddenAug>MARKER_HACKER_EXIT</hiddenAug>
+	<variable name="loc_hackerexit" op="set" val="1"/>
 	<autoReward level="HIGH">standard</autoReward>
 </event>
 
@@ -4324,7 +4078,6 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 	
 	<event load="CIVILIAN_EXPLODED"/>
 	<event load="DONOR_PONY"/>
-	<event load="FRIENDLY_SLAVER"/>
 </eventList>
 
 <event name="HACKED_HOSTAGES" unique="true">
@@ -4593,15 +4346,15 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 </eventList>
 
 <event name="DISTRESS_HACKER_TRAP">
-	<text load="TEXT_ENCOUNTER_HACKER"/>
 	<distressBeacon/>
+	<text load="TEXT_ENCOUNTER_HACKER_DISTRESS"/>
 	<ship load="SHIP_HACKER" hostile="true"/> 
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="COMBAT_CHECK"/>
 	</choice>
 </event>
-<textList name="TEXT_ENCOUNTER_HACKER">
+<textList name="TEXT_ENCOUNTER_HACKER_DISTRESS">
 	<text>Despite the distress beacon being encoded as a Civilian signal, the source of the signal was a Hacker ship, lying in wait for someone to fall into their trap!</text>
 	<text>The original source of this distress beacon is gone, now replaced by a hostile Hacker vessel!</text>
 	<text>"Ahhh, you would not believe how eassssy it isss to trick people like you. We didn't even have to hack anything, we jusssst turned on our dissstresssss beacon and waited!"</text>
@@ -4640,7 +4393,7 @@ NOTE TO FUTURE ME; DON'T DELETE THESE IDIOT OTHER EVENTS USE THEM-->
 <event name="DISTRESS_HACKER_MILITIA_WIN">
 	<text>The hacker ship has been defeated. You scrap the ship.</text>
 	<autoReward level="MED">standard</autoReward>
-	<choice>
+	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
 			<text>It appears most of the Militiamen did not survive the attack. The lone survivor, their captain, offers to join your crew.</text>

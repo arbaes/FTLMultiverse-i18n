@@ -74,7 +74,7 @@
 	<event>
 		<text>You strip the Engi ship before preparing to deal with the Mantis. However, the Suzerain immediately realizes your intentions and attacks!</text>
 		<autoReward level="MED">stuff</autoReward>
-		<boarders min="1" max="1" class="suzerain"/>
+		<boarders min="1" max="1" class="mantis_suzerain"/>
 	</event>
 </eventList>
 <eventList name="MANTIS_CAPTURE_COMMANDO_TALK">
@@ -84,7 +84,7 @@
 	</event>
 	<event>
 		<text>After a short time alone with the Suzerain, you are told he wishes to join the crew. Although you are surprised at the Suzerain's willingness to swap allegiances, you trust your crewmembers' judgement about him.</text>
-		<crewMember amount="1" class="suzerain"/>  
+		<crewMember amount="1" class="mantis_suzerain"/>  
 		<autoReward level="MED">stuff</autoReward>
 	</event>
 </eventList>
@@ -301,7 +301,7 @@
 	
 	<event load="BROKEN_REBEL_DRONE"/>
 	
-	<event load="ALISON_MANTIS_CREW"/>
+	<event load="ALISON_MANTIS_CREW_MV"/>
 </eventList>
 
 <event name="MANTIS_BROKEN_TELEPORTER">
@@ -446,9 +446,8 @@
 		<text>Hand over a slave.</text>
 		<event>
 			<text>The Mantis come aboard and pick one of your crew to take back with them. Your crew struggles, trying to free themselves, but the last you see of them is screaming, being dragged out of the ship.</text>
-			<ship hostile="false"/>
 			<removeCrew>
-				<clone>true</clone>
+				<clone>false</clone>
 				<text>Tempting as it is to clone your crew, you made the decision to give them up, and you aren't going to break Federation code for it.</text>
 			</removeCrew>
 		</event>
@@ -498,7 +497,68 @@
 	<autoReward level="MED">standard</autoReward>
 </event>
 
-<event name="ALISON_MANTIS_CREW" unique="true">
+<!--<event name="ALISON_MANTIS_CREW" unique="true">	<!--	OLD VERSION, SHOULD NOT BE USED IN-GAME
+	<text>You arrive just in time to see an unusually well-armed Engi ship destroying a small pirate craft. A teleporter signal is detected...intruder on deck!</text>
+	<choice>
+		<text>Continue...</text>
+		<event>
+			<text>A young Mantis in a charred uniform has teleported onto the deck. He begs for sanctuary from the Engi, and offers to serve in exchange for your protection. The Engi have already traced the teleporter signal and are offering a deal in exchange for the prisoner.</text>
+			<choice hidden="true">
+				<text>Side with the fugitive and fight the Engi ship.</text>
+				<event load="ALISON_MANTIS_CREW_HELP"/>
+			</choice>
+			<choice hidden="true">
+				<text>Agree to offer up the Mantis in exchange for a bounty.</text>
+				<event load="ALISON_MANTIS_CREW_REJECT"/>
+			</choice>
+		</event>
+	</choice>
+</event>
+<eventList name="ALISON_MANTIS_CREW_HELP">
+	<event>
+		<text>It was a trap! The Mantis sabotages your ship before teleporting away.</text>
+		<damage amount="3"/>
+		<damage amount="1" system="random"/>
+		<damage amount="1" system="room"/>
+		<ship load="SHIP_ENGI_MANTIS_CONTROLLED" hostile="true"/>
+		<choice hidden="true">
+			<text>Continue...</text>
+			<event load="COMBAT_CHECK"/>
+		</choice>
+	</event>
+	<event>
+		<text>He expresses his thanks and prepares to help you fight his pursuer.</text>
+		<ship load="SHIP_ENGI_FIGHT" hostile="true"/>
+		<crewMember amount="1" class="mantis"/>	
+		<choice hidden="true">
+			<text>Continue...</text>
+			<event load="COMBAT_CHECK"/>
+		</choice>
+	</event>
+</eventList>
+<eventList name="ALISON_MANTIS_CREW_REJECT">
+	<event>
+		<text>The Engi captain is delighted, and quickly arranges for the transfer of the prisoner.</text>
+		<autoReward level="HIGH">scrap_only</autoReward>
+	</event>
+	<event>
+		<text>Fury sparks in the eyes of the Mantis. He won't go easily, and causes serious damage before he can be captured.</text>
+		<autoReward level="HIGH">scrap_only</autoReward>
+		<damage amount="4"/>
+		<damage amount="1" system="room" effect="fire"/>
+	</event>
+	<event>
+		<text>The pursuing ship responds with a completely unintelligible message. The young Mantis jerks to attention and assumes a battle stance. It was a trap!</text>
+		<boarders min="1" max="1" class="mantis"/>
+		<ship load="SHIP_ENGI_MANTIS_CONTROLLED" hostile="true"/>
+		<choice hidden="true">
+			<text>Continue...</text>
+			<event load="COMBAT_CHECK"/>
+		</choice>
+	</event>
+</eventList> -->
+
+<event name="ALISON_MANTIS_CREW_MV" unique="true">	<!-- EVENT COPY TO ALLOW OTHER OPTIONS	-->
 	<text>You arrive just in time to see an unusually well-armed Engi ship destroying a small pirate craft. A teleporter signal is detected...intruder on deck!</text>
 	<choice>
 		<text>Continue...</text>
@@ -545,7 +605,7 @@
 		<crewMember amount="1" class="mantis"/>	
 		<choice hidden="true">
 			<text>Continue...</text>
-			<event load="COMBAT_CHECK"/>
+			<event load="MORALITY_UPDATE_ENGI_FIGHT"/>
 		</choice>
 	</event>
 </eventList>
@@ -585,7 +645,7 @@
 		<crewMember amount="1" class="mantis"/>	
 		<choice hidden="true">
 			<text>Continue...</text>
-			<event load="COMBAT_CHECK"/>
+			<event load="MORALITY_UPDATE_ENGI_FIGHT"/>
 		</choice>
 	</event>
 </eventList>
@@ -614,7 +674,7 @@
 	<choice hidden="true">
 		<text>Attack the ship.</text>
 		<event>
-			<text>You prepare for combat</text>
+			<text>You prepare for combat.</text>
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -781,7 +841,7 @@
 </eventList>
 <eventList name="MANTIS_CREW_LIST_SHELL">	
 	<event>
-		<text>As soon as the pod open up, an angry Mantis lash out and plant their claws on your Shell, which immediately causes it to combust as a self-defense reflex, neutralizing this threat. Due to their body structure, your crew member doesn’t appear to have received any fatal wounds.</text>
+		<text>As soon as the pod open up, an angry Mantis lash out and plant their claws on your Shell, which immediately causes it to combust as a self-defense reflex, neutralizing this threat. Due to their body structure, your crew member doesn't appear to have received any fatal wounds.</text>
 	</event>
 	<event>
 		<text>As soon as you open the pod, the Mantis inside falls to the ground and grovels at your feet. "Oh most gracious and noble captain, you are sparing of me! Please, accepting my gratitude and service."</text>
@@ -794,7 +854,7 @@
 </eventList>
 <eventList name="MANTIS_CREW_LIST_ROCK">	
 	<event>
-		<text>Your crew member open up the pod...which releases a berserk Mantis that immediately leaps on your Rock. Despite the agitated state of their attacker, they appear to remain in control and lift the Mantis, before proceeding to slam that nuisance across the room, seemingly having not sustained any injuries from that attack. The crew isn’t endangered anymore, but you'd better get to cleaning up the room after the bloody mess of that situation.</text>
+		<text>Your crew member open up the pod...which releases a berserk Mantis that immediately leaps on your Rock. Despite the agitated state of their attacker, they appear to remain in control and lift the Mantis, before proceeding to slam that nuisance across the room, seemingly having not sustained any injuries from that attack. The crew isn't endangered anymore, but you'd better get to cleaning up the room after the bloody mess of that situation.</text>
 	</event>
 	<event>
 		<text>As soon as you open the pod, the Mantis inside falls to the ground and grovels at your feet. "Oh most gracious and noble captain, you are sparing of me! Please, accepting my gratitude and service."</text>
@@ -1007,7 +1067,7 @@
 	<event load="MANTIS_PIRATE_FAKE"/>
 	<event load="MANTIS_BROKEN_TELEPORTER"/>
 	
-	<event load="ALISON_MANTIS_CREW"/>
+	<event load="ALISON_MANTIS_CREW_MV"/>
 </eventList>
 
 <event name="HIVE_VETERAN" unique="true">
@@ -1027,8 +1087,8 @@
 	<choice hidden="true" req="LIST_CREW_MANTIS">
 		<text>(Mantis Crew) Convince the Suzerain to join you.</text>
 		<event>
-			<text>"You wish to form frienship? One, what, which lasts years come? Yes, accept I do."</text>
-			<crewMember amount="1" class="suzerain"/>
+			<text>"You wish to form friendship? One, what, which lasts years come? Yes, accept I do."</text>
+			<crewMember amount="1" class="mantis_suzerain"/>
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -1326,7 +1386,7 @@
 		</event>
 	</choice>
 	<choice hidden="true" req="cloaking" max_lvl="2">
-		<text>(Cloaking) Sabotage the station while hidden by your cloak.</text>
+		<text>(Upg. Cloaking) Sabotage the station while hidden by your cloak.</text>
 		<event load="QUEST_HIVE_FREEMANTIS_HUNTER_CAMP_CLOAK"/>
 	</choice>
 	<choice hidden="true" req="cloaking" lvl="3">
@@ -1366,6 +1426,7 @@
 	</event>
 </eventList>
 <event name="QUEST_HIVE_FREEMANTIS_HUNTER_CAMP_WIN">
+<removeHazards/>
 	<text>In a rare display of cowardice the remaining Mantis ships make no attempt to fight you and flee. You scrap the hull of the ship you just defeated before moving onto the station.</text>
 	<autoReward level="MED">standard</autoReward>
 	<choice hidden="true">
@@ -1619,7 +1680,7 @@
 	<deadCrew load="HIVE_MERCENARY_HATCHERY_WIN"/>
 	<crew>
 		<crewMember type="mantis" prop="0.80"/>
-		<crewMember type="suzerain" prop="0.20"/>	
+		<crewMember type="mantis_suzerain" prop="0.20"/>	
 	</crew>
 </ship>
 <event name="HIVE_MERCENARY_HATCHERY" unique="true">
@@ -1631,7 +1692,7 @@
 	</quest>
 	<beaconType id="map_icon_hatchery" global="true">
 		<color r="220" g="35" b="32" a="1.0"/>
-		<unvisitedTooltip>Location of the mantis hatchery.</unvisitedTooltip>
+		<unvisitedTooltip>Location of the Mantis hatchery.</unvisitedTooltip>
 		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
 	</beaconType>
 	<img planet="PLANET_POPULATED"/>
@@ -1640,7 +1701,7 @@
 	<choice hidden="true">
 		<text>Attack the Hatchery yourself.</text>
 		<event>
-			<text>The Suzerain cruiser seems to have several Bishops on it as well. That messenger wasn't lying, this Hatchery must be important to deserve this much security. Time for a colossal fight!</text>
+			<text>The cruiser seems to have several Suzerains led by a Bishop. That messenger wasn't lying, this Hatchery must be important to deserve this much security. Time for a colossal fight!</text>
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -1664,7 +1725,7 @@
 	</choice>
 </event>
 <event name="HIVE_MERCENARY_HATCHERY_TIMER">
-	<text>You happen to notice, that while you've been fighting, the other Bishop ship has arrived. However, instead of coming to assist you, it's instead landed next to the Hatchery and begun to load its cargo with the eggs. It seems they have no intentions of sticking around, so if you want to confront them you'll have to kill this cruiser quickly!</text>
+	<text>You happen to notice, that while you've been fighting, the other Bishop ship has arrived. However, instead of coming to assist you, it has instead landed next to the Hatchery and begun to load its cargo with the eggs. It seems they have no intentions of sticking around, so if you want to confront them you'll have to kill this cruiser quickly!</text>
 	<clearTriggeredEvent name="HATCHERY_TIMER_START"/>
 	<triggeredEvent event="HIVE_MERCENARY_HATCHERY_FAIL" time="60" thisFight="true" clearOnJump="true">
 		<triggeredEventBox load="DEFAULT_TIMER" pos="combat">
@@ -1675,12 +1736,12 @@
 	</triggeredEvent>
 </event>
 <event name="HIVE_MERCENARY_HATCHERY_FAIL">
-	<text>It seems you weren't fast enough- and now the Bishop has jumped away with the eggs! The Suzerain cruiser has noticed as well, because it immediately switches focus from you onto the trajectory of the fleeing Bishop and jumps away after it! Seems this was all just one giant ruse...</text>
+	<text>It seems you weren't fast enough - and now the Bishop has jumped away with the eggs! The Suzerain cruiser has noticed as well, because it immediately switches focus from you onto the trajectory of the fleeing Bishop and jumps away after it! Seems this was all just one giant ruse...</text>
 	<instantEscape/>
 </event>
 <event name="HIVE_MERCENARY_HATCHERY_WIN">
 	<text>The Suzerain cruiser has been defeated. The immense hull of the ship comes crashing down onto the planet's surface, though fortunately it lands in the nearby river rather than on the Hatchery itself. Below Mantis workers and Engi slaves flee, but the Bishop ship has not yet finished loading their cargo.</text>
-	<hiddenAug>ACH_BOSS_SUZZY</hiddenAug>
+	<variable name="ach_boss_suzzycruiser" op="set" val="1"/>
 	<autoReward level="HIGH">standard</autoReward>
 	<choice hidden="true">
 		<text>Confront the Bishop.</text>
@@ -1693,14 +1754,14 @@
 					<choice hidden="true">
 						<text>Where will you take the eggs then?</text>
 						<event>
-							<text>"I have arranged plans. Free Mantis colony, south of Hive, has agreed to take and raise them as their own. I have faith this will be a better home. I do not know what will happen to me after. It seems fate has it my death as traitor to Hive is certain. But a noble death it will be. That is not of worry to you. Be it may that I trick you, you have helped me greatly. I will show you how gain access to blueprints of cruiser you have defeated today, so that your Federation might take advantage of its power."</text>
+							<text>"I have arranged plans. Free Mantis colony, away from Hive, has agreed to take and raise them as their own. I have faith this will be a better home. I do not know what will happen to me after. It seems fate has it my death as traitor to Hive is certain. But a noble death it will be. That is not of worry to you. Be it may that I trick you, you have helped me greatly. I will show you how gain access to blueprints of cruiser you have defeated today, so that your Federation might take advantage of its power."</text>
 							<unlockCustomShip silent="false">PLAYER_SHIP_SUZERAIN</unlockCustomShip>
 							<choice hidden="true">
 								<text>Offer to take her with you.</text>
 								<event>
 									<text>"Huh? You are serious? I would not normally consider, but... saving reality could mean pardon, and life in Federation better than death in Hive. Perhaps my legacy does not end here then. I will have my crew transport eggs on their own. They are capable. I shall be with you momentarily, captain."</text>
-									<hiddenAug>ACH_CREW_BISHOP</hiddenAug>
-									<crewMember amount="1" all_skills="2" class="bishop">Laiiikarkapi</crewMember>
+									<variable name="ach_crew_bishop" op="set" val="1"/>
+									<crewMember amount="1" all_skills="2" class="mantis_bishop">Laiiikarkapi</crewMember>
 								</event>
 							</choice>
 							<choice hidden="true">
@@ -1709,12 +1770,12 @@
 									<text>"Yes, may you having the best of luck as well. Perhaps you will hear news of my fate in Federation some time soon..."</text>
 								</event>
 							</choice>
-							<choice hidden="true" req="kaz">
+							<choice hidden="true" req="unique_kaz">
 								<text>Request her help in finding the queen.</text>
 								<event>
 									<text>"Huh? You are serious? I do not know what you are hoping to achieve, but it is certainly better than a certain death at hands of the Episcopacy. I will have my crew transport eggs on their own. They are capable. I shall be with you momentarily, captain."</text>
-									<crewMember amount="1" all_skills="2" class="bishop">Laiiikarkapi</crewMember>
-									<choice hidden="true" req="kaz">
+									<crewMember amount="1" all_skills="2" class="mantis_bishop">Laiiikarkapi</crewMember>
+									<choice hidden="true">
 										<text>Continue...</text>
 										<event>
 											<text>With Laiiikarkapi's directions and Kaz's plans, you should now be able to track down the Mantis Queen herself. This won't be easy, but who knows what you might able to accomplish if you pull this off. Make sure you keep Laiiikarkapi and Kazaaak around, as without them, you won't be able to find your way.</text>
@@ -1741,7 +1802,7 @@
 		<nebulaBeacon>false</nebulaBeacon>
 		<aggressive>2</aggressive>
 	</quest>
-	<beaconType id="map_icon_hive" global="true" req="bishop">
+	<beaconType id="map_icon_hive" global="true" req="mantis_bishop">
 		<color r="220" g="35" b="32" a="1.0"/>
 		<unvisitedTooltip>Location of the Mantis Hive.</unvisitedTooltip>
 		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
@@ -1775,7 +1836,7 @@
 													<choice hidden="true">
 														<text>Oh...</text>
 														<event>
-															<text>With that conclusion made, Leik turns back to Kazaaak. "My apologies dear, but in your absence the Hive has not grown fond of you. But traveling in-arms with another traitor to the Episcopacy and a Federation Captain has not helped your image. I love you, but my role as queen means I must place the safety of the Hive first. It is clear where your line in the sand has been drawn, so this must mark the end of us. And I'm afraid there is another reason I have allowed you here. The capture of the fugitive you have brought with you, Laiiikarkapi. I apologize my dear, for it was my fault appointing you to this role. But such things cannot go unpunished. This is the last stop for all of you. I can at least promise you your funerals will be held with honor." Leikonpliiinakra stands up, and her guards draw their weapons. You hurry out of the palace just in time to witness a massive cruiser approaching to stop you! Seems it's time to fight your way out of here.</text>
+															<text>With that conclusion made, Leik turns back to Kazaaak. "My apologies dear, but in your absence the Hive has not grown fond of you. But traveling in-arms with another traitor to the Episcopacy and a Federation Captain has not helped your image. I love you, but my role as queen means I must place the safety of the Hive first. It is clear where your line in the sand has been drawn, so this must mark the end of us. And I'm afraid there is another reason I have allowed you here: the capture of the fugitive you have brought with you, Laiiikarkapi. I apologize my dear, for it was my fault appointing you to this role. But such things cannot go unpunished. This is the last stop for all of you. I can at least promise you your funerals will be held with honor." Leikonpliiinakra stands up, and her guards draw their weapons. You hurry out of the palace just in time to witness a massive cruiser approaching to stop you! Seems it's time to fight your way out of here.</text>
 															<ship load="SHIP_BISHOP_BOSS" hostile="true"/>
 															<choice hidden="true">
 																<text>Continue...</text>
@@ -1812,7 +1873,7 @@
 </event>
 <event name="HIVE_BISHOP_WIN">
 	<text>The Bishop cruiser has been defeated. Clearly this ship must have had some importance, because without it the Bishop forces have scattered. From its wreckage you salvage a special weapon. With the knowledge Laiiikarkapi gave you with the Suzerain cruiser, you figure out how to access the ship's consoles and download its blueprints.</text>
-	<hiddenAug>ACH_BOSS_BISHOP</hiddenAug>
+	<variable name="ach_boss_bishop" op="set" val="1"/>
 	<unlockCustomShip silent="false">PLAYER_SHIP_BISHOP</unlockCustomShip>
 	<autoReward level="HIGH">standard</autoReward>
 	<weapon name="LASER_BISHOP"/>

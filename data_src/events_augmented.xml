@@ -1,7 +1,7 @@
 <FTL>
 <event name="AUGMENTED_QUESTION"> <!--the thing you get at the store-->
 	<text>The store owners look over the robot in curiosity. You wait for their response.</text>
-	<remove name="HIDDEN MARKER_GOT_CORPSE"/>
+	<variable name="loc_got_corpse" op="set" val="0"/>
 	<choice>
 		<text>Continue...</text>
 		<event>
@@ -13,6 +13,7 @@
 
 <event name="AUGMENTED_DISCOVERY">
 	<preventQuest/>
+	<preventBossFleet/>
 	<beaconType id="map_icon_cronch" global="true">
 		<color r="66" g="255" b="0" a="1.0"/>
 		<unvisitedTooltip>These are the coordinates you found at the Harmony Link.</unvisitedTooltip>
@@ -36,7 +37,7 @@
 								<text>Agree to let him "assist the FTL Drive".</text>
 								<event>
 									<text>The Lanius waddles over to the engines and fiddles around with your drive. "We going now. Grab thing bolted down, bumpy ride!" Suddenly, the engines activate and you can feel the ship entering lightspeed!</text>
-									<crewMember amount="1" class="augmented">Cronchmeister</crewMember>
+									<crewMember amount="1" class="lanius_augmented">Cronchmeister</crewMember>
 									<choice hidden="true">
 										<text>Continue...</text>
 										<event>
@@ -50,7 +51,7 @@
 								<text>Refuse.</text>
 								<event>
 									<text>"So the boring! Be taking alien then, needing food." They press some button on a device in their hands, and the ship in the distance moves towards you with its weapons powered on!</text>
-									<boarders min="1" max="1" class="augmented"/>
+									<boarders min="1" max="1" class="lanius_augmented"/>
 									<ship hostile="true"/>
 									<choice hidden="true">
 										<text>Continue...</text>
@@ -87,9 +88,9 @@
 		<unvisitedTooltip>The location of the augmented leader, the Anointed.</unvisitedTooltip>
 		<visitedTooltip>Visited location.</visitedTooltip>
 	</beaconType>
-	<hiddenAug>MARKER_ANOINTED</hiddenAug>
+	<variable name="loc_anointed" op="set" val="1"/>
 	<text>You've arrived at the exit...</text>
-	<choice req="MARKER_ANOINTED" lvl="0" max_group="0" hidden="true" blue="false">
+	<choice req="loc_anointed" lvl="0" max_group="0" hidden="true" blue="false">
 		<text>Continue...</text>
 		<event>
 			<text>A white Lanius with purple details stands up from her large throne as soon as you arrive.</text>
@@ -161,7 +162,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice req="MARKER_ANOINTED" lvl="1" max_group="0" hidden="true" blue="false"> <!--theoretically you can never get this except in the fleet so Im just going to make it that for simplisities sake-->
+	<choice req="loc_anointed" lvl="1" max_group="0" hidden="true" blue="false"> <!--theoretically you can never get this except in the fleet so Im just going to make it that for simplisities sake-->
 		<text>Continue...</text>
 		<event>
 			<text>Looks like the Anointed's ship is gone now, but the Rebel fleet has taken control of the beacon! You'll have to fight your way out!</text>
@@ -201,14 +202,14 @@
 
 <event name="ANOINTED_SURRENDER_ACCEPT">
 	<text>You accept the Anointed's surrender, and she transfers over a good amount of scrap. As you prepare to leave though, she asks to speak with you about one more thing.</text>
-	<hiddenAug>ACH_BOSS_AUGCRUISER</hiddenAug>
+	<variable name="ach_boss_augcruiser" op="set" val="1"/>
 	<autoReward level="HIGH">weapon</autoReward>
 	<ship hostile="false"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
 			<text>The Lanius hands you a strange key-like device. "This ancient, like many other, is in hibernation. This device seeming able to awaken them. There is mystery here, yes? I wishing I could solve it, but you are one now with privileged. You will need this and fuel as catalyst. Good luck."</text>
-			<augment name="ANCIENT_ACTIVATOR"/>
+			<hiddenAug>ANCIENT_ACTIVATOR</hiddenAug>
 			<choice hidden="true">
 				<text>Accept her gift and leave.</text>
 				<event/>
@@ -228,11 +229,8 @@
 						<event>
 							<text>"This, high quality tech. You must lucky finding this. Alright, this will serve as now. Very curious, wanting to see what happens when being awakens!"</text>
 							<remove name="ANCIENT_LASER"/>
-							<crewMember amount="1" combat="2" class="anointed">Anointed</crewMember>
-							<choice>
-								<text>Continue...</text>
-								<event load="ANOINTED_AUG"/>
-							</choice>
+							<crewMember amount="1" combat="2" class="unique_anointed">Anointed</crewMember>
+							<variable name="ach_crew_anointed" op="set" val="1"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="ANCIENT_BEAM">
@@ -240,11 +238,8 @@
 						<event>
 							<text>"This, high quality tech. You must lucky finding this. Alright, this will serve as now. Very curious, wanting to see what happens when being awakens!"</text>
 							<remove name="ANCIENT_BEAM"/>
-							<crewMember amount="1" combat="2" class="anointed">Anointed</crewMember>
-							<choice>
-								<text>Continue...</text>
-								<event load="ANOINTED_AUG"/>
-							</choice>
+							<crewMember amount="1" combat="2" class="unique_anointed">Anointed</crewMember>
+							<variable name="ach_crew_anointed" op="set" val="1"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="ANCIENT_FOCUS">
@@ -252,23 +247,17 @@
 						<event>
 							<text>"This, high quality tech. You must lucky finding this. Alright, this will serve as now. Very curious, wanting to see what happens when being awakens!"</text>
 							<remove name="ANCIENT_FOCUS"/>
-							<crewMember amount="1" combat="2" class="anointed">Anointed</crewMember>
-							<choice>
-								<text>Continue...</text>
-								<event load="ANOINTED_AUG"/>
-							</choice>
+							<crewMember amount="1" combat="2" class="unique_anointed">Anointed</crewMember>
+							<variable name="ach_crew_anointed" op="set" val="1"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="ANCIENT_FOCUS_2">
-						<text>Offer her a mk II Ancient Pinpoint to feed on.</text>
+						<text>Offer her an Ancient Pinpoint Mk. II to feed on.</text>
 						<event>
 							<text>"This, high quality tech. You must lucky finding this. Alright, this will serve as now. Very curious, wanting to see what happens when being awakens!"</text>
 							<remove name="ANCIENT_FOCUS_2"/>
-							<crewMember amount="1" combat="2" class="anointed">Anointed</crewMember>
-							<choice>
-								<text>Continue...</text>
-								<event load="ANOINTED_AUG"/>
-							</choice>
+							<crewMember amount="1" combat="2" class="unique_anointed">Anointed</crewMember>
+							<variable name="ach_crew_anointed" op="set" val="1"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="ANCIENT_MISSILES">
@@ -276,11 +265,8 @@
 						<event>
 							<text>"This, high quality tech. You must lucky finding this. Alright, this will serve as now. Very curious, wanting to see what happens when being awakens!"</text>
 							<remove name="ANCIENT_MISSILES"/>
-							<crewMember amount="1" combat="2" class="anointed">Anointed</crewMember>
-							<choice>
-								<text>Continue...</text>
-								<event load="ANOINTED_AUG"/>
-							</choice>
+							<crewMember amount="1" combat="2" class="unique_anointed">Anointed</crewMember>
+							<variable name="ach_crew_anointed" op="set" val="1"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="ANCIENT_BOMB">
@@ -288,11 +274,8 @@
 						<event>
 							<text>"This, high quality tech. You must lucky finding this. Alright, this will serve as now. Very curious, wanting to see what happens when being awakens!"</text>
 							<remove name="ANCIENT_BOMB"/>
-							<crewMember amount="1" combat="2" class="anointed">Anointed</crewMember>
-							<choice>
-								<text>Continue...</text>
-								<event load="ANOINTED_AUG"/>
-							</choice>
+							<crewMember amount="1" combat="2" class="unique_anointed">Anointed</crewMember>
+							<variable name="ach_crew_anointed" op="set" val="1"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="ANCIENT_STUN">
@@ -300,11 +283,8 @@
 						<event>
 							<text>"This, high quality tech. You must lucky finding this. Alright, this will serve as now. Very curious, wanting to see what happens when being awakens!"</text>
 							<remove name="ANCIENT_STUN"/>
-							<crewMember amount="1" combat="2" class="anointed">Anointed</crewMember>
-							<choice>
-								<text>Continue...</text>
-								<event load="ANOINTED_AUG"/>
-							</choice>
+							<crewMember amount="1" combat="2" class="unique_anointed">Anointed</crewMember>
+							<variable name="ach_crew_anointed" op="set" val="1"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="ANCIENT_COMBAT_LASER">
@@ -312,11 +292,8 @@
 						<event>
 							<text>"This, high quality tech. You must lucky finding this. Alright, this will serve as now. Very curious, wanting to see what happens when being awakens!"</text>
 							<remove name="ANCIENT_COMBAT_LASER"/>
-							<crewMember amount="1" combat="2" class="anointed">Anointed</crewMember>
-							<choice>
-								<text>Continue...</text>
-								<event load="ANOINTED_AUG"/>
-							</choice>
+							<crewMember amount="1" combat="2" class="unique_anointed">Anointed</crewMember>
+							<variable name="ach_crew_anointed" op="set" val="1"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="ANCIENT_COMBAT_ION">
@@ -324,11 +301,8 @@
 						<event>
 							<text>"This, high quality tech. You must lucky finding this. Alright, this will serve as now. Very curious, wanting to see what happens when being awakens!"</text>
 							<remove name="ANCIENT_COMBAT_ION"/>
-							<crewMember amount="1" combat="2" class="anointed">Anointed</crewMember>
-							<choice>
-								<text>Continue...</text>
-								<event load="ANOINTED_AUG"/>
-							</choice>
+							<crewMember amount="1" combat="2" class="unique_anointed">Anointed</crewMember>
+							<variable name="ach_crew_anointed" op="set" val="1"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="ANCIENT_COMBAT_MISSILE">
@@ -336,23 +310,17 @@
 						<event>
 							<text>"This, high quality tech. You must lucky finding this. Alright, this will serve as now. Very curious, wanting to see what happens when being awakens!"</text>
 							<remove name="ANCIENT_COMBAT_MISSILE"/>
-							<crewMember amount="1" combat="2" class="anointed">Anointed</crewMember>
-							<choice>
-								<text>Continue...</text>
-								<event load="ANOINTED_AUG"/>
-							</choice>
+							<crewMember amount="1" combat="2" class="unique_anointed">Anointed</crewMember>
+							<variable name="ach_crew_anointed" op="set" val="1"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="ANCIENT_DEFENSE_1">
-						<text>Offer her an Ancient Sentinel Drone to feed on.</text>
+						<text>Offer her an Ancient Overwatcher Drone to feed on.</text>
 						<event>
 							<text>"This, high quality tech. You must lucky finding this. Alright, this will serve as now. Very curious, wanting to see what happens when being awakens!"</text>
 							<remove name="ANCIENT_DEFENSE_1"/>
-							<crewMember amount="1" combat="2" class="anointed">Anointed</crewMember>
-							<choice>
-								<text>Continue...</text>
-								<event load="ANOINTED_AUG"/>
-							</choice>
+							<crewMember amount="1" combat="2" class="unique_anointed">Anointed</crewMember>
+							<variable name="ach_crew_anointed" op="set" val="1"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="MENDER">
@@ -360,11 +328,8 @@
 						<event>
 							<text>"This, high quality tech. You must lucky finding this. Alright, this will serve as now. Very curious, wanting to see what happens when being awakens!"</text>
 							<remove name="MENDER"/>
-							<crewMember amount="1" combat="2" class="anointed">Anointed</crewMember>
-							<choice>
-								<text>Continue...</text>
-								<event load="ANOINTED_AUG"/>
-							</choice>
+							<crewMember amount="1" combat="2" class="unique_anointed">Anointed</crewMember>
+							<variable name="ach_crew_anointed" op="set" val="1"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="DIRECTOR">
@@ -372,11 +337,8 @@
 						<event>
 							<text>"This, high quality tech. You must lucky finding this. Alright, this will serve as now. Very curious, wanting to see what happens when being awakens!"</text>
 							<remove name="DIRECTOR"/>
-							<crewMember amount="1" combat="2" class="anointed">Anointed</crewMember>
-							<choice>
-								<text>Continue...</text>
-								<event load="ANOINTED_AUG"/>
-							</choice>
+							<crewMember amount="1" combat="2" class="unique_anointed">Anointed</crewMember>
+							<variable name="ach_crew_anointed" op="set" val="1"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="ATOM_DEFEND">
@@ -384,11 +346,8 @@
 						<event>
 							<text>"This, high quality tech. You must lucky finding this. Alright, this will serve as now. Very curious, wanting to see what happens when being awakens!"</text>
 							<remove name="ATOM_DEFEND"/>
-							<crewMember amount="1" combat="2" class="anointed">Anointed</crewMember>
-							<choice>
-								<text>Continue...</text>
-								<event load="ANOINTED_AUG"/>
-							</choice>
+							<crewMember amount="1" combat="2" class="unique_anointed">Anointed</crewMember>
+							<variable name="ach_crew_anointed" op="set" val="1"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="ATOM_BOARDER">
@@ -396,11 +355,8 @@
 						<event>
 							<text>"This, high quality tech. You must lucky finding this. Alright, this will serve as now. Very curious, wanting to see what happens when being awakens!"</text>
 							<remove name="ATOM_BOARDER"/>
-							<crewMember amount="1" combat="2" class="anointed">Anointed</crewMember>
-							<choice>
-								<text>Continue...</text>
-								<event load="ANOINTED_AUG"/>
-							</choice>
+							<crewMember amount="1" combat="2" class="unique_anointed">Anointed</crewMember>
+							<variable name="ach_crew_anointed" op="set" val="1"/>
 						</event>
 					</choice>
 				</event>
@@ -411,26 +367,21 @@
 
 <event name="ANOINTED_DESTROYED">
     <text>The Anointed's cruiser explodes. There's plenty left to scrap from the wreckage, but with her dies any chance that you might figure out what to do with this alien.</text>
-    <hiddenAug>ACH_BOSS_AUGCRUISER</hiddenAug>
+    <variable name="ach_boss_augcruiser" op="set" val="1"/>
 	<autoReward level="HIGH">weapon</autoReward>
 </event>
 
 <event name="ANOINTED_DEADCREW">
     <text>The crew of the cruiser has been neutralized. You move in to inspect the ship and collect the remains.</text>
-    <hiddenAug>ACH_BOSS_AUGCRUISER</hiddenAug>
+   <variable name="ach_boss_augcruiser" op="set" val="1"/>
 	<autoReward level="HIGH">weapon</autoReward>
     <choice hidden="true">
         <text>Continue...</text>
         <event>
             <text>As you inspect the ship, you find the Anointed decaying on the ground. She gestures for you to come closer, and slaps a strange looking device in your hands. She manages to choke out the words "This is activator key. Along with fuel catalyst, will wake ancient... from h-hibernation. There is great mystery here... my mistake for interrupting. You will solve it, I am sure..." With that, she falls to the ground, dead.</text>
-            <augment name="ANCIENT_ACTIVATOR"/>
+            <hiddenAug>ANCIENT_ACTIVATOR</hiddenAug>
         </event>
     </choice>
-</event>
-
-<event name="ANOINTED_AUG">
-	<hiddenAug>ACH_CREW_ANOINTED</hiddenAug>
-	<unlockCustomShip shipReq="PLAYER_SHIP_AUGMENTED" silent="false">PLAYER_SHIP_AUGMENTED_3</unlockCustomShip>
 </event>
 
 <!--
@@ -479,7 +430,7 @@
 		<text>Let him eat the hull.</text>
 		<event>
 			<text>The Lanius flies the shuttle close and exits out the bottom, gliding its way onto yours. He attaches and begins to liquify a small portion of the hull. It's barely anything, much less than you expected, but the Lanius is grateful and even offers to join your crew.</text>
-			<crewMember amount="1" class="augmented"/>
+			<crewMember amount="1" class="lanius_augmented"/>
 			<damage amount="2" effect="breach" system="room"/>
 		</event>
 	</choice>
@@ -561,7 +512,7 @@
 
 <event name="AUGMENTED_FEEDING" unique="true">
 	<text>Nearby is a small ancient ruin with some augmented Lanius feeding on it. As you approach, they hail you. "You visitor? If having any fellow Lanius, feel free join in. Enough here to change composition!"</text>
-	<choice hidden="true" req="anaerobic">
+	<choice hidden="true" req="lanius">
 		<text>Let your Lanius feed on the ruins.</text>
 		<event>
 			<text>Your Lanius glides out of the ship towards the ruins and attaches to them along with the others...</text>
@@ -569,7 +520,7 @@
 				<text>Continue...</text>
 				<event>
 					<text>You watch in fascination as your Lanius's metal body slowly turns dark black. Soon they return, looking the same as all the other augmented Lanius you've seen, and with the same abilities too.</text>
-					<transformRace class="anaerobic">augmented</transformRace>
+					<transformRace class="lanius">lanius_augmented</transformRace>
 				</event>
 			</choice>
 		</event>
@@ -578,7 +529,7 @@
 		<text>Attack them to access the ruins on your own!</text>
 		<event>
 			<text>You move closer, firing on the Lanius. They detach from the structure, allowing you to move in and salvage it. However, they aren't deterred long enough, and they re-attach themselves to the hull and break their way in!</text>
-			<boarders min="2" max="3" class="augmented"/>
+			<boarders min="2" max="3" class="lanius_augmented"/>
 			<autoReward level="HIGH">scrap_only</autoReward>
 		</event>
 	</choice>
@@ -621,7 +572,7 @@
 	</choice>
 </event>
 <textList name="TEXT_ENCOUNTER_AUGMENTED">
-	<text>The Augmented are fearsome fighters and scavengers, even if you've met a few friendly ones too. It appears you've met one whose far less friendly, and they're looking to attack you!</text>
+	<text>The Augmented are fearsome fighters and scavengers, even if you've met a few friendly ones too. It appears you've met one that is far less friendly, and they're looking to attack you!</text>
 	<text>It appears the drive for life-sustaining scrap has driven the nearby Augmented Lanius to madness, and they're desperate enough to attack a military vessel like yours!</text>
 	<text>You didn't think the Lanius could get anymore scrap-hungry than the ones in the Swarmlands, but the Augmented have proven otherwise. Prepare for battle!</text>
 	<text>"Needing scrap. You have ship made of scrap. I eat you ship. Do not worrying, am fair. Will give you shuttle." This won't fly for as long as you are captain of this ship!</text>
@@ -861,7 +812,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="separatist">
+			<choice hidden="true" req="LIST_VARIANT_SEPARATIST">
 				<text>(Separatist Crew) "Your mission is of [high] importance. However, so is ours. Requesting: supplies."</text>
 				<event>
 					<text>Your Separatist explains your mission to the other Engi. "This request is acceptable. Transferring supplies now."</text>
@@ -958,12 +909,12 @@
 </event>
 <eventList name="AUGMENTED_INQUISITION_SALVAGE">
 	<event>
-		<text>Nothing disturbs you while you scrap the ship. It appears the Lanius must have done some serious damage to their life support, and even the resistant crusaders couldn't save themselves.</text>
+		<text>Nothing disturbs you while you scrap the ship. It appears the Lanius must have done some serious damage to their life support, and even the resistant Crusaders couldn't save themselves.</text>
 		<autoReward level="HIGH">stuff</autoReward>
 	</event>
 	<event>
 		<text>While salvaging the ship, suddenly several Rockmen Crusaders bust in through the door. "No one expects the Rock Inquisition!" Whether it was an ambush or they just really don't like you, it doesn't matter anymore. Prepare for combat!</text>
-		<boarders min="2" max="2" class="crusader"/> <!--the meme has 3 but oh well-->
+		<boarders min="2" max="2" class="rock_crusader"/> <!--the meme has 3 but oh well-->
 		<ship hostile="true"/>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -973,11 +924,11 @@
 </eventList>
 <eventList name="AUGMENTED_INQUISITION_SCAN">
 	<event>
-		<text>Scans show the ship is empty. It appears the Lanius must have done some serious damage to their life support, and even the resistant crusaders couldn't save themselves. You decide it's safe to salvage.</text>
+		<text>Scans show the ship is empty. It appears the Lanius must have done some serious damage to their life support, and even the resistant Crusaders couldn't save themselves. You decide it's safe to salvage.</text>
 		<autoReward level="HIGH">stuff</autoReward>
 	</event>
 	<event>
-		<text>Scans show the life support on the ship has taken some damage, but the crusader crew is still aboard.</text>
+		<text>Scans show the life support on the ship has taken some damage, but the Crusader crew is still aboard.</text>
 		<choice hidden="true">
 			<text>Attack them while they're weak!</text>
 			<event>
@@ -993,7 +944,7 @@
 		<choice hidden="true">
 			<text>Question them.</text>
 			<event>
-				<text>The crusaders are surprisingly receptive to your questions. "We heard this sector contained relics of an ancient god race, which matched some ancient Crystal mythology. The Elders don't want any challengers to the Crystal race, so they sent us out here to capture one and bring it back... only to find a bunch of Lanius who wanted to eat us. Now if you'll excuse us, we have to get back to repairing this ship before we suffocate and die."</text>
+				<text>The Crusaders are surprisingly receptive to your questions. "We heard this sector contained relics of an ancient god race, which matched some ancient Crystal mythology. The Elders don't want any challengers to the Crystal race, so they sent us out here to capture one and bring it back... only to find a bunch of Lanius who wanted to eat us. Now if you'll excuse us, we have to get back to repairing this ship before we suffocate and die."</text>
 				<choice hidden="true">
 					<text>Attack them while they're weak!</text>
 					<event>
@@ -1010,7 +961,7 @@
 					<text>(Upg. Oxygen) Offer to dock and refill their oxygen.</text>
 					<event>
 						<text>The Crusaders agree, and you quickly dock with their ship and flood it with oxygen. They're considerably pleased, and while most of them feel the need to carry on with their mission, one wishes to stay behind with you, to which the others don't protest.</text>
-						<crewMember amount="1" class="crusader">Python</crewMember>
+						<crewMember amount="1" class="rock_crusader">Python</crewMember>
 					</event>
 				</choice>
 				<choice hidden="true">

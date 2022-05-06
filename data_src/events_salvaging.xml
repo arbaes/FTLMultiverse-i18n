@@ -17,6 +17,7 @@
 
 <event name="SALVAGE_FAIL">
 	<text>Your crew find little of value; disappointed, they return to the ship.</text>
+	<variable name="loc_has_salvaged" op="set" val="1"/>
 </event>
 
 <!--ARM-->
@@ -33,34 +34,46 @@
 <event name="SALVAGE_DEFAULT_LOW">
 	<text>Your crew find little, but it's still something. They return back to the ship with their haul.</text>
 	<autoReward level="LOW">stuff</autoReward>
+	<variable name="loc_has_salvaged" op="set" val="1"/>
 </event>
 <event name="SALVAGE_DEFAULT_MED">
 	<text>Your crew find a decent amount of salvage. They return back to the ship with their haul.</text>
 	<autoReward level="MED">stuff</autoReward>
+	<variable name="loc_has_salvaged" op="set" val="1"/>
 </event>
 <event name="SALVAGE_DEFAULT_HIGH">
 	<text>Your crew find a large amount of salvage. They return back to the ship with their haul.</text>
 	<autoReward level="HIGH">stuff</autoReward>
+	<variable name="loc_has_salvaged" op="set" val="1"/>
 </event>
 
 <event name="SALVAGE_DEFAULT_FUEL">
 	<text>Your crew find a ton of fuel cells, though their origin is uncertain. They return back to the ship with their haul.</text>
 	<autoReward level="MED">fuel_only</autoReward>
+	<variable name="loc_has_salvaged" op="set" val="1"/>
 </event>
 
 <event name="SALVAGE_DEFAULT_MINEFIELD">
 	<text>Your crew stumble across an abandoned minefield. Certainly dubious, but also a potential source of a large amount of ammo and scrap. However, it's risky for the crew.</text>
+	<variable name="loc_has_salvaged" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Take the risk.</text>
 		<event load="SALVAGE_DEFAULT_MINEFIELD_RISK"/>
 	</choice>
-	<choice hidden="true" req="crusader">
+	<choice hidden="true" req="rock_crusader">
 		<text>Your Crusader knows a lot about explosives, and can also take a hit.</text>
 		<event>
 			<text>Though your Crusader knows quite a lot about explosives, the real reason he's a good choice is his thick skin. With little danger to their well-being, they return with an impressive haul, though it's not as good as you might have gotten with a larger team.</text>
 			<autoReward level="MED">missiles</autoReward>
 		</event>
 	</choice>
+	<choice hidden="true" req="rock_paladin"> <!-- same outcome as crusader, but alt text -->
+		<text>Your Paladin knows a lot about explosives, and can also take a hit.</text>
+		<event>
+			<text>Though your Paladin knows quite a lot about explosives, the real reason he's a good choice is because of his impressive resilience. With little danger to their well-being, they return with an impressive haul, although their slow speed prevents them from gathering more without letting the Rebel fleet gain time.</text>
+			<autoReward level="MED">missiles</autoReward>
+		</event>
+	</choice>	
 	<choice hidden="true" req="LIST_CREW_LANIUS">
 		<text>Your Lanius can melt down some mines for scrap.</text>
 		<event>
@@ -108,6 +121,7 @@
 
 <event name="SALVAGE_DEFAULT_DRONE">
 	<text>Oddly enough, it appears a pair of Boarding Drones have been abandoned here in the abyss. You can break them down for parts easily, but if you scanned them for the schematics you might risk activating one.</text>
+	<variable name="loc_has_salvaged" op="set" val="1"/>
 	<choice hidden="false">
 		<text>Break them down for parts.</text>
 		<event>
@@ -119,9 +133,16 @@
 		<text>Scan them.</text>
 		<event>
 			<text>You attempt scanning, but due to your distance you're unable to get a read. You pull closer, but accidentally move a little too close, triggering the drones! Fortunately you still recover the schematic, but now they're onboard!</text>
-			<boarders min="2" max="2" class="battle"/>
+			<boarders min="2" max="2" class="drone_battle"/>
 			<damage amount="0" system="random" effect="breach"/>
 			<damage amount="0" system="random" effect="breach"/>
+			<drone name="BATTLETOG_DEFEND"/>
+		</event>
+	</choice>
+	<choice hidden="true" req="BLUELIST_ENERGY_SHIELD">
+		<text>(Energy Shield) Approach without any fear of intruders.</text>
+		<event>
+			<text>Fortunately, your Energy Shield greatly simplify the process. You retrieve the schematic without having to deal with any resistance.</text>
 			<drone name="BATTLETOG_DEFEND"/>
 		</event>
 	</choice>
@@ -132,10 +153,18 @@
 			<drone name="BATTLETOG_DEFEND"/>
 		</event>
 	</choice>
+		<choice hidden="true" req="LIST_CREW_ENGINEER">
+		<text>(Engineer Crew) Disable the drones first.</text>
+		<event>
+			<text>Fortunately, your Engineer is able to disable the drones before scanning them.</text>
+			<drone name="BATTLETOG_DEFEND"/>
+		</event>
+	</choice>
 </event>
 
 <event name="SALVAGE_DEFAULT_PIRATES">
 	<text>The immediate area around the beacon yields little, but after diving much deeper into the system you stumble across an inactive pirate ship scans didn't turn up before.</text>
+	<variable name="loc_has_salvaged" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Send a team to see what loot might be inside.</text>
 		<event load="SALVAGE_DEFAULT_PIRATES_LOOT"/>

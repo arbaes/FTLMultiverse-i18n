@@ -18,7 +18,7 @@
 <event name="FINISH_BEACON_ENGI">
 	<text>You've arrived at the Long-Range Beacon. When the FTL Drive is charged you can jump to the next Sector.</text>
 	<choice hidden="true">
-		<text>Explore</text>
+		<text>Explore.</text>
 		<event load="EXIT_LIST_ENGI"/>
 	</choice>
 	<choice hidden="true">
@@ -54,11 +54,11 @@
 	</beaconType>
 	<text>It appears you've discovered a Harmony Link. These massive planet-sized structures are made up of trillions of nanobots, and transmit a strong signal to all of the Engi in the sector.</text>
 	<img back="BACK_EVENT_HARMONYLINK" planet="NONE"/>
-	<choice hidden="true" lvl="0" req="MARKER_FOUNDANCIENT" max_group="1" blue="false">
+	<choice hidden="true" lvl="1" req="HARMONY_LINK_CHECK" max_group="1" blue="false">
 		<text>Continue...</text>
 		<event load="HARMONY_LINK_EVENTS"/>
 	</choice>
-	<choice hidden="true" lvl="1" req="MARKER_FOUNDANCIENT" max_group="1" blue="false">
+	<choice hidden="true" lvl="0" req="HARMONY_LINK_CHECK" max_group="1" blue="false">
 		<text>Continue...</text>
 		<event load="HARMONY_LINK_EVENTS_NOANCIENT"/>
 	</choice>
@@ -72,11 +72,11 @@
 	</beaconType>
 	<text>It appears you've discovered a Harmony Link. These massive planet-sized structures are made up of trillions of nanobots, and transmit a strong signal to all of the Engi in the sector.</text>
 	<img back="BACK_EVENT_HARMONYLINK" planet="NONE"/>
-	<choice hidden="true" lvl="0" req="MARKER_FOUNDANCIENT" max_group="1" blue="false">
+	<choice hidden="true" lvl="1" req="HARMONY_LINK_CHECK" max_group="1" blue="false">
 		<text>Continue...</text>
 		<event load="HARMONY_LINK_ANCIENT"/>
 	</choice>
-	<choice hidden="true" lvl="1" req="MARKER_FOUNDANCIENT" max_group="1" blue="false">
+	<choice hidden="true" lvl="0" req="HARMONY_LINK_CHECK" max_group="1" blue="false">
 		<text>Continue...</text>
 		<event load="HARMONY_LINK_EVENTS_NOANCIENT"/>
 	</choice>
@@ -103,7 +103,7 @@
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
-				<event load="MORALITY_UPDATE_GENERAL_FIGHT"/>
+				<event load="MORALITY_UPDATE_ENGI_FIGHT"/>
 			</choice>
 		</event>
 	</choice>
@@ -187,7 +187,7 @@
 				<text>Buy an Engi Defender.</text>
 				<event>
 					<text>"Good, good. Now leave, there killing to be done."</text>
-					<crewMember amount="1" class="defend"/>
+					<crewMember amount="1" class="engi_defender"/>
 					<item_modify>
 						<item type="scrap" min="-125" max="-135"/>
 					</item_modify>
@@ -227,6 +227,8 @@
 			<event>
 				<text>To make matters worse, it appears the ship's remaining systems have come online!</text>
 				<status type="clear" target="enemy" system="drones" amount="100"/>
+				<status type="clear" target="enemy" system="hacking" amount="100"/>
+				<status type="clear" target="enemy" system="mind" amount="100"/>
 				<choice hidden="true">
 					<text>Continue...</text>
 					<event>
@@ -240,9 +242,11 @@
 <event name="HARMONY_LINK_ANCIENT">
 	<text>Orbiting around the Link is the wreckage of several massive structures... or are they ships? Composed of gigantic cubical segments, the ships are larger than any vessel you've ever seen, but they've been completely decimated. A strangely designed, but non-cubical, automaton rests silently by the wreckage. You aren't sure if moving closer will awaken it.</text>
 	<customFleet right="false" firing="false" autoDarkening="true">CUSTOM_FLEET_ANCIENT_WRECKAGE</customFleet>
-	<hiddenAug>MARKER_FOUNDANCIENT</hiddenAug>
+	<variable name="loc_foundancient" op="set" val="1"/>
 	<ship load="SHIP_ANCIENT_AUTOSTART" hostile="false"/>
 	<status type="limit" target="enemy" system="cloaking" amount="0"/>
+	<status type="limit" target="enemy" system="hacking" amount="0"/>
+	<status type="limit" target="enemy" system="mind" amount="0"/>
 	<choice hidden="true">
 		<text>Destroy the ship first, just in case.</text>
 		<event>
@@ -278,6 +282,7 @@
 </event>
 <event name="HARMONY_LINK_ANCIENT_WIN">
 	<text>The foreign Auto-ship has been eliminated. You find a large helping of scrap in the wreckage.</text>
+	<variable name="loc_got_corpse" op="set" val="1"/>
 	<autoReward level="HIGH">standard</autoReward>
 	<status type="clear" target="player" system="sensors" amount="100"/>
 	<status type="clear" target="player" system="doors" amount="100"/>
@@ -421,14 +426,12 @@
 	<event load="HOSTILE_ENGI_EVENTS"/>
 </eventList>
 <eventList name="HOSTILE_ENGI_EVENTS">
-	<event load="ENCOUNTER_PIRATE"/>
 	<event load="ENCOUNTER_REBEL"/>
 
 	<event load="ENGI_MANTIS_FIGHT"/>
 	<event load="ENGI_REBEL_FIGHT"/>
 	<event load="ENGI_PIRATE_FIGHT"/>
 	
-	<event load="PIRATE_CHOICE"/>
 	<event load="PIRATE_ASTEROID"/>
 	<event load="PIRATE_SUN"/>
 	<event load="ENCOUNTER_PIRATE_NO_ESCAPE"/>
@@ -485,7 +488,7 @@
 	<event load="BROKEN_REBEL_DRONE"/>
 	<event load="AUTO_DEFENSE_ITEM"/> 
 	
-	<event load="ALISON_MANTIS_CREW"/>
+	<event load="ALISON_MANTIS_CREW_MV"/>
 	
 	<event load="ASTEROID_DERELICT_SHIP"/>
 	
@@ -602,7 +605,7 @@
 			</event>
 		</choice>
 		<choice req="LIST_CREW_ENGI" hidden="true">
-			<text>(Engi Crew) Threat unresolved. Current mission imperative: Protocol 52.34.</text>
+			<text>(Engi Crew) "Threat unresolved. Current mission imperative: Protocol 52.34."</text>
 			<event>
 				<text>They respond, "Understood. Re-establishment of Federation highest importance. Transmitting hidden base coordinates. Repairing hull and attaching ship to ship ordnance."</text>
 				<autoReward level="LOW">weapon</autoReward>
@@ -645,7 +648,7 @@
 	<choice hidden="true">
 		<text>Hail the Engi to see what's wrong.</text>
 		<event>
-			<text>An Engi wearing a purple party hat appears onscreen. In the backgrounds are colorful rapidly flashing lights and several Slugs dancing. "Commence greetings. Inquiry: knowledge of how to 'party hard.' Request: mind-altering substances for gratification, recommended by Slug visitors."</text>
+			<text>An Engi wearing a purple party hat appears onscreen. In the backgrounds are colorful rapidly flashing lights and several Slugs dancing. "Commence greetings. Inquiry: knowledge of how to 'party hard'. Request: mind-altering substances for gratification, recommended by Slug visitors."</text>
 			<choice hidden="true" req="BLUELIST_ION">
 				<text>(Ion Weapon) Zap the Engi, it's close enough.</text>
 				<event>	
@@ -653,7 +656,7 @@
 					<autoReward level="MED">stuff</autoReward>
 				</event>
 			</choice>
-			<choice hidden="true" req="CREW_STIMS">
+			<choice hidden="true" req="BLUELIST_PHEROMONES">
 				<text>(Mantis Pheromones) Disperse the pheromones over their ship.</text>
 				<event>	
 					<text>A steady distribution of the pheromones certainly has... an effect on the crew. You may have given them too much, because now the Slugs are trying to climb the walls and the Engi are hugging the drones. While they're distracted you scrap some of the exterior regions of their ship.</text>
@@ -665,6 +668,13 @@
 				<event>	
 					<text>The Orchids have a unique ability to put others in a... "daze". The effect is visible on the Slugs and Engi who begin to act very strangely. They pay you for your "assistance."</text>
 					<autoReward level="MED">scrap_only</autoReward>
+				</event>
+			</choice>
+			<choice hidden="true" req="LIST_CHECKCREW_BUTLER">
+				<text>(Butler Drone) Turn it up to eleven.</text>
+				<event>	
+					<text>It's not exactly what they requested, but they won't complain. The Butler tends to every numerous needs the Slugs and Engi request when they notice it. Soon, it eventually raises the already high volume, and the crew can no longer keep up. Before they all pass out, they graciously pay you for your "assistance."</text>
+					<autoReward level="HIGH">stuff</autoReward>
 				</event>
 			</choice>
 			<choice hidden="true">
@@ -894,12 +904,12 @@
 -->
 <event name="FINISH_BEACON_HARMONY">
 	<text>You've arrived at the Long-Range Beacon. When the FTL Drive is charged you can jump to the next Sector.</text>
-	<choice hidden="true" req="turzil" lvl="0" max_group="0" blue="false">
+	<choice hidden="true" req="unique_turzil" lvl="0" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event>
 			<text>You now have some time on your hands.</text>
 			<choice hidden="true">
-				<text>Explore</text>
+				<text>Explore.</text>
 				<event load="EXIT_LIST_ENGI"/>
 			</choice>
 			<choice hidden="true">
@@ -912,7 +922,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="turzil" lvl="1" max_group="0" blue="false">
+	<choice hidden="true" req="unique_turzil" lvl="1" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event load="HARMONY_FUGITIVE"/>
 	</choice>
@@ -1064,8 +1074,6 @@
 	<event load="ENGI_PIRATE_FIGHT"/>
 	
 	<event load="ENGI_VIRUS"/>
-	
-	<event load="PIRATE_CHOICE"/>
 </eventList>
 
 <event name="ENCOUNTER_ENGI_HARMONY">
@@ -1222,7 +1230,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice req="defend" hidden="true">
+			<choice req="engi_defender" hidden="true">
 				<text>(Engi Defender) Have your Defender crewmember negotiate with the Engi ship.</text>
 				<event>
 					<text>As the Engi attempts to contact the vessel and negotiate, your Defender crewmember suddenly collapses, struggling - the virus must have infected them! However, your Defender gets up not long after. "Threat neutralized. Deleted code: 2 lines." This seems good enough for the Engi ship, and they reward you for deleting the virus.</text>
@@ -1243,7 +1251,7 @@
 </event>
 <event name="ENGI_VIRUS_REBORN">
 	<text>To your surprise your Engi crewmember reforms. It looks as if the virus reconstituted, repurposed, and reprogrammed the Engi host and wants to travel with you... and it seems to have learned a great deal from its time on your ship.</text>
-	<crewMember amount="1" class="defend" all_skills="2">Virus</crewMember>
+	<crewMember amount="1" class="engi_defender" all_skills="2">Virus</crewMember>
 </event>
 
 <!--
@@ -1258,7 +1266,7 @@
 	<event load="MANTIS_CIVILIAN"/>
 	
 	<event load="ASTEROID_EXPLORE"/>
-	<event load="ALISON_MANTIS_CREW"/>
+	<event load="ALISON_MANTIS_CREW_MV"/>
 	
 	<event load="CONFUSED_MANTIS"/>
 	<event load="ENGI_SEX"/>
@@ -1369,7 +1377,7 @@
 		<event>
 			<text>With your hacking you're able to access one of the higher security areas, which appears to contain Engi Defenders! You reprogram one of them to serve you loyally, and quickly grab some supplies on your way out.</text>
 			<autoReward level="MED">stuff</autoReward>
-			<crewMember amount="1" class="defend"/>
+			<crewMember amount="1" class="engi_defender"/>
 		</event>
 	</choice>
 	<choice hidden="true" req="LIST_CREW_ANCIENT">
@@ -1377,7 +1385,7 @@
 		<event>
 			<text>As the Obelisks were responsible for the creation of the Engi, it's no surprise they know how to operate the machinery. It sets one of the machines to create an Engi Defender while you grab some supplies.</text>
 			<autoReward level="MED">stuff</autoReward>
-			<crewMember amount="1" class="defend"/>
+			<crewMember amount="1" class="engi_defender"/>
 		</event>
 	</choice>
 </event>
@@ -1608,7 +1616,7 @@
 	<choice hidden="true">
 		<text>Hail them to ask about the wreck.</text>
 		<event>
-			<text>The Engineer sighs, deep in thought. "No, we didn't do this... It's a shame that someone would. I know it's very uncharacteristic of a Rebel to care about something like this, but I didn't join the Rebellion for just a 'glorious human future.' The Rebels fund my projects, and that's all I care about. Someone has been hunting the Engi in this territory, and I want it stopped. Do you think you could inspect the wreck and figure out who did it?"</text>
+			<text>The Engineer sighs, deep in thought. "No, we didn't do this... It's a shame that someone would. I know it's very uncharacteristic of a Rebel to care about something like this, but I didn't join the Rebellion for just a 'glorious human future'. The Rebels fund my projects, and that's all I care about. Someone has been hunting the Engi in this territory, and I want it stopped. Do you think you could inspect the wreck and figure out who did it?"</text>
 			<choice hidden="true">
 				<text>Agree to find the killer.</text>
 				<event load="QUEST_HARMONY_ENGINEER_CRIME_INSPECT"/>
@@ -1662,7 +1670,7 @@
 	<event load="QUEST_HARMONY_ENGINEER_CRIME_INSPECT_LANIUS"/>
 </eventList>
 <event name="QUEST_HARMONY_ENGINEER_CRIME_INSPECT_MANTIS">
-	<text>The Engi ship has little external damage. Inside the bodies of the Engi crew and disabled chunks of nanobots lay about. The systems have received critical damage, their wires cut in half, and long claw marks running along the walls.</text>
+	<text>The Engi ship has little external damage. Inside, the bodies of the Engi crew and disabled chunks of nanobots lay about. The systems have received critical damage, their wires cut in half, and long claw marks running along the walls.</text>
 	<choice hidden="true">
 		<text>It was the Mantis.</text>
 		<event>
@@ -1691,7 +1699,7 @@
 			<quest event="QUEST_HARMONY_ENGINEER_CRIME_LANIUS_WRONG"/>
 		</event>
 	</choice>
-	<choice hidden="true" req="detective">
+	<choice hidden="true" req="unique_haynes">
 		<text>(Haynes) According to my deduction, it was the Mantis!</text>
 		<event>
 			<text>You report Haynes's theory to the Engineers. "I'll trust your word. After scanning the beacon, we were able to find the last few ships to jump through here. Here are the current co-ordinates of the last Mantis ship to enter this system."</text>
@@ -1729,7 +1737,7 @@
 			<quest event="QUEST_HARMONY_ENGINEER_CRIME_LANIUS_WRONG"/>
 		</event>
 	</choice>
-	<choice hidden="true" req="detective">
+	<choice hidden="true" req="unique_haynes">
 		<text>(Haynes) According to my deduction, it was the Rockmen!</text>
 		<event>
 			<text>You report Haynes's theory to the Engineers. "I'll trust your word. After scanning the beacon, we were able to find the last few ships to jump through here. Here are the current co-ordinates of the last Rock ship to enter this system."</text>
@@ -1767,7 +1775,7 @@
 			<quest event="QUEST_HARMONY_ENGINEER_CRIME_LANIUS_WRONG"/>
 		</event>
 	</choice>
-	<choice hidden="true" req="detective">
+	<choice hidden="true" req="unique_haynes">
 		<text>(Haynes) According to my deduction, it was the Separatists!</text>
 		<event>
 			<text>You report Haynes's theory to the Engineers. "I'll trust your word. After scanning the beacon, we were able to find the last few ships to jump through here. Here are the current co-ordinates of the last Separatist ship to enter this system."</text>
@@ -1805,7 +1813,7 @@
 			<quest event="QUEST_HARMONY_ENGINEER_CRIME_LANIUS_CORRECT"/>
 		</event>
 	</choice>
-	<choice hidden="true" req="detective">
+	<choice hidden="true" req="unique_haynes">
 		<text>(Haynes) According to my deduction, it was the Lanius!</text>
 		<event>
 			<text>You report Haynes's theory to the Engineers. "I'll trust your word. After scanning the beacon, we were able to find the last few ships to jump through here. Here are the current co-ordinates of the last Lanius ship to enter this system."</text>
@@ -2153,7 +2161,7 @@
 				<text>Let them stay and work aboard your ship.</text>
 				<event>
 					<text>The Engi is as closed to surprised as it can be. With this outcome much prefered to toiling away on a Mantis ship, the Engi willingly joins your crew.</text>
-					<crewMember amount="1" class="defend"/>
+					<crewMember amount="1" class="engi_defender"/>
 				</event>
 			</choice>
 		</event>
@@ -2217,7 +2225,7 @@
 					<choice>
 						<text>Accept.</text>
 						<event>
-							<crewMember amount="1" class="turzil">TRZ</crewMember>
+							<crewMember amount="1" class="unique_turzil">TRZ</crewMember>
 							<autoReward level="LOW">scrap_only</autoReward>
 						</event>
 					</choice>
@@ -2253,7 +2261,7 @@
 					<choice>
 						<text>Accept.</text>
 						<event>
-							<crewMember amount="1" class="turzil">Stranger</crewMember>
+							<crewMember amount="1" class="unique_turzil">TRZ</crewMember>
 							<autoReward level="LOW">scrap_only</autoReward>
 						</event>
 					</choice>
@@ -2293,9 +2301,9 @@
 	</choice>
 </event>
 <event name="HARMONY_FUGITIVE_EASYROUTE">
-	<text>You knew the Engi was shady but you didn't realize they had beef with the actual Harmony! You can't risk angering the entirety of the Engi collective and accept the payment.</text>
+	<text>You knew the Engi was shady but you didn't realize they had beef with the actual Harmony! You can't risk angering the entirety of the Engi collective: you accept the payment.</text>
 	<autoReward level="HIGH">augment</autoReward>
-	<removeCrew class="turzil">
+	<removeCrew class="unique_turzil">
 		<clone>false</clone>
 		<text>You cannot clone the Engi as they are no longer part of your crew.</text>
 	</removeCrew>
@@ -2307,12 +2315,14 @@
 		<text>Never!</text>
 		<event/>
 	</choice>
-	<choice req="turzil" blue="false">
+	<choice req="unique_turzil" blue="false">
 		<text>Give up the fugitive.</text>
 		<event>
 			<text>This fight isn't worth continuing. You hand over the fugitive and accept the payment.</text>
+			<ship hostile="false"/>
+			<surrender/>
 			<autoReward level="MED">stuff</autoReward>
-			<removeCrew class="turzil">
+			<removeCrew class="unique_turzil">
 				<clone>false</clone>
 				<text>You cannot clone the Engi as they are no longer part of your crew.</text>
 			</removeCrew>
@@ -2322,19 +2332,19 @@
 
 <event name="HARMONY_FUGITIVE_WIN">
 	<text>You have defeated an Elite Engi Cruiser inside the Engi Harmony. You doubt the Harmony will be happy about this, but you've made it out alive of this fight.</text>
-	<hiddenAug>ACH_BOSS_HARMONY</hiddenAug>
+	<variable name="ach_boss_harmony" op="set" val="1"/>
 	<autoReward level="HIGH">drone</autoReward>
-	<choice req="turzil" lvl="0" max_group="0" blue="false">
+	<choice req="unique_turzil" lvl="0" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event>
 			<text>Despite your efforts it appears the fugitive did not survive the fight. You'll have to carry on without them.</text>
 		</event>
 	</choice>
-	<choice req="turzil" lvl="1" max_group="0" blue="false">
+	<choice req="unique_turzil" lvl="1" max_group="0" blue="false">
 		<text>Continue...</text>
 		<event>
-			<text>You turn to face the Engi fugitive who caused this problem in the first place. "Apologies, this conflict should have been predicted. It is important that my identity be provided. I am: General Turzil. My mission: escape capture of Harmony. I have achieved status of wanted fugitive for disobeying Harmony-Rebel non-aggression pact during Federation Civil War, and assisting Separatist movements in dismantling of Harmony. It is my quest that you take me with you to avoid death and protection of underground Separatist movements."</text>
-			<hiddenAug>ACH_CREW_TURZIL</hiddenAug>
+			<text>You turn to face the Engi fugitive who caused this problem in the first place. "Apologies, this conflict should have been predicted. It is important that my identity be provided. I am: General Turzil. My mission: escape capture of Harmony. I have achieved status of wanted fugitive for disobeying Harmony-Rebel non-aggression pact during Federation Civil War, and assisting Separatist movements in dismantling of Harmony. It is my request that you take me with you to avoid death and protection of underground Separatist movements."</text>
+			<variable name="ach_crew_turzil" op="set" val="1"/>
 			<unlockCustomShip silent="false">PLAYER_SHIP_ENGI</unlockCustomShip>
 		</event>
 	</choice>

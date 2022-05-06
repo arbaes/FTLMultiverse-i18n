@@ -6,7 +6,6 @@ import polib
 from lxml import etree
 
 MV_DATA_PATH = 'data_src/'
-MV_VERSION = "5.0"
 
 parser = argparse.ArgumentParser(description='Generate FTL Translated files')
 parser.add_argument('-i', action='store', type=str, metavar='PATH', help='Path to the directory with translated PO files.', default="po/")

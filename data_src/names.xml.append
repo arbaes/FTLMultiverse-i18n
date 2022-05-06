@@ -1,6 +1,5 @@
 <FTL>
 <nameList race="human" sex="male">
-	<name>Kix</name>
 	<name>Laythe</name>
 	<name>Kat</name>
 	<name>PDTM</name>
@@ -20,6 +19,7 @@
 </nameList>
 
 <nameList race="human" sex="female">
+	<name>Kix</name>
 	<name>Woona</name>
 	<name short="Solane">Solane Rose</name>
 	

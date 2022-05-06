@@ -20,9 +20,15 @@
 </eventList>
 
 <event name="FEDERATION_OUTPOST_CIVILIAN" unique="true">
+	<preventQuest/>
+	<beaconType id="map_icon_outpost" global="true">
+		<color r="233" g="123" b="74" a="1.0"/>
+		<unvisitedTooltip id="map_outpost_unvisited"/>
+		<visitedTooltip id="map_outpost_visited"/>
+	</beaconType>
 	<text>You've discovered a Federation outpost! It's mostly staffed by civilians, but it bears the Federation colors nonetheless.</text>
 	<ship load="SHIP_FED_OUTPOST" hostile="false"/>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="1" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="0" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
 			<text>You transfer your Federation ID, just to be sure. They welcome you on-board. "If it isn't the legendary ship we've heard so much about... It is an honor to meet you, captain. Whatever you need, we'll be happy to assist."</text>
@@ -56,7 +62,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="0" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="1" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
 			<text>You transfer your Federation ID, just to be sure. They welcome you on-board. "If it isn't the legendary ship we've heard so much about... It is an honor to meet you, captain. Whatever you need, we'll be happy to assist."</text>
@@ -116,9 +122,15 @@
 </eventList>
 
 <event name="FEDERATION_OUTPOST_ENGI" unique="true">
+	<preventQuest/>
+	<beaconType id="map_icon_outpost" global="true">
+		<color r="233" g="123" b="74" a="1.0"/>
+		<unvisitedTooltip id="map_outpost_unvisited"/>
+		<visitedTooltip id="map_outpost_visited"/>
+	</beaconType>
 	<text>You've discovered a Federation outpost! It's maintained primarily by a staff of Federation officers, though there's plenty of Engi onboard as well.</text>
 	<ship load="SHIP_FED_OUTPOST" hostile="false"/>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="1" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="0" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
 			<text>An Engi official in Federation garb responds. "Federation identity recognized. Orders require assistance be provided to Federation ships passing through. What assistance is required?"</text>
@@ -160,7 +172,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="0" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="1" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
 			<text>An Engi official in Federation garb responds. "Federation identity recognized. Orders require assistance be provided to Federation ships passing through. What assistance is required?"</text>
@@ -227,9 +239,15 @@
 </eventList>
 
 <event name="FEDERATION_OUTPOST_ZOLTAN" unique="true">
+	<preventQuest/>
+	<beaconType id="map_icon_outpost" global="true">
+		<color r="233" g="123" b="74" a="1.0"/>
+		<unvisitedTooltip id="map_outpost_unvisited"/>
+		<visitedTooltip id="map_outpost_visited"/>
+	</beaconType>
 	<text>You've discovered a Federation outpost! High energy signatures on-board suggest it's staffed by both Humans and Zoltans.</text>
 	<ship load="SHIP_FED_OUTPOST" hostile="false"/>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="1" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="0" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
 			<text>A Zoltan responds to your hail. "Greetings traveler. Code S-95 requires this outpost to provide aid to any passing Federation vessels. What assistance can we grant you?"</text>
@@ -270,7 +288,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="0" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="1" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
 			<text>A Zoltan responds to your hail. "Greetings friend. Code S-95 requires this outpost to provide aid to any passing Federation vessels. What assistance can we grant you?"</text>
@@ -336,9 +354,15 @@
 </eventList>
 
 <event name="FEDERATION_OUTPOST_ORCHID" unique="true">
+	<preventQuest/>
+	<beaconType id="map_icon_outpost" global="true">
+		<color r="233" g="123" b="74" a="1.0"/>
+		<unvisitedTooltip id="map_outpost_unvisited"/>
+		<visitedTooltip id="map_outpost_visited"/>
+	</beaconType>
 	<text>You've discovered a Federation outpost! Knowing the populace of this sector, it's likely to be staffed by a mix of crew including the Orchids.</text>
 	<ship load="SHIP_FED_OUTPOST" hostile="false"/>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="1" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="0" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
 			<text>A silent Orchid beckons for you to come aboard. A human Federation officer welcomes you and asks how they can help.</text>
@@ -346,7 +370,7 @@
 			<choice hidden="true">
 				<text>Request fuel.</text>
 				<event>
-					<text>A box of fuel is brought on-board by a team of orchids.</text>
+					<text>A box of fuel is brought on-board by a team of Orchids.</text>
 					<item_modify>
 						<item type="fuel" min="7" max="7"/>
 					</item_modify>
@@ -379,7 +403,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="0" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="1" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
 			<text>A silent Orchid beckons for you to come aboard. A human Federation officer welcomes you and asks how they can help.</text>
@@ -393,7 +417,7 @@
 			<choice hidden="true">
 				<text>Request fuel.</text>
 				<event>
-					<text>A box of fuel is brought on-board by a team of orchids.</text>
+					<text>A box of fuel is brought on-board by a team of Orchids.</text>
 					<item_modify>
 						<item type="fuel" min="7" max="7"/>
 					</item_modify>
@@ -420,7 +444,7 @@
 			<choice hidden="true" req="LIST_CREW_ORCHID">
 				<text>(Orchid Crew) Have your Orchid bargain for a Kernel weapon.</text>
 				<event>
-					<text>The Federation officer relays your message to the silent orchid, who nods. They walk into one of the storage rooms and returns with a weapon.</text>
+					<text>The Federation officer relays your message to the silent Orchid, who nods. They walk into one of the storage rooms and returns with a weapon.</text>
 					<weapon name="GIFTLIST_KERNEL"/>
 				</event>
 			</choice>
@@ -445,9 +469,15 @@
 </eventList>
 
 <event name="FEDERATION_OUTPOST_FREEMANTIS" unique="true">
+	<preventQuest/>
+	<beaconType id="map_icon_outpost" global="true">
+		<color r="233" g="123" b="74" a="1.0"/>
+		<unvisitedTooltip id="map_outpost_unvisited"/>
+		<visitedTooltip id="map_outpost_visited"/>
+	</beaconType>
 	<text>You've discovered a Federation outpost! It's very likely to be staffed by a large group of overly-eager Free Mantis.</text>
 	<ship load="SHIP_FED_OUTPOST" hostile="false"/>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="1" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="0" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
 			<text>As expected, a friendly Free Mantis responds. "Federation, oh goodness. I not think day come. I getting teary... I not know if have tear ducts! Come come, anything you need I give."</text>
@@ -483,12 +513,12 @@
 				<text>(Free Mantis Crew) Suggest that the Free Mantis join your crew.</text>
 				<event>
 					<text>"You... you want me? Yes, YES! I come now, no need to grab things."</text>
-					<crewMember amount="1" class="freemantis"/>
+					<crewMember amount="1" class="mantis_free"/>
 				</event>
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="0" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="1" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
 			<text>As expected, a friendly Free Mantis responds. "Federation, oh goodness. I not think day come. I getting teary... I not know if have tear ducts! Come come, anything you need I give."</text>
@@ -530,7 +560,7 @@
 				<text>(Free Mantis Crew) Suggest that the Free Mantis join your crew.</text>
 				<event>
 					<text>"You... you want me? Yes, YES! I come now, no need to grab things."</text>
-					<crewMember amount="1" class="freemantis"/>
+					<crewMember amount="1" class="mantis_free"/>
 				</event>
 			</choice>
 		</event>
@@ -554,9 +584,15 @@
 </eventList>
 
 <event name="FEDERATION_OUTPOST_CRYSTAL" unique="true">
+	<preventQuest/>
+	<beaconType id="map_icon_outpost" global="true">
+		<color r="233" g="123" b="74" a="1.0"/>
+		<unvisitedTooltip id="map_outpost_unvisited"/>
+		<visitedTooltip id="map_outpost_visited"/>
+	</beaconType>
 	<text>You've discovered a Federation outpost! The Federation must have pulled some strings to have an outpost installed in newly-founded Crystal territory.</text>
 	<ship load="SHIP_FED_OUTPOST" hostile="false"/>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="1" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="0" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
 			<text>A Crystal with a few chips in his natural armor responds. "Oh. It's one of you. Come on-board, we'll supply you with whatever you need."</text>
@@ -597,7 +633,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="0" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="1" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
 			<text>A Crystal with a few chips in his natural armor responds. "Oh. It's one of you. Come on-board, we'll supply you with whatever you need."</text>
@@ -663,9 +699,15 @@
 </eventList>
 
 <event name="FEDERATION_OUTPOST_OUTCAST" unique="true">
+	<preventQuest/>
+	<beaconType id="map_icon_outpost" global="true">
+		<color r="233" g="123" b="74" a="1.0"/>
+		<unvisitedTooltip id="map_outpost_unvisited"/>
+		<visitedTooltip id="map_outpost_visited"/>
+	</beaconType>
 	<text>You've discovered a Federation outpost! Strange to see one out here in Outcast territory, but with so many other factions using these sectors as shortcuts, it's hard to be surprised anymore.</text>
 	<ship load="SHIP_FED_OUTPOST" hostile="false"/>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="1" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="0" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
 			<text>An Outcast with long, black robes appears on the screen. "The Federation has offered our people decent wages to maintain their outposts. We are sanctioned to provide any renegade vessels passing through with support. What do you need?"</text>
@@ -706,10 +748,10 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="0" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="1" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
-			<text>A Crystal with a few chips in his natural armor responds. "Oh. It's one of you. Come on-board, we'll supply you with whatever you need."</text>
+			<text>An Outcast with long, black robes appears on the screen. "The Federation has offered our people decent wages to maintain their outposts. We are sanctioned to provide any renegade vessels passing through with support. What do you need?"</text>
 			<choice hidden="true">
 				<text>Request repairs.</text>
 				<event>
@@ -767,9 +809,15 @@
 </event>
 
 <event name="FEDERATION_OUTPOST_FED" unique="true">
+	<preventQuest/>
+	<beaconType id="map_icon_outpost" global="true">
+		<color r="233" g="123" b="74" a="1.0"/>
+		<unvisitedTooltip id="map_outpost_unvisited"/>
+		<visitedTooltip id="map_outpost_visited"/>
+	</beaconType>
 	<text>You've discovered a Federation outpost! It's fully stocked and staffed by a well maintained Federation staff.</text>
 	<ship load="SHIP_FED_OUTPOST" hostile="false"/>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="1" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="0" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
 			<text>"We're a little busy, so unless you have official business we can't- holy crap! You-you're the Multiverse ship! Welcome, welcome! Anything you need that we can offer is yours."</text>
@@ -803,7 +851,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" blue="false" req="DIFFICULTY_CASUAL" lvl="0" max_group="1">
+	<choice hidden="true" blue="false" req="challenge_level" lvl="1" max_group="1">
 		<text>Contact the outpost.</text>
 		<event>
 			<text>"We're a little busy, so unless you have official business we can't- holy crap! You-you're the Multiverse ship! Welcome, welcome! Anything you need that we can offer is yours."</text>

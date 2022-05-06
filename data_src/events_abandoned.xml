@@ -538,7 +538,7 @@
 	<text>You notice a number of Lanius ships absorbing a forward Rebel base and its automated scouts. They don't seem to be aggressive. Perhaps their desire for metal could prove to be useful?</text>
 	<choice hidden="true">
 		<text>Try to use them to delay the Rebels.</text>
-		<event load="LANIUS_GROUP_AUTO_LIST"/>
+		<event load="LANIUS_GROUP_AUTO_OUTCOME"/>
 	</choice>
 	<choice hidden="true">
 		<text>Leave them alone.</text>
@@ -563,7 +563,7 @@
 		</event>
 	</choice>
 </event>
-<eventList name="LANIUS_GROUP_AUTO_LIST">
+<eventList name="LANIUS_GROUP_AUTO_OUTCOME">
 	<event>
 		<text>You try your best to convey the notion that the approaching Rebel fleet has countless automated ships scouting for them. However, either the translation device has failed or they're simply not interested. They cut the channel and continue to absorb the ships.</text>
 	</event>
@@ -633,7 +633,7 @@
 	<event>
 		<text>Your ship's dashboard suddenly lights up with warnings - a hull breach! Lanius were on board the platform and are now on board your ship. A hidden cruiser comes into view!</text>
 		<ship load="SHIP_LANIUS_FUELING_STATION" hostile="true"/>
-		<boarders breach="true" min="1" max="1" class="anaerobic"/>
+		<boarders breach="true" min="1" max="1" class="lanius"/>
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event load="COMBAT_CHECK"/>
@@ -753,7 +753,7 @@
 			<crewMember amount="1" class="human" pilot="1"/>
 		</event>
 	</choice>
-	<choice hidden="true" req="engineer">
+	<choice hidden="true" req="LIST_CREW_ENGINEER">
 		<text>(Engineer Crew) Claim to be a Rebel ship to comfort them.</text>
 		<event>
 			<text>The Rebels captain is completely delusional but put at ease. It becomes clear they must have PTSD of some sort. Since you can't convince them the battles already ended, you talk the captain into joining your crew instead to 'escape'.</text>
@@ -778,10 +778,10 @@
 			<crewMember amount="1" class="human" all_skills="1"/>
 		</event>
 	</choice>
-	<choice hidden="true" req="medic">
+	<choice hidden="true" req="LIST_CREW_MEDIC">
 		<text>(Medic Crew) Have your medic evaluate the Rebel.</text>
 		<event>
-			<text>Your medic carefully runs a few checks on the Rebel and helps him through several mental exercizes to clear his head. In this newfound clarity you explain the situation to him - and his reaction surprises you. "I've been wandering this sector for weeks raving out of my mind. This Rebellion is not suited for giving one peace of mind. Perhaps it's time I leave these days behind."</text>
+			<text>Your medic carefully runs a few checks on the Rebel and helps him through several mental exercises to clear his head. In this newfound clarity you explain the situation to him - and his reaction surprises you. "I've been wandering this sector for weeks raving out of my mind. This Rebellion is not suited for giving one peace of mind. Perhaps it's time I leave these days behind."</text>
 			<crewMember amount="1" class="human" all_skills="1"/>
 		</event>
 	</choice>
@@ -912,7 +912,7 @@
 		<event>
 			<text>The Ghosts notice you docking and abandon their current target in favor of your much larger ship. The Federation crew are grateful for your assistance and offer pay, which you bring back to the ship after dealing with the Ghost invaders.</text>
 			<autoReward level="LOW">stuff</autoReward>
-			<boarders min="3" max="4" class="mare"/>
+			<boarders min="3" max="4" class="phantom_mare"/>
 		</event>
 	</choice>
 	<choice hidden="true" req="BLUELIST_ANTIBIO">
@@ -971,7 +971,7 @@
 				</event>
 			</choice>
 			<choice hidden="true" req="shields" lvl="6">
-				<text>(Adv Shields) Deflect the asteroid with your shields.</text>
+				<text>(Adv. Shields) Deflect the asteroid with your shields.</text>
 				<event>
 					<text>Your shields take the blunt of the blow, shattering the asteroid. A few pieces manage to make their way through and scrape up the hull, but you're otherwise unharmed. The refugees are grateful for your help and offer one of the augments left behind by the old settlers, along with some supplies they don't need.</text>
 					<damage amount="2"/>

@@ -197,7 +197,7 @@
 						<text>Continue...</text>
 						<event load="GUARD_HOSTILE_BRIBE"/>
 					</choice>
-				<event>
+				</event>
 			</choice>
 			<choice hidden="true" req="mind">
 				<text>(Mind Control) Attempt to mind control them.</text>

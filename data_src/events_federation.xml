@@ -31,12 +31,13 @@
 </eventList>
 
 <event name="FED_AMMO_STATION" unique="true">
-	<text>A Federation station is sending out a request for ammunition, in return for scrap.</text>
+	<text>A Federation station is sending out a request for ammunition, in return for scrap. Their high demand is likely due to the increasing number of Rebel blockades.</text>
 	<choice>
 		<text>Sell 3 missiles.</text>
 		<event>
+			<disableScrapAugments/>
 			<item_modify>
-				<item type="scrap" min="24" max="24"/>
+				<item type="scrap" min="21" max="21"/>
 				<item type="missiles" min="-3" max="-3"/>
 			</item_modify>
 		</event>
@@ -44,8 +45,9 @@
 	<choice>
 		<text>Sell 7 missiles.</text>
 		<event>
+			<disableScrapAugments/>
 			<item_modify>
-				<item type="scrap" min="56" max="56"/>
+				<item type="scrap" min="49" max="49"/>
 				<item type="missiles" min="-7" max="-7"/>
 			</item_modify>
 		</event>
@@ -53,8 +55,9 @@
 	<choice>
 		<text>Sell 12 missiles.</text>
 		<event>
+			<disableScrapAugments/>
 			<item_modify>
-				<item type="scrap" min="96" max="96"/>
+				<item type="scrap" min="84" max="84"/>
 				<item type="missiles" min="-12" max="-12"/>
 			</item_modify>
 		</event>
@@ -89,6 +92,14 @@
 		<text>Not really.</text>
 		<event>
 			<text>"The balance must be preserved. You are not the one to preserve it." The Zoltan mute the comms and jump away.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -251,7 +262,7 @@
 	<autoReward level="LOW">standard</autoReward>
 </event>
 <event name="REBELTAKEOVER_DEADCREW">
-	<text>You've killed off all of the Rebel crew. As you salvage the ship, you notice the body of one of the old Federation crew. You help them to their feet, and find they're still alive. After some washing and first-aid they're good as new and ready to serve on your ship.</text>
+	<text>You've killed off all of the Rebel crew. As you salvage the ship, you notice the body of one of the old Federation crew. You find they're still alive, and help them to their feet. After some washing and first-aid they're good as new and ready to serve on your ship.</text>
 	<autoReward level="MED">standard</autoReward>
 	<crewMember amount="1" class="human"/>
 </event>
@@ -336,7 +347,7 @@
 	<text>A Rebel ship is making minor repairs at this beacon. They're unaware of your presence.</text>
 	<text>A Rebel ship nearby is searching for Federation ships. Somehow they have not yet seen you.</text>
 	<text>This sector is a prime spot for Rebels. Despite their usual thirst for killing Feds, the Rebel ship here is ignoring you.</text>
-	<text>The Rebel ship at this beacon is is scouting for Federation ships to fight. It has not yet seen you.</text>
+	<text>The Rebel ship at this beacon is scouting for Federation ships to fight. It has not yet seen you.</text>
 </textList>
 
 <event name="FED_BROKEN_SUPPLY_DRONE" unique="true">
@@ -358,7 +369,7 @@
 			<damage amount="-5"/>
 		</event>
 	</choice>
-	<choice hidden="true" req="engineer">
+	<choice hidden="true" req="LIST_CREW_ENGINEER">
 		<text>(Engineer Crew) Fix the drone.</text>
 		<event>
 			<text>Your Engineer tries to explain that they're only used to working on Rebel Auto-ships, but you convince them to try anyways. They manage to get the drone working long enough to repair some hull before something goes wrong and the ship turns hostile!</text>
@@ -384,7 +395,7 @@
 	<choice hidden="true" req="LIST_CREW_LANIUS">
 		<text>(Lanius Crew) Have your Lanius salvage the drone.</text>
 		<event>
-			<text>Your Lanius is able to salvage the drone with little difficulty, knowing exactly what to dissasemble to prevent triggering its defenses.</text>
+			<text>Your Lanius is able to salvage the drone with little difficulty, knowing exactly what to disassemble to prevent triggering its defenses.</text>
 			<autoReward level="MED">standard</autoReward>
 		</event>
 	</choice>
@@ -437,7 +448,7 @@
 	<choice hidden="true">
 		<text>Contact them.</text>
 		<event>
-			<text>"Who are you, what do you wan- holy crap! You're the Multiverse ship. It's an honor sir. We understand how important your mission is for all of us, but we must ask if you can do us a favor. We need a military ship to test out our latest combat AI. Just let it shoot at you for a bit until the test is complete. We'll repair any damage it causes after.</text>
+			<text>"Who are you, what do you wan- holy crap! You're the Multiverse ship. It's an honor, sir. We understand how important your mission is for all of us, but we must ask if you can do us a favor. We need a military ship to test out our latest combat AI. Just let it shoot at you for a bit until the test is complete. We'll repair any damage it causes after."</text>
 			<choice hidden="true">
 				<text>Agree to test the drone.</text>
 				<event>
@@ -688,8 +699,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 <event name="STEALTH_UNLOCK_3">
@@ -765,7 +776,7 @@
 	</choice>
 </event>
 <event name="FED_MEMORIAL_INTERMEDIATE">
-	<text>Around you, you can see Rebel ships beginning to flee as the Federation forces pull them back. Their last hope, the gunboat and your target, has already taken critical damage. You have to keep fighting!</text>
+	<text>Around you, you can see Rebel ships beginning to flee as the Federation forces push them back. Their last hope, the Gunboat and your target, has already taken critical damage. You have to keep fighting!</text>
 </event>
 <event name="FED_MEMORIAL_DESTROY">
 	<text>The Gunboat has received critical damage, too much for it to sustain. Its artillery system crackles and the engines explode. The ship goes spiraling down into the nearby lake. It explodes one last time once it collides with the water, showering the coast. The sight of their leading ship dispatched so efficiently is enough to chase away the rest of the Rebels. Every last hostile ship jumps away, leaving the Federation the undisputed victor.</text>
@@ -775,7 +786,7 @@
 	</choice>
 </event>
 <event name="FED_MEMORIAL_DEAD_CREW">
-	<text>The lifeless gunboat begins to plummet towards the ground. It smashes into the coast, erupting into a glorious display of flames, though luckily it causes no damage to any of the infrastructure of the city. The sight of their leading ship dispatched so efficiently is enough to chase away the rest of the Rebels. Every last hostile ship jumps away, leaving the Federation the undisputed victor.</text>
+	<text>The lifeless Gunboat begins to plummet towards the ground. It smashes into the coast, erupting into a glorious display of flames, though luckily it causes no damage to any of the infrastructure of the city. The sight of their leading ship dispatched so efficiently is enough to chase away the rest of the Rebels. Every last hostile ship jumps away, leaving the Federation the undisputed victor.</text>
 	<choice>
 		<text>Continue...</text>
 		<event load="FED_MEMORIAL_WIN"/>
@@ -787,7 +798,7 @@
 		<text>Continue...</text>
 		<event>
 			<text>Adara puts a shiny medal around your neck, an honor that you will carry on for life, assuming you succeed in your mission. Every support ship in the district is dispatched to aid you in every way they can, and you're even given a fresh new Federation cruiser from one of their hangars. You don't really have a use for this ship, so you forward its blueprints to the hangar.</text>
-			<hiddenAug>ACH_BOSS_GUNBOAT</hiddenAug>
+			<variable name="ach_boss_mfkgunboat" op="set" val="1"/>
 			<unlockCustomShip silent="false">PLAYER_SHIP_FEDERATION</unlockCustomShip>
 			<damage amount="-10"/>
 			<autoReward level="HIGH">standard</autoReward>

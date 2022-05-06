@@ -28,7 +28,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="hektar">
+			<choice hidden="true" req="LIST_VARIANT_HEKTAR">
 				<text>(Hektar Employee) Attempt to gain access.</text>
 				<event load="BILLY"/>
 			</choice>
@@ -106,8 +106,8 @@
 																<text>Refuse.</text>
 																<event>
 																	<text>"Ain't that sweet. I was hoping you'd refuse. You've got one sweet bounty on your skull and I'd love to cash you in." Taurus smiles menacingly then dashes back to his ship, whose engines have already powered up. This is going to be a rough one.</text>
-																	<hiddenAug>ACH_CREW_BILLY</hiddenAug>
-																	<crewMember amount="1" class="billy" all_skills="2">Billy</crewMember>
+																	<variable name="ach_crew_billy" op="set" val="1"/>
+																	<crewMember amount="1" class="unique_billy" all_skills="2">Billy</crewMember>
 																	<ship hostile="true"/>
 																	<choice hidden="true">
 																		<text>Continue...</text>
@@ -139,7 +139,8 @@
 <event name="BILLY_SAVE">
 	<text>With Billy now safe, you take one last trip past the wreckage. To your surprise, you dig out what appears to be a highly advanced weapon powered by bizarrely foreign yet similar tech. You aren't sure where it's from, but you'll take it. Billy also has a team come in to scan the ship and retrieve its blueprint, which will make a fine addition to your hangar.</text>
 	<weapon name="LIST_WEAPONS_NEWGEN"/>
-	<hiddenAug>ACH_BOSS_ANGEL</hiddenAug>
+	<variable name="ach_boss_deathbringer" op="set" val="1"/>
+	<unlockCustomShip silent="false">PLAYER_SHIP_ANGEL</unlockCustomShip>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -181,7 +182,7 @@
 			<choice hidden="true">
 				<text>Speak to the manager.</text>
 				<event>
-					<text>You land your ship nearby, unnoticed by the crowd. The lizard in charge turns to you, while you catch shouts of "traitor" and more offensive terms being hurled towards them. "Yes, yes, hello. I am Metyunt, the manager of this facility and caretaker of the Lizard demographic." Metyunt pushes the glasses back up onto his face, unfazed while a flaming stone is thrown nearby and some lizard rioters tear apart a Hektar ship in the background. You also notice a very large Slug ship hovering above the crowd. It's not firing yet, but you suspect if the crowd pushes thing too far, this is their plan to suppress it.</text>
+					<text>You land your ship nearby, unnoticed by the crowd. The lizard in charge turns to you, while you catch shouts of "traitor" and more offensive terms being hurled towards them. "Yes, yes, hello. I am Metyunt, the manager of this facility and caretaker of the Lizard demographic." Metyunt pushes the glasses back up onto his face, unfazed while a flaming stone is thrown nearby and some lizard rioters tear apart a Hektar ship in the background. You also notice a very large Slug ship hovering above the crowd. It's not firing yet, but you suspect if the crowd pushes things too far, this is their plan to suppress it.</text>
 					<ship load="SHIP_HEKTAR_BOSS" hostile="false"/>
 					<choice hidden="true">
 						<text>Your employees don't seem too happy.</text>
@@ -236,7 +237,7 @@
 </event>
 <event name="METYUNT">
 	<text>With the ship out of the way, you return to the shipyard. During the battle, the rioters seem to have taken control of a good half of the place, but Metyunt and the remaining Hektar staff are pushing back. This could end in another firefight if you don't step in.</text>
-	<hiddenAug>ACH_BOSS_HEKTAR</hiddenAug>
+	<variable name="ach_boss_hektarloyalty" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Send your crew to talk things out.</text>
 		<event>
@@ -293,13 +294,15 @@
 </event>
 <event name="METYUNT_UNLOCK">
 	<text>It's obvious the lizards don't want Metyunt around. You offer to drop him off somewhere else in the sector, but he declines. "I'm afraid it is best if I find a different occupation. Hektar will have to make do without my help, because I'm done. I guess I'll stick with you now. Oh, and before we go, let me repay you..."</text>
-	<hiddenAug>ACH_CREW_METYUNT</hiddenAug>
+	<unlockCustomShip silent="false">PLAYER_SHIP_HEKTAR</unlockCustomShip>
+	<variable name="ach_crew_metyunt" op="set" val="1"/>
 	<crewMember amount="1" repair="2" class="traitor">Metyunt</crewMember>
 </event>
 
 <event name="EXIT_HEKTAR">
 	<text>You've finally found the exit to this dreadful sector.</text>
-	<choice req="MARKER_HEKTAREXIT" lvl="0" max_group="0" hidden="true" blue="false"> <!--theoretically you can never get this except in the fleet so Im just going to make it that for simplisities sake-->
+	<variable name="loc_hektarexit" op="set" val="1"/>
+	<choice req="loc_hektarexit" lvl="0" max_group="0" hidden="true" blue="false"> <!--theoretically you can never get this except in the fleet so Im just going to make it that for simplisities sake-->
 		<text>Continue...</text>
 		<event>
 			<text>You're stopped before you can leave by a massive Hektar vessel. "Sssorry, but you may not leave thisss sssector! You sssstill owe Hektar Indusssstriessss a lot of money!"</text>
@@ -315,7 +318,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="billy">
+			<choice hidden="true" req="LIST_VARIANT_BILLY">
 				<text>(Billy) Have Billy clear you for leaving.</text>
 				<event>
 					<text>Fortunately, it only takes a few minutes before Billy returns, and you're allowed to leave. Guess it pays to have the CEO of a major corporation aboard your ship.</text>
@@ -333,7 +336,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice req="MARKER_HEKTAREXIT" lvl="1" max_group="0" hidden="true" blue="false"> <!--theoretically you can never get this except in the fleet so Im just going to make it that for simplisities sake-->
+	<choice req="loc_hektarexit" lvl="1" max_group="0" hidden="true" blue="false"> <!--theoretically you can never get this except in the fleet so Im just going to make it that for simplisities sake-->
 		<text>Continue...</text>
 		<event>
 			<text>Looks like the Rebel fleet has taken control of the beacon! You'll have to fight your way out!</text>
@@ -360,33 +363,64 @@
 </event>
 <event name="NEBULA_EXIT_HEKTAR">
 	<text>Looks like you've arrived at the exit - except, a massive ship is blocking the way out! "Sssorry, but you may not leave thisss sssector! You sssstill owe Hektar Indusssstriessss a lot of money!"</text>
+	<variable name="loc_hektarexit" op="set" val="1"/>
 	<environment type="nebula"/>
-	<ship load="SHIP_HEKTAR_EXIT_BOSS" hostile="false"/>
-	<choice hidden="true">
-		<text>Looks like we'll have to fight our way out!</text>
+	<choice req="loc_hektarexit" lvl="0" max_group="0" hidden="true" blue="false"> <!--theoretically you can never get this except in the fleet so Im just going to make it that for simplisities sake-->
+		<text>Continue...</text>
 		<event>
-			<text>The only way out now is to fight! You power up your weapons and prepare to engage.</text>
-			<ship hostile="true"/>
+			<text>You're stopped before you can leave by a massive Hektar vessel. "Sssorry, but you may not leave thisss sssector! You sssstill owe Hektar Indusssstriessss a lot of money!"</text>
+			<ship load="SHIP_HEKTAR_EXIT_BOSS" hostile="false"/>
+			<choice hidden="true">
+				<text>Looks like we'll have to fight our way out!</text>
+				<event>
+					<text>The only way out now is to fight! You power up your weapons and prepare to engage.</text>
+					<ship hostile="true"/>
+					<choice hidden="true">
+						<text>Continue...</text>
+						<event load="COMBAT_CHECK"/>
+					</choice>
+				</event>
+			</choice>
+			<choice hidden="true" req="LIST_VARIANT_BILLY">
+				<text>(Billy) Have Billy clear you for leaving.</text>
+				<event>
+					<text>Fortunately, it only takes a few minutes before Billy returns, and you're allowed to leave. Guess it pays to have the CEO of a major corporation aboard your ship.</text>
+					<autoReward level="HIGH">standard</autoReward>
+					<weapon name="HEKTAR_MODULAR_WEAPONS"/>
+				</event>
+			</choice>
+			<choice hidden="true" req="traitor">
+				<text>(Metyunt) Have Metyunt clear you for leaving.</text>
+				<event>
+					<text>Fortunately, it only takes a few minutes before Metyunt returns, and you're allowed to leave. Guess it pays to have the staff manager of a major corporation aboard your ship.</text>
+					<autoReward level="HIGH">standard</autoReward>
+					<weapon name="HEKTAR_MODULAR_WEAPONS"/>
+				</event>
+			</choice>
+		</event>
+	</choice>
+	<choice req="loc_hektarexit" lvl="1" max_group="0" hidden="true" blue="false"> <!--theoretically you can never get this except in the fleet so Im just going to make it that for simplisities sake-->
+		<text>Continue...</text>
+		<event>
+			<text>Looks like the Rebel fleet has taken control of the beacon! You'll have to fight your way out!</text>
+			<customFleet right="false" firing="true" autoDarkening="false">CUSTOM_FLEET_REBEL</customFleet>
+			<environment type="PDS" target="player"/>
+			<ship load="SHIP_REBEL_FLEET_S" hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event load="COMBAT_CHECK"/>
 			</choice>
-		</event>
-	</choice>
-	<choice hidden="true" req="billy">
-		<text>(Billy) Have Billy clear you for leaving.</text>
-		<event>
-			<text>Fortunately, it only takes a few minutes before Billy returns, and you're allowed to leave. Guess it pays to have the CEO of a major corporation aboard your ship.</text>
-			<autoReward level="HIGH">standard</autoReward>
-			<weapon name="HEKTAR_MODULAR_WEAPONS"/>
-		</event>
-	</choice>
-	<choice hidden="true" req="traitor">
-		<text>(Metyunt) Have Metyunt clear you for leaving.</text>
-		<event>
-			<text>Fortunately, it only takes a few minutes before Metyunt returns, and you're allowed to leave. Guess it pays to have the staff manager of a major corporation aboard your ship.</text>
-			<autoReward level="HIGH">standard</autoReward>
-			<weapon name="HEKTAR_MODULAR_WEAPONS"/>
+			<choice hidden="true" req="engines" lvl="6">
+				<text>(Adv. Engines) Try to escape the Elite.</text>
+				<event load="FLEET_ESCAPE"/>
+			</choice>
+			<choice hidden="true" req="LIST_CREW_JERRY">
+				<text>(Jerry) Hello!</text>
+				<event>
+					<text load="TEXT_ENCOUNTER_REBEL_JERRY_HELLO"/>
+					<ship hostile="false"/> 
+				</event>
+			</choice>
 		</event>
 	</choice>
 </event>
@@ -405,54 +439,15 @@
 
 <event name="HEKTAR_INVESTOR" unique="true">
 	<text>Nearby, the ship of a wealthy tycoon is exploring the beacon. Might be an interesting chat.</text>
-	<choice hidden="true">
+	<choice hidden="true" req="loc_dinkleman" lvl="0" max_group="0" blue="false">
 		<text>Hail them.</text>
-		<event>
-			<text>"Oh, chip chap cheerrio good fellow! I am Count Dinkleman Reichster Von Applebuzz Tri Tri the Fourth, at your service. I have taken a long venture to these lands to see what treasures Hektar might have to offer me and my immense wealth. Tell me, good sir, what are your opinions on Hektar?"</text>
-			<choice hidden="true">
-				<text>They're tricking people into being trapped in this sector.</text>
-				<event>
-					<text>"Good heavens, what a genius idea! Forcing people into paying off an imaginary debt by trapping them in a massive market place, then hiding it in a nebula where the Federation will never find it? Delightful! I'm sure you think it's horrible though, because you aren't disgustingly rich. Anyways, thanks for the chat, gotta go!" The man sprints back to his ship, dropping several piles of scrap from his pockets as he goes.</text>
-					<autoReward level="LOW">scrap_only</autoReward>
-				</event>
-			</choice>
-			<choice hidden="true">
-				<text>They're literally enslaving people.</text>
-				<event>
-					<text>"Oh, well you know what they say in 'the business.' Actually, I don't. I'm not in 'the business.' But somewhere, I'm sure they have some justfiable reasons for slavery. Clearly, you wouldn't know, because you aren't disgustingly rich. Anyways, thanks for the chat, gotta go!" The man sprints back to his ship, dropping several piles of scrap from his pockets as he goes.</text>
-					<autoReward level="LOW">scrap_only</autoReward>
-				</event>
-			</choice>
-			<choice hidden="true">
-				<text>Meh, they're alright.</text>
-				<event>
-					<text>"Just alright, eh? Well, what about their products? You have a large military vessel at your disposal. Do you enjoy the use of Hektar's signature modular weaponry?"</text>
-					<choice hidden="true" req="HEKTAR_MODULAR_WEAPONS" blue="false">
-						<text>They're pretty good.</text>
-						<event>
-							<text>"Good you say? Marvelous! I'm no military man, but I'll take your word for it! I shall invest in Hektar. A remarkable chat, good fellow. Say, do me a service and take this worthless assistant of mine off of my hands. I think one of Hektar's lizard people will serve me better."</text>
-							<crewMember amount="1" class="engi"/>
-						</event>
-					</choice>
-					<choice hidden="true" req="HEKTAR_MODULAR_WEAPONS" blue="false">
-						<text>They're awful.</text>
-						<event>
-							<text>"Oh, well that's certainly not good. I'm no military man, but I'll take your word for it! I shall not invest in Hektar. Here, you can have this worthless piece of junk, considering I certainly won't want it."</text>
-							<weapon name="SHOP_ITEM_HEKTAR_BASE"/>
-						</event>
-					</choice>
-					<choice hidden="true">
-						<text>Don't have any.</text>
-						<event>
-							<text>"Well, then you are worthless to me. Imagine being so poor. Thanks for the chat, gotta go!" The man sprints back to his ship, dropping several piles of scrap from his pockets as he goes.</text>
-							<autoReward level="LOW">scrap_only</autoReward>
-						</event>
-					</choice>
-				</event>
-			</choice>
-		</event>
+		<event load="HEKTAR_INVESTOR_QUESTIONS_NOTMET"/>
 	</choice>
-	<choice hidden="true">
+	<choice hidden="true" req="loc_dinkleman" lvl="1" max_group="0" blue="false">
+		<text>Hail them.</text>
+		<event load="HEKTAR_INVESTOR_QUESTIONS_MET"/>
+	</choice>
+	<choice hidden="true" req="pilot" lvl="1" max_group="1" blue="false">
 		<text>Ignore the tycoon.</text>
 		<event>
 			<text>You fly away from the shuttle and find somewhere else to do something aboard the ship.</text>
@@ -463,6 +458,96 @@
 			<choice hidden="true">
 				<text>Do nothing.</text>
 				<event/>
+			</choice>
+		</event>
+	</choice>
+</event>
+<event name="HEKTAR_INVESTOR_QUESTIONS_NOTMET"> <!--you haven't met Dinkleman yet-->
+	<text>"Oh, chip chap cheerio good fellow! I am Count Dinkleman Reichster Von Applebuzz Tri Tri the Fourth, at your service. I have taken a long venture to these lands to see what treasures Hektar might have to offer me and my immense wealth. Tell me, good sir or madam, what are your opinions on Hektar?"</text>
+	<variable name="loc_dinkleman" op="set" val="1"/>
+	<choice hidden="true">
+		<text>They're tricking people into being trapped in this sector.</text>
+		<event>
+			<text>"Good heavens, what a genius idea! Forcing people into paying off an imaginary debt by trapping them in a massive market place, then hiding it in a nebula where the Federation will never find it? Delightful! I'm sure you think it's horrible though, because you aren't disgustingly rich. Anyways, thanks for the chat, gotta go!" The man sprints back to his ship, dropping several piles of scrap from his pockets as he goes.</text>
+			<autoReward level="LOW">scrap_only</autoReward>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>They're literally enslaving people.</text>
+		<event>
+			<text>"Oh, well you know what they say in 'the business'. Actually, I don't. I'm not in 'the business'. But somewhere, I'm sure they have some justfiable reasons for slavery. Clearly, you wouldn't know, because you aren't disgustingly rich. Anyways, thanks for the chat, gotta go!" The man sprints back to his ship, dropping several piles of scrap from his pockets as he goes.</text>
+			<autoReward level="LOW">scrap_only</autoReward>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Meh, they're alright.</text>
+		<event>
+			<text>"Just alright, eh? Well, what about their products? You have a large military vessel at your disposal. Do you enjoy the use of Hektar's signature modular weaponry?"</text>
+			<choice hidden="true" req="HEKTAR_MODULAR_WEAPONS" blue="false">
+				<text>They're pretty good.</text>
+				<event>
+					<text>"Good you say? Marvelous! I'm no military man, but I'll take your word for it! I shall invest in Hektar. A remarkable chat, good fellow. Say, do me a service and take this worthless assistant of mine off of my hands. I think one of Hektar's lizard people will serve me better."</text>
+					<crewMember amount="1" class="engi"/>
+				</event>
+			</choice>
+			<choice hidden="true" req="HEKTAR_MODULAR_WEAPONS" blue="false">
+				<text>They're awful.</text>
+				<event>
+					<text>"Oh, well that's certainly not good. I'm no military man, but I'll take your word for it! I shall not invest in Hektar. Here, you can have this worthless piece of junk, considering I certainly won't want it."</text>
+					<weapon name="SHOP_ITEM_HEKTAR_BASE"/>
+				</event>
+			</choice>
+			<choice hidden="true">
+				<text>Don't have any.</text>
+				<event>
+					<text>"Well, then you are worthless to me. Imagine being so poor. Thanks for the chat, gotta go!" The man sprints back to his ship, dropping several piles of scrap from his pockets as he goes.</text>
+					<autoReward level="LOW">scrap_only</autoReward>
+				</event>
+			</choice>
+		</event>
+	</choice>
+</event>
+<event name="HEKTAR_INVESTOR_QUESTIONS_MET"> <!--you have met Dinkleman yet-->
+	<text>"Strange poor person, we meet again! It is me, Count Dinkleman Reichster Von Applebuzz Tri Tri the Fourth! What a coincidence we happen upon each other on this occasion. I have taken a long venture to these lands to see what treasures Hektar might have to offer me and my immense wealth. Tell me, good sir or madam, what are your opinions on Hektar?"</text>
+	<variable name="loc_dinkleman" op="set" val="1"/>
+	<choice hidden="true">
+		<text>They're tricking people into being trapped in this sector.</text>
+		<event>
+			<text>"Good heavens, what a genius idea! Forcing people into paying off an imaginary debt by trapping them in a massive market place, then hiding it in a nebula where the Federation will never find it? Delightful! I'm sure you think it's horrible though, because you aren't disgustingly rich. Anyways, thanks for the chat, gotta go!" The man sprints back to his ship, dropping several piles of scrap from his pockets as he goes.</text>
+			<autoReward level="LOW">scrap_only</autoReward>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>They're literally enslaving people.</text>
+		<event>
+			<text>"Oh, well you know what they say in 'the business.' Actually, I don't. I'm not in 'the business.' But somewhere, I'm sure they have some justfiable reasons for slavery. Clearly, you wouldn't know, because you aren't disgustingly rich. Anyways, thanks for the chat, gotta go!" The man sprints back to his ship, dropping several piles of scrap from his pockets as he goes.</text>
+			<autoReward level="LOW">scrap_only</autoReward>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Meh, they're alright.</text>
+		<event>
+			<text>"Just alright, eh? Well, what about their products? You have a large military vessel at your disposal. Do you enjoy the use of Hektar's signature modular weaponry?"</text>
+			<choice hidden="true" req="HEKTAR_MODULAR_WEAPONS" blue="false">
+				<text>They're pretty good.</text>
+				<event>
+					<text>"Good you say? Marvelous! I'm no military man, but I'll take your word for it! I shall invest in Hektar. A remarkable chat, good fellow. Say, do me a service and take this worthless assistant of mine off of my hands. I think one of Hektar's lizard people will serve me better."</text>
+					<crewMember amount="1" class="engi"/>
+				</event>
+			</choice>
+			<choice hidden="true" req="HEKTAR_MODULAR_WEAPONS" blue="false">
+				<text>They're awful.</text>
+				<event>
+					<text>"Oh, well that's certainly not good. I'm no military man, but I'll take your word for it! I shall not invest in Hektar. Here, you can have this worthless piece of junk, considering I certainly won't want it."</text>
+					<weapon name="SHOP_ITEM_HEKTAR_BASE"/>
+				</event>
+			</choice>
+			<choice hidden="true">
+				<text>Don't have any.</text>
+				<event>
+					<text>"Well, then you are worthless to me. Imagine being so poor. Thanks for the chat, gotta go!" The man sprints back to his ship, dropping several piles of scrap from his pockets as he goes.</text>
+					<autoReward level="LOW">scrap_only</autoReward>
+				</event>
 			</choice>
 		</event>
 	</choice>
@@ -521,7 +606,7 @@
 				<text>Reveal their plan to their manager.</text>
 				<event>
 					<text>The Slug laughs when he learns about the lizards' plan. "Hah, thossse idiotss don't even know how to wear a ssshirt the right way. Thanksss for telling me though, a good whippin' will do them good!" The greedy Slug doesn't even give you anything in return, but the lizards are furious and storm your ship!</text>
-					<boarders min="3" max="4" class="worker"/>
+					<boarders min="3" max="4" class="lizard"/>
 				</event>
 			</choice>
 			<choice hidden="true">
@@ -560,42 +645,42 @@
 					<autoReward level="MED">standard</autoReward>
 				</event>
 			</choice>
-			<choice hidden="true" req="snail">
+			<choice hidden="true" req="slug_clansman">
 				<text>(Clansman Crew) We have.</text>
 				<event>
 					<text>"I see you are having Guild man aboard your ship! Hunter and poacher of sentient things, skinner of the living! Oh how I envy your nerves of steel and torturous methods of mutilation! Honored I am, and giving you things."</text>
 					<autoReward level="HIGH">standard</autoReward>
 				</event>
 			</choice>
-			<choice hidden="true" req="sabo">
+			<choice hidden="true" req="slug_saboteur">
 				<text>(Saboteur Crew) We have.</text>
 				<event>
 					<text>"I see you are having stealthy cloaking Slug aboard your ship! Cunning master of silent assassinations and devilish trickery! Oh, oh, how I hoping to learn! Yes, I coming with to learn from you!"</text>
 					<autoReward level="LOW">standard</autoReward>
-					<crewMember amount="1" class="suzerain"/>
+					<crewMember amount="1" class="mantis_suzerain"/>
 				</event>
 			</choice>
-			<choice hidden="true" req="ranger">
+			<choice hidden="true" req="slug_ranger">
 				<text>(Ranger Crew) We have.</text>
 				<event>
 					<text>"I see you are having evilest taxidermy man aboard your ship! Master of sniping and knowledgeable in all forms of unethical biological weapons! Oh, oh, how I hoping to learn! Yes, I coming with to learn from you!"</text>
 					<autoReward level="MED">standard</autoReward>
-					<crewMember amount="1" class="suzerain"/>
+					<crewMember amount="1" class="mantis_suzerain"/>
 				</event>
 			</choice>
-			<choice hidden="true" req="hektar">
+			<choice hidden="true" req="LIST_VARIANT_HEKTAR">
 				<text>(Hektar Crew) We have.</text>
 				<event>
 					<text>"You are having one of Billy's own disciples! You are seeing oh great Billy in the flesh! I honored, truly! Please, allowing me to come and learn!"</text>
-					<crewMember amount="1" class="suzerain"/>
+					<crewMember amount="1" class="mantis_suzerain"/>
 				</event>
 			</choice>
-			<choice hidden="true" req="billy">
+			<choice hidden="true" req="LIST_VARIANT_BILLY">
 				<text>(Billy) Introduce him to Billy.</text>
 				<event>
 					<text>"EEK! It is you! Most ungraceful one, Billy himself! I not knowing what to say, overcome with excitement! Please, allowing me to come with you, it would be biggest of honors!"</text>
 					<autoReward level="MED">standard</autoReward>
-					<crewMember amount="1" all_skills="2" class="suzerain"/>
+					<crewMember amount="1" all_skills="2" class="mantis_suzerain"/>
 				</event>
 			</choice>
 			<choice hidden="true">
@@ -652,31 +737,31 @@
 		<event>
 			<text>"I am in distress! Oh, horrible horrible. Not the kind of distress you are thinking of, no. I am in despair! I think I am having a mental breakdown! What is life? All I know is work. All I do is work. I know nothing but work. Is there more to life but an endless cycle of work?"</text>
 			<choice hidden="true">
-				<text>Yes. You either work, or you become obsolete.</text>
+				<text>No. You either work, or you become obsolete.</text>
 				<event>
 					<text>"Oh, then let me choose obsoletion! I quit!" The Lizard opens all of the airlocks aboard his ship, venting him, the rest of the crew, and the entire cargo. It's quite morbid, but it won't stop you from swooping in and stealing some of the crates.</text>
 					<autoReward level="HIGH">stuff</autoReward>
 				</event>
 			</choice>
 			<choice hidden="true">
-				<text>No. Work hard enough and eventually you'll be free from the cycle.</text>
+				<text>Yes. Work hard enough and eventually you'll be free from the cycle.</text>
 				<event>
 					<text>"You mean there is freedom? The metaphorical pot of gold at the end of the metaphorical rainbow? Then I shall seek that gold! You have given me hope! Thank you captain!" The Lizard offers you a drone from the cargo.</text>
 					<drone name="RANDOM"/>
 				</event>
 			</choice>
-			<choice hidden="true" req="monk">
-				<text>(Monk Crew) Life is a cycle yes - but which cycle you follow is up to you.</text>
+			<choice hidden="true" req="zoltan_monk">
+				<text>(Monk Crew) "Life is a cycle yes - but which cycle you follow is up to you."</text>
 				<event>
 					<text>"I have a choice? I thought Hektar was all there was. That's what they told me - the rest of the galaxy was a barren wasteland and this was the last sector alive. But wait... you're from out there! I must come with you and taste freedom at long last!"</text>
-					<crewMember amount="1" repair="2" class="worker"/>
+					<crewMember amount="1" repair="2" class="lizard"/>
 				</event>
 			</choice>
 			<choice hidden="true" req="LIST_CREW_FREEMAN">
-				<text>(Free Mantis Crew) Status Quo is only what big man upstair wanting you to follow!</text>
+				<text>(Free Mantis Crew) "Status Quo is only what big man upstair wanting you to follow!"</text>
 				<event>
 					<text>"I have a choice? I thought Hektar was all there was. That's what they told me - the rest of the galaxy was a barren wasteland and this was the last sector alive. But wait... you're from out there! I must come with you and taste freedom at long last!"</text>
-					<crewMember amount="1" repair="2" class="worker"/>
+					<crewMember amount="1" repair="2" class="lizard"/>
 				</event>
 			</choice>
 			<choice hidden="true">
@@ -882,11 +967,11 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="sylvan">
-				<text>(Sylvan) Well hello, ssstranger!</text>
+			<choice hidden="true" req="unique_sylvan">
+				<text>(Sylvan) "Well hello, ssstranger!"</text>
 				<event>
 					<text>"OH GOD! IT'SSS YOU! OH MY OH MY OH MY OH MY OH MY!" The Slug practically demands that you allow him on the ship so that he can work alongside Sylvan.</text>
-					<crewMember amount="1" combat="2" class="hektar"/>
+					<crewMember amount="1" combat="2" class="slug_hektar"/>
 				</event>
 			</choice>
 		</event>
@@ -932,7 +1017,7 @@
 							<item_modify>
 								<item type="scrap" min="-20" max="-20"/>
 							</item_modify>
-							<crewMember amount="1" class="hektar"/>
+							<crewMember amount="1" class="slug_hektar"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="LIST_CREW_HUMAN">
@@ -962,7 +1047,7 @@
 							<item_modify>
 								<item type="scrap" min="-20" max="-20"/>
 							</item_modify>
-							<crewMember amount="1" class="hektar"/>
+							<crewMember amount="1" class="slug_hektar"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="LIST_CREW_MANTIS">
@@ -992,7 +1077,7 @@
 							<item_modify>
 								<item type="scrap" min="-20" max="-20"/>
 							</item_modify>
-							<crewMember amount="1" class="hektar"/>
+							<crewMember amount="1" class="slug_hektar"/>
 						</event>
 					</choice>
 					<choice hidden="true" req="LIST_CREW_SHELL">
@@ -1037,7 +1122,7 @@
 			<autoReward level="MED">fuel_only</autoReward>
 		</event>
 	</choice>
-	<choice hidden="true" req="soldier">
+	<choice hidden="true" req="human_soldier">
 		<text>(Soldier Crew) We did not come here to stop Hektar - but we will do our best now that we are here.</text>
 		<event>
 			<text>"Wow! So noble! But, for you to do anything you'll have to make it out of here alive. Let me see if I can help you with that!" The civilian ship patches up some of the damage to your hull.</text>
@@ -1240,6 +1325,13 @@
 							</item_modify>
 						</event>
 					</choice>
+					<choice hidden="true" req="LIST_VARIANT_BILLY">
+						<text>(Billy) "There isssn't a debt anymore, moronssss."</text>
+						<event>
+							<text>The employees are shocked to see their CEO aboard your vessel. Once Billy is done reprimanding each staff member individualy, you're cleared to go, and are even offered supplies to make up for the "misssunderssstanding".</text>
+							<autoReward level="MED">stuff</autoReward>
+						</event>
+					</choice>
 					<choice hidden="true" req="engines" lvl="5">
 						<text>(Upg. Engines) Hightail it out of there.</text>
 						<event>
@@ -1302,7 +1394,7 @@
     <choice hidden="true">
         <text>Open the vault.</text>
         <event>
-            <text>After a little bit of a struggle, you get the vault open and enter. Inside are various documents and messily written letters, signed by a "Carle Hektar." Astrid explains Carle was the original founder of Hektar many many years ago before the Federation had even been founded.</text>
+            <text>After a little bit of a struggle, you get the vault open and enter. Inside are various documents and messily written letters, signed by a "Carle Hektar". Astrid explains Carle was the original founder of Hektar many many years ago before the Federation had even been founded.</text>
             <choice hidden="true">
                 <text>Continue...</text>
                 <event>
@@ -1348,7 +1440,7 @@
 	<choice hidden="true">
 		<text>Ignore the conflict.</text>
 		<event>
-			<text>You quickly fly away. Soon, both ships open fire at eachother.</text>
+			<text>You quickly fly away. Soon, both ships open fire at each other.</text>
 			<choice hidden="true">
 				<text>Check the storage.</text>
 				<event load="STORAGE_CHECK"/>
@@ -1390,6 +1482,7 @@
 		SYLVAN'S HOME
 -->
 <event name="NEBULA_SYLVANHOME" unique="true">
+	<preventQuest/>
 	<text>The clouds here are thicker than usual, and a violent storm rages on. You wander aimlessly hoping to find something, and eventually come across a very small Hektar pod drifting nearby, maybe only as large as two rooms. Your scans cannot penetrate its shell no matter what you do.</text>
 	<environment type="storm"/>
 	<choice hidden="true">
@@ -1400,7 +1493,7 @@
 				<text>(Obyn) Obyn seems to know what this is.</text>
 				<event load="NEBULA_SYLVANHOME_OPEN"/>
 			</choice>
-			<choice hidden="true" req="sylvan">
+			<choice hidden="true" req="unique_sylvan">
 				<text>(Sylvan) Sylvan seems to have something to say.</text>
 				<event>
 					<text>Sylvan glances at the pod for a moment but stops himself. "Heh, nevermind sssstranger. My bad. Ignore my rambling..."</text>
@@ -1456,7 +1549,7 @@
 	</choice>
 </event>
 <event name="NEBULA_SYLVANHOME_OPEN">
-	<text>Obyn brushes past you and walks up to the passcode. He types in a string of numbers you don't recognize and to your surprise the pod opens! You glance at Obyn, who shrugs. "S.H. Those are Sylvan's initials. He has a bad habit of using the same password for everything, so I figured I'd try it..."</text>
+	<text>Obyn brushes past you and walks up to the passcode. He types in a string of numbers you don't recognize and to your surprise the pod opens! You glance at Obyn, who shrugs. "S.H.; those are Sylvan's initials. He has a bad habit of using the same password for everything, so I figured I'd try it..."</text>
 	<choice hidden="true">
 		<text>Enter.</text>
 		<event>
@@ -1464,7 +1557,7 @@
 			<choice hidden="true">
 				<text>What's that?</text>
 				<event>
-					<text>Obyn places the necklace back where it was carefully. "A gift, from an old friend of ours." He stops, and looks around the room. "I know what this place is. Sylvan told me about it. Whenever he needed to escape from his parents and later on his brother, he would come here. This became his home away from home. He would continue to visit from time to time. After our showdown with the EHG, he brought me here once." Obyn glances at the bed and a strange hazmat suit tailored for a Slug next to it. "Hmph. Good memories."</text>
+					<text>Obyn places the necklace back where it was carefully. "A gift, from an old friend of ours." He stops, and looks around the room. "I know what this place is. Sylvan told me about it. Whenever he needed to escape from his parents and later on his brother, he would come here. This became his home away from home: he would continue to visit from time to time. After our showdown with the EHG, he brought me here once." Obyn glances at the bed and a strange hazmat suit tailored for a Slug next to it. "Hmph. Good memories."</text>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event>

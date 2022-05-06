@@ -67,8 +67,8 @@
 				<text>Lecture them on how the Duskbringer movement is wrong.</text>
 				<event>
 					<text>"You insult me like this? You should know I hold no loyalty to you, only the mission! I will not continue to support you when you treat me like this!"</text>
-					<boarders min="1" max="1" class="bomber"/>
-					<removeCrew class="bomber">
+					<boarders min="1" max="1" class="zoltan_devotee"/>
+					<removeCrew class="zoltan_devotee">
 						<clone>false</clone>
 						<text>You doubt cloning your ex-crew member would be a good idea in this context.</text>
 					</removeCrew>

@@ -47,7 +47,7 @@
 <textList name="TEXT_FREE_CRYSTAL">
 	<text>You notice the barebones wreckage of a nearby Crystalline vessel; though little scrap matter remains, it appears the scavengers overlooked a single Crystal weapon!</text>
 	<text>A small Crystalline trader with a squeaky high-pitched voice hails you. "Foreigners! It is important we make peace with barbaric aliens, perhaps this free weapon of war will soothe you?"</text>
-	<text>A Crystalline trading outpost hails you, requesting a trade. You look through your supply count until you realise their offer is a sample of foreign rocks in return for a military grade weapon... an offer you take in a hearbeat.</text>
+	<text>A Crystalline trading outpost hails you, requesting a trade. You look through your supply count until you realise their offer is a sample of foreign rocks in return for a military grade weapon... an offer you take in a heartbeat.</text>
 </textList>
 
 <event name="CRYSTAL_FOREIGNER_MAP" unique="true">
@@ -204,7 +204,7 @@
 				<text>You push the impulse engines to their limit and are able to break out of the gravity well. Your crewmember, along with the stockpile, is reduced to the size of a tennis ball - but you're left in one piece.</text>
 				<removeCrew>
 					<clone>true</clone>
-					<text>Luckily, your clone bay is able to revive your crewmember.</text>
+					<text>Luckily, your Clone Bay is able to revive your crewmember.</text>
 				</removeCrew>
 			</event>
 		</choice>
@@ -216,7 +216,7 @@
 					<item type="fuel" min="-999" max="-999"/>
 				</item_modify>
 				<weapon name="RANDOM"/>
-				<autoReward level="LOW">stuff</autoReward>
+				<autoReward level="MED">scrap_only</autoReward>
 			</event>
 		</choice>
 		<choice hidden="true" req="teleporter" lvl="2">
@@ -1033,7 +1033,7 @@
                 <text>Accept the scrap but give them false flight plans.</text>
                 <event load="CRYSTAL_REQUEST_LIST"/>
             </choice>
-            <choice hidden="true" req="FLEET_DISTRACTION"> <!--DLC-->
+            <choice hidden="true" req="DISTRACTION_BUOY"> <!--DLC-->
                 <text>(Distraction Buoys) Accept the scrap but give them falsified flight plans.</text>
                 <event>
                     <text>Your distraction buoys allows you to create very convincing flight plans. They accept it as true and give you the scrap. The deception may not be the most honorable tactic, but staying ahead of the fleet is your highest priority.</text>
@@ -1166,7 +1166,7 @@
 <eventList name="DISTRESS_CRYSTAL">
 	<event load="DISTRESS_REFUGEE_CRYSTAL"/>
 	
-	<event load="DISTRESS_REFUGEE_GHOST"/>
+	<event load="DISTRESS_REFUGEE_ABANDONED"/>
 	<event load="DISTRESS_TRAP_BEACON"/>
 	<event load="DISTRESS_FRIENDLY_BEACON"/>
 </eventList>
@@ -1396,7 +1396,7 @@
 	<deadCrew load="CRYSTAL_BOSS_DEFEAT"/>
 	<crew>
 		<crewMember type="crystal" prop="0.5"/>
-		<crewMember type="sentinel" prop="0.5"/>
+		<crewMember type="crystal_sentinel" prop="0.5"/>
 	</crew>
 </ship>
 <event name="CRYSTAL_SANCTUARY" unique="true">
@@ -1427,7 +1427,7 @@
 								<text>Request crew.</text>
 								<event>
 									<text>Dianesh gestures for a small transport ship to approach. It delivers a Crystalline prisoner, who eagerly joins your crew as long as it brings an end to their sentence. "We have met your demands, now you will abide by ours and leave." You figure it's best not to press further and follow their instructions.</text>
-									<crewMember amount="1" class="sentinel"/>
+									<crewMember amount="1" class="crystal_sentinel"/>
 								</event>
 							</choice>
 							<choice hidden="true">
@@ -1440,7 +1440,7 @@
 							<choice hidden="true">
 								<text>We did not come here to harm you. We are not as bad as you say.</text>
 								<event>
-									<text>"Oh but you see, only by making such claims do you prove your intentions. Were you of true heart, you would have already left. But you persist. Persistence is a threat. And my people do not take kindly to threats." You try to protest further but Dianesh will not listen. She waves and her cruiser moves forth to strike you down. Maybe this doesn't have to end in bloodshed though, but the Crystals aren't going to listen so easily.</text>
+									<text>"Oh but you see, only by making such claims do you prove your intentions. Were you of true heart, you would have already left. But you persist. Persistence is a threat. And my people do not take kindly to threats." You try to protest further but Dianesh will not listen. She waves and her cruiser moves forth to strike you down. This doesn't have to necessarily end in bloodshed, but the Crystals aren't going to listen easily.</text>
 									<ship hostile="true"/>
 									<choice hidden="true">
 										<text>Continue...</text>
@@ -1471,7 +1471,7 @@
 </event>
 <event name="CRYSTAL_BOSS_DEFEAT">
 	<text>You have defeated the cruiser, and with it have killed the Crystalline empress. Though this can only spell bad news for the future, you content yourself with salvaging the remains of the ship.</text>
-	<hiddenAug>ACH_BOSS_DIANESH</hiddenAug>
+	<variable name="ach_boss_dianesh" op="set" val="1"/>
 	<autoReward level="HIGH">standard</autoReward>
 	<weapon name="GIFTLIST_CRYSTAL_ELITE"/>
 	<choice hidden="true">
@@ -1504,14 +1504,14 @@
 </event>
 <event name="CRYSTAL_BOSS_MERCY">
 	<text>You land your ship nearby the city, guided by Dianesh. The large Crystalline being steps out of her battered cruiser and comes to face you.</text>
-	<hiddenAug>ACH_BOSS_DIANESH</hiddenAug>
+	<variable name="ach_boss_dianesh" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
 			<text>"It seems I might have been misguided in my assumptions. You have... my most sincere apologies for this aggression. I am an honorable woman, and I have disgraced myself by attacking you. I will not have this be. With Ruwen away, there is no one but myself to offer their services to you. Maybe when this is through, we can see if there is a place for my people among the Federation..."</text>
 			<unlockCustomShip silent="false">PLAYER_SHIP_CRYSTALLINE</unlockCustomShip>
-			<hiddenAug>ACH_CREW_DIANESH</hiddenAug>
-			<crewMember amount="1" class="emperor" all_skills="2">Dianesh</crewMember>
+			<variable name="ach_crew_dianesh" op="set" val="1"/>
+			<crewMember amount="1" class="unique_dianesh" all_skills="2">Dianesh</crewMember>
 			<autoReward level="HIGH">standard</autoReward>
 			<weapon name="GIFTLIST_CRYSTAL"/>
 		</event>

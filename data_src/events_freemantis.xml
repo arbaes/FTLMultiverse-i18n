@@ -36,7 +36,7 @@
 		<text>Refuse to share the information.</text>
 		<event>
 			<text>The leader of the Free Mantis huffs. "Fine, then we take your ship and information as ours."</text>
-			<boarders min="2" max="3" class="freemantis"/>
+			<boarders min="2" max="3" class="mantis_free"/>
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -194,7 +194,7 @@
 	<event>
 		<text>You shake the human awake. He coughs, then stands up. "T-thanks. I... I was working as a Federation spy, but the Free Mantis attacked the Rebel ship I was working on and killed my crew, then took me hostage. I can't thank you enough for saving my life." You don't have time to talk further because the Mantis are already upon your ship!</text>
 		<crewMember amount="1" combat="1" class="human">Briggs</crewMember>
-		<boarders min="2" max="3" class="freemantis"/>
+		<boarders min="2" max="3" class="mantis_free"/>
 		<ship load="SHIP_FREEMANTIS_EXECUTIONER_SPY" hostile="true"/> <!--reward for saving him as a spy-->
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -203,7 +203,7 @@
 	</event> 
 	<event>
 		<text>The Human pushes you off of him, and you notice for the first time his Rebel uniform. He thanks you reluctantly. He's too injured to fight, so you leave him and focus on the boarders.</text>
-		<boarders min="2" max="3" class="freemantis"/>
+		<boarders min="2" max="3" class="mantis_free"/>
 		<ship load="SHIP_FREEMANTIS_EXECUTIONER_REBEL" hostile="true"/> <!--reward for saving him as a rebel-->
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -236,7 +236,7 @@
 		<crewMember amount="1" all_skills="1" class="human">Briggs</crewMember>
 	</event> 
 	<event>
-		<text>The Rebel captain tries to act indifferent, but you can tell he's grateful. "I suppose I am in your debt now. You are still my enemy, but I am still an honourable man. I will give the fleet false information, it should delay them for some time."</text>
+		<text>The Rebel captain tries to act indifferent, but you can tell he's grateful. "I suppose I am in your debt now. You are still my enemy, but I am an honourable man. I will give the fleet false information, it should delay them for some time."</text>
 		<modifyPursuit amount="-2"/>
 	</event> 
 	<event>
@@ -293,10 +293,10 @@
 	</choice>
 </event>
 <textList name="TEXT_ENCOUNTER_ZOLTAN_FREEMANTIS">	
-	<text>The Zoltan have recently begun a much more concentrated attack on Free Mantis territory, and unfortunately sometimes ships get caught in the crossfire. This time, it appears you're one of them!</text>
+	<text>The Zoltans have recently begun a much more concentrated attack on Free Mantis territory, and unfortunately sometimes ships get caught in the crossfire. This time, it appears you're one of them!</text>
 	<text>It's not usual for Zoltan ships to go out of their way to attack Federation ships they should be allied with, but an irate Zoltan captain nearby seems to think you're a threat and attacks!</text>
 	<text>"The Federation knows the Free Mantis have been a constant issue for the Ministry, and yet you chose to do nothing about it! I might not have direct orders, but no one will mind if you go missing after this conflict!"</text>
-	<text>The Zoltan seem to blame the Federation to some extent for the Free Mantis that have been "stealing" their territory. The ship at this beacon seems to have taken that to the next degree, because now they're attacking!</text>
+	<text>The Zoltans seem to blame the Federation to some extent for the Free Mantis that have been "stealing" their territory. The ship at this beacon seems to have taken that to the next degree, because now they're attacking!</text>
 </textList>
 
 <event name="ENCOUNTER_ZOLTAN_FREEMANTIS_RESCUE">
@@ -342,7 +342,7 @@
 <event name="ENCOUNTER_FREEMANTIS_BOAST" unique="true">
 	<text>An entourage of Free Mantis ships approach, and their leader hails you, boasting of his success in combat. "Human! You surely come to see myself in combat? Yes, see it you shall. Prepare to be amazed!"</text>
 	<ship load="SHIP_FREEMANTIS_NOBOARD" hostile="true"/>
-	<boarders min="1" max="1" class="warlord"/>
+	<boarders min="1" max="1" class="mantis_warlord"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="COMBAT_CHECK"/>
@@ -423,7 +423,7 @@
 					</item_modify>
 				</event>
 			</choice>
-			<choice hidden="true" req="engineer">
+			<choice hidden="true" req="LIST_CREW_ENGINEER">
 				<text>(Engineer Crew) Have your Engineer explain how Pulsars work.</text>
 				<event>
 					<text>Your Engineer sits down with the Free Mantis, and takes almost half an hour explaining that a pulsar is just a star, and that a bunch of ships literally won't be able to do anything against it.</text>
@@ -570,7 +570,7 @@
 		<autoReward level="LOW">droneparts_only</autoReward>
 	</event>
 	<event>
-		<text>Strange scratching noises come from inside the cargo. Your crew draw their guns and you slowly open the cargo. A Mantis soldier climbs out, grasping for breath. He explains that he was taken as a prisoner, but he never had an interest in fighting the Free Mantis. Now free from both his captors and the Hive, he is willing to join your crew and start a new life.</text>
+		<text>Strange scratching noises come from inside the cargo. Your crew draw their guns and you slowly open the cargo. A Mantis soldier climbs out, gasping for breath. He explains that he was taken as a prisoner, but he never had an interest in fighting the Free Mantis. Now free from both his captors and the Hive, he is willing to join your crew and start a new life.</text>
 		<crewMember amount="1" class="mantis">Stormy</crewMember>
 	</event>
 	<event>
@@ -596,15 +596,9 @@
 		<autoReward level="LOW">droneparts_only</autoReward>
 	</event>
 	<event>
-		<text>Strange scratching noises come from inside the cargo. Your crew draw their guns and you slowly open the cargo. A Mantis soldier climbs out, grasping for breath. He explains that he was taken as a prisoner, but he never had an interest in fighting the Free Mantis. Now free from both his captors and the Hive, he is willing to join your crew and start a new life.</text>
+		<text>Strange scratching noises come from inside the cargo. Your crew draw their guns and you slowly open the cargo. A Mantis soldier climbs out, gasping for breath. He explains that he was taken as a prisoner, but he never had an interest in fighting the Free Mantis. Now free from both his captors and the Hive, he is willing to join your crew and start a new life.</text>
 		<crewMember amount="1" class="mantis">Stormy</crewMember>
 	</event>
-	<!--<event>
-		<text>As you pry open the cargo, you here a strange ticking noise. Luckily all of your crew manage to get out of the way in time, but it appears the Free Mantis trapped the cargo before handing it over!</text>
-		<damage amount="1" system="random"/>
-		<damage amount="1"/>
-		<damage amount="1" effect="fire"/>
-	</event>-->
 </eventList>
 <eventList name="FREEMANTIS_THEFT_CARGO_CREWKILL">
 	<event>
@@ -622,7 +616,7 @@
 		<autoReward level="LOW">droneparts_only</autoReward>
 	</event>
 	<event>
-		<text>Strange scratching noises come from inside the cargo. Your crew draw their guns and you slowly open the cargo. A Mantis soldier climbs out, grasping for breath. He explains that he was taken as a prisoner, but he never had an interest in fighting the Free Mantis. Now free from both his captors and the Hive, he is willing to join your crew and start a new life.</text>
+		<text>Strange scratching noises come from inside the cargo. Your crew draw their guns and you slowly open the cargo. A Mantis soldier climbs out, gasping for breath. He explains that he was taken as a prisoner, but he never had an interest in fighting the Free Mantis. Now free from both his captors and the Hive, he is willing to join your crew and start a new life.</text>
 		<crewMember amount="1" class="mantis">Stormy</crewMember>
 	</event>
 	<event> <!--new addition-->
@@ -707,7 +701,7 @@
 	</event>
 	<event>
 		<text>The civilians are grateful, but their Free Mantis protector is especially so. They hail you in private. "I not lie... protecting civilians, not much fun. I suppose helping you, much better!"</text>
-		<crewMember amount="1" class="freemantis"/>
+		<crewMember amount="1" class="mantis_free"/>
 	</event>
 	<event>
 		<text>It appears the civilian ships are in worse condition than you thought. The Free Mantis thanks you, but there is little to do to save the few survivors. They give you some extra fuel for your troubles.</text>
@@ -876,7 +870,7 @@
 <eventList name="FREEMANTIS_MATE_SCRAP">
 	<event>
 		<text>You start taking apart the outer hull when there's banging on your doors. You have little time to react until a swarm of Mantis overtake your ship, killing one of your crew.</text>
-		<boarders min="2" max="4" class="freemantis"/>
+		<boarders min="2" max="4" class="mantis_free"/>
 		<removeCrew>
 			<clone>true</clone>
 			<text>Dazed but alive, your cloned crew stumbles out of the Clone Bay and prepares to defend.</text>
@@ -898,7 +892,7 @@
 </eventList>
 <event name="FREEMANTIS_MATE_RESCUE_CLAN" unique="true">
 	<text>You have arrived at the location of the Free Mantis clan. You drop off the survivors, and the clan thanks you greatly. They offer you one of their finest soldiers in tribute.</text>
-	<crewMember amount="1" combat="1" class="freemantis"/>
+	<crewMember amount="1" combat="1" class="mantis_free"/>
 </event>
 <event name="FREEMANTIS_MATE_CLAN" unique="true">
 	<text>You have arrived at the location of the Free Mantis clan. You explain the situation to the clan leader, who seems rather perplexed. "Yes... they aren't smartest of Mantis. Still, we thank you." They gather a group to go retrieve the survivors, and pay you in scrap.</text>
@@ -979,8 +973,8 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="mantis" prop="0.40"/>
-		<crewMember type="suzerain" prop="0.40"/>	
-		<crewMember type="bishop" prop="0.20"/>	
+		<crewMember type="mantis_suzerain" prop="0.40"/>	
+		<crewMember type="mantis_bishop" prop="0.20"/>	
 	</crew>
 </ship>
 <event name="FREEMANTIS_FLEET_BISHOP" unique="true">
@@ -1012,7 +1006,7 @@
 	</choice>
 </event>
 <event name="FREEMANTIS_FLEET_FREDDYSAVE">
-	<text>You dig through the cargobay of the Suzerain ship, and find a prison hold. One cell is marked by a crudely written document describing its prisoner as "dumb stupid Free Mantis leader man."</text>
+	<text>You dig through the cargobay of the Bishop ship, and find a prison hold. One cell is marked by a crudely written document describing its prisoner as "dumb stupid free mantis leader man".</text>
 	<choice hidden="true">
 		<text>This must be Freddy!</text>
 		<event>
@@ -1030,8 +1024,8 @@
 								<event>
 									<text>"Now then, without further ado... You've come here to rescue me, yes?" He wastes no time waiting for you to respond. "Let us hurry. I wish to linger as little as possible in this dank cave of suffering. I do hope you have tea aboard your vessel..."</text>
 									<unlockCustomShip silent="false">PLAYER_SHIP_FREEMANTIS</unlockCustomShip>
-									<hiddenAug>ACH_CREW_FREDDY</hiddenAug>
-									<crewMember amount="1" class="freddy" combat="2">Freddy</crewMember>
+									<variable name="ach_crew_freddy" op="set" val="1"/>
+									<crewMember amount="1" class="unique_freddy" combat="2">Freddy</crewMember>
 								</event>
 							</choice>
 						</event>
@@ -1099,7 +1093,7 @@
 <event name="FREEMANTIS_FLEET_ZOLTAN_WIN">
 	<text>The ASB in the distance stops as the Zoltan fleet falls silent. "Well uh, now that the prophet is dead, we'll just leave I guess. No one really cared about the Free Mantis other than him anyways." The Zoltan jump away.</text>
 	<removeHazards/>
-	<hiddenAug>ACH_BOSS_MONKPROPHET</hiddenAug>
+	<variable name="ach_boss_monkprophet" op="set" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -1129,7 +1123,7 @@
 		<event>
 			<text>"Federation? Have come to admire brilliant arsenal of disgusting Zoltan piglet murder? If wanted, we share tech with you, so you may murder energy freak too!"</text>
 			<choice>
-				<text>Buy a Zoltan Bypass.</text>
+				<text>Buy a Super Shield Bypass.</text>
 				<event>
 					<text>"Enjoy murdering, Federation! Come by again sometime, and we share mutual stories of hunt!"</text>
 					<item_modify>
@@ -1139,7 +1133,7 @@
 				</event>
 			</choice>
 			<choice hidden="true">
-				<text>Ask about their large beam weapon.</text>
+				<text>Ask about their large Beam weapon.</text>
 				<event>
 					<text>"Eh? This is Zoltan Deleter, cherished weapon that murder Zoltan fast! But not to kill others, that rude. If Federation want gun, they must prove worthy!"</text>
 					<choice hidden="true">
@@ -1239,7 +1233,7 @@
 	<choice hidden="true">
 		<text>Question them about the factory.</text>
 		<event>
-			<text>"This? This pheromone concoction laboratory! Here, make finest pheromones. Though, very addictive, sometimes crippling. Oh well, they make soldier very fast! Here, have some, may bring great swiftness to crew."</text>
+			<text>"This? This pheromone concoction laboratory! Here, make finest pheromones. Though, very addictive, sometimes crippling. Oh well, they make soldier very strong! Here, have some, may bring great toughness to crew."</text>
 			<augment name="SUPER_CREW_STIMS"/>
 		</event>
 	</choice>
@@ -1301,9 +1295,9 @@
 		</event>
 	</choice>
 	<choice hidden="true">
-		<text>Decline.</text>
+		<text>Leave them alone.</text>
 		<event>
-			<text>You aren't willing to argue any further with the Free Mantis. You apologize and leave.</text>
+			<text>You aren't willing to harass the Free Mantis and their past. You apologize and leave.</text>
 			<choice>
 				<text>Do something on-board the ship.</text>
 				<event load="STORAGE_CHECK"/>
@@ -1318,6 +1312,7 @@
 <eventList name="FREEMANTIS_BURIAL_BRIBE">
 	<event>
 		<text>The Free Mantis refuse, but generously give back the scrap. "We cannot let you on. Sorry for refusal, but requesting you please stop trying."</text>
+		<disableScrapAugments/>
 		<item_modify>
 			<item type="scrap" min="20" max="20"/>
 		</item_modify>

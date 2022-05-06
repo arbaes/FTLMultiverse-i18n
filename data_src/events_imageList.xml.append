@@ -604,6 +604,18 @@ SPECIAL BACKGROUNDS
 	<img w="1280" h="720">stars_special/bg_rebelcity.png</img>
 </imageList>
 
+<imageList name="BACK_EVENT_JERRYHOME">
+	<img w="1280" h="720">stars_special/bg_jerryhome.png</img>
+</imageList>
+
+<imageList name="BACK_EVENT_ESTATE_SHIPYARD">
+	<img w="1280" h="720">stars_special/bg_wentworthshipyards.png</img>
+</imageList>
+
+<imageList name="BACK_EVENT_ESTATE_HQ">
+	<img w="1280" h="720">stars_special/bg_wentworthhq.png</img>
+</imageList>
+
 <imageList name="BACK_EVENT_CRYSTAL_CACHE"> <!--USE THIS FOR GUARDIAN EVENT-->
 	<img w="1280" h="720">stars_special/bg_crystalcache.png</img>
 </imageList>
@@ -614,6 +626,10 @@ SPECIAL BACKGROUNDS
 
 <imageList name="BACK_EVENT_ROYAL_PALACE">
 	<img w="1280" h="720">stars_special/bg_royalpalace.png</img>
+</imageList>
+
+<imageList name="BACK_EVENT_SWARMHOME">
+	<img w="1280" h="720">stars_special/bg_swarmhome.png</img>
 </imageList>
 
 <imageList name="BACK_EVENT_TURBAN">
@@ -690,6 +706,9 @@ SECTOR BACKGROUNDS
 -->
 <imageList name="BACK_SECTOR_START">
 	<img w="1280" h="720">stars_sectors/bg_start.png</img>
+</imageList>
+<imageList name="BACK_SECTOR_ASTEROID">
+	<img w="1280" h="720">stars_sectors/bg_asteroid.png</img>
 </imageList>
 <imageList name="BACK_SECTOR_CIVILIAN">
 	<img w="1280" h="720">stars_sectors/bg_civilian.png</img>
@@ -780,6 +799,12 @@ SECTOR BACKGROUNDS
 </imageList>
 <imageList name="BACK_SECTOR_ABANDONED">
 	<img w="1280" h="720">stars_sectors/bg_abandonded.png</img>
+</imageList>
+<imageList name="BACK_SECTOR_JERRY">
+	<img w="1280" h="720">stars_sectors/bg_jerry.png</img>
+</imageList>
+<imageList name="BACK_SECTOR_ESTATE">
+	<img w="1280" h="720">stars_sectors/bg_estate.png</img>
 </imageList>
 <imageList name="BACK_EVENT_HEKTAR">
 	<img w="1280" h="720">stars_sectors/bg_hektar.png</img>

@@ -1,5 +1,17 @@
 <FTL>
 
+<event name="REVISIT">
+	<text>You've been here already, and there's nothing left of interest.</text>
+	<choice>
+		<text>Do something onboard the ship.</text>
+		<event load="STORAGE_CHECK"/>
+	</choice>
+	<choice>
+		<text>Do nothing.</text>
+		<event/>
+	</choice>
+</event>
+
 <!--
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -82,7 +94,7 @@
 		<item_modify>
 			<item type="scrap" min="-45" max="-45"/>
 		</item_modify>
-		<crewMember amount="1" class="engineer"/>
+		<crewMember amount="1" class="human_engineer"/>
 	</event>
 	<event>
 		<text id="trade_purchase"/>
@@ -98,7 +110,7 @@
 		<item_modify>
 			<item type="scrap" min="-55" max="-55"/>
 		</item_modify>
-		<crewMember amount="1" class="separatist"/>
+		<crewMember amount="1" class="engi_separatist"/>
 	</event>
 	<event>
 		<text id="trade_purchase"/>
@@ -106,7 +118,7 @@
 		<item_modify>
 			<item type="scrap" min="-50" max="-50"/>
 		</item_modify>
-		<crewMember amount="1" class="freemantis"/>
+		<crewMember amount="1" class="mantis_free"/>
 	</event>
 </eventList>
 
@@ -442,14 +454,6 @@
 		<text id="trade_purchase"/>
 		<store>STORE_STANDARD</store>
 		<item_modify>
-			<item type="scrap" min="-65" max="-65"/>
-		</item_modify>
-		<weapon name="KERNEL_HULL"/>
-	</event>
-	<event>
-		<text id="trade_purchase"/>
-		<store>STORE_STANDARD</store>
-		<item_modify>
 			<item type="scrap" min="-70" max="-70"/>
 		</item_modify>
 		<weapon name="KERNEL_CHAIN"/>
@@ -489,7 +493,7 @@
 		<item_modify>
 			<item type="scrap" min="-50" max="-50"/>
 		</item_modify>
-		<weapon name="CRYSTAL_STUN_BURST"/>
+		<weapon name="CRYSTAL_STUN"/>
 	</event>
 	<event>
 		<text id="trade_purchase"/>
@@ -731,7 +735,7 @@
 		<text id="trade_purchase"/>
 		<store>STORE_STANDARD</store>
 		<item_modify>
-			<item type="scrap" min="-55" max="-55"/>
+			<item type="scrap" min="-45" max="-45"/>
 		</item_modify>
 		<augment name="COMBAT_SHIELDS_JAMMER"/>
 	</event>
@@ -739,7 +743,7 @@
 		<text id="trade_purchase"/>
 		<store>STORE_STANDARD</store>
 		<item_modify>
-			<item type="scrap" min="-45" max="-45"/>
+			<item type="scrap" min="-30" max="-30"/>
 		</item_modify>
 		<augment name="COMBAT_ENGINE_JAMMER"/>
 	</event>
@@ -747,7 +751,7 @@
 		<text id="trade_purchase"/>
 		<store>STORE_STANDARD</store>
 		<item_modify>
-			<item type="scrap" min="-75" max="-75"/>
+			<item type="scrap" min="-55" max="-55"/>
 		</item_modify>
 		<augment name="COMBAT_CLOAKING_JAMMER"/>
 	</event>
@@ -755,7 +759,7 @@
 		<text id="trade_purchase"/>
 		<store>STORE_STANDARD</store>
 		<item_modify>
-			<item type="scrap" min="-60" max="-60"/>
+			<item type="scrap" min="-40" max="-40"/>
 		</item_modify>
 		<augment name="ANTI_VIRUS"/>
 	</event>
@@ -1106,6 +1110,14 @@
 		<text>Ignore the merchant.</text>
 		<event>
 			<text>Fortunately the ship remain oblivious to your presence.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
 		</event>
 	</choice>
 </event>
@@ -1143,6 +1155,14 @@
 		<text>Ignore the merchant.</text>
 		<event>
 			<text>Fortunately the ship remain oblivious to your presence.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
 		</event>
 	</choice>
 </event>
@@ -1188,6 +1208,14 @@
 		<text>Ignore the merchant.</text>
 		<event>
 			<text>Fortunately the ship remain oblivious to your presence.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
 		</event>
 	</choice>
 </event>
@@ -1233,6 +1261,14 @@
 		<text>Ignore the merchant.</text>
 		<event>
 			<text>Fortunately the ship remain oblivious to your presence.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
 		</event>
 	</choice>
 </event>
@@ -1278,6 +1314,14 @@
 		<text>Ignore the merchant.</text>
 		<event>
 			<text>Fortunately the ship remain oblivious to your presence.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
 		</event>
 	</choice>
 </event>
@@ -1305,7 +1349,7 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="hatch" prop="0.10"/>
+		<crewMember type="spider_hatch" prop="0.10"/>
 		<crewMember type="spider" prop="0.8"/>
 	</crew>
 </ship>
@@ -1327,6 +1371,14 @@
 		<text>Ignore the merchant.</text>
 		<event>
 			<text>Fortunately the ship remain oblivious to your presence.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
 		</event>
 	</choice>
 </event>
@@ -1367,6 +1419,14 @@
 		<text>Ignore the merchant.</text>
 		<event>
 			<text>Fortunately the ship remain oblivious to your presence.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
 		</event>
 	</choice>
 </event>
@@ -1407,6 +1467,14 @@
 		<text>Ignore the merchant.</text>
 		<event>
 			<text>Fortunately the ship remain oblivious to your presence.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
 		</event>
 	</choice>
 </event>
@@ -1447,6 +1515,14 @@
 		<text>Ignore the merchant.</text>
 		<event>
 			<text>Fortunately, the Auto-ship remain oblivious to your presence.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
 		</event>
 	</choice>
 </event>
@@ -1593,7 +1669,7 @@
 	<crew>
 		<crewMember type="human" prop="0.60"/>
 		<crewMember type="engi" prop="0.20"/>
-		<crewMember type="energy" prop="0.20"/>
+		<crewMember type="zoltan" prop="0.20"/>
 	</crew>
 </ship>
 <event name="STOREEVENT_REFUELING" unique="true">
@@ -1631,7 +1707,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice req="mind" max_lvl="1" hidden="true">
+	<choice req="mind" max_lvl="2" hidden="true">
 		<text>(Mind Control) "Negotiate" an even lower price. [-10~ -> 5{]</text>
 		<event>
 			<text>You stock up on fuel then check out the store.</text>
@@ -1646,7 +1722,7 @@
 		</event>
 	</choice>
 	<choice req="mind" lvl="3" hidden="true">
-		<text>(Mind Control) "Negotiate" a free refueling. [5{]</text>
+		<text>(Adv. Mind Control) "Negotiate" a free refueling. [5{]</text>
 		<event>
 			<text>You stock up on fuel then check out the store.</text>
 			<item_modify>
@@ -2355,16 +2431,25 @@
 	<choice req="LIST_CREW_ENGI">
 		<text>(Engi Crew) Ask for some free drone parts.</text>
 		<event>
-			<store>STORE_ENGI_MOREDRONES</store>
+			<text>You express your interest at the dronesmith business, and visit the market.</text>
 			<item_modify>
 				<item type="drones" min="3" max="5"/>
 			</item_modify>
+			<store>STORE_ENGI_MOREDRONES</store>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
 		</event>
 	</choice>
 	<choice hidden="true">
 		<text>Shop.</text>
 		<event>
-			<text>You ignore the dronesmith and visit the market.</text>
+			<text>You express your interest at the dronesmith business, and visit the market.</text>
 			<store>STORE_ENGI_MOREDRONES</store>
 			<choice>
 				<text>Do something onboard the ship.</text>
@@ -2530,7 +2615,7 @@
 	</event>
 	<event>
 		<text>"Evaluation: inaccurate. Federation vessel suspected of lying or being very stupid. Punishment: death." A harsh punishment - but it seems to extend to the Separatist as well! An ASB shot nearly takes out their ship and the survivor climbs aboard yours, but now you have to get out of here!</text>
-		<crewMember amount="1" class="separatist"/>
+		<crewMember amount="1" class="engi_separatist"/>
 		<environment type="PDS" target="player"/>
 		<ship load="SHIP_ENGI_FIGHT" hostile="true"/>
 		<choice hidden="true">
@@ -2680,8 +2765,8 @@
                 <event>
                     <text>An automated Zoltan supply vessel comes by and delivers the resources.</text>
                     <item_modify>
-                        <item type="missiles" min="3" max="3"/>
-                        <item type="drones" min="2" max="2"/>
+                        <item type="missiles" min="7" max="7"/>
+                        <item type="drones" min="5" max="5"/>
                         <item type="scrap" min="-35" max="-35"/>
                     </item_modify>
 					<choice hidden="true">
@@ -2756,7 +2841,7 @@
 				<text>Give them a generous amount of scrap.</text>
 				<event load="STOREEVENT_ZOLTAN_MONK_DONATE"/>
 			</choice>
-			<choice hidden="true" req="monk">
+			<choice hidden="true" req="zoltan_monk">
 				<text>(Monk Crew) "We are monks, just as you. There is nothing to be shared but good feelings."</text>
 				<event load="STOREEVENT_ZOLTAN_MONK_CREW"/>
 			</choice>
@@ -2829,7 +2914,7 @@
 	</event>
 	<event>
 		<text>"I was not aware we so openly joined Federation vessels. Perhaps it should allow our teachings to spread further than before? I think I shall come with you, a change of scenery could do me good, and I don't wish to return to those awful nebulas for much longer."</text>
-		<crewMember amount="1" class="monk"/>
+		<crewMember amount="1" class="zoltan_monk"/>
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event load="STORE_LOAD_ZOLTAN"/>
@@ -2868,7 +2953,7 @@
 				<text>Fight back!</text>
 				<event>
 					<text>Your crew push off the guards and draw your weapons. Looks like a fight is nigh!</text>
-					<boarders min="2" max="3" class="energy"/>
+					<boarders min="2" max="3" class="zoltan"/>
 					<ship hostile="true"/>
 					<choice hidden="true">
 						<text>Continue...</text>
@@ -2928,7 +3013,7 @@
 			<text>Refuse!</text>
 			<event>
 				<text>Your crew push off the guards and draw your weapons. Looks like a fight is nigh!</text>
-				<boarders min="2" max="3" class="energy"/>
+				<boarders min="2" max="3" class="zoltan"/>
 				<ship hostile="true"/>
 				<choice hidden="true">
 					<text>Continue...</text>
@@ -3097,7 +3182,7 @@
 	<choice hidden="true">
 		<text>Offer to help with the fire.</text>
 		<event>
-			<text>"Oh... that's been ablaze for days. We've done all we can to surpress it with what we have... which isn't much..."</text>
+			<text>"Oh... that's been ablaze for days. We've done all we can to supress it with what we have... which isn't much..."</text>
 			<choice req="FIRE_EXTINGUISHERS" hidden="true">
 				<text>(Fire Supressors) Use the supressors.</text>
 				<event>
@@ -3146,12 +3231,12 @@
 					</choice>
 				</event>
 			</choice>
-			<choice req="chieftain" hidden="true">
+			<choice req="orchid_chieftain" hidden="true">
 				<text>(Chieftain Crew) Send in your Orchid crew to put out the fire.</text>
 				<event>
 					<text>You wait for a while, but your Orchid crew never returns. You receive another hail; "It uh... looks like your friend just walked into the blaze and died within seconds. I'm sorry, best I can offer is a small consolation."</text>
 					<autoReward level="HIGH">standard</autoReward>
-					<removeCrew class="chieftain">
+					<removeCrew class="orchid_chieftain">
 						<clone>true</clone>
 						<text>Fortunately, the Clone Bay has already revived your floral friend. Whether he'll stay a friend is debatable, because he's currently scowling at you for your stupidity.</text>
 					</removeCrew>
@@ -3316,7 +3401,7 @@
         <text>(Orchid Children) Sell him this "artifact".</text>
         <event>
             <text>The Crystal jumps up and down in excitement. "Ooooh, I had no idea piles of child corpses were of high value! One with a greater ethical compass than mine might be concerned, but I will buy these for a handsome price!"</text>
-            <weapon name="LIST_WEAPONS_CRYSTAL_B"/>
+            <weapon name="GIFTLIST_CRYSTAL_ELITE"/>
             <remove name="ORCHID_KIDS"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -3348,7 +3433,7 @@
 	<choice hidden="true">
 		<text>Try and translate what he's saying.</text>
 		<event>
-			<text>You try for a while to decipher his message, but during the silence the Crystal pops back on, now speaking perfectly normal. "Apologies, I'm still accustomed to not having to use my translator. I'm a merchant vessel, would you care to trade?"</text>
+			<text>You try for a while to decipher his message, but during the silence the Crystal pops back on, now speaking normally. "Apologies, I'm still accustomed to not having to use my translator. I'm a merchant vessel, would you care to trade?"</text>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event load="STORE_LOAD_CRYSTAL"/>
@@ -3374,7 +3459,7 @@
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
-				<event load="MORALITY_UPDATE_CRYSTAL"/>
+				<event load="MORALITY_UPDATE_CRYSTAL_FIGHT"/>
 			</choice>
 		</event>
 	</choice>
@@ -3416,7 +3501,7 @@
 		<event load="STOREEVENT_CRYSTAL_PIRATES"/>
 	</choice>
 </event>
-<ship name="SHIP_CRYSTAL_STATION_STOREEVENT_PIRATES" auto_blueprint="MU_CRYSTAL_STATION_A">
+<ship name="SHIP_CRYSTAL_STATION_STOREEVENT_PIRATES" auto_blueprint="MU_CRYSTAL_STATION">
 	<preventQuest/>
 	<beaconType id="map_icon_store_crystal" global="false">
 		<color r="215" g="255" b="200" a="1"/>
@@ -3781,7 +3866,7 @@
 				</event>
 			</choice>
 			<choice hidden="true">
-				<text>Buy a small repair job. [15$, -35~]</text>
+				<text>Buy a moderate repair job. [15$, -35~]</text>
 				<event>
 					<text>"Hoping you are happy with services, and enjoying store!"</text>
 					<item_modify>
@@ -3838,10 +3923,9 @@
 	</event>
 	<event>
 		<text>You come back from the store to find the Mantis have already finished. Unfortunately, it seems they haven't done a very good job. Not only is the ship roughed up in a few spots, but they haven't repaired as much hull as promised either. "Making sure you are giving us 5 star review, and seeing you next time!"</text>
-		<damage amount="-7"/>
-		<damage amount="1" system="random" effect="breach"/>
-		<damage amount="1" system="random" effect="breach"/>
-		<damage amount="1" system="random" effect="breach"/>
+		<damage amount="-2" system="random" effect="breach"/>
+		<damage amount="-1" system="random" effect="breach"/>
+		<damage amount="-1" system="random" effect="breach"/>
 		<choice hidden="true">
 			<text>Let it go.</text>
 			<event load="STORE_LOAD_FREEMANTIS"/>
@@ -3849,7 +3933,7 @@
 		<choice hidden="true">
 			<text>Demand a refund.</text>
 			<event>
-				<text>"Oh, you are wanting the money back? We done hard working here, and you not liking it? Hpmh. Only offering partially refund."</text>
+				<text>"Oh, you are wanting the money back? We done hard working here, and you not liking it? Hmph. Only offering partially refund."</text>
 				<choice>
 					<text>Accept the partial refund.</text>
 					<event>
@@ -3916,12 +4000,11 @@
 	</event>
 	<event>
 		<text>You come back from the store to find the Mantis have already finished. Unfortunately, it seems they haven't done a very good job. Not only is the ship roughed up in a few spots, but they haven't repaired as much hull as promised either. "Making sure you are giving us 5 star review, and seeing you next time!"</text>
-		<damage amount="-15"/>
-		<damage amount="1" system="random" effect="breach"/>
-		<damage amount="1" system="random" effect="breach"/>
-		<damage amount="1" system="random" effect="breach"/>
-		<damage amount="1" system="random" effect="breach"/>
-		<damage amount="1" system="random" effect="breach"/>
+		<damage amount="-2" system="random" effect="breach"/>
+		<damage amount="-2" system="random" effect="breach"/>
+		<damage amount="-2" system="random" effect="breach"/>
+		<damage amount="-2" system="random" effect="breach"/>
+		<damage amount="-2" system="random" effect="breach"/>
 		<choice hidden="true">
 			<text>Let it go.</text>
 			<event load="STORE_LOAD_FREEMANTIS"/>
@@ -3929,7 +4012,7 @@
 		<choice hidden="true">
 			<text>Demand a refund.</text>
 			<event>
-				<text>"Oh, you are wanting the money back? We done hard working here, and you not liking it? Hpmh. Only offering partially refund."</text>
+				<text>"Oh, you are wanting the money back? We done hard working here, and you not liking it? Hmph. Only offering partially refund."</text>
 				<choice>
 					<text>Accept the partial refund.</text>
 					<event>
@@ -3998,6 +4081,17 @@
 			</choice>
 		</event>
 	</choice>
+	<choice hidden="true" req="unique_kaz">
+		<text>(Kazaaak) Request to dock safely.</text>
+		<event>
+			<text>"The great Kazaaakplethkilik, coming in shop? Yes, this will do good publicity stunt! Business between killers, shall be very rewarding! Accept free sample of killing tool!"</text>
+			<weapon name="GIFTLIST_MANTIS"/>
+			<choice>
+				<text>Continue...</text>
+				<event load="STORE_LOAD_MANTIS"/>
+			</choice>
+		</event>
+	</choice>
 	<choice hidden="true">
 		<text>Avoid the Mantis.</text>
 		<event>
@@ -4041,7 +4135,7 @@
 <event name="NEBULA_STOREEVENT_MANTIS_WHALE">
 	<preventQuest/>
 	<beaconType id="map_icon_store_mantis" global="false">
-		<color r="215" g="255" b="200" a="1"/>
+		<color r="215" g="175" b="175" a="1"/>
 	</beaconType>
 	<text id="store_in_nebula"/>
 	<environment type="nebula"/>
@@ -4069,6 +4163,10 @@
 			<choice hidden="true" req="LIST_CREW_HIVE">
 				<text>(Hive Mantis) We wish to shop here.</text>
 				<event load="STOREEVENT_MANTIS_WHALE_CONVINCE"/>
+			</choice>
+			<choice hidden="true" req="unique_kaz">
+				<text>(Kazaaak) We wish to shop here.</text>
+				<event load="STOREEVENT_MANTIS_WHALE_KAZ"/>
 			</choice>
 			<choice hidden="true">
 				<text>Well now that you mention it...</text>
@@ -4118,6 +4216,29 @@
 </eventList>
 <event name="STOREEVENT_MANTIS_WHALE_CONVINCE">
 	<text>"Hmph. Bad of mine, then. Come, we have extensive stock. Slave offerings, there."</text>
+	<store>STORE_MANTIS</store>
+	<choice>
+		<text>Purchase a slave.</text>
+		<event load="TRADELIST_CREW_MANTISSLAVE"/>
+	</choice>
+	<choice hidden="true">
+		<text>Just shop.</text>
+		<event>
+			<text>No need for slaves today. You'll stick with regular goods.</text>
+			<choice>
+				<text>Do something on-board the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
+		</event>
+	</choice>
+</event>
+<event name="STOREEVENT_MANTIS_WHALE_KAZ">
+	<text>"Oh mighty Kazaaakplethkilik! We admirers of you, even if you having... heated business with Hive. Come in, prized customer. Accept tribute of ours!"</text>
+	<weapon name="RANDOM"/>
 	<store>STORE_MANTIS</store>
 	<choice>
 		<text>Purchase a slave.</text>
@@ -4235,7 +4356,7 @@
 			<choice>
 				<text>Buy an engineer slave first.</text>
 				<event>
-					<crewMember amount="1" class="engineer"/>
+					<crewMember amount="1" class="human_engineer"/>
 					<store>STORE_MANTIS</store>
 					<item_modify>
 						<item type="scrap" min="-40" max="-40"/>
@@ -4245,7 +4366,7 @@
 			<choice>
 				<text>Buy a medic slave first.</text>
 				<event>
-					<crewMember amount="1" class="medic"/>
+					<crewMember amount="1" class="human_medic"/>
 					<store>STORE_MANTIS</store>
 					<item_modify>
 						<item type="scrap" min="-60" max="-60"/>
@@ -4387,10 +4508,6 @@
 <ship name="SHIP_ROCK_STOREEVENT_MINELAUNCHER" auto_blueprint="MU_ROCK_STATION">
 	<destroyed load="DESTROYED_ROCK"/>
 	<deadCrew load="DEAD_CREW_ROCK"/>
-	<weaponOverride count="2">
-		<name>LIST_WEAPONS_TRAPPER</name>
-		<name>LIST_WEAPONS_TRAPPER</name>
-	</weaponOverride>
 </ship>
 <event name="STOREEVENT_ROCK_MINELAUNCHERS" unique="true">
 	<preventQuest/>
@@ -4477,7 +4594,7 @@
                 <event load="STOREEVENT_ROCK_CRYSTALS_TRADE"/>
             </choice>
             <choice hidden="true" req="LIST_CREW_ROCK_FAITHFUL">
-                <text>(Theocracy Crew) "We were hoping to trade".</text>
+                <text>(Theocracy Crew) "We were hoping to trade."</text>
                 <event>
                     <text>"Brother! Welcome! Come, take a look at all we have to offer. We have many holy items on sale!"</text>
                     <store>STORE_ROCK</store>
@@ -4500,7 +4617,7 @@
                 </event>
             </choice>
             <choice hidden="true" req="LIST_CREW_CRYSTAL">
-                <text>(Crystal Crew) "We were hoping to trade".</text>
+                <text>(Crystal Crew) "We were hoping to trade."</text>
                 <event>
                     <text>"Oh sweet lord, oh heavens, ohhhhhhhhh" The Rockman nearly collapses as he seems to enter some sort of state of prayer. The Rockmen shower you in gifts and offer to trade.</text>
                     <autoReward level="MED">standard</autoReward>
@@ -4620,7 +4737,7 @@
 					<choice hidden="true" req="LIST_CREW_CRYSTAL">
 						<text>(Crystal Crew) "We are the holy ones!"</text>
 						<event>
-							<text>Your Crystal giggles a little while he's lying, but the missionary doesn't seem to notice. Stricken by fear, he sends one of his fellow priests to join you while you're let into the market.</text>
+							<text>Your Crystal giggles a little while they are lying, but the missionary doesn't seem to notice. Stricken by fear, he sends one of his fellow priests to join you while you're let into the market.</text>
 							<crewMember amount="1" class="rock"/>
 							<store>STORE_ROCK</store>
 						</event>
@@ -4631,28 +4748,28 @@
 				<text>(Unfaithful Rock Crew) "Your holy text are lies!"</text>
 				<event>
 					<text>The Rockman breaks into laughter. "HAHAHAHAHAHAHAHAHAHAHAHHAHAHAHAHAHAHHAHAHAHAHAHAHAHAHAHAHHAHAHAHAHAHAHAHAHAHAHHAHAHAHAHAHAHAHAHAH... Hah... heh... hoooo... You are an ignorant idiot. Yet, you could be helped. I can reeducate you. Make you loyal to the Theocracy! I demand this if you want to access our market peacefully."</text>
-					<choice hidden="true" req="cultist">
+					<choice hidden="true" req="rock_cultist">
 						<text>Let them reeducate your Cultist to access the market.</text>
 						<event>
 							<text>"Good. They will become a follower once again. In the meantime, you may access the store. Try anything funny, and you won't see your crew ever again."</text>
 							<store>STORE_ROCK</store>
-							<transformRace class="cultist">rock</transformRace>
+							<transformRace class="rock_cultist">rock</transformRace>
 						</event>
 					</choice>
-					<choice hidden="true" req="commando">
+					<choice hidden="true" req="rock_commando">
 						<text>Let them reeducate your Commando to access the market.</text>
 						<event>
 							<text>"Good. They will become a follower once again. In the meantime, you may access the store. Try anything funny, and you won't see your crew ever again."</text>
 							<store>STORE_ROCK</store>
-							<transformRace class="commando">rock</transformRace>
+							<transformRace class="rock_commando">rock</transformRace>
 						</event>
 					</choice>
-					<choice hidden="true" req="outcast">
+					<choice hidden="true" req="rock_outcast">
 						<text>Let them reeducate your Outcast to access the market.</text>
 						<event>
 							<text>"Good. They will become a follower once again. In the meantime, you may access the store. Try anything funny, and you won't see your crew ever again."</text>
 							<store>STORE_ROCK</store>
-							<transformRace class="outcast">rock</transformRace>
+							<transformRace class="rock_outcast">rock</transformRace>
 						</event>
 					</choice>
 					<choice hidden="true">
@@ -4668,7 +4785,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="ariadne">
+			<choice hidden="true" req="unique_ariadne">
 				<text>(Ariadne) Threaten the missionaries.</text>
 				<event>
 					<text>Terrified at the sight of the Lost Sun admiral, the missionaries submit immediately. Some of the less-convinced clergymen even revolt. They still offer to trade, but provide a gift for their newfound freedom as well.</text>
@@ -4676,12 +4793,12 @@
 					<autoReward level="LOW">item</autoReward>
 				</event>
 			</choice>
-			<choice hidden="true" req="lord">
+			<choice hidden="true" req="unique_vortigon">
 				<text>(Vortigon) Glare menacingly.</text>
 				<event>
 					<text>The Rockman slinks back in fear as Vortigon takes a step forward. He takes the missionary into a different room, and when they return, the other is now wearing the blue robes of a cultist. You know better than to ask questions at this point, but fortunately it seems you can now trade here.</text>
 					<store>STORE_ROCK</store>
-					<crewMember amount="1" class="cultist"/>
+					<crewMember amount="1" class="rock_cultist"/>
 				</event>
 			</choice>
 			<choice hidden="true">
@@ -4707,7 +4824,7 @@
 	<choice hidden="true">
 		<text>Kill these brutal missionaries!</text>
 		<event>
-			<text>There's little moral quandry here, for Rock fanatics are feared across the galaxy for their brutal methods. You're only helping make this galaxy a safer place.</text>
+			<text>There's little moral quandary here, for Rock fanatics are feared across the galaxy for their brutal methods. You're only helping make this galaxy a safer place.</text>
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -4754,7 +4871,7 @@
 			<text>You decide it's better to not push your luck and move on.</text>
 		</event>
 	</choice>
-	<choice hidden="true" req="engineer">
+	<choice hidden="true" req="LIST_CREW_ENGINEER">
 		<text>(Engineer Crew) Pass yourself off as Rebels.</text>
 		<event>
 			<text>As a former Rebel themselves, your engineer has a few tricks up their sleeve for getting you into the market safely. You find a vendor willing to sell to you, though you can tell they have their suspicions.</text>
@@ -5031,14 +5148,14 @@
 		<text>Try and scan your fake ID.</text>
 		<event load="STOREEVENT_AUTO_VENDER_SCAN"/>
 	</choice>
-	<choice hidden="true" req="engineer">
+	<choice hidden="true" req="LIST_CREW_ENGINEER">
 		<text>(Engineer Crew) Rewire the Auto-ship to trade with you.</text>
 		<event>
 			<text>Fortunately, you're able to hack into the Auto-ship and reconfigure it to accept your Federation ID.</text>
 			<store>STORE_AUTO</store>
 		</event>
 	</choice>
-	<choice hidden="true" req="hacking" lvl="1">
+	<choice hidden="true" req="hacking" lvl="1" max_lvl="2">
 		<text>(Hacking) Rewire the Auto-ship to trade with you.</text>
 		<event>
 			<text>Fortunately, you're able to hack into the Auto-ship and reconfigure it to accept your Federation ID.</text>
@@ -5208,7 +5325,7 @@
 	<text>The Duskbringers are notorious for being even stricter than the Ministry. Looks like the station here is open to trading with anyone, a surprising find, but there's a million protocols in place.</text>
 	<ship load="SHIP_DUSK_STATION" hostile="false"/>
 	<choice hidden="true">
-		<text>Approach</text>
+		<text>Approach.</text>
 		<event load="STOREEVENT_DUSK_PROTOCOL_IGNORANT"/>
 	</choice>
 	<choice hidden="true">
@@ -5281,7 +5398,7 @@
 			<text>Hell no, we aren't paying!</text>
 			<event>
 				<text>The sudden excited attitude of the Duskbringer makes it clear this is what he was hoping for. Now prepare for battle!</text>
-				<boarders min="2" max="2" class="bomber"/>
+				<boarders min="2" max="2" class="zoltan_devotee"/>
 				<ship hostile="true"/>
 				<choice hidden="true">
 					<text>Continue...</text>
@@ -5399,7 +5516,7 @@
 	<event>
 		<text>To your luck, the ship doesn't attack immediately! "Ssso, a Federation ssship? Truth be told, the Coalition isssn't quite what it wasss cracked up to be."</text>
 		<choice hidden="true">
-			<text>Why not go and live reclusive life away from the fighting?</text>
+			<text>Why not go and live a reclusive life away from the fighting?</text>
 			<event>
 				<text>"What, the life of a coward? Sssoundsss perfect for me! You're sssmart. Now, I wasss thinking to myssself why I would want to be talking to a Federation ssship, but now I'm glad I did." To your surprise, the merchant offers to trade!</text>
 				<store>STORE_COALITION</store>
@@ -5451,7 +5568,7 @@
 	<event>
 		<text>To your luck, the ship doesn't attack immediately! "Federation ship? Truth be telling, Coalition not what cracking up to be..."</text>
 		<choice hidden="true">
-			<text>Why not go and live reclusive life away from the fighting?</text>
+			<text>Why not go and live a reclusive life away from the fighting?</text>
 			<event>
 				<text>"Haha, life of coward for Mantis? Ignorant meatsack know nothing of Mantis! You are dumb as other Federation meatsack, robots, green freaks, and rest! It time I do job, and disembowel you!"</text>
 				<ship hostile="true"/>
@@ -5503,7 +5620,7 @@
 	<event>
 		<text>To your luck, the ship doesn't attack immediately! "Hmph. The Coalition is not what I expected. We do not fight for holy glory, only squabble..."</text>
 		<choice hidden="true">
-			<text>Why not go and live reclusive life away from the fighting?</text>
+			<text>Why not go and live a reclusive life away from the fighting?</text>
 			<event>
 				<text>"You expect me to turn my back to the holy texts, and go hide in a nebula? We Rockmen know more honor than that! You are foolish and naive, just like all the rest of the Federation. It is time we put you in your place."</text>
 				<ship hostile="true"/>
@@ -5555,9 +5672,9 @@
 	<event>
 		<text>To your luck, the ship doesn't attack immediately! "God, I never should have joined the Coalition. I was better off before being miserable and picking up trash in those damn asteroid fields."</text>
 		<choice hidden="true">
-			<text>Why not go and live reclusive life away from the fighting?</text>
+			<text>Why not go and live a reclusive life away from the fighting?</text>
 			<event>
-				<text>"I am no coward. We Crystals do not run from battle out of fear! Your ignorance is insulting, and it is time I did my job and put you in your place!"</text>
+				<text>"And do what, go back to picking trash? No way man, that sucks! I changed my mind, the Coalition is better!"</text>
 				<ship hostile="true"/>
 				<choice hidden="true">
 					<text>Continue...</text>
@@ -5568,7 +5685,7 @@
 		<choice hidden="true">
 			<text>Why not go be a freelance warrior? That's better than the Coalition surely.</text>
 			<event>
-				<text>"Crystals do not engage in acts of piracy! Well, some do, but not me! Your ignorance is insulting, and it is time I did my job and put you in your place!"</text>
+				<text>"And what, get hacked to bits like Oertiss? I want to get away from the fighting, not plunge myself into the thick of it! You Feds are clueless, maybe it's a good thing we want to get rid of you!"</text>
 				<ship hostile="true"/>
 				<choice hidden="true">
 					<text>Continue...</text>
@@ -5579,7 +5696,7 @@
 		<choice hidden="true">
 			<text>You're just a puppet of the government like you were before.</text>
 			<event>
-				<text>"The Empire is far more forgiving and free than your own Federation. Your ignorance is insulting, and it is time I did my job and put you in your place!"</text>
+				<text>"What? Tyrdeo might be a pansy coward who collects song birds, but he's hardly intelligent enough to be a puppet master. I signed up for the Coalition willingly because I thought it was better than picking up trash. You Feds are clueless, maybe it's a good thing we want to get rid of you!"</text>
 				<ship hostile="true"/>
 				<choice hidden="true">
 					<text>Continue...</text>
@@ -6012,9 +6129,9 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="goul" prop="0.33"/>
-		<crewMember type="wraith" prop="0.33"/>	
-		<crewMember type="mare" prop="0.33"/>	
+		<crewMember type="phantom_goul" prop="0.33"/>
+		<crewMember type="phantom_wraith" prop="0.33"/>	
+		<crewMember type="phantom_mare" prop="0.33"/>	
 	</crew>
 </ship>
 <event name="STOREEVENT_DYNASTY_CREWKILL" unique="true">
@@ -6103,7 +6220,7 @@
 	<choice hidden="true">
 		<text>Ask to see the goods.</text>
 		<event>
-			<text>"Before we get ahead of ourssselves, I need to explain sssome ground ruless of our transsaction. Thesse are dangerous times, yess?"</text>
+			<text>"Before we get ahead of ourssselves, I need to explain sssome ground ruless of our transsaction. Thesse are dangerouss timess, yess?"</text>
 			<choice>
 				<text>Continue.</text>
 				<event>
@@ -6314,6 +6431,7 @@
 		<text>(Slug Crew) Hail the colony and see if they can send a merchant to you.</text>
 		<event>
 			<text>Fortunately, the colony's managers are more agreeable than you would have thought. A ship is dispatched to trade with you.</text>
+			<ship load="SHIP_SLUG_FIGHT" hostile="false"/>
 			<store>STORE_SLUG</store>
 			<choice>
 				<text>Do something on-board the ship.</text>
@@ -6456,7 +6574,7 @@
 		</event>
 	</choice>
 	<choice hidden="true" req="sensors" lvl="3">
-		<text>(Adv. Sensors) Keep and eye on the ship while you shop.</text>
+		<text>(Adv. Sensors) Keep an eye on the ship while you shop.</text>
 		<event>
 			<text>Despite your enhanced security through the entire transaction, everything goes completely normal. Guess it was all a false alarm, though you're still cautiously poking through the cargo looking for stowaways or stolen goods.</text>
 			<store>STORE_SLUG</store>
@@ -6601,7 +6719,7 @@
 	</beaconType>
 	<text>You guide yourself towards a decently sized scrapyard with a couple Leech mechanics working on disassembling various alien ships. The scrapyard owner hails you. "Need some parts? We got all kinds of junk here!"</text>
 	<store>STORE_LEECH</store>
-	<choice hidden="true">
+	<choice>
 		<text>Buy a salvage heap.</text>
 		<event>
 			<text>You fork over your scrap to the Leech and hope you get something worthwhile.</text>
@@ -6740,7 +6858,7 @@
 						</event>
 					</choice>
 					<choice>
-						<text>Buy what the pirate calls an "Engine Overdrive Capacitator MK III+".</text>
+						<text>Buy what the pirate calls an "Engine Overdrive Capacitor MK III+".</text>
 						<event>
 							<item_modify>
 								<item type="scrap" min="-30" max="-45"/>
@@ -7197,7 +7315,7 @@
 	<event>
 		<text>You feel somewhat odd about bowling with sentient creatures, but the Shells don't seem to mind. They were genetically engineered for the task. Somehow, you manage to pull through and best Strike! He's dumbfounded at first, but eventually he recovers. "Huh... you beat me. You are truly a bowling legend. I've bowled with all the greats, but none have ever beat me! I shall come with you, for you are a legend in the making."</text>
 		<modifyPursuit amount="1"/>
-		<crewMember amount="1" class="shellrepair">Captain Strike</crewMember>
+		<crewMember amount="1" class="shell_mechanic">Captain Strike</crewMember>
 		<store>STORE_SHELL</store>
 	</event>
 </eventList>
@@ -7248,7 +7366,7 @@
 				<text>(Shell Crew) Offer to hire the scientist.</text>
 				<event>
 					<text>Realizing this is his chance to finally go somewhere in his career, the Shell is more than willing.</text>
-					<crewMember amount="1" class="shellmedic" all_skills="1"/>
+					<crewMember amount="1" class="shell_scientist" all_skills="1"/>
 					<store>STORE_SHELL</store>
 					<item_modify>
 						<item type="scrap" min="-40" max="-40"/>
@@ -7376,7 +7494,7 @@
 	<choice hidden="true">
 		<text>Attack the Lanius!</text>
 		<event>
-			<text>Despite the unprecedented friendliness of these Lanius, you've turned on them and are now attacking!</text>
+			<text>Despite the unprecedented friendliness of these Lanius, you've turned on them, and are now attacking!</text>
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -7388,7 +7506,7 @@
 <eventList name="STOREEVENT_LANIUS_METAL_GIFT">
 	<event>
 		<text>To your surprise, one of the Lanius are so surprised by your kindness, they offer to join your crew!</text>
-		<crewMember amount="1" class="anaerobic"/>
+		<crewMember amount="1" class="lanius"/>
 		<store>STORE_LANIUS</store>
 	</event>
 	<event>
@@ -7415,7 +7533,7 @@
 	<deadCrew load="DEAD_CREW_LEECH"/>
 	<crew>
 		<crewMember type="leech" prop="0.9"/>
-		<crewMember type="hektar" prop="0.1"/>
+		<crewMember type="slug_hektar" prop="0.1"/>
 	</crew>
 </ship>
 
@@ -7452,6 +7570,14 @@
 		<text>Explore the store.</text>
 		<event load="STOREEVENT_TONY_EXPLORE"/>
 	</choice>
+	<choice hidden="true" req="loc_loan_any" lvl="0" max_lvl="0" blue="false">
+		<text>Take out a loan first.</text>
+		<event load="STOREEVENT_TONY_LOAN"/>
+	</choice>
+	<choice hidden="true" req="loc_loan_any" lvl="1" blue="false">
+		<text>You cannot take out a loan at this time.</text>
+		<event load="OPTION_INVALID"/>
+	</choice>
 	<choice hidden="true">
 		<text>Just get what we need and leave.</text>
 		<event>
@@ -7466,6 +7592,218 @@
 			</choice>
 		</event>
 	</choice>
+</event>
+<event name="STOREEVENT_TONY_LOAN">
+	<text>To your surprise, it seems next to the Tony's marketplace is the office of a loan shark boasting various offers. These could be useful, but you should be cautious of the predatory interest rates. Tony's might be reputable, but it is a Leech-run business. The only person who'd trust a Leech is the same person who'd trust a Slug.</text>
+	<choice hidden="true">
+		<text>Take a loan for 25 scrap.</text>
+		<event>
+			<text>The Leech running the office, who doesn't even give you a name, seems more than happy to give you some scrap. Too eager, in fact. By the time you've already signed your name, he only then informs you there's a 40% interest rate. He warns you to make sure you can pay off your debts, because you don't want to mess with "The Worm".</text>
+			<variable name="loc_loan_25" op="set" val="1"/>
+			<variable name="loc_loan_any" op="set" val="1"/>
+			<item_modify>
+				<item type="scrap" min="25" max="25"/>
+			</item_modify>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Take a loan for 50 scrap.</text>
+		<event>
+			<text>The Leech running the office, who doesn't even give you a name, seems more than happy to give you some scrap. Too eager, in fact. By the time you've already signed your name, he only then informs you there's a 40% interest rate. He warns you to make sure you can pay off your debts, because you don't want to mess with "The Worm".</text>
+			<variable name="loc_loan_50" op="set" val="1"/>
+			<variable name="loc_loan_any" op="set" val="1"/>
+			<item_modify>
+				<item type="scrap" min="50" max="50"/>
+			</item_modify>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Take a loan for 100 scrap.</text>
+		<event>
+			<text>The Leech running the office, who doesn't even give you a name, seems more than happy to give you some scrap. Too eager, in fact. By the time you've already signed your name, he only then informs you there's a 40% interest rate. He warns you to make sure you can pay off your debts, because you don't want to mess with "The Worm".</text>
+			<variable name="loc_loan_100" op="set" val="1"/>
+			<variable name="loc_loan_any" op="set" val="1"/>
+			<item_modify>
+				<item type="scrap" min="100" max="100"/>
+			</item_modify>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Nevermind.</text>
+		<event>
+			<text>The Leech running the office tries to wave you over, shouting out various alluring offers, but your mind is resolute. You won't fall for this trap. Not this time.</text>
+		</event>
+	</choice>
+</event>
+
+<event name="FINISH_BEACON_DEBT">
+	<loadEventList seeded="false" first="true" generate="true" default="DEBT_COLLECTOR_NORMAL">
+		<event name="DEBT_COLLECTOR_EASY" req="loc_loan_25" lvl="1"/>
+		<event name="DEBT_COLLECTOR_NORMAL" req="loc_loan_50" lvl="1"/>
+		<event name="DEBT_COLLECTOR_HARD" req="loc_loan_50" lvl="1"/>
+	</loadEventList>
+</event>
+<!--easy-->
+<ship name="SHIP_DEBT_COLLECTOR_EASY" auto_blueprint="MU_DEBT_COLLECTOR_EASY">
+	<escape timer="30" load="DEBT_COLLECTOR_ESCAPE" max="4" min="2"/>
+	<destroyed load="DEBT_COLLECTOR_DEFEAT"/>
+	<deadCrew load="DEBT_COLLECTOR_DEFEAT"/>
+</ship>
+<event name="DEBT_COLLECTOR_EASY">
+	<ship load="SHIP_DEBT_COLLECTOR_EASY" hostile="false"/>
+	<loadEventList seeded="false" first="true" generate="true">
+		<event name="FINISH_BEACON_DEBT_REUNION" req="loc_debt_collector" lvl="1"/>
+		<event name="FINISH_BEACON_DEBT_FIRST" req="loc_debt_collector" lvl="0" max_lvl="0"/>
+	</loadEventList>
+</event>
+<!--normal-->
+<ship name="SHIP_DEBT_COLLECTOR_NORMAL" auto_blueprint="MU_DEBT_COLLECTOR_NORMAL">
+	<escape timer="30" load="DEBT_COLLECTOR_ESCAPE" max="4" min="2"/>
+	<destroyed load="DEBT_COLLECTOR_DEFEAT"/>
+	<deadCrew load="DEBT_COLLECTOR_DEFEAT"/>
+</ship>
+<event name="DEBT_COLLECTOR_NORMAL">
+	<ship load="SHIP_DEBT_COLLECTOR_NORMAL" hostile="false"/>
+	<loadEventList seeded="false" first="true" generate="true">
+		<event name="FINISH_BEACON_DEBT_REUNION" req="loc_debt_collector" lvl="1"/>
+		<event name="FINISH_BEACON_DEBT_FIRST" req="loc_debt_collector" lvl="0" max_lvl="0"/>
+	</loadEventList>
+</event>
+<!--hard-->
+<ship name="SHIP_DEBT_COLLECTOR_HARD" auto_blueprint="MU_DEBT_COLLECTOR_HARD">
+	<escape timer="30" load="DEBT_COLLECTOR_ESCAPE" max="4" min="2"/>
+	<destroyed load="DEBT_COLLECTOR_DEFEAT"/>
+	<deadCrew load="DEBT_COLLECTOR_DEFEAT"/>
+</ship>
+<event name="DEBT_COLLECTOR_HARD">
+	<ship load="SHIP_DEBT_COLLECTOR_HARD" hostile="false"/>
+	<loadEventList seeded="false" first="true" generate="true">
+		<event name="FINISH_BEACON_DEBT_REUNION" req="loc_debt_collector" lvl="1"/>
+		<event name="FINISH_BEACON_DEBT_FIRST" req="loc_debt_collector" lvl="0" max_lvl="0"/>
+	</loadEventList>
+</event>
+
+<event name="FINISH_BEACON_DEBT_REUNION">
+    <text>You've arrived at the Long-Range Beacon. Unfortunately, it seems you've run into LaRoache once again! A beefy Leech vessel brandishing the Tony's logo approaches, and on screen appears a tutting Ampere with a fedora, a cigar, and a striped vest. "Alright punk, you's got away real slick last time, but I'm about to put the kabosh on that. Since I'm feeling a little generous today, I'll give you anotha chance: but it's gonna cost you's... Big time. LaRoache ain't messing around."</text>
+	<choice req="loc_loan_25" blue="false">
+		<text>Pay off your debt.</text>
+		<event>
+			<text>"Ah, and things were just about'a get interestin'! Oh well, guess you's keister is saved for another day, eh? Alright alright, hurry along now. LaRoache has other business to uh... attend to. Don't let the Long-Range relay hit you on the way out, heheheh..."</text>
+			<variable name="loc_loan_any" op="set" val="0"/>
+			<variable name="loc_loan_25" op="set" val="0"/>
+			<item_modify>
+				<item type="scrap" min="-40" max="-40"/>
+			</item_modify>
+		</event>
+	</choice>
+	<choice req="loc_loan_50" blue="false">
+		<text>Pay off your debt.</text>
+		<event>
+			<text>"Ah, and things were just about'a get interestin'! Oh well, guess you's keister is saved for another day, eh? Alright alright, hurry along now. LaRoache has other business to uh... attend to. Don't let the Long-Range relay hit you on the way out, heheheh..."</text>
+			<variable name="loc_loan_any" op="set" val="0"/>
+			<variable name="loc_loan_50" op="set" val="0"/>
+			<item_modify>
+				<item type="scrap" min="-80" max="-80"/>
+			</item_modify>
+		</event>
+	</choice>
+	<choice req="loc_loan_100" blue="false">
+		<text>Pay off your debt.</text>
+		<event>
+			<text>"Ah, and things were just about'a get interestin'! Oh well, guess you's keister is saved for another day, eh? Alright alright, hurry along now. LaRoache has other business to uh... attend to. Don't let the Long-Range relay hit you on the way out, heheheh..."</text>
+			<variable name="loc_loan_any" op="set" val="0"/>
+			<variable name="loc_loan_100" op="set" val="0"/>
+			<item_modify>
+				<item type="scrap" min="-160" max="-160"/>
+			</item_modify>
+		</event>
+	</choice>
+	<choice>
+		<text>We aren't paying that!</text>
+		<event>
+			<text>"Again? You's gonna regret it this time. I tire of your games, Renegade! Now you're gonna face the music!"</text>
+			<ship hostile="true"/>
+			<boarders min="2" max="2" class="ampere"/>
+			<choice>
+				<text>Continue...</text>
+				<event load="COMBAT_CHECK"/>
+			</choice>
+		</event>
+	</choice>
+</event>
+<event name="FINISH_BEACON_DEBT_FIRST">
+    <text>You've arrived at the Long-Range Beacon. Unfortunately, a ship is already waiting for you. A beefy Leech vessel brandishing the Tony's logo approaches, and on screen appears a tutting Ampere with a fedora, a cigar, and a striped vest. "So you're the Renegade, ehh? Name's... Royye. Royye "The Worm" LaRoache. Maybe you eh... heard about me? I'm somethin' of a philanthropist, you know, handing out my cash to needy folks like you's. Heheh, problem is I'm tryin'a run a business here, you know. It ain't charity. So why don't you do your pal LaRoache a favor and uh... hand over the tender, eh? Otherwise I'm gonna have to... heheheh... Oh, and no running, you's hear? I've jammed your FTL drive till this business is handled."</text>
+	<variable name="loc_debt_collector" op="set" val="1"/>
+	<choice req="loc_loan_25" blue="false">
+		<text>Pay off your debt.</text>
+		<event>
+			<text>"Ah, and things were just about'a get interestin'! Oh well, guess you's keister is saved for another day, eh? Alright alright, hurry along now. LaRoache has other business to uh... attend to. Don't let the Long-Range relay hit you on the way out, heheheh..."</text>
+			<variable name="loc_loan_any" op="set" val="0"/>
+			<variable name="loc_loan_25" op="set" val="0"/>
+			<item_modify>
+				<item type="scrap" min="-35" max="-35"/>
+			</item_modify>
+		</event>
+	</choice>
+	<choice req="loc_loan_50" blue="false">
+		<text>Pay off your debt.</text>
+		<event>
+			<text>"Ah, and things were just about'a get interestin'! Oh well, guess you's keister is saved for another day, eh? Alright alright, hurry along now. LaRoache has other business to uh... attend to. Don't let the Long-Range relay hit you on the way out, heheheh..."</text>
+			<variable name="loc_loan_any" op="set" val="0"/>
+			<variable name="loc_loan_50" op="set" val="0"/>
+			<item_modify>
+				<item type="scrap" min="-70" max="-70"/>
+			</item_modify>
+		</event>
+	</choice>
+	<choice req="loc_loan_100" blue="false">
+		<text>Pay off your debt.</text>
+		<event>
+			<text>"Ah, and things were just about'a get interestin'! Oh well, guess you's keister is saved for another day, eh? Alright alright, hurry along now. LaRoache has other business to uh... attend to. Don't let the Long-Range relay hit you on the way out, heheheh..."</text>
+			<variable name="loc_loan_any" op="set" val="0"/>
+			<variable name="loc_loan_100" op="set" val="0"/>
+			<item_modify>
+				<item type="scrap" min="-140" max="-140"/>
+			</item_modify>
+		</event>
+	</choice>
+	<choice>
+		<text>We aren't paying that!</text>
+		<event>
+			<text>"You Renegades and your complete lack of respect. I'm an honest business man, but you thieves keep tryin'a bankrupt me! So stingy! Ah well, you can't say you weren't warned, Renegade! The Worm's just gotta collect his dues... heheheh."</text>
+			<ship hostile="true"/>
+			<choice>
+				<text>Continue...</text>
+				<event load="COMBAT_CHECK"/>
+			</choice>
+		</event>
+	</choice>
+</event>
+<event name="DEBT_COLLECTOR_ESCAPE">
+    <text>"Alright, I've had enough of this baloney. You's can keep your stinkin' money, I'm getting outta here!"</text>
+    <escape/>
+	<choice>
+		<text>Let LaRoache go.</text>
+		<event>
+			<text>"So long, sucker! Hahah!"</text>
+			<recallBoarders/>
+			<instantEscape/>
+		</event>
+	</choice>
+	<choice>
+		<text>Keep fighting!</text>
+		<event/>
+	</choice>
+</event>
+<event name="DEBT_COLLECTOR_DEFEAT">
+    <text>"Ah shit, I ain't getting myself out of this one are I? Well played, Renegade. Well... played..."</text>
+    <variable name="loc_loan_any" op="set" val="0"/>
+	<autoReward level="HIGH">standard</autoReward>
+	<augment name="ATM_MACHINE"/>
+	<triggeredEvent name="ATM_CHECKER" event="ATM_MACHINE_WITHDRAW_CHECK" loops="999999999">
+	  <jumps amount="1" type="1"/>
+	</triggeredEvent>
+	<unlockCustomShip silent="false">PLAYER_SHIP_GOLD_2</unlockCustomShip>
 </event>
 
 <eventList name="STOREEVENT_TONY_EXPLORE">
@@ -7783,12 +8121,12 @@ slug karen fighting for last item on shelf
 	<destroyed load="TONY_HQ_SAVE"/>
 	<deadCrew load="TONY_HQ_SAVE"/>
 	<crew>
-		<crewMember type="angel" prop="0.10"/>
+		<crewMember type="human_angel" prop="0.10"/>
 		<crewMember type="LIST_CREW_MERCENARY_RANDOM" prop="0.90"/>
 	</crew>
 </ship>
 <event name="TONY_HQ_ANGEL">
-	<text>You leave the main shopping area and fly towards the command tower where you find a strange Stealth ship laying down fire on the last of the station's security turrets. When they spot you, they warn you not to approach. "So Tony sent a renegade to save his ass? Cute. Look here and listen pal. Name's Pisces. They call me an Angel of Death, one of Mr. Vael's finest. Now, the last thing you wanna go doing is upsetting the boss, man. So just turn on around and skiddadle, understand?"</text>
+	<text>You leave the main shopping area and fly towards the command tower where you find a strange Stealth ship laying down fire on the last of the station's security turrets. When they spot you, they warn you not to approach. "So Tony sent a renegade to save his ass? Cute. Look here and listen pal. Name's Cancer. They call me an Angel of Death, one of Mr. Vael's finest. Now, the last thing you wanna go doing is upsetting the boss, man. So just turn on around and skiddadle, understand?"</text>
 	<ship load="SHIP_ANGEL_TONY" hostile="false"/>
 	<choice hidden="true">
 		<text>Nah.</text>
@@ -7837,8 +8175,10 @@ slug karen fighting for last item on shelf
 														<text>You're also a billionaire. If you were happy once, surely you can be happy again.</text>
 														<event>
 															<text>"I'm not sure I was even happy before. It's hard to remember the days before the... incident. But maybe... maybe you're right. I haven't left this station in 2 years. Could you take me with you? You're a Multiverse Renegade, right? Maybe some adventure would be a good chance to fix me..."</text>
-															<hiddenAug>ACH_CREW_TONY</hiddenAug>
-															<crewMember amount="1" all_skills="1" class="tonysr">Tony Sr.</crewMember>
+															<unlockCustomShip silent="false">PLAYER_SHIP_TONY</unlockCustomShip>
+															<variable name="ach_crew_tony" op="set" val="1"/>
+															<crewMember amount="1" all_skills="1" class="unique_tonysr">Tony Sr.</crewMember>
+															<store>STORE_TONY</store> 
 														</event>
 													</choice>
 												</event>
@@ -7851,15 +8191,15 @@ slug karen fighting for last item on shelf
 												</event>
 											</choice>
 											<choice hidden="true" req="symbiote">
-												<text>(Symbiote) You aren't the only one who's been miserable those 7 years.</text>
+												<text>(Symbiote) "You aren't the only one who's been miserable those 7 years."</text>
 												<event>
-													<text>"My god... Rig? Is that you? How are you here?" You have no idea what's going on, but Tony explains. "7 years ago Tony's was nothing but a small chain local only to the Republic and quite small. I hoped to change that around by selling Zulfiqar goods. I met with Rig to discuss the terms when out of nowhere a Slug ship arrived and mind controlled me into sticking myself up Rig's... uh... asshole. The surgeons had no idea how to handle the situation. For 3 years we lived like that, stuck together. I was forced to eat Rig's waste to survive. Eventually we found a professional capable of separating us, but it was too late to save either of us from the permanent trauma."</text>
+													<text>"My god... Rig? Is that you? How are you here?" You have no idea what's going on, but Tony explains. "7 years ago, Tony's was nothing but a small chain local only to the Republic and quite small. I hoped to change that around by selling Zulfiqar goods. I met with Rig to discuss the terms, when out of nowhere a Slug ship arrived and mind controlled me into sticking myself up Rig's... uh... asshole. The surgeons had no idea how to handle the situation. For 3 years we lived like that, stuck together. I was forced to eat Rig's waste to survive. Eventually we found a professional capable of separating us, but it was too late to save either of us from the permanent trauma."</text>
 													<choice hidden="true">
 														<text>Uh...</text>
 														<event>
 															<text>"That deal never did go through, by the way." Tony turns to Rig, who shrugs. When Rig explains his new situation to Tony, the Leech simply can't believe it. "You... you were mind controlled by the SAME Slugs? What!? There must be something deeper here... You know, I've spent a lot of time searching for the ones responsible, and I think I've found them. Maybe together we can finally track them down and get some sweet sweet revenge."</text>
-															<hiddenAug>ACH_CREW_TONY</hiddenAug>
-															<crewMember amount="1" all_skills="1" class="tonysr">Tony Sr.</crewMember>
+															<variable name="ach_crew_tony" op="set" val="1"/>
+															<crewMember amount="1" all_skills="1" class="unique_tonysr">Tony Sr.</crewMember>
 															<quest event="BUTT_BUDDIES"/>
 														</event>
 													</choice>
@@ -7877,6 +8217,106 @@ slug karen fighting for last item on shelf
 	</choice>
 </event>
 
+<!--Butt Buddies quest-->
+<ship name="SHIP_SLUG_BUTT_BUDDIES" auto_blueprint="LIST_SHIPS_HACKER">
+	<destroyed>
+		<text>The Slug ship has been destroyed. You scrap the remains.</text>
+		<autoReward level="MED">standard</autoReward>
+		<choice hidden="true">
+			<text>Continue...</text>
+			<event load="BUTT_BUDDIES_REVENGE"/>
+		</choice>
+	</destroyed>
+	<deadCrew>
+		<text>The Slug ship has been dealt with. You scrap the remains.</text>
+		<autoReward level="HIGH">standard</autoReward>
+		<choice hidden="true">
+			<text>Continue...</text>
+			<event load="BUTT_BUDDIES_REVENGE"/>
+		</choice>
+	</deadCrew>
+</ship>
+<event name="BUTT_BUDDIES">
+	<quest>
+		<nebulaBeacon>true</nebulaBeacon>
+		<createNebula>true</createNebula>
+	</quest>
+	<text>The coordinates are surprisingly accurate, leading you right into the den of what appears to be some kind of hacker ship.</text>
+	<ship load="SHIP_SLUG_BUTT_BUDDIES" hostile="false"/> 
+	<choice hidden="true" req="SYMBIOTE_AND_TONY" lvl="1" max_group="0" blue="false">
+		<text>Approach with Tony and Rig.</text>
+		<event>
+			<text>You hail the Slugs and put Tony and Rig on the screen. "Bet you didn't expect to see US! We've found you at last, and now it's time you finally tell us what this was all about."</text>
+			<choice hidden="true">
+				<text>Wait for a response.</text>
+				<event>
+					<text>The Slug captain looks utterly confused but soon realizes what is going on. "O-Oh. OH. OH. OHHAHAHAHAHHAHAHAHAH! HAHAHAHAHAHAHAHAHAH! HAH! HAHAHAHAHAH! HAHHAHAHAH! OH. MY. GOD. You're that Rock guy, and you're that-that Leech guy! HAH! Oh my thisss isss GOLDEN! HAHAHAH! You- you really thought thisss wasss sssome grand ssscheme? Sssome epic plot? HAHAHAHAH! NO! It wasss a pure coincccidenccce! We do thisss all the tiiiime. We really got you TWICE? That isss incredible! You're sssuch a lossser! HAHAHAH! Heh..."</text>
+					<choice hidden="true">
+						<text>Attack them.</text>
+						<event>
+							<text>No one's going to miss these assholes. Hopefully this should prove to be quite cathartic.</text>
+							<ship hostile="true"/> 
+							<choice hidden="true">
+								<text>Continue...</text>
+								<event load="COMBAT_CHECK"/>
+							</choice>
+						</event>
+					</choice>
+					<choice hidden="true">
+						<text>Leave them.</text>
+						<event/>
+					</choice>
+				</event>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true" req="SYMBIOTE_AND_TONY" lvl="0" max_group="0" blue="false">
+		<text>Tony and Rig aren't with us. This isn't worth our time anymore.</text>
+		<event load="OPTION_INVALID"/>
+	</choice>
+	<choice hidden="true">
+		<text>Nevermind.</text>
+		<event>
+			<text>It was dumb to come all the way out here for something as petty as revenge.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
+		</event>
+	</choice>
+</event>
+<event name="BUTT_BUDDIES_REVENGE">
+	<text>It seems during the fight the two main Slugs escaped on a lifepod, but you quickly scoop it up before they can get away. You bring them back on board to deliberate what to do with them. Rig and Tony both propose one simple punishment- treat them with their own medicine.</text>
+	<choice hidden="true">
+		<text>Agree.</text>
+		<event>
+			<text>Rig grabs one of the Slugs by the tail as Tony holds the other in place, and together they force one Slug down the gullet of the other. One screams as the other chokes, and the two roll on the floor in agony until the pain becomes unbearable and you finally put them out of their misery. You can see Tony and Rig aren't quite as satisfied with this as they had hoped, but they're glad to finally have laid them to rest.</text>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="BUTT_BUDDIES_REWARD"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>No. This can't keep happening.</text>
+		<event>
+			<text>Torturing the Slugs like that will do no one any good. Instead, you grant them a quick and painless death. You can tell Tony and Rig aren't quite as satisfied, but the death of the Slugs satisfies them nonetheless.</text>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="BUTT_BUDDIES_REWARD"/>
+			</choice>
+		</event>
+	</choice>
+</event>
+<event name="BUTT_BUDDIES_REWARD">
+	<text>Tony and Rig cannot thank you enough for your help. As a reward for finally settling this, Rig gives you a special prototype weapon blueprint under works by Zulfiqar.</text>
+	<weapon name="MISSILES_ENERGY"/>
+</event>
+
 <!--
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -7890,7 +8330,7 @@ slug karen fighting for last item on shelf
     <text>You arrive at the store, but the ship meant to greet you is deathly silent. After several subsequent hails the captain is startled awake. "Ah god damn it, you woke me up! Yeah yeah whatever, come sssshop or sssome ssshit."</text>
     <text>A loud advertisement blasts over your stereo, with an obese Slug waving his arms in the air and begging you to come and shop. Seems like unfortunate placement considering you're already here.</text>
     <text>These Hektar stores sure are plentiful. It's almost concerning how much of this sector is just stores, but you suppose it's better than deadly Rebels.</text>
-    <text>A sleezy clerk with grease stains on his chest eyes your ship. "Eh, a Federation ship? You musssst have money! Gimme gimme!"</text>
+    <text>A sleezy clerk with grease stains on his chest eyes your ship. "Eh, a Federation ssship? You musssst have money! Gimme gimme!"</text>
 </textList>
 <event name="STOREEVENT_HEKTAR">
 	<preventQuest/>
@@ -7926,14 +8366,14 @@ slug karen fighting for last item on shelf
 			</choice>
 		</event>
 	</choice>
-	<choice req="MARKER_UWUPOINT" blue="false" max_group="2" hidden="true" lvl="0">
+	<choice req="loc_uwupoint" blue="false" max_group="2" hidden="true" lvl="0">
 		<text>Inquire about U.W.U. points.</text>
 		<event>
 			<text>The Hektar employee perks up. "A new cussstomer? Oh crap, I get a commisssion for thessse. I can help you ssssset up your account, for a sssmall fee of 700 sssscrap."</text>
 			<choice>
 				<text>Pay.</text>
 				<event>
-					<text>"Huh...? You actually paid? Well... ok then.  By sssetting up your account, you get one U.W.U. point for free. Every time you visssit a Hektar marketplacccce, make ssssure to collect your U.W.U. point before you sssshop. Collect 5 pointssss and you'll be entered into our cusssstomer reward program." The Slug transfers over an U.W.U. point to your account. "Now, go buy ssssomething or get losssst."</text>
+					<text>"Huh...? You actually paid? Well... ok then.  By sssetting up your account, you get one U.W.U. point for free. Every time you visssit a Hektar marketplacccce, make ssssure to collect your U.W.U. point before you sssshop. Collect 4 pointssss and you'll be entered into our cusssstomer reward program." The Slug transfers over an U.W.U. point to your account. "Now, go buy ssssomething or get losssst."</text>
 					<item_modify>
 						<item type="scrap" min="-700" max="-700"/>
 					</item_modify>
@@ -7946,7 +8386,7 @@ slug karen fighting for last item on shelf
 			<choice hidden="true">
 				<text>How about no.</text>
 				<event>
-					<text>"Awwww man... Worth a sssshot. Anywayssss, the account isss actually free. By sssetting up your account, you get one U.W.U. point for free. Every time you visssit a Hektar marketplacccce, make ssssure to collect your U.W.U. point before you sssshop. Collect 5 pointssss and you'll be entered into our cusssstomer reward program." The Slug transfers over an U.W.U. point to your account. "Now, go buy ssssomething or get losssst."</text>
+					<text>"Awwww man... Worth a sssshot. Anywayssss, the account isss actually free. By sssetting up your account, you get one U.W.U. point for free. Every time you visssit a Hektar marketplacccce, make ssssure to collect your U.W.U. point before you sssshop. Collect 4 pointssss and you'll be entered into our cusssstomer reward program." The Slug transfers over an U.W.U. point to your account. "Now, go buy ssssomething or get losssst."</text>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event load="UWU_POINT"/>
@@ -7955,15 +8395,15 @@ slug karen fighting for last item on shelf
 			</choice>
 		</event>
 	</choice>
-	<choice req="MARKER_UWUPOINT" blue="false" max_group="2" hidden="true" lvl="1">
+	<choice req="loc_uwupoint" blue="false" max_group="2" hidden="true" lvl="1">
 		<text>Collect your U.W.U. point.</text>
 		<event load="UWU_POINT"/>
 	</choice>
-	<choice req="MARKER_UWUPOINT" blue="false" max_group="2" hidden="true" lvl="3">
+	<choice req="loc_uwupoint" blue="false" max_group="2" hidden="true" lvl="3">
 		<text>Collect your U.W.U. point.</text>
 		<event load="HEKTAR_COORDS_GET_1"/>
 	</choice>
-	<choice req="MARKER_UWUPOINT" blue="false" max_group="2" hidden="true" lvl="4">
+	<choice req="loc_uwupoint" blue="false" max_group="2" hidden="true" lvl="4">
 		<text>You've already been entered into the customer reward program.</text>
 		<event load="OPTION_INVALID"/>
 	</choice>
@@ -8003,14 +8443,14 @@ slug karen fighting for last item on shelf
 			</choice>
 		</event>
 	</choice>
-	<choice req="MARKER_UWUPOINT" blue="false" max_group="2" hidden="true" lvl="0">
+	<choice req="loc_uwupoint" blue="false" max_group="2" hidden="true" lvl="0">
 		<text>Inquire about U.W.U. points.</text>
 		<event>
 			<text>The Hektar employee perks up. "A new cussstomer? Oh crap, I get a commisssion for thessse. I can help you ssssset up your account, for a sssmall fee of 700 sssscrap."</text>
 			<choice>
 				<text>Pay.</text>
 				<event>
-					<text>"Huh...? You actually paid? Well... ok then.  By sssetting up your account, you get one U.W.U. point for free. Every time you visssit a Hektar marketplacccce, make ssssure to collect your U.W.U. point before you sssshop. Collect 5 pointssss and you'll be entered into our cusssstomer reward program." The Slug transfers over an U.W.U. point to your account. "Now, go buy ssssomething or get losssst."</text>
+					<text>"Huh...? You actually paid? Well... ok then.  By sssetting up your account, you get one U.W.U. point for free. Every time you visssit a Hektar marketplacccce, make ssssure to collect your U.W.U. point before you sssshop. Collect 4 pointssss and you'll be entered into our cusssstomer reward program." The Slug transfers over an U.W.U. point to your account. "Now, go buy ssssomething or get losssst."</text>
 					<item_modify>
 						<item type="scrap" min="-700" max="-700"/>
 					</item_modify>
@@ -8023,7 +8463,7 @@ slug karen fighting for last item on shelf
 			<choice hidden="true">
 				<text>How about no.</text>
 				<event>
-					<text>"Awwww man... Worth a sssshot. Anywayssss, the account isss actually free. By sssetting up your account, you get one U.W.U. point for free. Every time you visssit a Hektar marketplacccce, make ssssure to collect your U.W.U. point before you sssshop. Collect 5 pointssss and you'll be entered into our cusssstomer reward program." The Slug transfers over an U.W.U. point to your account. "Now, go buy ssssomething or get losssst."</text>
+					<text>"Awwww man... Worth a sssshot. Anywayssss, the account isss actually free. By sssetting up your account, you get one U.W.U. point for free. Every time you visssit a Hektar marketplacccce, make ssssure to collect your U.W.U. point before you sssshop. Collect 4 pointssss and you'll be entered into our cusssstomer reward program." The Slug transfers over an U.W.U. point to your account. "Now, go buy ssssomething or get losssst."</text>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event load="UWU_POINT"/>
@@ -8032,15 +8472,15 @@ slug karen fighting for last item on shelf
 			</choice>
 		</event>
 	</choice>
-	<choice req="MARKER_UWUPOINT" blue="false" max_group="2" hidden="true" lvl="1">
+	<choice req="loc_uwupoint" blue="false" max_group="2" hidden="true" lvl="1">
 		<text>Collect your U.W.U. point.</text>
 		<event load="UWU_POINT"/>
 	</choice>
-	<choice req="MARKER_UWUPOINT" blue="false" max_group="2" hidden="true" lvl="3">
+	<choice req="loc_uwupoint" blue="false" max_group="2" hidden="true" lvl="3">
 		<text>Collect your U.W.U. point.</text>
 		<event load="HEKTAR_COORDS_GET_1"/>
 	</choice>
-	<choice req="MARKER_UWUPOINT" blue="false" max_group="2" hidden="true" lvl="4">
+	<choice req="loc_uwupoint" blue="false" max_group="2" hidden="true" lvl="4">
 		<text>You've already been entered into the customer reward program.</text>
 		<event load="OPTION_INVALID"/>
 	</choice>
@@ -8048,7 +8488,7 @@ slug karen fighting for last item on shelf
 <event name="UWU_POINT">
 	<text>Now that you have your U.W.U. point, you can continue on to the store.</text>
 	<store>STORE_HEKTAR_DEFAULT</store>
-	<hiddenAug>MARKER_UWUPOINT</hiddenAug>
+	<variable name="loc_uwupoint" op="add" val="1"/>
 	<choice>
 		<text>Do something on-board the ship.</text>
 		<event load="STORAGE_CHECK"/>
@@ -8062,7 +8502,7 @@ slug karen fighting for last item on shelf
 	<unlockCustomShip silent="false">PLAYER_SHIP_GOLD</unlockCustomShip>
 	<text>Now that you have your U.W.U. point, you can continue on to the store.</text>
 	<store>STORE_HEKTAR_DEFAULT</store>
-	<hiddenAug>MARKER_UWUPOINT</hiddenAug>
+	<variable name="loc_uwupoint" op="add" val="1"/>
 	<choice>
 		<text>Do something on-board the ship.</text>
 		<event load="STORAGE_CHECK"/>
@@ -8073,7 +8513,8 @@ slug karen fighting for last item on shelf
 	</choice>
 </event>
 <event name="HEKTAR_COORDS_GET_1">
-	<text>The Hektar employee goes to add your point, when he stops in surprise. "Huh? You actually reached 5 pointssss... Do you have brain damage? Why would you visssit sssso many sssstores. Eh, whatever. Congratulationssss. Here's the sssshiny key to the Hektar Mega-Market(tm). Ssssomething sssomething we wave all liability or whatever." Looks like they've sent some special coords for your Atlas. You can travel there during any sector jump before the Federation Capital.</text>
+	<text>The Hektar employee goes to add your point, when he stops in surprise. "Huh? You actually reached 4 pointssss... Do you have brain damage? Why would you visssit sssso many sssstores. Eh, whatever. Congratulationssss. Here's the sssshiny key to the Hektar Mega-Market(tm). Ssssomething sssomething we waive all liability or whatever." Looks like they've sent some special coords for your Atlas. You can travel there during any sector jump before the Federation Capital.</text>
+	<variable name="loc_uwupoint" op="add" val="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="HEKTAR_COORDS_GET_2"/>
@@ -8081,6 +8522,7 @@ slug karen fighting for last item on shelf
 </event>
 <event name="HEKTAR_COORDS_GET_2">
 	<text>With that out of the way, now you can shop here.</text>
+	<variable name="coords_hektar" op="set" val="1"/>
 	<store>STORE_HEKTAR_DEFAULT</store>
 	<choice>
 		<text>Do something on-board the ship.</text>
@@ -8383,6 +8825,61 @@ NEBULA_STOREEVENT_SHELL_MEDICAL-->
 	<event load="STOREEVENT_ORCHID_STATION"/>
 	
 	<event load="STOREEVENT_MANTIS_WHALE"/>
+</eventList>
+
+<!--
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+					ASTEROID
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->	
+<eventList name="STORELIST_ASTEROID">
+	<event load="STOREEVENT_OUTPOST"/>
+	<event load="STOREEVENT_MERCHANTS"/>
+	<event load="STOREEVENT_REFUELING"/>
+	<event load="STOREEVENT_DAMAGED"/>
+	<event load="STOREEVENT_WEATHER_STUCK"/>
+	
+	<event load="STOREEVENT_FED_OUTPOSTDAMAGE"/>
+	
+	<event load="STOREEVENT_ZOLTAN_MERCHANT"/>
+	<event load="STOREEVENT_ZOLTAN_REPAIRS"/>
+	<event load="STOREEVENT_ZOLTAN_MONK"/>
+	<event load="STOREEVENT_ZOLTAN_GUARDS"/>
+	
+	<event load="STOREEVENT_CRYSTAL_COLLECTOR"/>
+	
+	<event load="STOREEVENT_MANTIS_RARE"/>
+	<event load="STOREEVENT_MANTIS_WHALE"/>
+	
+	<event load="STOREEVENT_ROCK_RACIST"/>
+	<event load="STOREEVENT_ROCK_MINELAUNCHERS"/>
+	<event load="STOREEVENT_ROCK_CRYSTALS"/>
+	<event load="STOREEVENT_ROCK_MISSION"/>
+	
+	<event load="STOREEVENT_REBEL_FRIENDLY"/>
+	
+	<event load="STOREEVENT_AUTO_VENDER"/>
+	
+	<event load="STOREEVENT_COALITION_FORCE"/>
+	
+	<event load="STOREEVENT_DYNASTY_DOOMSDAY"/>
+	<event load="STOREEVENT_DYNASTY_CREWKILL"/>
+	
+	<event load="STOREEVENT_SLUG_ASTEROIDS"/>
+	
+	<event load="STOREEVENT_LEECH_ASTEROIDS"/>
+	<event load="STOREEVENT_LEECH_SCAVENGER"/>
+	
+	<event load="STOREEVENT_PIRATE_ODDSHOP"/>
+	<event load="STOREEVENT_PIRATE_AWKWARD"/>
+	<event load="STOREEVENT_PIRATE_REFUELING"/>
+	<event load="STOREEVENT_PIRATE_SECURITY"/>
+	
+	<event load="STOREEVENT_LANIUS_METAL"/>
+	
+	<event load="STOREEVENT_TONY"/>
 </eventList>
 
 <!--
@@ -9468,22 +9965,7 @@ NEBULA_STOREEVENT_SHELL_MEDICAL-->
             <store>STORE_STANDARD</store>
         </event>
     </choice>
-    <choice hidden="true" req="TAX_COLLECTOR">
-        <text id="text_tax_collect"/>
-        <event load="BOSS_TAX"/>
-    </choice>
 </event>
-<eventList name="BOSS_TAX">
-	<event>
-		<text>"You need supplies? Certainly, no need for that license. You need everything you can before that flagship."</text>
-		<autoReward level="MED">stuff</autoReward>
-		<store>STORE_STANDARD</store>
-		<choice>
-			<text>Continue...</text>
-			<event/>
-		</choice>
-	</event>
-</eventList>
 
 <!--
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

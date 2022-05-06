@@ -21,9 +21,66 @@
 <eventList name="ITEMS_ROCK">
 	<event load="ROCK_PUNS"/>
 	<event load="ROCK_CRYOBSESSION"/>
+	<event load="ROCK_APOLOGY"/>
 	
 	<event load="TRADER_CIV"/>
 	<event load="PIRATE_SALESMAN"/>
+</eventList>
+
+<event name="ROCK_APOLOGY" unique="true">
+	<ship load="SHIP_ROCK_GENERIC" hostile="false"/>
+	<text>Moments after entering the system, you receive a message from the nearby ship; "We are sinners! Oh woe is us! Strike us down! Punish us! We do not deserve the gift of life!"</text>
+	<choice hidden="true">
+		<text>Ask them why they're upset.</text>
+		<event load="ROCK_APOLOGY_INTERROGATE"/>
+	</choice>
+	<choice hidden="true">
+		<text>Strike them down.</text>
+		<event load="ROCK_APOLOGY_ATTACK"/>
+	</choice>
+	<choice hidden="true">
+		<text>Ignore them.</text>
+		<event>
+			<text>The Rockman's pleading continues for some time, but you simply tune them out and fly away.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
+		</event>
+	</choice>
+</event>
+<eventList name="ROCK_APOLOGY_INTERROGATE">
+    <event>
+        <text>"I have SINNED! I... used the restroom... and I was out of toilet paper... and I had a holy script nearby and... OH GOD! I'm a MONSTER! How could you make me relive my crimes? You are cruel! Too cruel for this world! First I will kill you, then myself!"</text>
+        <ship hostile="true"/>
+		<choice hidden="true">
+			<text>Continue...</text>
+			<event load="COMBAT_CHECK"/>
+		</choice>
+    </event>
+    <event>
+        <text>"I have SINNED! I... used the restroom... and I was out of toilet paper... and I had a holy script nearby and... OH GOD! I'm a MONSTER! Oh please, allow me to redeem myself! In any way I can, perhaps there are favors I can serve to find my way to heaven once more!"</text>
+		<crewMember amount="1" class="rock"/>
+	</event>
+</eventList>
+<eventList name="ROCK_APOLOGY_ATTACK">
+    <event>
+        <text>"I have changed my mind! I no longer wish to die! I shall redeem myself by killing you instead!"</text>
+        <ship hostile="true"/>
+		<choice hidden="true">
+			<text>Continue...</text>
+			<event load="COMBAT_CHECK"/>
+		</choice>
+    </event>
+    <event>
+        <text>"Oh thank you good captain! Only in death shall I find redemption!"</text>
+		<autoReward level="MED">standard</autoReward>
+		<enemyDamage amount="30"/>
+	</event>
 </eventList>
 
 <event name="ROCK_PUNS" unique="true">
@@ -214,21 +271,21 @@
 					</item_modify>
 				</event>
 			</choice>
-			<choice req="CRYSTAL_STUN_BURST" blue="false">
-				<text>Sell them a Blunt Crystal Burst.</text>
+			<choice req="CRYSTAL_STUN" blue="false">
+				<text>Sell them a Neural Crystal.</text>
 				<event>
 					<text>"Thank you so much! We will use this to decorate our shrine!"</text>
-					<remove name="CRYSTAL_STUN_BURST"/>
+					<remove name="CRYSTAL_STUN"/>
 					<item_modify>
 						<item type="scrap" min="65" max="65"/>
 					</item_modify>
 				</event>
 			</choice>
-			<choice req="CRYSTAL_STUN_BURST_RED" blue="false">
-				<text>Sell them an Elite Blunt Crystal Burst.</text>
+			<choice req="CRYSTAL_STUN_RED" blue="false">
+				<text>Sell them an Elite Neural Crystal.</text>
 				<event>
 					<text>"Thank you so much! We will use this to decorate our shrine!"</text>
-					<remove name="CRYSTAL_STUN_BURST_RED"/>
+					<remove name="CRYSTAL_STUN_RED"/>
 					<item_modify>
 						<item type="scrap" min="75" max="75"/>
 					</item_modify>
@@ -342,7 +399,7 @@
 	<event load="ENCOUNTER_ROCK"/>
 	<event load="ENCOUNTER_OUTCAST"/>
 	<event load="ROCK_FIGHT_ASTEROID"/>
-	<event load="OUTCAST_ASTEROID"/>
+	<!--<event load="OUTCAST_ASTEROID"/> doesn't exist? -->
 	<event load="OUTCAST_SUN"/>
 	
 	<event load="ROCK_STARSHIP_MINE"/>
@@ -436,8 +493,6 @@
 	
 	<event load="SOLAR_WRECK"/>
 	<event load="PIRATE_CIVILIAN"/>
-	<event load="MERCENARY_OFFER"/>
-	<event load="FRIENDLY_SLAVER"/>
 	<event load="SLAVER_BETRAYAL"/>
 	
 	<event load="ROCK_SLUG_ARGUMENT"/>
@@ -448,6 +503,7 @@
 	<choice>
 		<text>Sell 5 missiles.</text>
 		<event>
+			<disableScrapAugments/>
 			<item_modify>
 				<item type="missiles" min="-5" max="-5"/>
 				<item type="scrap" min="20" max="20"/>
@@ -457,6 +513,7 @@
 	<choice>
 		<text>Sell 10 missiles.</text>
 		<event>
+			<disableScrapAugments/>
 			<item_modify>
 				<item type="missiles" min="-10" max="-10"/>
 				<item type="scrap" min="40" max="40"/>
@@ -466,6 +523,7 @@
 	<choice>
 		<text>Sell 15 missiles.</text>
 		<event>
+			<disableScrapAugments/>
 			<item_modify>
 				<item type="missiles" min="-15" max="-15"/>
 				<item type="scrap" min="60" max="60"/>
@@ -494,7 +552,7 @@
 	<choice hidden="true">
 		<text>The hell did you just say to us?</text>
 		<event>
-			<text>The Rockman arogantly chuckles as you prepare to fight them.</text>
+			<text>The Rockman arrogantly chuckles as you prepare to fight them.</text>
 			<ship hostile="true"/> 
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -578,7 +636,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="WEAPON_PREIGNITE" lvl="3">
+	<choice hidden="true" req="WEAPON_PREIGNITE">
 		<text>(Pre-Igniter) How about this!</text>
 		<event>
 			<text>"Well now you're just showing off. I like it. I wish to sample your arsenal. I shall join you!"</text>
@@ -716,7 +774,7 @@
 	<choice hidden="true" req="LIST_CREW_ROCK">
 		<text>(Rock Crew) Put your Rock crewmember on the comm.</text>
 		<event>
-			<text>The two aliens face one another over the vidscreen. "Cave-dwelling pebble-man!" yells the furious Mantis captain. "See, I paint my ship with your companions! I paint my ship with you!"</text>
+			<text>The two aliens face one another over the vidscreen. "Cave-dwelling pebble-man!" yells the furious Mantis captain. "See, I paint ship with your companions! I paint ship with you!"</text>
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -837,21 +895,21 @@
 		<text>(Improved Sensors) Show them to your data suite.</text>
 		<event>
 			<text>The Rock captain is impressed by the data you've collected and agrees to stay with you until they find their footing in the galaxy.</text>
-			<crewMember amount="1" class="outcast"/>
+			<crewMember amount="1" class="rock_outcast"/>
 		</event>
 	</choice>
-	<choice hidden="true" req="commando">
+	<choice hidden="true" req="rock_commando">
 		<text>(Lost Sun Commando) Teach them the ways of the Lost Suns.</text>
 		<event>
 			<text>The Rock captain is surprised, as he had previously thought the Lost Suns were a band of radical terrorists. Assured your ship will keep no secrets from them, he joins your crew.</text>
-			<crewMember amount="1" class="outcast"/>
+			<crewMember amount="1" class="rock_outcast"/>
 		</event>
 	</choice>
 	<choice hidden="true" req="LIST_CREW_ORCHID">
 		<text>(Orchid Crew) Have your Orchid talk them into joining you.</text>
 		<event>
 			<text>The Orchids are not only a race trusted by the Rockmen, but their government is incredibly well known for its transparency. Soothed by your crew, the Orchid talks them into coming with you, promising it'll be a better life than that among the Elders' lies.</text>
-			<crewMember amount="1" class="outcast"/>
+			<crewMember amount="1" class="rock_outcast"/>
 		</event>
 	</choice>
 </event>
@@ -862,7 +920,7 @@
 <eventList name="ROCK_ATHIEST_GOOD">
 	<event>
 		<text>Your promises gain their attention and they agree to serve with you, for a while.</text>
-		<crewMember amount="1" class="outcast"/>
+		<crewMember amount="1" class="rock_outcast"/>
 	</event>
 	<event>
 		<text>They seem tempted by your offer, but decide they can't risk being lied to again. They close frequencies and jump away.</text>
@@ -940,7 +998,7 @@
 					<text>The mine struggles to even burrow into your ship. Its drill eventually runs out of power and drifts away, now rendered harmless.</text>
 				</event>
 			</choice>
-			<choice hidden="true" req="ENERGY_SHIELD">
+			<choice hidden="true" req="BLUELIST_ENERGY_SHIELD">
 				<text>(Energy Shield) Your shield will protect you.</text>
 				<event>
 					<text>The mine is incapable of getting past your Energy Shield. It explodes without even touching your ship's hull.</text>
@@ -1104,6 +1162,7 @@
 <eventList name="ITEMS_ROCKHOME">
 	<event load="ROCK_TEMPLE"/>
 	<event load="ROCK_PROPHECY"/>
+	<event load="ROCK_APOLOGY"/>
 	
 	<event load="ROCK_PUNS"/>
 	<event load="ROCK_CRYOBSESSION"/>
@@ -1192,7 +1251,7 @@
 	<event load="ENCOUNTER_LOSTSUN_ROCKHOME"/>
 	
 	<event load="ROCK_FIGHT_ASTEROID"/>
-	<event load="OUTCAST_ASTEROID"/>
+	<!--<event load="OUTCAST_ASTEROID"/>-->
 	<event load="OUTCAST_SUN"/>
 	
 	<event load="ROCK_STARSHIP_MINE"/>
@@ -1556,14 +1615,14 @@
 				<text>Bring one of the Rock prisoners.</text>
 				<event>
 					<text>The Rock bears the markings of an outcast, likely a fugitive from the Rock government who was recently captured. They don't speak much, but you can tell they're glad you've chosen to rescue them.</text>
-					<crewMember amount="1" class="outcast"/>
+					<crewMember amount="1" class="rock_outcast"/>
 				</event>
 			</choice>
 			<choice hidden="true">
 				<text>Bring one of the Human prisoners.</text>
 				<event>
 					<text>The human turns out to be a Rebel Engineer, captured by the Rockmen with the intent to be used as a hostage to bargain with the Rebels. Unfortunately for them, the Rebels had no interest in buying back the prisoner. They were locked into this camp. Despite being of Rebel origins, they are more than glad to come with you and leave behind this place.</text>
-					<crewMember amount="1" class="engineer"/>
+					<crewMember amount="1" class="human_engineer"/>
 				</event>
 			</choice>
 			<choice hidden="true">
@@ -1717,7 +1776,7 @@
 				</event>
 			</choice>
 			<choice hidden="true">
-				<text>Bide their warning and leave.</text>
+				<text>Abide their warning and leave.</text>
 				<event/>
 			</choice>
 		</event>
@@ -1755,7 +1814,7 @@
 		<text>Contact the Free Mantis.</text>
 		<event>
 			<text>"Scary stone man dead now? Wow... this sector very not friendly. I come with you now, and bring twin brother."</text>
-			<crewMember amount="2" class="freemantis"/>
+			<crewMember amount="2" class="mantis_free"/>
 		</event>
 	</choice>
 </event>
@@ -1811,7 +1870,7 @@
 							<text>Continue...</text>
 							<event>
 								<text>You're able to activate the stasis chamber once again and find the Crystal inside still alive. They're confused and wondering what year it is, so you give them a very simple explanation as to your current situation and hurry to leave the asteroid field.</text>
-								<crewMember amount="1" class="crystal"/>
+								<crewMember amount="1" class="crystal">Deja</crewMember>
 								<autoReward level="LOW">scrap_only</autoReward>
 							</event>
 						</choice>
@@ -1846,7 +1905,7 @@
 							<text>Continue...</text>
 							<event>
 								<text>You're able to activate the stasis chamber once again and find the Crystal inside still alive. They're confused and wondering what year it is, so you give them a very simple explanation as to your current situation and hurry to leave the asteroid field.</text>
-								<crewMember amount="1" class="crystal">Ruwen</crewMember>
+								<crewMember amount="1" class="crystal">Deja</crewMember>
 								<autoReward level="LOW">scrap_only</autoReward>
 							</event>
 						</choice>
@@ -1999,7 +2058,7 @@
 			<text>"I am convinced of your strength and pledge to assist your cause. Let us patch up your hull, and provide you with some supplies."</text>
 			<damage amount="-15"/>
 			<autoReward level="HIGH">standard</autoReward>
-			<crewMember amount="1" class="crusader" all_skills="1">Hadroch</crewMember>
+			<crewMember amount="1" class="rock_crusader" all_skills="1">Hadroch</crewMember>
 		</event>
 	</choice>
 </event>
@@ -2013,11 +2072,11 @@
 	<choice hidden="true">
 		<text>Offer to help.</text>
 		<event>
-			<text>The Rockmen are mildly confused that a Federation ship is offering to help, but don't complain. "We are representatives for Zulfiqar Industries. Yesterday, CMO Rig Bramston arranged a meeting on these premisces with a Zoltan envoy named Tintan to discuss means of distribution and marketing within the Ministry. However, we did not anticipate a Slug vessel to arrive shortly after and deploy a 'prank' on the meeting, mind controlling Rig to consume Tintan whole. As you can understand, we are now in quite the dilemma and need to operate immediately."</text>
+			<text>The Rockmen are mildly confused that a Federation ship is offering to help, but don't complain. "We are representatives for Zulfiqar Industries. Yesterday, CMO Rig Bramston arranged a meeting on these premises with a Zoltan envoy named Tintan to discuss means of distribution and marketing within the Ministry. However, we did not anticipate a Slug vessel to arrive shortly after and deploy a 'prank' on the meeting, mind controlling Rig to consume Tintan whole. As you can understand, we are now in quite the dilemma and need to operate immediately."</text>
 			<choice hidden="true">
 				<text>Suggest they simply put them out of their collective misery.</text>
 				<event>
-					<text>"Your advice is worthless. We cannot simply assasinate both a high ranking Zoltan official and our own commander. We ask that you leave, and we will wait for a more helpful ship to arrive."</text>
+					<text>"Your advice is worthless. We cannot simply assassinate both a high ranking Zoltan official and our own commander. We ask that you leave, and we will wait for a more helpful ship to arrive."</text>
 				</event>
 			</choice>
 			<choice hidden="true">
@@ -2032,7 +2091,7 @@
 					<text>Even under the effects of the mind control, it takes a lot of convincing to get the two to agree with forever existing among one another. Their life forever changed, now remarkably for the better, they thank you, and even ask to join your crew. The Rock station is confused as to what has happened, but Rig seems certain this is the right option in his stupor and the Rockmen agree to let him go.</text>
 					<autoReward level="MED">standard</autoReward>
 					<crewMember amount="1" all_skills="1" class="symbiote">Tintan and Rig</crewMember>
-					<hiddenAug>ACH_CREW_SYMBIOTE</hiddenAug>
+					<variable name="ach_crew_symbiote" op="set" val="1"/>
 				</event>
 			</choice>
 			<choice hidden="true" req="LIST_CREW_MANTIS">
@@ -2042,15 +2101,15 @@
 					<autoReward level="LOW">standard</autoReward>
 				</event>
 			</choice>
-			<choice hidden="true" req="tonysr">
-				<text>(Tony Sr.) Rig, is that you?</text>
+			<choice hidden="true" req="unique_tonysr">
+				<text>(Tony Sr.) "Rig, is that you?"</text>
 				<event>
-					<text>"My god... Tony? Is that you? How are you here?" You have no idea what's going on, but Tony explains. "7 years ago Tony's was nothing but a small chain local only to the Republic and quite small. I hoped to change that around by selling Zulfiqar goods. I met with Rig to discuss the terms when out of nowhere a Slug ship arrived and mind controlled me into sticking myself up Rig's... uh... asshole. The surgeons had no idea how to handle the situation. For 3 years we lived like that, stuck together. I was forced to eat Rig's waste to survive. Eventually we found a professional capable of separating us, but it was too late to save either of us from the permanent trauma."</text>
+					<text>"My god... Tony? Is that you? How are you here?" You have no idea what's going on, but Tony explains. "7 years ago, Tony's was nothing but a small chain local only to the Republic and quite small. I hoped to change that around by selling Zulfiqar goods. I met with Rig to discuss the terms, when out of nowhere a Slug ship arrived and mind controlled me into sticking myself up Rig's... uh... asshole. The surgeons had no idea how to handle the situation. For 3 years we lived like that, stuck together. I was forced to eat Rig's waste to survive. Eventually we found a professional capable of separating us, but it was too late to save either of us from the permanent trauma."</text>
 					<choice hidden="true">
 						<text>Uh...</text>
 						<event>
 							<text>The Rock station owners are completely baffled as to what is happening, but together you, Tony, Rig, and Tintan discuss the situation. It becomes clear Rig and Tintan won't be free of each other any time soon, but with Tony's help you might just be able to track down the Slugs responsible and get revenge.</text>
-							<hiddenAug>ACH_CREW_SYMBIOTE</hiddenAug>
+							<variable name="ach_crew_symbiote" op="set" val="1"/>
 							<crewMember all_skills="1" amount="1" class="symbiote">Tintan and Rig</crewMember>
 							<quest event="BUTT_BUDDIES"/>
 						</event>
@@ -2124,7 +2183,7 @@
 </event>
 <event name="ROCK_HOMEWORLDS_VICTORY">
 	<text>No ship can outmatch you, not even a mighty Elite Rock Cruiser. Now defeated, the remains of the cruiser go down into flames, destroying the vast garden leading up to the Palace's entrance. It's plenty to scrap, but you don't have much time with the Rock soldiers running out to meet you.</text>
-	<hiddenAug>ACH_BOSS_ROCKCRUISER</hiddenAug>
+	<variable name="ach_boss_rockcruiser" op="set" val="1"/>
 	<autoReward level="HIGH">item</autoReward>
 	<choice hidden="true">
 		<text>Continue...</text>
@@ -2181,7 +2240,7 @@
 		<text>Stay and help fight.</text>
 		<event>
 			<text>It's a violent fight, and there's heavy casualties on both sides, but with your trained military crew you help sway the tide in the civilians' favor. Once the battle is for certain over, the civilians thank you for your help. Most march on to take control of Stonewall's palace, but one Rock, a Crusader who turned on his masters, stays behind. "You have done us a considerable service, and I cannot let this go without thanks. Our kind may finally be free from this oppression, and this could very well be the start. I want to stay behind and keep fighting, but I also know a Federation ship passing through here with such a powerful loadout has a very important mission awaiting them, and they can use all of the manpower they can get."</text>
-			<crewMember amount="1" all_skills="2" class="crusader">Ihatsno</crewMember> <!--very poorly made easter egg for ih8ih8sn0w-->
+			<crewMember amount="1" all_skills="2" class="rock_crusader">Ihatsno</crewMember> <!--very poorly made easter egg for ih8ih8sn0w-->
 		</event>
 	</choice>
 	<choice hidden="true">
@@ -2217,7 +2276,6 @@
 	<event load="OUTCAST_STORIES"/>
 	<event load="OUTCAST_RECRUITMENT"/>
 	<event load="OUTCAST_PROPAGANDA"/>
-	<event load="OUTCAST_SLAVER"/>
 	
 	<event load="ASTEROID_EXPLORE"/>
 	<event load="ROCK_SLUG_ARGUMENT"/>
@@ -2250,7 +2308,7 @@
 					<choice hidden="true">
 						<text>I'm not familiar with who Tuco is.</text>
 						<event>
-							<text>"Ahhh, I see. Tuco is a legend, a hero, but most of all, not just one, but many people. It is a title inhereted through honor and circumstance. We Outcasts pay respects to the many Tucos of history, who have always stood in the name of justice, whether that enemy be the fallen Rock-Crystal empire of long ago, or the modern day Theocracy. Now that you know this, would you like to hear one of my stories?"</text>
+							<text>"Ahhh, I see. Tuco is a legend, a hero, but most of all, not just one, but many people. It is a title inherited through honor and circumstance. We Outcasts pay respects to the many Tucos of history, who have always stood in the name of justice, whether that enemy be the fallen Rock-Crystal empire of long ago, or the modern day Theocracy. Now that you know this, would you like to hear one of my stories?"</text>
 							<choice hidden="true">
 								<text>Tell the first tale of Tuco, the Vrachos IV Protests.</text>
 								<event load="OUTCAST_STORIES_PROTEST"/>
@@ -2403,16 +2461,16 @@
 			<choice>
 				<text>Hire a commando.</text>
 				<event>
-					<crewMember amount="1" class="commando"/>
+					<crewMember amount="1" class="rock_commando"/>
 					<item_modify>
 						<item type="scrap" min="-40" max="-50"/>
 					</item_modify>
 				</event>
 			</choice>
-			<choice req="outcast">
+			<choice req="rock_outcast">
 				<text>(Outcast Crew) Pay to use their training facilities to convert your outcast into a commando.</text>
 				<event>
-					<transformRace class="outcast">commando</transformRace>
+					<transformRace class="rock_outcast">rock_commando</transformRace>
 					<item_modify>
 						<item type="scrap" min="-20" max="-25"/>
 					</item_modify>
@@ -2438,7 +2496,7 @@
 			</choice>
 	    </event>
     </choice>
-	<choice hidden="true" req="commando">
+	<choice hidden="true" req="rock_commando">
         <text>(Commando Crew) Request supplies.</text>
         <event>
 			<text>Fortunately for you, it seems the recruitment center doubles as a supply depot for Lost Sun ships passing through. With your crew's aid you easily get through security and receive some supplies and repairs.</text>
@@ -2446,7 +2504,7 @@
 			<damage amount="-7"/>
         </event>
     </choice>
-	<choice hidden="true" req="ariande">
+	<choice hidden="true" req="unique_ariadne">
         <text>(Ariadne) Request supplies.</text>
         <event>
 			<text>Fortunately for you, it seems the recruitment center doubles as a supply depot for Lost Sun ships passing through. With Ariadne's aid you easily get through security and receive some supplies and repairs.</text>
@@ -2612,7 +2670,7 @@
 			<modifyPursuit amount="-2"/>
 		</event>
     </choice>
-    <choice hidden="true" req="hacking" lvl="1">
+    <choice hidden="true" req="hacking" lvl="1" max_lvl="2">
         <text>(Hacking) Hijack the broadcast.</text>
         <event>
 			<text>You take control over the station's signal and replace it with an announcement of your own ship's arrival - at a very different location. The Crystals take notice and aren't pleased, but hopefully by the time they fix it the Rebels will have caught the word.</text>
@@ -2685,62 +2743,6 @@
 	</event>
 </eventList>
 
-<event name="OUTCAST_SLAVER" unique="true">
-	<ship load="SHIP_SLAVER_ALL" hostile="false"/>
-	<text load="TEXT_OUTCAST_SLAVER"/>
-	 <choice>
-        <text>Buy one slave and free them to join your crew.</text>
-        <event load="OUTCAST_SLAVER_PURCHASE"/>
-    </choice>
-    <choice>
-        <text>Attack the slaver scum.</text>
-        <event>
-            <text>You prepare to attack the slaver.</text>
-            <ship hostile="true"/>
-            <choice hidden="true">
-                <text>Continue...</text>
-                <event load="COMBAT_CHECK"/>
-            </choice>
-        </event>
-    </choice>
-    <choice>
-        <text>Ignore the slaver and continue on your way.</text>
-        <event>
-            <text>You're not interested in their line of trade.</text>
-            <choice>
-                <text>Do something onboard the ship.</text>
-                <event load="STORAGE_CHECK"/>
-            </choice>
-            <choice>
-                <text>Do nothing.</text>
-                <event/>
-            </choice>
-        </event>
-    </choice>
-    <choice req="teleporter" lvl="2" hidden="true">
-        <text>(Teleporter) Use your teleporter to attempt to board the ship and release some of the slaves.</text>
-        <event load="FRIENDLY_SLAVER_TELEPORTER"/>
-    </choice>
-</event>
-<eventList name="OUTCAST_SLAVER_PURCHASE">
-	<event>
-		<item_modify>
-			<item type="scrap" min="-45" max="-25"/>
-		</item_modify>
-		<crewMember amount="1"/>
-	</event>
-	<event>
-		<item_modify>
-			<item type="scrap" min="-40" max="-25"/>
-		</item_modify>
-		<crewMember amount="1" class="outcast"/>
-	</event>
-</eventList>
-<textList name="TEXT_OUTCAST_SLAVER">
-	<text>"Pssssst... pssssst... hey, over here. I got somethin' that might interest you. And no, it's not drugs. Don't ask me, I don't got any. I'm in the slave business, drugs are just bad for your health." You aren't sure why he's so worked up over this, but true to his word he appears to be offering slaves for 'cheap'.</text>
-	<text>No surprise to find a Tiiikaka vessel out here, but you are shocked when they immediately approach and offer you a slave! These pirates are getting bolder every day. Or dumber. Probably dumber, to be honest.</text>
-</textList>
-
 <!--
 		NEUTRAL!!!
 	Events that have fights
@@ -2753,7 +2755,7 @@
 	<event load="OUTCAST_MAKESHIFT"/>
 	
 	<event load="SOLAR_WRECK"/>
-	<event load="FRIENDLY_SLAVER"/>
+	<event load="SLAVER_FRIENDLY"/>
 	<event load="ROCK_MANTIS_HUNTER"/>
 </eventList>
 
@@ -2762,7 +2764,7 @@
 	<choice hidden="true">
         <text>Intervene.</text>
         <event>
-            <text>You land nearby and walk towards them, when the slavers suddenly drop their weapons and their leader falls to his knees and pleads before you. "Ooooh great Federation Captain you have come to save us from these cruel brutes! They have killed my men and I had no chance but to slaughter their families! It was only self defense! I have restrained them here so they can kill no one else! Please oh please, will you help us arrest these evil men and women?" You look at the Outcasts at the other end of the town who merely shrug.</text>
+            <text>You land nearby and walk towards them, when the slavers suddenly drop their weapons and their leader falls to his knees and pleads before you. "Ooooh great Federation Captain you have come to save us from these cruel brutes! They have killed my men and I had no choice but to slaughter their families! It was only self defense! I have restrained them here so they can kill no one else! Please oh please, will you help us arrest these evil men and women?" You look at the Outcasts at the other end of the town who merely shrug.</text>
 			<choice hidden="true">
 				<text>Aid the Outcasts.</text>
 				<event>
@@ -2808,7 +2810,7 @@
 </event>
 <event name="OUTCAST_OUTCAST_WIN">
 	<text>"See, I knew you'd follow through in the name of justice! Hooray for the Federation! Three cheers!" The slaver looks around but sees no one is clapping and gives up. "Alright whatever. Take a slave or something I dunno."</text>
-	<crewMember amount="1" class="outcast"/>
+	<crewMember amount="1" class="rock_outcast"/>
 </event>
 
 <event name="OUTCAST_TEAMWORK" unique="true"> <!--technically hostile but it fits neutral better-->
@@ -2945,7 +2947,7 @@
 					<choice hidden="true">
 						<text>Yeah, I've heard. Why do they call you that anyways?</text>
 						<event>
-							<text>"Well, you see, it's illegal in the Theocracy to offend a Rock Priest by being ugly, and ugly I very much am! I was sentenced to death, but it takes more than a bullet to stop Chung Bungalug, the Rockman who Lived! They shot me not once, not twice, but five times! Eventually they gave up and simply dumped me out here! I've become a living legend amongst the Outcasts. And, if you can best me in a duel, then I'll even tell you my secret on how I survived the bullets!"</text>
+							<text>"Well, you see, it's illegal in the Theocracy to offend a Rock Priest by being ugly, and ugly I very much am! I was sentenced to death, but it takes more than a bullet to stop Chung Bungalung, the Rockman who Lived! They shot me not once, not twice, but five times! Eventually they gave up and simply dumped me out here! I've become a living legend amongst the Outcasts. And, if you can best me in a duel, then I'll even tell you my secret on how I survived the bullets!"</text>
 							<choice hidden="true">
 								<text>Challenge him to a duel.</text>
 								<event>
@@ -2997,8 +2999,10 @@
 				<text>Your... what?</text>
 				<event>
 					<text>"HAHAHAH! MY GIRTH! Those dumbasses couldn't penetrate my skull because it was protected by layers upon layers of fat. Now, for being such a good sport and being the first to ever best me in combat, have this!"</text>
+					<achievement silent="false">ACH_EVENT_CHUNG</achievement>
 					<autoReward level="HIGH">standard</autoReward>
 					<augment name="EX_LAB_ROCK_SKIN"/>
+					<surrender/>
 				</event>
 			</choice>
         </event>
@@ -3015,6 +3019,7 @@
 	<clearTriggeredEvent name="BUNGALUNG_LOSE"/>
 	<clearTriggeredEvent name="BUNGALUNG_WIN"/>
 	<ship hostile="false"/>
+	<surrender/>
 </event>
 
 <event name="OUTCAST_MAKESHIFT" unique="true">
@@ -3030,7 +3035,7 @@
 			</choice>
         </event>
     </choice>
-	<choice hidden="true" req="teleporter" lvl="1" max_lvl="2">
+	<choice hidden="true" req="teleporter" lvl="1" max_lvl="1">
         <text>(Teleporter) Beam in a crew member to try and liberate some slaves.</text>
         <event load="OUTCAST_MAKESHIFT_TELEPORT"/>
     </choice>
@@ -3086,8 +3091,6 @@
 	<event load="ENCOUNTER_OUTCAST"/>
 	<event load="ENCOUNTER_SSLG"/>
 	<event load="ENCOUNTER_ROCK"/>
-	
-	<event load="SLAVER_CHOICE"/>
 	
 	<event load="OUTCAST_SUN"/>
 	<event load="OUTCAST_ASTEROID_SLAVER"/>
@@ -3158,7 +3161,7 @@
 </eventList>
 
 <event name="DISTRESS_OUTCAST_TENSIONS" unique="true">
-	<text>One of the Outcasts' signature ramshackle villages have been constructed aboard an old mining platform, abandoned after the diminished density of nearby asteroid fields. Seems they have a request for you.</text>
+	<text>One of the Outcasts' signature ramshackle villages has been constructed aboard an old mining platform, abandoned after the diminished density of nearby asteroid fields. Seems they have a request for you.</text>
 	<distressBeacon/>
 	<choice hidden="true">
         <text>Listen.</text>
@@ -3167,7 +3170,7 @@
 			<choice>
 				<text>Accept.</text>
 				<event>
-					<text>You travel not too much further until you find a standoff between two vessels. Their captains are currently engaged in a furious shouting match, calling each other creative insults such as "Son of a faux stone" and "Sediment for brains." No kidding when they said it was heated.</text>
+					<text>You travel not too much further until you find a standoff between two vessels. Their captains are currently engaged in a furious shouting match, calling each other creative insults such as "Son of a faux stone" and "Sediment for brains". No kidding when they said it was heated.</text>
 					<autoReward level="MED">standard</autoReward>
 					<choice hidden="true">
 						<text>Try and talk it out.</text>
@@ -3177,7 +3180,7 @@
 						<text>Attack the SSLG ship.</text>
 						<event>
 							<text>You open fire on the Crystals, and like cowards the Lost Sun ship jumps away. Disappointing, but at least you'll be able to reap the rewards from this fight.</text>
-							<ship load="SHIP_OUTCAST_FIGHT" hostile="true"/>
+							<ship load="SHIP_SSLG_FIGHT" hostile="true"/>
 							<choice hidden="true">
 								<text>Continue...</text>
 								<event load="COMBAT_CHECK"/>
@@ -3228,7 +3231,7 @@
 			<text>Attack the SSLG ship.</text>
 			<event>
 				<text>You open fire on the Crystals, and like cowards the Lost Sun ship jumps away. Disappointing, but at least you'll be able to reap the rewards from this fight.</text>
-				<ship load="SHIP_OUTCAST_FIGHT" hostile="true"/>
+				<ship load="SHIP_SSLG_FIGHT" hostile="true"/>
 				<choice hidden="true">
 					<text>Continue...</text>
 					<event load="COMBAT_CHECK"/>
@@ -3268,7 +3271,7 @@
 			<choice hidden="true">
 				<text>Accept their request and inquire about coords.</text>
 				<event>
-					<text>The Rockman grunts and grants you access to the coords broadcasted by a tracking chip on the stolen cargo.</text>
+					<text>The Rockman grunts and grants you access to the coords broadcast by a tracking chip on the stolen cargo.</text>
 					<quest event="OUTCAST_LOSTCARGO_QUEST"/>
 				</event>
 			</choice>
@@ -3283,7 +3286,8 @@
 	<choice hidden="true">
         <text>Attack the convoy.</text>
         <event>
-            <text>It's not worth the effort coming between the Theocracy and the SSLG.</text>
+            <text>You've decided to engage the Rockmen.</text>
+			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event load="COMBAT_CHECK"/>
@@ -3306,7 +3310,7 @@
     </choice>
 </event>
 <event name="OUTCAST_LOSTCARGO_QUEST">
-	<text>As you approach the beacon, the tracker chip's signal lets out a beep of confirmation and goes silent. Seems you've arrived at the right place. You can see a couple SSLG ships docked with a small green station.</text>
+	<text>As you approach the beacon, the tracker chip's signal lets out a beep of confirmation and goes silent. This must be the right place; you can see a couple SSLG ships docked with a small green station.</text>
 	<ship load="SHIP_OUTCAST_LOSTCARGO_SSLG" hostile="false"/>
 	<choice hidden="true">
         <text>Attack the station for the cargo.</text>
@@ -3383,7 +3387,6 @@
 	<text>A strange, yellow colored Crystal vessel is flying nearby, clearly the origin of the distress call. Despite this, the ship is very well protected and in seemingly no duress.</text>
 	<distressBeacon/>
 	<preventQuest/>
-	<preventFleet/>
 	<ship load="SHIP_RUWEN" hostile="false"/>
 	<choice hidden="true">
         <text>Hail.</text>
@@ -3402,7 +3405,7 @@
 			<choice hidden="true">
 				<text>I'm exceptionally offended.</text>
 				<event>
-					<text>"Ohoho! A fine joke! I... I think that is a joke. You can never really be quite sure with you aliens. OH. Oh my, I am sorry. I understand foreigners do not like it when we address you as... erm... the 'a-word.' My apologies. I've been so rather clumsy, but old habits die hard!"</text>
+					<text>"Ohoho! A fine joke! I... I think that is a joke. You can never really be quite sure with you aliens. OH. Oh my, I am sorry. I understand foreigners do not like it when we address you as... erm... the 'a-word'. My apologies. I've been so rather clumsy, but old habits die hard!"</text>
 					<choice hidden="true">
 						<text>Yeah...</text>
 						<event load="RUWEN_ENCOUNTER_MISSION"/>
@@ -3427,7 +3430,7 @@
     </choice>
 </event>
 <event name="RUWEN_ENCOUNTER_MISSION">
-	<text>Ruwen glances at his forearm where an ornate digital watch sits upon his wrist and projects the time into the air. "Erm, yes, sorry. I've gotten carried away with my ramblings again. Where was I? Oh, yes. I have been sent here by Empress Dianesh on an important diplomatic mission to recover a sacred object! Very boring political stuff, you wouldn't care much about it. But what you might care about is a job offer! I am in need of an escort. As you can see, my ship is very poorly armed. I require a ship that is... hum, how to put it... ready to put the fecal matter back up the rectums of those who stand in its path? I think that is how you foreigners say it?"</text>
+	<text>Ruwen glances at his forearm where an ornate digital watch sits upon his wrist and projects the time into the air. "Erm, yes, sorry. Ycathine's crypt knows, I've gotten carried away with my ramblings again. Where was I? Oh, yes. I have been sent here by Empress Dianesh on an important diplomatic mission to recover a sacred object! Very boring political stuff, you wouldn't care much about it. But what you might care about is a job offer! I am in need of an escort. As you can see, my ship is very poorly armed. I require a ship that is... hum, how to put it... ready to put the fecal matter back up the rectums of those who stand in its path? I think that is how you foreigners say it?"</text>
 	<choice hidden="true">
 		<text>Uhm, sure.</text>
 		<event>
@@ -3453,14 +3456,14 @@
 	<destroyed load="RUWEN_SAVE"/>
 	<deadCrew load="RUWEN_SAVE"/>
 	<crew>
-		<crewMember type="crusader" prop="0.60"/>
-		<crewMember type="paladin_enemy" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.60"/>
+		<crewMember type="rock_paladin_enemy" prop="0.40"/>
 	</crew>
 </ship>
 <event name="RUWEN_DESTINATION">
 	<beaconType id="map_icon_ruwenquest" global="true">
 		<color r="248" g="196" b="55" a="1.0"/>
-		<unvisitedTooltip>Location of Ruwen's Destination.</unvisitedTooltip>
+		<unvisitedTooltip>Location of Ruwen's destination.</unvisitedTooltip>
 		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
 	</beaconType>
 	<preventQuest/>
@@ -3525,25 +3528,27 @@
     </choice>
 </event>
 <event name="RUWEN_SAVE">
-	<text>The Paladin vessel has been defeated. A substantial amount of wreckage remains behind to scrap.</text>
+	<text>The Paladin vessel has been defeated. A substantial amount of scrap remains behind to take.</text>
 	<autoReward level="HIGH">standard</autoReward>
+	<status type="limit" target="enemy" system="mind" amount="0"/>
 	<choice hidden="true">
 		<text>Hail Ruwen.</text>
 		<event>
-			<text>It seems Ruwen's substantial defenses protected him from any major damage during the fight. Still, he's quite shaken. "By the Empress, oh dear. Had it not been for you I doubt I would still be standing here. It would be against tradition for me to not extend an even greater reward as thanks to you and the Federation. Though my initial diplomatic mission here has failed, perhaps we have achieved new ground instead!"</text>
+			<text>It seems Ruwen's substantial defenses protected him from any major damage during the fight. Still, he's quite shaken. "By the Empress, oh dear. Had it not been for you, I doubt I would still be standing here. It would be against tradition for me to not extend an even greater reward as thanks to you and the Federation. Though my initial diplomatic mission here has failed, perhaps we have achieved new ground instead!"</text>
 			<autoReward level="MED">standard</autoReward>
-			<weapon name="LIST_WEAPONS_CRYSTAL_B_ENEMY"/>
+			<weapon name="GIFTLIST_CRYSTAL_ELITE"/>
 			<unlockCustomShip silent="false">PLAYER_SHIP_SSLG</unlockCustomShip>
 			<choice hidden="true">
 				<text>Continue...</text>
 				<event> <!--CHANGE THIS FOR ROCK UPDATE, SHOULD NOT GO DIRECTLY TO ORIGINS-->
-					<text>"Now, erm, it seems there's little point in keeping past pretenses so let me begin again. I needn't waste your time which much historical mumble, but in short the Empire has been so tollerant of the SSLG's more radical motions as the Empress sees great benefit in gaining access to Theocracy grounds. We seek access to the Waystone, the device originally used to seal our homeworlds away from the galaxy. At first, we hoped the Lost Suns might retrieve it for us in return for more dedicated support. But now it seems those plans have faltered. Now, I must go at it alone. It will be perilous, but I wonder if you might be up for the task?"</text>
+					<text>"Now, erm, it seems there's little point in keeping past pretenses so let me begin again. I needn't waste your time which much historical mumble, but in short the Empire has been so tolerant of the SSLG's more radical motions as the Empress sees great benefit in gaining access to Theocracy grounds. We seek access to the Waystone, the device originally used to seal our homeworlds away from the galaxy. At first, we hoped the Lost Suns might retrieve it for us in return for more dedicated support. But now it seems those plans have faltered. Now, I must go at it alone. It will be perilous, but I wonder if you might be up for the task?"</text>
+					<recallBoarders/>
 					<choice>
 						<text>Agree to escort Ruwen to the Crystalline Origins.</text>
 						<event>
 							<text>"Most wonderful! Then, with haste we must go! There isn't a second to lose!"</text>
-							<crewMember amount="1" all_skills="2" class="ruwen">Ruwen</crewMember>
-							<hiddenAug>ACH_CREW_RUWEN</hiddenAug>
+							<crewMember amount="1" all_skills="2" class="unique_ruwen">Ruwen</crewMember>
+							<variable name="ach_crew_ruwen" op="set" val="1"/>
 							<choice hidden="true">
 								<text>Continue...</text>
 								<event>
@@ -3557,7 +3562,6 @@
 						<text>Decline.</text>
 						<event>
 							<text>"Ah, no bother then. You've done quite enough. Now, hopefully for the final time, Idi Tukala! Best of luck with your journeys."</text>
-							<instantEscape/>
 						</event>
 					</choice>
 				</event>
@@ -3567,7 +3571,7 @@
 </event>
 
 <event name="TURBAN" unique="true">
-	<text>Before you is a grand spectacle, a giant sprawling city so tall it blocks out the sun. Massive bridges span artificial ravines with walls lined with store fronts. Half of the city seems to ressemble traditional Rock architecture, but many connected segments are only half complete are seemingly cobbled together out of scrap metal. This is Turban, one of the largest centers for trade, commerce, and culture in the modern galaxy, created quite ironically from the former site of a Chrysolic Church and Inquisition stronghold.</text>
+	<text>Before you is a grand spectacle, a giant sprawling city so tall it blocks out the sun. Massive bridges span artificial ravines with walls lined with store fronts. Half of the city seems to resemble traditional Rock architecture, but many connected segments are only half complete and are seemingly cobbled together out of scrap metal. This is Turban, one of the largest centers for trade, commerce, and culture in the modern galaxy, created quite ironically from the former site of a Chrysolic Church and Inquisition stronghold.</text>
 	<beaconType id="map_icon_turban" global="true">
 		<color r="255" g="130" b="85" a="1.0"/>
 		<unvisitedTooltip>Location of Turban.</unvisitedTooltip>
@@ -3617,7 +3621,7 @@
 	<choice hidden="true">
         <text>Stay and try to aid the other civilians.</text>
         <event>
-            <text>You came here to save the Federation, but what good is that if you abandon everyone else on your path in doing so? You help pull several civilians out from beneath collapsed debris, but after a missile strike almost costs you your life you realize if you stay on the surface any longer you'll die. Fortunately, a strangely dressed Rockman in worn priest clothing motions for you to follow him. "Come with me, quickly! We must get to the sewers, we'll be safe from the bombardement there."</text>
+            <text>You came here to save the Federation, but what good is that if you abandon everyone else on your path in doing so? You help pull several civilians out from beneath collapsed debris, but after a missile strike almost costs you your life, you realize if you stay on the surface any longer you'll die. Fortunately, a strangely dressed Rockman in worn priest clothing motions for you to follow him. "Come with me, quickly! We must get to the sewers, we'll be safe from the bombardement there."</text>
 			<choice hidden="true">
 				<text>Retreat into the sewers.</text>
 				<event>
@@ -3637,7 +3641,7 @@
 											<choice hidden="true">
 												<text>Continue...</text>
 												<event>
-													<text>"I was exiled from the Theocracy and abandoned by my wife, who chose instead to pledge herself to Toarde instead. With nowhere to go I traveled to the Badlands, where I found Turban. The outcasts who lived here hated me, but I was able to survive by proving my usefulness as a guide through the unexplored halls of the buildings. I had helped in the planning for the original construction of Turban before it was abandoned, you see. After the outcasts had established full control I was allowed to stay, but they began to call me the 'cursed one.' A homeless prophet who wandered the streets claimed that I would bring destruction to this place. And... well, here we are I suppose."</text>
+													<text>"I was exiled from the Theocracy and abandoned by my wife, who chose to pledge herself to Toarde instead. With nowhere to go I traveled to the Badlands, where I found Turban. The outcasts who lived here hated me, but I was able to survive by proving my usefulness as a guide through the unexplored halls of the buildings. I had helped in the planning for the original construction of Turban before it was abandoned, you see. After the outcasts had established full control I was allowed to stay, but they began to call me the 'cursed one'. A homeless prophet who wandered the streets claimed that I would bring destruction to this place. And... well, here we are I suppose."</text>
 													<choice hidden="true">
 														<text>Continue...</text>
 														<event>
@@ -3671,7 +3675,7 @@
 </ship>
 <event name="TURBAN_BOMBING_COALITION">
 	<text>There is a palpable feeling of unease in the room, but every attempt to break the tension goes nowhere. Through the silence you can hear the distant thuds and feel the violent shaking as the bombardment of the city above continues without relent. At this rate, nothing will be left. Hours pass, and you're certain the fleet is making progress on your location. Several times footsteps can be heard outside the room, but no one ever enters.</text>
-	<modifyPursuit amount="2"/>
+	<modifyPursuit amount="1"/>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>

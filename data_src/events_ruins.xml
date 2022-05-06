@@ -30,7 +30,92 @@
 	<text>The wreck of a dated and foreign vessel is being pelted by a small and thinly dispersed asteroid field. Though the asteroids have clearly caused some damage, the storm has mostly passed by, and won't be an issue for much longer. Maybe something of value is left behind?</text>
 </textList>
 
-<eventList name="RUINS_SALVAGE">
+<event name="RUINS_TRANSLATE">
+	<text load="TEXT_RUINS_TRANSLATE"/>
+	<achievement silent="false">ACH_OBEL_RUINS</achievement>
+	<choice hidden="true" req="LOC SECTOR_GHOST_UNIQUE" lvl="1" max_group="0" blue="false">
+		<text>Continue...</text>
+		<event load="RUINS_SALVAGE_GHOSTWASTE_LIST"/>
+	</choice>
+	<choice hidden="true" req="pilot" lvl="1" max_group="0" blue="false">
+		<text>Continue...</text>
+		<event load="RUINS_SALVAGE_LIST"/>
+	</choice>
+</event>
+<textList name="TEXT_RUINS_TRANSLATE">
+	<text>"The nebulas are our next goal. Supplies are thin, but there are tales that the phantoms hoard unspeakable treasures in the clouds. They are mighty, prolific in population size, and a very proud people. But not even the proudest of beings shan't yield to our weapons. Hear me, the Dynasty will have met no match as relentless as ourselves. The days of peace between our kinds are over. The war demands of it."</text>
+	<text>"We do not know where they came from. Queen Y told us that we were divine. That we were the masters of reality. Yet, the newcomers... they claim they come from beyond, through a tunnel. They call it the [word unknown]. The engineers made no mention of such a place. They speak such strange words. Dreams of gods? A living universe? I see a great threat in them, but the Royals say they will not hurt us. Some kind of pact, a gift of the outskirts in return for peace. I do not foresee good in this, but it is not my decision to be made."</text>
+	<text>"I encountered one of the metalloids the other day. In broken dialect it asked me if I could spare it ammunition. To arm himself against my crew, I thought? Nay, he merely scrambled it down his throat, gave a garbled thanks, and drifted away. I sometimes question the origins of them. I would study them, see what makes them tick, but I can never get close enough to capture one before they slip away. It is infuriating. I have never known such failure."</text>
+	<text>"The crystalline, the attendant whom I was given by the Royal appointment, tells me strange stories of life in his world. What a simple creature. Why do the Royals painstake us to endure with these mortal beings? They birth, they age, they die. We do not. Even the Commonwealth does not toil in such fashion as them. Perhaps they are glad to have been spared? The Phantoms knew no such luck. I hope to dispose of him soon. Perhaps the appointment will grant me a servant who speaks less next time."</text>
+	<text>"Nine months I have served aboard this vessel for Ambassador L. It is insufferable. Life in the slums of the Commonwealth, as grueling as it were, was more pleasant than this. I am treated like... like a crystalline! A mortal! The Royals have forgetten that we too are [word unknown]. I will not stand for this. Tomorrow, I will overthrow the Ambassador. I will leave this place! The Commonwealth will rise, it will prosper! I just know it!"</text>
+	<text>"They say the war is going well. I am not so certain. There are rumors, very concerning rumors, of a genocidal plot by the Royals. They talk so often of the Commonwealth, the gears of war. I am afraid they may be the next target. Yes, it will be the enemy. But... the enemy is us. If they are truly parallel to ourselves, should we not expect equal retaliation? I fear the worst."</text>
+	<text>"I heard a strange story the other day. They say that the crystalline emperor, Ycathine, had a feud with Queen Y. Stranger yet, he left the palace. Alive. Unheard of... no mortal has ever challenged the Royals and lived! What are we coming to? Have we lost our dignity, to allow ourselves to be spit upon by repugnant beings? In my outrage I slaughtered the last of my servants. It is a small demonstration, but it is a fitting one."</text>
+	<text>"War with the Dynasty was a mistake. Not that I fear we will lose. Nay. It is just that... they are so numerous. We were aware of this fact, but not of the severity of it. Our victory is certain, but when will it be? We are running out of time. The Royals continue to lie, they say the war is going spectacularly. But if we keep distracting ourselves with petty squabbles, soon even their tone may shift. They say the Reaper never yields. I did not believe it when I heard it. But, there is too much evidence now for it not to be true."</text>
+	<text>"While exploring the other day I came across a remarkable system. A beautiful world populated by strange creatures. With almost no landmasses, the oceans stretched so far I feel as though they could engulf all of [word unknown]. The primitive species here will not bother us. They may even provide great entertainment. I think I shall build a resort here. The Royals are always looking for new ways to spend their leisure."</text>
+	<text>"The Monolith looks well. It is a marvelous work of art, and to think inside sits [word unknown]! There are few habitable systems around it, but those that are, I wonder if some day they will birth life capable of appreciating the Monolith's beauty. Should the war go south, should there be left no other trace of us, at least the Monolith shall stand proud as an eternal grace of our perfection!"</text>
+</textList>
+<event name="RUINS_TRANSLATE_FULL">
+	<text load="TEXT_RUINS_TRANSLATE_FULL"/>
+	<achievement silent="false">ACH_OBEL_RUINS</achievement>
+	<choice hidden="true" req="LOC SECTOR_GHOST_UNIQUE" lvl="1" max_group="0" blue="false">
+		<text>Continue...</text>
+		<event load="RUINS_SALVAGE_GHOSTWASTE_LIST"/>
+	</choice>
+	<choice hidden="true" req="pilot" lvl="1" max_group="0" blue="false">
+		<text>Continue...</text>
+		<event load="RUINS_SALVAGE_LIST"/>
+	</choice>
+</event>
+<textList name="TEXT_RUINS_TRANSLATE_FULL">
+	<text>"The nebulas are our next goal. Supplies are thin, but there are tales that the phantoms hoard unspeakable treasures in the clouds. They are mighty, prolific in population size, and a very proud people. But not even the proudest of beings shan't yield to our weapons. Hear me, the Dynasty will have met no match as relentless as ourselves. The days of peace between our kinds are over. The war demands of it."</text>
+	<text>"We do not know where they came from. Queen Y told us that we were divine. That we were the masters of reality. Yet, the newcomers... they claim they come from beyond, through a tunnel. They call it the Nexus. The engineers made no mention of such a place. They speak such strange words. Dreams of gods? A living universe? I see a great threat in them, but the Royals say they will not hurt us. Some kind of pact, a gift of the outskirts in return for peace. I do not foresee good in this, but it is not my decision to be made."</text>
+	<text>"I encountered one of the metalloids the other day. In broken dialect it asked me if I could spare it ammunition. To arm himself against my crew, I thought? Nay, he merely scrambled it down his throat, gave a garbled thanks, and drifted away. I sometimes question the origins of them. I would study them, see what makes them tick, but I can never get close enough to capture one before they slip away. It is infuriating. I have never known such failure."</text>
+	<text>"The crystalline, the attendant whom I was given by the Royal appointment, tells me strange stories of life in his world. What a simple creature. Why do the Royals painstake us to endure with these mortal beings? They birth, they age, they die. We do not. Even the Commonwealth does not toil in such fashion as them. Perhaps they are glad to have been spared? The Phantoms knew no such luck. I hope to dispose of him soon. Perhaps the appointment will grant me a servant who speaks less next time."</text>
+	<text>"Nine months I have served aboard this vessel for Ambassador L. It is insufferable. Life in the slums of the Commonwealth, as grueling as it were, was more pleasant than this. I am treated like... like a crystalline! A mortal! The Royals have forgetten that we too are Obelisk. I will not stand for this. Tomorrow, I will overthrow the Ambassador. I will leave this place! The Commonwealth will rise, it will prosper! I just know it!"</text>
+	<text>"They say the war is going well. I am not so certain. There are rumors, very concerning rumors, of a genocidal plot by the Royals. They talk so often of the Commonwealth, the gears of war. I am afraid they may be the next target. Yes, it will be the enemy. But... the enemy is us. If they are truly parallel to ourselves, should we not expect equal retaliation? I fear the worst."</text>
+	<text>"I heard a strange story the other day. They say that the crystalline emperor, Ycathine, had a feud with Queen Y. Stranger yet, he left the palace. Alive. Unheard of... no mortal has ever challenged the Royals and lived! What are we coming to? Have we lost our dignity, to allow ourselves to be spit upon by repugnant beings? In my outrage I slaughtered the last of my servants. It is a small demonstration, but it is a fitting one."</text>
+	<text>"War with the Dynasty was a mistake. Not that I fear we will lose. Nay. It is just that... they are so numerous. We were aware of this fact, but not of the severity of it. Our victory is certain, but when will it be? We are running out of time. The Royals continue to lie, they say the war is going spectacularly. But if we keep distracting ourselves with petty squabbles, soon even their tone may shift. They say the Reaper never yields. I did not believe it when I heard it. But, there is too much evidence now for it not to be true."</text>
+	<text>"While exploring the other day I came across a remarkable system. A beautiful world populated by strange creatures. With almost no landmasses, the oceans stretched so far I feel as though they could engulf all of Liythkyk Yuk. The primitive species here will not bother us. They may even provide great entertainment. I think I shall build a resort here. The Royals are always looking for new ways to spend their leisure."</text>
+	<text>"The Monolith looks well. It is a marvelous work of art, and to think inside sits a Karthithe! There are few habitable systems around it, but those that are, I wonder if some day they will birth life capable of appreciating the Monolith's beauty. Should the war go south, should there be left no other trace of us, at least the Monolith shall stand proud as an eternal grace of our perfection!"</text>
+</textList>
+
+<event name="RUINS_SALVAGE">
+	<text>With the ship now out of the way you're free to inspect the ruins.</text>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event load="RUINS_SALVAGE_LIST"/>
+	</choice>
+	<choice hidden="true" req="unique_anointed" blue="true">
+		<text>(Anointed) Translate the words on the ruins.</text>
+		<event>
+			<text>"Will trying my best. Words of forefathers rusty in mind, but gist I am getting right. Stand back."</text>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="RUINS_TRANSLATE"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true" req="UPG_AETHER_TRANSLATOR" blue="true">
+		<text>(Runic Translator) Translate the words on the ruins.</text>
+		<event>
+			<text>Your translator does its best to decipher the lengthy runes scribbled across the walls of the gargantuan ruins. The output, fortunately, is legible, though you can't say for certain its accuracy.</text>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="RUINS_TRANSLATE"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true" req="LIST_CREW_ANCIENT" blue="true">
+		<text>(Obelisk Crew) Translate the words on the ruins.</text>
+		<event load="RUINS_TRANSLATE_FULL"/>
+	</choice>
+	<choice hidden="true" req="LIST_CREW_COGNITIVE_ALL" blue="true">
+		<text>(Cognitive Crew) Translate the words on the ruins.</text>
+		<event load="RUINS_TRANSLATE_FULL"/>
+	</choice>
+</event>
+
+<eventList name="RUINS_SALVAGE_LIST">
 	<event>
 		<text>Unfortunately, the ruins don't contain anything exciting. Any tech has been dismantled, so you content yourself with taking some resources that were left behind.</text>
 		<autoReward level="HIGH">stuff</autoReward>
@@ -77,7 +162,14 @@
 	</destroyed>
 </ship>
 <event name="RUINS_REBEL_AUTO">
+	<preventQuest/>
+	<beaconType id="map_icon_ruins" global="true" req="JUDGE_BOON_AETHER">
+		<color r="36" g="255" b="0" a="1.0"/>
+		<unvisitedTooltip>This is the location of a ruin.</unvisitedTooltip>
+		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+	</beaconType>
 	<text load="TEXT_RUINS"/>
+	<customFleet right="false" firing="false" autoDarkening="true">CUSTOM_FLEET_ANCIENT_WRECKAGE</customFleet>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -94,7 +186,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="engineer">
+			<choice hidden="true" req="LIST_CREW_ENGINEER">
 				<text>(Engineer Crew) Shut down the Auto.</text>
 				<event>
 					<text>Your Engineer struggles to shut down the Auto, but they do manage to change its primary directive to fleeing the beacon, leaving you alone with the ruins.</text>
@@ -123,7 +215,7 @@
 </event>
 
 <!--GHOST ENCOUNTER-->
-<ship name="SHIP_RUINS_DYNASTY" auto_blueprint="LIST_SHIPS_DYNASTY_FIGHT">
+<ship name="SHIP_RUINS_GHOST" auto_blueprint="LIST_SHIPS_DYNASTY_FIGHT">
 	<destroyed>
 		<text>The Ghosts have been defeated. You scrap their ship.</text>
 		<autoReward level="LOW">standard</autoReward>
@@ -142,7 +234,14 @@
 	</deadCrew>
 </ship>
 <event name="RUINS_GHOST">
+	<preventQuest/>
+	<beaconType id="map_icon_ruins" global="true" req="JUDGE_BOON_AETHER">
+		<color r="36" g="255" b="0" a="1.0"/>
+		<unvisitedTooltip>This is the location of a ruin.</unvisitedTooltip>
+		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+	</beaconType>
 	<text load="TEXT_RUINS"/>
+	<customFleet right="false" firing="false" autoDarkening="true">CUSTOM_FLEET_ANCIENT_WRECKAGE</customFleet>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -178,7 +277,7 @@
 </event>
 
 <!--CRYSTAL ENCOUNTER-->
-<ship name="SHIP_RUINS_CRYSTAL" auto_blueprint="LIST_SHIPS_CRYSTAL_A_FIGHT">
+<ship name="SHIP_RUINS_CRYSTAL" auto_blueprint="LIST_SHIPS_CRYSTAL_FIGHT">
 	<destroyed>
 		<text>The Crystals have been defeated. You scrap their ship.</text>
 		<autoReward level="LOW">standard</autoReward>
@@ -197,7 +296,14 @@
 	</deadCrew>
 </ship>
 <event name="RUINS_CRYSTAL">
+	<preventQuest/>
+	<beaconType id="map_icon_ruins" global="true" req="JUDGE_BOON_AETHER">
+		<color r="36" g="255" b="0" a="1.0"/>
+		<unvisitedTooltip>This is the location of a ruin.</unvisitedTooltip>
+		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+	</beaconType>
 	<text load="TEXT_RUINS"/>
+	<customFleet right="false" firing="false" autoDarkening="true">CUSTOM_FLEET_ANCIENT_WRECKAGE</customFleet>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -251,12 +357,19 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="snail" prop="0.7"/>
-		<crewMember type="ranger" prop="0.3"/>
+		<crewMember type="slug_clansman" prop="0.7"/>
+		<crewMember type="slug_ranger" prop="0.3"/>
 	</crew>
 </ship>
 <event name="RUINS_CLANSMAN">
+	<preventQuest/>
+	<beaconType id="map_icon_ruins" global="true" req="JUDGE_BOON_AETHER">
+		<color r="36" g="255" b="0" a="1.0"/>
+		<unvisitedTooltip>This is the location of a ruin.</unvisitedTooltip>
+		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+	</beaconType>
 	<text load="TEXT_RUINS"/>
+	<customFleet right="false" firing="false" autoDarkening="true">CUSTOM_FLEET_ANCIENT_WRECKAGE</customFleet>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -293,7 +406,14 @@
 
 <!--TRAP-->
 <event name="RUINS_TRAP" unique="true">
+	<preventQuest/>
+	<beaconType id="map_icon_ruins" global="true" req="JUDGE_BOON_AETHER">
+		<color r="36" g="255" b="0" a="1.0"/>
+		<unvisitedTooltip>This is the location of a ruin.</unvisitedTooltip>
+		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+	</beaconType>
 	<text>In front of your ship is a massive cubical cruiser, its exterior covered in small green lights. Though the ship is completely unmoving, the dim glow from the lights suggests there must still be some form of power aboard.</text>
+	<customFleet right="false" firing="false" autoDarkening="true">CUSTOM_FLEET_ANCIENT_WRECKAGE</customFleet>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -306,7 +426,7 @@
 						<text>(Anaerobic Crew) Send in the anaerobic crew.</text>
 						<event load="RUINS_TRAP_CONTINUE"/>
 					</choice>
-					<choice hidden="true" req="EX_O2_MASKS">
+					<choice hidden="true" req="O2_MASKS">
 						<text>(Emergency Respirators) Use the respirators.</text>
 						<event load="RUINS_TRAP_CONTINUE"/>
 					</choice>
@@ -399,7 +519,14 @@
 
 <!--STAR-->
 <event name="RUINS_STAR" unique="true">
+	<preventQuest/>
+	<beaconType id="map_icon_ruins" global="true" req="JUDGE_BOON_AETHER">
+		<color r="36" g="255" b="0" a="1.0"/>
+		<unvisitedTooltip>This is the location of a ruin.</unvisitedTooltip>
+		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+	</beaconType>
 	<text>A massive cubical structure, possibly a station, is caught in the gravitational pull of the nearby star, and is slowly pulling closer. Though the inevitable destruction of the station cannot be avoided, there might be enough time to salvage whatever might be aboard.</text>
+	<customFleet right="false" firing="false" autoDarkening="true">CUSTOM_FLEET_ANCIENT_WRECKAGE</customFleet>
 	<environment type="sun"/>
 	<choice hidden="true">
 		<text>Move in closer.</text>
@@ -410,7 +537,7 @@
 				<event load="RUINS_STAR_PROCEED"/>
 			</choice>
 			<choice hidden="true" req="shields" lvl="6">
-				<text>(Adv Shields) Our shields will protect us.</text>
+				<text>(Adv. Shields) Our shields will protect us.</text>
 				<event load="RUINS_STAR_PROCEED_SHIELDS"/>
 			</choice>
 			<choice hidden="true">
@@ -619,7 +746,14 @@
 	</deadCrew>
 </ship>
 <event name="RUINS_DYNASTY_GHOSTWASTE">
+	<preventQuest/>
+	<beaconType id="map_icon_ruins" global="true" req="JUDGE_BOON_AETHER">
+		<color r="36" g="255" b="0" a="1.0"/>
+		<unvisitedTooltip>This is the location of a ruin.</unvisitedTooltip>
+		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+	</beaconType>
 	<text load="TEXT_RUINS"/>
+	<customFleet right="false" firing="false" autoDarkening="true">CUSTOM_FLEET_ANCIENT_WRECKAGE</customFleet>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -673,7 +807,14 @@
 	</deadCrew>
 </ship>
 <event name="RUINS_VAGABOND_GHOSTWASTE">
+	<preventQuest/>
+	<beaconType id="map_icon_ruins" global="true" req="JUDGE_BOON_AETHER">
+		<color r="36" g="255" b="0" a="1.0"/>
+		<unvisitedTooltip>This is the location of a ruin.</unvisitedTooltip>
+		<visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+	</beaconType>
 	<text load="TEXT_RUINS"/>
+	<customFleet right="false" firing="false" autoDarkening="true">CUSTOM_FLEET_ANCIENT_WRECKAGE</customFleet>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -708,7 +849,43 @@
 	</choice>
 </event>
 
-<eventList name="RUINS_SALVAGE_GHOSTWASTE">
+<event name="RUINS_SALVAGE_GHOSTWASTE">
+	<text>With the ship now out of the way you're free to inspect the ruins.</text>
+	<choice hidden="true">
+		<text>Continue...</text>
+		<event load="RUINS_SALVAGE_GHOSTWASTE_LIST"/>
+	</choice>
+	<choice hidden="true" req="anointed">
+		<text>(Anointed) Attempt to translate the words on the ruins.</text>
+		<event>
+			<text>"Will trying my best. Words of forefathers rusty in mind, but gist I am getting right. Stand back."</text>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="RUINS_TRANSLATE"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true" req="UPG_AETHER_TRANSLATOR">
+		<text>(Runic Translator) Translate the words on the ruins.</text>
+		<event>
+			<text>Your translator does its best to decipher the lengthy runes scribbled across the walls of the gargantuan ruins. The output, fortunately, is legible, though you can't say for certain its accuracy.</text>
+			<choice hidden="true">
+				<text>Continue...</text>
+				<event load="RUINS_TRANSLATE"/>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true" req="LIST_CREW_ANCIENT">
+		<text>(Obelisk Crew) Translate the words on the ruins.</text>
+		<event load="RUINS_TRANSLATE_FULL"/>
+	</choice>
+	<choice hidden="true" req="LIST_CREW_COGNITIVE_ALL">
+		<text>(Cognitive Crew) Translate the words on the ruins.</text>
+		<event load="RUINS_TRANSLATE_FULL"/>
+	</choice>
+</event>
+
+<eventList name="RUINS_SALVAGE_GHOSTWASTE_LIST">
 	<event>
 		<text>Unfortunately, the ruins don't contain anything exciting. Any tech has been dismantled, so you content yourself with taking some resources that were left behind.</text>
 		<autoReward level="HIGH">stuff</autoReward>
@@ -727,7 +904,7 @@
 	</event>
 	<event>
 		<text>You pry open the ruins only to find an ancient Phantom Alpha, who claims to come all the way back from an ancient war. Having been trapped in the ruin for centuries, they're a bit mentally questionable but more than eager to work for you.</text>
-		<crewMember amount="1" class="phantomalpha"/>
+		<crewMember amount="1" class="phantom_alpha"/>
 	</event>
 	<event>
 		<text>A still functional Bomb launcher, similar to modern ones yet very old, is laying in a central chamber in the structure. You bring it back to the ship.</text>
@@ -768,7 +945,14 @@
 </ship>
 
 <event name="RUINS_AUGMENTED">
+	<preventQuest/>
+	<beaconType id="map_icon_ruins" global="false">
+		<color r="0" g="205" b="5" a="1.0"/>
+		<undiscoveredTooltip>An unvisited location.</undiscoveredTooltip>
+		<unvisitedTooltip>This beacon contains ancient ruins.</unvisitedTooltip>
+	</beaconType>
 	<text load="TEXT_RUINS"/>
+	<customFleet right="false" firing="false" autoDarkening="true">CUSTOM_FLEET_ANCIENT_WRECKAGE</customFleet>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event>
@@ -806,11 +990,11 @@
 	<event>
 		<text>While salvaging the ruins, you find a strange triangular drone. With some tinkering, you even get it to function for a short while. You run some scans and construct a schematic to bring back to the ship.</text>
 		<drone name="MENDER"/>
-		<choice hidden="true" req="MARKER_AUGMENTED_RUINS" lvl="0" max_lvl="2" max_group="0" blue="false">
+		<choice hidden="true" req="loc_augmented_ruins" lvl="0" max_lvl="2" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="RUINS_SALVAGE_STANDARD"/>
 		</choice>
-		<choice hidden="true" req="MARKER_AUGMENTED_RUINS" lvl="2" max_group="0" blue="false">
+		<choice hidden="true" req="loc_augmented_ruins" lvl="2" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="RUINS_SALVAGE_AUGMENTED_UNLOCK"/>
 		</choice>
@@ -818,11 +1002,11 @@
 	<event>
 		<text>While exploring the ruins, you nearly mistake a drone for a statue before you recognize a dim glow from its lights. A cylindrical design with 2 rings, the drone appears to be designed to interface with a system to manage it. You construct a schematic using some scans and bring it back to the ship.</text>
 		<drone name="DIRECTOR"/>
-		<choice hidden="true" req="MARKER_AUGMENTED_RUINS" lvl="0" max_lvl="2" max_group="0" blue="false">
+		<choice hidden="true" req="loc_augmented_ruins" lvl="0" max_lvl="2" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="RUINS_SALVAGE_STANDARD"/>
 		</choice>
-		<choice hidden="true" req="MARKER_AUGMENTED_RUINS" lvl="2" max_group="0" blue="false">
+		<choice hidden="true" req="loc_augmented_ruins" lvl="2" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="RUINS_SALVAGE_AUGMENTED_UNLOCK"/>
 		</choice>
@@ -830,11 +1014,11 @@
 	<event>
 		<text>You're amazed to find an armory inside the structure, but unfortunately most of the weapons inside are completely dysfunctional. You do however find a Laser of some sort that you bring back to the ship.</text>
 		<weapon name="ANCIENT_LASER"/>
-		<choice hidden="true" req="MARKER_AUGMENTED_RUINS" lvl="0" max_lvl="2" max_group="0" blue="false">
+		<choice hidden="true" req="loc_augmented_ruins" lvl="0" max_lvl="2" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="RUINS_SALVAGE_STANDARD"/>
 		</choice>
-		<choice hidden="true" req="MARKER_AUGMENTED_RUINS" lvl="2" max_group="0" blue="false">
+		<choice hidden="true" req="loc_augmented_ruins" lvl="2" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="RUINS_SALVAGE_AUGMENTED_UNLOCK"/>
 		</choice>
@@ -842,11 +1026,11 @@
 	<event>
 		<text>A still functional Bomb launcher, similar to modern ones yet very old, is laying in a central chamber in the structure. You bring it back to the ship.</text>
 		<weapon name="ANCIENT_BOMB"/>
-		<choice hidden="true" req="MARKER_AUGMENTED_RUINS" lvl="0" max_lvl="2" max_group="0" blue="false">
+		<choice hidden="true" req="loc_augmented_ruins" lvl="0" max_lvl="2" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="RUINS_SALVAGE_STANDARD"/>
 		</choice>
-		<choice hidden="true" req="MARKER_AUGMENTED_RUINS" lvl="2" max_group="0" blue="false">
+		<choice hidden="true" req="loc_augmented_ruins" lvl="2" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="RUINS_SALVAGE_AUGMENTED_UNLOCK"/>
 		</choice>
@@ -855,6 +1039,7 @@
 <event name="RUINS_SALVAGE_STANDARD">
 	<text>You salvage a little extra from the ruin and continue on.</text>
 	<autoReward level="LOW">standard</autoReward>
+	<variable name="loc_augmented_ruins" op="add" val="1"/>
 </event>
 <event name="RUINS_SALVAGE_AUGMENTED_UNLOCK">
 	<text>It appears you've salvaged all of the ruins in this sector! This last one must have been quite the find too, because you notice a massive wreck of an Augmented cruiser in the distance. On-board, you even find blueprints for the ship!</text>

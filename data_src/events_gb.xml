@@ -76,9 +76,9 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="goulalpha" prop="0.33"/>
-		<crewMember type="marealpha" prop="0.33"/>
-		<crewMember type="wraithalpha" prop="0.33"/>
+		<crewMember type="phantom_goul_alpha" prop="0.33"/>
+		<crewMember type="phantom_mare_alpha" prop="0.33"/>
+		<crewMember type="phantom_wraith_alpha" prop="0.33"/>
 	</crew>
 </ship>
 <event name="PROTON_HAUNT_ELEANOR">
@@ -109,9 +109,9 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="goulalpha" prop="0.33"/>
-		<crewMember type="marealpha" prop="0.33"/>
-		<crewMember type="wraithalpha" prop="0.33"/>
+		<crewMember type="phantom_goul_alpha" prop="0.33"/>
+		<crewMember type="phantom_mare_alpha" prop="0.33"/>
+		<crewMember type="phantom_wraith_alpha" prop="0.33"/>
 	</crew>
 </ship>
 <event name="PROTON_HAUNT_PSYCH">
@@ -142,9 +142,9 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="goulalpha" prop="0.33"/>
-		<crewMember type="marealpha" prop="0.33"/>
-		<crewMember type="wraithalpha" prop="0.33"/>
+		<crewMember type="phantom_goul_alpha" prop="0.33"/>
+		<crewMember type="phantom_mare_alpha" prop="0.33"/>
+		<crewMember type="phantom_wraith_alpha" prop="0.33"/>
 	</crew>
 </ship>
 <event name="PROTON_HAUNT_SCOLERI">
@@ -175,9 +175,9 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="goulalpha" prop="0.33"/>
-		<crewMember type="marealpha" prop="0.33"/>
-		<crewMember type="wraithalpha" prop="0.33"/>
+		<crewMember type="phantom_goul_alpha" prop="0.33"/>
+		<crewMember type="phantom_mare_alpha" prop="0.33"/>
+		<crewMember type="phantom_wraith_alpha" prop="0.33"/>
 	</crew>
 </ship>
 <event name="PROTON_HAUNT_SLIMER">
@@ -208,9 +208,9 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="goulalpha" prop="0.33"/>
-		<crewMember type="marealpha" prop="0.33"/>
-		<crewMember type="wraithalpha" prop="0.33"/>
+		<crewMember type="phantom_goul_alpha" prop="0.33"/>
+		<crewMember type="phantom_mare_alpha" prop="0.33"/>
+		<crewMember type="phantom_wraith_alpha" prop="0.33"/>
 	</crew>
 </ship>
 <event name="PROTON_HAUNT_VINZ">
@@ -241,9 +241,9 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="goulalpha" prop="0.33"/>
-		<crewMember type="marealpha" prop="0.33"/>
-		<crewMember type="wraithalpha" prop="0.33"/>
+		<crewMember type="phantom_goul_alpha" prop="0.33"/>
+		<crewMember type="phantom_mare_alpha" prop="0.33"/>
+		<crewMember type="phantom_wraith_alpha" prop="0.33"/>
 	</crew>
 </ship>
 <event name="PROTON_HAUNT_ZUUL">

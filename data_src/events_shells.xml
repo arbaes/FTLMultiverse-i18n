@@ -27,7 +27,6 @@
 <!--STANDARD-->
 <eventList name="GENERIC_SHELL_CLEARING">
 	<event load="ENCOUNTER_REBEL"/>
-	<event load="ENCOUNTER_PIRATE"/>
 	<event load="ENCOUNTER_AUTO"/>
 	<event load="ROGUE_REBEL"/>
 	<event load="PIRATE_BRIBER"/>
@@ -385,11 +384,11 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="shellmedic">
+			<choice hidden="true" req="shell_scientist">
 				<text>(Shell Crew) Give the Suzerain your Shell Scientist.</text>
 				<event>
 					<text>You pass over your Shell to the Suzerain.</text>
-					<removeCrew class="shellmedic">
+					<removeCrew class="shell_scientist">
 						<clone>false</clone>
 						<text>Though your Shell will likely be dead soon, it's probably best you don't clone them after this.</text>
 					</removeCrew>
@@ -403,11 +402,11 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="shellrepair">
+			<choice hidden="true" req="shell_mechanic">
 				<text>(Shell Crew) Give the Suzerain your Shell Mechanic.</text>
 				<event>
 					<text>You pass over your Shell to the Suzerain.</text>
-					<removeCrew class="shellrepair">
+					<removeCrew class="shell_mechanic">
 						<clone>false</clone>
 						<text>Though your Shell will likely be dead soon, it's probably best you don't clone them after this.</text>
 					</removeCrew>
@@ -421,11 +420,11 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="shellguardian">
+			<choice hidden="true" req="shell_guardian">
 				<text>(Shell Crew) Give the Suzerain your Shell Guardian.</text>
 				<event>
 					<text>You pass over your Shell to the Suzerain.</text>
-					<removeCrew class="shellguardian">
+					<removeCrew class="shell_guardian">
 						<clone>false</clone>
 						<text>Though your Shell will likely be dead soon, it's probably best you don't clone them after this.</text>
 					</removeCrew>
@@ -439,7 +438,7 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="toxic">
+			<choice hidden="true" req="shell_radiant">
 				<text>(Radiant Crew) Give the Suzerain your Radiant crew and let them be poisoned.</text>
 				<event>
 					<text>You send over your Radiant to the Suzerain. Not realizing it's a trap, they offer you a large reward.</text>
@@ -553,7 +552,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="snail">
+	<choice hidden="true" req="LIST_CREW_CLAN">
 		<text>(Clansman) Request supplies.</text>
 		<event>
 			<text>The lodge, seeing one of their members aboard your ship, agrees and transfers over some supplies.</text>
@@ -603,7 +602,7 @@
 	<event>
 		<text>You hope the Slugs won't notice, but unfortunately it seems their telepathic abilities have detected the Shell hiding aboard your ship. Seeing you as their next target, they attack almost immediately! You rush to defensive positions, followed by your new Shell friend.</text>
 		<crewMember amount="1" class="shell"/>
-		<boarders min="1" max="2" class="snail"/>
+		<boarders min="1" max="2" class="slug_clansman"/>
 		<ship hostile="true"/>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -763,7 +762,7 @@
                                 <text>Pull the crew back, now!</text>
                                 <event>
                                     <text>Your crew, followed by the psychotic engineer, hurry back to the ship. As they do, a large Auto-ship detaches from the station and chases you!</text>
-                                    <crewMember amount="1" class="engineer">Ratman</crewMember>
+                                    <crewMember amount="1" class="human_engineer">Ratman</crewMember>
                                     <ship load="SHIP_AUTO_LARGE" hostile="true"/>
                                     <choice hidden="true">
                                         <text>Continue...</text>
@@ -864,7 +863,7 @@
 			<crewMember amount="1" class="shell"/>
 		</event>
 	</choice>
-	<choice hidden="true" req="orchid">
+	<choice hidden="true" req="LIST_CREW_ORCHID">
 		<text>(Orchid Crew) Send over the Orchid to refill their oxygen.</text>
 		<event>
 			<text>You dock with the Shell ship and slowly refill their oxygen. It appears your Orchid is just enough to keep their levels stable long enough for the last survivor to escape. Without any crew or ship left, they offer to join yours.</text>
@@ -992,9 +991,9 @@
 </event>
 <event name="SHELLHOME_LAB_RESCUE_LAB">
 	<text>"You saved us! Thhhat was a Federation ship thhhough... You would betray your own people to save us? I'm not sure how to thhhink about thhhat. But I don't have time to anyways. Please, I hope you will allow me to come with you now that I cannot stay here. I will of course still free these men and send them back to their ship first."</text>
-	<hiddenAug>ACH_BOSS_STEALTH</hiddenAug>
+	<variable name="ach_boss_stealth" op="set" val="1"/>
 	<unlockCustomShip silent="false">PLAYER_SHIP_SHELL</unlockCustomShip>
-	<crewMember amount="1" class="toxic">Bamalf</crewMember>
+	<crewMember amount="1" class="shell_radiant">Bamalf</crewMember>
 	<choice hidden="true">
 		<text>Continue...</text>
 		<event load="MORALITY_REMOVE_SHELL"/>
@@ -1017,7 +1016,7 @@
 					<text>Continue...</text>
 					<event>
 						<text>You take a quick look around the station before you leave and find a strange device in one of the laboratories. It appears to be made to emit the neurotoxin that usually protects Shell ships. The one installed in the lab must have broken during the fight, judging from the fact you're able to be here now, but this one is fully functional. You bring it back to the ship.</text>
-						<hiddenAug>ACH_BOSS_DONUT</hiddenAug>
+						<variable name="ach_boss_donut" op="set" val="1"/>
 						<augment name="TOXIC_GAS"/>
 					</event>
 				</choice>
@@ -1025,7 +1024,7 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="toxic" prop="0.50"/>
+		<crewMember type="shell_radiant" prop="0.50"/>
 		<crewMember type="shell" prop="0.50"/>
 	</crew>
 </ship>
@@ -1261,8 +1260,9 @@
 <eventList name="NEBULA_HOSTILE_SHELLHOME">
 	<event load="NEBULA_ENCOUNTER_SHELL_ELITE"/>
 	
-	<event load="NEBULA_ENCOUNTER_SHELL"/>
-	<event load="NEBULA_ENCOUNTER_SHELL"/>
+	<event load="NEBULA_ENCOUNTER_SHELL_CIVILIAN"/>
+	<event load="NEBULA_ENCOUNTER_SHELL_MILITARY"/>
+	<event load="NEBULA_ENCOUNTER_SHELL_MANAGEMENT"/>
 	<event load="ENCOUNTER_CLAN_SHELL"/>
 	
 	<event load="NEBULA_SHELL_SMUGGLER"/>
@@ -1326,11 +1326,11 @@
 				<choice hidden="true">
 					<text>Don't the Rebels hate aliens?</text>
 					<event>
-						<text>"Please don't use thhhe term 'alien.' To us, YOU are thhhe aliens. But... yes, thhhey aren't thhhe kindest folk. But rich as hell! Thhhhey aren't above a basic buyout, easier thhhan raiding an entire sector. Unfortunately... now you're here. And our payment never showed up..."</text>
+						<text>"Please don't use thhhe term 'alien'. To us, YOU are thhhe aliens. But... yes, thhhey aren't thhhe kindest folk. But rich as hell! Thhhhey aren't above a basic buyout, easier thhhan raiding an entire sector. Unfortunately... now you're here. And our payment never showed up..."</text>
 						<choice hidden="true">
 							<text>Demand they give you the cargo instead. If the Rebels have use for it, so does the Federation.</text>
 							<event>
-								<text>"What?! But what about our money!" You flip a switch to power back on your weapons, and the Shell gulps in anticipation. "Ah... right. Alright fine. I'm so fired for thhhis... Well, I was going to be fired for thhhis anyways. But you get thhhe point. It's like being 'double fired.'"</text>
+								<text>"What?! But what about our money!" You flip a switch to power back on your weapons, and the Shell gulps in anticipation. "Ah... right. Alright fine. I'm so fired for thhhis... Well, I was going to be fired for thhhis anyways. But you get thhhe point. It's like being 'double fired'."</text>
 								<choice hidden="true">
 									<text>Continue...</text>
 									<event load="MORPH_SITE_DELTA_UNLOCK"/>
@@ -1381,12 +1381,13 @@
 <event name="MORPH_SITE_DELTA_FAIL">
 	<text>Looks like you ended up killing the Shells after all. Now nothing remains but some salvage.</text>
 	<autoReward level="HIGH">standard</autoReward>
-	<hiddenAug>ACH_BOSS_DELTA</hiddenAug>
+	<variable name="ach_boss_delta" op="set" val="1"/>
 </event>
 <event name="MORPH_SITE_DELTA_UNLOCK">
 	<text>True to what the Shell said, if the Rebellion has use for this, so will the Federation. For the blueprint, you forward them to the Federation base. The weapon you take with you, and the Morph DNA you lock away for safe keeping. The Rebels don't need to get their hands on this...</text>
+	<unlockCustomShip silent="false">PLAYER_SHIP_SCIENTIST</unlockCustomShip>
 	<weapon name="BEAM_SHELL"/>
-	<hiddenAug>ACH_BOSS_DELTA</hiddenAug>
+	<variable name="ach_boss_delta" op="set" val="1"/>
 </event>
 
 <ship name="SHIP_OOJ_BEGIN" auto_blueprint="LIST_SHIPS_REBEL_FIGHT">
@@ -1467,8 +1468,8 @@
 									<text>Agree to take him with you.</text>
 									<event>
 										<text>You expect a Morph to beam aboard, but instead the Rebel ship changes shape, converging into a massive grey blob. "Itappears I AM too large. To fit. I wishforyou TO carRY this segmentof My body. FEEd it so IT may grow. THank YOU, FedERATION."</text>
-										<hiddenAug>ACH_CREW_OOJ</hiddenAug>
-										<crewMember amount="1" class="bloblarge">OOJ MAJOO</crewMember>
+										<variable name="ach_crew_ooj" op="set" val="1"/>
+										<crewMember amount="1" class="unique_ooj">OOJ MAJOO</crewMember>
 										<choice hidden="true">
 											<text>Continue...</text>
 											<event load="MORPH_3_UNLOCK"/>
@@ -1506,7 +1507,7 @@
 	<destroyed load="DESTROYED_REBEL"/>
 	<deadCrew load="DEAD_CREW_REBEL"/>
 	<crew>
-		<crewMember type="soldier" prop="1"/>
+		<crewMember type="human_soldier" prop="1"/>
 	</crew>
 </ship>
 <event name="MORPH_3_UNLOCK">
@@ -1527,7 +1528,7 @@
 		</event>
 	</choice>
 	<choice hidden="true" req="LIST_CREW_MORPH">	
-		<text>(Morph Crew) Tip tip tookaloo...</text>
+		<text>(Morph Crew) "Tip tip tookaloo..."</text>
 		<event>
 			<text>Your Morph crew seems to have something to say, but you can't understand them. As you listen to them spouting nonsense, you accidentally bump hulls with the MFK Ace. The ship suddenly turns hostile and attacks!</text>
 			<ship hostile="true"/>
@@ -1613,7 +1614,7 @@
 	<choice hidden="true">	
 		<text>Could ask the same about why the Rebels are here.</text>
 		<event>
-			<text>"Yes, I was wondering thhhe same thhhhing. Thhhey've taken an interest in our... my latest mistakes. Thhhe Morphs, you see, were created to work for thhhe Shells. Do thhhe hard, manual labor. Damn Nerva, thhhe Managment District's director, kept refusing to approve funding for thhhe project! Probably thhhought thhe Morphs were going to make them useless, much like thhhhe Radiants and Military Districts..."</text>
+			<text>"Yes, I was wondering thhhe same thhhhing. Thhhey've taken an interest in our... my latest mistakes. Thhhe Morphs, you see, were created to work for thhhe Shells. Do thhhe hard, manual labor. Damn Nerva, thhhe Management District's director, kept refusing to approve funding for thhhe project! Probably thhhought thhe Morphs were going to make them useless, much like thhhhe Radiants and Military Districts..."</text>
 			<choice hidden="true">	
 				<text>Continue...</text>
 				<event>
@@ -1630,18 +1631,18 @@
 										<text>No.</text>
 										<event>
 											<text>"Very good thhhen. I request thhhat you transport me back to thhhe Geniocracy when you have a chance. I shall make myself useful in thhhhe meantime. I am no freeloader."</text>
-											<crewMember amount="1" repair="2" class="shellalkali">Alkali</crewMember>
+											<crewMember amount="1" repair="2" class="unique_alkali">Alkali</crewMember>
 											<choice hidden="true">	
 												<text>Ok.</text>
 												<event load="ALKALI_LEGION"/>
 											</choice>
 										</event>
 									</choice>
-									<choice hidden="true" req="monk">	
-										<text>(Monk Crew) We are men and women of peace. The Great Eye guides us.</text>
+									<choice hidden="true" req="zoltan_monk">	
+										<text>(Monk Crew) "We are men and women of peace. The Great Eye guides us."</text>
 										<event>
 											<text>Alkali looks at you in disgust. "Ugh... well at least I know for certain you aren't going to kill me. For the time I am aboard your ship, you shall let me sleep in whatever room doesn't have any spiritual paraphernalia in it. I don't care if it's a broom closet. I request thhhat you transport me back to thhhe Geniocracy when you have a chance. I shall make myself useful in thhhhe meantime. I am no freeloader."</text>
-											<crewMember amount="1" repair="2" class="shellalkali">Alkali</crewMember>
+											<crewMember amount="1" repair="2" class="unique_alkali">Alkali</crewMember>
 											<choice hidden="true">	
 												<text>Ok.</text>
 												<event load="ALKALI_LEGION"/>
@@ -1649,10 +1650,10 @@
 										</event>
 									</choice>
 									<choice hidden="true" req="LIST_CREW_ROCK_FAITHFUL">	
-										<text>(Faithful Rock Crew) The Elders guide us on the path to glorious life!</text>
+										<text>(Faithful Rock Crew) "The Elders guide us on the path to glorious life!"</text>
 										<event>
 											<text>Alkali looks at you in disgust. "Ugh... great, a bunch of barbarians. For the time I am aboard your ship, you shall let me sleep in whatever room doesn't have any spiritual paraphernalia in it. I don't care if it's a broom closet. I request thhhat you transport me back to thhhe Geniocracy when you have a chance. I shall make myself useful in thhhhe meantime. I am no freeloader."</text>
-											<crewMember amount="1" repair="2" class="shellalkali">Alkali</crewMember>
+											<crewMember amount="1" repair="2" class="unique_alkali">Alkali</crewMember>
 											<choice hidden="true">	
 												<text>Ok.</text>
 												<event load="ALKALI_LEGION"/>
@@ -1675,13 +1676,14 @@
 	</choice>
 </event>
 <ship name="SHIP_LEGION_ALKALI" auto_blueprint="MU_LEGION_ASSAULT_ALKALI">
-	<surrender min="3" max="4">
+	<triggeredEvent name="LEGION_DEMAND" event="ALKALI_SURRENDER" playerHull="5" playerCrew="3" thisFight="true"/>
+	<!--<surrender min="3" max="4">
 		<text>"That is enough! You will hand over the target at once and you will leave this system! This is an order!"</text>
 		<choice hidden="true">
 			<text>No, piss off.</text>
 			<event/>
 		</choice>
-		<choice hidden="true">
+		<choice hidden="true" req="shellalkali" blue="false">
 			<text>Alright, sure.</text>
 			<event>
 				<text>You send over the Shell scientist to the Rebels, who collect him and carry him away. After this, you're certain they'll alert the fleet of your location. Let's hope that still gives you enough time to leave...</text>
@@ -1693,14 +1695,35 @@
 				</removeCrew>
 			</event>
 		</choice>
-	</surrender>
+	</surrender>-->
 	<destroyed load="ALKALI_LEGION_DEFEATED"/>
 	<deadCrew load="ALKALI_LEGION_DEFEATED"/>
 	<crew>
-		<crewMember type="rebel" prop="0.5"/>
+		<crewMember type="LIST_CREW_MALFORM_RANDOM" prop="0.5"/>
 		<crewMember type="LIST_CREW_LEGION" prop="0.5"/>
 	</crew>
 </ship>
+
+<event name="ALKALI_SURRENDER">
+	<text>"That is enough! You will hand over the target at once and you will leave this system! This is an order!"</text>
+	<choice hidden="true">
+		<text>No, piss off.</text>
+		<event/>
+	</choice>
+	<choice hidden="true" req="unique_alkali" blue="false">
+		<text>Alright, sure.</text>
+		<event>
+			<text>You send over the Shell scientist to the Rebels, who collect him and carry him away. After this, you're certain they'll alert the fleet of your location. Let's hope that still gives you enough time to leave...</text>
+			<modifyPursuit amount="2"/>
+			<ship hostile="false"/>
+			<surrender/>
+			<removeCrew class="unique_alkali">
+				<clone>false</clone>
+				<text>Alkali probably won't be alive for long after this one, but you can't clone him when you aren't certain.</text>
+			</removeCrew>
+		</event>
+	</choice>
+</event>
 <event name="ALKALI_LEGION"> <!--MAKE SURE THE REBEL SHIP HERE PREVENTS JUMPING WITH SOME SPECIAL COMBAT AUGMENT-->
 	<text>As you begin to depart from the station, a Rebel ship jumps in, but it's not like any Rebel design you remember in your debriefing. Renegades, Elites, MFK Aces, Engineers, none of them bear that logo... A yellow helmet, with the word Legion on it, stands out to you. Is this some new Rebel fleet?</text>
 	<ship load="SHIP_LEGION_ALKALI" hostile="false"/>
@@ -1723,7 +1746,7 @@
 				<text>Give them Alkali.</text>
 				<event>
 					<text>Alkali protests, but he isn't going to argue with the barrel of a gun to his forehead. The Rebels board your ship in a concerningly large number, injecting a tranquilizer into Alkali and carting him off. You expect them to turn on you, but nothing happens. Instead, the Rebels head back to their ship and jump away, leaving you dumbfounded.</text>
-					<removeCrew class="shellalkali">
+					<removeCrew class="unique_alkali">
 						<clone>false</clone>
 						<text>Alkali probably won't be alive for long after this one, but you can't clone him when he hasn't even been entered into your databanks yet.</text>
 					</removeCrew>
@@ -1736,7 +1759,7 @@
 	<text>The Rebel vessel has been defeated, leaving behind plenty of scrap matter and an unusually high-tech weapon. Surprisingly, you still detect faint life signs aboard the wreck as you scrap it...</text>
 	<autoReward level="HIGH">standard</autoReward>
 	<weapon name="LIST_WEAPONS_NEWGEN"/>
-	<hiddenAug>ACH_CREW_ALKALI</hiddenAug>
+	<variable name="ach_crew_alkali" op="set" val="1"/>
 	<choice hidden="true">	
 		<text>Continue...</text>
 		<event>
@@ -1818,7 +1841,7 @@
 	</event>
 	<event>
 		<text>It looks as though the Clansman ship took a beating during the fight... but the Slug onboard is still alive. "Ayyy yo my ssship isss totaled. Gonna hang with you now if that'ssss alright."</text>
-		<crewMember amount="1" class="snail"/>
+		<crewMember amount="1" class="slug_clansman"/>
 	</event>
 </eventList>
 
@@ -1848,21 +1871,21 @@
 					<item_modify>
 						<item type="scrap" min="-30" max="-30"/>
 					</item_modify>
-					<crewMember amount="1" class="shellrepair"/>
+					<crewMember amount="1" class="shell_mechanic"/>
 				</event>
 			</choice>
 			<choice hidden="true" req="REPAIR_ARM">	
 				<text>(Repair Arm) Fix up the station.</text>
 				<event>
 					<text>"Oh, wow. Thhhhat's quite efficient! Why can't thhhe council authhhhorize us using thhhose? Ugh, I hate thhhis job. You know what? I quit! I'm withhh you know. What are you gonna do about it, huh Director Nerva? Oh man, it feels so good to say thhhat..."</text>
-					<crewMember amount="1" class="shellrepair"/>
+					<crewMember amount="1" class="shell_mechanic"/>
 				</event>
 			</choice>
 			<choice hidden="true" req="SHIP_REPAIR">	
 				<text>(Hull Repair Drone) Fix up the station. [-1|]</text>
 				<event>
 					<text>"Oh, wow. Thhhhat's quite efficient! Why can't thhhe council authhhhorize us using thhhose? Ugh, I hate thhhis job. You know what? I quit! I'm withhh you know. What are you gonna do about it, huh Director Nerva? Oh man, it feels so good to say thhhat..."</text>
-					<crewMember amount="1" class="shellrepair"/>
+					<crewMember amount="1" class="shell_mechanic"/>
 					<item_modify>
 						<item type="drones" min="-1" max="-1"/>
 					</item_modify>
@@ -2076,7 +2099,7 @@
 	<choice hidden="true">
 		<text>We aren't here for stories. Attack the engineers!</text>
 		<event>
-			<text>You won't show these Rebels mercy jsut because they want to talk!</text>
+			<text>You won't show these Rebels mercy just because they want to talk!</text>
 			<boarders min="2" max="2" class="technobattle"/>
 			<damage amount="0" effect="breach" system="random"/>
 			<ship hostile="true"/>
@@ -2135,7 +2158,7 @@
 				</event>
 			</choice>
 			<choice hidden="true" req="LIST_CREW_MORPH">	
-				<text>(Morph Crew) Koo! Yup tur loo!</text>
+				<text>(Morph Crew) "Koo! Yup tur loo!"</text>
 				<event>
 					<text>The smuggler screams, horrified at the sight of an actual Morph on your ship. Firing widly, it causes some damage to your ship, but you're able to subdue him. With his ship now inoperable, you scrap some of the hull.</text>
 					<damage amount="2" system="random"/>
@@ -2166,11 +2189,11 @@
 	</event>
 	<event>
 		<text>"Hey, you ain't talkin' no gibberish! Tha's good... tha's good... If you ain't no blob though, you outta be careful, them blobs everywhere! It ain't no safe place travelin along, think I oughta come with you folks..."</text>
-		<crewMember amount="1" class="outcast"/>
+		<crewMember amount="1" class="rock_outcast"/>
 	</event>
 	<event>
 		<text>"You talk real damn good for an impostor!" The smuggler swivels to shoot you, but you manage to jump out of the way. Soon you find yourself in a fight!</text>
-		<boarders min="1" max="1" class="outcast"/>
+		<boarders min="1" max="1" class="rock_outcast"/>
 		<ship hostile="true"/>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -2184,7 +2207,7 @@
 	Events that do things
 -->
 <eventList name="NEBULA_MORPH_NEUTRAL">
-	<event load="NEBULA_MORPH_SCIENCE_REFUGEE"/>
+	<event load="NEBULA_MORPH_SHELL_REFUGEE"/>
 	<event load="NEBULA_MORPH_BLOCKADE"/>
 	<event load="NEBULA_MORPH_FREEGUN"/>
 	<event load="NEBULA_MORPH_AUTOSCIENCECHOICE"/>
@@ -2308,7 +2331,7 @@
 	</event>
 	<event>
 		<text>The Shells appreciate the offer and accept. Though most you drop off at a nearby Shell station, one of them wishes to stay behind.</text>
-		<crewMember amount="1" class="shellmedic"/>
+		<crewMember amount="1" class="shell_scientist"/>
 	</event>
 	<event>
 		<text>The Shells are reluctant, but ultimately agree. Once dropped off at a nearby station, they offer you some scrap as pay.</text>
@@ -2321,8 +2344,8 @@
 	<choice hidden="true">	
 		<text>Offer to take them aboard.</text>
 		<event>
-			<text>As soon as they crew step aboard, it's apparent that those Shells... they're Rebels! It was a trap all along!</text>
-			<boarders min="3" max="4" class="human"/>
+			<text>As soon as their crew step aboard, it's apparent that those Shells... they're Rebels! It was a trap all along!</text>
+			<boarders min="3" max="4" class="human_rebel"/>
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -2388,6 +2411,13 @@
 				<text>Continue...</text>
 				<event load="MORALITY_UPDATE_SHELL_FIGHT"/>
 			</choice>
+		</event>
+	</choice>
+	<choice req="unique_alkali" hidden="true">	
+		<text>(Alkali) We are carrying a VIP right now.</text>
+		<event>
+			<text>Once the militants learn about the situation, they stop bothering you, and even offer supplies before saying farewell.</text>
+			<autoReward level="HIGH">stuff</autoReward>
 		</event>
 	</choice>
 	<choice hidden="true">	
@@ -2469,7 +2499,7 @@
 			</choice>
 		</event>
 	</choice>
-	<choice hidden="true" req="engineer">	
+	<choice hidden="true" req="LIST_CREW_ENGINEER">	
 		<text>(Engineer Crew) Have your engineer take a look at the engines.</text>
 		<event>
 			<text>Fortunately, your engineer clears out the Morphs quickly, and the Rebels seem impressed. "Hmmm... you've helped us more than we expected. I suppose the act of not murdering us is worthy of some pay as promised."</text>
@@ -2486,7 +2516,7 @@
 	<choice hidden="true" req="LIST_CREW_MORPH">	
 		<text>(Morph Crew) Have your Morph reawaken the hibernating goo.</text>
 		<event>
-			<text>Your Morph lets out a cacophony of shrill chirping, following by many more from the Morphs in the engines, who detach themselves from the mechanism and roll to meet your Morph. The Rebels aren't really sure what they just witnessed, but they reluctantly pay you in "thanks."</text>
+			<text>Your Morph lets out a cacophony of shrill chirping, followed by many more from the Morphs in the engines, who detach themselves from the mechanism and roll to meet your Morph. The Rebels aren't really sure what they just witnessed, but they reluctantly pay you in "thanks".</text>
 			<autoReward level="LOW">standard</autoReward>
 			<crewMember amount="1" class="blob"/>
 		</event>
@@ -2629,7 +2659,7 @@
 	<event load="NEBULA_ENCOUNTER_SHELL_SCIENTIST_MORPH"/>
 </eventList>
 
-<event name="ENCOUNTER_MORPH">
+<event name="NEBULA_ENCOUNTER_MORPH">
 	<text load="TEXT_ENCOUNTER_MORPH"/>
 	<ship load="SHIP_MORPH_FIGHT" hostile="true"/> 
 	<environment type="nebula"/>

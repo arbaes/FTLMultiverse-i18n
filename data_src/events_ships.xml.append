@@ -7,6 +7,9 @@
 <ship name="SHIP_TRAPPER" auto_blueprint="LIST_SHIPS_TRAPPER">
 	<destroyed load="DESTROYED_TRAPPER"/>
 	<deadCrew load="DEAD_CREW_TRAPPER"/>
+	<weaponOverride count="1">
+		<name>LIST_WEAPONS_TRAPPER</name>
+	</weaponOverride>
 </ship>
 
 <ship name="SHIP_GENERIC" auto_blueprint="LIST_SHIPS_GENERIC">
@@ -100,7 +103,7 @@
 		<text>You've erased all life from the Civilian vessel, and their scrap is yours.</text>
 		<autoReward level="LOW">standard</autoReward>
 		<choice hidden="true">
-			<text>Contact the civilian ship.</text>
+			<text>Continue...</text>
 			<event load="DROPPOINT_PROTESTORS_ATTACK"/>    
 		</choice>
 	</deadCrew>
@@ -146,35 +149,23 @@
 	<deadCrew load="DEAD_CREW_COALITION"/>
 </ship>
 
+<ship name="SHIP_COALITION_STATION" auto_blueprint="MU_COALITION_STATION">
+	<surrender  chance="0.75" min="2" max="3" load="SURRENDER_COALITION"/>
+	<destroyed load="DESTROYED_COALITION"/>
+	<deadCrew load="DEAD_CREW_COALITION"/>
+</ship>
+
 <ship name="SHIP_COALITION_ELITE_ALL" auto_blueprint="LIST_SHIPS_COALITION_ELITE_ALL">
 	<destroyed load="DEFEAT_COALITION_ELITE"/>
 	<deadCrew load="DEFEAT_COALITION_ELITE"/>
-	<crew>
-		<crewMember type="sabo" prop="0.25"/>
-		<crewMember type="crusader" prop="0.25"/>
-		<crewMember type="suzerain" prop="0.25"/>
-		<crewMember type="sentinel" prop="0.25"/>
-	</crew>
 </ship>
 <ship name="SHIP_COALITION_ELITE_GENERIC" auto_blueprint="LIST_SHIPS_COALITION_ELITE_GENERIC">
 	<destroyed load="DEFEAT_COALITION_ELITE"/>
 	<deadCrew load="DEFEAT_COALITION_ELITE"/>
-	<crew>
-		<crewMember type="sabo" prop="0.25"/>
-		<crewMember type="crusader" prop="0.25"/>
-		<crewMember type="suzerain" prop="0.25"/>
-		<crewMember type="sentinel" prop="0.25"/>
-	</crew>
 </ship>
 <ship name="SHIP_COALITION_ELITE_FIGHT" auto_blueprint="LIST_SHIPS_COALITION_ELITE_FIGHT">
 	<destroyed load="DEFEAT_COALITION_ELITE"/>
 	<deadCrew load="DEFEAT_COALITION_ELITE"/>
-	<crew>
-		<crewMember type="sabo" prop="0.25"/>
-		<crewMember type="crusader" prop="0.25"/>
-		<crewMember type="suzerain" prop="0.25"/>
-		<crewMember type="sentinel" prop="0.25"/>
-	</crew>
 </ship>
 
 <ship name="SHIP_COALITION_CIVILIAN" auto_blueprint="LIST_SHIPS_COALITION_FIGHT">
@@ -204,8 +195,8 @@
 	<destroyed load="COALITION_LOSTSUN_CHOICE_LOSTSUN"/>
 	<deadCrew load="COALITION_LOSTSUN_CHOICE_LOSTSUN"/>
 	<crew>
-		<crewMember type="outcast" prop="0.50"/>
-		<crewMember type="commando" prop="0.50"/>	
+		<crewMember type="rock_outcast" prop="0.50"/>
+		<crewMember type="rock_commando" prop="0.50"/>	
 	</crew>
 </ship>
 
@@ -268,36 +259,36 @@
 	<destroyed load="DEFEAT_COALITION_ELITE"/>
 	<deadCrew load="DEFEAT_COALITION_ELITE"/>
 	<!--<crew>
-		<crewMember type="crusader" prop="0.33"/>
-		<crewMember type="suzerain" prop="0.33"/>
-		<crewMember type="sentinel" prop="0.33"/>
+		<crewMember type="rock_crusader" prop="0.33"/>
+		<crewMember type="mantis_suzerain" prop="0.33"/>
+		<crewMember type="crystal_sentinel" prop="0.33"/>
 	</crew>-->
 </ship>
 <ship name="SHIP_COALITION_SQUABBLING_NOMANTIS" auto_blueprint="LIST_SHIPS_COALITION_ELITE_FIGHT">
 	<destroyed load="DEFEAT_COALITION_ELITE"/>
 	<deadCrew load="DEFEAT_COALITION_ELITE"/>
 	<!--<crew>
-		<crewMember type="sabo" prop="0.33"/>
-		<crewMember type="crusader" prop="0.33"/>
-		<crewMember type="sentinel" prop="0.33"/>
+		<crewMember type="slug_saboteur" prop="0.33"/>
+		<crewMember type="rock_crusader" prop="0.33"/>
+		<crewMember type="crystal_sentinel" prop="0.33"/>
 	</crew>-->
 </ship>
 <ship name="SHIP_COALITION_SQUABBLING_NOROCK" auto_blueprint="LIST_SHIPS_COALITION_ELITE_FIGHT">
 	<destroyed load="DEFEAT_COALITION_ELITE"/>
 	<deadCrew load="DEFEAT_COALITION_ELITE"/>
 	<!--<crew>
-		<crewMember type="sabo" prop="0.33"/>
-		<crewMember type="suzerain" prop="0.33"/>
-		<crewMember type="sentinel" prop="0.33"/>
+		<crewMember type="slug_saboteur" prop="0.33"/>
+		<crewMember type="mantis_suzerain" prop="0.33"/>
+		<crewMember type="crystal_sentinel" prop="0.33"/>
 	</crew>-->
 </ship>
 <ship name="SHIP_COALITION_SQUABBLING_NOLEECH" auto_blueprint="LIST_SHIPS_COALITION_ELITE_FIGHT">
 	<destroyed load="DEFEAT_COALITION_ELITE"/>
 	<deadCrew load="DEFEAT_COALITION_ELITE"/>
 	<!--<crew>
-		<crewMember type="sabo" prop="0.33"/>
-		<crewMember type="crusader" prop="0.33"/>
-		<crewMember type="suzerain" prop="0.33"/>
+		<crewMember type="slug_saboteur" prop="0.33"/>
+		<crewMember type="rock_crusader" prop="0.33"/>
+		<crewMember type="mantis_suzerain" prop="0.33"/>
 	</crew>-->
 </ship>
 
@@ -350,7 +341,7 @@
 	<deadCrew load="DEFEAT_REBEL_ELITE"/>
 	<crew>
 		<crewMember type="LIST_CREW_REBEL_RANDOM" prop="0.5"/>
-		<crewMember type="soldier" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
 	</crew>
 </ship>
 <ship name="SHIP_REBEL_ELITE_GENERIC" auto_blueprint="LIST_SHIPS_REBEL_ELITE_GENERIC">
@@ -358,7 +349,7 @@
 	<deadCrew load="DEFEAT_REBEL_ELITE"/>
 	<crew>
 		<crewMember type="human" prop="0.5"/>
-		<crewMember type="soldier" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
 	</crew>
 </ship>
 <ship name="SHIP_REBEL_ELITE_FIGHT" auto_blueprint="LIST_SHIPS_REBEL_ELITE_FIGHT">
@@ -366,7 +357,7 @@
 	<deadCrew load="DEFEAT_REBEL_ELITE"/>
 	<crew>
 		<crewMember type="LIST_CREW_REBEL_RANDOM" prop="0.5"/>
-		<crewMember type="soldier" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -374,21 +365,21 @@
 	<destroyed load="DEFEAT_REBEL_ELITE"/>
 	<deadCrew load="DEFEAT_REBEL_ELITE"/>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 <ship name="SHIP_REBEL_SELITEA_FIGHT" auto_blueprint="LIST_SHIPS_REBEL_SELITE_ANCIENT">
 	<destroyed load="DEFEAT_REBEL_ELITE"/>
 	<deadCrew load="DEFEAT_REBEL_ELITE"/>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 
 <ship name="SHIP_REBEL_STATION" auto_blueprint="MU_REBEL_STATION">
-	<surrender  chance="0.4" min="2" max="3" load="STATION_SURRENDER"/>
+	<surrender chance="0.4" min="2" max="3" load="STATION_SURRENDER"/>
 	<destroyed load="REBEL_STATION_DESTROYED"/>
 	<deadCrew load="REBEL_STATION_CAPTURED"/>
 </ship>
@@ -497,7 +488,7 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="LIST_CREW_REBEL_RANDOM" prop="0.5"/>
-		<crewMember type="soldier" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -585,6 +576,25 @@
 		<choice hidden="true">
 			<text>Contact the Federation ship.</text>
 			<event load="REBEL_VS_FEDERATION_SAVED_LIST"/>
+		</choice>
+	</deadCrew>
+</ship>
+
+<ship name="SHIP_JERRY_DEPOT" auto_blueprint="LIST_SHIPS_REBEL_SELITE_FIGHT">
+	<destroyed>
+		<text>With the ship destroyed, you quickly collect useful resources.</text>
+		<autoReward level="HIGH">standard</autoReward>
+		<choice hidden="true">
+			<text>Inspect the depot.</text>
+			<event load="JERRY_DEPOT_RAID"/>
+		</choice>
+	</destroyed>
+	<deadCrew>
+		<text>With the crew of the Rebel ship dead, you salvage what you can.</text>
+		<autoReward level="HIGH">standard</autoReward>
+		<choice hidden="true">
+			<text>Inspect the depot.</text>
+			<event load="JERRY_DEPOT_RAID"/>
 		</choice>
 	</deadCrew>
 </ship>
@@ -691,15 +701,15 @@
 	<deadCrew load="CONSTRUCTION_ELITE_WIN"/>
 	<crew>
 		<crewMember type="human" prop="0.5"/>
-		<crewMember type="soldier" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
 	</crew>
 </ship>
 <ship name="SHIP_REBEL_SELITE_CONSTRUCTIONYARD" auto_blueprint="LIST_SHIPS_REBEL_SELITE_FIGHT">
 	<destroyed load="CONSTRUCTION_SELITE_WIN"/>
 	<deadCrew load="CONSTRUCTION_SELITE_WIN"/>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -721,8 +731,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -735,16 +745,16 @@
 	<destroyed load="DEFEATED_SUPERFISH"/>
 	<deadCrew load="DEFEATED_SUPERFISH"/>
 	<crew>
-		<crewMember type="mfk" prop="0.5"/>
-		<crewMember type="soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
 	</crew>
 </ship>
 <ship name="SHIP_REBEL_SUPERFISH_ANCIENT" auto_blueprint="MU_REBEL_ASSAULT_SFISH">
-	<destroyed load="DEFEATED_SUPERFISH_A"/>
-	<deadCrew load="DEFEATED_SUPERFISH_A"/>
+	<destroyed load="DEFEATED_SUPERFISH"/>
+	<deadCrew load="DEFEATED_SUPERFISH"/>
 	<crew>
-		<crewMember type="mfk" prop="0.5"/>
-		<crewMember type="soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -752,8 +762,8 @@
 	<destroyed load="BOSS_REBEL_DEPOT_WIN"/>
 	<deadCrew load="BOSS_REBEL_DEPOT_WIN"/>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -762,8 +772,8 @@
 	<destroyed load="FED_MEMORIAL_DESTROY"/>
 	<deadCrew load="FED_MEMORIAL_DEAD_CREW"/>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -798,8 +808,8 @@
 	<destroyed load="QUEST_REBEL_COLONY_PRISONBREAK_FINAL_DESTROYED"/>
 	<deadCrew load="QUEST_REBEL_COLONY_PRISONBREAK_FINAL_DEADCREW"/>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -831,6 +841,10 @@
 <ship name="SHIP_MFK_GUNBOAT_ROYAL" auto_blueprint="MU_MFK_GUNBOAT">
 	<destroyed load="ROYAL_MFK_DEFEAT"/>
 	<deadCrew load="ROYAL_MFK_DEFEAT"/>
+	<crew>
+		<crewMember type="human_mfk" prop="0.6"/>
+		<crewMember type="human_soldier" prop="0.4"/>
+	</crew>
 </ship>
 
 <ship name="SHIP_ROYAL_REBEL_FREEMANTIS" auto_blueprint="LIST_SHIPS_REBEL_ELITE_FIGHT">
@@ -843,7 +857,7 @@
 		<autoReward level="HIGH">standard</autoReward>
 	</deadCrew>
 	<crew>
-		<crewMember type="warlord" prop="1"/>
+		<crewMember type="mantis_warlord" prop="1"/>
 	</crew>
 </ship>
 
@@ -864,8 +878,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -887,8 +901,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -905,7 +919,7 @@
 			<text>Continue...</text>
 			<event>
 				<text>"I have never seen anyone, even less so a mortal, fight so valiantly before! Perhaps the Royals are wrong about your kind, and you aren't all like those rebels. If this is the case, then I no longer wish to serve as a puppet in the Royal scheme. I shall join with you and help fight against this!"</text>
-				<crewMember amount="1" class="ancient"/>
+				<crewMember amount="1" class="obelisk"/>
 			</event>
 		</choice>
 	</destroyed>
@@ -916,13 +930,13 @@
 			<text>Continue...</text>
 			<event>
 				<text>"I have never seen anyone, even less so a mortal, fight so valiantly before! Perhaps the Royals are wrong about your kind, and you aren't all like those rebels. If this is the case, then I no longer wish to serve as a puppet in the Royal scheme. I shall join with you and help fight against this!"</text>
-				<crewMember amount="1" class="ancient"/>
+				<crewMember amount="1" class="obelisk"/>
 			</event>
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -931,21 +945,6 @@
                                                 JERRY SHIPS 
 **********************************************************************************************************************
 -->
-<ship name="SHIP_ACE_JERRY" auto_blueprint="LIST_SHIPS_REBEL_SELITE_FIGHT">
-	<surrender min="2" max="3" load="SURRENDER_ACE_JERRY"/>
-	<destroyed>
-		<text>The MFK Ace has been destroyed. While this is undoubtedly a good thing for the Federation, it still means you won't get the co-ordinates. You make do with the plentiful scrap left behind.</text>
-		<autoReward level="HIGH">item</autoReward>
-	</destroyed>
-	<deadCrew>
-		<text>The MFK Ace has been defeated. While this is undoubtedly a good thing for the Federation, it still means you won't get the co-ordinates. You make do with the plentiful scrap left behind.</text>
-		<autoReward level="HIGH">item</autoReward>
-	</deadCrew>
-	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
-	</crew>
-</ship>
 
 <ship name="SHIP_JERRY" auto_blueprint="MU_JERRY">
 	<surrender min="2" max="3" load="PLEASE_DONT_KILL_JERRY"/>
@@ -1081,7 +1080,7 @@
 <ship name="SHIP_FED_TEST_DRONE" auto_blueprint="MU_FED_AUTO_TEST">
 	<!--<surrender min="1" max="1" load="FED_NODAMAGE_TEST_DAMAGE"/>-->
 	<destroyed load="FED_NODAMAGE_TEST_DESTROY"/>
-	<triggeredEvent event="FED_NODAMAGE_TEST_WIN" time="40">
+	<triggeredEvent event="FED_NODAMAGE_TEST_WIN" time="40" clearOnJump="true" thisFight="true">
 		<triggeredEventBox load="DEFAULT_TIMER" pos="combat">
 			<warning time="10.0" flash="true"/>
 			<tooltip>The testing session will end after this much time. Do not do any hull damage to the drone before then!</tooltip>
@@ -1097,6 +1096,57 @@
 	<crew>
 		<crewMember type="LIST_CREW_REBEL_RANDOM" prop="1"/>
 	</crew>
+</ship>
+
+<ship name="SHIP_FED_LENNY" auto_blueprint="LIST_SHIPS_FED_FIGHT">
+	<destroyed>
+		<text>The strange colonists have been defeated. Though the colony is far from empty, the remaining members seem to have fallen into a strange catatonic state while crying out Lenny's name.</text>
+		<autoReward level="MED">standard</autoReward>
+		<choice hidden="true">
+			<text>Leave.</text>
+			<event/>    
+		</choice>
+		<choice hidden="true" req="LIST_CREW_MEDICAL">
+			<text>(Medical Crew) See if you can treat the colonists.</text>
+			<event load="ASTEROID_LENNY_HELP"/>    
+		</choice>
+		<choice hidden="true" req="BLUELIST_DRONES_MEDICAL">
+			<text>(Medical Drone) See if you can treat the colonists.</text>
+			<event load="ASTEROID_LENNY_HELP"/>    
+		</choice>
+		<choice hidden="true" req="LIFE_SCANNER">
+			<text>(Lifeform Scanner) See if you can treat the colonists.</text>
+			<event load="ASTEROID_LENNY_HELP"/>    
+		</choice>
+		<choice hidden="true" req="medbay" lvl="2">
+			<text>(Upg. Medbay) See if you can treat the colonists.</text>
+			<event load="ASTEROID_LENNY_HELP"/>    
+		</choice>
+	</destroyed>
+	<deadCrew>
+		<text>The strange colonists have been defeated. Though the colony is far from empty, the remaining members seem to have fallen into a strange catatonic state while crying out Lenny's name.</text>
+		<autoReward level="HIGH">standard</autoReward>
+		<choice hidden="true">
+			<text>Leave.</text>
+			<event/>    
+		</choice>
+		<choice hidden="true" req="LIST_CREW_MEDICAL">
+			<text>(Medical Crew) See if you can treat the colonists.</text>
+			<event load="ASTEROID_LENNY_HELP"/>    
+		</choice>
+		<choice hidden="true" req="BLUELIST_DRONES_MEDICAL">
+			<text>(Medical Drone) See if you can treat the colonists.</text>
+			<event load="ASTEROID_LENNY_HELP"/>    
+		</choice>
+		<choice hidden="true" req="LIFE_SCANNER">
+			<text>(Lifeform Scanner) See if you can treat the colonists.</text>
+			<event load="ASTEROID_LENNY_HELP"/>    
+		</choice>
+		<choice hidden="true" req="medbay" lvl="2">
+			<text>(Upg. Medbay) See if you can treat the colonists.</text>
+			<event load="ASTEROID_LENNY_HELP"/>    
+		</choice>
+	</deadCrew>
 </ship>
 
 <!-- 
@@ -1226,6 +1276,10 @@
 	<surrender min="2" max="2" load="COREWORLDS_FREEMANTIS_LOST_SURRENDER"/>
 	<destroyed load="COREWORLDS_FREEMANTIS_LOST_WIN"/>
 	<deadCrew load="COREWORLDS_FREEMANTIS_LOST_WIN"/>
+	<crew>
+		<crewMember type="human" prop="0.80"/>
+		<crewMember type="zoltan" prop="0.20"/>	
+	</crew>
 </ship>
 
 <ship name="SHIP_SUZERAIN_CARAVAN" auto_blueprint="LIST_SHIPS_SUZERAIN_FIGHT">
@@ -1247,7 +1301,7 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="mantis" prop="0.80"/>
-		<crewMember type="suzerain" prop="0.20"/>	
+		<crewMember type="mantis_suzerain" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -1430,7 +1484,7 @@
 			<text>Continue...</text>
 			<event>
 				<text>"Y-you've killed him! My arch-nemesis, that dastardly Colonel Hedge, has been slain by another Federation officer? How strange... wait wait, I shall come with you. I must see what other surprises you might have in store."</text>
-				<crewMember amount="1" class="engineer" all_skills="2">Robotnik</crewMember>
+				<crewMember amount="1" class="human_technician" all_skills="2">Robotnik</crewMember>
 			</event>
 		</choice>
 	</destroyed>
@@ -1441,10 +1495,67 @@
 			<text>Continue...</text>
 			<event>
 				<text>"Y-you've killed him! My arch-nemesis, that dastardly Colonel Hedge, has been slain by another Federation officer? How strange... wait wait, I shall come with you. I must see what other surprises you might have in store."</text>
-				<crewMember amount="1" class="engineer" all_skills="2">Robotnik</crewMember>
+				<crewMember amount="1" class="human_technician" all_skills="2">Robotnik</crewMember>
 			</event>
 		</choice>
 	</deadCrew>
+</ship>
+
+<!-- 
+**********************************************************************************************************************
+                                                 TECHNITIAN SHIPS 
+**********************************************************************************************************************
+-->
+<ship name="SHIP_TECHNITIAN" auto_blueprint="LIST_SHIPS_ESTATE">
+	<destroyed load="DEFEAT_ENGINEER_ELITE"/>
+	<deadCrew load="DEFEAT_ENGINEER_ELITE"/>
+</ship>
+
+<ship name="SHIP_ESTATE" auto_blueprint="LIST_SHIPS_ESTATE_AUTO">
+	<destroyed load="DESTROYED_ESTATE"/>
+</ship>
+
+<ship name="SHIP_CORNELIUS" auto_blueprint="LIST_SHIPS_ESTATE">
+	<triggeredEvent event="ESTATE_DOCUMENTARY_SURRENDER" enemyHull="2" enemyCrew="1" thisFight="true" clearOnJump="true"/>
+	<destroyed load="ESTATE_DOCUMENTARY_FAIL"/>
+	<deadCrew load="ESTATE_DOCUMENTARY_FAIL"/>
+</ship>
+
+<ship name="SHIP_STEWARD_PRIME" auto_blueprint="MU_ESTATE_STEWARD_PRIME">
+	<triggeredEvent event="ESTATE_STEWARD_SURRENDER" playerHull="3" thisFight="true" clearOnJump="true"/>
+	<destroyed load="ESTATE_STEWARD_WIN"/>
+</ship>
+
+<ship name="SHIP_REBEL_ESTATE_BAR" auto_blueprint="LIST_SHIPS_REBEL_ELITE_GENERIC">
+	<destroyed>
+		<text>The Rebel vessel has been defeated. You scrap the remains.</text>
+		<autoReward level="HIGH">standard</autoReward>
+		<choice hidden="true">
+			<text>Contact the bar owner.</text>
+			<event>
+				<text>"Good work. Never though I'd be happy to see a Renegade in my bar... I'm afraid the no drinks rule extends to you as well, but I'm sure we can work something out..."</text>
+				<autoReward level="MED">standard</autoReward>
+			</event>
+		</choice>
+	</destroyed>
+	<deadCrew>
+		<text>The Rebel vessel has been defeated. You scrap the remains.</text>
+		<autoReward level="HIGH">standard</autoReward>
+		<choice hidden="true">
+			<text>Contact the bar owner.</text>
+			<event>
+				<text>"Good work. Never though I'd be happy to see a Renegade in my bar... I'm afraid the no drinks rule extends to you as well, but I'm sure we can work something out..."</text>
+				<autoReward level="MED">standard</autoReward>
+			</event>
+		</choice>
+	</deadCrew>
+</ship>
+
+<ship name="SHIP_ESTATE_CONTROLS" auto_blueprint="LIST_SHIPS_ESTATE_AUTO">
+	<destroyed>
+		<text>"My drone! Nooooo! I just got that for my birthday! My parents are going to be so mad!"</text>
+		<autoReward level="HIGH">standard</autoReward>
+	</destroyed>
 </ship>
 
 <!-- 
@@ -1804,7 +1915,7 @@
 									<event>
 										<text>"Look, I just get a pay check, and that's all that matters to me at the end of the day. I don't control what happens here, nor do I care. What about a weapon, will that shut you up?"</text>
 										<choice>
-											<text>So you've left behind your humanity, shed what little goodwill was left in your soul to become a slave to the Rebellion? You are no more free than the Zoltan you've locked away here. Is this really how you want to live your life, or do you want to take a stand and fight against the Rebellion?</text>
+											<text>So you've left behind your humanity, shed what little goodwill was left in your soul to become a slave to the Rebellion? You are no more free than the Zoltans you've locked away here. Is this really how you want to live your life, or do you want to take a stand and fight against the Rebellion?</text>
 											<event>
 												<text>"I-I... What the hell are you on about? Do you have holes in your brain? Please, just shut up already. I'll give you all of the data in this facility and delete any data we have on you if that means you'll just leave."</text>
 												<choice hidden="true">
@@ -1854,7 +1965,7 @@
 					<text>Take the crew and leave.</text>
 					<event>
 						<text>It's not the same as liberating the entire facility, but such a dream would be foolish to have. You're satisfied with saving even just one Zoltan, and even better, having ruined some Rebel's day.</text>
-						<crewMember amount="1" class="energy"/>
+						<crewMember amount="1" class="zoltan"/>
 					</event>
 				</choice>
 			</event>
@@ -1891,6 +2002,11 @@
 	<deadCrew load="DEAD_CREW_ENGI"/>
 </ship>
 
+<ship name="SHIP_ENGI_STATION" auto_blueprint="MU_ENGI_STATION">
+	<surrender  chance="0.5" min="2" max="3" load="SURRENDER_ENGI"/>
+	<destroyed load="DESTROYED_ENGI"/>
+	<deadCrew load="DEAD_CREW_ENGI"/>
+</ship>
 
 
 <ship name="SHIP_ENGI_ELITE_ALL" auto_blueprint="LIST_SHIPS_ENGI_ELITE_ALL">
@@ -1898,7 +2014,7 @@
 	<destroyed load="DEFEAT_ENGI_ELITE"/>
 	<deadCrew load="DEFEAT_ENGI_ELITE"/>
 	<crew>
-		<crewMember type="defend" prop="0.25"/>
+		<crewMember type="engi_defender" prop="0.25"/>
 		<crewMember type="engi" prop="0.75"/>
 	</crew>
 </ship>
@@ -1908,7 +2024,7 @@
 	<destroyed load="DEFEAT_ENGI_ELITE"/>
 	<deadCrew load="DEFEAT_ENGI_ELITE"/>
 	<crew>
-		<crewMember type="defend" prop="0.25"/>
+		<crewMember type="engi_defender" prop="0.25"/>
 		<crewMember type="engi" prop="0.75"/>
 	</crew>
 </ship>
@@ -1918,7 +2034,7 @@
 	<destroyed load="DEFEAT_ENGI_ELITE"/>
 	<deadCrew load="DEFEAT_ENGI_ELITE"/>
 	<crew>
-		<crewMember type="defend" prop="0.25"/>
+		<crewMember type="engi_defender" prop="0.25"/>
 		<crewMember type="engi" prop="0.75"/>
 	</crew>
 </ship>
@@ -1926,7 +2042,7 @@
 	<destroyed load="DEFEAT_ENGI_ELITE"/>
 	<deadCrew load="DEFEAT_ENGI_ELITE"/>
 	<crew>
-		<crewMember type="defend" prop="0.25"/>
+		<crewMember type="engi_defender" prop="0.25"/>
 		<crewMember type="engi" prop="0.75"/>
 	</crew>
 </ship>
@@ -1983,7 +2099,7 @@
 		<status type="clear" target="player" system="shields" amount="100"/>
 	</deadCrew>
 	<crew>
-		<crewMember type="defend" prop="0.25"/>
+		<crewMember type="engi_defender" prop="0.25"/>
 		<crewMember type="engi" prop="0.75"/>
 	</crew>
 </ship>
@@ -2005,7 +2121,7 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="defend" prop="0.25"/>
+		<crewMember type="engi_defender" prop="0.25"/>
 		<crewMember type="engi" prop="0.75"/>
 	</crew>
 </ship>
@@ -2026,7 +2142,7 @@
 	<destroyed load="DESTROYED_ENGI_COMPLEX"/>
 	<deadCrew load="DEAD_CREW_ENGI_COMPLEX"/>
 	<crew>
-		<crewMember type="defend" prop="0.50"/>
+		<crewMember type="engi_defender" prop="0.50"/>
 		<crewMember type="engi" prop="0.50"/>
 	</crew>
 </ship>
@@ -2051,7 +2167,8 @@
 </ship>
 
 <ship name="SHIP_HARMONY_CRUISER" auto_blueprint="MU_HARMONY_CRUISER">
-	<surrender  min="4" max="5" load="HARMONY_FUGITIVE_SURRENDER"/>
+	<triggeredEvent name="HARMONY_DEMAND" event="HARMONY_FUGITIVE_SURRENDER" playerHull="7" thisFight="true"/>
+	<!--<surrender  min="4" max="5" load="HARMONY_FUGITIVE_SURRENDER"/>-->
 	<destroyed load="HARMONY_FUGITIVE_WIN"/>
 	<deadCrew load="HARMONY_FUGITIVE_WIN"/>
 </ship>
@@ -2067,6 +2184,11 @@
 </ship>
 
 <ship name="SHIP_SEPERATIST_GENERIC" auto_blueprint="LIST_SHIPS_SEPARATIST_GENERIC">
+	<surrender  chance="0.5" min="2" max="3" load="SURRENDER_SEPERATIST"/>
+	<destroyed load="DESTROYED_SEPERATIST"/>
+	<deadCrew load="DEAD_CREW_SEPERATIST"/>
+</ship>
+<ship name="SHIP_SEPERATIST_GENERIC_NO2" auto_blueprint="LIST_SHIPS_SEPARATIST_GENERIC_NO2">
 	<surrender  chance="0.5" min="2" max="3" load="SURRENDER_SEPERATIST"/>
 	<destroyed load="DESTROYED_SEPERATIST"/>
 	<deadCrew load="DEAD_CREW_SEPERATIST"/>
@@ -2101,7 +2223,7 @@
 		<autoReward level="HIGH">standard</autoReward>
 	</deadCrew>
 	<crew>
-		<crewMember type="separatist" prop="1"/>
+		<crewMember type="engi_separatist" prop="1"/>
 	</crew>
 </ship>
 
@@ -2125,7 +2247,7 @@
 			<event>
 				<text>You first start by taking apart the outer hull before going inside, and are surprised to see a single survivor. He begs for mercy and offers to join your crew. Knowing you will no longer have the Engi's favor, you accept.</text>
 				<autoReward level="MED">standard</autoReward>
-				<crewMember amount="1" class="separatist">L-5524</crewMember>
+				<crewMember amount="1" class="engi_separatist">L-5524</crewMember>
 			</event>
 		</choice>
 	</deadCrew>
@@ -2152,7 +2274,7 @@
 	<destroyed load="DESTROYED_ZOLTAN"/>
 	<deadCrew load="DEAD_CREW_ZOLTAN"/>
 	<crew>
-		<crewMember type="energy" prop="0.90"/>
+		<crewMember type="zoltan" prop="0.90"/>
 		<crewMember type="engi" prop="0.10"/>	
 	</crew>
 </ship>
@@ -2162,7 +2284,7 @@
 	<destroyed load="DESTROYED_ZOLTAN"/>
 	<deadCrew load="DEAD_CREW_ZOLTAN"/>
 	<crew>
-		<crewMember type="energy" prop="0.90"/>
+		<crewMember type="zoltan" prop="0.90"/>
 		<crewMember type="engi" prop="0.10"/>	
 	</crew>
 </ship>
@@ -2192,24 +2314,24 @@
 	<destroyed load="DEFEAT_ZOLTAN_ELITE"/>
 	<deadCrew load="DEFEAT_ZOLTAN_ELITE"/>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="peace" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_peacekeeper" prop="0.20"/>	
 	</crew>
 </ship>
 <ship name="SHIP_ZOLTAN_ELITE_GENERIC" auto_blueprint="LIST_SHIPS_ZOLTAN_ELITE_GENERIC">
 	<destroyed load="DEFEAT_ZOLTAN_ELITE"/>
 	<deadCrew load="DEFEAT_ZOLTAN_ELITE"/>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="peace" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_peacekeeper" prop="0.20"/>	
 	</crew>
 </ship>
 <ship name="SHIP_ZOLTAN_ELITE_FIGHT" auto_blueprint="LIST_SHIPS_ZOLTAN_ELITE_FIGHT">
 	<destroyed load="DEFEAT_ZOLTAN_ELITE"/>
 	<deadCrew load="DEFEAT_ZOLTAN_ELITE"/>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="peace" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_peacekeeper" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -2221,8 +2343,8 @@
 	<destroyed load="CAPITAL_INFO_HUB_WIN"/>
 	<deadCrew load="CAPITAL_INFO_HUB_WIN"/>
 	<crew>
-		<crewMember type="energy" prop="0.60"/>
-		<crewMember type="peace" prop="0.40"/>	
+		<crewMember type="zoltan" prop="0.60"/>
+		<crewMember type="zoltan_peacekeeper" prop="0.40"/>	
 	</crew>
 </ship>
 
@@ -2243,7 +2365,7 @@
 	<surrender  chance="0.5" min="3" max="4">
 		<text>The Zoltan captain sends an urgent hail: "Wait, this was all a test! A test that you passed! A diverse crew, working together, surely a sight to warm the heart of any dispassionate observer. Come, I shall join your crew!"</text>
 		<ship hostile="false"/>
-		<crewMember amount="1" class="energy"/>  
+		<crewMember amount="1" class="zoltan"/>  
 		<autoReward level="LOW">standard</autoReward>
 	</surrender>
 	<destroyed>
@@ -2332,15 +2454,15 @@
 	<deadCrew load="CAPITAL_RAID_ELITE_WIN"/>
 	<crew>
 		<crewMember type="LIST_CREW_REBEL_RANDOM" prop="0.5"/>
-		<crewMember type="soldier" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
 	</crew>
 </ship>
 <ship name="SHIP_CAPITAL_RAID_ACE" auto_blueprint="LIST_SHIPS_REBEL_SELITE_FIGHT">
 	<destroyed load="CAPITAL_RAID_SELITE_WIN"/>
 	<deadCrew load="CAPITAL_RAID_SELITE_WIN"/>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -2381,8 +2503,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="peace" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_peacekeeper" prop="0.20"/>	
 	</crew>
 </ship>
 <ship name="SHIP_CAPITAL_REVOLT_DUSK" auto_blueprint="LIST_SHIPS_DUSKBRINGER_LARGE">
@@ -2403,31 +2525,31 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="energy" prop="0.8"/>
-		<crewMember type="bomber" prop="0.2"/>
+		<crewMember type="zoltan" prop="0.8"/>
+		<crewMember type="zoltan_devotee" prop="0.2"/>
 	</crew>
 </ship>
 
 <ship name="SHIP_ZOLTAN_FREEMANTIS_FRIENDLY" auto_blueprint="LIST_SHIPS_ZOLTAN_ELITE_FIGHT">
 	<destroyed>
-		<text>The Zoltan has been defeated. You scrap the ship.</text>
+		<text>The Zoltans have been defeated. You scrap the ship.</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
-				<text>Without the Zoltan in the way, you return to the Free Mantis ship, and help the Warlord to their feet. "Oh thank you, kind Federation. This is why Free Mantis always have Federations back! Just wish Zoltan not so mean..."</text>
-				<crewMember amount="1" class="warlord"/>
+				<text>Without the Zoltans in the way, you return to the Free Mantis ship, and help the Warlord to their feet. "Oh thank you, kind Federation. This is why Free Mantis always have Federations back! Just wish Zoltan not so mean..."</text>
+				<crewMember amount="1" class="mantis_warlord"/>
 			</event>
 		</choice>
 	</destroyed>
 	<deadCrew>
-		<text>The Zoltan has been defeated. You scrap the ship.</text>
+		<text>The Zoltans have been defeated. You scrap the ship.</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
-				<text>Without the Zoltan in the way, you return to the Free Mantis ship, and help the Warlord to their feet. "Oh thank you, kind Federation. This is why Free Mantis always have Federations back! Just wish Zoltan not so mean..."</text>
-				<crewMember amount="1" class="warlord"/>
+				<text>Without the Zoltans in the way, you return to the Free Mantis ship, and help the Warlord to their feet. "Oh thank you, kind Federation. This is why Free Mantis always have Federations back! Just wish Zoltan not so mean..."</text>
+				<crewMember amount="1" class="mantis_warlord"/>
 			</event>
 		</choice>
 	</deadCrew>
@@ -2495,7 +2617,7 @@
 </ship>
 <ship name="SHIP_ZOLTAN_CORE_AUTO" auto_blueprint="LIST_SHIPS_ZOLTAN_AUTO">
 	<destroyed>
-		<text>The Duskbringer ship breaks apart. While it provides plenty of salvage, the core was no doubt destroyed.</text>
+		<text>The Auto-ship breaks apart. While it provides plenty of salvage, the core was no doubt destroyed.</text>
 		<autoReward level="MED">standard</autoReward>
 	</destroyed>
 </ship>
@@ -2521,12 +2643,12 @@
 	<destroyed load="DESTROYED_GHOST"/>
 	<deadCrew load="DEAD_CREW_GHOST"/>
 	<weaponOverride count="1">
-		<name>MISSILES_1</name>
+		<name>RUSTY_MISSILES_1</name>
 	</weaponOverride>
 	<crew>
-		<crewMember type="goul" prop="0.33"/>
-		<crewMember type="wraith" prop="0.33"/>
-		<crewMember type="mare" prop="0.33"/>
+		<crewMember type="phantom_goul" prop="0.33"/>
+		<crewMember type="phantom_wraith" prop="0.33"/>
+		<crewMember type="phantom_mare" prop="0.33"/>
 	</crew>
 </ship>
 
@@ -2691,8 +2813,8 @@
 		<autoReward level="RANDOM">standard</autoReward>
 	</deadCrew>
 	<crew>
-		<crewMember type="energy" prop="0.60"/>
-		<crewMember type="peace" prop="0.40"/>	
+		<crewMember type="zoltan" prop="0.60"/>
+		<crewMember type="zoltan_peacekeeper" prop="0.40"/>	
 	</crew>
 </ship>
 <ship name="SHIP_PEACE_QUEST_REBEL" auto_blueprint="LIST_SHIPS_REBEL_ELITE_MASSIVE">
@@ -2727,7 +2849,7 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="LIST_CREW_REBEL_RANDOM" prop="0.5"/>
-		<crewMember type="soldier" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -2742,8 +2864,8 @@
 	<destroyed load="DESTROYED_DUSKBRINGER"/>
 	<deadCrew load="DEAD_CREW_DUSKBRINGER"/>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="bomber" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_devotee" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -2753,8 +2875,8 @@
 	<destroyed load="DESTROYED_DUSKBRINGER"/>
 	<deadCrew load="DEAD_CREW_DUSKBRINGER"/>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="bomber" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_devotee" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -2764,8 +2886,8 @@
 	<destroyed load="DESTROYED_DUSKBRINGER"/>
 	<deadCrew load="DEAD_CREW_DUSKBRINGER"/>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="bomber" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_devotee" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -2773,9 +2895,9 @@
 	<destroyed load="DEFEAT_DUSK_ELITE"/>
 	<deadCrew load="DEFEAT_DUSK_ELITE"/>
 	<crew>
-		<crewMember type="energy" prop="0.30"/>
-		<crewMember type="bomber" prop="0.30"/>
-		<crewMember type="radical" prop="0.30"/>
+		<crewMember type="zoltan" prop="0.30"/>
+		<crewMember type="zoltan_devotee" prop="0.30"/>
+		<crewMember type="zoltan_martyr" prop="0.30"/>
 	</crew>
 </ship>
 
@@ -2783,9 +2905,9 @@
 	<destroyed load="DEFEAT_DUSK_ELITE"/>
 	<deadCrew load="DEFEAT_DUSK_ELITE"/>
 	<crew>
-		<crewMember type="energy" prop="0.30"/>
-		<crewMember type="bomber" prop="0.30"/>
-		<crewMember type="radical" prop="0.30"/>
+		<crewMember type="zoltan" prop="0.30"/>
+		<crewMember type="zoltan_devotee" prop="0.30"/>
+		<crewMember type="zoltan_martyr" prop="0.30"/>
 	</crew>
 </ship>
 
@@ -2793,9 +2915,9 @@
 	<destroyed load="DEFEAT_DUSK_ELITE"/>
 	<deadCrew load="DEFEAT_DUSK_ELITE"/>
 	<crew>
-		<crewMember type="energy" prop="0.30"/>
-		<crewMember type="bomber" prop="0.30"/>
-		<crewMember type="radical" prop="0.30"/>
+		<crewMember type="zoltan" prop="0.30"/>
+		<crewMember type="zoltan_devotee" prop="0.30"/>
+		<crewMember type="zoltan_martyr" prop="0.30"/>
 	</crew>
 </ship>
 
@@ -2803,8 +2925,8 @@
 	<destroyed load="DESTROYED_DUSKBRINGER"/>
 	<deadCrew load="DEAD_CREW_DUSKBRINGER"/>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="bomber" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_devotee" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -2812,9 +2934,9 @@
 	<destroyed load="DEFEAT_DUSK_ELITE"/>
 	<deadCrew load="DEFEAT_DUSK_ELITE"/>
 	<crew>
-		<crewMember type="energy" prop="0.30"/>
-		<crewMember type="bomber" prop="0.30"/>
-		<crewMember type="radical" prop="0.30"/>
+		<crewMember type="zoltan" prop="0.30"/>
+		<crewMember type="zoltan_devotee" prop="0.30"/>
+		<crewMember type="zoltan_martyr" prop="0.30"/>
 	</crew>
 </ship>
 
@@ -2824,8 +2946,8 @@
 	<destroyed load="DESTROYED_DUSKBRINGER"/>
 	<deadCrew load="DEAD_CREW_DUSKBRINGER"/>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="bomber" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_devotee" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -2867,8 +2989,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="bomber" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_devotee" prop="0.20"/>	
 	</crew>
 </ship>
 <ship name="SHIP_PIRATE_MONASTERY" auto_blueprint="LIST_SHIPS_PIRATE_ALL">
@@ -2900,7 +3022,7 @@
 		<autoReward level="HIGH">standard</autoReward>
 	</deadCrew>
 	<crew>
-		<crewMember type="bomber" prop="1"/>
+		<crewMember type="zoltan_devotee" prop="1"/>
 	</crew>
 </ship>
 
@@ -2908,8 +3030,8 @@
 	<destroyed load="DUSK_JAILER_KILL"/>
 	<deadCrew load="DUSK_JAILER_CAPTURE"/>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="bomber" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_devotee" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -2932,8 +3054,8 @@
 	<destroyed load="DUSKCAP_CAPITOLRAID_REBEL_WIN"/>
 	<deadCrew load="DUSKCAP_CAPITOLRAID_REBEL_WIN"/>
 	<crew>
-		<crewMember type="energy" prop="0.30"/>
-		<crewMember type="radical" prop="0.30"/>	
+		<crewMember type="zoltan" prop="0.30"/>
+		<crewMember type="zoltan_martyr" prop="0.30"/>	
 	</crew>
 </ship>
 
@@ -3056,6 +3178,7 @@
 	<destroyed>
 		<text>Their ship breaks apart and you move in to scrap the remains.</text>
 		<autoReward level="MED">standard</autoReward>
+		<achievement silent="false">ACH_EVENT_QUICKDRAW</achievement>
 	</destroyed>
 	<deadCrew>
 		<text>With no more crew on board you are free to salvage what you can from the remains.</text>
@@ -3169,7 +3292,7 @@
 	<deadCrew load="DEFEAT_SUZERAIN_ELITE"/>
 	<crew>
 		<crewMember type="mantis" prop="0.80"/>
-		<crewMember type="suzerain" prop="0.20"/>	
+		<crewMember type="mantis_suzerain" prop="0.20"/>	
 	</crew>
 </ship>
 <ship name="SHIP_SUZERAIN_GENERIC" auto_blueprint="LIST_SHIPS_SUZERAIN_GENERIC">
@@ -3177,7 +3300,7 @@
 	<deadCrew load="DEFEAT_SUZERAIN_ELITE"/>
 	<crew>
 		<crewMember type="mantis" prop="0.80"/>
-		<crewMember type="suzerain" prop="0.20"/>	
+		<crewMember type="mantis_suzerain" prop="0.20"/>	
 	</crew>
 </ship>
 <ship name="SHIP_SUZERAIN_FIGHT" auto_blueprint="LIST_SHIPS_SUZERAIN_FIGHT">
@@ -3185,7 +3308,7 @@
 	<deadCrew load="DEFEAT_SUZERAIN_ELITE"/>
 	<crew>
 		<crewMember type="mantis" prop="0.80"/>
-		<crewMember type="suzerain" prop="0.20"/>	
+		<crewMember type="mantis_suzerain" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -3194,8 +3317,8 @@
 	<deadCrew load="DEFEAT_SUZERAIN_ELITE"/>
 	<crew>
 		<crewMember type="mantis" prop="0.40"/>
-		<crewMember type="suzerain" prop="0.40"/>	
-		<crewMember type="bishop" prop="0.20"/>	
+		<crewMember type="mantis_suzerain" prop="0.40"/>	
+		<crewMember type="mantis_bishop" prop="0.20"/>	
 	</crew>
 </ship>
 <ship name="SHIP_BISHOP_GENERIC" auto_blueprint="LIST_SHIPS_BISHOP_GENERIC">
@@ -3203,8 +3326,8 @@
 	<deadCrew load="DEFEAT_SUZERAIN_ELITE"/>
 	<crew>
 		<crewMember type="mantis" prop="0.40"/>
-		<crewMember type="suzerain" prop="0.40"/>	
-		<crewMember type="bishop" prop="0.20"/>	
+		<crewMember type="mantis_suzerain" prop="0.40"/>	
+		<crewMember type="mantis_bishop" prop="0.20"/>	
 	</crew>
 </ship>
 <ship name="SHIP_BISHOP_FIGHT" auto_blueprint="LIST_SHIPS_BISHOP_FIGHT">
@@ -3212,8 +3335,8 @@
 	<deadCrew load="DEFEAT_SUZERAIN_ELITE"/>
 	<crew>
 		<crewMember type="mantis" prop="0.40"/>
-		<crewMember type="suzerain" prop="0.40"/>	
-		<crewMember type="bishop" prop="0.20"/>	
+		<crewMember type="mantis_suzerain" prop="0.40"/>	
+		<crewMember type="mantis_bishop" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -3222,7 +3345,7 @@
 	<deadCrew load="HIVE_JAILER_CAPTURE"/>
 	<crew>
 		<crewMember type="mantis" prop="0.80"/>
-		<crewMember type="suzerain" prop="0.20"/>	
+		<crewMember type="mantis_suzerain" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -3231,7 +3354,7 @@
 	<deadCrew load="HIVE_SUZERAIN_COMPLEX_WIN_STUPID"/>
 	<crew>
 		<crewMember type="mantis" prop="0.80"/>
-		<crewMember type="suzerain" prop="0.20"/>	
+		<crewMember type="mantis_suzerain" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -3265,24 +3388,24 @@
 	<destroyed load="DESTROY_FREEMAN_ELITE"/>
 	<deadCrew load="DEADCREW_FREEMAN_ELITE"/>
 	<crew>
-		<crewMember type="warlord" prop="0.30"/>
-		<crewMember type="freemantis" prop="0.70"/>	
+		<crewMember type="mantis_warlord" prop="0.30"/>
+		<crewMember type="mantis_free" prop="0.70"/>	
 	</crew>
 </ship>
 <ship name="SHIP_FREEMANTIS_ELITE_GENERIC" auto_blueprint="LIST_SHIPS_FREEMANTIS_ELITE_GENERIC">
 	<destroyed load="DESTROY_FREEMAN_ELITE"/>
 	<deadCrew load="DEADCREW_FREEMAN_ELITE"/>
 	<crew>
-		<crewMember type="warlord" prop="0.30"/>
-		<crewMember type="freemantis" prop="0.70"/>	
+		<crewMember type="mantis_warlord" prop="0.30"/>
+		<crewMember type="mantis_free" prop="0.70"/>	
 	</crew>
 </ship>
 <ship name="SHIP_FREEMANTIS_ELITE_FIGHT" auto_blueprint="LIST_SHIPS_FREEMANTIS_ELITE_FIGHT">
 	<destroyed load="DESTROY_FREEMAN_ELITE"/>
 	<deadCrew load="DEADCREW_FREEMAN_ELITE"/>
 	<crew>
-		<crewMember type="warlord" prop="0.30"/>
-		<crewMember type="freemantis" prop="0.70"/>	
+		<crewMember type="mantis_warlord" prop="0.30"/>
+		<crewMember type="mantis_free" prop="0.70"/>	
 	</crew>
 </ship>
 
@@ -3496,7 +3619,7 @@
 			 <event>
 				  <text>"So, you wish to continue. Brave. We shall duel, one on one!"</text>
 				  <ship hostile="true"/>
-				  <boarders min="1" max="1" class="mantis"/>
+				  <boarders min="1" max="1" class="mantis_free"/>
 			 </event>
         </choice>
 	</surrender>
@@ -3530,7 +3653,7 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="LIST_CREW_REBEL_RANDOM" prop="0.5"/>
-		<crewMember type="soldier" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -3659,7 +3782,7 @@
 					<text>(Free Mantis Crew) Convince him to stay with you.</text>
 					<event>
 						<text>"Oh great Federation welcomes me onto his ship? This is grand honor, will not turn it down even in dreams!"</text>
-						<crewMember amount="1" class="warlord">Kakpakakakakakakakakakakakak</crewMember>
+						<crewMember amount="1" class="mantis_warlord">Kakpakakakakakakakakakakakak</crewMember>
 					</event>
 				</choice>
 			</event>
@@ -3667,7 +3790,7 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="mantis" prop="0.80"/>
-		<crewMember type="suzerain" prop="0.20"/>	
+		<crewMember type="mantis_suzerain" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -3695,7 +3818,7 @@
 
 <ship name="SHIP_ZOLTAN_PHEROMONES" auto_blueprint="LIST_SHIPS_ZOLTAN_ELITE_FIGHT">
 	<destroyed>
-		<text>The Zoltan stood no chance against your ship, and now they're dead.</text>
+		<text>The Zoltans stood no chance against your ship, and now they're dead.</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -3703,7 +3826,7 @@
 		</choice>
 	</destroyed>
 	<deadCrew>
-		<text>The Zoltan stood no chance against your ship, and now they're dead.</text>
+		<text>The Zoltans stood no chance against your ship, and now they're dead.</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -3711,8 +3834,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="peace" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_peacekeeper" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -3758,7 +3881,7 @@
 	<deadCrew load="DEFEAT_ROCK_ELITE"/>
 	<crew>
 		<crewMember type="rock" prop="0.50"/>
-		<crewMember type="crusader" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.40"/>
 		<crewMember type="crystal" prop="0.10"/>	
 	</crew>
 </ship>
@@ -3767,7 +3890,7 @@
 	<deadCrew load="DEFEAT_ROCK_ELITE"/>
 	<crew>
 		<crewMember type="rock" prop="0.50"/>
-		<crewMember type="crusader" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.40"/>
 		<crewMember type="crystal" prop="0.10"/>	
 	</crew>
 </ship>
@@ -3776,7 +3899,7 @@
 	<deadCrew load="DEFEAT_ROCK_ELITE"/>
 	<crew>
 		<crewMember type="rock" prop="0.50"/>
-		<crewMember type="crusader" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.40"/>
 		<crewMember type="crystal" prop="0.10"/>	
 	</crew>
 </ship>
@@ -3785,32 +3908,32 @@
 	<destroyed load="DEFEAT_ROCK_ELITE"/>
 	<deadCrew load="DEFEAT_ROCK_ELITE"/>
 	<crew>
-		<crewMember type="crusader" prop="0.60"/>
-		<crewMember type="paladin_enemy" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.60"/>
+		<crewMember type="rock_paladin_enemy" prop="0.40"/>
 	</crew>
 </ship>
 <ship name="SHIP_ROCK_SELITE_GENERIC" auto_blueprint="LIST_SHIPS_ROCK_SELITE_GENERIC">
 	<destroyed load="DEFEAT_ROCK_ELITE"/>
 	<deadCrew load="DEFEAT_ROCK_ELITE"/>
 	<crew>
-		<crewMember type="crusader" prop="0.60"/>
-		<crewMember type="paladin_enemy" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.60"/>
+		<crewMember type="rock_paladin_enemy" prop="0.40"/>
 	</crew>
 </ship>
 <ship name="SHIP_ROCK_SELITE_FIGHT" auto_blueprint="LIST_SHIPS_ROCK_SELITE_FIGHT">
 	<destroyed load="DEFEAT_ROCK_ELITE"/>
 	<deadCrew load="DEFEAT_ROCK_ELITE"/>
 	<crew>
-		<crewMember type="crusader" prop="0.60"/>
-		<crewMember type="paladin_enemy" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.60"/>
+		<crewMember type="rock_paladin_enemy" prop="0.40"/>
 	</crew>
 </ship>
 <ship name="SHIP_ROCK_SELITE_LARGE" auto_blueprint="LIST_SHIPS_ROCK_SELITE_LARGE">
 	<destroyed load="DEFEAT_ROCK_ELITE"/>
 	<deadCrew load="DEFEAT_ROCK_ELITE"/>
 	<crew>
-		<crewMember type="crusader" prop="0.60"/>
-		<crewMember type="paladin_enemy" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.60"/>
+		<crewMember type="rock_paladin_enemy" prop="0.40"/>
 	</crew>
 </ship>
 
@@ -3831,7 +3954,7 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="rock" prop="0.50"/>
-		<crewMember type="crusader" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.40"/>
 		<crewMember type="crystal" prop="0.10"/>	
 	</crew>
 </ship>
@@ -3845,7 +3968,7 @@
 	<deadCrew load="LOSTSUN_ESCORT_QUEST_RAID_WIN"/>
 	<crew>
 		<crewMember type="rock" prop="0.50"/>
-		<crewMember type="crusader" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.40"/>
 		<crewMember type="crystal" prop="0.10"/>	
 	</crew>
 </ship>
@@ -3859,7 +3982,7 @@
 	<deadCrew load="DEAD_CREW_DEFAULT"/>
 	<crew>
 		<crewMember type="rock" prop="0.50"/>
-		<crewMember type="crusader" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.40"/>
 		<crewMember type="crystal" prop="0.10"/>	
 	</crew>
 </ship>
@@ -3882,7 +4005,7 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="rock" prop="0.60"/>
-		<crewMember type="crusader" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.40"/>
 		<crewMember type="crystal" prop="0.10"/>	
 	</crew>
 </ship>
@@ -3896,7 +4019,7 @@
 	<deadCrew load="ROCK_CRUSADE_ROCK"/>
 	<crew>
 		<crewMember type="rock" prop="0.50"/>
-		<crewMember type="crusader" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.40"/>
 		<crewMember type="crystal" prop="0.10"/>	
 	</crew>
 </ship>
@@ -3911,7 +4034,7 @@
 	<deadCrew load="ROCK_CRYSTAL_DEVICE_DEACTIVATE"/>
 	<crew>
 		<crewMember type="rock" prop="0.50"/>
-		<crewMember type="crusader" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.40"/>
 		<crewMember type="crystal" prop="0.10"/>	
 	</crew>
 </ship>
@@ -3964,7 +4087,7 @@
 		<text>With the Slug ship destroyed, you take the time to collect what little scrap remains.</text>
 		<autoReward level="LOW">standard</autoReward>
 		<choice hidden="true">
-			<text>Contact the Slugs.</text>
+			<text>Contact the Rockmen.</text>
 			<event load="ROCK_SLUG_ROCK_GRATEFUL"/>
 		</choice>
 	</destroyed>
@@ -3972,7 +4095,7 @@
 		<text>With the Slug crew dead, you scrap the ship for supplies.</text>
 		<autoReward level="MED">standard</autoReward>
 		<choice hidden="true">
-			<text>Contact the Slugs.</text>
+			<text>Contact the Rockmen.</text>
 			<event load="ROCK_SLUG_ROCK_GRATEFUL"/>
 		</choice>
 	</deadCrew>
@@ -3992,7 +4115,7 @@
 	<deadCrew load="ROCK_HOMEWORLDS_VICTORY"/>
 	<crew>
 		<crewMember type="rock" prop="0.50"/>
-		<crewMember type="crusader" prop="0.40"/>
+		<crewMember type="rock_crusader" prop="0.40"/>
 		<crewMember type="crystal" prop="0.10"/>	
 	</crew>
 </ship>
@@ -4040,7 +4163,7 @@
 					<event>
 						<text>You know you won't receive payment from the Coalition vessel for this, but you could always use another hand on the ship.</text>
 						<ship hostile="false"/>
-						<crewMember amount="1" class="outcast"/>
+						<crewMember amount="1" class="rock_outcast"/>
 					</event>
 				</choice>
 				<choice hidden="true">
@@ -4058,7 +4181,7 @@
 		<text>With the ship now destroyed, you move closer and give orders to scrap the ship while you recover several bodies from the wreckage and store them in the cargo hold.</text>
 		<autoReward level="MED">standard</autoReward>
 		<choice hidden="true">
-			<text>Return to the Coalition ship</text>
+			<text>Return to the Coalition ship.</text>
 			<event>
 				<text>"Huh? I do not underssstand. There issss nothing genetically different about thesssse Outcassstsss from a normal Rockman. I keep hearing ssspeak of the "teamwork" genome, but I ssstill cannot ssseem to find it anywhere! Bah, thisss is hopelessss. Whatever, take your payment."</text>
 				<autoReward level="MED">standard</autoReward>
@@ -4069,7 +4192,7 @@
 		<text>With the ship's crew now lifeless, you move closer and give orders to scrap the ship while you recover several bodies and store them in the cargo hold.</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
-			<text>Return to the Coalition ship</text>
+			<text>Return to the Coalition ship.</text>
 			<event>
 				<text>"Huh? I do not underssstand. There issss nothing genetically different about thesssse Outcassstsss from a normal Rockman. I keep hearing ssspeak of the "teamwork" genome, but I ssstill cannot ssseem to find it anywhere! Bah, thisss is hopelessss. Whatever, take your payment."</text>
 				<autoReward level="MED">standard</autoReward>
@@ -4138,6 +4261,10 @@
 			</event>
 		</choice>
 	</deadCrew>
+	<crew>
+		<crewMember prop="0.2" type="rock_crusader"/>
+		<crewMember prop="0.8" type="rock"/>
+	</crew>
 </ship>
 <ship name="SHIP_OUTCAST_LOSTCARGO_SSLG" auto_blueprint="MU_SSLG_STATION">
 	<surrender min="2" max="4">
@@ -4146,6 +4273,7 @@
 			<text>Ignore them and demand they hand over the cargo.</text>
 			<event>
 				<text>With no other choice, the Crystals hand over the cargo and jump away. Not too long after the Theocracy convoy arrives and inspects the cargo. Satisfied, they transfer over a reward, but as you're leaving hostile boarders spring up on your ship! Seems the SSLG was right about you being stabbed in the back.</text>
+				<ship hostile="false"/>
 				<boarders min="2" max="3" class="rock"/>
 				<autoReward level="MED">standard</autoReward>
 			</event>
@@ -4154,6 +4282,7 @@
 			<text>Propose setting a trap with the cargo.</text>
 			<event>
 				<text>The Crystals seem to think this proposition over, but eventually accept. They swap the valuable items inside for explosives.</text>
+				<ship hostile="false"/>
 				<item_modify>
 					<item type="missiles" min="-5" max="-5"/>
 				</item_modify>
@@ -4187,13 +4316,14 @@
 		</choice>
 	</destroyed>
 	<deadCrew>
-		<text>The Inquisition vessel has been defeated. You scrap the remains, though many of the other Rock ships have escaped during the fight.</text>
-		<autoReward level="HIGH">standard</autoReward>
+		<text>The station has been cleared of crew, leaving behind a substantial amount of scrap matter.</text>
+		<autoReward level="MED">standard</autoReward>
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
-				<text>Seems the only ships that didn't escape were a few damaged transport vessels, which surrender to you and offer a weapon from their cargo.</text>
-				<weapon name="RANDOM"/>
+				<text>Not too long after the Theocracy convoy arrives and inspects the cargo. Satisfied, they transfer over a reward, but as you're leaving hostile boarders spring up on your ship! Guess its not too unexpected that you've been stabbed in the back.</text>
+				<boarders min="2" max="3" class="rock"/>
+				<autoReward level="MED">standard</autoReward>
 			</event>
 		</choice>
 	</deadCrew>
@@ -4203,11 +4333,11 @@
 	<triggeredEvent name="BUNGALUNG_WIN" event="OUTCAST_CHUNGUS_WIN" enemyCrew="2" enemyHull="3" thisFight="true" clearOnJump="true"/>
 	<triggeredEvent name="BUNGALUNG_LOSE" event="OUTCAST_CHUNGUS_LOSE" playerDeaths="2" playerDamage="10" thisFight="true" clearOnJump="true"/>
 	<destroyed>
-		<text>It seems you fought a little too well- Chung Bungalung is dead, and his secret will remain forever unknown.</text>
+		<text>It seems you fought a little too well - Chung Bungalung is dead, and his secret will remain forever unknown.</text>
 		<autoReward level="MED">standard</autoReward>
 	</destroyed>
 	<deadCrew>
-		<text>It seems you fought a little too well- Chung Bungalung is dead, and his secret will remain forever unknown.</text>
+		<text>It seems you fought a little too well - Chung Bungalung is dead, and his secret will remain forever unknown.</text>
 		<autoReward level="MED">standard</autoReward>
 	</deadCrew>
 </ship>
@@ -4248,7 +4378,7 @@
 	<deadCrew load="DEAD_CREW_CRYSTAL"/>
 	<crew>
 		<crewMember type="crystal" prop="0.5"/>
-		<crewMember type="sslg" prop="0.5"/>	
+		<crewMember type="crystal_liberator" prop="0.5"/>	
 	</crew>
 </ship>
 
@@ -4258,7 +4388,7 @@
 	<deadCrew load="DEAD_CREW_CRYSTAL"/>
 	<crew>
 		<crewMember type="crystal" prop="0.5"/>
-		<crewMember type="sslg" prop="0.5"/>	
+		<crewMember type="crystal_liberator" prop="0.5"/>	
 	</crew>
 </ship>
 
@@ -4268,7 +4398,7 @@
 	<deadCrew load="DEAD_CREW_CRYSTAL"/>
 	<crew>
 		<crewMember type="crystal" prop="0.5"/>
-		<crewMember type="sslg" prop="0.5"/>	
+		<crewMember type="crystal_liberator" prop="0.5"/>	
 	</crew>
 </ship>
 
@@ -4278,7 +4408,7 @@
 	<deadCrew load="DEAD_CREW_CRYSTAL"/>
 	<crew>
 		<crewMember type="crystal" prop="0.5"/>
-		<crewMember type="sslg" prop="0.5"/>	
+		<crewMember type="crystal_liberator" prop="0.5"/>	
 	</crew>
 </ship>
 
@@ -4370,8 +4500,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="outcast" prop="0.50"/>
-		<crewMember type="commando" prop="0.50"/>	
+		<crewMember type="rock_outcast" prop="0.50"/>
+		<crewMember type="rock_commando" prop="0.50"/>	
 	</crew>
 </ship>
 
@@ -4393,8 +4523,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="outcast" prop="0.50"/>
-		<crewMember type="commando" prop="0.50"/>	
+		<crewMember type="rock_outcast" prop="0.50"/>
+		<crewMember type="rock_commando" prop="0.50"/>	
 	</crew>
 </ship>
 
@@ -4403,7 +4533,7 @@
 		<text>The Lost Sun ship breaks apart, and you scrap its remains.</text>
 		<autoReward level="LOW">standard</autoReward>
 		<choice hidden="true">
-			<text>Investigate the wreckage of the mantis ship.</text>
+			<text>Investigate the wreckage of the Mantis ship.</text>
 			<event load="LOSTSUN_MANTIS_LOST_WRECK"/>    
 		</choice>
 	</destroyed>
@@ -4411,13 +4541,13 @@
 		<text>The Lost Sun crew is dead, and you scrap its remains.</text>
 		<autoReward level="MED">standard</autoReward>
 		<choice hidden="true">
-			<text>Investigate the wreckage of the mantis ship.</text>
+			<text>Investigate the wreckage of the Mantis ship.</text>
 			<event load="LOSTSUN_MANTIS_LOST_WRECK"/>    
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="outcast" prop="0.50"/>
-		<crewMember type="commando" prop="0.50"/>	
+		<crewMember type="rock_outcast" prop="0.50"/>
+		<crewMember type="rock_commando" prop="0.50"/>	
 	</crew>
 </ship>
 
@@ -4439,8 +4569,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="outcast" prop="0.50"/>
-		<crewMember type="commando" prop="0.50"/>	
+		<crewMember type="rock_outcast" prop="0.50"/>
+		<crewMember type="rock_commando" prop="0.50"/>	
 	</crew>
 </ship>
 
@@ -4501,8 +4631,8 @@
 		<status type="clear" target="player" system="clonebay" amount="100"/>
 	</deadCrew>
 	<crew>
-		<crewMember type="outcast" prop="0.50"/>
-		<crewMember type="commando" prop="0.50"/>	
+		<crewMember type="rock_outcast" prop="0.50"/>
+		<crewMember type="rock_commando" prop="0.50"/>	
 	</crew>
 </ship>
 <ship name="SHIP_LOSTSUN_CHALLENGE_HIGH" auto_blueprint="LIST_SHIPS_LOSTSUN_FIGHT">
@@ -4562,8 +4692,8 @@
 		<status type="clear" target="player" system="clonebay" amount="100"/>
 	</deadCrew>
 	<crew>
-		<crewMember type="outcast" prop="0.50"/>
-		<crewMember type="commando" prop="0.50"/>	
+		<crewMember type="rock_outcast" prop="0.50"/>
+		<crewMember type="rock_commando" prop="0.50"/>	
 	</crew>
 </ship>
 <ship name="SHIP_LOSTSUN_CHALLENGE_AMAZING" auto_blueprint="LIST_SHIPS_LOSTSUN_FIGHT">
@@ -4625,8 +4755,8 @@
 		<status type="clear" target="player" system="clonebay" amount="100"/>
 	</deadCrew>
 	<crew>
-		<crewMember type="outcast" prop="0.50"/>
-		<crewMember type="commando" prop="0.50"/>	
+		<crewMember type="rock_outcast" prop="0.50"/>
+		<crewMember type="rock_commando" prop="0.50"/>	
 	</crew>
 </ship>
 <ship name="SHIP_LOSTSUN_CHALLENGE_MEDICAL" auto_blueprint="LIST_SHIPS_LOSTSUN_FIGHT">
@@ -4687,8 +4817,8 @@
 		<status type="clear" target="player" system="clonebay" amount="100"/>
 	</deadCrew>
 	<crew>
-		<crewMember type="outcast" prop="0.50"/>
-		<crewMember type="commando" prop="0.50"/>	
+		<crewMember type="rock_outcast" prop="0.50"/>
+		<crewMember type="rock_commando" prop="0.50"/>	
 	</crew>
 </ship>
 <ship name="SHIP_LOSTSUN_CHALLENGE_REACTOR" auto_blueprint="LIST_SHIPS_LOSTSUN_FIGHT">
@@ -4749,8 +4879,8 @@
 		<status type="clear" target="player" system="clonebay" amount="100"/>
 	</deadCrew>
 	<crew>
-		<crewMember type="outcast" prop="0.50"/>
-		<crewMember type="commando" prop="0.50"/>	
+		<crewMember type="rock_outcast" prop="0.50"/>
+		<crewMember type="rock_commando" prop="0.50"/>	
 	</crew>
 </ship>
 
@@ -4830,7 +4960,7 @@
 		<crewMember type="mantis" prop="0.20"/>
 		<crewMember type="slug" prop="0.20"/>
 		<crewMember type="human" prop="0.20"/>
-		<crewMember type="outcast" prop="0.40"/>	
+		<crewMember type="rock_outcast" prop="0.40"/>	
 	</crew>
 </ship>
 
@@ -4842,7 +4972,7 @@
 			<text>Contact the Crystals.</text>
 			<event>
 				<text>The Crystals thank you. "This sector is dangerous, I need out of here. Will you let me come with you?"</text>
-				<crewMember amount="1" class="sentinel"/>
+				<crewMember amount="1" class="crystal_sentinel"/>
 			</event>
 		</choice>
 	</destroyed>
@@ -4853,12 +4983,12 @@
 			<text>Contact the Crystals.</text>
 			<event>
 				<text>The Crystals thank you. "This sector is dangerous, I need out of here. Will you let me come with you?"</text>
-				<crewMember amount="1" class="sentinel"/>
+				<crewMember amount="1" class="crystal_sentinel"/>
 			</event>
 		</choice>
 	</deadCrew>
 </ship>
-<ship name="SHIP_DUEL_SENTINEL" auto_blueprint="LIST_SHIPS_CRYSTAL_B_GENERIC">
+<ship name="SHIP_DUEL_SENTINEL" auto_blueprint="LIST_SHIPS_CRYSTAL_ELITE_GENERIC">
 	<destroyed>
 		<text>You've defeated the Crystalline ship. You scrap the remains.</text>
 		<autoReward level="HIGH">standard</autoReward>
@@ -4866,7 +4996,7 @@
 			<text>Contact the Cultists.</text>
 			<event>
 				<text>The Cultists aren't sure how to feel about you killing the Crystals, but they thank you nonetheless. They offer their services, hoping the Crystals won't run away from them if they're on your ship.</text>
-				<crewMember amount="1" class="cultist"/>
+				<crewMember amount="1" class="rock_cultist"/>
 			</event>
 		</choice>
 	</destroyed>
@@ -4877,13 +5007,13 @@
 			<text>Contact the Cultists.</text>
 			<event>
 				<text>The Cultists aren't sure how to feel about you killing the Crystals, but they thank you nonetheless. They offer their services, hoping the Crystals won't run away from them if they're on your ship.</text>
-				<crewMember amount="1" class="cultist"/>
+				<crewMember amount="1" class="rock_cultist"/>
 			</event>
 		</choice>
 	</deadCrew>
 </ship>
 
-<ship name="SHIP_SENTINEL_BOUNTY" auto_blueprint="LIST_SHIPS_CRYSTAL_B_GENERIC">
+<ship name="SHIP_SENTINEL_BOUNTY" auto_blueprint="LIST_SHIPS_CRYSTAL_ELITE_GENERIC">
 	<destroyed>
 		<text>The Crystalline ship explodes. You don't suspect this is what the Cultists had in mind by "capturing", so you quickly scrap the salvage and leave.</text>
 		<autoReward level="HIGH">standard</autoReward>
@@ -4902,11 +5032,15 @@
 			<text>Save the Sentinel.</text>
 			<event>
 				<text>You help the Sentinel to their feet. However, it's too late. the Cultists have already spotted you! They beam aboard some troops to try and take back the Crystal.</text>
-				<boarders min="2" max="3" class="cultist"/>
-				<crewMember amount="1" class="sentinel"/>
+				<boarders min="2" max="3" class="rock_cultist"/>
+				<crewMember amount="1" class="crystal_sentinel"/>
 			</event>
 		</choice>
 	</deadCrew>
+	<crew>
+		<crewMember type="crystal" prop="0.8"/>
+		<crewMember type="crystal_sentinel" prop="0.2"/>
+	</crew>
 </ship>
 
 <ship name="SHIP_ORIGINS_CHASE_CULTIST" auto_blueprint="LIST_SHIPS_CULTIST_FIGHT">
@@ -4982,62 +5116,67 @@
 	<deadCrew load="DEAD_CREW_SLUG"/>
 </ship>
 
-<ship name="SHIP_SLUG_STATION" auto_blueprint="MU_SLUG_STATION_A">
+<ship name="SHIP_SLUG_STATION" auto_blueprint="MU_SLUG_STATION">
 	<surrender  chance="0.6" min="2" max="3" load="SURRENDER_SLUG"/>
 	<destroyed load="DESTROYED_SLUG"/>
 	<deadCrew load="DEAD_CREW_SLUG"/>
 </ship>
 
-<ship name="SHIP_SLUG_ELITE_ALL" auto_blueprint="LIST_SHIPS_SLUG_C_ALL">
+<ship name="SHIP_SLUG_ELITE_ALL" auto_blueprint="LIST_SHIPS_SLUG_ELITE_ALL">
 	<surrender  chance="0.3" min="2" max="3" load="SURRENDER_SLUG"/>
 	<destroyed load="DEFEAT_SLUG_ELITE"/>
 	<deadCrew load="DEFEAT_SLUG_ELITE"/>
 	<crew>
 		<crewMember type="slug" prop="0.80"/>
-		<crewMember type="sabo" prop="0.20"/>	
+		<crewMember type="slug_saboteur" prop="0.20"/>	
 	</crew>
 </ship>
-<ship name="SHIP_SLUG_ELITE_GENERIC" auto_blueprint="LIST_SHIPS_SLUG_C_GENERIC">
+<ship name="SHIP_SLUG_ELITE_GENERIC" auto_blueprint="LIST_SHIPS_SLUG_ELITE_GENERIC">
 	<surrender  chance="0.3" min="2" max="3" load="SURRENDER_SLUG"/>
 	<destroyed load="DEFEAT_SLUG_ELITE"/>
 	<deadCrew load="DEFEAT_SLUG_ELITE"/>
 	<crew>
 		<crewMember type="slug" prop="0.80"/>
-		<crewMember type="sabo" prop="0.20"/>	
+		<crewMember type="slug_saboteur" prop="0.20"/>	
 	</crew>
 </ship>
-<ship name="SHIP_SLUG_ELITE_FIGHT" auto_blueprint="LIST_SHIPS_SLUG_C_FIGHT">
+<ship name="SHIP_SLUG_ELITE_FIGHT" auto_blueprint="LIST_SHIPS_SLUG_ELITE_FIGHT">
 	<surrender  chance="0.3" min="2" max="3" load="SURRENDER_SLUG"/>
 	<destroyed load="DEFEAT_SLUG_ELITE"/>
 	<deadCrew load="DEFEAT_SLUG_ELITE"/>
 	<crew>
 		<crewMember type="slug" prop="0.80"/>
-		<crewMember type="sabo" prop="0.20"/>	
+		<crewMember type="slug_saboteur" prop="0.20"/>	
 	</crew>
 </ship>
 
-<ship name="SHIP_SLUG_PROTECTOR" auto_blueprint="MU_SLUG_PROTECTOR_A">
+<ship name="SHIP_SLUG_PROTECTOR" auto_blueprint="MU_SLUG_PROTECTOR">
 	<destroyed load="DESTROYED_SLUG"/>
 	<deadCrew load="DEAD_CREW_SLUG"/>
 </ship>
 
-<ship name="SHIP_SLUG_STATION" auto_blueprint="MU_SLUG_STATION_A">
+<ship name="SHIP_SLUG_STATION" auto_blueprint="MU_SLUG_STATION">
 	<destroyed load="DESTROYED_SLUG"/>
 	<deadCrew load="DEAD_CREW_SLUG"/>
 </ship>
 
-<ship name="SHIP_SLUG_JAILER" auto_blueprint="MU_SLUG_JAILER_A">
+<ship name="SHIP_SLUG_JAILER" auto_blueprint="MU_SLUG_JAILER">
 	<surrender  chance="0.5" min="2" max="3" load="SURRENDER_SLUG_JAILER"/>
 	<destroyed load="SLUG_JAILER_DESTROY"/>
 	<deadCrew load="SLUG_JAILER_KILL"/>
 </ship>
 
-<ship name="SHIP_SLUG_UNLOCK_1" auto_blueprint="LIST_SHIPS_SLUG_C_FIGHT">
-	<surrender chance="0" min="3" max="4" load="SURRENDER_SLUG_UNLOCK"/>
+<ship name="SHIP_SLUG_UNLOCK_1" auto_blueprint="LIST_SHIPS_SLUG_ELITE_FIGHT">
+	<triggeredEvent event="SURRENDER_SLUG_UNLOCK" enemyHull="5" enemyCrew="2" thisFight="true" clearOnJump="true"/>
+	<!--<surrender chance="0" min="3" max="4" load="SURRENDER_SLUG_UNLOCK"/>-->
 	<destroyed load="DESTROYED_SLUG"/>
 	<deadCrew load="DEAD_CREW_SLUG"/>
+	<crew>
+		<crewMember type="slug" prop="0.80"/>
+		<crewMember type="slug_saboteur" prop="0.20"/>	
+	</crew>
 </ship>
-<ship name="SHIP_SLUG_UNLOCK_2" auto_blueprint="MU_SLUG_STATION_C">
+<ship name="SHIP_SLUG_UNLOCK_2" auto_blueprint="MU_SLUG_STATION_ELITE">
 	<destroyed load="SLUG_UNLOCK_3"/>
 	<deadCrew load="SLUG_UNLOCK_3"/>
 </ship>
@@ -5067,7 +5206,7 @@
 	</deadCrew>
 </ship>
 
-<ship name="SHIP_SLUG_STATUS_DOORS" auto_blueprint="MU_SLUG_LIGHT_CRUISER_A">
+<ship name="SHIP_SLUG_STATUS_DOORS" auto_blueprint="MU_SLUG_LIGHT_CRUISER">
 	<destroyed>
 		<text>The Slug ship breaks apart and your systems return to normal. You collect what you can.</text>
 		<autoReward level="MED">standard</autoReward>
@@ -5082,7 +5221,7 @@
 	</deadCrew>
 	<weaponOverride count="2">
 		<name>BEAM_FIRE</name>
-		<name>BOMB_FIRE</name>
+		<name>BOMB_FIRE_ENEMY</name>
 	</weaponOverride>
 </ship>
 <ship name="SHIP_SLUG_STATUS_ENGINES" auto_blueprint="LIST_SHIPS_SLUG_FIGHT">
@@ -5192,14 +5331,14 @@
 	</deadCrew>
 	<weaponOverride count="3">
 		<name>BEAM_FIRE</name>
-		<name>BOMB_FIRE</name>
+		<name>BOMB_FIRE_ENEMY</name>
 		<name>LASER_BURST_2</name>
 	</weaponOverride>
 </ship>
 
 <ship name="SHIP_SLUG_REFUGEE" auto_blueprint="LIST_SHIPS_SLUG_FIGHT">
 	<destroyed>
-		<text>The slug ship breaks apart and you salvage what you can.</text>
+		<text>The Slug ship breaks apart and you salvage what you can.</text>
 		<autoReward level="MED">standard</autoReward>
 		<choice hidden="true">
 			<text>Contact the refugee ship.</text>
@@ -5210,7 +5349,7 @@
 		</choice>
 	</destroyed>
 	<deadCrew>
-		<text>The slug ship, now empty of lifeforms, provides easy salvage.</text>
+		<text>The Slug ship, now empty of lifeforms, provides easy salvage.</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Contact the refugee ship.</text>
@@ -5356,7 +5495,7 @@
 	</deadCrew>
 </ship>
 
-<ship name="SHIP_SLUG_GRAVE_ELITE" auto_blueprint="LIST_SHIPS_SLUG_C_FIGHT">
+<ship name="SHIP_SLUG_GRAVE_ELITE" auto_blueprint="LIST_SHIPS_SLUG_ELITE_FIGHT">
 	<destroyed>
 		<text>You've defeated the Elite Slug Vessel. Now that you've rid of the ship, you can carry on to the planet.</text>
 		<autoReward level="HIGH">standard</autoReward>
@@ -5375,11 +5514,11 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="slug" prop="0.80"/>
-		<crewMember type="sabo" prop="0.20"/>	
+		<crewMember type="slug_saboteur" prop="0.20"/>	
 	</crew>
 </ship>
 
-<ship name="SHIP_SLUG_PRISONER_ELITE" auto_blueprint="LIST_SHIPS_SLUG_C_FIGHT">
+<ship name="SHIP_SLUG_PRISONER_ELITE" auto_blueprint="LIST_SHIPS_SLUG_ELITE_FIGHT">
 	<destroyed>
 		<text>You've defeated the Elite Slug Vessel. However, while you attempt to scrap it, you notice the jailer is trying to flee!</text>
 		<choice hidden="true">
@@ -5397,7 +5536,7 @@
 					<text>Free their prisoners.</text>
 					<event>
 						<text>It appears they have only a single prisoner on board. A Slug Saboteur, they're grateful. They explain they betrayed the Slug Kleptocracy by refusing to steal from and murder civilians, and were arrested accordingly.</text>
-						<crewMember amount="1" class="sabo"/>
+						<crewMember amount="1" class="slug_saboteur"/>
 					</event>
 				</choice>
 			</event>
@@ -5420,7 +5559,7 @@
 					<text>Free their prisoners.</text>
 					<event>
 						<text>It appears they have only a single prisoner on board. A Slug Saboteur, they're grateful. They explain they betrayed the Slug Kleptocracy by refusing to steal from and murder civilians, and were arrested accordingly.</text>
-						<crewMember amount="1" all_skills="1" class="sabo"/>
+						<crewMember amount="1" all_skills="1" class="slug_saboteur"/>
 					</event>
 				</choice>
 			</event>
@@ -5428,7 +5567,7 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="slug" prop="0.80"/>
-		<crewMember type="sabo" prop="0.20"/>	
+		<crewMember type="slug_saboteur" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -5486,8 +5625,8 @@
 	<destroyed load="DESTROYED_HEKTAR"/>
 	<deadCrew load="DEAD_CREW_HEKTAR"/>
 	<crew>
-		<crewMember type="hektar" prop="0.75"/>
-		<crewMember type="worker" prop="0.25"/>
+		<crewMember type="slug_hektar" prop="0.75"/>
+		<crewMember type="lizard" prop="0.25"/>
 	</crew>
 </ship>
 
@@ -5496,8 +5635,8 @@
 	<destroyed load="DESTROYED_HEKTAR"/>
 	<deadCrew load="DEAD_CREW_HEKTAR"/>
 	<crew>
-		<crewMember type="hektar" prop="0.75"/>
-		<crewMember type="worker" prop="0.25"/>
+		<crewMember type="slug_hektar" prop="0.75"/>
+		<crewMember type="lizard" prop="0.25"/>
 	</crew>
 </ship>
 
@@ -5506,8 +5645,8 @@
 	<destroyed load="DESTROYED_HEKTAR"/>
 	<deadCrew load="DEAD_CREW_HEKTAR"/>
 	<crew>
-		<crewMember type="hektar" prop="0.75"/>
-		<crewMember type="worker" prop="0.25"/>
+		<crewMember type="slug_hektar" prop="0.75"/>
+		<crewMember type="lizard" prop="0.25"/>
 	</crew>
 </ship>
 
@@ -5515,8 +5654,8 @@
 	<destroyed load="DESTROYED_HEKTAR"/>
 	<deadCrew load="DEAD_CREW_HEKTAR"/>
 	<crew>
-		<crewMember type="hektar" prop="0.75"/>
-		<crewMember type="worker" prop="0.25"/>
+		<crewMember type="slug_hektar" prop="0.75"/>
+		<crewMember type="lizard" prop="0.25"/>
 	</crew>
 </ship>
 
@@ -5525,8 +5664,8 @@
 	<destroyed load="DESTROYED_HEKTAR"/>
 	<deadCrew load="DEAD_CREW_HEKTAR"/>
 	<crew>
-		<crewMember type="hektar" prop="0.75"/>
-		<crewMember type="worker" prop="0.25"/>
+		<crewMember type="slug_hektar" prop="0.75"/>
+		<crewMember type="lizard" prop="0.25"/>
 	</crew>
 </ship>
 
@@ -5541,7 +5680,7 @@
 				<autoReward level="MED">standard</autoReward>
 			</event>
 		</choice>
-		<choice hidden="true">
+		<choice>
 			<text>Silently grab one of the children and leave.</text>
 			<event>
 				<crewMember amount="1" class="slug">Timmy</crewMember>
@@ -5552,13 +5691,13 @@
 		<text>The Hektar ship has been defeated. You scrap the remains.</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
-			<text>Contact the Protestors.</text>
+			<text>Contact the protestors.</text>
 			<event>
 				<text>The protestors are jubilant that the children have been set free, and offer you a reward.</text>
 				<autoReward level="MED">standard</autoReward>
 			</event>
 		</choice>
-		<choice hidden="true">
+		<choice>
 			<text>Silently grab one of the children and leave.</text>
 			<event>
 				<crewMember amount="1" class="slug">Timmy</crewMember>
@@ -5566,21 +5705,21 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="hektar" prop="0.75"/>
-		<crewMember type="worker" prop="0.25"/>
+		<crewMember type="slug_hektar" prop="0.75"/>
+		<crewMember type="lizard" prop="0.25"/>
 	</crew>
 </ship>
 
 <ship name="SHIP_HEKTAR_UNION" auto_blueprint="LIST_SHIPS_HEKTAR_FIGHT">
 	<surrender min="2" max="4">
 		<text>At last, the Slug surrenders. "Alright, alright! You and thossse damn lizzzardsss have made your point! I'll let you have your ssstinkin' union or whatever!"</text>
-		<choice>
+		<choice hidden="true">
 			<text>Stop fighting and bring this news to the lizards.</text>
 			<event>
 				<text>Your return causes much celebration amongst the lizards, though not all are happy. Some are afraid the Slug won't keep his word, and request to be escorted out of the sector by you. You agree, and one of the lizards even wants to stick around!</text>
 				<autoReward level="LOW">standard</autoReward>
 				<ship hostile="false"/>
-				<crewMember amount="1" class="worker"/>
+				<crewMember amount="1" class="lizard"/>
 			</event>
 		</choice>
 		<choice>
@@ -5599,8 +5738,8 @@
 		<autoReward level="MED">standard</autoReward>
 	</deadCrew>
 	<crew>
-		<crewMember type="hektar" prop="0.75"/>
-		<crewMember type="worker" prop="0.25"/>
+		<crewMember type="slug_hektar" prop="0.75"/>
+		<crewMember type="lizard" prop="0.25"/>
 	</crew>
 </ship>
 
@@ -5622,8 +5761,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="hektar" prop="0.75"/>
-		<crewMember type="worker" prop="0.25"/>
+		<crewMember type="slug_hektar" prop="0.75"/>
+		<crewMember type="lizard" prop="0.25"/>
 	</crew>
 </ship>
 
@@ -5675,7 +5814,7 @@
 			</event>
 		</choice>
 	</deadCrew>
-	<weaponOverride count="3">
+	<weaponOverride count="2">
 		<name>LIST_WEAPONS_HEKTAR</name>
 		<name>LIST_WEAPONS_HEKTAR</name>
 	</weaponOverride>
@@ -5754,8 +5893,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="hektar" prop="0.75"/>
-		<crewMember type="worker" prop="0.25"/>
+		<crewMember type="slug_hektar" prop="0.75"/>
+		<crewMember type="lizard" prop="0.25"/>
 	</crew>
 </ship>
 <ship name="SHIP_HEKTAR_PATENT_ZOLTAN" auto_blueprint="LIST_SHIPS_ZOLTAN_FIGHT">
@@ -5765,7 +5904,7 @@
 		<choice hidden="true">
 			<text>Contact the Slugs.</text>
 			<event>
-				<text>"Hah! Thosssse dumbassss Zoltan thought they were so clever, coming in here sssaying nonsssenssse like 'you can't just ssssay you trademarked ssssomething, you have to actually go through a legal procccessss.' HAHAHAH what malarkey. Anywayssss uh, here'sss some garbage or sssomethin I dunno."</text>
+				<text>"Hah! Thosssse dumbassss Zoltans thought they were so clever, coming in here sssaying nonsssenssse like 'you can't just ssssay you trademarked ssssomething, you have to actually go through a legal procccessss.' HAHAHAH what malarkey. Anywayssss uh, here'sss some garbage or sssomethin I dunno."</text>
 				<autoReward level="MED">standard</autoReward>
 			</event>
 		</choice>
@@ -5776,7 +5915,7 @@
 		<choice hidden="true">
 			<text>Contact the Slugs.</text>
 			<event>
-				<text>"Hah! Thosssse dumbassss Zoltan thought they were so clever, coming in here sssaying nonsssenssse like 'you can't just ssssay you trademarked ssssomething, you have to actually go through a legal procccessss.' HAHAHAH what malarkey. Anywayssss uh, here'sss some garbage or sssomethin I dunno."</text>
+				<text>"Hah! Thosssse dumbassss Zoltans thought they were so clever, coming in here sssaying nonsssenssse like 'you can't just ssssay you trademarked ssssomething, you have to actually go through a legal procccessss.' HAHAHAH what malarkey. Anywayssss uh, here'sss some garbage or sssomethin I dunno."</text>
 				<autoReward level="MED">standard</autoReward>
 			</event>
 		</choice>
@@ -5785,25 +5924,25 @@
 
 <ship name="SHIP_TAURUS" auto_blueprint="MU_ANGEL_DEATH">
 	<destroyed>
-		<text>Taurus's ship explodes, plummeting into the ground. You pilot closer and scrap the wreckage.</text>
+		<text>Taurus' ship explodes, plummeting into the ground. You pilot closer and scrap the wreckage.</text>
 		<autoReward level="HIGH">standard</autoReward>
-		<choice hidden="true" req="billy" lvl="1" max_group="0" blue="false">
+		<choice hidden="true" req="LIST_VARIANT_BILLY" lvl="1" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="BILLY_SAVE"/>
 		</choice>
-		<choice hidden="true" req="billy" lvl="0" max_group="0" blue="false">
+		<choice hidden="true" req="LIST_VARIANT_BILLY" lvl="0" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="BILLY_DEAD"/>
 		</choice>
 	</destroyed>
 	<deadCrew>
-		<text>Taurus's ship is now empty of crew, plummeting into the ground. You pilot closer and scrap the wreckage.</text>
+		<text>Taurus' ship is now empty of crew, plummeting into the ground. You pilot closer and scrap the wreckage.</text>
 		<autoReward level="HIGH">standard</autoReward>
-		<choice hidden="true" req="billy" lvl="1" max_group="0" blue="false">
+		<choice hidden="true" req="LIST_VARIANT_BILLY" lvl="1" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="BILLY_SAVE"/>
 		</choice>
-		<choice hidden="true" req="billy" lvl="0" max_group="0" blue="false">
+		<choice hidden="true" req="LIST_VARIANT_BILLY" lvl="0" max_group="0" blue="false">
 			<text>Continue...</text>
 			<event load="BILLY_DEAD"/>
 		</choice>
@@ -5833,7 +5972,7 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="hektar" prop="1"/>
+		<crewMember type="slug_hektar" prop="1"/>
 		<!--<crewMember type="lizard" prop="0.50"/> NO LIZARDS-->
 	</crew>
 </ship>
@@ -5848,8 +5987,8 @@
 		<autoReward level="HIGH">weapon</autoReward>
 	</deadCrew>
 	<crew>
-		<crewMember type="hektar" prop="0.75"/>
-		<crewMember type="worker" prop="0.25"/>
+		<crewMember type="slug_hektar" prop="0.75"/>
+		<crewMember type="lizard" prop="0.25"/>
 	</crew>
 </ship>
 
@@ -5864,7 +6003,7 @@
 	<deadCrew load="DEAD_CREW_SLUG"/>
 	<crew>
 		<crewMember type="slug" prop="0.50"/>
-		<crewMember type="knight" prop="0.50"/>	
+		<crewMember type="slug_knight" prop="0.50"/>	
 	</crew>
 </ship>
 
@@ -5874,7 +6013,7 @@
 	<deadCrew load="KNIGHT_JAILER_KILL"/>
 	<crew>
 		<crewMember type="slug" prop="0.50"/>
-		<crewMember type="knight" prop="0.50"/>	
+		<crewMember type="slug_knight" prop="0.50"/>	
 	</crew>
 </ship>
 
@@ -5892,8 +6031,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="snail" prop="0.7"/>
-		<crewMember type="ranger" prop="0.3"/>
+		<crewMember type="slug_clansman" prop="0.7"/>
+		<crewMember type="slug_ranger" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -5913,13 +6052,13 @@
 			<text>Continue...</text>
 			<event>
 				<text>You offer to bring the Radiant back, but he refuses. "Can't, our mission has been compromised. I'll order my men back, but I can't return to thhhe Geniocracy. Thhhhey have little tolerance for failure from Radiants like me. I will come with you instead, if that is alright with you."</text>
-				<crewMember amount="1" class="toxic">Bond</crewMember>
+				<crewMember amount="1" class="shell_radiant">Bond</crewMember>
 			</event>
 		</choice>
 	</deadCrew>
 	<crew>
 		<crewMember type="slug" prop="0.50"/>
-		<crewMember type="sabo" prop="0.50"/>	
+		<crewMember type="slug_knight" prop="0.50"/>	
 	</crew>
 </ship>
 
@@ -5997,10 +6136,10 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="slug" prop="0.50"/>
-		<crewMember type="knight" prop="0.50"/>	
+		<crewMember type="slug_knight" prop="0.50"/>	
 	</crew>
 </ship>
-<ship name="SHIP_KNIGHT_TAXES_COLONY" auto_blueprint="LIST_SHIPS_SLUG_C_FIGHT">
+<ship name="SHIP_KNIGHT_TAXES_COLONY" auto_blueprint="LIST_SHIPS_SLUG_ELITE_FIGHT">
 	<destroyed>
 		<text>The Clairvoyant vessel has been defeated.</text>
 		<autoReward level="MED">standard</autoReward>
@@ -6019,7 +6158,7 @@
 	</deadCrew>
 </ship>
 
-<ship name="SHIP_CLAIRVOYANT_PROTESTER" auto_blueprint="LIST_SHIPS_SLUG_C_GENERIC">
+<ship name="SHIP_CLAIRVOYANT_PROTESTER" auto_blueprint="LIST_SHIPS_SLUG_ELITE_GENERIC">
 	<destroyed>
 		<text>The Clairvoyant vessel has fallen, leaving you the victor.</text>
 		<autoReward level="HIGH">standard</autoReward>
@@ -6063,10 +6202,10 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="slug" prop="0.50"/>
-		<crewMember type="knight" prop="0.50"/>	
+		<crewMember type="slug_knight" prop="0.50"/>	
 	</crew>
 </ship>
-<ship name="SHIP_KNIGHT_CHOICE_CLAIRVOYANT" auto_blueprint="LIST_SHIPS_SLUG_C_FIGHT">
+<ship name="SHIP_KNIGHT_CHOICE_CLAIRVOYANT" auto_blueprint="LIST_SHIPS_SLUG_ELITE_FIGHT">
 	<destroyed>
 		<text>You've successfully defeated the Clairvoyant vessel.</text>
 		<autoReward level="MED">standard</autoReward>
@@ -6138,8 +6277,8 @@
 	<destroyed load="DESTROYED_CLAN"/>
 	<deadCrew load="DEAD_CREW_CLAN"/>
 	<crew>
-		<crewMember type="snail" prop="0.7"/>
-		<crewMember type="ranger" prop="0.3"/>
+		<crewMember type="slug_clansman" prop="0.7"/>
+		<crewMember type="slug_ranger" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -6148,8 +6287,8 @@
 	<destroyed load="DESTROYED_CLAN"/>
 	<deadCrew load="DEAD_CREW_CLAN"/>
 	<crew>
-		<crewMember type="snail" prop="0.7"/>
-		<crewMember type="ranger" prop="0.3"/>
+		<crewMember type="slug_clansman" prop="0.7"/>
+		<crewMember type="slug_ranger" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -6158,8 +6297,8 @@
 	<destroyed load="DESTROYED_CLAN"/>
 	<deadCrew load="DEAD_CREW_CLAN"/>
 	<crew>
-		<crewMember type="snail" prop="0.7"/>
-		<crewMember type="ranger" prop="0.3"/>
+		<crewMember type="slug_clansman" prop="0.7"/>
+		<crewMember type="slug_ranger" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -6168,8 +6307,8 @@
 	<destroyed load="DESTROYED_CLAN"/>
 	<deadCrew load="DEAD_CREW_CLAN"/>
 	<crew>
-		<crewMember type="snail" prop="0.7"/>
-		<crewMember type="ranger" prop="0.3"/>
+		<crewMember type="slug_clansman" prop="0.7"/>
+		<crewMember type="slug_ranger" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -6189,8 +6328,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="snail" prop="0.5"/>
-		<crewMember type="ranger" prop="0.5"/>
+		<crewMember type="slug_clansman" prop="0.5"/>
+		<crewMember type="slug_ranger" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -6219,8 +6358,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="snail" prop="0.7"/>
-		<crewMember type="ranger" prop="0.3"/>
+		<crewMember type="slug_clansman" prop="0.7"/>
+		<crewMember type="slug_ranger" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -6245,8 +6384,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="snail" prop="0.7"/>
-		<crewMember type="ranger" prop="0.3"/>
+		<crewMember type="slug_clansman" prop="0.7"/>
+		<crewMember type="slug_ranger" prop="0.3"/>
 	</crew>
 </ship>
 <ship name="SHIP_CLAN_PHEROMONES_MANTISSTORE" auto_blueprint="LIST_SHIPS_GHOST_MANTIS">
@@ -6268,7 +6407,7 @@
 	</deadCrew>
 </ship>
 
-<ship name="SHIP_CLAIRVOYANT_TAX" auto_blueprint="MU_SLUG_ENFORCER_C">
+<ship name="SHIP_CLAIRVOYANT_TAX" auto_blueprint="MU_SLUG_ENFORCER_ELITE">
 	<destroyed>
 		<text>The Clairvoyants have fallen. Good thing the Slugs already hate you, because they probably couldn't hate you more at this point.</text>
 		<autoReward level="MED">standard</autoReward>
@@ -6286,8 +6425,8 @@
 		</choice>
 	</deadCrew>
 	<crew> 
-		<crewMember type="snail" prop="0.7"/>
-		<crewMember type="ranger" prop="0.3"/>
+		<crewMember type="slug" prop="0.7"/>
+		<crewMember type="slug_saboteur" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -6299,7 +6438,7 @@
 			<text>Continue...</text>
 			<event>
 				<text>The Duskbringer ship turns out to only have a single crew member left. "I can't imagine why you helped me, but you've avenged my fallen brothers. I have failed as a captain. It is only just I serve you to repay my debt, even if I am not happy about it."</text>
-				<crewMember amount="1" class="bomber"/>
+				<crewMember amount="1" class="zoltan_devotee"/>
 			</event>
 		</choice>
 	</destroyed>
@@ -6310,13 +6449,13 @@
 			<text>Continue...</text>
 			<event>
 				<text>The Duskbringer ship turns out to only have a single crew member left. "I can't imagine why you helped me, but you've avenged my fallen brothers. I have failed as a captain. It is only just I serve you to repay my debt, even if I am not happy about it."</text>
-				<crewMember amount="1" class="bomber"/>
+				<crewMember amount="1" class="zoltan_devotee"/>
 			</event>
 		</choice>
 	</deadCrew>
 	<crew> 
-		<crewMember type="snail" prop="0.7"/>
-		<crewMember type="ranger" prop="0.3"/>
+		<crewMember type="slug_clansman" prop="0.7"/>
+		<crewMember type="slug_ranger" prop="0.3"/>
 	</crew>
 </ship>
 <ship name="SHIP_CLAN_DUSK_DUSK" auto_blueprint="LIST_SHIPS_DUSKBRINGER_FIGHT">
@@ -6343,8 +6482,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="bomber" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_devotee" prop="0.20"/>	
 	</crew>
 </ship>
 
@@ -6360,7 +6499,7 @@
 			<event>
 				<text>"What are you doing?! Thissss iss jussst insssult to injury!" The Clansman, as well as several of his friends, board from out of nowhere!</text>
 				<autoReward level="MED">stuff</autoReward>
-				<boarders min="2" max="3" class="ranger"/>
+				<boarders min="2" max="3" class="slug_ranger"/>
 			</event>
 		</choice> 
 	</destroyed>
@@ -6371,11 +6510,11 @@
 			<event>
 				<text>You attempt to kill off the last Ghost, but before you can he pulls out a detonator switch and blows the ship to oblivion! Luckily you aren't damaged, but the Clansman is distraught. He doesn't blame you, but rather offers to work aboard your ship anyways now that his is gone.</text>
 				<autoReward level="LOW">standard</autoReward>
-				<crewMember amount="1" class="ranger"/>
+				<crewMember amount="1" class="slug_ranger"/>
 			</event>
 		</choice> 
 		<choice>
-			<text>Take the phantom's offer.</text>
+			<text>Take the Phantom's offer.</text>
 			<event>
 				<text>True to what the Phantom promised, the Clansman can do nothing to stop you as you tear a weapon off the hull of his ship and take the Ghost aboard.</text>
 				<weapon name="RANDOM"/>
@@ -6384,9 +6523,9 @@
 		</choice> 
 	</deadCrew>
 	<crew>
-		<crewMember type="wraith" prop="0.33"/>
-		<crewMember type="mare" prop="0.33"/>
-		<crewMember type="goul" prop="0.33"/>
+		<crewMember type="phantom_wraith" prop="0.33"/>
+		<crewMember type="phantom_mare" prop="0.33"/>
+		<crewMember type="phantom_goul" prop="0.33"/>
 	</crew>
 </ship>
 
@@ -6415,7 +6554,7 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="slug" prop="0.50"/>
-		<crewMember type="sabo" prop="0.50"/>	
+		<crewMember type="slug_saboteur" prop="0.50"/>	
 	</crew>
 </ship>
 <ship name="SHIP_CLAN_SPICES_CLAN" auto_blueprint="MU_CLAN_LODGE">
@@ -6443,7 +6582,7 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="slug" prop="0.50"/>
-		<crewMember type="sabo" prop="0.50"/>	
+		<crewMember type="slug_saboteur" prop="0.50"/>	
 	</crew>
 </ship>
 
@@ -6459,7 +6598,7 @@
 					<text>Nope.</text>
 					<event>
 						<text>"But why would you ssspare me? Could it be I am not a worthlesss wassste of life? Oh captain, take me on your sssship! Let me prove my worth!"</text>
-						<crewMember amount="1" class="snail"/>
+						<crewMember amount="1" class="slug_clansman"/>
 					</event>
 				</choice>
 				<choice hidden="true">
@@ -6485,8 +6624,8 @@
 		<autoReward level="LOW">standard</autoReward>
 	</deadCrew>
 	<crew>
-		<crewMember type="snail" prop="0.5"/>
-		<crewMember type="ranger" prop="0.5"/>
+		<crewMember type="slug_clansman" prop="0.5"/>
+		<crewMember type="slug_ranger" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -6560,7 +6699,7 @@
 	<destroyed load="DEFEAT_SHELL_ELITE"/>
 	<deadCrew load="DEFEAT_SHELL_ELITE"/>
 	<crew>
-		<crewMember type="toxic" prop="0.40"/>
+		<crewMember type="shell_radiant" prop="0.40"/>
 		<crewMember type="shell" prop="0.60"/>
 	</crew>
 </ship>
@@ -6569,7 +6708,7 @@
 	<destroyed load="DEFEAT_SHELL_ELITE"/>
 	<deadCrew load="DEFEAT_SHELL_ELITE"/>
 	<crew>
-		<crewMember type="toxic" prop="0.40"/>
+		<crewMember type="shell_radiant" prop="0.40"/>
 		<crewMember type="shell" prop="0.60"/>
 	</crew>
 </ship>
@@ -6578,7 +6717,7 @@
 	<destroyed load="DEFEAT_SHELL_ELITE"/>
 	<deadCrew load="DEFEAT_SHELL_ELITE"/>
 	<crew>
-		<crewMember type="toxic" prop="0.40"/>
+		<crewMember type="shell_radiant" prop="0.40"/>
 		<crewMember type="shell" prop="0.60"/>
 	</crew>
 </ship>
@@ -6839,8 +6978,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="snail" prop="0.7"/>
-		<crewMember type="ranger" prop="0.3"/>
+		<crewMember type="slug_clansman" prop="0.7"/>
+		<crewMember type="slug_ranger" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -6885,6 +7024,18 @@
 	</crew>
 </ship>
 
+<ship name="SHIP_LEECH_TRANSPORT" auto_blueprint="MU_LEECH_TRANSPORT">
+	<surrender  chance="0.10" min="2" max="3" load="SURRENDER_LEECH"/>
+	<escape  chance="0.5" min="3" max="4" load="ESCAPE_LEECH"/>
+	<gotaway load="GOTAWAY_LEECH"/>
+	<destroyed load="DESTROYED_LEECH"/>
+	<deadCrew load="DEAD_CREW_LEECH"/>
+	<crew>
+		<crewMember type="leech" prop="0.7"/>
+		<crewMember type="rock" prop="0.3"/>
+	</crew>
+</ship>
+
 <ship name="SHIP_LEECH_STATION" auto_blueprint="MU_LEECH_STATION">
 	<surrender  chance="0.10" min="2" max="3" load="SURRENDER_LEECH"/>
 	<destroyed load="DESTROYED_LEECH"/>
@@ -6899,8 +7050,8 @@
 	<destroyed load="DEFEAT_LEECH_ELITE"/>
 	<deadCrew load="DEFEAT_LEECH_ELITE"/>
 	<crew>
-		<crewMember type="ampere" prop="0.7"/>
-		<crewMember type="crusader" prop="0.3"/>
+		<crewMember type="leech_ampere" prop="0.7"/>
+		<crewMember type="rock_crusader" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -6908,8 +7059,8 @@
 	<destroyed load="DEFEAT_LEECH_ELITE"/>
 	<deadCrew load="DEFEAT_LEECH_ELITE"/>
 	<crew>
-		<crewMember type="ampere" prop="0.7"/>
-		<crewMember type="crusader" prop="0.3"/>
+		<crewMember type="leech_ampere" prop="0.7"/>
+		<crewMember type="rock_crusader" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -6917,8 +7068,8 @@
 	<destroyed load="DEFEAT_LEECH_ELITE"/>
 	<deadCrew load="DEFEAT_LEECH_ELITE"/>
 	<crew>
-		<crewMember type="ampere" prop="0.7"/>
-		<crewMember type="crusader" prop="0.3"/>
+		<crewMember type="leech_ampere" prop="0.7"/>
+		<crewMember type="rock_crusader" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -6954,10 +7105,10 @@
 	<destroyed>
 		<text>You've defeated the loyalists. You scrap their ship.</text>
 		<autoReward level="MED">standard</autoReward>
-		<choice>
+		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
-				<text>The revolutionaries applaud you. "The Kraterocracy doesn't have many supporters left - each one we kill means one less to deal with on D-Day! We thank you for your help, captain."</text>
+				<text>The revolutionaries applaud you. "The Eargen Republic doesn't have many supporters left - each one we kill means one less to deal with on D-Day! We thank you for your help, captain."</text>
 				<autoReward level="MED">stuff</autoReward>
 			</event>
 		</choice>
@@ -6965,10 +7116,10 @@
 	<deadCrew>
 		<text>You've defeated the loyalists. You scrap their ship.</text>
 		<autoReward level="HIGH">standard</autoReward>
-		<choice>
+		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
-				<text>The revolutionaries applaud you. "The Kraterocracy doesn't have many supporters left - each one we kill means one less to deal with on D-Day! We thank you for your help, captain."</text>
+				<text>The revolutionaries applaud you. "The Eargen Republic doesn't have many supporters left - each one we kill means one less to deal with on D-Day! We thank you for your help, captain."</text>
 				<autoReward level="MED">stuff</autoReward>
 			</event>
 		</choice>
@@ -6982,7 +7133,7 @@
 	<destroyed>
 		<text>You've defeated the revolutionaries. You scrap their ship.</text>
 		<autoReward level="MED">standard</autoReward>
-		<choice>
+		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
 				<text>The loyalists applaud you. "To be honest I don't even really like Tyrdeo all that much as a president, but I wasn't going to let those losers know. I'm supposed to go back to my ship now, but I think I'm just going to retire and go with you."</text>
@@ -6993,7 +7144,7 @@
 	<deadCrew>
 		<text>You've defeated the revolutionaries. You scrap their ship.</text>
 		<autoReward level="HIGH">standard</autoReward>
-		<choice>
+		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
 				<text>The loyalists applaud you. "To be honest I don't even really like Tyrdeo all that much as a president, but I wasn't going to let those losers know. I'm supposed to go back to my ship now, but I think I'm just going to retire and go with you."</text>
@@ -7003,7 +7154,7 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="leech" prop="0.7"/>
-		<crewMember type="vampweed" prop="0.3"/>
+		<crewMember type="orchid_vampweed" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -7018,7 +7169,7 @@
 			</event>
 		</choice>
 		<choice>
-			<text>Demand they hand over one of their workers.</text>
+			<text>Demand they hand over one of their crew.</text>
 			<event>
 				<crewMember amount="1" class="leech"/>
 			</event>
@@ -7034,7 +7185,7 @@
 			</event>
 		</choice>
 		<choice>
-			<text>Demand they hand over one of their workers.</text>
+			<text>Demand they hand over one of their crew.</text>
 			<event>
 				<crewMember amount="1" class="leech"/>
 			</event>
@@ -7067,11 +7218,11 @@
 
 <ship name="SHIP_SLAVER_DELIGATE" auto_blueprint="LIST_SHIPS_SLAVER_ALL">
 	<surrender min="2" max="4">
-		<text>"Look, no one likes Zoltan anyways! Let us go, and you can have one, free of charge!"</text>
+		<text>"Look, no one likes Zoltans anyways! Let us go, and you can have one, free of charge!"</text>
 		<choice>
 			<text>Accept their offer.</text>
 			<event>
-				<crewMember amount="1" class="energy"/>
+				<crewMember amount="1" class="zoltan"/>
 				<ship hostile="false"/>
 			</event>
 		</choice>
@@ -7151,7 +7302,7 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="leech" prop="0.7"/>
-		<crewMember type="vampweed" prop="0.3"/>
+		<crewMember type="orchid_vampweed" prop="0.3"/>
 	</crew>
 </ship>
 <ship name="SHIP_LEECH_FEDUP_AMPERE" auto_blueprint="LIST_SHIPS_LEECH_ELITE_FIGHT">
@@ -7162,7 +7313,7 @@
 			<text>Contact the Coalition ship.</text>
 			<event>
 				<text>"You actually did it? Ohhhh man, that felt sssso good to watch. I think I peed a little... or at leasssst I hope that'sss pee. Doesn't matter. You are an elite sssslayer of leechesss! I think I will come with you in hopesss we can do thisss more often..."</text>
-				<crewMember amount="1" class="sabo"/>
+				<crewMember amount="1" class="slug_saboteur"/>
 			</event>
 		</choice>
 	</destroyed>
@@ -7173,13 +7324,13 @@
 			<text>Contact the Coalition ship.</text>
 			<event>
 				<text>"You actually did it? Ohhhh man, that felt sssso good to watch. I think I peed a little... or at leasssst I hope that'sss pee. Doesn't matter. You are an elite sssslayer of leechesss! I think I will come with you in hopesss we can do thisss more often..."</text>
-				<crewMember amount="1" class="sabo"/>
+				<crewMember amount="1" class="slug_saboteur"/>
 			</event>
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="ampere" prop="0.7"/>
-		<crewMember type="crusader" prop="0.3"/>
+		<crewMember type="leech_ampere" prop="0.7"/>
+		<crewMember type="rock_crusader" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -7236,8 +7387,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="ampere" prop="0.7"/>
-		<crewMember type="crusader" prop="0.3"/>
+		<crewMember type="leech_ampere" prop="0.7"/>
+		<crewMember type="rock_crusader" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -7270,6 +7421,31 @@
     </deadCrew>
 </ship>
 
+<ship name="SHIP_ASTEROID_TRANSPORT_PIRATE" auto_blueprint="LIST_SHIPS_PIRATE_ALL">
+	<destroyed>
+		<text>The pirate has been defeated, but unfortunately the cargo almost certainly didn't survive the fight either. You scrap the ship but figure it's best not to contact the Leeches.</text>
+		<autoReward level="MED">standard</autoReward>
+	</destroyed>
+	<deadCrew>
+		<text>The pirate has been defeated. You salvage the cargo from the wreckage and consider what to do next.</text>
+		<autoReward level="HIGH">standard</autoReward>
+		<choice hidden="true">
+			<text>Contact the Leeches and inform them the job is complete.</text>
+			<event>
+				<text>"Excellent! The Eargen Republic thanks you greatly. Just uh... don't tell anyone this happened. With the whole Coalition thing, this agreement is kiiind of illegal but I really can't be arsed to kill you."</text>
+				<autoReward level="MED">standard</autoReward>
+			</event>
+		</choice>
+		<choice hidden="true">
+			<text>Steal the cargo for yourself.</text>
+			<event>
+				<text>You open up the cargo and find it contains a drone. Satisfied and willing to betray the Leeches, you snag it and prepare to leave.</text>
+				<drone name="GIFTLIST_BEAM_DRONE"/>
+			</event>
+		</choice>
+	</deadCrew>
+</ship>
+
 <!-- 
 **********************************************************************************************************************
                                                  REVOLUTIONARY SHIPS 
@@ -7280,7 +7456,7 @@
 	<deadCrew load="DEAD_CREW_LEECH"/>
 	<crew>
 		<crewMember type="leech" prop="0.7"/>
-		<crewMember type="vampweed" prop="0.3"/>
+		<crewMember type="orchid_vampweed" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -7289,7 +7465,7 @@
 	<deadCrew load="DEAD_CREW_LEECH"/>
 	<crew>
 		<crewMember type="leech" prop="0.7"/>
-		<crewMember type="vampweed" prop="0.3"/>
+		<crewMember type="orchid_vampweed" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -7298,7 +7474,7 @@
 	<deadCrew load="DEAD_CREW_LEECH"/>
 	<crew>
 		<crewMember type="leech" prop="0.7"/>
-		<crewMember type="vampweed" prop="0.3"/>
+		<crewMember type="orchid_vampweed" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -7350,7 +7526,7 @@
 	<deadCrew load="DEFEAT_ORCHID_ELITE"/>
 	<crew>
 		<crewMember type="orchid" prop="0.6"/>
-		<crewMember type="chieftain" prop="0.4"/>
+		<crewMember type="orchid_chieftain" prop="0.4"/>
 	</crew>
 </ship>
 
@@ -7359,7 +7535,7 @@
 	<deadCrew load="DEFEAT_ORCHID_ELITE"/>
 	<crew>
 		<crewMember type="orchid" prop="0.6"/>
-		<crewMember type="chieftain" prop="0.4"/>
+		<crewMember type="orchid_chieftain" prop="0.4"/>
 	</crew>
 </ship>
 
@@ -7368,7 +7544,7 @@
 	<deadCrew load="DEFEAT_ORCHID_ELITE"/>
 	<crew>
 		<crewMember type="orchid" prop="0.6"/>
-		<crewMember type="chieftain" prop="0.4"/>
+		<crewMember type="orchid_chieftain" prop="0.4"/>
 	</crew>
 </ship>
 
@@ -7392,13 +7568,17 @@
 <ship name="SHIP_ORCHID_DUEL_LANIUS" auto_blueprint="LIST_SHIPS_LANIUS_ELITE_FIGHT">
 	<destroyed load="GARDEN_DUEL_LANIUS_DEFEAT"/>
 	<deadCrew load="GARDEN_DUEL_LANIUS_DEFEAT"/>
+	<crew>
+		<crewMember prop="0.2" type="lanius_welder"/>
+		<crewMember prop="0.8" type="lanius"/>
+	</crew>
 </ship>
 <ship name="SHIP_ORCHID_DUEL_ORCHID" auto_blueprint="LIST_SHIPS_ORCHID_ELITE_FIGHT">
 	<destroyed load="GARDEN_DUEL_ORCHID_DEFEAT"/>
 	<deadCrew load="GARDEN_DUEL_ORCHID_DEFEAT"/>
 	<crew>
 		<crewMember type="orchid" prop="0.6"/>
-		<crewMember type="chieftain" prop="0.4"/>
+		<crewMember type="orchid_chieftain" prop="0.4"/>
 	</crew>
 </ship>
 
@@ -7452,7 +7632,7 @@
 	<destroyed load="DESTROYED_DEFAULT"/>
 	<deadCrew load="DEAD_CREW_DEFAULT"/>
 	<crew>
-		<crewMember prop="1" type="rebel"/>
+		<crewMember prop="1" type="human_rebel"/>
 	</crew>
 </ship>
 
@@ -7494,6 +7674,26 @@
 	<deadCrew load="DEAD_CREW_DEFAULT"/>
 </ship>
 
+
+<ship name="SHIP_VAMPWEED_BACTERIA" auto_blueprint="LIST_SHIPS_VAMPWEED_FIGHT">
+	<destroyed>
+		<text>The Vampweed vessel has been defeated, and the nearby outpost begins evacuations immediately. Seems your job here is done.</text>
+		<autoReward level="MED">standard</autoReward>
+		<choice hidden="true">
+			<text>Contact the Zoltan.</text>
+			<event load="ASTEROID_BACTERIA_HELP"/>    
+		</choice>
+	</destroyed>
+	<deadCrew>
+		<text>The Vampweed vessel has been defeated, and the nearby outpost begins evacuations immediately. Seems your job here is done.</text>
+		<autoReward level="HIGH">standard</autoReward>
+		<choice hidden="true">
+			<text>Contact the Zoltan.</text>
+			<event load="ASTEROID_BACTERIA_HELP"/>    
+		</choice>
+	</deadCrew>
+</ship>
+
 <!-- 
 **********************************************************************************************************************
                                                  LANIUS SHIPS 
@@ -7521,8 +7721,8 @@
 	<destroyed load="DEFEAT_LANIUS_ELITE"/>
 	<deadCrew load="DEFEAT_LANIUS_ELITE"/>
 	<crew>
-		<crewMember prop="0.2" type="welder"/>
-		<crewMember prop="0.8" type="anaerobic"/>
+		<crewMember prop="0.2" type="lanius_welder"/>
+		<crewMember prop="0.8" type="lanius"/>
 	</crew>
 </ship>
 
@@ -7530,8 +7730,8 @@
 	<destroyed load="DEFEAT_LANIUS_ELITE"/>
 	<deadCrew load="DEFEAT_LANIUS_ELITE"/>
 	<crew>
-		<crewMember prop="0.2" type="welder"/>
-		<crewMember prop="0.8" type="anaerobic"/>
+		<crewMember prop="0.2" type="lanius_welder"/>
+		<crewMember prop="0.8" type="lanius"/>
 	</crew>
 </ship>
 
@@ -7539,17 +7739,17 @@
 	<destroyed load="DEFEAT_LANIUS_ELITE"/>
 	<deadCrew load="DEFEAT_LANIUS_ELITE"/>
 	<crew>
-		<crewMember prop="0.2" type="welder"/>
-		<crewMember prop="0.8" type="anaerobic"/>
+		<crewMember prop="0.2" type="lanius_welder"/>
+		<crewMember prop="0.8" type="lanius"/>
 	</crew>
 </ship>
 
-<ship name="SHIP_LANIUS_STATION" auto_blueprint="MU_LANIUS_STATION_A">
+<ship name="SHIP_LANIUS_STATION" auto_blueprint="MU_LANIUS_STATION">
 	<destroyed load="DESTROYED_LANIUS"/>
 	<deadCrew load="DEAD_CREW_LANIUS"/>
 </ship>
 
-<ship name="SHIP_LANIUS_TRAPPER" auto_blueprint="MU_LANIUS_TRAPPER_A">
+<ship name="SHIP_LANIUS_TRAPPER" auto_blueprint="MU_LANIUS_TRAPPER">
 	<destroyed load="DESTROYED_TRAPPER"/>
 	<deadCrew load="DEAD_CREW_TRAPPER"/>
 </ship>
@@ -7629,7 +7829,7 @@
 	</deadCrew>
 </ship>
 
-<ship name="SHIP_LANIUS_HARVESTER" auto_blueprint="MU_LANIUS_HARVESTER_A">
+<ship name="SHIP_LANIUS_HARVESTER" auto_blueprint="MU_LANIUS_HARVESTER">
 	<destroyed>
 		<text>The ship explodes, leaving behind a collection of useful scrap material.</text>
 		<autoReward level="MED">standard</autoReward>
@@ -7713,7 +7913,7 @@
 	</deadCrew>
 </ship>
 
-<ship name="SHIP_LANIUS_HARMONY_SALVAGE" auto_blueprint="MU_LANIUS_HARVESTER_A">
+<ship name="SHIP_LANIUS_HARMONY_SALVAGE" auto_blueprint="MU_LANIUS_HARVESTER">
 	<escape min="5" max="6">
 		<text>The Lanius, threatened by your hostile movements, appear to have decided that they'd rather live than finish scrapping the Engi ship.</text>
 		<ship hostile="true"/>
@@ -7798,8 +7998,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember prop="0.2" type="welder"/>
-		<crewMember prop="0.8" type="anaerobic"/>
+		<crewMember prop="0.2" type="lanius_welder"/>
+		<crewMember prop="0.8" type="lanius"/>
 	</crew>
 </ship>
 <ship name="SHIP_LANIUS_RAID" auto_blueprint="LIST_SHIPS_LANIUS_FIGHT">
@@ -7870,7 +8070,7 @@
 			<event load="PIMP_AUG"/>
 		</choice>
 	</deadCrew>
-	<weaponOverride count="3">
+	<weaponOverride count="1">
 		<name>SHOTGUN_GOLD</name>
 	</weaponOverride>
 </ship>
@@ -7923,8 +8123,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember prop="0.2" type="welder"/>
-		<crewMember prop="0.8" type="anaerobic"/>
+		<crewMember prop="0.2" type="lanius_welder"/>
+		<crewMember prop="0.8" type="lanius"/>
 	</crew>
 </ship>
 <ship name="SHIP_LANIUS_MUTUAL_LARGE" auto_blueprint="LIST_SHIPS_LANIUS_BIG">
@@ -7934,8 +8134,8 @@
 		<choice hidden="true">
 			<text>Contact the remaining Elite Lanius ship.</text>
 			<event>
-				<text>The Elite ship has received critical damage, but they're still functional enough to thank you. "Take man, not need." A Lanius worker is ejected from the ship.</text>
-				<crewMember amount="1" class="anaerobic" repair="1"/>
+				<text>The Elite ship has received critical damage, but they're still functional enough to thank you. "Take man, not need." A Lanius lizard is ejected from the ship.</text>
+				<crewMember amount="1" class="lanius" repair="1"/>
 			</event>
 		</choice>
 	</destroyed>
@@ -7945,8 +8145,8 @@
 		<choice hidden="true">
 			<text>Contact the remaining Elite Lanius ship.</text>
 			<event>
-				<text>The Elite ship has received critical damage, but they're still functional enough to thank you. "Take man, not need." A Lanius worker is ejected from the ship.</text>
-				<crewMember amount="1" class="anaerobic" repair="1"/>
+				<text>The Elite ship has received critical damage, but they're still functional enough to thank you. "Take man, not need." A Lanius lizard is ejected from the ship.</text>
+				<crewMember amount="1" class="lanius" repair="1"/>
 			</event>
 		</choice>
 	</deadCrew>
@@ -7969,6 +8169,10 @@
 			<event load="LANIUS_ZOLTAN_PEACE_LANIUS_WIN"/>    
 		</choice>
 	</deadCrew>
+	<crew>
+		<crewMember prop="0.2" type="lanius_welder"/>
+		<crewMember prop="0.8" type="lanius"/>
+	</crew>
 </ship>
 <ship name="SHIP_PEACE_ZOLTAN" auto_blueprint="LIST_SHIPS_ZOLTAN_ELITE_FIGHT">
 	<destroyed>
@@ -7989,7 +8193,7 @@
 	</deadCrew>
 </ship>
 
-<ship name="SHIP_LANIUS_BEACON_UNDERLING_FIGHT" auto_blueprint="MU_LANIUS_HARVESTER_B">
+<ship name="SHIP_LANIUS_BEACON_UNDERLING_FIGHT" auto_blueprint="MU_AUG_HARVESTER">
 	<destroyed>
 		<text>The Lanius ship splits apart. Luckily, the beacon still remains intact but heavily damaged.</text>
 		<autoReward level="HIGH">standard</autoReward>
@@ -8002,7 +8206,7 @@
 		</choice>
 	</destroyed>
 	<deadCrew>
-		<text>No more life signs detected on the Elite Lanius ship. Luckily, the beacon still remains intact but heavily damaged.</text>
+		<text>No more life signs detected on the Lanius ship. Luckily, the beacon still remains intact but heavily damaged.</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Contact the civilians.</text>
@@ -8012,76 +8216,24 @@
 			</event>
 		</choice>
 	</deadCrew>
-	<crew>
-		<crewMember prop="0.2" type="welder"/>
-		<crewMember prop="0.8" type="anaerobic"/>
-	</crew>
 </ship>
-<ship name="SHIP_LANIUS_BEACON_UNDERLING_CONTACT" auto_blueprint="MU_LANIUS_HARVESTER_B">
+<ship name="SHIP_LANIUS_BEACON_UNDERLING_CONTACT" auto_blueprint="MU_AUG_HARVESTER">
 	<destroyed>
 		<text>The Lanius ship splits apart. Luckily, the beacon still remains intact but heavily damaged. But what the hell is a 'Beacon Eater'?</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Contact the civilians.</text>
-			<event>
-				<text>"Thank you so much, you saved us from what could have been a slow and painful death from isolation. I don't know what we were thinking building a station here... Hopefully the beacon will remain functional until a repair team can arrive, but for now let us pay you for your assistance."</text>
-				<autoReward level="MED">standard</autoReward>
-				<choice hidden="true">
-					<text>Ask if they know what the 'Beacon Eater' is.</text>
-					<event>
-						<text>"O...oh. Yeah, I know a little. We've had this station here for a while, and we've heard stories. Stories of a powerful Lanius Welder who feeds exclusively on beacon parts. When he is unable to harvest them himself, he has his underlings bring him the parts themselves. I can give you the last known co-ordinates, if you want."</text>
-						<quest event="QUEST_BEACON_EATER"/>
-						<choice hidden="true">
-							<text>Thank them and carry on.</text>
-							<event/>
-						</choice>
-						<choice hidden="true">
-							<text>Stay behind and take some time to harvest beacon parts to bring with you.</text>
-							<event>
-								<text>You scoop up some of the parts left behind from the battle. The Rebel fleet will likely be catching up to you by now, but you can probably use these later.</text>
-								<augment name="BEACON_PARTS"/>
-								<modifyPursuit amount="1"/>
-							</event>
-						</choice>
-					</event>
-				</choice>
-			</event>
+			<event load="BEACON_EATER_START_WIN"/>
 		</choice>
 	</destroyed>
 	<deadCrew>
-		<text>No more life signs detected on the Elite Lanius ship. Luckily, the beacon still remains intact but heavily damaged. But what the hell is a 'Beacon Eater'?</text>
+		<text>No more life signs detected on the Lanius ship. Luckily, the beacon still remains intact but heavily damaged. But what the hell is a 'Beacon Eater'?</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Contact the civilians.</text>
-			<event>
-				<text>"Thank you so much, you saved us from what could have been a slow and painful death from isolation. I don't know what we were thinking building a station here... Hopefully the beacon will remain functional until a repair team can arrive, but for now let us pay you for your assistance."</text>
-				<autoReward level="MED">standard</autoReward>
-				<choice hidden="true">
-					<text>Ask if they know what the 'Beacon Eater' is.</text>
-					<event>
-						<text>"O...oh. Yeah, I know a little. We've had this station here, and we've heard stories. Stories of a powerful Lanius Welder who feeds exclusively on beacon parts. When he is unable to harvest them himself, he has his underlings bring him the parts themselves. I can give you the last known co-ordinates, if you want."</text>
-						<quest event="QUEST_BEACON_EATER"/>
-						<choice hidden="true">
-							<text>Thank them and carry on.</text>
-							<event/>
-						</choice>
-						<choice hidden="true">
-							<text>Stay behind and take some time to harvest beacon parts to bring with you.</text>
-							<event>
-								<text>You scoop up some of the parts left behind from the battle. The Rebel fleet will likely be catching up to you by now, but you can probably use these later.</text>
-								<augment name="BEACON_PARTS"/>
-								<modifyPursuit amount="1"/>
-							</event>
-						</choice>
-					</event>
-				</choice>
-			</event>
+			<event load="BEACON_EATER_START_WIN"/>
 		</choice>
 	</deadCrew>
-	<crew>
-		<crewMember prop="0.2" type="welder"/>
-		<crewMember prop="0.8" type="anaerobic"/>
-	</crew>
 </ship>
 
 <ship name="SHIP_BEACON_EATER" auto_blueprint="MU_LANIUS_BEACON_EATER">
@@ -8102,8 +8254,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember prop="0.5" type="welder"/>
-		<crewMember prop="0.5" type="anaerobic"/>
+		<crewMember prop="0.5" type="lanius_welder"/>
+		<crewMember prop="0.5" type="lanius"/>
 	</crew>
 </ship>
 
@@ -8112,65 +8264,65 @@
                                                  CRYSTAL SHIPS 
 **********************************************************************************************************************
 -->
-<ship name="SHIP_CRYSTAL_ALL" auto_blueprint="LIST_SHIPS_CRYSTAL_A_ALL">
+<ship name="SHIP_CRYSTAL_ALL" auto_blueprint="LIST_SHIPS_CRYSTAL_ALL">
 	<surrender  chance="0.5" min="2" max="3" load="SURRENDER_CRYSTAL"/>
 	<destroyed load="DESTROYED_CRYSTAL"/>
 	<deadCrew load="DEAD_CREW_CRYSTAL"/>
 </ship>
 
-<ship name="SHIP_CRYSTAL_GENERIC" auto_blueprint="LIST_SHIPS_CRYSTAL_A_GENERIC">
+<ship name="SHIP_CRYSTAL_GENERIC" auto_blueprint="LIST_SHIPS_CRYSTAL_GENERIC">
 	<surrender  chance="0.5" min="2" max="3" load="SURRENDER_CRYSTAL"/>
 	<destroyed load="DESTROYED_CRYSTAL"/>
 	<deadCrew load="DEAD_CREW_CRYSTAL"/>
 </ship>
 
-<ship name="SHIP_CRYSTAL_FIGHT" auto_blueprint="LIST_SHIPS_CRYSTAL_A_FIGHT">
+<ship name="SHIP_CRYSTAL_FIGHT" auto_blueprint="LIST_SHIPS_CRYSTAL_FIGHT">
 	<surrender  chance="0.5" min="2" max="3" load="SURRENDER_CRYSTAL"/>
 	<destroyed load="DESTROYED_CRYSTAL"/>
 	<deadCrew load="DEAD_CREW_CRYSTAL"/>
 </ship>
-<ship name="SHIP_CRYSTAL_FIGHT_NOSURRENDER" auto_blueprint="LIST_SHIPS_CRYSTAL_A_FIGHT">
+<ship name="SHIP_CRYSTAL_FIGHT_NOSURRENDER" auto_blueprint="LIST_SHIPS_CRYSTAL_FIGHT">
 	<destroyed load="DESTROYED_CRYSTAL"/>
 	<deadCrew load="DEAD_CREW_CRYSTAL"/>
 </ship>
 
-<ship name="SHIP_CRYSTAL_STATION" auto_blueprint="MU_CRYSTAL_STATION_A">
+<ship name="SHIP_CRYSTAL_STATION" auto_blueprint="MU_CRYSTAL_STATION">
 	<surrender  chance="0.3" min="2" max="3" load="SURRENDER_CRYSTAL"/>
 	<destroyed load="DESTROYED_CRYSTAL"/>
 	<deadCrew load="DEAD_CREW_CRYSTAL"/>
 </ship>
 
-<ship name="SHIP_CRYSTAL_ELITE_ALL" auto_blueprint="LIST_SHIPS_CRYSTAL_B_ALL">
+<ship name="SHIP_CRYSTAL_ELITE_ALL" auto_blueprint="LIST_SHIPS_CRYSTAL_ELITE_ALL">
 	<destroyed load="DEFEAT_CRYSTAL_ELITE"/>
 	<deadCrew load="DEFEAT_CRYSTAL_ELITE"/>
 	<crew>
 		<crewMember type="crystal" prop="0.7"/>
-		<crewMember type="sentinel" prop="0.3"/>
+		<crewMember type="crystal_sentinel" prop="0.3"/>
 	</crew>
 </ship>
-<ship name="SHIP_CRYSTAL_ELITE_GENERIC" auto_blueprint="LIST_SHIPS_CRYSTAL_B_GENERIC">
+<ship name="SHIP_CRYSTAL_ELITE_GENERIC" auto_blueprint="LIST_SHIPS_CRYSTAL_ELITE_GENERIC">
 	<destroyed load="DEFEAT_CRYSTAL_ELITE"/>
 	<deadCrew load="DEFEAT_CRYSTAL_ELITE"/>
 	<crew>
 		<crewMember type="crystal" prop="0.7"/>
-		<crewMember type="sentinel" prop="0.3"/>
+		<crewMember type="crystal_sentinel" prop="0.3"/>
 	</crew>
 </ship>
-<ship name="SHIP_CRYSTAL_ELITE_FIGHT" auto_blueprint="LIST_SHIPS_CRYSTAL_B_FIGHT">
+<ship name="SHIP_CRYSTAL_ELITE_FIGHT" auto_blueprint="LIST_SHIPS_CRYSTAL_ELITE_FIGHT">
 	<destroyed load="DEFEAT_CRYSTAL_ELITE"/>
 	<deadCrew load="DEFEAT_CRYSTAL_ELITE"/>
 	<crew>
 		<crewMember type="crystal" prop="0.7"/>
-		<crewMember type="sentinel" prop="0.3"/>
+		<crewMember type="crystal_sentinel" prop="0.3"/>
 	</crew>
 </ship>
 
-<ship name="SHIP_CRYSTAL_STATION" auto_blueprint="MU_CRYSTAL_STATION_A">
+<ship name="SHIP_CRYSTAL_STATION" auto_blueprint="MU_CRYSTAL_STATION">
 	<destroyed load="DESTROYED_CRYSTAL"/>
 	<deadCrew load="DEAD_CREW_CRYSTAL"/>
 </ship>
 
-<ship name="SHIP_CRYSTAL_DROPPOINT" auto_blueprint="LIST_SHIPS_CRYSTAL_A_ALL">
+<ship name="SHIP_CRYSTAL_DROPPOINT" auto_blueprint="LIST_SHIPS_CRYSTAL_ALL">
 	<destroyed>
 		<text>The Crystal ship has been destroyed. If you don't feel guilty, you should start. Regardless, you scrap the hull.</text>
 		<autoReward level="LOW">standard</autoReward>
@@ -8178,7 +8330,7 @@
 			<text>Continue...</text>
 			<event>
 				<text>While scrapping the ship, you find a Crystalline weapon in the wreck!</text>
-				<weapon name="LIST_WEAPONS_CRYSTAL_ALL"/>
+				<weapon name="GIFTLIST_CRYSTAL"/>
 			</event>
 		</choice>
 	</destroyed>
@@ -8189,13 +8341,13 @@
 			<text>Continue...</text>
 			<event>
 				<text>While scrapping the ship, you find a Crystalline weapon in the wreck!</text>
-				<weapon name="LIST_WEAPONS_CRYSTAL_ALL"/>
+				<weapon name="GIFTLIST_CRYSTAL"/>
 			</event>
 		</choice>
 	</deadCrew>
 </ship>
 
-<ship name="SHIP_CRYSTAL_CONVOY" auto_blueprint="LIST_SHIPS_CRYSTAL_A_FIGHT">
+<ship name="SHIP_CRYSTAL_CONVOY" auto_blueprint="LIST_SHIPS_CRYSTAL_FIGHT">
 	<surrender  chance="0" min="3" max="4">
 		<text>Their ship seems severely damaged and they look to be reconsidering the fight. Should you power down your weapons and explain that you mean no threat?</text>
 		<choice hidden="true">
@@ -8230,7 +8382,7 @@
 	</deadCrew>
 </ship>
 
-<ship name="SHIP_CRYSTAL_HUNTER" auto_blueprint="LIST_SHIPS_CRYSTAL_A_FIGHT">
+<ship name="SHIP_CRYSTAL_HUNTER" auto_blueprint="LIST_SHIPS_CRYSTAL_FIGHT">
 	<surrender  chance="0.5" min="3" max="4">
 		<text>The hunters message you, "We surrender. Take one of these fine collectables we've obtained in our journeys." He must be referring to the human captives.</text>
 		<choice hidden="true">
@@ -8315,7 +8467,7 @@
 	</deadCrew>
 </ship>
 
-<ship name="CRYSTAL_FED" auto_blueprint="LIST_SHIPS_CRYSTAL_A_FIGHT">
+<ship name="CRYSTAL_FED" auto_blueprint="LIST_SHIPS_CRYSTAL_FIGHT">
 	<destroyed>
 		<text>The Crystalline ship shatters and you pick what you can from the debris.</text>
 		<autoReward level="MED">standard</autoReward>
@@ -8372,8 +8524,8 @@
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
-				<text>"Not often an outsider dares interfere to side with the Crystal Empire. It would be a great injustice to let this favor go without being repaid."</text>
-				<weapon name="LIST_WEAPONS_CRYSTAL_B"/>
+				<text>"Not often an outsider dares to interfere and side with the Crystal Empire. It would be a great injustice to let this favor go without being repaid."</text>
+				<weapon name="LIST_WEAPONS_CRYSTAL_ELITE"/>
 			</event>
 		</choice>
 	</destroyed>
@@ -8383,13 +8535,13 @@
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
-				<text>"Not often an outsider dares interfere to side with the Crystal Empire. It would be a great injustice to let this favor go without being repaid."</text>
-				<weapon name="LIST_WEAPONS_CRYSTAL_B"/>
+				<text>"Not often an outsider dares to interfere and side with the Crystal Empire. It would be a great injustice to let this favor go without being repaid."</text>
+				<weapon name="LIST_WEAPONS_CRYSTAL_ELITE"/>
 			</event>
 		</choice>
 	</deadCrew>
 </ship>
-<ship name="SHIP_ZOLTENVOY_SENTINEL" auto_blueprint="LIST_SHIPS_CRYSTAL_B_FIGHT">
+<ship name="SHIP_ZOLTENVOY_SENTINEL" auto_blueprint="LIST_SHIPS_CRYSTAL_ELITE_FIGHT">
 	<destroyed>
 		<text>The Crystalline vessel has been dispatched. You scrap the ship before taking care of the outpost.</text>
 		<autoReward level="HIGH">standard</autoReward>
@@ -8397,7 +8549,7 @@
 			<text>Continue...</text>
 			<event>
 				<text>"God damn pirates! You'll regret messing with the Crystalline Empire." It doesn't seem like the Crystals want to surrender, but when it becomes clear you aren't leaving any time soon, they finally cave in and offer a slave to make you go away.</text>
-				<crewMember amount="1" class="sentinel"/>
+				<crewMember amount="1" class="crystal_sentinel"/>
 			</event>
 		</choice>
 	</destroyed>
@@ -8408,7 +8560,7 @@
 			<text>Continue...</text>
 			<event>
 				<text>"God damn pirates! You'll regret messing with the Crystalline Empire." It doesn't seem like the Crystals want to surrender, but when it becomes clear you aren't leaving any time soon, they finally cave in and offer a slave to make you go away.</text>
-				<crewMember amount="1" class="sentinel"/>
+				<crewMember amount="1" class="crystal_sentinel"/>
 			</event>
 		</choice>
 	</deadCrew>
@@ -8488,8 +8640,8 @@
 	<destroyed load="INFESTATION_SPIDERBOSS_DESTROYED"/>
 	<deadCrew load="INFESTATION_SPIDERBOSS_DEADCREW"/>
 	<crew>
-		<crewMember type="queen" prop="0.10"/>
-		<crewMember type="hatch" prop="0.20"/>
+		<crewMember type="unique_queen" prop="0.10"/>
+		<crewMember type="spider_weaver" prop="0.20"/>
 		<crewMember type="spider" prop="0.70"/>
 	</crew>
 </ship>
@@ -8561,7 +8713,7 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="bomber" prop="0.10"/>
+		<crewMember type="zoltan_devotee" prop="0.10"/>
 		<crewMember type="LIST_CREW_PIRATE_RANDOM" prop="0.60"/>
 		<crewMember type="LIST_CREW_SPIDER_RANDOM" prop="0.30"/>
 	</crew>
@@ -8829,7 +8981,7 @@
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
-				<text>"The demon is dead! Most excellent. We will learn the secret of the heart some day... Mayhaps the Federation could assist the Dynasty in future years? Nay, a hopless theory. But we shall hold our honor and respect your ance with most bountiful pay."</text>
+				<text>"The demon is dead! Most excellent. We will learn the secret of the heart some day... Mayhaps the Federation could assist the Dynasty in future years? Nay, a hopeless theory. But we shall hold our honor and respect your stance with most bountiful pay."</text>
 				<autoReward level="MED">item</autoReward>
 			</event>
 		</choice>
@@ -8839,6 +8991,7 @@
 <ship name="SHIP_AUTO_DYNASTY_MONSTER" auto_blueprint="MU_AUTO_SCOUT_PATHETIC">
 	<destroyed>
 		<text>The Auto-ship has been destroyed, and you can't help but feel like that was just plain sad.</text>
+		<achievement silent="false">ACH_EVENT_HORRIBLEDEMON</achievement>
 		<autoReward level="LOW">standard</autoReward>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -8908,7 +9061,7 @@
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
-				<text>You hail the smugglers, letting them know it's safe. "Now those were some fireworks! I'm a man of my word. Sometimes. Right now I am. But not always. Here you go."</text>
+				<text>You hail the smugglers, letting them know it's safe. "I would have preferred more chaos and explosions to be honest... But this is also a decent outcome. I'm a man of my word. Sometimes. Right now I am. But not always. Here you go."</text>
 				<weapon name="RANDOM"/>
 			</event>
 		</choice>
@@ -8926,24 +9079,24 @@
 			<text>Return to Aneidio.</text>
 			<event>
 				<text>"At last, peace. There are still several hundred dozen targets to be eliminated, but I shall rest for today."</text>
-				<crewMember amount="1" class="phantomalpha">Aneidio</crewMember>
+				<crewMember amount="1" class="phantom_alpha">Aneidio</crewMember>
 			</event>
 		</choice>
 	</destroyed>
 	<deadCrew>
-		<text>"Agghh, you're a bigger ass-wad than the old man!" The Ghost vessel slows to a hault, silencing the last of his insults.</text>
+		<text>"Agghh, you're a bigger ass-wad than the old man!" The Ghost vessel slows to a halt, silencing the last of his insults.</text>
 		<autoReward level="MED">standard</autoReward>
 		<choice hidden="true">
 			<text>Return to Aneidio.</text>
 			<event>
 				<text>"At last, peace. There are still several hundred dozen targets to be eliminated, but I shall rest for today."</text>
-				<crewMember amount="1" class="phantomalpha">Aneidio</crewMember>
+				<crewMember amount="1" class="phantom_alpha">Aneidio</crewMember>
 			</event>
 		</choice>
 	</deadCrew>
 	<crew>
 		<crewMember type="phantom" prop="0.2"/>
-		<crewMember type="phantomalpha" prop="0.8"/>
+		<crewMember type="phantom_alpha" prop="0.8"/>
 	</crew>
 </ship>
 
@@ -8963,7 +9116,7 @@
 	<deadCrew load="DYNASTY_SPECIALRUIN_REWARD"/>
 	<crew>
 		<crewMember type="phantom" prop="0.2"/>
-		<crewMember type="phantomalpha" prop="0.8"/>
+		<crewMember type="phantom_alpha" prop="0.8"/>
 	</crew>
 </ship>
 
@@ -8975,21 +9128,11 @@
 <ship name="SHIP_GHOST_ALL" auto_blueprint="LIST_SHIPS_GHOST">
 	<destroyed load="DESTROYED_GHOST"/>
 	<deadCrew load="DEAD_CREW_GHOST"/>
-	<crew>
-		<crewMember type="goul" prop="0.33"/>
-		<crewMember type="mare" prop="0.33"/>
-		<crewMember type="wraith" prop="0.33"/>
-	</crew>
 </ship>
 
 <ship name="SHIP_GHOST_ELITE" auto_blueprint="LIST_SHIPS_GHOST_ELITE">
 	<destroyed load="DESTROYED_GHOST"/>
 	<deadCrew load="DEAD_CREW_GHOST"/>
-	<crew>
-		<crewMember type="goulalpha" prop="0.33"/>
-		<crewMember type="marealpha" prop="0.33"/>
-		<crewMember type="wraithalpha" prop="0.33"/>
-	</crew>
 </ship>
 
 <ship name="SHIP_GHOST_CIVILIAN" auto_blueprint="LIST_SHIPS_GHOST">
@@ -9009,11 +9152,6 @@
 			<event load="SAVE_CIVILIAN_LIST"/>    
 		</choice>
 	</deadCrew>
-	<crew>
-		<crewMember type="goul" prop="0.33"/>
-		<crewMember type="mare" prop="0.33"/>
-		<crewMember type="wraith" prop="0.33"/>
-	</crew>
 </ship>
 
 <ship name="SHIP_GHOST_ESCORT" auto_blueprint="LIST_SHIPS_GHOST">
@@ -9033,11 +9171,6 @@
 			<event load="NEBULA_GHOST_ESCORT_DESTINATION_GOOD"/>    
 		</choice>
 	</deadCrew>
-	<crew>
-		<crewMember type="goul" prop="0.33"/>
-		<crewMember type="mare" prop="0.33"/>
-		<crewMember type="wraith" prop="0.33"/>
-	</crew>
 </ship>
 
 <ship name="SHIP_AUTO_GHOST_ESCAPE" auto_blueprint="LIST_SHIPS_AUTO_GENERIC">
@@ -9069,11 +9202,6 @@
 			<event load="ABANDONED_CIVILIAN_LOST_ITEMS_WIN"/>
 		</choice>
 	</deadCrew>
-	<crew>
-		<crewMember type="goul" prop="0.33"/>
-		<crewMember type="mare" prop="0.33"/>
-		<crewMember type="wraith" prop="0.33"/>
-	</crew>
 </ship>
 
 <ship name="SHIP_GHOST_ANCIENT" auto_blueprint="MU_ANCIENT_WRECK_SCALE">
@@ -9099,11 +9227,6 @@
 			</event>			
 		</choice>
 	</deadCrew>
-	<crew>
-		<crewMember type="goulalpha" prop="0.33"/>
-		<crewMember type="marealpha" prop="0.33"/>
-		<crewMember type="wraithalpha" prop="0.33"/>
-	</crew>
 </ship>
 
 <ship name="SHIP_GASGIANT_AUTO" auto_blueprint="LIST_SHIPS_AUTO_GENERIC">
@@ -9160,11 +9283,6 @@
 			<event load="GHOST_FEDMORALITY_FINISH"/>      
 		</choice>
 	</deadCrew>
-	<crew>
-		<crewMember type="goul" prop="0.33"/>
-		<crewMember type="mare" prop="0.33"/>
-		<crewMember type="wraith" prop="0.33"/>
-	</crew>
 </ship>
 <ship name="SHIP_GHOST_FEDMORALITY_ENGI" auto_blueprint="LIST_SHIPS_GHOST_ENGI">
 	<destroyed>
@@ -9183,11 +9301,6 @@
 			<event load="GHOST_FEDMORALITY_FINISH"/>      
 		</choice>
 	</deadCrew>
-	<crew>
-		<crewMember type="goul" prop="0.33"/>
-		<crewMember type="mare" prop="0.33"/>
-		<crewMember type="wraith" prop="0.33"/>
-	</crew>
 </ship>
 <ship name="SHIP_GHOST_FEDMORALITY_ZOLTAN" auto_blueprint="LIST_SHIPS_GHOST_ZOLTAN">
 	<destroyed>
@@ -9206,11 +9319,6 @@
 			<event load="GHOST_FEDMORALITY_FINISH"/>      
 		</choice>
 	</deadCrew>
-	<crew>
-		<crewMember type="goul" prop="0.33"/>
-		<crewMember type="mare" prop="0.33"/>
-		<crewMember type="wraith" prop="0.33"/>
-	</crew>
 </ship>
 
 <ship name="SHIP_GHOST_TRASHKING_BORING" auto_blueprint="LIST_SHIPS_GHOST">
@@ -9236,11 +9344,6 @@
 			</event>
 		</choice>
 	</deadCrew>
-	<crew>
-		<crewMember type="goul" prop="0.33"/>
-		<crewMember type="mare" prop="0.33"/>
-		<crewMember type="wraith" prop="0.33"/>
-	</crew>
 </ship>
 <ship name="SHIP_GHOST_TRASHKING_NORMAL" auto_blueprint="LIST_SHIPS_GHOST">
 	<destroyed>
@@ -9265,11 +9368,6 @@
 			</event>
 		</choice>
 	</deadCrew>
-	<crew>
-		<crewMember type="goul" prop="0.33"/>
-		<crewMember type="mare" prop="0.33"/>
-		<crewMember type="wraith" prop="0.33"/>
-	</crew>
 </ship>
 <ship name="SHIP_GHOST_TRASHKING_ELITE" auto_blueprint="LIST_SHIPS_GHOST_ELITE">
 	<destroyed>
@@ -9280,7 +9378,7 @@
 			<event>
 				<text>"Worry not of their deaths! They died fighting for their lord, and there be no more honorable way to go! You have proven youself worthy of my trash. Take it, and find that it is now your treasure."</text>
 				<autoReward level="HIGH">stuff</autoReward>
-				<weapon name="LIST_WEAPONS_RUSTY"/>
+				<weapon name="GIFTLIST_RUSTY"/>
 			</event>
 		</choice>
 	</destroyed>
@@ -9292,15 +9390,10 @@
 			<event>
 				<text>"Worry not of their deaths! They died fighting for their lord, and there be no more honorable way to go! You have proven youself worthy of my trash. Take it, and find that it is now your treasure."</text>
 				<autoReward level="HIGH">stuff</autoReward>
-				<weapon name="LIST_WEAPONS_RUSTY"/>
+				<weapon name="GIFTLIST_RUSTY"/>
 			</event>
 		</choice>
 	</deadCrew>
-	<crew>
-		<crewMember type="goulalpha" prop="0.33"/>
-		<crewMember type="marealpha" prop="0.33"/>
-		<crewMember type="wraithalpha" prop="0.33"/>
-	</crew>
 </ship>
 
 <ship name="SHIP_VAGABOND_ORCHID_DYNASTY" auto_blueprint="LIST_SHIPS_DYNASTY_FIGHT">
@@ -9312,7 +9405,7 @@
 			<event>
 				<text>The Vagabonds seem willing to uphold their end of the bargain, and release the frightened Orchid captain. Once safely returned, the Orchids pay you for your assistance.</text>
 				<autoReward level="LOW">standard</autoReward>
-				<weapon name="LIST_WEAPONS_ORCHID_KERNEL"/>
+				<weapon name="GIFTLIST_KERNEL"/>
 			</event>			
 		</choice>
 	</destroyed>
@@ -9324,7 +9417,7 @@
 			<event>
 				<text>The Vagabonds seem willing to uphold their end of the bargain, and release the frightened Orchid captain. Once safely returned, the Orchids pay you for your assistance.</text>
 				<autoReward level="LOW">standard</autoReward>
-				<weapon name="LIST_WEAPONS_ORCHID_KERNEL"/>
+				<weapon name="GIFTLIST_KERNEL"/>
 			</event>			
 		</choice>
 	</deadCrew>
@@ -9336,7 +9429,7 @@
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
-				<text>It appears while fighting the gouls went ahead and killed the Orchid. Their burnt corpse is sickening to look at. You notify the Orchid crew, who are heart broken. Still, they offer a small reward for at least trying.</text>
+				<text>It appears while fighting the Gouls went ahead and killed the Orchid. Their burnt corpse is sickening to look at. You notify the Orchid crew, who are heart broken. Still, they offer a small reward for at least trying.</text>
 				<autoReward level="LOW">stuff</autoReward>
 			</event>			
 		</choice>
@@ -9347,14 +9440,14 @@
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
-				<text>It appears while fighting the gouls went ahead and killed the Orchid. Their burnt corpse is sickening to look at. You notify the Orchid crew, who are heart broken. Still, they offer a small reward for at least trying.</text>
+				<text>It appears while fighting the Gouls went ahead and killed the Orchid. Their burnt corpse is sickening to look at. You notify the Orchid crew, who are heart broken. Still, they offer a small reward for at least trying.</text>
 				<autoReward level="LOW">stuff</autoReward>
 			</event>			
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="goul" prop="0.7"/>
-		<crewMember type="goulalpha" prop="0.3"/>
+		<crewMember type="phantom_goul" prop="0.7"/>
+		<crewMember type="phantom_goul_alpha" prop="0.3"/>
 	</crew>
 </ship>
 
@@ -9364,7 +9457,7 @@
 		<choice hidden="true">
 			<text>Allow them to live.</text>
 			<event>
-				<text>The outlaws surrender, and you lock them up in your cargo bay, suspicious that the wraith might attempt to escape, and wait for the Engi to arrive. At last they do, and are very pleased. "The Federation vessel has proven instrumental. Delaying outlaws raised chances of success by 75%. It is likely the Harmony will be requesting your assistance again."</text>
+				<text>The outlaws surrender, and you lock them up in your cargo bay, suspicious that the Wraith might attempt to escape, and wait for the Engi to arrive. At last they do, and are very pleased. "The Federation vessel has proven instrumental. Delaying outlaws raised chances of success by 75%. It is likely the Harmony will be requesting your assistance again."</text>
 				<autoReward level="MED">stuff</autoReward>
 				<drone name="RANDOM"/>
 				<ship hostile="false"/>
@@ -9398,8 +9491,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="separatist" prop="0.5"/>
-		<crewMember type="wraith" prop="0.5"/>
+		<crewMember type="engi_separatist" prop="0.5"/>
+		<crewMember type="phantom_wraith" prop="0.5"/>
 	</crew>
 </ship>
 <ship name="SHIP_VAGABOND_OUTLAWS_ENGI" auto_blueprint="LIST_SHIPS_ENGI_FIGHT">
@@ -9413,27 +9506,27 @@
 				<choice>
 					<text>Save Clydeo.</text>
 					<event>
-						<text>You drag the wraith aboard, who cries out for his wife as the ship is annihilated. He's devastated, but without any other ships to stay with he's fine on hanging with you, as long as you promise to kick the ass of any Harmony ships you see.</text>
-						<crewMember amount="1" combat="2" class="wraith">Clydeo</crewMember>
+						<text>You drag the phantom_wraith aboard, who cries out for his wife as the ship is annihilated. He's devastated, but without any other ships to stay with he's fine on hanging with you, as long as you promise to kick the ass of any Harmony ships you see.</text>
+						<crewMember amount="1" combat="2" class="phantom_wraith">Clydeo</crewMember>
 					</event>
 				</choice>
 				<choice>
 					<text>Save BON-N3.</text>
 					<event>
 						<text>You drag the Separatist aboard, who cries out for her husband as the ship is annihilated. She's devastated, but without any other ships to stay with she's fine on hanging with you, as long as you promise to kick the ass of any Harmony ships you see.</text>
-						<crewMember amount="1" repair="1" class="separatist">BON-N3</crewMember>
+						<crewMember amount="1" repair="1" class="engi_separatist">BON-N3</crewMember>
 					</event>
 				</choice>
 				<choice req="teleporter" lvl="3">
 					<text>(Adv. Teleporter) Beam them both aboard.</text>
 					<event>
 						<text>You lock onto the life signatures of the first of the outlaws, beaming them aboard...</text>
-						<crewMember amount="1" repair="1" class="separatist">BON-N3</crewMember>
+						<crewMember amount="1" repair="1" class="engi_separatist">BON-N3</crewMember>
 						<choice hidden="true">
 							<text>Continue...</text>
 							<event>
 								<text>...followed by the next. Once both are safely aboard your vessel, they thank you for helping them and offer to stick around.</text>
-								<crewMember amount="1" combat="2" class="wraith">Clydeo</crewMember>
+								<crewMember amount="1" combat="2" class="phantom_wraith">Clydeo</crewMember>
 							</event>
 						</choice>
 					</event>
@@ -9451,27 +9544,27 @@
 				<choice>
 					<text>Save Clydeo.</text>
 					<event>
-						<text>You drag the wraith aboard, who cries out for his wife as the ship is annihilated. He's devastated, but without any other ships to stay with he's fine on hanging with you, as long as you promise to kick the ass of any Harmony ships you see.</text>
-						<crewMember amount="1" combat="2" class="wraith">Clydeo</crewMember>
+						<text>You drag the phantom_wraith aboard, who cries out for his wife as the ship is annihilated. He's devastated, but without any other ships to stay with he's fine on hanging with you, as long as you promise to kick the ass of any Harmony ships you see.</text>
+						<crewMember amount="1" combat="2" class="phantom_wraith">Clydeo</crewMember>
 					</event>
 				</choice>
 				<choice>
 					<text>Save BON-N3.</text>
 					<event>
 						<text>You drag the Separatist aboard, who cries out for her husband as the ship is annihilated. She's devastated, but without any other ships to stay with she's fine on hanging with you, as long as you promise to kick the ass of any Harmony ships you see.</text>
-						<crewMember amount="1" repair="1" class="separatist">BON-N3</crewMember>
+						<crewMember amount="1" repair="1" class="engi_separatist">BON-N3</crewMember>
 					</event>
 				</choice>
 				<choice req="teleporter" lvl="3">
 					<text>(Adv. Teleporter) Beam them both aboard.</text>
 					<event>
 						<text>You lock onto the life signatures of the first of the outlaws, beaming them aboard...</text>
-						<crewMember amount="1" repair="1" class="separatist">BON-N3</crewMember>
+						<crewMember amount="1" repair="1" class="engi_separatist">BON-N3</crewMember>
 						<choice hidden="true">
 							<text>Continue...</text>
 							<event>
 								<text>...followed by the next. Once both are safely aboard your vessel, they thank you for helping them and offer to stick around.</text>
-								<crewMember amount="1" combat="2" class="wraith">Clydeo</crewMember>
+								<crewMember amount="1" combat="2" class="phantom_wraith">Clydeo</crewMember>
 							</event>
 						</choice>
 					</event>
@@ -9479,10 +9572,110 @@
 			</event>
 		</choice>
 	</deadCrew>
+</ship>
+
+<ship name="SHIP_ASTEROID_ENGILAB_GOUL" auto_blueprint="LIST_SHIPS_GHOST">
+	<destroyed>
+		<text>The Vagabonds have been defeated. You scrap the remains of their ship.</text>
+		<autoReward level="LOW">standard</autoReward>
+		<choice hidden="true">
+			<text>Contact the Engis.</text>
+			<event load="ASTEROID_ENGILAB_CONTACT"/>    
+		</choice>
+	</destroyed>
+	<deadCrew>
+		<text>The Vagabonds have been defeated. You scrap the remains of their ship.</text>
+		<autoReward level="MED">standard</autoReward>
+		<choice hidden="true">
+			<text>Contact the Engis.</text>
+			<event load="ASTEROID_ENGILAB_CONTACT"/>    
+		</choice>
+	</deadCrew>
 	<crew>
-		<crewMember type="separatist" prop="0.5"/>
-		<crewMember type="wraith" prop="0.5"/>
+		<crewMember type="phantom_goul" prop="0.77"/>
+		<crewMember type="phantom_goul_alpha" prop="0.33"/>
 	</crew>
+</ship>
+<ship name="SHIP_ASTEROID_ENGILAB_MARE" auto_blueprint="LIST_SHIPS_GHOST">
+	<destroyed>
+		<text>The Vagabonds have been defeated. You scrap the remains of their ship.</text>
+		<autoReward level="LOW">standard</autoReward>
+		<choice hidden="true">
+			<text>Contact the Engis.</text>
+			<event load="ASTEROID_ENGILAB_CONTACT"/>    
+		</choice>
+	</destroyed>
+	<deadCrew>
+		<text>The Vagabonds have been defeated. You scrap the remains of their ship.</text>
+		<autoReward level="MED">standard</autoReward>
+		<choice hidden="true">
+			<text>Contact the Engis.</text>
+			<event load="ASTEROID_ENGILAB_CONTACT"/>    
+		</choice>
+	</deadCrew>
+	<crew>
+		<crewMember type="phantom_mare" prop="0.77"/>
+		<crewMember type="phantom_mare_alpha" prop="0.33"/>
+	</crew>
+</ship>
+<ship name="SHIP_ASTEROID_ENGILAB_WRAITH" auto_blueprint="LIST_SHIPS_GHOST">
+	<destroyed>
+		<text>The Vagabonds have been defeated. You scrap the remains of their ship.</text>
+		<autoReward level="LOW">standard</autoReward>
+		<choice hidden="true">
+			<text>Contact the Engis.</text>
+			<event load="ASTEROID_ENGILAB_CONTACT"/>    
+		</choice>
+	</destroyed>
+	<deadCrew>
+		<text>The Vagabonds have been defeated. You scrap the remains of their ship.</text>
+		<autoReward level="MED">standard</autoReward>
+		<choice hidden="true">
+			<text>Contact the Engis.</text>
+			<event load="ASTEROID_ENGILAB_CONTACT"/>    
+		</choice>
+	</deadCrew>
+	<crew>
+		<crewMember type="phantom_wraith" prop="0.77"/>
+		<crewMember type="phantom_wraith_alpha" prop="0.33"/>
+	</crew>
+</ship>
+
+<ship name="SHIP_ASTEROID_ROCK_STANDOFF" auto_blueprint="LIST_SHIPS_ROCK_FIGHT">
+	<destroyed>
+		<text>The Rockmen have been defeated. You scrap the remains of their ship.</text>
+		<autoReward level="MED">standard</autoReward>
+		<choice hidden="true">
+			<text>Continue...</text>
+			<event load="ASTEROID_STANDOFF_DEPOT"/>    
+		</choice>
+	</destroyed>
+	<deadCrew>
+		<text>The Rockmen have been defeated. You scrap the remains of their ship.</text>
+		<autoReward level="HIGH">standard</autoReward>
+		<choice hidden="true">
+			<text>Continue...</text>
+			<event load="ASTEROID_STANDOFF_DEPOT"/>    
+		</choice>
+	</deadCrew>
+</ship>
+<ship name="SHIP_ASTEROID_ZOLTAN_STANDOFF" auto_blueprint="LIST_SHIPS_ZOLTAN_FIGHT">
+	<destroyed>
+		<text>The Zoltans have been defeated. You scrap the remains of their ship.</text>
+		<autoReward level="MED">standard</autoReward>
+		<choice hidden="true">
+			<text>Continue...</text>
+			<event load="ASTEROID_STANDOFF_DEPOT"/>    
+		</choice>
+	</destroyed>
+	<deadCrew>
+		<text>The Zoltans have been defeated. You scrap the remains of their ship.</text>
+		<autoReward level="HIGH">standard</autoReward>
+		<choice hidden="true">
+			<text>Continue...</text>
+			<event load="ASTEROID_STANDOFF_DEPOT"/>    
+		</choice>
+	</deadCrew>
 </ship>
 
 <!-- 
@@ -9586,7 +9779,7 @@
 	<destroyed load="DESTROYED_PIRATE"/>
 	<deadCrew load="DEAD_CREW_PIRATE"/>
 	<crew>
-		<crewMember type="outcast" prop="1"/>
+		<crewMember type="rock_outcast" prop="1"/>
 	</crew>
 </ship>
 
@@ -9622,7 +9815,7 @@
 	<destroyed load="DESTROYED_PIRATE"/>
 	<deadCrew load="DEAD_CREW_PIRATE"/>
 	<crew>
-		<crewMember type="energy" prop="1"/>
+		<crewMember type="zoltan" prop="1"/>
 	</crew>
 </ship>
 
@@ -9956,6 +10149,7 @@
 				<item_modify>
 					<item type="scrap" min="-15" max="-25"/>
 				</item_modify>
+				<ship hostile="false"/>
 			</event>
 		</choice>
 		<choice>
@@ -10002,12 +10196,12 @@
 		<text>The slave ship is destroyed. They won't continue their evil trade, but many lives were probably lost on that ship.</text>
 		<autoReward level="HIGH">standard</autoReward>
 	</destroyed>
-	<deadCrew load="DEAD_CREW_SLAVER"/>
+	<deadCrew load="DEAD_CREW_SLAVERS"/>
 </ship>
 
 <ship name="SHIP_SLAVER_CIVILIAN" auto_blueprint="LIST_SHIPS_SLAVER_CIVILIAN">
 	<surrender  chance="0.2" min="2" max="4">
-		<text>We surrender! Take one of our slaves as tribute; if you destroy us they'll all die anyway!</text>
+		<text>"We surrender! Take one of our slaves as tribute; if you destroy us they'll all die anyway!"</text>
 		<choice>
 			<text>Accept their offer.</text>
 			<event>
@@ -10026,12 +10220,12 @@
 		<text>The slave ship is destroyed. They won't continue their evil trade, but many lives were probably lost on that ship.</text>
 		<autoReward level="HIGH">standard</autoReward>
 	</destroyed>
-	<deadCrew load="DEAD_CREW_SLAVER"/>
+	<deadCrew load="DEAD_CREW_SLAVERS"/>
 </ship>
 
 <ship name="SHIP_SLAVER_FED" auto_blueprint="LIST_SHIPS_SLAVER_FED">
 	<surrender  chance="0.2" min="2" max="4">
-		<text>We surrender! Take one of our slaves as tribute; if you destroy us they'll all die anyway!</text>
+		<text>"We surrender! Take one of our slaves as tribute; if you destroy us they'll all die anyway!"</text>
 		<choice>
 			<text>Accept their offer.</text>
 			<event>
@@ -10050,12 +10244,12 @@
 		<text>The slave ship is destroyed. They won't continue their evil trade, but many lives were probably lost on that ship.</text>
 		<autoReward level="HIGH">standard</autoReward>
 	</destroyed>
-	<deadCrew load="DEAD_CREW_SLAVER"/>
+	<deadCrew load="DEAD_CREW_SLAVERS"/>
 </ship>
 
 <ship name="SHIP_SLAVER_REBEL" auto_blueprint="LIST_SHIPS_SLAVER_REBEL">
 	<surrender  chance="0.2" min="2" max="4">
-		<text>We surrender! Take one of our slaves as tribute; if you destroy us they'll all die anyway!</text>
+		<text>"We surrender! Take one of our slaves as tribute; if you destroy us they'll all die anyway!"</text>
 		<choice>
 			<text>Accept their offer.</text>
 			<event>
@@ -10074,12 +10268,12 @@
 		<text>The slave ship is destroyed. They won't continue their evil trade, but many lives were probably lost on that ship.</text>
 		<autoReward level="HIGH">standard</autoReward>
 	</destroyed>
-	<deadCrew load="DEAD_CREW_SLAVER"/>
+	<deadCrew load="DEAD_CREW_SLAVERS"/>
 </ship>
 
 <ship name="SHIP_SLAVER_MANTIS" auto_blueprint="LIST_SHIPS_SLAVER_MANTIS">
 	<surrender  chance="0.2" min="2" max="4">
-		<text>We surrender! Take one of our slaves as tribute; if you destroy us they'll all die anyway!</text>
+		<text>"We surrender! Take one of our slaves as tribute; if you destroy us they'll all die anyway!"</text>
 		<choice>
 			<text>Accept their offer.</text>
 			<event>
@@ -10098,12 +10292,12 @@
 		<text>The slave ship is destroyed. They won't continue their evil trade, but many lives were probably lost on that ship.</text>
 		<autoReward level="HIGH">standard</autoReward>
 	</destroyed>
-	<deadCrew load="DEAD_CREW_SLAVER"/>
+	<deadCrew load="DEAD_CREW_SLAVERS"/>
 </ship>
 
 <ship name="SHIP_SLAVER_ZOLTAN" auto_blueprint="LIST_SHIPS_SLAVER_ZOLTAN">
 	<surrender  chance="0.2" min="2" max="4">
-		<text>We surrender! Take one of our slaves as tribute; if you destroy us they'll all die anyway!</text>
+		<text>"We surrender! Take one of our slaves as tribute; if you destroy us they'll all die anyway!"</text>
 		<choice>
 			<text>Accept their offer.</text>
 			<event>
@@ -10122,7 +10316,7 @@
 		<text>The slave ship is destroyed. They won't continue their evil trade, but many lives were probably lost on that ship.</text>
 		<autoReward level="HIGH">standard</autoReward>
 	</destroyed>
-	<deadCrew load="DEAD_CREW_SLAVER"/>
+	<deadCrew load="DEAD_CREW_SLAVERS"/>
 </ship>
 
 <ship name="SHIP_ORCHID_SLAVES" auto_blueprint="LIST_SHIPS_SLAVER_ALL">
@@ -10131,7 +10325,7 @@
 		<choice>
 			<text>Accept their offer.</text>
 			<event>
-				<crewMember amount="1"/>
+				<crewMember amount="1" class="orchid"/>
 				<ship hostile="false"/>
 			</event>
 		</choice>
@@ -10157,15 +10351,15 @@
 	<destroyed load="SLAVER_DRIFTER_DESTROYED"/>
 	<deadCrew load="SLAVER_DRIFTER_KILL"/>
 	<crew>
-	   <crewMember type="wraith" prop="0.33"/>
-	   <crewMember type="goul" prop="0.33"/>
-	   <crewMember type="mare" prop="0.33"/>
+	   <crewMember type="phantom_wraith" prop="0.33"/>
+	   <crewMember type="phantom_goul" prop="0.33"/>
+	   <crewMember type="phantom_mare" prop="0.33"/>
 	</crew>
 </ship>
 
 <ship name="SHIP_SLAVER_DEAD_SLAVES" auto_blueprint="LIST_SHIPS_SLAVER_ALL">
 	<surrender  chance="0.2" min="2" max="4">
-		<text>We surrender! Take one of our slaves as tribute; if you destroy us they'll all die anyway!</text>
+		<text>"We surrender! Take one of our slaves as tribute; if you destroy us they'll all die anyway!"</text>
 		<choice hidden="true">
 			<text>Accept their offer.</text>
 			<event>
@@ -10274,7 +10468,7 @@
 	<deadCrew load="DEAD_CREW_HACKER"/>
 	<crew>
 		<crewMember type="slug" prop="0.90"/>
-		<crewMember type="sabo" prop="0.10"/>	
+		<crewMember type="slug_saboteur" prop="0.10"/>	
 	</crew>
 </ship>
 
@@ -10283,7 +10477,7 @@
 	<deadCrew load="HACKER_FED_WIN"/>
 	<crew>
 		<crewMember type="slug" prop="0.50"/>
-		<crewMember type="sabo" prop="0.50"/>	
+		<crewMember type="slug_saboteur" prop="0.50"/>	
 	</crew>
 </ship>
 
@@ -10297,7 +10491,7 @@
 	<deadCrew load="DEAD_CREW_HACKER"/>
 	<crew>
 		<crewMember type="slug" prop="0.90"/>
-		<crewMember type="sabo" prop="0.10"/>	
+		<crewMember type="slug_saboteur" prop="0.10"/>	
 	</crew>
 </ship>
 
@@ -10310,7 +10504,7 @@
 	<deadCrew load="HACKER_CACHE_DEFEAT"/>
 	<crew>
 		<crewMember type="slug" prop="0.90"/>
-		<crewMember type="sabo" prop="0.10"/>	
+		<crewMember type="slug_saboteur" prop="0.10"/>	
 	</crew>
 </ship>
 
@@ -10319,7 +10513,7 @@
 	<deadCrew load="FANCY_CLASS_HACKER"/>
 	<crew>
 		<crewMember type="slug" prop="0.90"/>
-		<crewMember type="sabo" prop="0.10"/>	
+		<crewMember type="slug_saboteur" prop="0.10"/>	
 	</crew>
 </ship>
 <ship name="SHIP_SLUG_FANCY_CLASS" auto_blueprint="LIST_SHIPS_SLUG_FIGHT">
@@ -10332,7 +10526,7 @@
 	<deadCrew load="DISTRESS_HACKER_MILITIA_WIN"/>
 	<crew>
 		<crewMember type="slug" prop="0.90"/>
-		<crewMember type="sabo" prop="0.10"/>	
+		<crewMember type="slug_saboteur" prop="0.10"/>	
 	</crew>
 </ship>
 
@@ -10341,7 +10535,7 @@
 	<deadCrew load="HACKED_HOSTAGES_WIN"/>
 	<crew>
 		<crewMember type="slug" prop="0.90"/>
-		<crewMember type="sabo" prop="0.10"/>	
+		<crewMember type="slug_saboteur" prop="0.10"/>	
 	</crew>
 </ship>
 
@@ -10360,7 +10554,7 @@
 	<deadCrew load="HACKER_EXIT_DEFEAT"/>
 	<crew>
 		<crewMember type="slug" prop="0.90"/>
-		<crewMember type="sabo" prop="0.10"/>	
+		<crewMember type="slug_saboteur" prop="0.10"/>	
 	</crew>
 </ship>
 
@@ -10389,7 +10583,7 @@
 	<destroyed load="DESTROYED_DEFAULT"/>
 	<deadCrew load="DEAD_CREW_DEFAULT"/>
 	<crew>
-		<crewMember type="augmented" prop="1"/>	
+		<crewMember type="lanius_augmented" prop="1"/>	
 	</crew>
 </ship>
 
@@ -10401,7 +10595,7 @@
 			<text>Contact the Augmented.</text>
 			<event>
 				<text>"You having thanks from us, Federation. Take this, as prize for services." You expect a weapon of some sorts, but instead another Augmented Lanius is ejected from the vessel!</text>
-				<crewMember amount="1" repair="1" class="augmented"/>
+				<crewMember amount="1" repair="1" class="lanius_augmented"/>
 			</event>
 		</choice>
 	</destroyed>
@@ -10412,10 +10606,14 @@
 			<text>Contact the Augmented.</text>
 			<event>
 				<text>"You having thanks from us, Federation. Take this, as prize for services." You expect a weapon of some sorts, but instead another Augmented Lanius is ejected from the vessel!</text>
-				<crewMember amount="1" repair="1" class="augmented"/>
+				<crewMember amount="1" repair="1" class="lanius_augmented"/>
 			</event>
 		</choice>
 	</deadCrew>
+	<crew>
+		<crewMember prop="0.2" type="lanius_welder"/>
+		<crewMember prop="0.8" type="lanius"/>
+	</crew>
 </ship>
 <ship name="SHIP_AUGMENTED_LANIUS_AUG" auto_blueprint="LIST_SHIPS_AUGMENTED_ALL">
 	<destroyed>
@@ -10425,7 +10623,7 @@
 			<text>Contact the elites.</text>
 			<event>
 				<text>"Augmented dead. You gratitude, expending rewards." It appears your translator still can't properly decipher regular Lanius dialect, but the Lanius welders appear to be offering one of their finest soldiers. Guess you'll have plenty of time to learn...</text>
-				<crewMember amount="1" combat="1" class="welder"/>
+				<crewMember amount="1" combat="1" class="lanius_welder"/>
 			</event>
 		</choice>
 	</destroyed>
@@ -10436,7 +10634,7 @@
 			<text>Contact the elites.</text>
 			<event>
 				<text>"Augmented dead. You gratitude, expending rewards." It appears your translator still can't properly decipher regular Lanius dialect, but the Lanius welders appear to be offering one of their finest soldiers. Guess you'll have plenty of time to learn...</text>
-				<crewMember amount="1" combat="1" class="welder"/>
+				<crewMember amount="1" combat="1" class="lanius_welder"/>
 			</event>
 		</choice>
 	</deadCrew>
@@ -10449,7 +10647,7 @@
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
-				<text>You go digging in the Separatist's storage, but don't find any Ancient tech. You do however find a crew drone to use.</text>
+				<text>You go digging in the Separatist's storage, but don't find any Aether tech. You do however find a crew drone to use.</text>
 				<drone name="LIST_DRONES_SEPARATIST"/>
 			</event>
 		</choice>
@@ -10460,7 +10658,7 @@
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
-				<text>You go digging in the Separatist's storage, but don't find any Ancient tech. You do however find a crew drone to use.</text>
+				<text>You go digging in the Separatist's storage, but don't find any Aether tech. You do however find a crew drone to use.</text>
 				<drone name="LIST_DRONES_SEPARATIST"/>
 			</event>
 		</choice>
@@ -10477,8 +10675,8 @@
 	<destroyed load="DESTROYED_ANCIENT"/>
 	<deadCrew load="DEAD_CREW_ANCIENT"/>
 	<crew>
-		<crewMember type="ancient" prop="0.9"/>
-		<crewMember type="avatar" prop="0.10"/>	
+		<crewMember type="obelisk" prop="0.9"/>
+		<crewMember type="cognitive" prop="0.10"/>	
 	</crew>
 </ship>
 <ship name="SHIP_ANCIENT_ALL_SURRENDER" auto_blueprint="LIST_SHIPS_ANCIENT_ALL">
@@ -10496,8 +10694,8 @@
 	<destroyed load="DESTROYED_ANCIENT"/>
 	<deadCrew load="DEAD_CREW_ANCIENT"/>
 	<crew>
-		<crewMember type="ancient" prop="0.9"/>
-		<crewMember type="avatar" prop="0.10"/>	
+		<crewMember type="obelisk" prop="0.9"/>
+		<crewMember type="cognitive" prop="0.10"/>	
 	</crew>
 </ship>
 
@@ -10505,22 +10703,22 @@
 	<destroyed load="DESTROYED_ANCIENT"/>
 	<deadCrew load="DEAD_CREW_ANCIENT"/>
 	<crew>
-		<crewMember type="royal" prop="0.9"/>
-		<crewMember type="avatarroyal" prop="0.10"/>	
+		<crewMember type="obelisk_royal" prop="0.9"/>
+		<crewMember type="cognitive_advanced" prop="0.10"/>	
 	</crew>
 </ship>
 
 <ship name="SHIP_ANCIENT_AUTO" auto_blueprint="LIST_SHIPS_ANCIENT_AUTO">
 	<destroyed>
-		<text>The Ancient Auto-ship has been destroyed. You scrap what remains.</text>
-		<autoReward level="HIGH">droneparts</autoReward>
+		<text>The precursor Auto-ship has been destroyed. You scrap what remains.</text>
+		<autoReward level="HIGH">standard</autoReward>
 	</destroyed>
 </ship>
 
 <ship name="SHIP_ANCIENT_AUTO_PALACE" auto_blueprint="LIST_SHIPS_ANCIENT_AUTO">
 	<destroyed>
-		<text>The Ancient Auto-ship has been destroyed. You scrap what remains.</text>
-		<autoReward level="HIGH">droneparts</autoReward>
+		<text>The precursor Auto-ship has been destroyed. You scrap what remains.</text>
+		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
@@ -10534,8 +10732,8 @@
 	<destroyed load="GUARD_ANCIENT_DESTROY"/>
 	<deadCrew load="GUARD_ANCIENT_DEADCREW"/>
 	<crew>
-		<crewMember type="ancient" prop="0.8"/>
-		<crewMember type="avatar" prop="0.2"/>	
+		<crewMember type="obelisk" prop="0.8"/>
+		<crewMember type="cognitive" prop="0.2"/>	
 	</crew>
 </ship>
 
@@ -10548,16 +10746,16 @@
 	<destroyed load="ANCIENT_SCULPTER_WIN"/>
 	<deadCrew load="ANCIENT_SCULPTER_WIN"/>
 	<crew>
-		<crewMember type="ancient" prop="0.9"/>
-		<crewMember type="avatar" prop="0.10"/>	
+		<crewMember type="obelisk" prop="0.9"/>
+		<crewMember type="cognitive" prop="0.10"/>	
 	</crew>
 </ship>
 
-<ship name="SHIP_CRYSTAL_ANCIENT" auto_blueprint="LIST_SHIPS_CRYSTAL_A_GENERIC">
+<ship name="SHIP_CRYSTAL_ANCIENT" auto_blueprint="LIST_SHIPS_CRYSTAL_GENERIC">
 	<destroyed load="ANCIENT_LOOTERS_WIN"/>
 	<deadCrew load="ANCIENT_LOOTERS_WIN"/>
 	<crew>
-	   <crewMember type="ancient" prop="1"/>
+	   <crewMember type="obelisk" prop="1"/>
 	</crew>
 </ship>
 
@@ -10576,39 +10774,39 @@
 	<destroyed load="UPRISING_COGNITIVE_DEFEAT"/>
 	<deadCrew load="UPRISING_COGNITIVE_DEFEAT"/>
 	<crew>
-		<crewMember type="avatar" prop="0.5"/>
-		<crewMember type="avatarroyal" prop="0.5"/>	
+		<crewMember type="cognitive" prop="0.5"/>
+		<crewMember type="cognitive_advanced" prop="0.5"/>	
 	</crew>
 </ship>
 <ship name="SHIP_UPRISING_ROYAL" auto_blueprint="LIST_SHIPS_ROYAL_ALL">
 	<destroyed load="UPRISING_ROYAL_DEFEAT"/>
 	<deadCrew load="UPRISING_ROYAL_DEFEAT"/>
 	<crew>
-		<crewMember type="royal" prop="0.9"/>
-		<crewMember type="avatarroyal" prop="0.10"/>	
+		<crewMember type="obelisk_royal" prop="0.9"/>
+		<crewMember type="cognitive_advanced" prop="0.10"/>	
 	</crew>
 </ship>
 
 <ship name="SHIP_ROYAL_SPY_ANCIENT" auto_blueprint="LIST_SHIPS_ANCIENT_ALL">
 	<destroyed>
-		<text>You've defeated the Ancient ship. You scrap the remains.</text>
+		<text>You've defeated the Obelisk ship. You scrap the remains.</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Contact the Feds.</text>
 			<event>
-				<text>You're answered by a human soldier, breathing deeply through his mask. "Thanks, we were sure that we were gonners. Say... you're Federation too aren't you? Oh, it's good to see a friendly face. We were stationed in the MFK Fleet as spies, but we never realized our job would end us up here. I have no use working on this ship any longer, but I could be of service on yours!"</text>
-				<crewMember amount="1" combat="2" class="soldier"/>
+				<text>You're answered by a human soldier, breathing deeply through his mask. "Thanks, we were sure that we were goners. Say... you're Federation too aren't you? Oh, it's good to see a friendly face. We were stationed in the MFK Fleet as spies, but we never realized our job would end us up here. I have no use working on this ship any longer, but I could be of service on yours!"</text>
+				<crewMember amount="1" combat="2" class="human_soldier"/>
 			</event>
 		</choice>
 	</destroyed>
 	<deadCrew>
-		<text>You've defeated the Ancient ship. You scrap the remains.</text>
+		<text>You've defeated the Obelisk ship. You scrap the remains.</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Contact the Feds.</text>
 			<event>
-				<text>You're answered by a human soldier, breathing deeply through his mask. "Thanks, we were sure that we were gonners. Say... you're Federation too aren't you? Oh, it's good to see a friendly face. We were stationed in the MFK Fleet as spies, but we never realized our job would end us up here. I have no use working on this ship any longer, but I could be of service on yours!"</text>
-				<crewMember amount="1" combat="2" class="soldier"/>
+				<text>You're answered by a human soldier, breathing deeply through his mask. "Thanks, we were sure that we were goners. Say... you're Federation too aren't you? Oh, it's good to see a friendly face. We were stationed in the MFK Fleet as spies, but we never realized our job would end us up here. I have no use working on this ship any longer, but I could be of service on yours!"</text>
+				<crewMember amount="1" combat="2" class="human_soldier"/>
 			</event>
 		</choice>
 	</deadCrew>
@@ -10618,10 +10816,10 @@
 		<text>You've defeated the Rebel ship. You scrap the remains.</text>
 		<autoReward level="MED">standard</autoReward>
 		<choice hidden="true">
-			<text>Contact the Ancients.</text>
+			<text>Contact the Obelisks.</text>
 			<event>
 				<text>"Mortals, most wonderful! May fortune shine upon us all. These Rebels have taken what little hope we had, and I fear I have little chances of surviving if I stay on my ship. Perhaps I shall join yours."</text>
-				<crewMember amount="1" class="ancient"/>
+				<crewMember amount="1" class="obelisk"/>
 			</event>
 		</choice>
 	</destroyed>
@@ -10629,22 +10827,22 @@
 		<text>You've defeated the Rebel ship. You scrap the remains.</text>
 		<autoReward level="MED">standard</autoReward>
 		<choice hidden="true">
-			<text>Contact the Ancients.</text>
+			<text>Contact the Obelisks.</text>
 			<event>
 				<text>"Mortals, most wonderful! May fortune shine upon us all. These Rebels have taken what little hope we had, and I fear I have little chances of surviving if I stay on my ship. Perhaps I shall join yours."</text>
-				<crewMember amount="1" class="ancient"/>
+				<crewMember amount="1" class="obelisk"/>
 			</event>
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 
 <ship name="SHIP_ROYAL_SYNTHESIZER" auto_blueprint="LIST_SHIPS_ROYAL_ALL">
 	<destroyed>
-		<text>You've defeated the Ancient ship. You scrap the remains.</text>
+		<text>You've defeated the Obelisk ship. You scrap the remains.</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -10660,14 +10858,14 @@
 					<text>Offer to take the slave instead.</text>
 					<event>
 						<text>"You desire this filth? He betrayed both us and his own kind because he wanted to... HAH, go home! Ridiculous. But if you wish, please take him off our hands."</text>
-						<crewMember amount="1" class="sentinel"/>
+						<crewMember amount="1" class="crystal_sentinel"/>
 					</event>
 				</choice>
 			</event>
 		</choice>
 	</destroyed>
 	<deadCrew>
-		<text>You've defeated the Ancient ship. You scrap the remains.</text>
+		<text>You've defeated the Obelisk ship. You scrap the remains.</text>
 		<autoReward level="HIGH">standard</autoReward>
 		<choice hidden="true">
 			<text>Continue...</text>
@@ -10683,7 +10881,7 @@
 					<text>Offer to take the slave instead.</text>
 					<event>
 						<text>"You desire this filth? He betrayed both us and his own kind because he wanted to... HAH, go home! Ridiculous. But if you wish, please take him off our hands."</text>
-						<crewMember amount="1" class="sentinel"/>
+						<crewMember amount="1" class="crystal_sentinel"/>
 					</event>
 				</choice>
 			</event>
@@ -10731,7 +10929,7 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="LIST_CREW_REBEL_RANDOM" prop="0.5"/>
-		<crewMember type="soldier" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -10775,8 +10973,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -10820,8 +11018,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="soldier" prop="0.5"/>
-		<crewMember type="mfk" prop="0.5"/>
+		<crewMember type="human_soldier" prop="0.5"/>
+		<crewMember type="human_mfk" prop="0.5"/>
 	</crew>
 </ship>
 
@@ -10864,7 +11062,7 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="LIST_CREW_REBEL_RANDOM" prop="0.4"/>
-		<crewMember type="soldier" prop="0.6"/>
+		<crewMember type="human_soldier" prop="0.6"/>
 	</crew>
 </ship>
 
@@ -10999,7 +11197,6 @@
 </ship>
 
 <ship name="SHIP_ASTEROID" auto_blueprint="MU_ASTEROIDS">
-	<gotaway load="CIVILIAN_ASTEROID_APPROACHING_FAIL"/>
 	<destroyed load="CIVILIAN_ASTEROID_APPROACHING_WIN"/>
 	<triggeredEvent event="CIVILIAN_ASTEROID_APPROACHING_FAIL" thisFight="true" clearOnJump="true" time="30.0">
 		<triggeredEventBox load="DEFAULT_TIMER">
@@ -11106,7 +11303,7 @@
 		</choice>
 	</deadCrew>
 </ship>
-<ship name="SHIP_CRYSTAL_REFUGEE" auto_blueprint="LIST_SHIPS_CRYSTAL_A_FIGHT">
+<ship name="SHIP_CRYSTAL_REFUGEE" auto_blueprint="LIST_SHIPS_CRYSTAL_FIGHT">
 	<destroyed>
 		<text>The Crystal ship breaks apart and you salvage what you can.</text>
 		<autoReward level="MED">standard</autoReward>
@@ -11159,18 +11356,18 @@
 	</deadCrew>
 	<crew>
 		<crewMember type="mantis" prop="0.80"/>
-		<crewMember type="suzerain" prop="0.20"/>	
+		<crewMember type="mantis_suzerain" prop="0.20"/>	
 	</crew>
 </ship>
 
 <ship name="SHIP_SMUGGLER_PREIGNITE" auto_blueprint="LIST_SHIPS_SMUGGLER_MARKETS">
 	<surrender min="2" max="3"> 
-		<text>"Agh! Fine, take the stupid thing, and us leave alone!" The Smugglers pass over the Pre-Igniter and stop firing. Now that you have what you came for, you stop firing as well and pull away from the market.</text>
+		<text>"Agh! Fine, take the stupid thing, and leave us alone!" The Smugglers pass over the Pre-Igniter and stop firing. Now that you have what you came for, you stop firing as well and pull away from the market.</text>
 		<augment name="PART_GATLING_AUGMENT"/>
 		<ship hostile="false"/>
 	</surrender>
 	<destroyed> <!--not possible unless you somehow do enough damage to kill it in one shot before it can surrender-->
-		<text>You've destroyed the Smugglers, and the pre-igniter along with it. Though the augment might be destroyed, if you can collect the other parts and find a newer model pre-igniter you might still be able to build the Gatling...</text>
+		<text>You've destroyed the Smugglers, and the Pre-Igniter along with it. Though the augment might be destroyed, if you can collect the other parts and find a newer model pre-igniter you might still be able to build the Gatling...</text>
 		<autoReward level="MED">standard</autoReward>
 	</destroyed>
 	<deadCrew>
@@ -11236,8 +11433,8 @@
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="energy" prop="0.80"/>
-		<crewMember type="bomber" prop="0.20"/>	
+		<crewMember type="zoltan" prop="0.80"/>
+		<crewMember type="zoltan_devotee" prop="0.20"/>	
 	</crew>
 </ship>
 <ship name="SHIP_ENGI_LAWBOOK" auto_blueprint="LIST_SHIPS_ENGI_FIGHT">
@@ -11295,16 +11492,16 @@
 <ship name="SHIP_GHOST_FLAGSHIP" auto_blueprint="MU_GHOST_FLAGSHIP">
 	<surrender  min="3" max="4">
 		<text>You notice your companion, the Ghost hunters, fly past. Though their weapons haven't been able to do much against the Flagship, a salvo of theirs finally makes its way into the Flagship's engines, shutting them down. However, teleporter signatures indicate that you've been boarded yet again.</text>
-		<boarders min="3" max="3" class="goul"/>
+		<boarders min="3" max="3" class="phantom_goul"/>
 		<status type="limit" target="enemy" system="engines" amount="0"/>
 	</surrender>
 	<destroyed load="UNLOCK_GHOST_QUEST_WIN"/>
 	<deadCrew load="UNLOCK_GHOST_QUEST_WIN"/>
 	<crew>
-		<crewMember type="wraithalpha" prop="0.25"/>
-		<crewMember type="marealpha" prop="0.25"/>
-		<crewMember type="goulalpha" prop="0.25"/>
-		<crewMember type="phantomalpha" prop="0.25"/>
+		<crewMember type="phantom_wraith_alpha" prop="0.25"/>
+		<crewMember type="phantom_mare_alpha" prop="0.25"/>
+		<crewMember type="phantom_goul_alpha" prop="0.25"/>
+		<crewMember type="phantom_alpha" prop="0.25"/>
 	</crew>
 </ship>
 
@@ -11474,7 +11671,7 @@
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
-				<text>The Zoltan show little emotion, but express their gratitude with a small payment.</text>
+				<text>The Zoltans show little emotion, but express their gratitude with a small payment.</text>
 				<autoReward level="RANDOM">stuff</autoReward>
 			</event>
 		</choice>
@@ -11485,7 +11682,7 @@
 		<choice hidden="true">
 			<text>Continue...</text>
 			<event>
-				<text>The Zoltan show little emotion, but express their gratitude with a small payment.</text>
+				<text>The Zoltans show little emotion, but express their gratitude with a small payment.</text>
 				<autoReward level="RANDOM">stuff</autoReward>
 			</event>
 		</choice>
@@ -11497,7 +11694,7 @@
 		<autoReward level="LOW">standard</autoReward>
 	</destroyed>
 	<deadCrew>
-		<text>By the time the Rock ship arrives you've all but tied a bow around their quarry. The injured and dying Zoltan are easily taken into custody and the Rock ship grudgingly transfers over what you assume must be the bounty.</text>
+		<text>By the time the Rock ship arrives you've all but tied a bow around their quarry. The injured and dying Zoltans are easily taken into custody and the Rock ship grudgingly transfers over what you assume must be the bounty.</text>
 		<autoReward level="HIGH">standard</autoReward>
 	</deadCrew>
 </ship>
@@ -11577,15 +11774,15 @@
 	<deadCrew load="DUSK_TEAMUP_REBEL"/>
 	<crew>
 		<crewMember type="LIST_CREW_REBEL_RANDOM" prop="0.4"/>
-		<crewMember type="soldier" prop="0.6"/>
+		<crewMember type="human_soldier" prop="0.6"/>
 	</crew>
 </ship>
 <ship name="SHIP_DUSKBRINGER_TEAMUP" auto_blueprint="LIST_SHIPS_DUSKBRINGER_FIGHT">
 	<destroyed load="DUSK_TEAMUP_DUSK"/>
 	<deadCrew load="DUSK_TEAMUP_DUSK"/>
 	<crew>
-		<crewMember type="energy" prop="0.8"/>
-		<crewMember type="bomber" prop="0.2"/>
+		<crewMember type="zoltan" prop="0.8"/>
+		<crewMember type="zoltan_devotee" prop="0.2"/>
 	</crew>
 </ship>
 <ship name="SHIP_ZOLTAN_TEAMUP" auto_blueprint="LIST_SHIPS_ZOLTAN_FIGHT">
@@ -11734,7 +11931,7 @@
 			<text>Continue...</text>
 			<event>
 				<text>The Zoltan ship is in disrepair. "You have completed the cycle. For this favor you have my thanks, and my word to pay off my debt to you with service."</text>
-				<crewMember amount="1" class="energy"/>
+				<crewMember amount="1" class="zoltan"/>
 			</event>
 		</choice>
 	</destroyed>
@@ -11745,13 +11942,13 @@
 			<text>Continue...</text>
 			<event>
 				<text>The Zoltan ship is in disrepair. "You have completed the cycle. For this favor you have my thanks, and my word to pay off my debt to you with service."</text>
-				<crewMember amount="1" class="energy"/>
+				<crewMember amount="1" class="zoltan"/>
 			</event>
 		</choice>
 	</deadCrew>
 	<crew>
-		<crewMember type="energy" prop="0.8"/>
-		<crewMember type="bomber" prop="0.2"/>
+		<crewMember type="zoltan" prop="0.8"/>
+		<crewMember type="zoltan_devotee" prop="0.2"/>
 	</crew>
 </ship>
 

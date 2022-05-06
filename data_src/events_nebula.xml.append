@@ -25,7 +25,7 @@
 	</beaconType>
 	<text>You've discovered the exit beacon out of the sector. Once the FTL drive is charged you'll be able to leave this sector.</text>
 	<choice hidden="true">
-		<text>Explore</text>
+		<text>Explore.</text>
 		<event load="EXIT_LIST"/>
 	</choice>
 	<choice hidden="true">
@@ -47,7 +47,7 @@
 	</beaconType>
 	<text>You've discovered the exit beacon out of the sector. Once the FTL drive is charged you'll be able to leave this sector.</text>
 	<choice hidden="true">
-		<text>Explore</text>
+		<text>Explore.</text>
 		<event load="NEBULA_EXIT"/>
 	</choice>
 	<choice hidden="true">
@@ -92,14 +92,12 @@
 <eventList name="EVENTS_CLEARING">
 	<event load="GIFT"/>
 	
-	<event load="MERCENARY_REBEL_OFFER"/>
 	<event load="ENCOUNTER_AUTO_HACKER"/>
 	<event load="FED_BROKEN_SUPPLY_DRONE"/>
 	<event load="SOLAR_WRECK"/>
 	<event load="SLAVER_BETRAYAL"/>
 	<event load="CIVILIAN_EXPLODED"/>
 	<event load="PIRATE_CIVILIAN"/>
-	<event load="FRIENDLY_SLAVER"/>
 	<event load="REFUGEE_NO_DISTRESS"/>
 	<event load="WRECKAGE_EVENT"/>
 	<event load="ROGUE_REBEL"/>
@@ -114,7 +112,7 @@
 
 <eventList name="EVENTS_CLEARING_DISTRESS">
 	<event load="DISTRESS_MANTIS_IDLE"/>
-	<event load="DISTRESS_REFUGEE_GHOST"/>
+	<event load="DISTRESS_REFUGEE_ABANDONED"/>
 	<event load="DISTRESS_FRIENDLY_BEACON"/>
 	<event load="DISTRESS_TRAP_BEACON"/>
 	<event load="DISTRESS_STRANDED_BEACON"/>
@@ -191,7 +189,7 @@
 </event>
 
 <event name="NEBULA_NEW_PLANET" unique="true">
-	<text>To your surprise, there is no nebula at this beacon at all. The beacon appears to be freshly made, and the people who placed it here likely made a mistake with labelling it. In the distance is a large, unexplored and unpopulated planet, suggesting this location is desired for colonization.</text>
+	<text>To your surprise, there is no nebula at this beacon at all. The beacon appears to be freshly made, and the people who placed it here likely made a mistake with labeling it. In the distance is a large, unexplored and unpopulated planet, suggesting this location is desired for colonization.</text>
 	<img planet="PLANET_UNPOPULATED_TERRA"/>
 	<choice hidden="true">
 		<text>Explore the planet.</text>
@@ -608,7 +606,7 @@
 	<choice>
 		<text>Prepare to fight.</text>
 		<event>
-			<text>You prepare for combat</text>
+			<text>You prepare for combat.</text>
 			<ship load="SHIP_AUTO_FIGHT" hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -651,6 +649,10 @@
 	<text>You arrive in the middle of a plasma storm. Despite the harsh conditions, a Rebel scout seems to be waiting for you.</text>
 	<ship load="SHIP_REBEL_FIGHT" hostile = "true"/>
 	<environment type="storm"/>
+	<choice hidden="true">
+    	<text>Continue...</text>
+    	<event load="COMBAT_CHECK"/>
+	</choice>
 </event>
 
 <event name="STORM_BOARDING" unique="true">
@@ -673,7 +675,6 @@
 	<event load="NEBULA_PIRATE_SMUGGLE"/>
 	<event load="NEBULA_AUTO_DEFENSE_ITEM"/>
 	<event load="NEBULA_LOST_SHIP"/>
-	<event load="NEBULA_WEAPONS_TRADER"/>
 	<event load="NEBULA_ROCK_RACIST"/>
 	<event load="NEBULA_MANTIS_CHOICE"/>
 	<event load="NEBULA_REBEL_CHASE"/>
@@ -691,7 +692,6 @@
 	<event load="NEBULA_PIRATE_SMUGGLE"/>
 	<event load="NEBULA_AUTO_DEFENSE_ITEM"/>
 	<event load="NEBULA_LOST_SHIP"/>
-	<event load="NEBULA_WEAPONS_TRADER"/>
 	<event load="NEBULA_ROCK_RACIST"/>
 	<event load="NEBULA_MANTIS_CHOICE"/>
 	<event load="NEBULA_REBEL_CHASE"/>
@@ -792,7 +792,7 @@
 			<choice hidden="true" req="LIST_CREW_SLUG">
 				<text>(Slug Crew) "You talk a lot of trassssh for sssomeone in tentacle ssslapping dissssstance."</text>
 				<event>
-					<text>"My god, you let one of those filthy creatures live on your ships? You are disgraceful!"</text>
+					<text>"My god, you let one of those filthy creatures live on your ship? You are disgraceful!"</text>
 					<ship load="SHIP_PIRATE_REBEL" hostile="true"/>
 					<choice hidden="true">
 						<text>Continue...</text>
@@ -969,7 +969,7 @@
 		<choice>
 			<text>Prepare to fight.</text>
 			<event>
-				<text>You arm the weapons and prepare to fight the rebel ship.</text>
+				<text>You arm the weapons and prepare to fight the Rebel ship.</text>
 				<ship hostile="true"/>
 				<choice hidden="true">
 					<text>Continue...</text>
@@ -1070,7 +1070,17 @@
 	</choice>
 	<choice>
 		<text>Avoid provoking the ship.</text>
-		<event/>
+		<event>
+			<text>You distance yourself from the ship.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
+		</event>
 	</choice>
 	<choice req="cloaking" lvl="1" max_group="0" hidden="true">
 		<text>(Cloaking) Attempt to stealthily access the space station.</text>
@@ -1155,7 +1165,17 @@
 	</choice>
 	<choice>
 		<text>Keep your position, they can handle themselves.</text>
-		<event/>
+		<event>
+			<text>The ship never resurfaces, leaving you alone at the beacon.</text>
+			<choice>
+				<text>Do something onboard the ship.</text>
+				<event load="STORAGE_CHECK"/>
+			</choice>
+			<choice>
+				<text>Do nothing.</text>
+				<event/>
+			</choice>
+		</event>
 	</choice>	
 	<choice req="teleporter" hidden="true"> 
 		<text>(Teleporter) Lock onto their life-signs with your teleporter.</text>
@@ -1198,94 +1218,6 @@
 	</event>
 </eventList>
 
-<event name="NEBULA_WEAPONS_TRADER" unique="true">
-	<text>A black market weapons trader spins you a tale of the dangers of the nebula before pushing his wares.</text>
-	<environment type="nebula"/>
-	<ship load="SHIP_SMUGGLER_ALL" hostile="false"/>
-	<choice>
-		<text>Ignore the ship.</text>
-		<event/>
-	</choice>
-	<choice>
-		<text>Attack the ship.</text>
-		<event>
-			<text>You prepare to attack the smugglers.</text>
-			<ship hostile="true"/>
-			<choice hidden="true">
-				<text>Continue...</text>
-				<event load="COMBAT_CHECK"/>
-			</choice>
-		</event>
-	</choice>
-	<choice hidden="true">
-		<text>Purchase an unknown weapon for 45 scrap.</text>
-		<event load="NEBULA_WEAPONS_TRADER_LIST"/>
-	</choice>
-	<choice req="mind" hidden="true"> <!--DLC-->
-		<text>(Mind Control) Convince him to make it a better deal.</text>
-		<event load="NEBULA_WEAPONS_TRADER_LIST2"/>
-	</choice>
-</event>
-<eventList name="NEBULA_WEAPONS_TRADER_LIST">
-	<event>
-		<text>You transfer the scrap and receive a weapon in return. Lets hope it was worth it.</text>
-		<item_modify>
-			<item type="scrap" min="-45" max="-45"/>
-		</item_modify>
-		<weapon name="RANDOM"/>
-	</event>
-	<event>
-		<text>You transfer over the scrap, but he reneges on the agreement. "I told you this was a dangerous place!"</text>
-		<item_modify>
-			<item type="scrap" min="-45" max="-45"/>
-		</item_modify>
-		<choice>
-			<text>Attack the ship!</text>
-			<event>
-				<text>You prepare to attack the smugglers.</text>
-				<ship hostile="true"/>
-				<choice hidden="true">
-					<text>Continue...</text>
-					<event load="COMBAT_CHECK"/>
-				</choice>
-			</event>
-		</choice>
-		<choice>
-			<text>Learn a valuable lesson and move on.</text>
-			<event/>
-		</choice>
-	</event>
-</eventList>
-<eventList name="NEBULA_WEAPONS_TRADER_LIST2"> <!--DLC-->
-	<event>
-		<text>Once "convinced" to help he lowers the price and describes the weapon. However, he eventually comes to his senses and confusedly takes back his discount. He is clearly unsure why he offered it in the first place.</text>
-		<choice>
-			<text>Buy the weapon.</text>
-			<event>
-				<text>You purchase the weapon and thank him for his help.</text>
-				<item_modify>
-					<item type="scrap" min="-45" max="-45"/>
-				</item_modify>
-				<weapon name="RANDOM"/>
-			</event>
-		</choice>
-		<choice>
-			<text>Decline.</text>
-			<event>
-				<text>You thank him for his offer and prepare to move on.</text>
-			</event>
-		</choice>
-	</event>
-	<event>
-		<text>Once "convinced" to help, he casually states that his offer was actually a lie and that they planned to attack your ship. By the time he returns to his senses you've already prepared your ship to fight.</text>
-		<ship hostile="true"/>
-		<choice hidden="true">
-			<text>Continue...</text>
-			<event load="COMBAT_CHECK"/>
-		</choice>
-	</event>
-</eventList>
-
 <event name="NEBULA_ROCK_RACIST" unique="true">
 	<text>A Rock armoured transport nearby looks to have lost its bearings, but when you hail they grow suspicious: "Whatever life-form you are, we find you repugnant. We seek no aid. Leave. Now."</text>
 	<ship load="SHIP_ROCK_GENERIC" hostile="false"/>
@@ -1297,7 +1229,7 @@
 	<choice>
 		<text>Repugnant?! Arm the weapons!</text>
 		<event>
-			<text>You prepare to fight</text>
+			<text>You prepare to fight.</text>
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -1306,7 +1238,7 @@
 		</event>
 	</choice>
 	<choice hidden="true" req="LIST_CREW_ROCK">
-		<text>(Rock crewmember) Offer to lead them out of the nebula.</text>
+		<text>(Rockman Crew) Offer to lead them out of the nebula.</text>
 		<event>
 			<text>The Rock grudgingly transfer control of their helm to you and you steer them to a thinner part of the nebula. They're not sure what to think, but transfer over some supplies all the same.</text>
 			<autoReward level="HIGH">standard</autoReward>
@@ -1315,13 +1247,13 @@
 </event>
 
 <event name="NEBULA_MANTIS_CHOICE" unique="true">
-	<text>Navigating the fog blind, you practically bump hulls with a Mantis ship. They hail you: "Pah! This transgression will be overlooked. Nebula, very dangerous. Next time, feds all die."</text>
+	<text>Navigating the fog blind, you practically bump hulls with a Mantis ship. They hail you: "Pah! This transgression will be overlooked. Nebula, very dangerous. Next time, Feds all die."</text>
 	<ship load="SHIP_MANTIS_FIGHT" hostile="false"/>
 	<environment type="nebula"/>
 	<choice>
 		<text>There won't be a next time. Open fire!</text>
 		<event>
-			<text>You prepare to fight</text>
+			<text>You prepare to fight.</text>
 			<ship hostile="true"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -1332,7 +1264,7 @@
 	<choice>
 		<text>This place is dangerous enough. Move on.</text>
 		<event>
-			<text>The mantis ship jumps away after a short time.</text>
+			<text>The Mantis ship jumps away after a short time.</text>
 			<choice>
 				<text>Do something onboard the ship.</text>
 				<event load="STORAGE_CHECK"/>
@@ -1426,7 +1358,7 @@
 	<event load="NEBULA_WATER_PLANET"/>
 </eventList>
 
-<event name="NEBULA_DISTRESS_REBEL_STORM" unique="true">
+<!--<event name="NEBULA_DISTRESS_REBEL_STORM" unique="true">
 	<text>The source of this distress beacon is no civilian ship. It's a Rebel Elite, lost in the storm. They're as shocked to see you as you are to see them, to the point where they aren't even sure if they should attack you.</text>
 	<ship load="SHIP_REBEL_ELITE_FIGHT" hostile="false"/>
 	<environment type="storm"/>
@@ -1446,7 +1378,7 @@
 		<text>Take this chance to run.</text>
 		<event load="NEBULA_DISTRESS_REBEL_STORM_RUN"/>
 	</choice>
-</event>
+</event>-->
 
 <event name="NEBULA_WATER_PLANET" unique="true"> <!--its a reference if you couldn't tell-->
 	<text>Through the clearing in the nebula here you can see a large water planet, from which there appears to be 10 separate distress calls. A large cubical structure can be seen from the planet's surface. It's inactive, and you can't tell what it is from this distance.</text>
@@ -1461,7 +1393,8 @@
 				<text>We can take a few hits, pull in closer to inspect the wreck.</text>
 				<event>
 					<text>While the giant cannon charges, you investigate the wreck. It's huge, probably the size of one of the Rebel fleet ships, if not a little bigger. Suddenly, a giant beam fires from the structure, tearing through the ship's engines! It's quite the scratch, but you'll be able to fix it.</text>
-					<damage amount="7" system="engines"/> 
+					<playSound>ancient_focus</playSound>
+					<damage amount="7" system="engines" effect="breach"/> 
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event load="WATER_PLANET_LAND"/>
@@ -1478,7 +1411,7 @@
 		<text>(Obelisk Crew) Your crew desperately needs to tell you something.</text>
 		<event>
 			<text>Your crew explains the structure on the planet below is a massive anti-aircraft gun meant to enforce a strict quarantine over the planet. Somehow it has remained functional for a millenia, and with their help you temporarily deactivate the artillery remotely so you can approach safely.</text>
-			<choice>
+			<choice hidden="true">
 				<text>Continue...</text>
 				<event load="WATER_PLANET_LAND"/>
 			</choice>
@@ -1501,14 +1434,14 @@
 </event>
 <event name="WATER_PLANET_LAND">
 	<text>On the planet's surface you find a crashed life pod with an engineer inside, surprisingly still alive. Once they're stabilized, you figure you might as well investigate the area around while you wait.</text>
-	<crewMember amount="1" class="engineer" repair="2">Ryley</crewMember>
+	<crewMember amount="1" class="human_engineer" repair="2">Ryley</crewMember>
 	<choice hidden="true">
 		<text>Investigate the crash site.</text>
 		<event load="WATER_PLANET_INVESTIGATE"/>
 	</choice>
 </event>
 <event name="WATER_PLANET_INVESTIGATE">
-	<text>A gigantic leviathan class creature patrols the waters around the wreckage, but you're able to sneak around it. Though most of the ship is on fire, you find lot of fire extinguishers lying around, a tablet like device with sector maps, and a hangar bay with some mech suits.</text>
+	<text>A gigantic leviathan class creature patrols the waters around the wreckage, but you're able to sneak around it. Though most of the ship is on fire, you find a lot of fire extinguishers lying around, a tablet like device with sector maps, and a hangar bay with some mech suits.</text>
 	<choice hidden="true">
 		<text>Grab the extinguishers.</text>
 		<event>
@@ -1531,7 +1464,7 @@
 		</event>
 	</choice>
 	<choice hidden="true" req="weapons" lvl="6">
-		<text>(Adv Weapons) Fire everything you have on the leviathan.</text>
+		<text>(Adv. Weapons) Fire everything you have on the leviathan.</text>
 		<event>
 			<text>It's entirely pointless but cathartic as you unleash every weapon you have on the creature. Most of your shots miss or are rendered worthless by the water but you'd like to think you showed that fish who's boss.</text>
 			<choice hidden="true">

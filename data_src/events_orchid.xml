@@ -129,7 +129,7 @@
 		<event load="ORCHID_SEEDS_SCAN"/>
 	</choice>
 	<choice hidden="true" req="sensors" lvl="2">
-		<text>(Upg Sensors) Determine the contents of the pod.</text>
+		<text>(Upg. Sensors) Determine the contents of the pod.</text>
 		<event load="ORCHID_SEEDS_SCAN"/>
 	</choice>
 	<choice hidden="true">
@@ -269,7 +269,7 @@
 	<text>A civilian vessel desperately attempts to hail you before it is destroyed before your very eyes and replaced by a ravenous Vampweed vessel, already on the hunt.</text>
 	<text>Though the Vampweeds and the Florals have always been at odds, it was agreed during the Kadahellian'ek Treaty that the two could never enter war against each other. Unsurprisingly, the Vampweeds have taken to abusing this treaty as much as possible by actively aggressing the Gathering's allies as often as they like. Unfortunately, as a Federation-hired renegade, you fall under this category.</text>
 	<text>The blood red hull of a seemingly Orchid vessel glides by, but this is no friend of yours. These are Vampweeds, a subspecies of Orchids so aggressive they were forced out of the Gathering by the usually peaceful Florals. Such aggression can be observed when they suddenly attack you for no reason!</text>
-	<text>A screaming Vampweed appears on your screen. "BLOOD FOR THE BLOOD GOD! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH!" As expected, their weapons come online immediately after and a fight is inevitable.</text>
+	<text>A screaming Vampweed appears on your screen. "BLOOD FOR THE BLOOD GOD! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH!" As expected, their weapons come online immediately after and a fight is inevitable.</text>
 </textList>
 
 <event name="ENCOUNTER_ORCHID_STATION" unique="true">
@@ -371,7 +371,7 @@
 	<choice hidden="true">
 		<text>Ask for help.</text>
 		<event>
-			<text>You send a distress signal, and the Orchid military stationed at the planet responds immediately and targets the pirate with Anti Ship Battery.</text>
+			<text>You send a distress signal, and the Orchid military stationed at the planet responds immediately and targets the pirate with Anti-Ship Battery.</text>
 			<environment target="enemy" type="PDS"/>
 			<choice hidden="true">
 				<text>Continue...</text>
@@ -392,7 +392,7 @@
 	<event load="ORCHID_FIELD"/>
 	<event load="ORCHID_AUTO_THEFT"/>
 	
-	<event load="MERCENARY_OFFER"/>
+	<!--<event load="MERCENARY_OFFER"/>-->
 	<event load="REFUGEE_NO_DISTRESS"/>
 	<event load="SLAVER_BETRAYAL"/>
 </eventList>
@@ -474,7 +474,7 @@
 	<choice hidden="true">
 		<text>Agree to talk with the Slugs.</text>
 		<event>
-			<text>"Greetingsss, two-legged meatsssack. We were looking for sssuch fine ssspecimen for a century. You are truly the ugliessst human in galaxy and deserve to be embalmed and shown in museum. I only wonder what your mom looksss like."</text>
+			<text>"Greetingsss, two-legged meatsssack. We were looking for sssuch fine ssspecimen for a century. You are truly the ugliessst human in the galaxy and deserve to be embalmed and shown in a museum. I only wonder what your mom looksss like."</text>
 			<choice hidden="true">
 				<text>Attack!</text>
 				<event>
@@ -501,7 +501,7 @@
 			<choice hidden="true" req="LIST_CREW_SLUG">
 				<text>(Slug Crew) Return the insult.</text>
 				<event>
-					<text>Your Slug turns to the others, dons a pair of shades, and simply states "couldn't be worssse than your mother after I annihilated her in bed lasssst night." Shocked and outraged, the Slug captain has no idea how to respond. Eventually, in utter humiliation, he concedes and offers surrender.</text>
+					<text>Your Slug turns to the others, dons a pair of shades, and simply states "Couldn't be worssse than your mother after I annihilated her in bed lasssst night." Shocked and outraged, the Slug captain has no idea how to respond. Eventually, in utter humiliation, he concedes and offers surrender.</text>
 					<autoReward level="MED">standard</autoReward>
 				</event>
 			</choice>
@@ -548,7 +548,7 @@
 			<text>Your Orchid informs you the field is filled with young Orchid children who have not yet developed mobility. You realise you were nearly about to commit genocide and decide against it.</text>
 		</event>
 	</choice>
-	<choice hidden="true" req="NANO_MEDBAY" lvl="2">
+	<choice hidden="true" req="NANO_MEDBAY">
 		<text>(Medbots) Fertilize the fields.</text>
 		<event>
 			<text>Though it's not fertlizer in the traditional sense, the nanobots stimulate the growth of the flowers. The Orchid caretakers of the field seem to take notice of this and thank you for your generosity, though they advise you not to provide "unsolicited growth stimulation" to other people's children in the future.</text>
@@ -751,7 +751,7 @@
 		<autoReward level="HIGH">missiles</autoReward>
 	</event>
 	<event>
-		<text>As you hand over the statue, it begins to vibrate with greater intensity. A message briefly plays, "you will regret having sided with the Federation, filthy weed freaks! Glory to the Rebellion!", and then immediately explodes! The Orchid settlement is decimated and your ship takes some damage, but that's not the worst of it. The Orchids blame you for the attack and send one of their remaining ships to attack you!</text>
+		<text>As you hand over the statue, it begins to vibrate with greater intensity. A message briefly plays, "You will regret having sided with the Federation, filthy weed freaks! Glory to the Rebellion!", and then immediately explodes! The Orchid settlement is decimated and your ship takes some damage, but that's not the worst of it. The Orchids blame you for the attack and send one of their remaining ships to attack you!</text>
 		<damage amount="3"/>
 		<ship load="SHIP_ORCHID_FIGHT" hostile="true"/>
 		<choice hidden="true">
@@ -990,7 +990,7 @@
 <eventList name="ORCHID_DISTRESS_ROCK_CRASH_SAVE">
 	<event>
 		<text>To your surprise the crew is a Rock outcast! They explain they fled from the Rock Homeworlds after their banishment and expected to be welcomed into Orchid territory... only for a group of maddened, parasite ridden Orchids to attack their ship and nearly destroy it!</text>
-		<crewMember amount="1" class="outcast"/>
+		<crewMember amount="1" class="rock_outcast"/>
 	</event>
 	<event>
 		<text>You pry open the doors of the Rock ship only to find the butchered corpse of a mossy Rockman and several irate, parasite ridden orchids!</text>
@@ -1042,7 +1042,7 @@
 				<text>The Orchid sprays soothing pollen, and the madman gradually comes to their senses. The whole team sighs in relief.</text>
 			</event>
 		</choice>
-		<choice hidden="true" req="CREW_STIMS">
+		<choice hidden="true" req="BLUELIST_PHEROMONES">
 			<text>(Mantis Pheromones) Treat the madman with pheromones.</text>
 			<event>
 				<text>As soon as a fresh portion of pheromones enters the crewmember's body, they get better.</text>
@@ -1098,7 +1098,7 @@
 			<crewMember amount="1" class="orchid"/>
 		</event>
 	</choice>
-	<choice hidden="true" req="CREW_STIMS">
+	<choice hidden="true" req="BLUELIST_PHEROMONES">
 		<text>(Mantis Pheromones) Use the augmentation to speed up the evacuation.</text>
 		<event>
 			<text>Affected by pheromones, your crew and the Orchid civilians move a lot faster, leaving no one behind. After the colony is evacuated, one of the Orchids is so impressed by your performance that they ask to join your crew.</text>
@@ -1123,9 +1123,9 @@
 		</event>
 	</choice>
 	<choice hidden="true" req="DRONE_SPEED">
-		<text>(Drone Reactor Booster) Deploy superior drones to help.</text>
+		<text>(Drone Reactor Booster) Deploy superior drones to help. [-2|]</text>
 		<event>
-			<text>The killer drones are reprogrammed and used for help. They carry seeds, babies, and valuables, put out fires and save the day in the end. One of the Orchids is so impressed by your performance that they ask to join your crew.</text>
+			<text>The on-board drones are reprogrammed and used for help. They carry seeds, babies, and valuables, put out fires and save the day in the end. One of the Orchids is so impressed by your performance that they ask to join your crew.</text>
 			<crewMember amount="1" class="orchid"/>
 			<item_modify>
 				<item max="-2" min="-2" type="drones"/>
@@ -1281,7 +1281,7 @@
 								<text>(Flares) Launch a flare to distract the guards and buy you time.</text>
 								<event>
 									<text>Baffled by the array of holographic discs, most of the tree's defense moves to investigate. Your crew slip past and quickly dig up the weapon and some spare ammunition then slip away without being noticed.</text>
-									<weapon name="KERNEL_BOMB"/>
+									<weapon name="GIFTLIST_KERNEL_ELITE"/>
 									<autoReward level="MED">missiles</autoReward>
 								</event>
 							</choice>
@@ -1326,13 +1326,13 @@
 </event>
 <event name="ORCHID_MEGATREE_WIN" unique="false">
 	<text>Civilians and tourists alike flee in terror as the guard plummets into the base of the tree, setting it ablaze. You hurry out of the ship and break a hole in the trunk, surprised to find it hollow. You hurry through the smoke and grab the Kernel weapon and head back to the ship.</text>
-	<weapon name="KERNEL_BOMB"/>
+	<weapon name="GIFTLIST_KERNEL_ELITE"/>
 	<autoReward level="MED">missiles</autoReward>
 </event>
 <eventList name="ORCHID_MEGATREE_TALK">
 	<event>
 		<text>Your Orchid manages to convince the guards of the utmost importance of your mission. They sanction you to send crew down to dig up the weapon, so long as you cause no damage to the tree.</text>
-		<weapon name="KERNEL_BOMB"/>
+		<weapon name="GIFTLIST_KERNEL_ELITE"/>
 	</event>
 	<event>
 		<text>The guards refuse to grant you access to the weapon.</text>
@@ -1408,7 +1408,7 @@
 						<text>(Orchid Crew) Ask the Chieftain to join you.</text>
 						<event>
 							<text>"Oh... I don't know if I could... this is a very important job... though I don't get out much... I'm sure the gardens will be fine until I return."</text>
-							<crewMember amount="1" class="chieftain"/>
+							<crewMember amount="1" class="orchid_chieftain"/>
 						</event>
 					</choice>
 					<choice hidden="true">
@@ -1469,13 +1469,6 @@
 	</event>
 	<event>
 		<text>"A good choice. May it serve you well in your travels!"</text>
-		<weapon name="KERNEL_HULL"/>
-		<item_modify>
-			<item type="scrap" min="-52" max="-52"/>
-		</item_modify>
-	</event>
-	<event>
-		<text>"A good choice. May it serve you well in your travels!"</text>
 		<weapon name="KERNEL_FIRE"/>
 		<item_modify>
 			<item type="scrap" min="-45" max="-45"/>
@@ -1520,13 +1513,6 @@
 	</event>
 	<event>
 		<text>"A good choice. May it serve you well in your travels!"</text>
-		<weapon name="KERNEL_HULL_ELITE"/>
-		<item_modify>
-			<item type="scrap" min="-62" max="-62"/>
-		</item_modify>
-	</event>
-	<event>
-		<text>"A good choice. May it serve you well in your travels!"</text>
 		<weapon name="KERNEL_CHAIN_ELITE"/>
 		<item_modify>
 			<item type="scrap" min="-55" max="-55"/>
@@ -1553,8 +1539,8 @@
 				<event>
 					<text>You send in a team of crew to rush in and cut down the Orchid before the Lost Suns can drop them into the fire. You rush back to the ship with a horde of angry Rocks and an attack ship in hot pursuit.</text>
 					<ship load="SHIP_LOSTSUN_FIGHT" hostile="true"/>
-					<boarders min="2" max="2" class="commando"/>
-					<crewMember amount="1" class="chieftain"/>
+					<boarders min="2" max="2" class="rock_commando"/>
+					<crewMember amount="1" class="orchid_chieftain"/>
 					<choice hidden="true">
 						<text>Continue...</text>
 						<event load="COMBAT_CHECK"/>
@@ -1572,19 +1558,19 @@
 					</choice>
 				</event>
 			</choice>
-			<choice hidden="true" req="commando">
+			<choice hidden="true" req="rock_commando">
 				<text>(Lost Sun Commando) Reason with them.</text>
 				<event>
 					<text>Your Commando speaks with the other Lost Suns, eventually coming to an understanding that perhaps massacring the Federation's allies isn't a good idea. The Lost Suns untie the Orchid Chieftain, who thanks you and offers to work aboard your ship.</text>
-					<crewMember amount="1" class="chieftain"/>
+					<crewMember amount="1" class="orchid_chieftain"/>
 				</event>
 			</choice>
-			<choice hidden="true" req="ariadne">
+			<choice hidden="true" req="unique_ariadne">
 				<text>(Ariadne) Admonish them.</text>
 				<event>
 					<text>"M'am! I- I am s-so so so sorry. I uhh, uh, I was just doing my duty for the glory of the Lost Suns! Please, don't discharge me. I will free the Orchids immediately."</text>
 					<autoReward level="HIGH">item</autoReward>
-					<crewMember amount="1" class="chieftain"/>
+					<crewMember amount="1" class="orchid_chieftain"/>
 				</event>
 			</choice>
 			<choice hidden="true" req="ORCHID_KIDS">
@@ -1726,12 +1712,12 @@
 			<choice hidden="true">
 				<text>The hell is Rt'lak Et?</text>
 				<event>
-					<text>The Orchid lets out a sigh, a strange noise to be heard from a plant. "Rt'lak Et are the primary gardens of the Orchid Race! On this planet we grow and manufacture our best weapons and ships. Now pirates hold it hostage! We just barely escaped with our lives, but we must get back and save our people? Will you aid us?"</text>
+					<text>The Orchid lets out a sigh, a strange noise to be heard from a plant. "Rt'lak Et are the primary gardens of the Orchid Race! On this planet we grow and manufacture our best weapons and ships. Now pirates hold it hostage! We just barely escaped with our lives, but we must get back and save our people! Will you aid us?"</text>
 					<choice hidden="true">
 						<text>Agree.</text>
 						<event>
 							<text>"Oh most wonderful! I will give you the co-ordinates, and shall come with you! Those pirates are no match for your giant ship."</text>
-							<crewMember amount="1" class="chieftain">Mayeb</crewMember> <!--this was a typo of "maybe" from an early draft and then the rest of the dev team convinced me to stick with it-->
+							<crewMember amount="1" class="orchid_chieftain">Mayeb</crewMember> <!--this was a typo of "maybe" from an early draft and then the rest of the dev team convinced me to stick with it-->
 							<quest event="GARDEN_CRUISER_QUEST_GARDENS"/>
 						</event>
 					</choice>
@@ -1804,7 +1790,7 @@
 		<text>Contact the Orchids.</text>
 		<event>
 			<text>"Many thanks captain. We were not expecting the Federation, especially in these days, to hold true on their word and come to our aid. Though our cruiser has fallen, our gardens have not! Accept these gifts of our gratitude."</text>
-			<hiddenAug>ACH_BOSS_ORCHCRUISER</hiddenAug>
+			<variable name="ach_boss_orchidcruiser" op="set" val="1"/>
 			<weapon name="GIFTLIST_KERNEL_ELITE"/>
 			<autoReward level="HIGH">missiles</autoReward>
 			<damage amount="-7"/>
@@ -1823,7 +1809,7 @@
 		<event>
 			<text>"Many thanks captain. We were not expecting the Federation, especially in these days, to hold true on their word and come to our aid. You have kept our cruiser in one piece, more than we could have hoped for! We owe you many many thanks, I hope this reward is enough to repay you." Among the many gifts from the Orchids, they also send over the blueprints of their Orchid Cruiser!</text>
 			<unlockCustomShip silent="false">PLAYER_SHIP_ORCHID</unlockCustomShip>
-			<hiddenAug>ACH_BOSS_ORCHCRUISER</hiddenAug>
+			<variable name="ach_boss_orchidcruiser" op="set" val="1"/>
 			<weapon name="GIFTLIST_KERNEL_ELITE"/>
 			<autoReward level="HIGH">stuff</autoReward>
 			<damage amount="-12"/>

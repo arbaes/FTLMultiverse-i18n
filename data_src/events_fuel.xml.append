@@ -1242,7 +1242,7 @@
 		<event load="FUEL_ON_DYNASTY_LIE"/>
 	</choice>
 	<choice hidden="true" req="LIST_CREW_GHOST">
-		<text>(Ghost Crew) Yes.</text>
+		<text>(Ghost Crew) "Yes."</text>
 		<event>
 			<text>"Good! Then, beware the heart, traveler! It bleeds, but still it beats!" You assume that's all, but the Ghosts eject a crate of fuel at you, then jump off!</text>
 			<autoReward level="MED">fuel_only</autoReward>
